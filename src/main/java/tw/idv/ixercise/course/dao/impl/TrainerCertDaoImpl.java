@@ -1,5 +1,4 @@
-package jimmy.trainercert.dao.impl;
-
+package tw.idv.ixercise.course.dao.impl;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
@@ -7,8 +6,8 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import jimmy.trainercert.dao.TrainerCertDao;
-import jimmy.trainercert.entity.TrainerCert;
+import tw.idv.ixercise.course.dao.TrainerCertDao;
+import tw.idv.ixercise.course.entity.TrainerCert;
 
 @Repository
 public class TrainerCertDaoImpl implements TrainerCertDao {
@@ -160,6 +159,7 @@ public class TrainerCertDaoImpl implements TrainerCertDao {
 //		}
 //		return trainerCert;
 	}
+
 
 
 	// 測試

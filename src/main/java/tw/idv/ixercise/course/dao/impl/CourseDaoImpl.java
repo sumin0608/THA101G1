@@ -1,4 +1,4 @@
-package jimmy.course.dao.impl;
+package tw.idv.ixercise.course.dao.impl;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import jimmy.course.dao.CourseDao;
-import jimmy.course.entity.Course;
+import tw.idv.ixercise.course.dao.CourseDao;
+import tw.idv.ixercise.course.entity.Course;
 
 @Repository
 public class CourseDaoImpl implements CourseDao {

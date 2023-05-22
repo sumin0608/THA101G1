@@ -1,8 +1,8 @@
-package jimmy.trainercert.dao;
+package tw.idv.ixercise.course.dao;
 
 import java.util.List;
 
-import jimmy.trainercert.entity.TrainerCert;
+import tw.idv.ixercise.course.entity.*;
 
 public interface TrainerCertDao {
 

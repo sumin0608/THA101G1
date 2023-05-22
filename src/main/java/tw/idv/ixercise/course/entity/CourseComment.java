@@ -1,4 +1,4 @@
-package jimmy.comment.entity;
+package tw.idv.ixercise.course.entity;
 
 import java.sql.Timestamp;
 

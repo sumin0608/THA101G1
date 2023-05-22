@@ -1,8 +1,8 @@
-package jimmy.course.dao;
+package tw.idv.ixercise.course.dao;
 
 import java.util.List;
 
-import jimmy.course.entity.Course;
+import tw.idv.ixercise.course.entity.Course;
 
 public interface CourseDao {
 

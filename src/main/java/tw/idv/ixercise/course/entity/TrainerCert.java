@@ -1,4 +1,4 @@
-package jimmy.trainercert.entity;
+package tw.idv.ixercise.course.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import core.pojo.Core;
+import tw.idv.ixercise.core.Core;
 import lombok.Getter;
 import lombok.Setter;
 @Setter

@@ -1,4 +1,4 @@
-package jimmy.course.entity;
+package tw.idv.ixercise.course.entity;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import core.pojo.Core;
+import tw.idv.ixercise.core.Core;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
