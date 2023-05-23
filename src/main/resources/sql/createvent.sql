@@ -1,0 +1,22 @@
+CREATE TABLE `EVENT` (
+  `eventId` int unsigned NOT NULL AUTO_INCREMENT,
+  `creatorId` int unsigned DEFAULT NULL,
+  `eventName` varchar(255) DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  `eventDate` date DEFAULT NULL,
+  `startTime` time DEFAULT NULL,
+  `deadline` datetime DEFAULT NULL,
+  `createDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `maxAttendees` int unsigned DEFAULT NULL,
+  `description` text,
+  `photo` longblob,
+  `location` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `district` varchar(255) DEFAULT NULL,
+  `categoryId` int unsigned DEFAULT NULL,
+  `currentAttendees` int unsigned DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  `paymentMethod` int DEFAULT NULL,
+  PRIMARY KEY (`eventId`)
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
