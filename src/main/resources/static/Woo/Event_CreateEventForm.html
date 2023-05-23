@@ -435,12 +435,15 @@
 
                             <!-- ================================================form -----submit ================================================== -->
                             <!-- <form action="aaa.html" method="get" class="row g-3 needs-validation" novalidate> -->
-                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"
-                                enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+<!--                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"-->
+<!--                                enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>-->
                                 <!-- <form action="#" method="post" enctype="multipart/form-data" class="row g-3 needs-validation"
                     novalidate> -->
 
-
+<!--                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"-->
+<!--                                  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>-->
+                            <form method="post" class="row g-3 needs-validation" novalidate>
+<!--                            <div class="row g-3 needs-validation" novalidate>-->
                                 <br>
                                 <h1>創辦活動表單</h1>
                                 <hr>
@@ -455,7 +458,7 @@
                                                 <hr>
 
                                                 <div class="form-group">
-                                                    <label for="photo-dropzone forDhotoDrop">點擊下方或將圖片拖放至下方處</label>
+                                                    <label for="photo-dropzone">點擊下方或將圖片拖放至下方處</label>
                                                     <input type="file" class="form-control-file" name="photo"
                                                         id="photo-dropzone" aria-describedby="fileHelp" accept="image/*"
                                                         required>
@@ -603,7 +606,7 @@
                                     <div class="col-sm-5">
                                         <label class="form-label">活動開始時間</label>
                                         <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                            class="form-control" value="22:10" required>
+                                            class="form-control" value="22:10:00" required>
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -631,7 +634,7 @@
                                     <div class="col-sm-5">
                                         <label class="form-label">活動開始時間</label>
                                         <input type="time" id="lastVerifyTime" name="lastVerifyTime"
-                                            placeholder="活動開始時間..." class="form-control" value="22:10" required>
+                                            placeholder="活動開始時間..." class="form-control" value="22:10:00" required>
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -722,7 +725,7 @@
                         </div>
                     </div> -->
                                 <!-- <br> -->
-                        </div>
+                        </form>
                         </form>
                         <div class="col-2"></div>
                     </div>
@@ -914,55 +917,134 @@
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms)
                     .forEach(function (form) {
-                        form.addEventListener('submit', function (event) {
+                        form.addEventListener('submit', function (e) {
 
                             if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
+                                e.preventDefault()
+                                e.stopPropagation()
                                 console.log("!form.checkValidity()");
                             } else {
                                 console.log("hiii");
-                                // e.preventDefault();
+                                e.preventDefault();
 
-                                var send_data = {};
+                                var event = {};
 
-                                send_data.photo_dropzone = $("#photo-dropzone").val();
-                                send_data.event_name = $("#event_name").val();
-                                send_data.categoryId = $("#categoryId").val();
-                                send_data.city = $("#city").val();
-                                send_data.district = $("#district").val();
-                                send_data.location = $("#location").val();
-                                send_data.address = $("#address").val();
-                                send_data.price = $("#price").val();
-                                send_data.eventDate = $("#eventDate").val();
-                                send_data.startTime = $("#startTime").val();
-                                send_data.lastVerifyDate = $("#lastVerifyDate").val();
-                                send_data.lastVerifyTime = $("#lastVerifyTime").val();
-                                send_data.maxAttendees = $("#maxAttendees").val();
-                                send_data.paymentMethod = $("#paymentMethod").val();
-                                send_data.description = $("#description").val();
+                                // event.photo = $("#photo-dropzone").val();
+                                event.eventName = $("#event_name").val();
+                                event.categoryId = $("#categoryId").val();
+                                event.city = $("#city").val();
+                                event.district = $("#district").val();
+                                event.location = $("#location").val();
+                                event.address = $("#address").val();
+                                event.price = $("#price").val();
+                                event.eventDate = $("#eventDate").val();
+                                event.startTime = $("#startTime").val();
+                                event.lastVerifyDate = $("#lastVerifyDate").val();
+                                event.lastVerifyTime = $("#lastVerifyTime").val();
+                                event.maxAttendees = $("#maxAttendees").val();
+                                event.paymentMethod = $("#paymentMethod").val();
+                                event.description = $("#description").val();
 
-                                console.log(send_data);
-
-                                var img_base64_el = document.querySelector(".preview_img");
-                                if (img_base64_el) {
-                                    send_data.img_base64 = img_base64_el.getAttribute("src");
-                                }
+                                // console.log(event);
+                                //
+                                // var img_base64_el = document.querySelector(".preview_img");
+                                // if (img_base64_el) {
+                                //     event.img_base64 = img_base64_el.getAttribute("src");
+                                // }
 
                                 // 把資料存到session 裡面-先不存到資料庫- 給預覽頁面座使用
-                                sessionStorage.setItem("form_data", JSON.stringify(send_data));
+                                 let formData = JSON.stringify(event);
+                                sessionStorage.setItem("Event", formData);
+                                    console.log(formData);
+                                $.ajax({
+                                    // url: 'http://localhost:8081/THA101G1/event/photo', // Replace with the actual servlet URL
+                                    url: "http://localhost:8080/ixercise/events/create",
+                                    type: 'POST',
+                                    data: formData,
+                                    dataType: 'json',
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (response) {
+                                        // Handle success response here
+                                        console.log(response);
+                                        console.log(typeof response); // Check the type of the response
+                                        console.log(JSON.parse(response)); // Attempt to parse the response as JSON
+                                        upLoadPhoto(response);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle error here
+                                        console.log(xhr.responseText);
+                                    }
+                                });
                             };
+
 
                             form.classList.add('was-validated')
 
                         }, false)
                     })
 
+                function upLoadPhoto(eventId){
+                    var photoFile = $('#photo-dropzone')[0].files[0];
+                    let photo1 = new FormData();
+                    photo1.append("photo", photoFile);
+                    console.log($("#photo-dropzone").val());
+
+                    console.log(photoFile);
+                    console.log(photo1);
+
+                    $.ajax({
+                        // url: 'http://localhost:8081/THA101G1/event/photo', // Replace with the actual servlet URL
+                        url: "http://localhost:8080/ixercise/events/create/images/" + eventId,
+                        type: 'PUT',
+                        data: photo1,
+                        dataType: 'json',
+                        // contentType: "application/json; charset=utf-8",
+                        enctype: 'multipart/form-data',
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            // Handle success response here
+                            console.log(response);
+                            // /create/images/{eventId}
+                            upLoadPhoto(response);
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle error here
+                            console.log(xhr.responseText);
+                            console.log(xhr);
+                            console.log(error);
+                        }
+                    });
+
+                }
 
             })()
             // =========================== 資料送出 ========================= //
 
         }); //Load ====
+        // function updateEventPhoto(eventId, photoData) {
+        //     $.ajax({
+        //         url: '/events/' + eventId + '/photo',
+        //         type: 'PUT',
+        //         data: photoData,
+        //         processData: false,
+        //         contentType: 'application/octet-stream',
+        //         success: function() {
+        //             // Handle the success response
+        //             console.log('Event photo updated successfully');
+        //         },
+        //         error: function(xhr, status, error) {
+        //             // Handle the error response
+        //             console.error('Error updating event photo:', error);
+        //         }
+        //     });
+        // }
+        //
+        // // Usage
+        // var eventId = 123;  // Replace with the actual event ID
+        // var photoData = // Retrieve the updated photo byte array
+        //
+        //     updateEventPhoto(eventId, photoData);
 
 
     </script>

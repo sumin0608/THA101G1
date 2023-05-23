@@ -1,11 +1,9 @@
 package tw.idv.ixercise.account.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import tw.idv.ixercise.account.dao.impl.AccountDaoImpl;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+import tw.idv.ixercise.account.dao.impl.*;
 
 //@RequestMapping("/test")
 @Controller
