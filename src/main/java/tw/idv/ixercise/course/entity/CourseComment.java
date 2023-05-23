@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import tw.idv.ixercise.core.Core;
 
 @Setter
 @Getter
@@ -18,7 +19,9 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "course_comment")
-public class CourseComment {
+public class CourseComment extends Core{
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer commentId;

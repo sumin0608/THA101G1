@@ -14,31 +14,34 @@
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
-        .displaynone {
-            display: none;
+        .square-image {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            width: 74px;
+            height: 74px;
+            object-fit: cover;
         }
 
-        /* ===== 重要性的星號 ===== */
-
-        /* div.star_block {
-            display: inline-block;
-        } */
-
-        /* 手型滑鼠指針樣式 */
-        div.star_block>span.star {
-            cursor: pointer;
-            display: inline-block;
-            margin-right: 3px;
-        }
-
-        div.star_block>span.star.-on {
-            color: yellow;
+        .notifyp {
+            height: 60px;
+            /* width: 350px; */
+            /* padding: 10px;
+            border: 2px solid #4d4d4d;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            box-sizing: border-box; */
         }
     </style>
 </head>
 
 <body>
-
+    <!-- 我是V6，修改如下 -->
+    <!-- 1.修正會員彈出選單頭像會跑版的問題 -->
+    <!-- 2.修正通知圖片會有跑板問題 -->
     <!-- 以下導覽列=================================================================================== -->
     <!-- 增加w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
@@ -308,154 +311,43 @@
     <!-- main-content -->
     <div class="container main-content py-5">
         <!-- 請在這裡作業 -->
-        <div class="row border justify-content-center">
-            <div class="col-9">
-                <!-- <div class="row justify-content-center">
-                    <div class="col-8"> -->
-                <!-- 原本有下style="max-width: 540px;" -->
+        <div class="row justify-content-center">
+            <div class="col-5 p-3 border">
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <form>
+                            <fieldset class="mb-3">
+                                <legend class="h1 mb-4">信箱驗證</legend>
 
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4 m-3 overflow-hidden rounded-circle">
-                            <img src="../lib/img/clown.png" alt="..." sytle="object-fit: cover">
-                        </div>
-                        <div class="col-md-7 my-auto">
-                            <div class="card-body ms-5">
-                                <h5 class="card-title mb-4">Username</h5>
-                                <p class="card-text mb-4">所在城市/OO歲</p>
-                                <a href="" class="d-grid gap-2 w-50 mb-3">
-                                    <button class="btn btn-primary" type="button">編輯個人資訊</button>
-                                </a>
-                                <a href="" class="d-grid gap-2 w-50">
-                                    <button class="btn btn-primary" type="button">成為教練</button>
-                                </a>
-                            </div>
-                        </div>
+                                <div class="mb-3">
+                                    <!-- <div class=""> -->
 
-                    </div>
-                </div>
-                <ul class="nav nav-tabs mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">會員簡介</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">過往評價</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">參加紀錄</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- 原本disable的設定 tabindex="-1" aria-disabled="true" -->
-                        <a class="nav-link" href="#">舉辦紀錄</a>
-                    </li>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">我的最愛</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">論壇紀錄</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">行事曆</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">購物紀錄</a>
-                        </li>
-                    </ul>
-                </ul>
-                <div class="row">
-                    <div class="col-12">
-                        <ul class="p-0" aria-labelledby="">
-                            <!-- 一條通知====================================================== -->
-                            <div class="list-group">
-                                <div href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 118px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100 ">
-                                            <img src="https://picsum.photos/500/200/?random=10" class="h-100" alt=""
-                                                style="object-fit:cover; width:100px;">
-                                        </div>
+                                    <p for="TextInput">輸入信箱</p>
+                                    <!-- </div> -->
+                                    <div class="row">
                                         <div class="col-8">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">活動標題List group item heading</h5>
-                                            </div>
-                                            <p class="mb-1">活動時間</p>
-                                            <small>教練名稱</small>
+                                            <input type="text" id="TextInput" class="form-control" placeholder="">
                                         </div>
-                                        <div class="col-2">
-                                            <a id="givecomment" class="btn btn-primary" href="#" role="button">前往評價</a>
+                                        <div class="col-4">
+                                            <button type="button" class="btn btn-primary">送出驗證碼</button>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- 評論欄位 -->
-                            <div class="card col-12 displaynone" id="commentplace">
-                                <div class="card-body p-4">
-                                    <div class="d-flex flex-start w-100">
-                                        <img class="rounded-circle shadow-1-strong me-3"
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
-                                            alt="avatar" width="65" height="65" />
-                                        <div class="w-100">
-                                            <h5>留言評論</h5>
-                                            <!-- 評分星星 -->
-                                            <div class='star_block'>
-                                                <span class='star' data-star='1'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='2'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='3'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='4'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='5'><i class='fas fa-star'></i></span>
-                                            </div>
 
-                                            <div class="form-outline">
-                                                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                                <label class="form-label" for="textAreaExample">若檢舉請詳述您的體驗</label>
-                                            </div>
-                                            <div class="d-flex justify-content-between mt-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckDefault">
-                                                    <button id="report" type="button" class="btn btn-success">
-                                                        檢舉
-                                                    </button>
-                                                </div>
-                                                <button id="sendcomment" type="button" class="btn btn-danger">
-                                                    Send
-                                                    <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10" class="h-100 w-100"
-                                                alt="" style="object-fit:cover">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div> -->
-                        </ul>
+                                <button type="button" class="btn btn-primary">驗證</button>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
+
+
             </div>
         </div>
+    </div>
 
-    </div>
-    </div>
-    </div>
+
+
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
@@ -487,8 +379,6 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-    <!-- 載入 Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
 
     <script>
@@ -498,43 +388,6 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
-
-        $(document).ready(function () {
-            // 前往評價
-            $('#givecomment').click(function () {
-                $('#commentplace').toggleClass('displaynone');
-            });
-            // 檢舉
-            $('#report').click(function () {
-                var isChecked = $('#flexCheckDefault').prop('checked');
-                $('#flexCheckDefault').prop('checked', !isChecked);
-            });
-
-
-            // 評分星星
-            $(".star_block").on('click', '.star', function () {
-                $(this).siblings().removeClass('-on');
-                $(this).addClass('-on');
-                $(this).prevAll().addClass('-on');
-            });
-
-            // 送出評論
-            // $('#sendcomment').click(function () {
-            //     $.ajax({
-            //         url: 'your_ajax_endpoint',
-            //         type: 'POST',
-            //         data: { /* your data */ },
-            //         success: function (response) {
-            //             // Handle the AJAX response here
-            //         },
-            //         error: function (xhr, status, error) {
-            //             // Handle AJAX errors here
-            //         }
-            //     });
-            // });
-
-        });
-
     </script>
 </body>
 

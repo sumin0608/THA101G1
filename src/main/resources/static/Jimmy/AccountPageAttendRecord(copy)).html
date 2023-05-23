@@ -17,23 +17,6 @@
         .displaynone {
             display: none;
         }
-
-        /* ===== 重要性的星號 ===== */
-
-        /* div.star_block {
-            display: inline-block;
-        } */
-
-        /* 手型滑鼠指針樣式 */
-        div.star_block>span.star {
-            cursor: pointer;
-            display: inline-block;
-            margin-right: 3px;
-        }
-
-        div.star_block>span.star.-on {
-            color: yellow;
-        }
     </style>
 </head>
 
@@ -82,7 +65,7 @@
                             <!-- ================================================================== -->
                             <!-- <div class="collapse" id="collapseExample"> -->
                             <div id="searchcard" class="d-none">
-                                <div class="searchbarthing w-50 position-fixed">
+                                <div class="card card-body w-50 position-fixed">
                                     <!-- <form action="" class="row mb-0"> -->
                                     <div class="row mb-0">
                                         <div class="col-3">
@@ -176,41 +159,41 @@
                         </svg>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                             <!-- 一條通知====================================================== -->
-                            <!-- 完成版 600px -->
-                            <div class="list-group notifyunread">
+
+                            <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 93px; width:600px;">
+                                    style="height: 96px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
-                                                height="72px" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10"
+                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <p class="mb-1" style=" overflow: hidden;">
-                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
-                                                </p>
-                                                <small style="white-space: nowrap;">3 days ago</small>
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
                                             </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="list-group notifyunread">
+                            <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 93px; width:600px;">
+                                    style="height: 96px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
-                                                height="72px" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10"
+                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <p class="mb-1" style=" overflow: hidden;">
-                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
-                                                </p>
-                                                <small style="white-space: nowrap;">3 days ago</small>
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
                                             </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
                                         </div>
                                     </div>
                                 </a>
@@ -220,7 +203,7 @@
 
                     <!-- 會員頭像========================================================= -->
                     <li class="nav-item dropdown mx-2 my-auto">
-                        <img src="https://picsum.photos/300/200/?random=10"
+                        <img src="../lib/img/clown.png"
                             class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
                             height="36">
@@ -228,8 +211,8 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
 
                             <li>
-                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                    src="https://picsum.photos/200/200/?random=10">
+                                <img class="dropdown-item overflow-hidden p-2 rounded-circle" src="../lib/img/clown.png"
+                                    width="150" height="150">
                             </li>
                             <li>
                                 <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -313,7 +296,6 @@
                 <!-- <div class="row justify-content-center">
                     <div class="col-8"> -->
                 <!-- 原本有下style="max-width: 540px;" -->
-
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4 m-3 overflow-hidden rounded-circle">
@@ -363,99 +345,94 @@
                         </li>
                     </ul>
                 </ul>
+
                 <div class="row">
                     <div class="col-12">
                         <ul class="p-0" aria-labelledby="">
+
                             <!-- 一條通知====================================================== -->
-                            <div class="list-group">
+                            <div class="list-group" style="border: 1px solid red;">
                                 <div href="#" class="list-group-item list-group-item-action" aria-current="true"
                                     style="height: 118px;">
                                     <div class="row h-100">
-                                        <div class="col-2 h-100 ">
+                                        <div class="col-2 h-100 " style="">
                                             <img src="https://picsum.photos/500/200/?random=10" class="h-100" alt=""
                                                 style="object-fit:cover; width:100px;">
                                         </div>
                                         <div class="col-8">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">活動標題List group item heading</h5>
+                                                <h5 class="mb-1">舉辦紀錄活動標題</h5>
+                                                <span class="mb-1" style="color: red;">(教練課程)</span>
                                             </div>
                                             <p class="mb-1">活動時間</p>
-                                            <small>教練名稱</small>
+                                            <small>課程狀態:已完成</small>
                                         </div>
                                         <div class="col-2">
-                                            <a id="givecomment" class="btn btn-primary" href="#" role="button">前往評價</a>
+                                            <a id="unflodcomment" class="btn btn-primary" href="#"
+                                                role="button">展開評價</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- 評論欄位 -->
-                            <div class="card col-12 displaynone" id="commentplace">
-                                <div class="card-body p-4">
-                                    <div class="d-flex flex-start w-100">
-                                        <img class="rounded-circle shadow-1-strong me-3"
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
-                                            alt="avatar" width="65" height="65" />
-                                        <div class="w-100">
-                                            <h5>留言評論</h5>
-                                            <!-- 評分星星 -->
-                                            <div class='star_block'>
-                                                <span class='star' data-star='1'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='2'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='3'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='4'><i class='fas fa-star'></i></span>
-                                                <span class='star' data-star='5'><i class='fas fa-star'></i></span>
-                                            </div>
 
-                                            <div class="form-outline">
-                                                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                                <label class="form-label" for="textAreaExample">若檢舉請詳述您的體驗</label>
-                                            </div>
-                                            <div class="d-flex justify-content-between mt-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckDefault">
-                                                    <button id="report" type="button" class="btn btn-success">
-                                                        檢舉
-                                                    </button>
+                                <div class="commentplace">
+                                    <!-- 第一個評論留言 -->
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                            style="height: 96px;">
+                                            <div class="row h-100" style="background-color: #F0F0F0;">
+                                                <div class="col-2 h-100">
+                                                    <img src="https://picsum.photos/150/200/?random=10"
+                                                        class="h-100 w-100" alt="" style="object-fit:cover">
                                                 </div>
-                                                <button id="sendcomment" type="button" class="btn btn-danger">
-                                                    Send
-                                                    <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                                                </button>
+                                                <div class="col-10">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1">學員名稱</h5>
+                                                        <small>日期 3 days ago</small>
+                                                    </div>
+                                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                                    <small>And some small print.</small>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
+                                    </div>
+                                    <!-- 第二個評論留言 -->
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                            style="height: 96px;">
+                                            <div class="row h-100" style="background-color: #F0F0F0;">
+                                                <div class="col-2 h-100">
+                                                    <img src="https://picsum.photos/150/200/?random=10"
+                                                        class="h-100 w-100" alt="" style="object-fit:cover">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1">第二個留言</h5>
+                                                        <small>日期 3 days ago</small>
+                                                    </div>
+                                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                                    <small>And some small print.</small>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10" class="h-100 w-100"
-                                                alt="" style="object-fit:cover">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div> -->
+
+                            </div>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
+
+
     </div>
     </div>
     </div>
+
+
+
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
@@ -487,8 +464,6 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-    <!-- 載入 Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
 
     <script>
@@ -501,38 +476,9 @@
 
         $(document).ready(function () {
             // 前往評價
-            $('#givecomment').click(function () {
-                $('#commentplace').toggleClass('displaynone');
+            $('#unflodcomment').click(function () {
+                $('.commentplace').toggleClass('displaynone');
             });
-            // 檢舉
-            $('#report').click(function () {
-                var isChecked = $('#flexCheckDefault').prop('checked');
-                $('#flexCheckDefault').prop('checked', !isChecked);
-            });
-
-
-            // 評分星星
-            $(".star_block").on('click', '.star', function () {
-                $(this).siblings().removeClass('-on');
-                $(this).addClass('-on');
-                $(this).prevAll().addClass('-on');
-            });
-
-            // 送出評論
-            // $('#sendcomment').click(function () {
-            //     $.ajax({
-            //         url: 'your_ajax_endpoint',
-            //         type: 'POST',
-            //         data: { /* your data */ },
-            //         success: function (response) {
-            //             // Handle the AJAX response here
-            //         },
-            //         error: function (xhr, status, error) {
-            //             // Handle AJAX errors here
-            //         }
-            //     });
-            // });
-
         });
 
     </script>
