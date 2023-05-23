@@ -10,7 +10,7 @@ public interface CourseDao {
 
 	public int deleteByCourseId(Integer courseId);
 
-	public int upateByCourseId(Integer courseId);
+	public int upateByCourseId(Course course);
 
 	public List<Course> selectAll();
 

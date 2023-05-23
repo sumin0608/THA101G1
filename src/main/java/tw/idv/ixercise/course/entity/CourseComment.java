@@ -2,6 +2,7 @@ package tw.idv.ixercise.course.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +33,8 @@ public class CourseComment extends Core{
 	private Integer commentRating;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
+	@Column(insertable = false)
+	private String photo;
 
 	public CourseComment() {
 	}

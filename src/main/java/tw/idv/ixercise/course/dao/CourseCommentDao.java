@@ -10,7 +10,7 @@ public interface CourseCommentDao {
 
 	public int deleteCourseComment(Integer commentId);
 
-	public int upateCourseComment(Integer commentId);
+	public int upateCourseComment(CourseComment courseComment);
 
 	public List<CourseComment> selectAll();
 

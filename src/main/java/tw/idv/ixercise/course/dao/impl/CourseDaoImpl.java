@@ -29,7 +29,7 @@ public class CourseDaoImpl implements CourseDao {
 	}
 
 	@Override
-	public int upateByCourseId(Integer courseId) {
+	public int upateByCourseId(Course course) {
 		final StringBuilder hql = new StringBuilder()
 				.append("UPDATE course SET ");
 //		
@@ -38,7 +38,7 @@ public class CourseDaoImpl implements CourseDao {
 			.append("courseStartTime = :courseStartTime,")
 			.append("registrationDeadline = :registrationDeadline,")
 			
-//			.append("lastUpdatedDate = NOW() ")
+			.append("lastUpdatedDate = NOW() ")
 			.append("WHERE courseId = :courseId");
 //		Query query = session.createQuery(hql.toString());
 //		
