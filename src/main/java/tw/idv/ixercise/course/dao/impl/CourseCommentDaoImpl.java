@@ -15,7 +15,7 @@ import tw.idv.ixercise.course.entity.CourseComment;
 public class CourseCommentDaoImpl implements CourseCommentDao{
 
 	@PersistenceContext
-	public Session session; 
+	private Session session; 
 	
 	@Override
 	public int insertCourseComment(CourseComment courseComment) {
@@ -70,14 +70,14 @@ public class CourseCommentDaoImpl implements CourseCommentDao{
 	}
 
 	//測試
-	public static void main(String[] args) {
-		CourseCommentDaoImpl dao = new CourseCommentDaoImpl();
-		
-		List<CourseComment> allComments = dao.selectAll();
-        System.out.println("All comments:");
-        for (CourseComment comment : allComments) {
-            System.out.println(comment);
-        }
+//	public static void main(String[] args) {
+//		CourseCommentDaoImpl dao = new CourseCommentDaoImpl();
+//		
+//		List<CourseComment> allComments = dao.selectAll();
+//        System.out.println("All comments:");
+//        for (CourseComment comment : allComments) {
+//            System.out.println(comment);
+//        }
 
         // 测试根据被评论的账号 ID 查询课程评论
 //        int accountIdReviewed = 1001; // 被评论的账号 ID
@@ -95,7 +95,7 @@ public class CourseCommentDaoImpl implements CourseCommentDao{
 //            System.out.println(comment);
 //        }
         
-	}
+//	}
 	
 	
 	

@@ -13,9 +13,31 @@
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
-    <style>
 
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <style>
+        .displaynone {
+            display: none;
+        }
+
+        /* ===== 重要性的星號 ===== */
+
+        /* div.star_block {
+            display: inline-block;
+        } */
+
+        /* 手型滑鼠指針樣式 */
+        div.star_block>span.star {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 3px;
+        }
+
+        div.star_block>span.star.-on {
+            color: yellow;
+        }
     </style>
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 </head>
 
 <body>
@@ -363,11 +385,13 @@
                                                 <h5 class="mb-1">活動標題List group item heading</h5>
                                             </div>
                                             <p class="mb-1">活動時間</p>
-                                            <small>報名狀態</small>
+                                            <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+                                            <small>報名狀態: </small><small class="attendstatus">已完成</small>
                                         </div>
                                         <div class="col-2">
-                                            <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                            <a id="givecomment" class="btn btn-primary" href="#" role="button">前往評價</a>
                                         </div>
+                                        <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
                                     </div>
                                 </div>
                             </div>
@@ -385,14 +409,59 @@
                                                 <h5 class="mb-1">活動標題List group item heading</h5>
                                             </div>
                                             <p class="mb-1">活動時間</p>
-                                            <small>報名狀態</small>
+                                            <small>報名狀態: </small><small class="attendstatus">未出席</small>
+                                            <div class="show_givecomment"> <!-- 之後隱藏，用來判斷if/else顯現下方"前往評價"按鈕 -->
+                                                <p>未評價</p>
+                                            </div>
                                         </div>
                                         <div class="col-2">
-                                            <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                            <a class="btn btn-primary givecomment" href="#" role="button">前往評價</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+                            <!-- 評論欄位 -->
+                            <div class="card col-12 commentplace displaynone">
+                                <div class="card-body p-4">
+                                    <div class="d-flex flex-start w-100">
+                                        <img class="rounded-circle shadow-1-strong me-3"
+                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
+                                            alt="avatar" width="65" height="65" />
+                                        <div class="w-100">
+                                            <h5>留言評論</h5>
+                                            <!-- 評分星星 -->
+                                            <div class='star_block'>
+                                                <span class='star' data-star='1'><i class='fas fa-star'></i></span>
+                                                <span class='star' data-star='2'><i class='fas fa-star'></i></span>
+                                                <span class='star' data-star='3'><i class='fas fa-star'></i></span>
+                                                <span class='star' data-star='4'><i class='fas fa-star'></i></span>
+                                                <span class='star' data-star='5'><i class='fas fa-star'></i></span>
+                                            </div>
+                                            <div class="form-outline">
+                                                <textarea class="form-control textareac" id="textAreaExample"
+                                                    rows="4"></textarea>
+                                                <label class="form-label" for="textAreaExample">若欲檢舉請勾選，並詳述您的體驗</label>
+                                            </div>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input flexCheckDefault" type="checkbox"
+                                                        value="">
+                                                    <button type="button" class="btn btn-success report">
+                                                        檢舉
+                                                    </button>
+                                                </div>
+                                                <button type="button" class="btn btn-danger sendcomment">
+                                                    Send
+                                                    <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+
                             <!-- <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
                                     style="height: 96px;">
@@ -454,6 +523,10 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
 
     <script>
@@ -463,6 +536,49 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
+        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $(document).ready(function () {
+            // 用來判斷if/else顯現下方"前往評價"按鈕
+            var text = $('.show_givecomment p').text();
+            console.log(text);
+            // 前往評價
+            $('.givecomment').click(function () {
+                $('.commentplace').toggleClass('displaynone');
+            });
+            // 檢舉勾勾
+            $('.report').click(function () {
+                var isChecked = $('.flexCheckDefault').prop('checked');
+                $('.flexCheckDefault').prop('checked', !isChecked);
+            });
+            // 評分星星
+            $(".star_block").on('click', '.star', function () {
+                $(this).siblings().removeClass('-on');
+                $(this).addClass('-on');
+                $(this).prevAll().addClass('-on');
+            });
+
+            // 送出評論
+            // (document).on('click', '.sendcomment', function () { //動態生成
+            $('.sendcomment').on('click', function () {
+                //     $.ajax({
+                //         url: 'your_ajax_endpoint',
+                //         type: 'POST',
+                //         data: { /* your data */ },
+                //         success: function (response) {
+                //             // Handle the AJAX response here
+                //         },
+                //         error: function (xhr, status, error) {
+                //             // Handle AJAX errors here
+                //         }
+                //     });
+
+                var textarea = $('.textareac');// 清空textarea的值
+                textarea.val('');
+                $('.star').siblings().removeClass('-on');// 清空星星
+                $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
+            });
+        });
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     </script>
 </body>
 
