@@ -29,6 +29,12 @@ public class CourseCommentServiceImpl implements CourseCommentService {
 		}
 		return dao.selectAll();
 	}
+	
+	@Transactional
+	@Override
+	public boolean save(CourseComment courseComment) {
+		return dao.insertCourseComment(courseComment)>0;
+	}
 
 	@Transactional
 	@Override

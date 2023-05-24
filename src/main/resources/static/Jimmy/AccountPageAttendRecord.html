@@ -410,9 +410,15 @@
                                             </div>
                                             <p class="mb-1">活動時間</p>
                                             <small>報名狀態: </small><small class="attendstatus">未出席</small>
-                                            <div class="show_givecomment"> <!-- 之後隱藏，用來判斷if/else顯現下方"前往評價"按鈕 -->
+                                            <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+                                            <!-- 隱藏區!-->
+                                            <div class="show_givecomment"> <!-- 用來判斷if/else顯現下方"前往評價"按鈕  -->
                                                 <p>未評價</p>
                                             </div>
+                                            <div class="courseId displaynone">3</div>
+                                            <div class="accountIdReviewed displaynone">1003</div>
+                                            <div class="accountIdReviewer displaynone">2002</div>
+                                            <!-- 隱藏區 -->
                                         </div>
                                         <div class="col-2">
                                             <a class="btn btn-primary givecomment" href="#" role="button">前往評價</a>
@@ -443,6 +449,16 @@
                                                     rows="4"></textarea>
                                                 <label class="form-label" for="textAreaExample">若欲檢舉請勾選，並詳述您的體驗</label>
                                             </div>
+                                            <!-- 檢舉照片 -->
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="photo-dropzone forDhotoDrop">點擊上傳圖片</label>
+                                                    <input type="file" class="form-control-file photo-dropzone"
+                                                        name="photo" aria-describedby="fileHelp" accept="image/*">
+                                                </div>
+                                                <button type="button" class="btn btn-danger delete-btn">刪除照片</button>
+                                            </div>
+                                            <!-- 下方按鈕 -->
                                             <div class="d-flex justify-content-between mt-3">
                                                 <div class="form-check">
                                                     <input class="form-check-input flexCheckDefault" type="checkbox"
@@ -488,10 +504,6 @@
         </div>
     </div>
 
-
-
-
-
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
@@ -523,8 +535,9 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-
     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- 載入 Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
@@ -539,8 +552,12 @@
         // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         $(document).ready(function () {
             // 用來判斷if/else顯現下方"前往評價"按鈕
-            var text = $('.show_givecomment p').text();
-            console.log(text);
+            var show_givecomment = $('.show_givecomment p').text();
+            console.log(show_givecomment);
+            if (show_givecomment === "已評價") {
+                // console.log("這要搞多久!");
+                $('.givecomment').addClass('displaynone');
+            }
             // 前往評價
             $('.givecomment').click(function () {
                 $('.commentplace').toggleClass('displaynone');
@@ -556,26 +573,51 @@
                 $(this).addClass('-on');
                 $(this).prevAll().addClass('-on');
             });
+            // Delete selected image
+            $(".delete-btn").click(function () {
+                $(".photo-dropzone").val("");
+            });
 
             // 送出評論
             // (document).on('click', '.sendcomment', function () { //動態生成
-            $('.sendcomment').on('click', function () {
-                //     $.ajax({
-                //         url: 'your_ajax_endpoint',
-                //         type: 'POST',
-                //         data: { /* your data */ },
-                //         success: function (response) {
-                //             // Handle the AJAX response here
-                //         },
-                //         error: function (xhr, status, error) {
-                //             // Handle AJAX errors here
-                //         }
-                //     });
+            $('.sendcomment').on('click', function (e) {
+                e.preventDefault(); // 防止表單提交
+                let courseId = $(".courseId").text();
+                var accountIdReviewed = $(".accountIdReviewed").text();
+                var accountIdReviewer = $(".accountIdReviewer").text();
+                var commentContent = $(".textareac").val();
+                var commentRating = $('.star.-on:last').data('star');
+                var photo = $(".photo-dropzone").val();
+                // console.log(accountIdReviewed);
+                // console.log(commentContent);
+                // console.log(commentRating);
+                // console.log(photo);
+                $.ajax({
+                    url: "/ixercise/coursecomment",
+                    type: "POST",
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        courseId: courseId,
+                        accountIdReviewed: accountIdReviewed,
+                        accountIdReviewer: accountIdReviewer,
+                        commentContent: commentContent,
+                        commentRating: commentRating,
+                        photo: photo
+                    }),
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        swal("Warning!", resp.message, "warning");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
 
                 var textarea = $('.textareac');// 清空textarea的值
                 textarea.val('');
                 $('.star').siblings().removeClass('-on');// 清空星星
                 $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
+                $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
             });
         });
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

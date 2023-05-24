@@ -8,5 +8,7 @@ public interface CourseCommentService {
 
 	List<CourseComment> find(Integer accountIdReviewed);
 
+	boolean save(CourseComment courseComment);
+
 	boolean remove(Integer commentId);
 }

@@ -15,3 +15,5 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+spring.log.2023-05-22.0.gz
+spring.log.2023-05-24.0.gz
