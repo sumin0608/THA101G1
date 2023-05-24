@@ -14,12 +14,34 @@
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
+        .square-image {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            width: 74px;
+            height: 74px;
+            object-fit: cover;
+        }
 
+        .notifyp {
+            height: 60px;
+            /* width: 350px; */
+            /* padding: 10px;
+            border: 2px solid #4d4d4d;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            box-sizing: border-box; */
+        }
     </style>
 </head>
 
 <body>
-
+    <!-- 我是V6，修改如下 -->
+    <!-- 1.修正會員彈出選單頭像會跑版的問題 -->
+    <!-- 2.修正通知圖片會有跑板問題 -->
     <!-- 以下導覽列=================================================================================== -->
     <!-- 增加w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
@@ -63,7 +85,7 @@
                             <!-- ================================================================== -->
                             <!-- <div class="collapse" id="collapseExample"> -->
                             <div id="searchcard" class="d-none">
-                                <div class="card card-body w-50 position-fixed">
+                                <div class="searchbarthing w-50 position-fixed">
                                     <!-- <form action="" class="row mb-0"> -->
                                     <div class="row mb-0">
                                         <div class="col-3">
@@ -157,41 +179,41 @@
                         </svg>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                             <!-- 一條通知====================================================== -->
-
-                            <div class="list-group">
+                            <!-- 完成版 600px -->
+                            <div class="list-group notifyunread">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
+                                    style="height: 93px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
+                                                <p class="mb-1" style=" overflow: hidden;">
+                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                                </p>
+                                                <small style="white-space: nowrap;">3 days ago</small>
                                             </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="list-group">
+                            <div class="list-group notifyunread">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
+                                    style="height: 93px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
+                                                <p class="mb-1" style=" overflow: hidden;">
+                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                                </p>
+                                                <small style="white-space: nowrap;">3 days ago</small>
                                             </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
                                         </div>
                                     </div>
                                 </a>
@@ -210,7 +232,7 @@
 
                             <li>
                                 <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
+                                    src="https://picsum.photos/200/200/?random=10">
                             </li>
                             <li>
                                 <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -290,85 +312,34 @@
     <div class="container main-content py-5">
         <!-- 請在這裡作業 -->
         <div class="row justify-content-center">
-            <div class="col-8">
-                <div class="row">
+            <div class="col-5 p-3 border">
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <form>
+                            <fieldset class="mb-3">
+                                <legend class="h1 mb-4">信箱驗證</legend>
 
+                                <div class="mb-3">
+                                    <!-- <div class=""> -->
 
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                            style="height: 118px;">
-                            <div class="row h-100">
-                                <div class="col-2 h-100 " style="">
-                                    <img src="https://picsum.photos/500/200/?random=10" class="h-100" alt=""
-                                        style="object-fit:cover; width:100px;">
-                                </div>
-                                <div class="col-8">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">活動標題List group item heading</h5>
+                                    <p for="TextInput">輸入信箱</p>
+                                    <!-- </div> -->
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <input type="text" id="TextInput" class="form-control" placeholder="">
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="button" class="btn btn-primary">送出驗證碼</button>
+
+                                        </div>
                                     </div>
-                                    <p class="mb-1">活動時間</p>
-                                    <small>報名狀態</small>
                                 </div>
-                                <div class="col-2">
-                                    <div class="btn end-0">前往評價</div>
 
-                                </div>
-                            </div>
-                        </a>
+                                <button type="button" class="btn btn-primary">驗證</button>
+                            </fieldset>
+                        </form>
                     </div>
-
-
-                    <!-- 文章 -->
-                    <div class="list-group forumlist">
-                        <!-- 一條紀錄====================== -->
-                        <div href="#" class="list-group-item list-group-item-action" aria-current="true"
-                            style="height: 118px;">
-                            <div class="row h-100">
-                                <div class="col-2 h-100">
-                                    <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
-                                        height="100px" class="overflow-hidden" style="object-fit:cover;">
-                                </div>
-                                <div class="col-8">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">文章標題文章標題文章標題文章標題文章標題文章標題文章標題文章標題文章標題文章標題文章標題</h5>
-                                    </div>
-                                    <p class="mb-1">發布時間</p>
-                                    <!-- <small>報名狀態</small> -->
-                                </div>
-                                <!-- <div class="col-2 ">
-                                    <a class="btn btn-primary mb-1" href="#" role="button">編輯文章</a>
-                                    <a class="btn btn-primary" href="#" role="button">刪除文章</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-
-
 
 
             </div>
