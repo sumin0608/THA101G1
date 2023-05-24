@@ -29,10 +29,7 @@ private AccountService service;
 //	@ResponseBody
 	@GetMapping("/trepo")
 	public List<Account> test() {
-		List<Account> accountList = service.findAll();
-//		System.out.println("1");
-
-		return accountList;
+		return service.findAll();
 	}
 
 //	測試JSP路徑 WEB-INF底下可以自行建立資料夾
