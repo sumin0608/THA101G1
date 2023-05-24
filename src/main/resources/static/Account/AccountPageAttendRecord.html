@@ -322,8 +322,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">過往評價</a>
                     </li>
+                    <!-- 給他active 會變黑色的字 -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">參加紀錄</a>
+                        <a class="nav-link active" href="#">參加紀錄</a>
                     </li>
                     <li class="nav-item">
                         <!-- 原本disable的設定 tabindex="-1" aria-disabled="true" -->
@@ -347,15 +348,15 @@
                 <div class="row">
                     <div class="col-12">
                         <ul class="p-0" aria-labelledby="">
-                            <!-- 一條通知====================================================== -->
+                            <!-- 一條紀錄====================================================== -->
 
                             <div class="list-group">
                                 <div href="#" class="list-group-item list-group-item-action" aria-current="true"
                                     style="height: 118px;">
                                     <div class="row h-100">
-                                        <div class="col-2 h-100 " style="">
-                                            <img src="https://picsum.photos/500/200/?random=10" class="h-100" alt=""
-                                                style="object-fit:cover; width:100px;">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                height="100px" style="object-fit:cover;">
                                         </div>
                                         <div class="col-8">
                                             <div class="d-flex w-100 justify-content-between">
@@ -368,7 +369,28 @@
                                             <a class="btn btn-primary" href="#" role="button">前往評價</a>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
+                            <div class="list-group">
+                                <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 118px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                height="100px" style="object-fit:cover;">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">活動標題List group item heading</h5>
+                                            </div>
+                                            <p class="mb-1">活動時間</p>
+                                            <small>報名狀態</small>
+                                        </div>
+                                        <div class="col-2">
+                                            <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- <div class="list-group">
@@ -395,12 +417,9 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
-
-    </div>
-    </div>
-    </div>
 
 
 

@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 
+#建立account資料表
 CREATE TABLE `account` (
   `account_Id` int NOT NULL AUTO_INCREMENT,
   `account_Phone` varchar(10) DEFAULT NULL,
@@ -46,4 +47,26 @@ CREATE TABLE `account` (
 
 
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+#建立資料account
+INSERT INTO `THA101G1`.`account`
+(`account_Id`,
+`account_Phone`,
+`account_Password`,
+`account_Email`,
+`account_Nickname`,
+`account_Level`,
+`account_State`,
+`account_Address`,
+`account_Name`,
+`account_Birthday`,
+`account_Createtime`,
+`account_Updatetime`,
+`account_Gender`,
+`account_Intro`,
+`account_Report`,
+`account_Bank`,
+`account_Verify`)
+VALUES
+(1,'0983811530','12345678','seanuaena0608@gmail.com','sumin',1,1,'10488台北市中山區南京東路三段219號5樓','蘇軒民','1994-05-30',current_timestamp(),current_timestamp(),1,'你好我不太好',0,'123456789bank','12345');
 
