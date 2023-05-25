@@ -295,48 +295,50 @@
             <!-- 課程介紹區 -->
             <div class="col-md-9 p-5 mb-4 bg-light rounded-3" style="border: solid green;">
                 <div class="container-fluid py-5" style="border: solid red;">
-                    <h1 class="display-5 fw-bold">TRX體能訓練</h1>
+                    <h1 class="display-5 fw-bold" id="eventName">TRX體能訓練</h1>
                     <div class="photo">
-                        <img class="card-img-top event_pic"
+                        <img id="photo" class="card-img-top event_pic"
                             src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="
                             alt="..." />
                     </div>
+                    <div id="location" class="fw-bold">地點(ex:運動中心)</div>
                     <div class="d-flex small text-dark mb-2">
-                        <span>台北市</span>
-                        <span>&nbsp;中山區</span>
-                        <span>&nbsp;南京東路三段219號5樓</span>
+                        <span id="city">台北市</span>
+                        <span id="district">&nbsp;中山區</span>
+                        <a id="detailedAddress" href="#" style="color: black;">&nbsp;南京東路三段219號5樓</a>
                     </div>
                     <div class="d-flex small text-dark mb-2">
-                        日期 時間
+                        <span id="courseStartDate">日期</span>
+                        <span id="courseStartTime">&nbsp;時間</span>
                     </div>
-                    <div class="d-flex justify-content-end small text-dark mb-2">
+                    <div id="creator" class=" d-flex justify-content-end small text-dark mb-2">
                         教練名字
                     </div>
-                    <div class="d-flex small text-dark mb-2">
-                        報名人數
+                    <div id="maximumCapacity" class="d-flex small text-dark mb-2">
+                        報名人數上限
                     </div>
-                    <p class="col-md-8 fs-4">
+                    <p id="description" class="col-md-8 fs-4 description">
                         挑戰你的身體極限，讓你感受到獨特的全身運動體驗！透過懸吊設備的力量，你能夠提升核心肌肉的穩定性、增強肌肉力量和耐力，同時鍛鍊身體平衡力和靈活性，成為更健康、更自信的自己！</p>
                     <button class="btn btn-primary btn-lg" type="button">報名課程</button>
                 </div>
             </div>
-            <!-- 瀏覽紀錄區 預計最多顯示5筆-->
+            <!-- 側邊瀏覽紀錄區 預計最多顯示5筆-->
             <aside class="col-3" style="border: solid green;">
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
                         <!-- 圖片 -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 a_photo">
                             <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
                         </div>
                         <!-- 內容 -->
                         <div class="col-md-8">
-                            <p class="card-tex my-0">瀏覽紀錄1</p>
-                            <p class="card-text"><small class="text-muted">新北市</small>
+                            <p class="card-tex my-0 a_eventName">瀏覽紀錄1</p>
+                            <p class="card-text"><small class="text-muted a_city">新北市</small>
                             </p>
                         </div>
                     </div>
                 </div>
-                <!--  -->
+                <!--瀏覽紀錄2-->
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
                         <!-- 圖片 -->
@@ -351,7 +353,7 @@
                         </div>
                     </div>
                 </div>
-                <!--  -->
+                <!--瀏覽紀錄3-->
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
                         <!-- 圖片 -->
@@ -372,15 +374,16 @@
             <div class="row align-items-md-stretch" style="border: solid green;">
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
-                        <h2>其他課程(同個教練)</h2>
-                        <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron
+                        <h2 class="o_eventName">其他課程(同個教練)</h2>
+                        <p class="o_description">Swap the background-color utility and add a `.text-*` color utility to
+                            mix up the jumbotron
                             look. Then, mix and match with additional component themes and more.</p>
                         <button class="btn btn-outline-light" type="button">更多資料</button>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
-                        <h2>教練介紹</h2>
+                        <h2 class="o_creator">教練介紹</h2>
                         <p>Or, keep it light and add a border for some added definition to the boundaries of your
                             content. Be sure to look under the hood at the source HTML here as we've adjusted the
                             alignment and sizing of both column's content for equal-height.</p>
@@ -393,6 +396,7 @@
     <br>
     <br>
     <!-- owl.carousel -->
+    <!-- 其他非同教練的課程 -->
     <div class="owl-carousel owl-theme">
         <div class="item">
             <h4>1</h4>

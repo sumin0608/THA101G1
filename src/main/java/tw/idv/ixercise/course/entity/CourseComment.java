@@ -33,7 +33,7 @@ public class CourseComment extends Core{
 	private Integer commentRating;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
-	@Column(insertable = false)
+	@Column(name = "photo")
 	private String photo;
 
 	public CourseComment() {

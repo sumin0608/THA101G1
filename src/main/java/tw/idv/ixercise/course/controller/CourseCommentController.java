@@ -3,7 +3,6 @@ package tw.idv.ixercise.course.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,6 +51,7 @@ public class CourseCommentController {
 			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 			courseComment.setCreatedAt(currentTimestamp);
 			courseComment.setUpdatedAt(currentTimestamp);
+			System.out.println("照片>>"+courseComment.getPhoto());
 			core.setMessage("新增成功");
 			core.setSuccessful(service.save(courseComment));
 		}
@@ -77,10 +77,8 @@ public class CourseCommentController {
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 			// 构建存储文件的路径
 			String filePath =  projectRootPath + "/" + relativePath + "comment/"+fileName;
-
 			// 创建目标文件对象
 			File destFile = new File(filePath);
-
 			System.out.println("儲存位置>>"+destFile);
 			file.transferTo(destFile);
 			// 返回存储的文件路径，可以在保存评论的控制器中使用?
