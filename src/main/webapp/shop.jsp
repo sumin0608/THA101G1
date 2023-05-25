@@ -256,7 +256,7 @@
 
     <!-- 這裡大概是放廣告 -->
     <!-- Header====================================================================================== -->
-     <!--<header>
+     <header>
         <div class="container-fluid p-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -268,6 +268,7 @@
                         aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
+                	<div class="text-center"><h1>運動商城</h1></div>
                     <div class="carousel-item active w-100 object-fit-cover">
                         <img src="https://picsum.photos/1920/300/?random=10" class="d-block" alt="...">
                     </div>
@@ -290,7 +291,7 @@
                 </button>
             </div>
         </div>
-    </header>-->
+    </header> 
     <!-- Header====================================================================================== -->
 
    <!-- main-content -->
@@ -305,17 +306,17 @@
 		                    <div class="col mb-5">
 		                        <div class="card h-100">
 		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+		                            <!-- <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
 		                                Sale
-		                            </div>
+		                            </div>-->
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base01.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball01.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Success 棒球</h5>
+		                                    <h5 class="fw-bolder">籃球商城</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -325,16 +326,15 @@
 		                                        <div class="bi-star-fill"></div>
 		                                    </div>
 		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through">NT$500</span>
-		                                    NT$500
+		                                    <span class="text-muted">總共32項商品</span>
+		                                    
 		                                </div>
 		                            </div>
 		                            <!-- Product actions-->
 			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 			                                <div class="text-center">
-			                                	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
+			                                	<form action="ShopButtonServlet" method="post">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="進入籃球商城" style="margin-bottom:30px">
 			                                	</form>
 			                                </div>
 			                           </div>
@@ -347,13 +347,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base02.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball02.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">四色球棒</h5>
+		                                    <h5 class="fw-bolder">棒球商城</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -363,16 +363,15 @@
 		                                        <div class="bi-star-fill"></div>
 		                                    </div>
 		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-		                                    $18.00
+		                                    <span class="text-muted">總共32項商品</span>
+		                                    
 		                                </div>
 		                            </div>
 		                            <!-- Product actions-->
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
 		                                <div class="text-center">
-		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
+		                                		<form action="ShopButtonServlet" method="post">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="進入棒球商城" style="margin-bottom:30px">
 			                                	</form>
 		                                </div>
 		                            </div>
@@ -385,13 +384,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base03.jpg"
+		                            <img class="card-img-top" src="lib/img/clothes01.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">樂樂棒球</h5>
+		                                    <h5 class="fw-bolder">足球商城</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -401,16 +400,15 @@
 		                                        <div class="bi-star-fill"></div>
 		                                    </div>
 		                                    <!-- Product price-->
-		                                    <!--<span class="text-muted text-decoration-line-through">$20.00</span>-->
-		                                    $18.00
+		                                    <span class="text-muted">總共32項商品</span>
+		                                    
 		                                </div>
 		                            </div>
 		                            <!-- Product actions-->
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
-		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
+		                                		<form action="ShopButtonServlet" method="post">	                               
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="進入足球商城" style="margin-bottom:30px">
 			                                	</form>
 		                                </div>
 		                            </div>
@@ -423,13 +421,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base04.jpg"
+		                            <img class="card-img-top" src="lib/img/clothes02.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">棒球手套</h5>
+		                                    <h5 class="fw-bolder">喬丹23號球衣</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -461,13 +459,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base05.jpg"
+		                            <img class="card-img-top" src="lib/img/clothes03.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">打擊練習具</h5>
+		                                    <h5 class="fw-bolder">Special Item</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -499,13 +497,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base06.jpg"
+		                            <img class="card-img-top" src="lib/img/clothes04.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">棒球手套正反面</h5>
+		                                    <h5 class="fw-bolder">Special Item</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -537,13 +535,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base07.jpg"
+		                            <img class="card-img-top" src="lib/img/Nike01.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">紅色球棒</h5>
+		                                    <h5 class="fw-bolder">Special Item</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -575,13 +573,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base08.jpg"
+		                            <img class="card-img-top" src="lib/img/Nike02.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">木球棒</h5>
+		                                    <h5 class="fw-bolder">Special Item</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -602,158 +600,6 @@
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                </form>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-		                                Sale
-		                            </div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base02.jpg"
-		                                alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4" style="color: red;">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">四色球棒</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-		                                    $18.00
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
-		                                <div class="text-center">
-		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
-			                                	</form>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-		                                Sale
-		                            </div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base02.jpg"
-		                                alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4" style="color: red;">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">四色球棒</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-		                                    $18.00
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
-		                                <div class="text-center">
-		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
-			                                	</form>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-		                                Sale
-		                            </div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base02.jpg"
-		                                alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4" style="color: red;">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">四色球棒</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-		                                    $18.00
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
-		                                <div class="text-center">
-		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
-			                                	</form>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                    <div class="col mb-5">
-		                        <div class="card h-100">
-		                            <!-- Sale badge-->
-		                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-		                                Sale
-		                            </div>
-		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/base02.jpg"
-		                                alt="..." />
-		                            <!-- Product details-->
-		                            <div class="card-body p-4" style="color: red;">
-		                                <div class="text-center">
-		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">四色球棒</h5>
-		                                    <!-- Product reviews-->
-		                                    <div class="d-flex justify-content-center small text-warning mb-2">
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                        <div class="bi-star-fill"></div>
-		                                    </div>
-		                                    <!-- Product price-->
-		                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-		                                    $18.00
-		                                </div>
-		                            </div>
-		                            <!-- Product actions-->
-		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
-		                                <div class="text-center">
-		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
-			                                	</form>
 		                                </div>
 		                            </div>
 		                        </div>
@@ -764,8 +610,8 @@
 				<div id="pagination" style="text-align:center">
 		        	<ul>
 		        		<a href="javascript:history.back()">&laquo;</a>
-		        		<a href="baseball01.jsp">1</a>
-		        		<a href="baseball02.jsp">2</a>
+		        		<a href="pageV5.jsp">1</a>
+		        		<a href="basketball02.jsp">2</a>
 		        		<a href="basketball03.jsp">3</a>
 		        		<a href="javascript:history.forward()">&raquo;</a>
 		        	</ul>

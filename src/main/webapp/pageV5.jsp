@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
     pageEncoding="BIG5"
-    import = "product.vo.product"
+    import = "tw.idv.ixercise.store.entity.product"
     %>
     
  
@@ -347,7 +347,7 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="img/basketball02.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball02.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
@@ -385,7 +385,7 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="img/clothes01.jpg"
+		                            <img class="card-img-top" src="lib/img/clothes01.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">

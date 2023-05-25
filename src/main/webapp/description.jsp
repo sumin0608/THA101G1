@@ -1,15 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"
-    import = "tw.idv.ixercise.store.entity.product"
-    import = "tw.idv.ixercise.store.dao.productDaoImpl"
-    import = "javax.servlet.http.HttpSession"
-    %>
- 
-<%	
-product p = new productDaoImpl().selectByProduct_no(1);
-//product p = new product();
-//p.setProduct_name("AAA");
-%>
+    pageEncoding="BIG5"%>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
@@ -307,85 +297,23 @@ product p = new productDaoImpl().selectByProduct_no(1);
 				     <table class="table">
 						  <thead>
 						    <tr>
-						      <th scope="col">訂購資訊</th> 
+						      <img class="card-img-top" src="lib/img/basketball01.jpg" alt="..." />
+						      <th>商品說明</th> 
 						      <td></td>
-						      <td></td>
-						      <td></td>
+						      
+						      
 						    </tr>
 						  </thead>
 						  <tbody>
-						  	<tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">商品圖片</font></th>
-						      <td><img class="card-img-top" src="lib/img/basketball01.jpg" alt="..." style="height: 150px; width: 200px;"/></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						  	<tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單編號</font></th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
+						    <tr>
+						        <td><p>這款高品質籃球是專為籃球愛好者和運動員而設計的頂級運動用品。它結合了優異的性能、耐用性和舒適感，讓您在球場上發揮出最佳表現。 特色和優勢： 優異的性能：這個籃球採用了最新的技術和材料，確保出色的性能。它具有優越的彈性和反彈力，讓您在投籃、運球和傳球時感受到精準度和控球力的提升。 耐用性：我們使用高品質的合成皮革製作這個籃球，以確保其耐用性和長期使用的可靠性。這種材料具有抗磨損和耐用的特性，可以承受長時間的使用和各種地面條件。 舒適感：籃球的表面經過特殊處理，具有舒適的觸感和良好的握球性能。無論您是進行長時間的訓練還是比賽，這個籃球都能為您提供舒適的手感，減少手部疲勞和不適。 適合各種場地：這個籃球適用於室內和室外場地，無論您在室內球場、戶外球場還是街頭運動場上進行比賽，都能發揮出色的表現。它具有良好的控球性能和抗滑性，為您提供穩定的球場操作。 專業級標準：這款籃球符合國際籃球協會（FIBA）的標準尺寸和重量，是訓練和比賽的理想選擇。它經過嚴格測試，確保質量和性能達到最高標準，讓您在比賽中獲得公平的競爭機會。 購買這款高品質籃球，您將獲得一個持久耐用、性能卓越的運動伴侶。無論您是業餘愛好者還是職業球員，這個籃球都能滿足您的需求</p></td>
 						    </tr>
 						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂購商品</font></th>
-						      <td></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">購買數量</font></th>
-						      <td>
-						      		<select class="form-select form-select-sm"
-                                                aria-label="Default select example" style="width:60px">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                    </select>
-                             </td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂購人姓名</font></th>
-						      <td><input class="form-control" type="search" placeholder="輸入姓名..." aria-label="Search" maxlength="5" style="width:200px"></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單時間</font></th>
-						      <td><input type="date" id="start" name="trip-start" value="2023-12-22" min="2018-01-01" max="2023-12-31"></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">電話號碼</font></th>
-						      <td>
-						      	<input class="form-control" type="search" placeholder="輸入電話號碼..." aria-label="Search" maxlength="10" style="width:300px"> 
-						      	<p>可輸入手機號碼或市話。</p>
-						      </td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">住家地址</font></th>
-						      <td><input class="form-control" type="search" placeholder="輸入住家地址..." aria-label="Search" maxlength="45"></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">電子信箱</font></th>
-						      <td><input class="form-control" type="email" placeholder="輸入電子信箱..." aria-label="Search" maxlength="50"></td>
-						      <td></td>
-						      <td></td>
-						    </tr>
-						    <tr>
-						      <td></td>
-						      <td align="center">
-						      	<button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-		                        提交
-                    			</button>
-                    		  </td>
-						      <td></td>
+							    <td align="center">
+							    	<form action="DescriptionServlet" method="post">
+							      		<input name="input" class="btn btn-outline-dark d-flex text-nowrap" type="submit" value="確定購買">
+			                        </form>
+	                    		</td>
 						    </tr>
 						  </tbody>
 					</table>
