@@ -578,48 +578,69 @@
                 $(".photo-dropzone").val("");
             });
 
-            // 送出評論
+            ///// <<<<<送出評論>>>>>////
             // (document).on('click', '.sendcomment', function () { //動態生成
             $('.sendcomment').on('click', function (e) {
-                e.preventDefault(); // 防止表單提交
-                let courseId = $(".courseId").text();
-                var accountIdReviewed = $(".accountIdReviewed").text();
-                var accountIdReviewer = $(".accountIdReviewer").text();
-                var commentContent = $(".textareac").val();
-                var commentRating = $('.star.-on:last').data('star');
-                var photo = $(".photo-dropzone").val();
-                // console.log(accountIdReviewed);
-                // console.log(commentContent);
-                // console.log(commentRating);
-                // console.log(photo);
+                e.preventDefault();
+                // 步驟一、、先存圖片
+                let fileInput = $(".photo-dropzone").val();
+                let file = fileInput.files[0];
+
+                let formData = new FormData();
+                formData.append('file', file);
                 $.ajax({
-                    url: "/ixercise/coursecomment",
-                    type: "POST",
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        courseId: courseId,
-                        accountIdReviewed: accountIdReviewed,
-                        accountIdReviewer: accountIdReviewer,
-                        commentContent: commentContent,
-                        commentRating: commentRating,
-                        photo: photo
-                    }),
-                    success: function (resp) {
-                        console.log("resp>>" + resp);
-                        swal("Warning!", resp.message, "warning");
-                    },
+                    url: "/ixercise/coursecomment/upload-photo",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log(response);
+                        // 步驟二、存入資料庫
+                        let courseId = $(".courseId").text();
+                        var accountIdReviewed = $(".accountIdReviewed").text();
+                        var accountIdReviewer = $(".accountIdReviewer").text();
+                        var commentContent = $(".textareac").val();
+                        var commentRating = $('.star.-on:last').data('star');
+                        var photo = $(".photo-dropzone").val();
+                        // console.log(accountIdReviewed);
+                        // console.log(commentContent);
+                        // console.log(commentRating);
+                        // console.log(photo);
+                        $.ajax({
+                            url: "/ixercise/coursecomment",
+                            type: "POST",
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                courseId: courseId,
+                                accountIdReviewed: accountIdReviewed,
+                                accountIdReviewer: accountIdReviewer,
+                                commentContent: commentContent,
+                                commentRating: commentRating,
+                                photo: photo
+                            }),
+                            success: function (resp) {
+                                console.log("resp>>" + resp);
+                                swal("Warning!", resp.message, "warning");
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
+                    },// 步驟二、結束
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
                     }
                 });
-
-                var textarea = $('.textareac');// 清空textarea的值
-                textarea.val('');
-                $('.star').siblings().removeClass('-on');// 清空星星
-                $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
-                $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
             });
+
+            var textarea = $('.textareac');// 清空textarea的值
+            textarea.val('');
+            $('.star').siblings().removeClass('-on');// 清空星星
+            $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
+            $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
         });
+
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     </script>
 </body>

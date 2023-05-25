@@ -75,6 +75,17 @@
             </tbody>
         </table>
 
+        <!-- 檢舉照片 -->
+        <div class="card-body">
+            <div class="form-group">
+                <label for="photo-dropzone forDhotoDrop">點擊上傳圖片</label>
+                <input type="file" class="form-control-file photo-dropzone" name="photo" aria-describedby="fileHelp"
+                    accept="image/*">
+            </div>
+            <button type="button" class="btn btn-danger delete-btn">刪除照片</button>
+            <button type="button" class="btn btn-danger send-btn">上傳</button>
+        </div>
+
         <!-- 引入所需函式庫 -->
         <script src="../lib/js/bootstrap.bundle.min.js"></script>
         <script src="../lib/js/popper.min.js"></script>
@@ -82,6 +93,28 @@
         <!-- ================================================================= -->
         <script>
             $(document).ready(function () {
+                // 上傳圖片測試
+                $(".send-btn").on("click", function (event) {
+                    let fileInput = $(".photo-dropzone")[0];
+                    let file = fileInput.files[0];
+                    // 创建 FormData 对象
+                    let formData = new FormData();
+                    formData.append('file', file);
+                    $.ajax({
+                        url: "/ixercise/coursecomment/upload-photo",
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            console.log(response);
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                });
+
                 $("#getall").on("click", function (event) {
                     event.preventDefault(); // 防止表單提交
                     // 使用Ajax取得課程列表

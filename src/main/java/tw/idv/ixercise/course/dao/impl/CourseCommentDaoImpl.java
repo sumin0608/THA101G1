@@ -69,6 +69,7 @@ public class CourseCommentDaoImpl implements CourseCommentDao{
 				.getResultList();
 	}
 
+
 	//測試
 //	public static void main(String[] args) {
 //		CourseCommentDaoImpl dao = new CourseCommentDaoImpl();
