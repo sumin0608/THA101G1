@@ -20,7 +20,7 @@ public class CourseCommentServiceImpl implements CourseCommentService {
 	@Override
 	public List<CourseComment> find(Integer accountIdReviewed) {
 		if (dao.selectCourseCommentByaccountIdReviewed(accountIdReviewed) == null) {
-			List<CourseComment> courseComments = new ArrayList();
+			List<CourseComment> courseComments = new ArrayList<>();
 			CourseComment courseComment1 = new CourseComment();
 			courseComment1.setMessage("沒有評論");
 			courseComment1.setSuccessful(false);

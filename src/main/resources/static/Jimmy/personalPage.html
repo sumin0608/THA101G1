@@ -35,6 +35,31 @@
             -webkit-line-clamp: 2;
             box-sizing: border-box; */
         }
+
+        .displaynone {
+            display: none;
+        }
+
+        /* ===== 重要性的星號 ===== */
+
+        /* div.star_block {
+            display: inline-block;
+        } */
+
+        /* 手型滑鼠指針樣式 */
+        div.star_block>span.star {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 3px;
+        }
+
+        div.star_block>span.star.-on {
+            color: yellow;
+        }
+
+        div.fixstar_block>span.fixstar.-on {
+            color: yellow;
+        }
     </style>
 </head>
 
@@ -449,7 +474,7 @@
                                     <div id="session_id" data-memberid="1001" style="display: none;">假裝之後要抓session裡會員的id
                                     </div>
                                     <div href="#" class="list-group-item list-group-item-action re_commentplace"
-                                        aria-current="true" style="height: 118px;">
+                                        aria-current="true" style="height: 118px; border: solid red; overflow: hidden;">
                                         <div class="row h-100">
                                             <div class="col-2 h-100 overflow-hidden">
                                                 <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
@@ -461,8 +486,23 @@
                                                     <small class="re_reviewerId">留言者id</small>
                                                     <small class="re_createdAt">日期 3 days ago</small>
                                                 </div>
-                                                <p class="mb-1 re_commentRating">星數</p>
-                                                <p class="mb-1 re_commentContent">評論內容評論內容</p>
+                                                <!-- <p class="mb-1 re_commentRating">星數</p> -->
+                                                <div class='fixstar_block'>
+                                                    <span class='fixstar -on' data-star='1'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar -on' data-star='2'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar -on' data-star='3'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar -on' data-star='4'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar' data-star='5'><i
+                                                            class='fas fa-star'></i></span>
+                                                </div>
+                                                <div class="col-10" style="overflow:auto;">
+                                                    sssssssssssssssssssssssssssssssssssskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容qqqqqq
+                                                    <!-- <p class="mb-1 re_commentContent">評論內容評論內容評論</p> -->
+                                                </div>
                                             </div>
                                             <img src="../lib/img/comment/sadmonkey.jpg" alt=""
                                                 style="object-fit:contain; max-width: 100px; max-height: 100px;">
@@ -493,26 +533,6 @@
                                         </div>
                                     </div> -->
                                     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-                                    <!-- <div href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                            style="height: 118px;">
-                                            <div class="row h-100">
-                                                <div class="col-2 h-100">
-                                                    <img src="https://picsum.photos/500/200/?random=10" alt=""
-                                                        width="100px" height="100px"
-                                                        class="overflow-hidden rounded-circle object-fit-cover">
-                                                </div>
-                                                <div class="col-8">
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <h5 class="mb-1">活動標題List group item heading</h5>
-                                                    </div>
-                                                    <p class="mb-1">活動時間</p>
-                                                    <small>報名狀態</small>
-                                                </div>
-                                                <div class="col-2">
-                                                    <a class="btn btn-primary" href="#" role="button">前往評價</a>
-                                                </div>
-                                            </div>
-                                        </div> -->
 
                                 </div>
                                 <!-- </ul> -->
@@ -527,7 +547,6 @@
                         <div class="row border my-3">
                             <div class="col-12">
 
-
                                 <div class="list-group attendrecordlist">
                                     <!-- 一條紀錄====================== -->
                                     <div href="#" class="list-group-item list-group-item-action" aria-current="true"
@@ -536,24 +555,87 @@
                                             <div class="col-2 h-100">
                                                 <img src="https://picsum.photos/300/200/?random=10" alt="" width="100px"
                                                     height="100px" class="overflow-hidden" style="object-fit:cover;">
-                                                <!-- <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
-                                                    height="100px" class="object-fit-cover"> -->
                                             </div>
                                             <div class="col-8">
                                                 <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1">活動標題List group item heading</h5>
+                                                    <h5 class="mb-1 ">活動標題List group item heading</h5>
                                                 </div>
                                                 <p class="mb-1">活動時間</p>
-                                                <small>報名狀態</small>
+                                                <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+                                                <small>報名狀態: </small><small class="attendstatus">已完成</small>
+                                                <!-- 隱藏區!-->
+                                                <div class="show_givecomment"> <!-- 用來判斷if/else顯現下方"前往評價"按鈕  -->
+                                                    <p>未評價</p>
+                                                </div>
+                                                <div class="courseId displaynone">3</div>
+                                                <div class="accountIdReviewed displaynone">1003</div>
+                                                <div class="accountIdReviewer displaynone">2002</div>
+                                                <!-- 隱藏區 -->
                                             </div>
                                             <div class="col-2">
-                                                <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                                <a class="btn btn-primary givecomment" href="#" role="button">前往評價</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- </div> -->
+
+
+                                <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+                                <!-- 評論欄位 -->
+                                <div class="card col-12 commentplace displaynone">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex flex-start w-100">
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
+                                                alt="avatar" width="65" height="65" />
+                                            <div class="w-100">
+                                                <h5>留言評論</h5>
+                                                <!-- 評分星星 -->
+                                                <div class='star_block'>
+                                                    <span class='star' data-star='1'><i class='fas fa-star'></i></span>
+                                                    <span class='star' data-star='2'><i class='fas fa-star'></i></span>
+                                                    <span class='star' data-star='3'><i class='fas fa-star'></i></span>
+                                                    <span class='star' data-star='4'><i class='fas fa-star'></i></span>
+                                                    <span class='star' data-star='5'><i class='fas fa-star'></i></span>
+                                                </div>
+                                                <div class="form-outline">
+                                                    <textarea class="form-control textareac" id="textAreaExample"
+                                                        rows="4"></textarea>
+                                                    <label class="form-label"
+                                                        for="textAreaExample">若欲檢舉請勾選，並詳述您的體驗</label>
+                                                </div>
+                                                <!-- 檢舉照片 -->
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="photo-dropzone forDhotoDrop">點擊上傳圖片</label>
+                                                        <input type="file" class="form-control-file photo-dropzone"
+                                                            name="photo" aria-describedby="fileHelp" accept="image/*">
+                                                    </div>
+                                                    <button type="button"
+                                                        class="btn btn-danger delete-btn">刪除照片</button>
+                                                </div>
+                                                <!-- 下方按鈕 -->
+                                                <div class="d-flex justify-content-between mt-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input flexCheckDefault" type="checkbox"
+                                                            value="">
+                                                        <button type="button" class="btn btn-success report">
+                                                            檢舉
+                                                        </button>
+                                                    </div>
+                                                    <button type="button" class="btn btn-danger sendcomment">
+                                                        Send
+                                                        <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 評論欄位 -->
+                                <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
                             </div>
+
                         </div>
 
 
@@ -849,6 +931,12 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
 
     <script>
@@ -860,7 +948,7 @@
         })
 
         $(document).ready(function () {
-            // 過往評價的課程
+            // 頁籤<<過往評價的課程>>
             $(".coursebtn_evaluate").click(function () {
                 console.log(this);
                 $.ajax({
@@ -886,12 +974,23 @@
                                 tableData += `</div>`
                                 tableData += `<div class="col-8">`
                                 tableData += `<div class="d-flex w-100 justify-content-between">`
-                                tableData += `<h5 class="mb-1 re_course">${resp[i].courseId}</h5>`
-                                tableData += `<small class="re_reviewerId"><p>參加者: </p>${resp[i].accountIdReviewer}</small>`
+                                tableData += `<h5 class="mb-1 re_course">${resp[i].eventName}</h5>`
+                                tableData += `<small class="re_reviewerId">參加者:${resp[i].accountIdReviewer}</small>`
                                 tableData += `<small class="re_createdAt">${formattedDate}</small>`
                                 tableData += `</div>`
-                                tableData += `<p class="mb-1 re_commentRating">${resp[i].commentRating}</p>`
-                                tableData += `<p class="mb-1 re_commentContent">${resp[i].commentContent}</p>`
+
+                                tableData += `<div class='fixstar_block'>`
+                                for (let j = 0; j < resp[i].commentRating; j++) {
+                                    tableData += `<span class='fixstar -on' data-star='1'><i
+                                                            class='fas fa-star'></i></span>`
+                                }
+                                for (let k = 0; k < 5 - resp[i].commentRating; k++) {
+                                    tableData += `<span class='fixstar' data-star='1'><i
+                                                            class='fas fa-star'></i></span>`
+                                }
+                                tableData += `</div>`
+
+                                tableData += `<div class="col-10" style="overflow:auto;">${resp[i].commentContent}</div>`
                                 tableData += `</div>`
                                 //評論的照片區塊，暫時不開放
                                 // tableData += `  <div class="col-2">
@@ -899,7 +998,6 @@
                                 //                             height="100px" style="object-fit:contain; max-width: 100px; max-height: 100px;">
                                 //                     </div>`
                                 tableData += `</div></div>`
-
                                 $(".evaluatelist").empty().append(tableData);
                             }
                         }
@@ -910,12 +1008,118 @@
                 });
             });
 
-            // 參加紀錄的課程
+            // 頁籤<<參加紀錄的課程>>
             $(document).on("click", '.coursebtn_attendrecord', function () {
                 console.log(this);
             });
 
-            // 舉辦活動的課程
+            // 用來判斷if/else顯現下方"前往評價"按鈕，如果評論過按鈕隱藏
+            var show_givecomment = $('.show_givecomment p').text();
+            console.log(show_givecomment);
+            if (show_givecomment === "已評價") {
+                // console.log("這要搞多久!");
+                $('.givecomment').addClass('displaynone');
+            }
+            // 前往評價 按鈕打開隱藏評論區
+            $('.givecomment').click(function () {
+                $('.commentplace').toggleClass('displaynone');
+            });
+            // 檢舉勾勾
+            $('.report').click(function () {
+                var isChecked = $('.flexCheckDefault').prop('checked');
+                $('.flexCheckDefault').prop('checked', !isChecked);
+            });
+            // 評分星星
+            $(".star_block").on('click', '.star', function () {
+                $(this).siblings().removeClass('-on');
+                $(this).addClass('-on');
+                $(this).prevAll().addClass('-on');
+            });
+            // Delete selected image
+            $(".delete-btn").click(function () {
+                $(".photo-dropzone").val("");
+            });
+
+            //送出評論////
+            // (document).on('click', '.sendcomment', function () { //動態生成
+            $('.sendcomment').on('click', function (e) {
+                e.preventDefault();
+                // 步驟一、、先存圖片
+                let fileInput = $(".photo-dropzone")[0];
+                let file = fileInput.files[0];
+
+                // 沒寫評論先擋
+                let commentContent = $(".textareac").val();
+                let commentRating = $('.star.-on:last').data('star');
+                if (commentContent == "") {
+                    console.log("沒寫評論");
+                    swal("請寫評論!!!", "say something", "warning");
+                } else if (commentRating == null) {
+                    console.log("沒給星星");
+                    swal("請給星星，最低一顆!!!", "say something", "warning");
+                } else {
+                    let formData = new FormData();
+                    formData.append('file', file);
+                    $.ajax({
+                        url: "/ixercise/coursecomment/upload-photo",
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            // 步驟二、存入資料庫
+                            let courseId = $(".courseId").text();
+                            let accountIdReviewed = $(".accountIdReviewed").text();
+                            let accountIdReviewer = $(".accountIdReviewer").text();
+                            let photo;
+                            if (file != null) {
+                                var a = true
+                            } else { var a = false };
+                            console.log("a=" + a);
+                            if (a === true) {
+                                photo = file.name;
+                            } else { photo = null }
+                            // console.log(accountIdReviewed);
+                            // console.log(commentContent);
+                            // console.log(commentRating);
+                            console.log("photo=" + photo);
+                            $.ajax({
+                                url: "/ixercise/coursecomment",
+                                type: "POST",
+                                contentType: 'application/json',
+                                data: JSON.stringify({
+                                    courseId: courseId,
+                                    accountIdReviewed: accountIdReviewed,
+                                    accountIdReviewer: accountIdReviewer,
+                                    commentContent: commentContent,
+                                    commentRating: commentRating,
+                                    photo: photo
+                                }),
+                                success: function (resp) {
+                                    console.log("resp>>" + resp);
+                                    swal("Warning!", resp.message, "warning");
+                                },
+                                error: function (xhr, status, error) {
+                                    alert("Error: " + xhr.responseText);
+                                }
+                            });
+                        },// 步驟二、結束
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                };
+                var textarea = $('.textareac');// 清空textarea的值
+                textarea.val('');
+                $('.star').siblings().removeClass('-on');// 清空星星
+                $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
+                $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
+            });
+            //送出評論////
+
+
+
+            // 頁籤<<舉辦活動的課程>>
             $(".coursebtn_holdrecord").click(function () {
                 console.log(this);
             });

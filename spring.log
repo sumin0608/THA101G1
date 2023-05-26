@@ -610,3 +610,71 @@
 2023-05-26 13:01:09.971 [INFO] [RMI TCP Connection(10)-127.0.0.1] [651] Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-05-26 13:01:09.974 [INFO] [RMI TCP Connection(10)-127.0.0.1] [350] HikariPool-1 - Shutdown initiated...
 2023-05-26 13:01:09.979 [INFO] [RMI TCP Connection(10)-127.0.0.1] [352] HikariPool-1 - Shutdown completed.
+2023-05-26 15:12:20.627 [INFO] [restartedMain] [55] Starting Tha101G1Application using Java 17.0.7 on LAPTOP-PATF7J21 with PID 2444 (C:\Users\Tibame_T14\Documents\workspace-spring-tool-suite-4-4.18.1.RELEASE\THA101G1\target\classes started by Tibame_T14 in C:\Users\Tibame_T14\Documents\workspace-spring-tool-suite-4-4.18.1.RELEASE\THA101G1)
+2023-05-26 15:12:20.628 [INFO] [restartedMain] [631] No active profile set, falling back to 1 default profile: "default"
+2023-05-26 15:12:20.666 [INFO] [restartedMain] [255] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-26 15:12:20.666 [INFO] [restartedMain] [255] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-26 15:12:21.267 [INFO] [restartedMain] [132] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-26 15:12:21.314 [INFO] [restartedMain] [201] Finished Spring Data repository scanning in 39 ms. Found 1 JPA repository interfaces.
+2023-05-26 15:12:21.847 [INFO] [restartedMain] [108] Tomcat initialized with port(s): 8080 (http)
+2023-05-26 15:12:21.857 [INFO] [restartedMain] [173] Starting service [Tomcat]
+2023-05-26 15:12:21.857 [INFO] [restartedMain] [173] Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-05-26 15:12:22.053 [INFO] [restartedMain] [173] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-05-26 15:12:22.062 [INFO] [restartedMain] [173] Initializing Spring embedded WebApplicationContext
+2023-05-26 15:12:22.062 [INFO] [restartedMain] [292] Root WebApplicationContext: initialization completed in 1395 ms
+2023-05-26 15:12:22.199 [INFO] [restartedMain] [110] HikariPool-1 - Starting...
+2023-05-26 15:12:22.487 [INFO] [restartedMain] [123] HikariPool-1 - Start completed.
+2023-05-26 15:12:22.532 [INFO] [restartedMain] [31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-26 15:12:22.577 [INFO] [restartedMain] [44] HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-26 15:12:22.751 [INFO] [restartedMain] [56] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-26 15:12:22.860 [INFO] [restartedMain] [175] HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-05-26 15:12:23.442 [INFO] [restartedMain] [52] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-26 15:12:23.453 [INFO] [restartedMain] [437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-26 15:12:23.811 [WARN] [restartedMain] [223] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-26 15:12:23.943 [INFO] [restartedMain] [58] Adding welcome page: class path resource [static/index.html]
+2023-05-26 15:12:24.126 [INFO] [restartedMain] [59] LiveReload server is running on port 35729
+2023-05-26 15:12:24.169 [INFO] [restartedMain] [220] Tomcat started on port(s): 8080 (http) with context path '/ixercise'
+2023-05-26 15:12:24.179 [INFO] [restartedMain] [61] Started Tha101G1Application in 3.85 seconds (JVM running for 4.666)
+2023-05-26 15:13:02.356 [INFO] [http-nio-8080-exec-1] [173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-26 15:13:02.357 [INFO] [http-nio-8080-exec-1] [525] Initializing Servlet 'dispatcherServlet'
+2023-05-26 15:13:02.358 [INFO] [http-nio-8080-exec-1] [547] Completed initialization in 1 ms
+2023-05-26 15:15:57.065 [INFO] [RMI TCP Connection(12)-127.0.0.1] [159] Application shutdown requested.
+2023-05-26 15:15:57.074 [INFO] [RMI TCP Connection(12)-127.0.0.1] [173] Stopping service [Tomcat]
+2023-05-26 15:15:57.075 [INFO] [RMI TCP Connection(12)-127.0.0.1] [173] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-26 15:15:57.080 [INFO] [RMI TCP Connection(12)-127.0.0.1] [651] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-26 15:15:57.083 [INFO] [RMI TCP Connection(12)-127.0.0.1] [350] HikariPool-1 - Shutdown initiated...
+2023-05-26 15:15:57.089 [INFO] [RMI TCP Connection(12)-127.0.0.1] [352] HikariPool-1 - Shutdown completed.
+2023-05-26 15:15:58.790 [INFO] [restartedMain] [55] Starting Tha101G1Application using Java 17.0.7 on LAPTOP-PATF7J21 with PID 20756 (C:\Users\Tibame_T14\Documents\workspace-spring-tool-suite-4-4.18.1.RELEASE\THA101G1\target\classes started by Tibame_T14 in C:\Users\Tibame_T14\Documents\workspace-spring-tool-suite-4-4.18.1.RELEASE\THA101G1)
+2023-05-26 15:15:58.791 [INFO] [restartedMain] [631] No active profile set, falling back to 1 default profile: "default"
+2023-05-26 15:15:58.831 [INFO] [restartedMain] [255] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-26 15:15:58.831 [INFO] [restartedMain] [255] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-26 15:15:59.347 [INFO] [restartedMain] [132] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-26 15:15:59.396 [INFO] [restartedMain] [201] Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interfaces.
+2023-05-26 15:15:59.933 [INFO] [restartedMain] [108] Tomcat initialized with port(s): 8080 (http)
+2023-05-26 15:15:59.945 [INFO] [restartedMain] [173] Starting service [Tomcat]
+2023-05-26 15:15:59.945 [INFO] [restartedMain] [173] Starting Servlet engine: [Apache Tomcat/9.0.75]
+2023-05-26 15:16:00.286 [INFO] [restartedMain] [173] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-05-26 15:16:00.300 [INFO] [restartedMain] [173] Initializing Spring embedded WebApplicationContext
+2023-05-26 15:16:00.300 [INFO] [restartedMain] [292] Root WebApplicationContext: initialization completed in 1468 ms
+2023-05-26 15:16:00.493 [INFO] [restartedMain] [110] HikariPool-1 - Starting...
+2023-05-26 15:16:00.845 [INFO] [restartedMain] [123] HikariPool-1 - Start completed.
+2023-05-26 15:16:00.910 [INFO] [restartedMain] [31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-26 15:16:00.971 [INFO] [restartedMain] [44] HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-26 15:16:01.218 [INFO] [restartedMain] [56] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-26 15:16:01.350 [INFO] [restartedMain] [175] HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-05-26 15:16:02.296 [INFO] [restartedMain] [52] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-26 15:16:02.311 [INFO] [restartedMain] [437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-26 15:16:02.883 [WARN] [restartedMain] [223] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-26 15:16:03.142 [INFO] [restartedMain] [58] Adding welcome page: class path resource [static/index.html]
+2023-05-26 15:16:03.464 [INFO] [restartedMain] [59] LiveReload server is running on port 35729
+2023-05-26 15:16:03.528 [INFO] [restartedMain] [220] Tomcat started on port(s): 8080 (http) with context path '/ixercise'
+2023-05-26 15:16:03.545 [INFO] [restartedMain] [61] Started Tha101G1Application in 5.105 seconds (JVM running for 5.731)
+2023-05-26 15:16:13.027 [INFO] [http-nio-8080-exec-2] [173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-26 15:16:13.027 [INFO] [http-nio-8080-exec-2] [525] Initializing Servlet 'dispatcherServlet'
+2023-05-26 15:16:13.029 [INFO] [http-nio-8080-exec-2] [547] Completed initialization in 1 ms
+2023-05-26 15:16:32.797 [INFO] [RMI TCP Connection(10)-127.0.0.1] [159] Application shutdown requested.
+2023-05-26 15:16:32.806 [INFO] [RMI TCP Connection(10)-127.0.0.1] [173] Stopping service [Tomcat]
+2023-05-26 15:16:32.807 [INFO] [RMI TCP Connection(10)-127.0.0.1] [173] Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-26 15:16:32.814 [INFO] [RMI TCP Connection(10)-127.0.0.1] [651] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-26 15:16:32.823 [INFO] [RMI TCP Connection(10)-127.0.0.1] [350] HikariPool-1 - Shutdown initiated...
+2023-05-26 15:16:32.827 [INFO] [RMI TCP Connection(10)-127.0.0.1] [352] HikariPool-1 - Shutdown completed.
