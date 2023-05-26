@@ -133,12 +133,13 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </form>
                     </li>
 
                     <!-- <div class="collapse  d-block" id="collapseExample">
@@ -319,96 +320,131 @@
                             <fieldset>
                                 <legend class="h1 mb-4">立即加入IXercise</legend>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">電話</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="text" id="accountPhone" name="accountPhone" class="form-control"
+                                        placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">密碼</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="password" id="accountPassword" name="" class="form-control"
+                                        placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">確認密碼</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="password" id="accountPasswordCheck" name="accountPasswordCheck"
+                                        class="form-control" placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">Email</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="text" id="accountEmail" name="accountEmail" class="form-control"
+                                        placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">暱稱</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="text" id="accountNickname" name="accountNickname" class="form-control"
+                                        placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="Select" class="form-label">所在城市</label>
-                                    <select id="Select" class="form-select">
-                                        <option>台北</option>
-                                        <option>新北</option>
-                                        <option>桃園</option>
-                                        <option>台中</option>
-                                        <option>高雄</option>
+                                    <select id="locationcity" name="locationcity" class="form-select">
+                                        <option value="臺北市">臺北市</option>
+                                        <option value="基隆市">基隆市</option>
+                                        <option value="連江縣">連江縣</option>
+                                        <option value="新北市">新北市</option>
+                                        <option value="宜蘭縣">宜蘭縣</option>
+                                        <option value="新竹市">新竹市</option>
+                                        <option value="新竹縣">新竹縣</option>
+                                        <option value="桃園市">桃園市</option>
+                                        <option value="苗栗縣">苗栗縣</option>
+                                        <option value="臺中市">臺中市</option>
+                                        <option value="彰化縣">彰化縣</option>
+                                        <option value="南投縣">南投縣</option>
+                                        <option value="嘉義市">嘉義市</option>
+                                        <option value="嘉義縣">嘉義縣</option>
+                                        <option value="雲林縣">雲林縣</option>
+                                        <option value="臺南市">臺南市</option>
+                                        <option value="高雄市">高雄市</option>
+                                        <option value="澎湖縣">澎湖縣</option>
+                                        <option value="金門縣">金門縣</option>
+                                        <option value="屏東縣">屏東縣</option>
+                                        <option value="台東縣">台東縣</option>
+                                        <option value="花蓮縣">花蓮縣</option>
                                     </select>
+
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">地址</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="text" id="accountAddress" name="accountAddress" class="form-control"
+                                        placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">真實姓名</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <input type="text" id="accountName" name="accountName" class="form-control"
+                                        placeholder="">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="TextInput" class="form-label">生日</label>
-                                    <input type="date" id="TextInput" class="form-control" placeholder="">
+                                    <input type="date" id="accountBirthday" name="accountBirthday" class="form-control"
+                                        placeholder="">
                                 </div>
 
 
-                                <div class="mb-3">
-                                    <label>性別</label>
+                                <div class="mb-1">
+                                    <label class="mb-1">性別</label>
                                     <br>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
+                                        <input class="form-check-input" type="radio" name="accountGender" id="male"
+                                            value="1">
+                                        <label class="form-check-label" for="male">
                                             男
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
+                                        <input class="form-check-input" type="radio" name="accountGender" id="female"
+                                            value="2">
+                                        <label class="form-check-label" for="female">
                                             女
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
+                                        <input class="form-check-input" type="radio" name="accountGender" id="private"
+                                            value="0">
+                                        <label class="form-check-label" for="private">
                                             不公開
                                         </label>
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="FormControlTextarea1" class="form-label">自我介紹</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <div class="mb-1">
+                                    <label for="FormControlTextarea" class="form-label">自我介紹</label>
+                                    <textarea class="form-control" id="accountIntro" name="accountIntro"
+                                        rows="3"></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFileMultiple" class="form-label">會員頭像</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    <input class="form-control" type="file" id="accountPhoto" name="accountPhoto">
+                                </div>
+                                <!-- <div style="width:150px;height:150px;"> -->
+                                <!-- <img id="img" class="overflow-hidden rounded-circle" alt="" style="object-fit: cover;"
+                                    width="100px" height="100px"> -->
+                                <!-- </div> -->
+                                <div id="preview" style="width:150px;height:150px;">
+                                    <span class="text">預覽圖</span>
                                 </div>
 
-                                <button type="button" class="btn btn-primary">送出</button>
+                                <button type="button" id="sendform" class="btn btn-primary">送出</button>
                             </fieldset>
                         </form>
+                        <div id="msg" class="error"></div>
                     </div>
                 </div>
 
@@ -461,10 +497,233 @@
         })
 
 
-        // ========================================================================================================
-        $(ajax)
+        // // ========================================================================================================
+        // // let accountId = $("#accountId")
+        // $("#sendform").on("click", function () {
+        //     const accountPhone = $("#accountPhone")
+        //     const accountPassword = $("#accountPassword")
+        //     const accountEmail = $("#accountEmail")
+        //     const accountNickname = $("#accountNickname")
+        //     // const accountLevel = $("#accountLevel")
+        //     // const accountState = $("#accountState")
+        //     const locationcity = $("#locationcity")
+        //     const accountAddress = $("#accountAddress")
+        //     const accountName = $("#accountName")
+        //     const accountBirthday = $("#accountBirthday")
+        //     // const accountCreatetime = $("#accountCreatetime")
+        //     // const accountUpdatetime = $("#accountUpdatetime")
+        //     const accountGender = $("input[name='accountGender']:checked");
+        //     const accountPhoto = $("#accountPhoto")
+        //     // const accountIdoc = $("#accountIdoc")
+        //     const accountIntro = $("#accountIntro")
+        //     // let accountReport = $("#accountReport")
+        //     // let accountBank = $("#accountBank")
+        //     // let accountVerify = $("#accountVerify")
 
 
+
+
+        //     // ================================
+        //     console.log(accountPhone.val());
+        //     console.log(accountPassword.val());
+        //     console.log(accountEmail.val());
+        //     console.log(accountNickname.val());
+        //     console.log(locationcity.val());
+        //     console.log(accountAddress.val());
+        //     console.log(accountName.val());
+        //     console.log(accountBirthday.val());
+        //     console.log(accountGender.val());
+        //     console.log(accountPhoto.val());
+        //     console.log(accountIntro.val());
+
+        //     // $(ajax)({
+        //     //     url: 'http://localhost:8080/ixercise/Account/SignUp',
+        //     //     type: 'POST',
+        //     //     date:
+
+        //     // })
+        // })
+        // ================================================================================
+
+        // const btn1 = document.querySelector('#btn1');
+        // const msg = document.querySelector('#msg');
+        // const username = document.querySelector('#username');
+        // const password = document.querySelector('#password');
+        // const confirmPassword = document.querySelector('#confirmPassword');
+        // const nickname = document.querySelector('#nickname');
+        // const inputs = document.querySelectorAll('input');
+        // const image = document.querySelector('#image');
+        // (() => {
+
+
+
+
+
+        // fileReader.readAsBinaryString(image.files[0]);
+        // });
+
+
+        // });
+        // console.log("789")
+        // const fileReader = new FileReader();
+        // fileReader.addEventListener('load', function (e) {
+        //     const imageBase64 = btoa(e.target.result);
+        //     console.log("換圖");
+        // });
+
+        window.addEventListener("load", function (e) {
+            const msg = $("#msg");
+            // let accountId = $("#accountId")
+            const accountPhone = $("#accountPhone");
+            const accountPassword = $("#accountPassword");
+            const accountEmail = $("#accountEmail");
+            const accountNickname = $("#accountNickname");
+            // const accountLevel = $("#accountLevel")
+            // const accountState = $("#accountState")
+            const locationcity = $("#locationcity");
+            const accountAddress = $("#accountAddress");
+            const accountName = $("#accountName");
+            const accountBirthday = $("#accountBirthday");
+            // const accountCreatetime = $("#accountCreatetime")
+            // const accountUpdatetime = $("#accountUpdatetime")
+            const accountGender = $("input[name='accountGender']:checked");
+            const accountPhoto = $("#accountPhoto");
+            // const accountIdoc = $("#accountIdoc")
+            const accountIntro = $("#accountIntro");
+            const accountAdd = locationcity.val() + accountAddress.val();
+            // let accountReport = $("#accountReport")
+            // let accountBank = $("#accountBank")
+            // let accountVerify = $("#accountVerify")
+            // 設定變數====================================
+            // 賓哥=====================================
+            var preview_el = document.getElementById("preview");
+            var p_file_el = document.getElementById("accountPhoto");
+            var imageBase64;
+            var preview_img = function (file) {
+
+                var reader = new FileReader(); // 用來讀取檔案
+                reader.readAsDataURL(file); // 讀取檔案
+                reader.addEventListener("load", function () {
+                    //console.log(reader.result);
+                    /*
+                    let img_node = document.createElement("img"); // <img>
+                    img_node.setAttribute("src", reader.result); // <img src="base64">
+                    img_node.setAttribute("class", "preview_img"); // <img src="base64" class="preview_img">
+                    preview_el.innerHTML = '';
+                    preview_el.append(img_node);
+                    */
+
+                    let img_str = '<img src="' + reader.result + '" class="preview_img overflow-hidden rounded-circle" style="object-fit: cover;" width="150px" height="150px">';
+                    preview_el.innerHTML = img_str;
+                    imageBase64 = btoa(reader.result);
+
+                });
+            };
+
+
+            p_file_el.addEventListener("change", function (e) {
+                console.log(this);
+                if (this.files.length > 0) {
+                    preview_img(this.files[0]);
+                } else {
+                    preview_el.innerHTML = '<span class="text">預覽圖</span>';
+                }
+            });
+
+
+
+            // =====================================================
+            $("#sendform").on('click', function () {
+                console.log("123");
+                const msg = document.querySelector("#msg");
+                // let accountId = $("#accountId")
+                const accountPhone = $("#accountPhone");
+                const accountPassword = $("#accountPassword");
+                const accountEmail = $("#accountEmail");
+                const accountNickname = $("#accountNickname");
+                // const accountLevel = $("#accountLevel")
+                // const accountState = $("#accountState")
+                const locationcity = $("#locationcity");
+                const accountAddress = $("#accountAddress");
+                const accountName = $("#accountName");
+                const accountBirthday = $("#accountBirthday");
+                // const accountCreatetime = $("#accountCreatetime")
+                // const accountUpdatetime = $("#accountUpdatetime")
+                const accountGender = $("input[name='accountGender']:checked");
+                const accountPhoto = $("#accountPhoto");
+                // const accountIdoc = $("#accountIdoc")
+                const accountIntro = $("#accountIntro");
+                const accountAdd = locationcity.val() + accountAddress.val();
+                // let accountReport = $("#accountReport")
+                // let accountBank = $("#accountBank")
+                // let accountVerify = $("#accountVerify")
+
+
+
+
+                // const accLength = username.value.length;
+                // if (accLength < 5 || accLength > 50) {
+                //     msg.textContent = '帳號長度須介於5~50字元';
+                //     return;
+                // }
+
+                // const pwdLength = password.value.length;
+                // if (pwdLength < 6 || pwdLength > 12) {
+                //     msg.textContent = '密碼長度須介於6~12字元';
+                //     return;
+                // }
+
+                // if (confirmPassword.value !== password.value) {
+                //     msg.textContent = '密碼與確認密碼不相符';
+                //     return;
+                // }
+
+
+                // const nicknameLength = nickname.value.length;
+                // if (nicknameLength < 1 || nicknameLength > 20) {
+                //     msg.textContent = '暱稱長度須介於1~20字元';
+                //     return;
+                // }
+
+                msg.textContent = '';
+                // const fileReader = new FileReader();
+                // fileReader.addEventListener('load', function (e) {
+                //     const imageBase64 = btoa(e.target.result);
+                //     console.log("load");
+                fetch('http://localhost:8080/ixercise/Account/SignUp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+
+                        accountPhone: accountPhone.val(),
+                        accountPassword: accountPassword.val(),
+                        accountEmailL: accountEmail.val(),
+                        accountNickname: accountNickname.val(),
+                        accountAddress: accountAdd,
+                        accountName: accountName.val(),
+                        accountBirthday: accountBirthday.val(),
+                        accountGender: accountGender.val(),
+                        accountPhoto: imageBase64,
+                        accountIntro: accountIntro.val()
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            // for (let input of inputs) {
+                            //     input.disabled = true;
+                            // }
+                            document.querySelector("#sendform").disabled = true;
+                            msg.className = 'info';
+                            msg.textContent = '註冊成功';
+                        } else {
+                            msg.className = 'error';
+                            msg.textContent = '註冊失敗';
+                        }
+                    });
+            });
+        });
     </script>
 </body>
 

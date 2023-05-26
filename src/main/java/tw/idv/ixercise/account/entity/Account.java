@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tw.idv.ixercise.core.Core;
 
-//@EntityListeners({.class})
+
 @Entity
 @Table
 @Setter
@@ -61,7 +61,7 @@ public class Account extends Core {
 	private String accountVerify;
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", accountPhone=" + accountPhone + ", accountPassword="
+		return "[accountId=" + accountId + ", accountPhone=" + accountPhone + ", accountPassword="
 				+ accountPassword + ", accountEmail=" + accountEmail + ", accountNickname=" + accountNickname
 				+ ", accountLevel=" + accountLevel + ", accountState=" + accountState + ", accountAddress="
 				+ accountAddress + ", accountName=" + accountName + ", accountBirthday=" + accountBirthday
