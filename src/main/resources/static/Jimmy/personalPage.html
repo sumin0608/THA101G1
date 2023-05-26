@@ -438,7 +438,7 @@
                     <div class="tab-pane fade " id="evaluate" role="tabpanel" aria-labelledby="evaluate-tab">
 
                         <button type="button" class="btn btn-primary">活動</button>
-                        <button type="button" class="btn btn-primary coursebtn">課程</button>
+                        <button type="button" class="btn btn-primary coursebtn_evaluate">課程</button>
                         <div class="row border my-3">
                             <div class="col-12">
                                 <!-- <ul class="p-0" aria-labelledby=""> -->
@@ -446,6 +446,8 @@
                                 <div class="list-group evaluatelist">
                                     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
                                     <!-- 一條紀錄====================== -->
+                                    <div id="session_id" data-memberid="1001" style="display: none;">假裝之後要抓session裡會員的id
+                                    </div>
                                     <div href="#" class="list-group-item list-group-item-action re_commentplace"
                                         aria-current="true" style="height: 118px;">
                                         <div class="row h-100">
@@ -456,14 +458,18 @@
                                             <div class="col-8">
                                                 <div class="d-flex w-100 justify-content-between">
                                                     <h5 class="mb-1 re_course">(課程名稱)Tibame一起寫code</h5>
-                                                    <small class="re_reviewerid">留言者id</small>
-                                                    <small class="re_createdday">日期 3 days ago</small>
+                                                    <small class="re_reviewerId">留言者id</small>
+                                                    <small class="re_createdAt">日期 3 days ago</small>
                                                 </div>
-                                                <p class="mb-1 re_star">星數</p>
-                                                <p class="mb-1 re_comment">評論內容評論內容</p>
+                                                <p class="mb-1 re_commentRating">星數</p>
+                                                <p class="mb-1 re_commentContent">評論內容評論內容</p>
                                             </div>
+                                            <img src="../lib/img/comment/sadmonkey.jpg" alt=""
+                                                style="object-fit:contain; max-width: 100px; max-height: 100px;">
                                         </div>
                                     </div>
+                                    <!-- 放ajax回傳進.evaluatelist -->
+
                                     <!-- 留言回覆   先不開放好了，寫不完 -->
                                     <!-- <div class="commentplace">
                                         <div class="list-group">
@@ -487,7 +493,6 @@
                                         </div>
                                     </div> -->
                                     <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<jimmy修改>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-
                                     <!-- <div href="#" class="list-group-item list-group-item-action" aria-current="true"
                                             style="height: 118px;">
                                             <div class="row h-100">
@@ -516,10 +521,9 @@
                     </div>
                     <!-- 參加紀錄============================ -->
                     <div class="tab-pane fade" id="attendrecord" role="tabpanel" aria-labelledby="attendrecord-tab">
-
                         <button type="button" class="btn btn-primary">活動</button>
                         <!-- jimmy修改 -->
-                        <button type="button" class="btn btn-primary btn_course">課程</button>
+                        <button type="button" class="btn btn-primary coursebtn_attendrecord">課程</button>
                         <div class="row border my-3">
                             <div class="col-12">
 
@@ -557,7 +561,8 @@
                     <!-- 舉辦紀錄============================ -->
                     <div class="tab-pane fade" id="holdrecord" role="tabpanel" aria-labelledby="holdrecord-tab">
                         <button type="button" class="btn btn-primary">活動</button>
-                        <button type="button" class="btn btn-primary">課程</button>
+                        <!-- jimmy修改 -->
+                        <button type="button" class="btn btn-primary coursebtn_holdrecord">課程</button>
                         <div class="row border my-3">
                             <div class="col-12">
                                 <!-- <ul class="p-0" aria-labelledby=""> -->
@@ -725,8 +730,6 @@
                         <div class="row mb-5 mt-1 border border-2 border-dark">
                             <div class="col-12">
                                 <div class="list-group orderlist">
-
-
                                     <!-- 一條紀錄====================== -->
                                     <a href="#" class="list-group-item list-group-item-action" aria-current="true"
                                         style="height: 118px;">
@@ -774,7 +777,6 @@
 
                     </div>
                 </div>
-
                 <!-- ======================================================== -->
 
 
@@ -858,8 +860,63 @@
         })
 
         $(document).ready(function () {
+            // 過往評價的課程
+            $(".coursebtn_evaluate").click(function () {
+                console.log(this);
+                $.ajax({
+                    url: "/ixercise/coursecomment/" + $('#session_id').data('memberid'), //之後抓會員id
+                    type: "GET",
+                    contexttype: "application/json",
+                    // data: JSON.stringify({}),
+                    success: function (resp) {
+                        // console.log("resp>>" + resp[0].commentContent);
+                        let tableData = '';
+                        const successful = resp[0].successful;
+                        console.log("success?>>" + successful);
+                        if (successful === true) {
+                            for (let i = 0; i < resp.length; i++) {
+                                let createdAt = new Date(resp[i].createdAt);
+                                let formattedDate = createdAt.toISOString().split('T')[0]; //只拿日期，切掉時間
+                                tableData += `<div href="#" class="list-group-item list-group-item-action re_commentplace"
+                                        aria-current="true" style="height: 118px;">`
+                                tableData += `<div class="row h-100">`
+                                tableData += `<div class="col-2 h-100 overflow-hidden">`
+                                tableData += `<img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="rounded-circle" style="object-fit:cover;">`
+                                tableData += `</div>`
+                                tableData += `<div class="col-8">`
+                                tableData += `<div class="d-flex w-100 justify-content-between">`
+                                tableData += `<h5 class="mb-1 re_course">${resp[i].courseId}</h5>`
+                                tableData += `<small class="re_reviewerId"><p>參加者: </p>${resp[i].accountIdReviewer}</small>`
+                                tableData += `<small class="re_createdAt">${formattedDate}</small>`
+                                tableData += `</div>`
+                                tableData += `<p class="mb-1 re_commentRating">${resp[i].commentRating}</p>`
+                                tableData += `<p class="mb-1 re_commentContent">${resp[i].commentContent}</p>`
+                                tableData += `</div>`
+                                //評論的照片區塊，暫時不開放
+                                // tableData += `  <div class="col-2">
+                                //                         <img src="../lib/img/comment/${resp[i].photo}" alt="" width="100px"
+                                //                             height="100px" style="object-fit:contain; max-width: 100px; max-height: 100px;">
+                                //                     </div>`
+                                tableData += `</div></div>`
 
-            $(document).on("click", '.coursebtn', function () {
+                                $(".evaluatelist").empty().append(tableData);
+                            }
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            // 參加紀錄的課程
+            $(document).on("click", '.coursebtn_attendrecord', function () {
+                console.log(this);
+            });
+
+            // 舉辦活動的課程
+            $(".coursebtn_holdrecord").click(function () {
                 console.log(this);
             });
 

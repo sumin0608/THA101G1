@@ -37,7 +37,11 @@ public class CourseCommentController {
 
 	@GetMapping("/{accountIdReviewed}")
 	public List<CourseComment> getAccountIdReviewed(@PathVariable("accountIdReviewed") Integer accountIdReviewed) {
-		System.out.println("成功查到");
+		System.out.println("成功查到!");
+		List<CourseComment> courseComments = service.find(accountIdReviewed);
+		courseComments.get(0).setSuccessful(true);
+		courseComments.get(0).setMessage("第一筆資料");
+		
 		return service.find(accountIdReviewed);
 	}
 
