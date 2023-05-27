@@ -7,13 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ixercise</title>
     <!-- 引入bootstarp跟共用css內容========================================= -->
-    <link href="./lib/css/styles.css" rel="stylesheet" />
-    <link href="./lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="../lib/css/styles.css" rel="stylesheet" />
+    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
-    <link rel="icon" type="image/x-icon" href="./lib/img/IX-nobackground.png" />
+    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
+        .button-forget {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            margin-top: 10px;  
+        }
+        .btn-btn-primary{
+            margin-top: 10px; 
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border: none;
+            border: none;
+            border-radius: 50px;
+            width: 100px;
+            background-color: #F1DC20;
+
+        }
 
     </style>
 </head>
@@ -111,13 +129,12 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-reset-search">重置</button>
+                                                    id="btn-close-search">重置</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </li>
 
                     <!-- <div class="collapse  d-block" id="collapseExample">
@@ -202,7 +219,7 @@
 
                     <!-- 會員頭像========================================================= -->
                     <li class="nav-item dropdown mx-2 my-auto">
-                        <img src="../lib/img/clown.png"
+                        <img src="https://picsum.photos/300/200/?random=10"
                             class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
                             height="36">
@@ -210,8 +227,8 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
 
                             <li>
-                                <img class="dropdown-item overflow-hidden p-2 rounded-circle" src="../lib/img/clown.png"
-                                    width="150" height="150">
+                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
+                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
                             </li>
                             <li>
                                 <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -290,81 +307,36 @@
     <!-- main-content -->
     <div class="container main-content py-5">
         <!-- 請在這裡作業 -->
-        <div class="row border justify-content-center">
-            <div class="col-9">
-                <!-- <div class="row justify-content-center">
-                    <div class="col-8"> -->
-                <!-- 原本有下style="max-width: 540px;" -->
-
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4 m-3 overflow-hidden rounded-circle">
-                            <img src="../lib/img/clown.png" alt="..." sytle="object-fit: cover">
+        <div class="row justify-content-center">
+            <div class="col-6 p-3 border">
+                <form>
+                    <fieldset>
+                        <legend>登入IXercise</legend>
+                        <div class="log-1">
+                            <label for="telephone" class="form-tele">電話</label>
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="09**-***-***">
                         </div>
-                        <div class="col-md-7 my-auto">
-                            <div class="card-body ms-5">
-                                <h5 class="card-title mb-4">Username</h5>
-                                <p class="card-text mb-4">所在城市/OO歲</p>
-                                <a href="" class="d-grid gap-2 w-50 mb-3">
-                                    <button class="btn btn-primary" type="button">編輯個人資訊</button>
-                                </a>
-                                <a href="" class="d-grid gap-2 w-50">
-                                    <button class="btn btn-primary" type="button">成為教練</button>
-                                </a>
+                        <div class="log-1">
+                            <label for="password" class="form-label">密碼</label>
+                             <input type="text" id="password" class="form-control">
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-btn-primary">登入</button>
+                        
+                        <div class="log-1">
+                            <div class="button-forget">
+                                <button class="button-forget">忘記帳號？</button>
+                                <button class="button-forget">忘記密碼？</button>
                             </div>
                         </div>
+                    </fieldset>
+                </form>
 
-                    </div>
-                </div>
-                <ul class="nav nav-tabs mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">會員簡介</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">過往評價</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">參加紀錄</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- 原本disable的設定 tabindex="-1" aria-disabled="true" -->
-                        <a class="nav-link" href="#">舉辦紀錄</a>
-                    </li>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">我的最愛</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">論壇紀錄</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">行事曆</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">購物紀錄</a>
-                        </li>
-                    </ul>
-                </ul>
-                <div class="row">
-                    <div class="col-12">
-                        <li class="nav-item">自我介紹
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint reprehenderit in nesciunt
-                                eum nihil quasi ipsa! Illo doloremque soluta, nesciunt odio similique magnam omnis
-                                quaerat unde officiis eveniet adipisci ea.</p>
-                        </li>
-                        <li class="nav-item">性別
-                        </li>
-                        <li class="nav-item">星座
-                        </li>
-                    </div>
-                </div>
+
+
             </div>
         </div>
-
-
-
-    </div>
-    </div>
     </div>
 
 
