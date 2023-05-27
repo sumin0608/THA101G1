@@ -5,7 +5,10 @@ import lombok.*;
 import org.springframework.data.jpa.domain.support.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.sql.*;
+import java.util.List;
+
 @ToString
 @Setter
 @Getter
@@ -28,8 +31,10 @@ public class Event{
     @Column(name = "eventName") //若 程式端名稱 與 資料庫端名稱 相同(不區分⼤⼩寫)時，會⾃動映射 --> 可省略 @Column
     private String eventName;
     private Integer price;
+    @Future
     private Date eventDate;
     private Time startTime;
+    @Future
     private Date deadline;
     private Timestamp createDate;
     private Integer maxAttendees;
@@ -45,6 +50,9 @@ public class Event{
     private Integer currentAttendees;
     private Integer status;
     private Integer paymentMethod;
+
+    @Transient
+    private List<Event> eventList;
 
 
     public Event(String eventName,Integer price){
