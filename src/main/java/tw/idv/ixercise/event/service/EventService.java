@@ -3,7 +3,7 @@ package tw.idv.ixercise.event.service;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import tw.idv.ixercise.event.entity.*;
-import tw.idv.ixercise.event.ropository.*;
+import tw.idv.ixercise.event.repository.*;
 
 @Service
 public class EventService {
