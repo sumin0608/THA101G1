@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import tw.idv.ixercise.course.dao.CourseDao;
@@ -31,13 +32,29 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public int upateByCourseId(Course course) {
 		final StringBuilder hql = new StringBuilder().append("UPDATE course SET ");
-//		
-		hql.append("eventName = :eventName,").append("courseStartDate = :courseStartDate,")
-				.append("courseStartTime = :courseStartTime,").append("registrationDeadline = :registrationDeadline,")
-
-				.append("lastUpdatedDate = NOW() ").append("WHERE courseId = :courseId");
-//		Query query = session.createQuery(hql.toString());
-//		
+	
+		hql.append("eventName = :eventName,")
+			.append("expectedPrice = :expectedPrice,")
+			.append("courseStartDate = :courseStartDate,")
+			.append("courseStartTime = :courseStartTime,")
+			.append("courseDuration = :courseDuration,")
+			.append("registrationDeadline = :registrationDeadline,")
+			.append("maximumCapacity = :maximumCapacity,")
+			.append("description = :description,")
+			.append("photo = :photo,")
+			.append("location = :location,")
+			.append("city = :city,")
+			.append("district = :district,")
+			.append("detailedAddress = :detailedAddress,")
+			.append("district = :district,")
+			.append("categoryId = :categoryId,")
+			.append("courseStatus = :courseStatus,")
+			.append("paidAdvertising = :paidAdvertising,")
+			.append("paidAdvertisingTime = :paidAdvertisingTime,")
+			.append("lastUpdatedDate = NOW() ")
+			.append("WHERE courseId = :courseId");
+		Query query = session.createQuery(hql.toString());
+	
 //		return query.setParameter("nickname", member.getNickname())
 //				.setParameter("pass", member.getPass())
 //				.setParameter("roleId", member.getRoleId())
