@@ -997,7 +997,7 @@
                         url: "http://localhost:8080/ixercise/events/create/images/" + eventId,
                         type: 'PUT',
                         data: photo1,
-                        dataType: 'json',
+                        dataType: 'multipart', // 或者使用 'text'
                         // contentType: "application/json; charset=utf-8",
                         enctype: 'multipart/form-data',
                         processData: false,

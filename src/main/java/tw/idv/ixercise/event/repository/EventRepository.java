@@ -1,4 +1,4 @@
-package tw.idv.ixercise.event.ropository;
+package tw.idv.ixercise.event.repository;
 
 import org.springframework.data.jpa.repository.*;
 import tw.idv.ixercise.event.entity.*;

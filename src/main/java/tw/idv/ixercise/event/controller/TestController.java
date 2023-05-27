@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 //import org.springframework.web.multipart.support.*;
 import tw.idv.ixercise.event.entity.*;
-import tw.idv.ixercise.event.ropository.*;
+import tw.idv.ixercise.event.repository.*;
 import tw.idv.ixercise.event.service.*;
 
 import javax.servlet.*;
@@ -44,19 +44,23 @@ public class TestController {
     }
 
 //    @PostMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-    @PutMapping( "/create/image/{eventId}")
+@PutMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String uploadEvent(@RequestParam("photo") MultipartFile photo, @PathVariable Integer eventId) throws IOException {
         System.out.println(photo);
         try {
 //            byte[] bytes1 = photo.getInputStream().readAllBytes();
-            photo.getInputStream();
-            byte[] bytes = photo.getBytes();
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+            InputStream is = photo.getInputStream();
+            byte[] bytes = is.readAllBytes();
+            is.close();
+
+//            byte[] bytes = photo.getBytes();
+//            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+//            byte[] bytes1 = byteArrayInputStream.readAllBytes();
 
             Event event = eventService.findEventById(eventId);
             if (event != null) {
                 System.out.println("<====not null=====>>>>");
-//                event.setPhoto(bytes1);
+                event.setPhoto(bytes);
                 Event save = eventRepository.save(event);
             }
         }catch (Exception e){
@@ -65,14 +69,14 @@ public class TestController {
         return "Hi``";
     }
 
-//    @PostMapping("/upload/image")
+    //    @PostMapping("/upload/image")
 //    public ResponseEntity<> uplaodImage(@RequestParam("image") MultipartFile file)
 //            throws IOException {
 //
 //
 //    }
-    @PutMapping (value = "/create/images/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Event uploadEvent1(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer eventId) {
+    @PutMapping(value = "/create/images/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void uploadEvent1(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer eventId) {
         byte[] photo = null;
         Part photoPart1 = null;
         Event save = null;
@@ -81,14 +85,14 @@ public class TestController {
 //            MultipartHttpServletRequest req1 = (MultipartHttpServletRequest) req;
 //            String photo1 = req1.getParameter("photo");
 //            System.out.println(photo1);
-            Event event =eventService.findEventById(eventId);
+            Event event = eventService.findEventById(eventId);
 //            Object request = null;
 //            StandardMultipartHttpServletRequest request1 = (StandardMultipartHttpServletRequest) request;
 
             photoPart1 = req.getPart("photo");
             InputStream photoStream = photoPart1.getInputStream();
             photo = photoStream.readAllBytes();
-
+            photoStream.close();
 
             if(event != null){
                 System.out.println("<====not null=====>>>>");
@@ -109,7 +113,7 @@ public class TestController {
         System.out.println("createEvssssssent(Event)");
         System.out.println("createEvssssssent(Event)");
 //        eventService.saveEvent(event);
-        return save;
+//        return save;
     }
 
 
