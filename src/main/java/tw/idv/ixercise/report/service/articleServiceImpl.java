@@ -25,6 +25,12 @@ public class articleServiceImpl {
 	public List<Article> findAll() {
 		return dao.selectAll();
 	}
+	
+
+	public Article findone(Integer id) {
+		return dao.selectById(id);
+	}
+	
 
 	@Transactional
 	public boolean remove(Integer id) {

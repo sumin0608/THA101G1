@@ -8,6 +8,8 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+
+import java.sql.Timestamp;
 import java.util.List;
 import tw.idv.ixercise.report.dao.articleDao;
 import tw.idv.ixercise.report.entity.Article;
@@ -68,15 +70,22 @@ public class articleDaoImpl implements articleDao{
 	
 
 
+//	public List <Article> selectAll() {
+//		final String hql = "FROM Article ORDER BY articleId";
+//		return session
+//				.createQuery(hql, Article.class)
+//				.getResultList();
+//	}
+
+
 	public List <Article> selectAll() {
-		final String hql = "FROM Article ORDER BY articleId";
+		final String hql = "SELECT new tw.idv.ixercise.report.entity.Article(articleId, accountId, articleTitle, articleTime, articleState, articleType) FROM Article ";
 		return session
 				.createQuery(hql, Article.class)
 				.getResultList();
 	}
 
-
-
+	
 
 
 @Override
