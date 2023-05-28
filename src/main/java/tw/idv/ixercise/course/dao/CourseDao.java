@@ -10,11 +10,13 @@ public interface CourseDao {
 
 	public int deleteByCourseId(Integer courseId);
 
-	public int upateByCourseId(Integer courseId);
+	public int upateByCourseId(Course course);
 
 	public List<Course> selectAll();
 
-	public Course selectByName(String eventName);
+	public List<Course> selectByName(String eventName);
+
+	public Course selectByCourseId(Integer cocurseId);
 
 	public List<Course> selectBycategoryId(String categoryId);
 

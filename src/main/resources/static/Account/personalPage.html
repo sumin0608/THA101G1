@@ -383,8 +383,18 @@
                         <button class="nav-link" id="shoprecord-tab" data-bs-toggle="tab" data-bs-target="#shoprecord"
                             type="button" role="tab" aria-controls="shoprecord" aria-selected="false">購物紀錄</button>
                     </li>
+                    <li class="nav-item personalinf" role="presentation">
+                        <button class="nav-link" id="evaluatemanager-tab" data-bs-toggle="tab"
+                            data-bs-target="#evaluatemanager" type="button" role="tab" aria-controls="evaluatemanager"
+                            aria-selected="false">評價管理</button>
+                    </li>
 
                 </ul>
+
+
+
+
+
 
                 <!-- 我是內容 -->
                 <!-- =================================================== -->
@@ -723,16 +733,72 @@
                             </div>
                         </div>
 
-
-
-
-
-
-
                     </div>
+
+
+                    <!--評論紀錄============================= -->
+                    <div class="tab-pane fade " id="evaluatemanager" role="tabpanel"
+                        aria-labelledby="evaluatemanager-tab">
+
+                        <button type="button" class="btn btn-primary">活動</button>
+                        <button type="button" class="btn btn-primary">課程</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+                                <!-- <ul class="p-0" aria-labelledby=""> -->
+
+                                <div class="list-group evaluatelist">
+
+                                    <!-- 一條紀錄====================== -->
+                                    <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100 overflow-hidden">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="rounded-circle" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">Tibame一起寫code</h5>
+                                                </div>
+                                                <p class="mb-1">星數</p>
+                                                <p class="mb-1">評論內容評論內容</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ============================ -->
+                                    <!-- <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                            style="height: 118px;">
+                                            <div class="row h-100">
+                                                <div class="col-2 h-100">
+                                                    <img src="https://picsum.photos/500/200/?random=10" alt=""
+                                                        width="100px" height="100px"
+                                                        class="overflow-hidden rounded-circle object-fit-cover">
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1">活動標題List group item heading</h5>
+                                                    </div>
+                                                    <p class="mb-1">活動時間</p>
+                                                    <small>報名狀態</small>
+                                                </div>
+                                                <div class="col-2">
+                                                    <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                </div>
+                                <!-- </ul> -->
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- ======================================================== -->
+
+
 
 
                 <!-- 一條通知====================================================== -->
@@ -770,9 +836,7 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
+
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
