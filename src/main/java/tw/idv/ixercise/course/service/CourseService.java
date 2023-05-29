@@ -10,7 +10,14 @@ public interface CourseService {
 
 	boolean remove(Integer courseId);
 
+	boolean edit(Course course);
+
+	List<Course> findall();
+
 	List<Course> findCity(String city);
+
+	List<Course> findcategoryId(String categoryId);
 	
-	
+	List<Object[]> getDistricts(Integer city);
+
 }

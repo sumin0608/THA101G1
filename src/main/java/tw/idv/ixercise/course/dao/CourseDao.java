@@ -23,4 +23,6 @@ public interface CourseDao {
 	public List<Course> selectByCity(String city);
 
 	public List<Course> selectByCreator(Integer creator);
+	
+	public List<Object[]> getDistricts(Integer city);
 }

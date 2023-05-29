@@ -421,10 +421,8 @@
 
                             <!-- ================================================form -----submit ================================================== -->
                             <!-- <form action="aaa.html" method="get" class="row g-3 needs-validation" novalidate> -->
-                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"
-                                enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
-                                <!-- <form action="#" method="post" enctype="multipart/form-data" class="row g-3 needs-validation"
-                    novalidate> -->
+                            <form id="myform" method="post" enctype="multipart/form-data"
+                                class="row g-3 needs-validation" novalidate>
                                 <br>
                                 <h1>創辦活動表單</h1>
                                 <hr>
@@ -437,21 +435,19 @@
                                             <div class="card-body">
                                                 <h5 class="card-title">設定活動封面</h5>
                                                 <hr>
-
                                                 <div class="form-group">
                                                     <label for="photo-dropzone forDhotoDrop">點擊下方或將圖片拖放至下方處</label>
-                                                    <input type="file" class="form-control-file" name="photo"
+                                                    <input type="file" class="form-control-file" name="photo-dropzone"
                                                         id="photo-dropzone" aria-describedby="fileHelp" accept="image/*"
                                                         required>
                                                     <div class="invalid-feedback">
-                                                        必填!
+                                                        必填圖片!
                                                     </div>
                                                     <br>
                                                     <small id="fileHelp" class="form-text text-muted">支援 JPG, JPEG, PNG
                                                         檔案格式</small>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!-- <label for="preview-dropzone forDhotoDrop">或將圖片拖放至此處</label> -->
                                                     <div id="previewBox">
                                                         <span class="text">選擇圖片</span>
                                                         <!-- <img id="preview" src="#" alt="圖片預覽" style="max-width: 100%; max-height: 200px;"> -->
@@ -461,497 +457,707 @@
                                                 </div>
                                                 <br>
                                                 <button type="button" class="btn btn-danger" id="delete-btn">刪除</button>
-
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row col-1"></div>
                                 </div>
-
                                 <!-- ======================================================image upload ====ccccc============================================================================  -->
-                                <!-- First row -->
-                                <div class="row">
-                                    <div class="col-sm-12"></div>
-                                    <label for="event_name" class="form-label">聚會名稱</label>
-                                    <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
-                                        class="form-control" value="111" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        必填!
-                                    </div>
-                                </div>
-                                <hr>
-                                <br>
-                                <!-- Second row -->
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label for="" class="form-label">聚會類型</label>
-                                        <select class="form-select" id="categoryId" name="categoryId"
-                                            aria-label="Default select example" required>
-                                            <option selected disabled value="">請選擇..</option>
-                                            <option value="1">足球</option>
-                                            <option value="2">籃球</option>
-                                            <option value="3">網球</option>
-                                            <option value="4">排球</option>
-                                            <option value="5">橄欖球</option>
-                                            <option value="6">棒球</option>
-                                            <option value="7">曲棍球</option>
-                                            <option value="8">高爾夫球</option>
-                                            <option value="9">羽毛球</option>
-                                            <option value="10">乒乓球</option>
-                                            <option value="11">壁球</option>
-                                            <option value="12">手球</option>
-                                            <option value="13">保齡球</option>
-                                            <option value="1">有氧操課</option>
-                                            <option value="2">重訓課</option>
-                                            <option value="3">瑜伽課</option>
-                                            <option value="4">舞蹈課</option>
-                                            <option value="5">腹肌課</option>
-                                            <option value="6">動感單車課</option>
-                                            <option value="7">跳繩課</option>
-                                            <option value="8">拳擊課</option>
-                                            <option value="9">跳舞操課</option>
-                                            <option value="10">瑜伽拉伸課</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="" class="form-label">所在城市</label>
-                                        <select class="form-select" id="city" name="city"
-                                            aria-label="Default select example" required>
-                                            <option selected disabled value="">請選擇..</option>
-                                            <option value="1">台北</option>
-                                            <option value="2">基隆</option>
-                                            <option value="4">新北</option>
-                                            <option value="5">宜蘭</option>
-                                            <option value="7">新竹</option>
-                                            <option value="8">桃園</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="" class="form-label">所在地區</label>
-                                        <select class="form-select" id="district" name="district"
-                                            aria-label="Default select example" required>
-                                            <option selected disabled value="">請選擇..</option>
-                                            <option value="1">Ex.松山區</option>
-
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br>
-                                <!-- Third row -->
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <label class="form-label">場地名稱</label>
-                                        <input type="text" id="location" name="location" placeholder="請輸入聚會場地名稱..."
-                                            class="form-control" value="" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label class="form-label">預計花費</label>
-                                        <input type="number" id="price" name="price" min="0" placeholder="預計花費"
-                                            class="form-control" value="111" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <br>
-                                <!-- Forth row -->
-                                <div class="row">
-                                    <div class="col-sm-12"></div>
-                                    <label class="form-label">活動地址</label>
-                                    <input type="text" name="address" placeholder="活動地址..." class="form-control"
-                                        id="address" value="" required>
-                                    <div class="invalid-feedback">
-                                        必填!
-                                    </div>
-                                </div>
-                                <br>
-                                <!-- Fith row -->
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <label class="form-label">活動日期</label>
-                                        <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
-                                            class="form-control" value="2023-05-07" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <label class="form-label">活動開始時間</label>
-                                        <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                            class="form-control" value="22:10" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-sm-4">
-                        </div> -->
-                                </div>
-                                <br>
-                                <!--  row Six -->
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <label class="form-label">活動日期2</label>
-                                        <input type="date" id="lastVerifyDate" name="lastVerifyDate"
-                                            placeholder="活動日期..." class="form-control" value="2023-05-07" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <label class="form-label">活動開始時間2</label>
-                                        <input type="time" id="lastVerifyTime" name="lastVerifyTime"
-                                            placeholder="活動開始時間..." class="form-control" value="22:10" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <!-- row  seven ===================================== Javascript ==============================================-->
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <label class="form-label">聚會人數</label>
-                                        <input type="number" id="maxAttendees" name="maxAttendees" placeholder="聚會人數"
-                                            min="1" max="100" class="form-control" value="100" required>
-                                        <div class="invalid-feedback">
-                                            Please write something.
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <label class="form-label">付費方式</label>
-                                        <select class="form-select" id="paymentMethod" name="paymentMethod"
-                                            aria-label="Default select example" required>
-                                            <!-- <option selected>打code</option> -->
-                                            <option selected disabled value="">請選擇..</option>
-                                            <option value="1">線上刷卡</option>
-                                            <option value="2">現場繳費</option>
-                                            <option value="3">免費課程</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br>
-                                <!-- row nine -->
+                                <!-- Zero row 之後抓會員的session-->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <!-- <label for="">聚會描述和備註</label>
-                            <textarea id="w3review" name="w3review" rows="4" cols="50">At</textarea> -->
-                                        <!-- <input type="" name="" id=""> -->
-                                        <!-- </button> -->
-                                        <div class="form-group">
-                                            <label for="description">聚會描述和備註</label>
-                                            <textarea class="form-control" name="description" id="description" rows="3"
-                                                required></textarea>
+                                        <label for="" class="form-label">creator</label>
+                                        <div id="creator">1234</div>
+                                    </div>
+                                    <br>
+                                    <!-- First row -->
+                                    <div class="row">
+                                        <div class="col-sm-12"></div>
+                                        <label for="event_name" class="form-label">聚會名稱</label>
+                                        <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
+                                            class="form-control" value="111" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            必填!
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                    <!-- Second row -->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="" class="form-label">聚會類型</label>
+                                            <select class="form-select" id="categoryId" name="categoryId"
+                                                aria-label="Default select example" required>
+                                                <option selected disabled value="">請選擇..</option>
+                                                <option value="1">足球</option>
+                                                <option value="2">籃球</option>
+                                                <option value="3">網球</option>
+                                                <option value="4">排球</option>
+                                                <option value="5">橄欖球</option>
+                                                <option value="6">棒球</option>
+                                                <option value="7">曲棍球</option>
+                                                <option value="8">高爾夫球</option>
+                                                <option value="9">羽毛球</option>
+                                                <option value="10">乒乓球</option>
+                                                <option value="11">壁球</option>
+                                                <option value="12">手球</option>
+                                                <option value="13">保齡球</option>
+                                                <option value="1">有氧操課</option>
+                                                <option value="2">重訓課</option>
+                                                <option value="3">瑜伽課</option>
+                                                <option value="4">舞蹈課</option>
+                                                <option value="5">腹肌課</option>
+                                                <option value="6">動感單車課</option>
+                                                <option value="7">跳繩課</option>
+                                                <option value="8">拳擊課</option>
+                                                <option value="9">跳舞操課</option>
+                                                <option value="10">瑜伽拉伸課</option>
+                                            </select>
                                             <div class="invalid-feedback">
-                                                請與教練分享參加目標與期望。
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="" class="form-label">所在城市</label>
+                                            <select class="form-select" id="city" name="city"
+                                                aria-label="Default select example" required>
+                                                <option selected disabled value="">請選擇..</option>
+                                                <option value="1">台北市</option>
+                                                <option value="2">基隆</option>
+                                                <option value="4">新北市</option>
+                                                <option value="5">宜蘭</option>
+                                                <option value="7">新竹</option>
+                                                <option value="8">桃園</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label for="" class="form-label">所在地區</label>
+                                            <select class="form-select" id="district" name="district"
+                                                aria-label="Default select example" required>
+                                                <option selected disabled value="">請選擇..</option>
+                                                <option value="1">Ex.松山區</option>
+
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                必填!
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <br>
-                                <hr>
-                                <!-- row eight -->
-                                <div class="row">
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                                        <label class="form-check-label" for="gridCheck">
-                                            我已閱讀並同意免責聲明
-                                        </label>
+                                    <br>
+                                    <!-- Third row -->
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <label class="form-label">場地名稱</label>
+                                            <input type="text" id="location" name="location" placeholder="請輸入聚會場地名稱..."
+                                                class="form-control" value="" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label">預計花費</label>
+                                            <input type="number" id="price" name="price" min="0" placeholder="預計花費"
+                                                class="form-control" value="111" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-                                <hr>
-                                <br>
-                                <!-- row nine -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <button type="submit" id="btn_submit" class="btn btn-primary">
-                                            創辦活動
-                                        </button>
+                                    <hr>
+                                    <br>
+                                    <!-- Forth row -->
+                                    <div class="row">
+                                        <div class="col-sm-12"></div>
+                                        <label class="form-label">活動地址</label>
+                                        <input type="text" name="address" placeholder="活動地址..." class="form-control"
+                                            id="address" value="" required>
+                                        <div class="invalid-feedback">
+                                            必填!
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- <div class="row justify-content-center">
+                                    <br>
+                                    <!-- Fith row -->
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label class="form-label">活動日期</label>
+                                            <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
+                                                class="form-control" value="2023-05-06" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <label class="form-label">活動開始時間</label>
+                                            <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
+                                                class="form-control" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-sm-4"></div> -->
+                                    </div>
+                                    <br>
+                                    <!--  row Six -->
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label class="form-label">報名截止日期</label>
+                                            <input type="date" id="lastVerifyDate" name="lastVerifyDate"
+                                                placeholder="報名截止日期..." class="form-control" value="2023-05-07"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <label class="form-label">報名截止時間</label>
+                                            <input type="time" id="lastVerifyTime" name="lastVerifyTime"
+                                                placeholder="報名截止時間..." class="form-control" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <!-- row  seven ===================================== Javascript ==============================================-->
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label">人數上限</label>
+                                            <input type="number" id="maxAttendees" name="maxAttendees"
+                                                placeholder="聚會人數上限" min="1" max="100" class="form-control" value="10"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Please write something.
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label">課程時長(小時)</label>
+                                            <input type="number" id="courseDuration" name="courseDuration"
+                                                placeholder="課程時長" class="form-control" min="0.5" max="24" value="0.5"
+                                                step="0.5" required>
+                                            <div class="invalid-feedback">
+                                                Please write something.
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-label">付費方式</label>
+                                            <select class="form-select" id="paymentMethod" name="paymentMethod"
+                                                aria-label="Default select example" required>
+                                                <option value="" selected disabled>請選擇..</option>
+                                                <option value="1">線上刷卡</option>
+                                                <option value="2">現場繳費</option>
+                                                <option value="3">免費課程</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <!-- row eight -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="description">聚會描述和備註</label>
+                                                <textarea class="form-control" name="description" id="description"
+                                                    rows="3" required></textarea>
+                                                <div class="invalid-feedback">
+                                                    請與教練分享參加目標與期望。
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="" class="form-label">課程狀態</label>
+                                            <select class="form-select" id="courseStatus" name="courseStatus"
+                                                aria-label="Default select example" required>
+                                                <option value="1">可參加</option>
+                                                <option value="2">暫停報名</option>
+                                                <option value="3">截止報名</option>
+                                                <option value="4">滿團</option>
+                                                <!-- <option value="5">強制下架</option> -->
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="" class="form-label">要不要買廣告</label>
+                                            <select class="form-select" id="paidAdvertising" name="paidAdvertising"
+                                                aria-label="Default select example" required>
+                                                <option value="0">不買</option>
+                                                <option value="1">買</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-label">廣告時效</label>
+                                            <input type="date" id="paidAdvertisingTime1" name="paidAdvertisingTime1"
+                                                placeholder="日期..." class="form-control" value="2024-05-08" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-label">--</label>
+                                            <input type="time" id="paidAdvertisingTime2" name="paidAdvertisingTime2"
+                                                placeholder="時間..." class="form-control" value="11:11" required>
+                                            <div class="invalid-feedback">
+                                                必填!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <!-- row eight -->
+                                    <div class="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                                            <label class="form-check-label" for="gridCheck">
+                                                我已閱讀並同意免責聲明
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                    <!-- row nine -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button type="submit" id="btn_submit" class="btn btn-primary">
+                                                創辦活動
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row justify-content-center">
                         <div class="col-sm-8 ">
-
                             <div class="d-grid gap-2 ">
                                 <button class="btn btn-primary ylbtn" type="button">預覽</button>
-
                             </div>
                         </div>
                     </div> -->
-                                <!-- <br> -->
+                                </div>
+                            </form>
+                            <div class="col-4" style="color: #B6B6B6;"> 送出前請再次確認表單資訊</div>
                         </div>
-                        </form>
-                        <div class="col-2"></div>
                     </div>
-
-                    <!-- </div> -->
                 </div>
-                <!-- Product actions-->
-                <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            
-        </div> -->
-            </div>
-
-
-
-
-            <!-- <p>team1</p> -->
-
-
-
-        </div>
-    </div>
-    </div>
-
-
-
-    <!-- 以下footer================================================================================= -->
-    <footer class="footer py-5 footer-color">
-        <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <p class="m-0 text-white h3">客服中心</p>
-                    <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
-                    <p class="m-0 text-white">Tel: 02-2712-0589</p>
-                </div>
-                <div class="col-3">
-                    <p class="m-0 text-white h3">快速使用</p>
-                    <a class="d-block" href="">註冊會員</a>
-                    <a class="d-block" href="">舉辦活動</a>
-                    <a class="d-block" href="">常見問題</a>
-                </div>
-                <div class="col-3">
-                    <p class="m-0 text-white h3">主要頁面</p>
-                    <a class="d-block" href="">首頁</a>
-                    <a class="d-block" href="">活動</a>
-                    <a class="d-block" href="">論壇</a>
-                    <a class="d-block" href="">商城</a>
-                </div>
-                <div class="col-3"></div>
             </div>
         </div>
-    </footer>
-    <!-- footer結束================================================================================= -->
-    <!-- 引入所需函式庫 -->
-    <script src="../lib/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/js/popper.min.js"></script>
-    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-    <!-- ================================================================= -->
+        <br>
 
-    <script>
 
-        $("#searchbar").focus("click", function () {
-            $("#searchcard").removeClass("d-none");
-        });
-        $("#btn-close-search").on("click", function () {
-            $("#searchcard").addClass("d-none");
-        })
 
-        //==================================== image upload js ======================zzzz=================================================================
-        $(document).ready(function () {
-            // let preview_el = document.querySelector("#previewBox");
-            $("#previewBox").on("click", function () {
+        <!-- 以下footer================================================================================= -->
+        <footer class="footer py-5 footer-color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <p class="m-0 text-white h3">客服中心</p>
+                        <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
+                        <p class="m-0 text-white">Tel: 02-2712-0589</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="m-0 text-white h3">快速使用</p>
+                        <a class="d-block" href="">註冊會員</a>
+                        <a class="d-block" href="">舉辦活動</a>
+                        <a class="d-block" href="">常見問題</a>
+                    </div>
+                    <div class="col-3">
+                        <p class="m-0 text-white h3">主要頁面</p>
+                        <a class="d-block" href="">首頁</a>
+                        <a class="d-block" href="">活動</a>
+                        <a class="d-block" href="">論壇</a>
+                        <a class="d-block" href="">商城</a>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer結束================================================================================= -->
+        <!-- 引入所需函式庫 -->
+        <script src="../lib/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/js/popper.min.js"></script>
+        <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
 
-                console.log($(this).attr("restrictChange"));
-                if ($(this).attr("restrictChange") == undefined) {
-                    $("#photo-dropzone").click();
-                } else {
-                    return;
-                }
+        <!-- ================================================================= -->
+        <script>
+            $("#searchbar").focus("click", function () {
+                $("#searchcard").removeClass("d-none");
             });
+            $("#btn-close-search").on("click", function () {
+                $("#searchcard").addClass("d-none");
+            })
 
-            // Preview selected image
-            $("#photo-dropzone, #preview-dropzone").change(function () {
-                readURL(this);
-            });
+            // 照片預覽
+            // photolistener.on("change", function (event) {
+            // img.src=URL.createObjectURL(photolistener.files[0]);
+            // });
 
-            // Delete selected image
-            $("#delete-btn").click(function () {
-                $("#photo-dropzone").val("");
-                // $("#preview-dropzone").val("");
-                $("#previewBox").html('<span class="text">選擇圖片</span>');
-                $("#previewBox").removeAttr("restrictChange");
-            });
+            //==================================== image upload js ======================zzzz=================================================================
+            $(document).ready(function () {
 
-            // Preview image function =================zzzz=================
-            function readURL(input) {
-                $("#previewBox").attr("restrictChange", true);
-                // if (this.files.length > 0) {  多張
-                // ===============================================================
-                // if (input.files && input.files[0]) {  單張
-                //     preview_img(input.files);
-                // }
-                // ========================================================================
-                if (input.files && input.files[0]) {
-                    if (input.files[0].type.match('image.*')) {
-                        var reader = new FileReader();
-                        reader.onload = function () {
-                            $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
-                        };
-                        reader.readAsDataURL(input.files[0]);
+                //撈該縣市的區
+                $("#city").change(function () {
+                    var city = $("#city").val();
+                    console.log("city: " + city)
+                    $.ajax({
+                        url: "/ixercise/course/districts" + city,
+                        type: "GET",
+                        contentType: 'application/json',
+                        success: function (resp) {
+                            console.log("resp>>" + resp);
+                            let tableData = '';
+                            for (let i = 0; i < resp.length; i++) {
+                                tableData += ` <option selected disabled value="">${resp[i].name}</option>`;
+                            }
+                            $("#district").append(tableData);
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                });
+
+
+                // 监听選擇照片之後
+                //let photolistener = $("#photo-dropzone");
+                // photolistener.on("change", function (event) {
+                //     let files = event.target.files[0];
+                //     let reader = new FileReader();
+                //     // 读取完成后的回调函数
+                //     reader.onload = function (event) {
+                //         let fileData = event.target.result;
+                //         console.log("fileData" + fileData);
+                //     };
+                //     // 读取文件
+                //     reader.readAsDataURL(files);
+                // });
+                // 监听選擇城市之後
+                // $("#city").change(function () {
+                //     var city = $("#city").val();
+                //     var cityText = $("#city option:selected").text();
+                //     console.log("city: " + city);
+                //     console.log("cityText: " + cityText);
+                // });
+
+                $('#btn_submit').on('click', function (e) {
+                    e.preventDefault();
+                    let photodropzone = $("#photo-dropzone");
+                    let creator = $("#creator").text();
+                    let eventName = $("#event_name").val();
+                    let expectedPrice = $("#price").val();
+                    let courseStartDate = $("#eventDate").val();
+                    let courseStartTime = courseStartDate + " " + $("#startTime").val() + ":00";
+                    let courseDuration = $("#courseDuration").val();
+
+                    let lastVerifyDate = $("#lastVerifyDate").val();
+                    let lastVerifyTime = $("#lastVerifyTime").val();
+                    let registrationDeadline = lastVerifyDate + " " + lastVerifyTime + ":00";
+                    console.log("registrationDeadline>>" + registrationDeadline);
+                    let maximumCapacity = $("#maxAttendees").val();
+                    let description = $("#description").val();
+                    let location = $("#location").val();
+                    // let city = $("#city").val();
+                    let city = $("#city option:selected").text();
+
+                    let district = $("#district").val();
+                    let detailedAddress = $("#address").val();
+                    let categoryId = $("#categoryId").val();
+
+                    let courseStatus = $("#courseStatus").val();
+                    let paidAdvertising = $("#paidAdvertising").val();
+                    let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
+                    let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
+                    let paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
+                    console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
+                    // let paymentMethod = $("#paymentMethod").val();
+
+                    // 步驟一、先存圖片
+                    let file = photodropzone[0].files[0];
+                    // 检查是否有有填欄位
+                    if (!file) {
+                        photodropzone.siblings('.invalid-feedback').show(); // 显示错误消息
+                        return; // 中断操作
+                    }
+                    let photo = file.name;
+                    // console.log("photo>>" + photo);
+                    let formData = new FormData();
+                    formData.append('file', file);
+
+                    if (!eventName) {
+                        $('#eventName').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!expectedPrice) {
+                        $('#expectedPrice').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!courseStartDate) {
+                        $('#courseStartDate').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!$("#startTime").val()) {
+                        $("#startTime").siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!courseDuration) {
+                        $('#courseDuration').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!$("#lastVerifyTime").val()) {
+                        $("#lastVerifyTime").siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!maximumCapacity) {
+                        $('#maximumCapacity').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!location || location == "請選擇..") {
+                        $('#location').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!city || city == "請選擇..") {
+                        $('#city').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!district) {
+                        $('#district').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!detailedAddress) {
+                        $('#detailedAddress').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!categoryId) {
+                        $('#categoryId').siblings('.invalid-feedback').show();
+                        return;
+                    }
+                    if (!description) {
+                        $('#description').siblings('.invalid-feedback').show();
+                        return;
+                    }
+
+                    $.ajax({
+                        url: "/ixercise/course/upload-photo",
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            console.log(response);
+                            // 步驟二、存入資料庫
+                            $.ajax({
+                                url: "/ixercise/course",
+                                type: "POST",
+                                contentType: 'application/json',
+                                data: JSON.stringify({
+                                    creator: creator,
+                                    photo: photo,
+                                    eventName: eventName,
+                                    expectedPrice: expectedPrice,
+                                    courseStartDate: courseStartDate,
+                                    courseStartTime: courseStartTime,
+                                    courseDuration: courseDuration,
+                                    registrationDeadline: registrationDeadline,
+                                    maximumCapacity: maximumCapacity,
+                                    description: description,
+                                    location: location,
+                                    city: city,
+                                    district: district,
+                                    detailedAddress: detailedAddress,
+                                    categoryId: categoryId,
+                                    courseStatus: courseStatus,
+                                    paidAdvertising: paidAdvertising,
+                                    paidAdvertisingTime: paidAdvertisingTime
+                                }),
+                                success: function (resp) {
+                                    console.log("resp>>" + resp);
+                                    $('#myform').reset(); //清空表單
+                                    // swal("Warning!", resp.message, "warning");
+                                },
+                                error: function (xhr, status, error) {
+                                    alert("Error: " + xhr.responseText);
+                                }
+                            });
+                        },// 步驟二、結束
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                });//送出表單////
+
+
+
+                ////////////////////////////////////////////////////////////////////////////////////////////
+                $("#previewBox").on("click", function () {
+
+                    // console.log($(this).attr("restrictChange"));
+                    if ($(this).attr("restrictChange") == undefined) {
+                        $("#photo-dropzone").click();
+                    } else {
+                        return;
+                    }
+                });
+
+                // Preview selected image
+                $("#photo-dropzone, #preview-dropzone").change(function () {
+                    readURL(this);
+                });
+
+                // Delete selected image
+                $("#delete-btn").click(function () {
+                    $("#photo-dropzone").val("");
+                    // $("#preview-dropzone").val("");
+                    $("#previewBox").html('<span class="text">選擇圖片</span>');
+                    $("#previewBox").removeAttr("restrictChange");
+                });
+
+                // Preview image function =================zzzz=================
+                function readURL(input) {
+                    $("#previewBox").attr("restrictChange", true);
+                    // if (this.files.length > 0) {  多張
+                    // ===============================================================
+                    // if (input.files && input.files[0]) {  單張
+                    //     preview_img(input.files);
+                    // }
+                    // ========================================================================
+                    if (input.files && input.files[0]) {
+                        if (input.files[0].type.match('image.*')) {
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
                     }
                 }
-            }
+                // ==================================
+                // Allow preview area to be a drop zone
+                var previewArea = document.getElementById('previewBox');
+                previewArea.addEventListener('dragenter', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    previewArea.classList.add('dragover');
+                });
 
-            // ==================================
+                previewArea.addEventListener('dragleave', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    previewArea.classList.remove('dragover');
+                });
 
-            // Allow preview area to be a drop zone
-            var previewArea = document.getElementById('previewBox');
-            previewArea.addEventListener('dragenter', function (e) {
-                e.stopPropagation();
-                e.preventDefault();
-                previewArea.classList.add('dragover');
-            });
+                previewArea.addEventListener('dragover', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                });
 
-            previewArea.addEventListener('dragleave', function (e) {
-                e.stopPropagation();
-                e.preventDefault();
-                previewArea.classList.remove('dragover');
-            });
+                //===================drop== zzzz=================
+                previewArea.addEventListener('drop', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    previewArea.classList.remove('dragover');
+                    $(this).attr("restrictChange", true);
+                    // ======================================================
+                    var files = e.dataTransfer.files;
+                    var file = files[0];
+                    if (file.type.match('image.*')) {
+                        var reader = new FileReader();
 
-            previewArea.addEventListener('dragover', function (e) {
-                e.stopPropagation();
-                e.preventDefault();
-            });
-            // ==add=
+                        reader.onload = function () {
+                            // $('#preview').attr('src', reader.result);
+                            $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
+                            // $('#photo-dropzone').val("aaaa");
+                            // $('#photo-dropzone').val(file.name);
+                            $('#photo-dropzone').prop('files', files);;
+                            // $('#preview-dropzone').val("");
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                // ====================drop image - preview =====
 
-            //===================drop== zzzz=================
-            previewArea.addEventListener('drop', function (e) {
-                e.stopPropagation();
-                e.preventDefault();
-                previewArea.classList.remove('dragover');
-                $(this).attr("restrictChange", true);
-                // ======================================================
-                var files = e.dataTransfer.files;
-                var file = files[0];
-                if (file.type.match('image.*')) {
-                    var reader = new FileReader();
+                // ========================(file) one single picture
+                var preview_img = function (file) {
+                    if (file.type.match('image.*')) {
+                        var reader = new FileReader();
 
-                    reader.onload = function () {
-                        // $('#preview').attr('src', reader.result);
-                        $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
-                        // $('#photo-dropzone').val("aaaa");
-                        // $('#photo-dropzone').val(file.name);
-                        $('#photo-dropzone').prop('files', files);;
-                        // $('#preview-dropzone').val("");
-                    };
+                        reader.onload = function () {
+                            // $('#preview').attr('src', reader.result);
+                            $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
+                            $('#photo-dropzone').prop('files', files);;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+                //==================================== image upload js -gpt =======================================================================================
+                //==================================== google map api =======================================================================================
 
-                    reader.readAsDataURL(file);
-                }
-            });
+                //==================================== form-input validate &&  session storage =======================================================================================
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function () {
+                    'use strict'
 
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.querySelectorAll('.needs-validation')
 
-            // ====================drop image - preview =====
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms)
+                        .forEach(function (form) {
+                            form.addEventListener('submit', function (event) {
 
-            // ========================(file) one single picture
-            var preview_img = function (file) {
-                if (file.type.match('image.*')) {
-                    var reader = new FileReader();
+                                if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    console.log("!form.checkValidity()");
+                                } else {
+                                    console.log("hiii");
+                                    // e.preventDefault();
+                                    var send_data = {};
+                                    send_data.photo_dropzone = $("#photo-dropzone").val();
+                                    send_data.event_name = $("#event_name").val();
+                                    send_data.categoryId = $("#categoryId").val();
+                                    send_data.city = $("#city").val();
+                                    send_data.district = $("#district").val();
+                                    send_data.location = $("#location").val();
+                                    send_data.address = $("#address").val();
+                                    send_data.price = $("#price").val();
+                                    send_data.eventDate = $("#eventDate").val();
+                                    send_data.startTime = $("#startTime").val();
+                                    send_data.lastVerifyDate = $("#lastVerifyDate").val();
+                                    send_data.lastVerifyTime = $("#lastVerifyTime").val();
+                                    send_data.maxAttendees = $("#maxAttendees").val();
+                                    send_data.paymentMethod = $("#paymentMethod").val();
+                                    send_data.description = $("#description").val();
+                                    console.log(send_data);
 
-                    reader.onload = function () {
-                        // $('#preview').attr('src', reader.result);
-                        $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
-                        // $('#photo-dropzone').val("aaaa");
-                        // $('#photo-dropzone').val(file.name);
-                        $('#photo-dropzone').prop('files', files);;
-                        // $('#preview-dropzone').val("");
-                    };
+                                    var img_base64_el = document.querySelector(".preview_img");
+                                    if (img_base64_el) {
+                                        send_data.img_base64 = img_base64_el.getAttribute("src");
+                                    }
 
-                    reader.readAsDataURL(file);
-                }
-            };
-            //==================================== image upload js -gpt =======================================================================================
-            //==================================== google map api =======================================================================================
-
-            //==================================== form-input validate &&  session storage =======================================================================================
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function () {
-                'use strict'
-
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation')
-
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms)
-                    .forEach(function (form) {
-                        form.addEventListener('submit', function (event) {
-
-                            if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
-                                console.log("!form.checkValidity()");
-                            } else {
-                                console.log("hiii");
-                                // e.preventDefault();
-
-                                var send_data = {};
-
-                                send_data.photo_dropzone = $("#photo-dropzone").val();
-                                send_data.event_name = $("#event_name").val();
-                                send_data.categoryId = $("#categoryId").val();
-                                send_data.city = $("#city").val();
-                                send_data.district = $("#district").val();
-                                send_data.location = $("#location").val();
-                                send_data.address = $("#address").val();
-                                send_data.price = $("#price").val();
-                                send_data.eventDate = $("#eventDate").val();
-                                send_data.startTime = $("#startTime").val();
-                                send_data.lastVerifyDate = $("#lastVerifyDate").val();
-                                send_data.lastVerifyTime = $("#lastVerifyTime").val();
-                                send_data.maxAttendees = $("#maxAttendees").val();
-                                send_data.paymentMethod = $("#paymentMethod").val();
-                                send_data.description = $("#description").val();
-
-                                console.log(send_data);
-
-                                var img_base64_el = document.querySelector(".preview_img");
-                                if (img_base64_el) {
-                                    send_data.img_base64 = img_base64_el.getAttribute("src");
-                                }
-
-                                // 把資料存到session 裡面-先不存到資料庫- 給預覽頁面座使用
-                                sessionStorage.setItem("form_data", JSON.stringify(send_data));
-                            };
-
-                            form.classList.add('was-validated')
-
-                        }, false)
-                    })
+                                    // 把資料存到session 裡面-先不存到資料庫- 給預覽頁面座使用
+                                    sessionStorage.setItem("form_data", JSON.stringify(send_data));
+                                };
+                                form.classList.add('was-validated')
+                            }, false)
+                        })
+                })()
+                // =========================== 資料送出 ========================= //
 
 
-            })()
-            // =========================== 資料送出 ========================= //
-
-        }); //Load ====
+            }); //Load ====
 
 
-    </script>
+        </script>
 </body>
 
 </html>
