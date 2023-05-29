@@ -272,31 +272,32 @@ div {
 
 
 
-		    <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        
-                       
-                        <div class="card mb-4">
-                            <div class="card-header">
-                              
-                               <h2>文章查詢</h2> 
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    
-                                    <thead>
-                                        <tr>
-                                            <th>文章編號</th>
-                                            <th>會員編號</th>
-                                            <th>文章抬頭</th>
-                                            <th>文章時間</th>
-                                            <th>文章狀態</th>
-                                            <th>文章類別</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <!-- <tfoot>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4">
+
+
+					<div class="card mb-4">
+						<div class="card-header">
+
+							<h2>文章查詢</h2>
+						</div>
+						<div class="card-body">
+							<table id="datatablesSimple">
+
+								<thead>
+									<tr>
+										<th>文章編號</th>
+										<th>會員編號</th>
+										<th>文章抬頭</th>
+										<th>文章時間</th>
+										<th>文章狀態</th>
+										<th>文章類別</th>
+										<th></th>
+
+									</tr>
+								</thead>
+								<!-- <tfoot>
                                         <tr>
                                             <th>Name</th>
                                             <th>Position</th>
@@ -306,21 +307,62 @@ div {
                                             <th>Salary</th>
                                         </tr>
                                     </tfoot> -->
-                                    <tbody id="aaa">
-                                        
-                                      
-                                      
-                                      
-                                     
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+								<tbody id="aaa">
 
 
-		
+
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content ">
+							<div class="modal-header ">
+								<h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+
+
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="row"></div>
+	
+
+        <div class="col-md-12">
+          
+            <div class="table-responsive">
+            <table class="table table-user-information">
+                <tbody id="aaaa">
+                           
+                                                           
+                </tbody>
+            </table>
+            </div>
+        </div>
+      
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</main>
+
+
+
+
+
 
 			<script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
 
@@ -334,29 +376,73 @@ div {
 					"articleState" : 2,
 					"articleType" : 2
 				};
-			
-				
-				$.ajax({
-					url : "http://localhost:8080/ixercise/back/article", // 資料請求的網址
+
+				$.ajax({url : "http://localhost:8080/ixercise/back/article", // 資料請求的網址
+						type : "GET",
+						dataType : "json",
+
+						success : function(data) {
+						var html = "";
+						console.log(data);
+						
+						$.each(data,function(index, obj) {
+							html += "<tr>";
+									html += "<td>" + obj.articleId+ "</td>";
+									html += "<td>" + obj.accountId+ "</td>";
+									html += "<td>" + obj.articleTitle+ "</td>";
+									html += "<td>" + obj.articleTime+ "</td>";
+									html += "<td>" + obj.articleState+ "</td>";
+									html += "<td>" + obj.articleType+ "</td>";
+								
+							
+						html += '<td><button type="button" class="btn btn-primary aaa " data-bs-toggle="modal" data-bs-target="#exampleModal">'
+							 + '<a href="#" class="article-link" data-article-id="' + obj.articleId + '"style="color:white;" >更多資訊</a></button></td>';
+							html += "</tr>";
+												});
+								$("#aaa").append(html);
+							},
+							error : function(xhr, status, error) {
+								console.log("AJAX Error:", error);
+							}
+						});
+			</script>
+
+
+			<script>
+			$(document).on("click", ".article-link", function() {
+			    var articleId = $(this).data("article-id");
+			    sendArticleId(articleId);
+			});
+
+			function sendArticleId(articleId) {
+			    // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
+			     $("#aaaa").empty();
+			   
+				$.ajax({url : 'http://localhost:8080/ixercise/back/article/'+articleId+'', // 資料請求的網址
 					type : "GET",
 					dataType : "json",
 
 					success : function(data) {
-						var html = "";
-						$.each(data, function(index, obj) {
-							html += "<tr>";
-							$.each(obj, function(key, value) {
-								html +="<td>" + value + "</td>";
-							});
-							html += "</tr>";
-						});
-						$("#aaa").append(html);
-					},
-					error : function(xhr, status, error) {
-						console.log("AJAX Error:", error);
-					}
-				});
-				
+					var html = "";
+					
+					
+					
+					
+					$.each(data,function(key, value) {
+						html += "<tr>";
+								html += "<td>" +key+ "</td>";
+								html += "<td>" +value+ "</td>";
+						
+						html += "</tr>";
+											});
+							$("#aaaa").append(html);
+						},
+						error : function(xhr, status, error) {
+							console.log("AJAX Error:", error);
+						}
+					});
+			}
+		
 			</script>
 
 
@@ -392,6 +478,6 @@ div {
 		src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 		crossorigin="anonymous"></script>
 	<script src="../lib/js/datatables-demo.js"></script>
-	
+
 </body>
 </html>
