@@ -34,7 +34,7 @@ public class ShopButtonServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		request.setCharacterEncoding("Big5");
+		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("input");
 		if("進入籃球商城".equals(name)) {
 			response.sendRedirect("pageV5.jsp");

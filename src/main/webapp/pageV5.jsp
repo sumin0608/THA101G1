@@ -1,8 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"
-    import = "tw.idv.ixercise.store.entity.product"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import = "tw.idv.ixercise.store.entity.*"
+    import = "java.util.*"
     %>
-    
+ <% 
+ List<porder> L =(List)session.getAttribute("L");
+ 
+ %>   
  
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -12,11 +16,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ixercise</title>
-    <!-- §ﬁ§Jbootstarp∏Ú¶@•Œcss§∫Æe========================================= -->
+    <!-- ÂºïÂÖ•bootstarpË∑üÂÖ±Áî®cssÂÖßÂÆπ========================================= -->
     <link href="lib/css/styles.css" rel="stylesheet" />
     <link href="lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
-    <!-- §ﬁ§J≠∂≈“icon======================================================= -->
+    <!-- ÂºïÂÖ•È†ÅÁ±§icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
@@ -26,28 +30,28 @@
 
 <body>
 
-    <!-- •H§Uæ…ƒ˝¶C=================================================================================== -->
-    <!-- ºW•[w-100 sticky-top -->
+    <!-- ‰ª•‰∏ãÂ∞éË¶ΩÂàó=================================================================================== -->
+    <!-- Â¢ûÂä†w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
         <div class=" container-fluid px-4 px-lg-0 me-4 ">
 
-            <!-- ∞”º–===================================================================== -->
+            <!-- ÂïÜÊ®ô===================================================================== -->
             <a class="navbar-brand m-0 px-4" href="#!">
                 <img src="lib/img/IX-nobackground.png" alt="" width="91" height="60">
             </a>
-            <!-- Bootstrap 5 ™∫ Navbar Toggler ´ˆ∂s°A•Œ©Û¶b§‚æ˜©M•≠™Oµ•∏˚§pø√πı§W°A¬I¿ª´ˆ∂sÆ…§¡¥´æ…ƒ˝¶C™∫Æi∂}©M¶¨¡Y™¨∫A°C -->
+            <!-- Bootstrap 5 ÁöÑ Navbar Toggler ÊåâÈàïÔºåÁî®ÊñºÂú®ÊâãÊ©üÂíåÂπ≥ÊùøÁ≠âËºÉÂ∞èËû¢Âπï‰∏äÔºåÈªûÊìäÊåâÈàïÊôÇÂàáÊèõÂ∞éË¶ΩÂàóÁöÑÂ±ïÈñãÂíåÊî∂Á∏ÆÁãÄÊÖã„ÄÇ -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-            <!-- ∞”º–™∫•k√‰æ„±¯============================================================ -->
+            <!-- ÂïÜÊ®ôÁöÑÂè≥ÈÇäÊï¥Ê¢ù============================================================ -->
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
                 <ul class="navbar-nav mb-2 mb-lg-0 w-100">
-                    <!-- ∑j¥MƒÊ=============================================================== -->
+                    <!-- ÊêúÂ∞ãÊ¨Ñ=============================================================== -->
                     <!-- <li class="nav-item my-auto">
                         <form class="d-flex">
-                            <input class="form-control" type="search" placeholder="ß‰¨°∞ ..." aria-label="Search">
+                            <input class="form-control" type="search" placeholder="ÊâæÊ¥ªÂãï..." aria-label="Search">
                             <button class="btn border border-2 border-dark" type="submit">Search</button>
                         </form>
                     </li> -->
@@ -56,7 +60,7 @@
                         <form class="d-flex row">
                             <div class="row" style="width: 400px; max-width: 400px;">
                                 <div class="col-8 pe-0">
-                                    <input class="form-control" id="searchbar" type="search" placeholder="∑j¥M..."
+                                    <input class="form-control" id="searchbar" type="search" placeholder="ÊêúÂ∞ã..."
                                         aria-label="Search" role="button">
                                     </input>
                                 </div>
@@ -76,26 +80,26 @@
                                             <!-- <label for=""></label> -->
                                             <select class="form-select form-select-sm col-3 mb-3"
                                                 aria-label="Default select example">
-                                                <option selected>≠∂≠± </option>
-                                                <option value="1">∞”´∞</option>
-                                                <option value="2">Ω◊æ¬</option>
-                                                <option value="3">¨°∞ </option>
+                                                <option selected>È†ÅÈù¢ </option>
+                                                <option value="1">ÂïÜÂüé</option>
+                                                <option value="2">Ë´ñÂ£á</option>
+                                                <option value="3">Ê¥ªÂãï</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example"
                                                 onchange="javascript:location.href=this.value;">
-                                                <option selected>πB∞ √˛´¨ </option>
-                                                <option value="pageV5.jsp">ƒx≤y</option>
-                                                <option value="baseball01.jsp">¥Œ≤y</option>
-                                                <option value="soccer01.jsp">®¨≤y</option>
+                                                <option selected>ÈÅãÂãïÈ°ûÂûã </option>
+                                                <option value="pageV5.jsp">Á±ÉÁêÉ</option>
+                                                <option value="baseball01.jsp">Ê£íÁêÉ</option>
+                                                <option value="soccer01.jsp">Ë∂≥ÁêÉ</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>¶U¶€≥]©w </option>
+                                                <option selected>ÂêÑËá™Ë®≠ÂÆö </option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -104,7 +108,7 @@
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>¶U¶€≥]©w </option>
+                                                <option selected>ÂêÑËá™Ë®≠ÂÆö </option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -113,12 +117,12 @@
                                         <div class="row">
                                             <!-- <div class="col-9"></div> -->
                                             <div class="col-12 ">
-                                                <!-- <button class="btn btn-primary" type="submit"> ¨d∏ﬂ
+                                                <!-- <button class="btn btn-primary" type="submit"> Êü•Ë©¢
                                             </button> -->
                                                 <button class="btn btn-primary" type="button"
-                                                    id="btn-close-search">√ˆ≥¨</button>
+                                                    id="btn-close-search">ÈóúÈñâ</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">≠´∏m</button>
+                                                    id="btn-close-search">ÈáçÁΩÆ</button>
                                             </div>
                                         </div>
                                     </div>
@@ -130,30 +134,30 @@
                     </div> -->
 
 
-                    <!-- øÏ¨°∞ ============================================================= -->
+                    <!-- Ëæ¶Ê¥ªÂãï============================================================= -->
                     <li class="nav-item fs-5 ms-auto my-auto">
-                        <a class="nav-link active h-100 " aria-current="page" href="#!">øÏ¨°∞ 
+                        <a class="nav-link active h-100 " aria-current="page" href="#!">Ëæ¶Ê¥ªÂãï
                         </a>
                     </li>
-                    <!-- ®‰•L•D≠∂  ========================================================== -->
+                    <!-- ÂÖ∂‰ªñ‰∏ªÈ†Å  ========================================================== -->
                     <li class="nav-item fs-5 dropdown my-auto">
                         <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">®‰•L•D≠∂
+                            data-bs-toggle="dropdown" aria-expanded="false">ÂÖ∂‰ªñ‰∏ªÈ†Å
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">≠∫≠∂</a></li>
+                            <li><a class="dropdown-item" href="#!">È¶ñÈ†Å</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="#!">∞”´∞</a></li>
-                            <li><a class="dropdown-item" href="#!">Ω◊æ¬</a></li>
-                            <li><a class="dropdown-item" href="#!">¨°∞ </a></li>
-                            <li><a class="dropdown-item" href="#!">Ω“µ{</a></li>
+                            <li><a class="dropdown-item" href="#!">ÂïÜÂüé</a></li>
+                            <li><a class="dropdown-item" href="#!">Ë´ñÂ£á</a></li>
+                            <li><a class="dropdown-item" href="#!">Ê¥ªÂãï</a></li>
+                            <li><a class="dropdown-item" href="#!">Ë™≤Á®ã</a></li>
                         </ul>
                     </li>
-                    <!-- πa≈L============================================================= -->
-                    <!-- ¡Ÿ¶≥§@¡˚∂Ò∫°™∫bi-bell-fill -->
-                    <!-- æﬁ±±.n-dot®”±±®Ó¶≥µL¨ı¬I -->
+                    <!-- Èà¥Èê∫============================================================= -->
+                    <!-- ÈÇÑÊúâ‰∏ÄÈ°ÜÂ°´ÊªøÁöÑbi-bell-fill -->
+                    <!-- ÊìçÊéß.n-dot‰æÜÊéßÂà∂ÊúâÁÑ°Á¥ÖÈªû -->
                     <li class="nav-item dropdown my-auto">
                         <div class="n-dot"></div>
                         <svg width="36" height="36" fill="currentColor"
@@ -163,7 +167,7 @@
                                 d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
                         </svg>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                            <!-- §@±¯≥q™æ====================================================== -->
+                            <!-- ‰∏ÄÊ¢ùÈÄöÁü•====================================================== -->
 
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
@@ -206,7 +210,7 @@
                         </ul>
                     </li>
 
-                    <!-- ∑|≠˚¿Yπ≥========================================================= -->
+                    <!-- ÊúÉÂì°È†≠ÂÉè========================================================= -->
                     <li class="nav-item dropdown mx-2 my-auto">
                         <img src="https://picsum.photos/300/200/?random=10"
                             class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
@@ -220,41 +224,41 @@
                                     src="https://picsum.photos/200/200/?random=10" width="150" height="150">
                             </li>
                             <li>
-                                <span class="dropdown-item-text justify-content-center d-flex fs-5">¶W¶r</span>
+                                <span class="dropdown-item-text justify-content-center d-flex fs-5">ÂêçÂ≠ó</span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">¨d¨›≠”§H∏ÍÆ∆</a>
+                                <a class="dropdown-item" href="#!">Êü•ÁúãÂÄã‰∫∫Ë≥áÊñô</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">≤·§—¶C™Ì</a>
+                                <a class="dropdown-item" href="#!">ËÅäÂ§©ÂàóË°®</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">¨°∞ ∫ﬁ≤z</a>
+                                <a class="dropdown-item" href="#!">Ê¥ªÂãïÁÆ°ÁêÜ</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">Ω“µ{∫ﬁ≤z</a>
+                                <a class="dropdown-item" href="#!">Ë™≤Á®ãÁÆ°ÁêÜ</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <!-- ¡ ™´®Æ™∫´ˆ∂s============================================================= -->
+                <!-- Ë≥ºÁâ©ËªäÁöÑÊåâÈàï============================================================= -->
                 <form class="d-flex">
                     <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-                        <!-- ≥o≠”®Æ®ÆßÔclass¨∞bi-cart™∫∏‹ ¥N∑|≈‹¶®™≈®Æ -->
+                        <!-- ÈÄôÂÄãËªäËªäÊîπclassÁÇ∫bi-cartÁöÑË©± Â∞±ÊúÉËÆäÊàêÁ©∫Ëªä -->
                         <i class="bi-cart-fill me-1"></i>
-                        ¡ ™´®Æ
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                        Ë≥ºÁâ©Ëªä
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=L.size() %></span>
                     </button>
                 </form>
             </div>
         </div>
     </nav>
-    <!-- æ…ƒ˝¶Cµ≤ßÙ=================================================================================== -->
+    <!-- Â∞éË¶ΩÂàóÁµêÊùü=================================================================================== -->
 
-    <!-- ≥o∏Ã§j∑ß¨O©Òºsßi -->
+    <!-- ÈÄôË£°Â§ßÊ¶ÇÊòØÊîæÂª£Âëä -->
     <!-- Header====================================================================================== -->
      <header>
         <div class="container-fluid p-0">
@@ -295,7 +299,7 @@
 
    <!-- main-content -->
     <div class="container main-content">
-        <!-- Ω–¶b≥o∏Ãß@∑~ -->
+        <!-- Ë´ãÂú®ÈÄôË£°‰ΩúÊ•≠ -->
         <div class="row">
             <div class="col-12">
 		                <!-- Section-->
@@ -315,7 +319,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">¥µßB§B ƒx≤y</h5>
+		                                    <h5 class="fw-bolder">ÊñØ‰ºØ‰∏Å Á±ÉÁêÉ</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -333,8 +337,9 @@
 			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 			                                <div class="text-center">
 			                                	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+			                                		<input name="productName" type="hidden" value="ÊñØ‰ºØ‰∏Å Á±ÉÁêÉ">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                	</form>
 			                                </div>
 			                           </div>
@@ -353,7 +358,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Special Item</h5>
+		                                    <h5 class="fw-bolder">Ê®ôÊ∫ñÁâà Á±ÉÁêÉ</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -371,8 +376,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
 		                                <div class="text-center">
 		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                			<input name="productName" type="hidden" value="Ê®ôÊ∫ñÁâà Á±ÉÁêÉ">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                	</form>
 		                                </div>
 		                            </div>
@@ -391,7 +397,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">≤y¶Á</h5>
+		                                    <h5 class="fw-bolder">ËóçËâ≤ÁêÉË°£</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -409,8 +415,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                		<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                			<input name="productName" type="hidden" value="ËóçËâ≤ÁêÉË°£">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                	</form>
 		                                </div>
 		                            </div>
@@ -429,7 +436,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">≥Ï§¶23∏π≤y¶Á</h5>
+		                                    <h5 class="fw-bolder">Âñ¨‰∏π23ËôüÁêÉË°£</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -447,8 +454,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                			<input name="productName" type="hidden" value="Âñ¨‰∏π23ËôüÁêÉË°£">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                </form>
 		                                </div>
 		                            </div>
@@ -467,7 +475,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Special Item</h5>
+		                                    <h5 class="fw-bolder">Êπñ‰∫∫JamesÁêÉË°£</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -485,8 +493,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                 	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                 			<input name="productName" type="hidden" value="Êπñ‰∫∫JamesÁêÉË°£">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                </form>
 		                                </div>
 		                            </div>
@@ -505,7 +514,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Special Item</h5>
+		                                    <h5 class="fw-bolder">WadeÁÜ±ÁÅ´ÁêÉË°£</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -523,8 +532,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                			<input name="productName" type="hidden" value="WadeÁÜ±ÁÅ´ÁêÉË°£">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                </form>
 		                                </div>
 		                            </div>
@@ -543,7 +553,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Special Item</h5>
+		                                    <h5 class="fw-bolder">ÈôêÈáèÁêÉÈûã</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -561,8 +571,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                			<input name="productName" type="hidden" value="ÈôêÈáèÁêÉÈûã">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                </form>
 		                                </div>
 		                            </div>
@@ -581,7 +592,7 @@
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Special Item</h5>
+		                                    <h5 class="fw-bolder">ÈªëËâ≤ÁêÉÈûã</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -599,8 +610,9 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="¡ ∂R" style="margin-bottom:20px">
-			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="•[§J¡ ™´®Æ" style="margin-bottom:20px">
+		                                			<input name="productName" type="hidden" value="ÈªëËâ≤ÁêÉÈûã">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Ë≥ºË≤∑" style="margin-bottom:20px">
+			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="Âä†ÂÖ•Ë≥ºÁâ©Ëªä" style="margin-bottom:20px">
 			                                </form>
 		                                </div>
 		                            </div>
@@ -624,34 +636,34 @@
 			
 
 
-    <!-- •H§Ufooter================================================================================= -->
+    <!-- ‰ª•‰∏ãfooter================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <p class="m-0 text-white h3">´»™A§§§ﬂ</p>
+                    <p class="m-0 text-white h3">ÂÆ¢Êúç‰∏≠ÂøÉ</p>
                     <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
                     <p class="m-0 text-white">Tel: 02-2712-0589</p>
                 </div>
                 <div class="col-3">
-                    <p class="m-0 text-white h3">ß÷≥t®œ•Œ</p>
-                    <a class="d-block" href="">µ˘•U∑|≠˚</a>
-                    <a class="d-block" href="">¡|øÏ¨°∞ </a>
-                    <a class="d-block" href="">±`®£∞›√D</a>
+                    <p class="m-0 text-white h3">Âø´ÈÄü‰ΩøÁî®</p>
+                    <a class="d-block" href="">Ë®ªÂÜäÊúÉÂì°</a>
+                    <a class="d-block" href="">ËàâËæ¶Ê¥ªÂãï</a>
+                    <a class="d-block" href="">Â∏∏Ë¶ãÂïèÈ°å</a>
                 </div>
                 <div class="col-3">
-                    <p class="m-0 text-white h3">•D≠n≠∂≠±</p>
-                    <a class="d-block" href="">≠∫≠∂</a>
-                    <a class="d-block" href="">¨°∞ </a>
-                    <a class="d-block" href="">Ω◊æ¬</a>
-                    <a class="d-block" href="">∞”´∞</a>
+                    <p class="m-0 text-white h3">‰∏ªË¶ÅÈ†ÅÈù¢</p>
+                    <a class="d-block" href="">È¶ñÈ†Å</a>
+                    <a class="d-block" href="">Ê¥ªÂãï</a>
+                    <a class="d-block" href="">Ë´ñÂ£á</a>
+                    <a class="d-block" href="">ÂïÜÂüé</a>
                 </div>
                 <div class="col-3"></div>
             </div>
         </div>
     </footer>
-    <!-- footerµ≤ßÙ================================================================================= -->
-    <!-- §ﬁ§J©“ª›®Á¶°Æw -->
+    <!-- footerÁµêÊùü================================================================================= -->
+    <!-- ÂºïÂÖ•ÊâÄÈúÄÂáΩÂºèÂ∫´ -->
     <script src="lib/js/bootstrap.bundle.min.js"></script>
     <script src="lib/js/popper.min.js"></script>
     <script src="lib/vendors/jquery/jquery-3.6.4.min.js"></script>

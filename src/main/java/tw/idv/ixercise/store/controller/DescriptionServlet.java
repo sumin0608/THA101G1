@@ -36,7 +36,7 @@ public class DescriptionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		request.setCharacterEncoding("big5");
+		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("input");
 		if("確定購買".equals(name)) {
 			response.sendRedirect("Order_listV5.jsp");

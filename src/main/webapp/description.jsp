@@ -1,5 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="tw.idv.ixercise.store.dao.*,tw.idv.ixercise.store.entity.*"
+    %>
+    
+<% 
+product p = (product)session.getAttribute("P");
+
+%>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
@@ -8,11 +15,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ixercise</title>
-    <!-- ¤Þ¤Jbootstarp¸ò¦@¥Îcss¤º®e========================================= -->
+    <!-- å¼•å…¥bootstarpè·Ÿå…±ç”¨csså…§å®¹========================================= -->
     <link href="./lib/css/styles.css" rel="stylesheet" />
     <link href="./lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
-    <!-- ¤Þ¤J­¶ÅÒicon======================================================= -->
+    <!-- å¼•å…¥é ç±¤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="./lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
@@ -22,28 +29,28 @@
 
 <body>
 
-    <!-- ¥H¤U¾ÉÄý¦C=================================================================================== -->
-    <!-- ¼W¥[w-100 sticky-top -->
+    <!-- ä»¥ä¸‹å°Žè¦½åˆ—=================================================================================== -->
+    <!-- å¢žåŠ w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
         <div class=" container-fluid px-4 px-lg-0 me-4 ">
 
-            <!-- °Ó¼Ð===================================================================== -->
+            <!-- å•†æ¨™===================================================================== -->
             <a class="navbar-brand m-0 px-4" href="#!">
                 <img src="./lib/img/IX-nobackground.png" alt="" width="91" height="60">
             </a>
-            <!-- Bootstrap 5 ªº Navbar Toggler «ö¶s¡A¥Î©ó¦b¤â¾÷©M¥­ªOµ¥¸û¤p¿Ã¹õ¤W¡AÂIÀ»«ö¶s®É¤Á´«¾ÉÄý¦Cªº®i¶}©M¦¬ÁYª¬ºA¡C -->
+            <!-- Bootstrap 5 çš„ Navbar Toggler æŒ‰éˆ•ï¼Œç”¨æ–¼åœ¨æ‰‹æ©Ÿå’Œå¹³æ¿ç­‰è¼ƒå°èž¢å¹•ä¸Šï¼Œé»žæ“ŠæŒ‰éˆ•æ™‚åˆ‡æ›å°Žè¦½åˆ—çš„å±•é–‹å’Œæ”¶ç¸®ç‹€æ…‹ã€‚ -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-            <!-- °Ó¼Ðªº¥kÃä¾ã±ø============================================================ -->
+            <!-- å•†æ¨™çš„å³é‚Šæ•´æ¢============================================================ -->
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
                 <ul class="navbar-nav mb-2 mb-lg-0 w-100">
-                    <!-- ·j´MÄæ=============================================================== -->
+                    <!-- æœå°‹æ¬„=============================================================== -->
                     <!-- <li class="nav-item my-auto">
                         <form class="d-flex">
-                            <input class="form-control" type="search" placeholder="§ä¬¡°Ê..." aria-label="Search">
+                            <input class="form-control" type="search" placeholder="æ‰¾æ´»å‹•..." aria-label="Search">
                             <button class="btn border border-2 border-dark" type="submit">Search</button>
                         </form>
                     </li> -->
@@ -52,7 +59,7 @@
                         <form class="d-flex row">
                             <div class="row" style="width: 400px; max-width: 400px;">
                                 <div class="col-8 pe-0">
-                                    <input class="form-control" id="searchbar" type="search" placeholder="·j´M..."
+                                    <input class="form-control" id="searchbar" type="search" placeholder="æœå°‹..."
                                         aria-label="Search" role="button">
                                     </input>
                                 </div>
@@ -72,16 +79,16 @@
                                             <!-- <label for=""></label> -->
                                             <select class="form-select form-select-sm col-3 mb-3"
                                                 aria-label="Default select example">
-                                                <option selected>­¶­± </option>
-                                                <option value="1">°Ó«°</option>
-                                                <option value="2">½×¾Â</option>
-                                                <option value="3">¬¡°Ê</option>
+                                                <option selected>é é¢ </option>
+                                                <option value="1">å•†åŸŽ</option>
+                                                <option value="2">è«–å£‡</option>
+                                                <option value="3">æ´»å‹•</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>¹B°ÊÃþ«¬ </option>
+                                                <option selected>é‹å‹•é¡žåž‹ </option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -90,7 +97,7 @@
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>¦U¦Û³]©w </option>
+                                                <option selected>å„è‡ªè¨­å®š </option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -99,7 +106,7 @@
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>¦U¦Û³]©w </option>
+                                                <option selected>å„è‡ªè¨­å®š </option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -108,12 +115,12 @@
                                         <div class="row">
                                             <!-- <div class="col-9"></div> -->
                                             <div class="col-12 ">
-                                                <!-- <button class="btn btn-primary" type="submit"> ¬d¸ß
+                                                <!-- <button class="btn btn-primary" type="submit"> æŸ¥è©¢
                                             </button> -->
                                                 <button class="btn btn-primary" type="button"
-                                                    id="btn-close-search">Ãö³¬</button>
+                                                    id="btn-close-search">é—œé–‰</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">­«¸m</button>
+                                                    id="btn-close-search">é‡ç½®</button>
                                             </div>
                                         </div>
                                     </div>
@@ -125,30 +132,30 @@
                     </div> -->
 
 
-                    <!-- ¿ì¬¡°Ê============================================================= -->
+                    <!-- è¾¦æ´»å‹•============================================================= -->
                     <li class="nav-item fs-5 ms-auto my-auto">
-                        <a class="nav-link active h-100 " aria-current="page" href="#!">¿ì¬¡°Ê
+                        <a class="nav-link active h-100 " aria-current="page" href="#!">è¾¦æ´»å‹•
                         </a>
                     </li>
-                    <!-- ¨ä¥L¥D­¶  ========================================================== -->
+                    <!-- å…¶ä»–ä¸»é   ========================================================== -->
                     <li class="nav-item fs-5 dropdown my-auto">
                         <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">¨ä¥L¥D­¶
+                            data-bs-toggle="dropdown" aria-expanded="false">å…¶ä»–ä¸»é 
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">­º­¶</a></li>
+                            <li><a class="dropdown-item" href="#!">é¦–é </a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="#!">°Ó«°</a></li>
-                            <li><a class="dropdown-item" href="#!">½×¾Â</a></li>
-                            <li><a class="dropdown-item" href="#!">¬¡°Ê</a></li>
-                            <li><a class="dropdown-item" href="#!">½Òµ{</a></li>
+                            <li><a class="dropdown-item" href="#!">å•†åŸŽ</a></li>
+                            <li><a class="dropdown-item" href="#!">è«–å£‡</a></li>
+                            <li><a class="dropdown-item" href="#!">æ´»å‹•</a></li>
+                            <li><a class="dropdown-item" href="#!">èª²ç¨‹</a></li>
                         </ul>
                     </li>
-                    <!-- ¹aÅL============================================================= -->
-                    <!-- ÁÙ¦³¤@Áû¶ñº¡ªºbi-bell-fill -->
-                    <!-- ¾Þ±±.n-dot¨Ó±±¨î¦³µL¬õÂI -->
+                    <!-- éˆ´éº============================================================= -->
+                    <!-- é‚„æœ‰ä¸€é¡†å¡«æ»¿çš„bi-bell-fill -->
+                    <!-- æ“æŽ§.n-dotä¾†æŽ§åˆ¶æœ‰ç„¡ç´…é»ž -->
                     <li class="nav-item dropdown my-auto">
                         <div class="n-dot"></div>
                         <svg width="36" height="36" fill="currentColor"
@@ -158,7 +165,7 @@
                                 d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
                         </svg>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                            <!-- ¤@±ø³qª¾====================================================== -->
+                            <!-- ä¸€æ¢é€šçŸ¥====================================================== -->
 
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
@@ -201,7 +208,7 @@
                         </ul>
                     </li>
 
-                    <!-- ·|­ûÀY¹³========================================================= -->
+                    <!-- æœƒå“¡é ­åƒ========================================================= -->
                     <li class="nav-item dropdown mx-2 my-auto">
                         <img src="https://picsum.photos/300/200/?random=10"
                             class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
@@ -215,41 +222,41 @@
                                     src="https://picsum.photos/200/200/?random=10" width="150" height="150">
                             </li>
                             <li>
-                                <span class="dropdown-item-text justify-content-center d-flex fs-5">¦W¦r</span>
+                                <span class="dropdown-item-text justify-content-center d-flex fs-5">åå­—</span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">¬d¬Ý­Ó¤H¸ê®Æ</a>
+                                <a class="dropdown-item" href="#!">æŸ¥çœ‹å€‹äººè³‡æ–™</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">²á¤Ñ¦Cªí</a>
+                                <a class="dropdown-item" href="#!">èŠå¤©åˆ—è¡¨</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">¬¡°ÊºÞ²z</a>
+                                <a class="dropdown-item" href="#!">æ´»å‹•ç®¡ç†</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">½Òµ{ºÞ²z</a>
+                                <a class="dropdown-item" href="#!">èª²ç¨‹ç®¡ç†</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <!-- ÁÊª«¨®ªº«ö¶s============================================================= -->
+                <!-- è³¼ç‰©è»Šçš„æŒ‰éˆ•============================================================= -->
                 <form class="d-flex">
                     <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-                        <!-- ³o­Ó¨®¨®§ïclass¬°bi-cartªº¸Ü ´N·|ÅÜ¦¨ªÅ¨® -->
+                        <!-- é€™å€‹è»Šè»Šæ”¹classç‚ºbi-cartçš„è©± å°±æœƒè®Šæˆç©ºè»Š -->
                         <i class="bi-cart-fill me-1"></i>
-                        ÁÊª«¨®
+                        è³¼ç‰©è»Š
                         <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
                     </button>
                 </form>
             </div>
         </div>
     </nav>
-    <!-- ¾ÉÄý¦Cµ²§ô=================================================================================== -->
+    <!-- å°Žè¦½åˆ—çµæŸ=================================================================================== -->
 
-    <!-- ³o¸Ì¤j·§¬O©ñ¼s§i -->
+    <!-- é€™è£¡å¤§æ¦‚æ˜¯æ”¾å»£å‘Š -->
     <!-- Header====================================================================================== -->
     <!-- <header>
         <div class="container-fluid p-0">
@@ -290,28 +297,31 @@
 
     <!-- main-content -->
     <div class="container main-content">
-        <!-- ½Ð¦b³o¸Ì§@·~ -->
+        <!-- è«‹åœ¨é€™è£¡ä½œæ¥­ -->
         <div class="row">
             <div class="col-12">
 		         <div style="border-color:gray;border-width:1px;border-style:solid;padding:5px; margin-top:20px;">
 				     <table class="table">
 						  <thead>
 						    <tr>
-						      <img class="card-img-top" src="lib/img/basketball01.jpg" alt="..." />
-						      <th>°Ó«~»¡©ú</th> 
+						      <img class="card-img-top" src="lib/img/<%=p.getPicture()%>" alt="..." />
+						      <th>å•†å“èªªæ˜Ž</th> 
 						      <td></td>
 						      
 						      
 						    </tr>
 						  </thead>
 						  <tbody>
+						  	<tr>
+						        <td><h5 style="color:red;"><%=p.getProductName() %></h5></td>
+						    </tr>
 						    <tr>
-						        <td><p>³o´Ú°ª«~½èÄx²y¬O±M¬°Äx²y·R¦nªÌ©M¹B°Ê­û¦Ó³]­pªº³»¯Å¹B°Ê¥Î«~¡C¥¦µ²¦X¤FÀu²§ªº©Ê¯à¡B­@¥Î©Ê©MµÎ¾A·P¡AÅý±z¦b²y³õ¤Wµo´§¥X³Ì¨Îªí²{¡C ¯S¦â©MÀu¶Õ¡G Àu²§ªº©Ê¯à¡G³o­ÓÄx²y±Ä¥Î¤F³Ì·sªº§Þ³N©M§÷®Æ¡A½T«O¥X¦âªº©Ê¯à¡C¥¦¨ã¦³Àu¶Vªº¼u©Ê©M¤Ï¼u¤O¡AÅý±z¦b§ëÄx¡B¹B²y©M¶Ç²y®É·P¨ü¨ìºë·Ç«×©M±±²y¤Oªº´£¤É¡C ­@¥Î©Ê¡G§Ú­Ì¨Ï¥Î°ª«~½èªº¦X¦¨¥Ö­²»s§@³o­ÓÄx²y¡A¥H½T«O¨ä­@¥Î©Ê©Mªø´Á¨Ï¥Îªº¥i¾a©Ê¡C³oºØ§÷®Æ¨ã¦³§Ü¿i·l©M­@¥Îªº¯S©Ê¡A¥i¥H©Ó¨üªø®É¶¡ªº¨Ï¥Î©M¦UºØ¦a­±±ø¥ó¡C µÎ¾A·P¡GÄx²yªºªí­±¸g¹L¯S®í³B²z¡A¨ã¦³µÎ¾AªºÄ²·P©M¨}¦nªº´¤²y©Ê¯à¡CµL½×±z¬O¶i¦æªø®É¶¡ªº°V½mÁÙ¬O¤ñÁÉ¡A³o­ÓÄx²y³£¯à¬°±z´£¨ÑµÎ¾Aªº¤â·P¡A´î¤Ö¤â³¡¯h³Ò©M¤£¾A¡C ¾A¦X¦UºØ³õ¦a¡G³o­ÓÄx²y¾A¥Î©ó«Ç¤º©M«Ç¥~³õ¦a¡AµL½×±z¦b«Ç¤º²y³õ¡B¤á¥~²y³õÁÙ¬OµóÀY¹B°Ê³õ¤W¶i¦æ¤ñÁÉ¡A³£¯àµo´§¥X¦âªºªí²{¡C¥¦¨ã¦³¨}¦nªº±±²y©Ê¯à©M§Ü·Æ©Ê¡A¬°±z´£¨ÑÃ­©wªº²y³õ¾Þ§@¡C ±M·~¯Å¼Ð·Ç¡G³o´ÚÄx²y²Å¦X°ê»ÚÄx²y¨ó·|¡]FIBA¡^ªº¼Ð·Ç¤Ø¤o©M­«¶q¡A¬O°V½m©M¤ñÁÉªº²z·Q¿ï¾Ü¡C¥¦¸g¹LÄY®æ´ú¸Õ¡A½T«O½è¶q©M©Ê¯à¹F¨ì³Ì°ª¼Ð·Ç¡AÅý±z¦b¤ñÁÉ¤¤Àò±o¤½¥­ªºÄvª§¾÷·|¡C ÁÊ¶R³o´Ú°ª«~½èÄx²y¡A±z±NÀò±o¤@­Ó«ù¤[­@¥Î¡B©Ê¯à¨ô¶Vªº¹B°Ê¦ñ«Q¡CµL½×±z¬O·~¾l·R¦nªÌÁÙ¬OÂ¾·~²y­û¡A³o­ÓÄx²y³£¯àº¡¨¬±zªº»Ý¨D</p></td>
+						        <td><p><%=p.getComment() %></p></td>
 						    </tr>
 						    <tr>
 							    <td align="center">
 							    	<form action="DescriptionServlet" method="post">
-							      		<input name="input" class="btn btn-outline-dark d-flex text-nowrap" type="submit" value="½T©wÁÊ¶R">
+							      		<input name="input" class="btn btn-outline-dark d-flex text-nowrap" type="submit" value="ç¢ºå®šè³¼è²·">
 			                        </form>
 	                    		</td>
 						    </tr>
@@ -326,34 +336,34 @@
     
 
 
-    <!-- ¥H¤Ufooter================================================================================= -->
+    <!-- ä»¥ä¸‹footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <p class="m-0 text-white h3">«ÈªA¤¤¤ß</p>
+                    <p class="m-0 text-white h3">å®¢æœä¸­å¿ƒ</p>
                     <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
                     <p class="m-0 text-white">Tel: 02-2712-0589</p>
                 </div>
                 <div class="col-3">
-                    <p class="m-0 text-white h3">§Ö³t¨Ï¥Î</p>
-                    <a class="d-block" href="">µù¥U·|­û</a>
-                    <a class="d-block" href="">Á|¿ì¬¡°Ê</a>
-                    <a class="d-block" href="">±`¨£°ÝÃD</a>
+                    <p class="m-0 text-white h3">å¿«é€Ÿä½¿ç”¨</p>
+                    <a class="d-block" href="">è¨»å†Šæœƒå“¡</a>
+                    <a class="d-block" href="">èˆ‰è¾¦æ´»å‹•</a>
+                    <a class="d-block" href="">å¸¸è¦‹å•é¡Œ</a>
                 </div>
                 <div class="col-3">
-                    <p class="m-0 text-white h3">¥D­n­¶­±</p>
-                    <a class="d-block" href="">­º­¶</a>
-                    <a class="d-block" href="">¬¡°Ê</a>
-                    <a class="d-block" href="">½×¾Â</a>
-                    <a class="d-block" href="">°Ó«°</a>
+                    <p class="m-0 text-white h3">ä¸»è¦é é¢</p>
+                    <a class="d-block" href="">é¦–é </a>
+                    <a class="d-block" href="">æ´»å‹•</a>
+                    <a class="d-block" href="">è«–å£‡</a>
+                    <a class="d-block" href="">å•†åŸŽ</a>
                 </div>
                 <div class="col-3"></div>
             </div>
         </div>
     </footer>
-    <!-- footerµ²§ô================================================================================= -->
-    <!-- ¤Þ¤J©Ò»Ý¨ç¦¡®w -->
+    <!-- footerçµæŸ================================================================================= -->
+    <!-- å¼•å…¥æ‰€éœ€å‡½å¼åº« -->
     <script src="./lib/js/bootstrap.bundle.min.js"></script>
     <script src="./lib/js/popper.min.js"></script>
     <script src="./lib/vendors/jquery/jquery-3.6.4.min.js"></script>

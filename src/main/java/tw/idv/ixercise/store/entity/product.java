@@ -1,90 +1,86 @@
 package tw.idv.ixercise.store.entity;
 
 public class product {
-		private Integer product_no;
-		private Integer product_type_no;
-		private String product_name;
-		private Integer price;
-		private Integer product_storage;
-		private String description;
-		private Integer total_comment;
-		private double product_star;
-		private String product_photo;
-		
-		
-		public product() {}
-		
-		
-		
-		public product(Integer product_type_no, String product_name, Integer price, Integer product_storage,
-				String description, Integer total_comment, double product_star, String product_photo) {
-			super();
-			this.product_type_no = product_type_no;
-			this.product_name = product_name;
-			this.price = price;
-			this.product_storage = product_storage;
-			this.description = description;
-			this.total_comment = total_comment;
-			this.product_star = product_star;
-			this.product_photo = product_photo;
-		}
+	private Integer id;
+	private String productNo;
+	private String productName;
+	private String picture;
+	private Integer price;
+	private Integer amount;
+	private String comment;
+	
+	public product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public product(Integer id, String productNo, String productName, String picture, Integer price, Integer amount, String comment) {
+		super();
+		this.id = id;
+		this.productNo = productNo;
+		this.productName = productName;
+		this.picture = picture;
+		this.price = price;
+		this.amount = amount;
+		this.comment = comment;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
 
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
-		public Integer getProduct_no() {
-			return product_no;
-		}
-		public void setProduct_no(Integer product_no) {
-			this.product_no = product_no;
-		}
-		public Integer getProduct_type_no() {
-			return product_type_no;
-		}
-		public void setProduct_type_no(Integer product_type_no) {
-			this.product_type_no = product_type_no;
-		}
-		public String getProduct_name() {
-			return product_name;
-		}
-		public void setProduct_name(String product_name) {
-			this.product_name = product_name;
-		}
-		public Integer getPrice() {
-			return price;
-		}
-		public void setPrice(Integer price) {
-			this.price = price;
-		}
-		public Integer getProduct_storage() {
-			return product_storage;
-		}
-		public void setProduct_storage(Integer product_storage) {
-			this.product_storage = product_storage;
-		}
-		public String getDescription() {
-			return description;
-		}
-		public void setDescription(String description) {
-			this.description = description;
-		}
-		public Integer getTotal_comment() {
-			return total_comment;
-		}
-		public void setTotal_comment(Integer total_comment) {
-			this.total_comment = total_comment;
-		}
-		public double getProduct_star() {
-			return product_star;
-		}
-		public void setProduct_star(double product_star) {
-			this.product_star = product_star;
-		}
-		public String getProduct_photo() {
-			return product_photo;
-		}
+	public Integer getId() {
+		return id;
+	}
 
-		public void setProduct_photo(String product_photo) {
-			this.product_photo = product_photo;
-		}
-		
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getProductNo() {
+		return productNo;
+	}
+
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+
+	
+	
 }

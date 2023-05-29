@@ -1,6 +1,8 @@
 package tw.idv.ixercise.store.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import tw.idv.ixercise.store.dao.implProduct;
+import tw.idv.ixercise.store.entity.product;
 
 
 
@@ -50,12 +55,21 @@ public class BuyButtonServlet extends HttpServlet {
 		//session.setAttribute("P", p);
 			
 			
-		request.setCharacterEncoding("big5");	
+		request.setCharacterEncoding("UTF-8");	
 		String name = request.getParameter("input");
-		
+		String productName = request.getParameter("productName");
+		product p = new implProduct().query(productName);
+		HttpSession session = request.getSession();
 		if("購買".equals(name)) {
-			response.sendRedirect("description.jsp");
+			if(p!=null) {
+				session.setAttribute("P", p);
+				response.sendRedirect("description.jsp");
+			}else {
+				PrintWriter out = response.getWriter();
+				out.println("<h1>無此商品</h1>");
+			}
 		}else if("加入購物車".equals(name)) {
+			
 			response.sendRedirect("Cart.jsp");
 		}
 		
