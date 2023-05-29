@@ -1,5 +1,6 @@
 package tw.idv.ixercise.account.entity;
 
+import java.sql.Date;
 import java.util.Arrays;
 
 import javax.persistence.*;
@@ -40,11 +41,11 @@ public class Account extends Core {
 
 	private String accountName;
 
-	private String accountBirthday;
+	private Date accountBirthday;
 	@Column(insertable = false)
-	private String accountCreatetime;
+	private Date accountCreatetime;
 	@Column(insertable = false)
-	private String accountUpdatetime;
+	private Date accountUpdatetime;
 
 	private Integer accountGender;
 
@@ -72,49 +73,6 @@ public class Account extends Core {
 				+ accountVerify + "]";
 	}
 	
-	
-	
-	
-	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "accountId")
-//	private Integer accountId;
-//	@Column
-//	private String accountPhone;
-//	@Column
-//	private String accountPassword;
-//	@Column
-//	private String accountEmail;
-//	@Column
-//	private String accountNickname;
-//	@Column
-//	private Integer accountLevel;
-//	@Column
-//	private Integer accountState;
-//	@Column
-//	private String accountAddress;
-//	@Column
-//	private String accountName;
-//	@Column
-//	private String accountBirthday;
-//	@Column
-//	private String accountCreatetime;
-//	@Column
-//	private String accountUpdatetime;
-//	@Column
-//	private Integer accountGender;
-//	@Column
-//	private byte[] accountPhoto;
-//	@Column
-//	private byte[] accountIdoc;
-//	@Column
-//	private String accountIntro;
-//	@Column
-//	private Integer accountReport;
-//	@Column
-//	private String accountBank;
-//	@Column
-//	private String accountVerify;
+
 
 }

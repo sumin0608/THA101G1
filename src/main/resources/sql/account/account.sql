@@ -23,26 +23,26 @@ DROP TABLE IF EXISTS `account`;
 
 #建立account資料表
 CREATE TABLE `account` (
-  `account_Id` int NOT NULL AUTO_INCREMENT,
-  `account_Phone` varchar(10) DEFAULT NULL,
-  `account_Password` varchar(100) DEFAULT NULL,
-  `account_Email` varchar(100) DEFAULT NULL,
-  `account_Nickname` varchar(50) DEFAULT NULL,
-  `account_Level` int DEFAULT NULL,
-  `account_State` int DEFAULT NULL,
-  `account_Address` varchar(100) DEFAULT NULL,
-  `account_Name` varchar(100) DEFAULT NULL,
-  `account_Birthday` Date DEFAULT NULL,
-  `account_Createtime` timestamp DEFAULT current_timestamp,
-  `account_Updatetime` timestamp DEFAULT current_timestamp,
-  `account_Gender` int DEFAULT NULL,
-  `account_Photo` longblob DEFAULT NULL,
-  `account_Idoc` longblob DEFAULT NULL,
-  `account_Intro` text DEFAULT NULL,
-  `account_Report` int DEFAULT NULL,
-  `account_Bank` varchar(100) DEFAULT NULL,
-  `account_Verify` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`account_Id`)
+  `accountId` int NOT NULL AUTO_INCREMENT,
+  `accountPhone` varchar(10) DEFAULT NULL,
+  `accountPassword` varchar(100) DEFAULT NULL,
+  `accountEmail` varchar(100) DEFAULT NULL,
+  `accountNickname` varchar(50) DEFAULT NULL,
+  `accountLevel` int DEFAULT NULL,
+  `accountState` int DEFAULT NULL,
+  `accountAddress` varchar(100) DEFAULT NULL,
+  `accountName` varchar(100) DEFAULT NULL,
+  `accountBirthday` Date DEFAULT NULL,
+  `accountCreatetime` timestamp DEFAULT current_timestamp,
+  `accountUpdatetime` timestamp DEFAULT current_timestamp,
+  `accountGender` int DEFAULT NULL,
+  `accountPhoto` longblob DEFAULT NULL,
+  `accountIdoc` longblob DEFAULT NULL,
+  `accountIntro` text DEFAULT NULL,
+  `accountReport` int DEFAULT NULL,
+  `accountBank` varchar(100) DEFAULT NULL,
+  `accountVerify` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`accountId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='會員資料表';
 
 
@@ -50,23 +50,23 @@ CREATE TABLE `account` (
 
 #建立資料account
 INSERT INTO `THA101G1`.`account`
-(`account_Id`,
-`account_Phone`,
-`account_Password`,
-`account_Email`,
-`account_Nickname`,
-`account_Level`,
-`account_State`,
-`account_Address`,
-`account_Name`,
-`account_Birthday`,
-`account_Createtime`,
-`account_Updatetime`,
-`account_Gender`,
-`account_Intro`,
-`account_Report`,
-`account_Bank`,
-`account_Verify`)
+(`accountId`,
+`accountPhone`,
+`accountPassword`,
+`accountEmail`,
+`accountNickname`,
+`accountLevel`,
+`accountState`,
+`accountAddress`,
+`accountName`,
+`accountBirthday`,
+`accountCreatetime`,
+`accountUpdatetime`,
+`accountGender`,
+`accountIntro`,
+`accountReport`,
+`accountBank`,
+`accountVerify`)
 VALUES
 (1,'0983811530','12345678','seanuaena0608@gmail.com','sumin',1,1,'10488台北市中山區南京東路三段219號5樓','蘇軒民','1994-05-30',current_timestamp(),current_timestamp(),1,'你好我不太好',0,'123456789bank','12345');
 

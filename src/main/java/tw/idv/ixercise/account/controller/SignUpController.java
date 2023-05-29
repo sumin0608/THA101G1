@@ -20,13 +20,7 @@ public class SignUpController {
             account.setSuccessful(false);
             return account;
         }
-        System.out.println(service.signup(account));
-        return service.signup(account);
+        System.out.println(service.signUp(account));
+        return service.signUp(account);
     }
-//    @PostMapping
-//    public String signup(@RequestBody Account account) {
-//        System.out.println("get in controller");
-//
-//        return account.toString();
-//    }
 }

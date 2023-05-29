@@ -521,56 +521,6 @@
         //     // let accountVerify = $("#accountVerify")
 
 
-
-
-        //     // ================================
-        //     console.log(accountPhone.val());
-        //     console.log(accountPassword.val());
-        //     console.log(accountEmail.val());
-        //     console.log(accountNickname.val());
-        //     console.log(locationcity.val());
-        //     console.log(accountAddress.val());
-        //     console.log(accountName.val());
-        //     console.log(accountBirthday.val());
-        //     console.log(accountGender.val());
-        //     console.log(accountPhoto.val());
-        //     console.log(accountIntro.val());
-
-        //     // $(ajax)({
-        //     //     url: 'http://localhost:8080/ixercise/Account/SignUp',
-        //     //     type: 'POST',
-        //     //     date:
-
-        //     // })
-        // })
-        // ================================================================================
-
-        // const btn1 = document.querySelector('#btn1');
-        // const msg = document.querySelector('#msg');
-        // const username = document.querySelector('#username');
-        // const password = document.querySelector('#password');
-        // const confirmPassword = document.querySelector('#confirmPassword');
-        // const nickname = document.querySelector('#nickname');
-        // const inputs = document.querySelectorAll('input');
-        // const image = document.querySelector('#image');
-        // (() => {
-
-
-
-
-
-        // fileReader.readAsBinaryString(image.files[0]);
-        // });
-
-
-        // });
-        // console.log("789")
-        // const fileReader = new FileReader();
-        // fileReader.addEventListener('load', function (e) {
-        //     const imageBase64 = btoa(e.target.result);
-        //     console.log("換圖");
-        // });
-
         window.addEventListener("load", function (e) {
             const msg = $("#msg");
             // let accountId = $("#accountId")
@@ -690,6 +640,19 @@
                 // fileReader.addEventListener('load', function (e) {
                 //     const imageBase64 = btoa(e.target.result);
                 //     console.log("load");
+
+                console.log(
+                    "accountPhone:" + accountPhone.val(),
+                    "accountPassword:" + accountPassword.val(),
+                    "accountEmailL:" + accountEmail.val(),
+                    "accountNickname:" + accountNickname.val(),
+                    "accountAddress:" + accountAdd,
+                    "accountName:" + accountName.val(),
+                    "accountBirthday:" + accountBirthday.val(),
+                    "accountGender:" + accountGender.val(),
+                    "accountPhoto:" + imageBase64,
+                    "accountIntro:" + accountIntro.val());
+
                 fetch('http://localhost:8080/ixercise/Account/SignUp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -697,7 +660,7 @@
 
                         accountPhone: accountPhone.val(),
                         accountPassword: accountPassword.val(),
-                        accountEmailL: accountEmail.val(),
+                        accountEmail: accountEmail.val(),
                         accountNickname: accountNickname.val(),
                         accountAddress: accountAdd,
                         accountName: accountName.val(),

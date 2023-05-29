@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface AccountService {
 
-    Account signup(Account account);
-    boolean save(Account account);
+    Account signUp(Account account);
+    Account login(Account account);
+//    boolean save(Account account);
     List<Account> findAll();
+    Account edit(Account account);
 }
