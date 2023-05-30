@@ -29,9 +29,9 @@ public class Report {
 	   @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
      	private Integer reportId;
-		private Integer MemberId;
+		private Integer memberId;
 	    private Integer reportType;
-	    private Integer articleId;
+	    private Integer memberId2;
 	    private Time reportTime;
 	    private String reportReason;
 	    private Integer reportStatus;
@@ -39,10 +39,15 @@ public class Report {
 	    
 	    @Override
 	    public String toString() {
-	    	return "Report [reportId=" + reportId + ", MemberId=" + MemberId + ", reportType=" + reportType + ", articleId="
-	    			+ articleId + ", reportTime=" + reportTime + ", reportReason=" + reportReason + ", reportStatus="
+	    	return "Report [reportId=" + reportId + ", MemberId=" + memberId + ", reportType=" + reportType + ", articleId="
+	    			+ memberId2 + ", reportTime=" + reportTime + ", reportReason=" + reportReason + ", reportStatus="
 	    			+ reportStatus + ", reportPicture=" + Arrays.toString(reportPicture) + "]";
 	    }
+
+	
+	    
+	    
+	    
 	    
 		
 		
