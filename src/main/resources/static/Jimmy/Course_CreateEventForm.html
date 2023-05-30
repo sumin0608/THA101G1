@@ -819,7 +819,7 @@
                             for (let i = 0; i < resp.length; i++) {
                                 tableData += `<option selected disabled value="">${resp[i].name}</option>`;
                             }
-                            $("#district").append(tableData);
+                            $("#district").empty().append(tableData);
                         },
                         error: function (xhr, status, error) {
                             alert("Error: " + xhr.responseText);
@@ -870,7 +870,7 @@
 
                     let district = $("#district").val();
                     let detailedAddress = $("#address").val();
-                    let categoryId = $("#categoryId").val();
+                    let categoryId = $("#categoryId option:selected").text();
 
                     let courseStatus = $("#courseStatus").val();
                     let paidAdvertising = $("#paidAdvertising").val();
@@ -944,7 +944,7 @@
                         $('#description').siblings('.invalid-feedback').show();
                         return;
                     }
-
+                    // 检查是否有有填欄位--結束
                     $.ajax({
                         url: "/ixercise/course/upload-photo",
                         type: 'POST',
