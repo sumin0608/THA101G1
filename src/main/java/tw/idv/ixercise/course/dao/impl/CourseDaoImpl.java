@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import tw.idv.ixercise.course.dao.CourseDao;
 import tw.idv.ixercise.course.entity.Course;
+import tw.idv.ixercise.course.entity.DistrictsDto;
 
 @Repository
 public class CourseDaoImpl implements CourseDao {
@@ -32,40 +33,48 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public int upateByCourseId(Course course) {
 		final StringBuilder hql = new StringBuilder().append("UPDATE course SET ");
-	
-		hql.append("eventName = :eventName,")
-			.append("expectedPrice = :expectedPrice,")
-			.append("courseStartDate = :courseStartDate,")
-			.append("courseStartTime = :courseStartTime,")
-			.append("courseDuration = :courseDuration,")
-			.append("registrationDeadline = :registrationDeadline,")
-			.append("maximumCapacity = :maximumCapacity,")
-			.append("description = :description,")
-			.append("photo = :photo,")
-			.append("location = :location,")
-			.append("city = :city,")
-			.append("district = :district,")
-			.append("detailedAddress = :detailedAddress,")
-			.append("district = :district,")
-			.append("categoryId = :categoryId,")
-			.append("courseStatus = :courseStatus,")
-			.append("paidAdvertising = :paidAdvertising,")
-			.append("paidAdvertisingTime = :paidAdvertisingTime,")
-			.append("lastUpdatedDate = NOW() ")
-			.append("WHERE courseId = :courseId");
+
+		hql.append("eventName = :eventName,").append("expectedPrice = :expectedPrice,")
+				.append("courseStartDate = :courseStartDate,").append("courseStartTime = :courseStartTime,")
+				.append("courseDuration = :courseDuration,").append("registrationDeadline = :registrationDeadline,")
+				.append("maximumCapacity = :maximumCapacity,").append("description = :description,");
+		if (course.getPhoto() != null) {
+			hql.append("photo = :photo,");
+		}
+		hql.append("location = :location,").append("city = :city,").append("district = :district,")
+				.append("detailedAddress = :detailedAddress,").append("categoryId = :categoryId,")
+				.append("courseStatus = :courseStatus,")
+				.append("paidAdvertising = :paidAdvertising,")
+				.append("paidAdvertisingTime = :paidAdvertisingTime,")
+				.append("courseCreationDate = NOW() ").append("WHERE courseId = :courseId");
+		
 		Query query = session.createQuery(hql.toString());
-	
-//		return query.setParameter("nickname", member.getNickname())
-//				.setParameter("pass", member.getPass())
-//				.setParameter("roleId", member.getRoleId())
-//				.setParameter("updater", member.getUpdater())
-//				.setParameter("username", member.getUsername())
-//				.executeUpdate();
-		return 0;
+		query.setParameter("eventName", course.getEventName())
+			.setParameter("expectedPrice", course.getExpectedPrice())
+			.setParameter("courseStartDate", course.getCourseStartDate())
+			.setParameter("courseStartTime", course.getCourseStartTime())
+			.setParameter("courseDuration", course.getCourseDuration())
+			.setParameter("maximumCapacity", course.getMaximumCapacity());
+		
+		if (course.getPhoto() != null) {
+			query.setParameter("photo", course.getPhoto());
+		}
+		
+		query.setParameter("location", course.getLocation())
+			.setParameter("city", course.getCity())
+			.setParameter("district", course.getDistrict())
+			.setParameter("district", course.getDistrict())
+			.setParameter("detailedAddress", course.getDetailedAddress())
+			.setParameter("courseStatus", course.getCourseStatus())
+			.setParameter("paidAdvertising", course.getPaidAdvertising())
+			.setParameter("paidAdvertisingTime", course.getPaidAdvertisingTime())
+			.setParameter("courseId", course.getCourseId());
+
+		return query.executeUpdate();
 	}
 
 	@Override
-	public List<Course> selectByName(String eventName) { 
+	public List<Course> selectByName(String eventName) {
 		String sql = "SELECT * FROM course WHERE eventName = :eventName";
 		return session.createNativeQuery(sql, Course.class).setParameter("eventName", eventName).getResultList();
 	}
@@ -73,7 +82,7 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public Course selectByCourseId(Integer cocurseId) {
 		String sql = "SELECT * FROM course WHERE cocurseID = :cocurseId";
-		return session.createNativeQuery(sql,Course.class).setParameter("cocurseId", cocurseId).uniqueResult();
+		return session.createNativeQuery(sql, Course.class).setParameter("cocurseId", cocurseId).uniqueResult();
 	}
 
 	@Override
@@ -98,6 +107,14 @@ public class CourseDaoImpl implements CourseDao {
 	public List<Course> selectAll() {
 		final String sql = "SELECT * FROM course";
 		return session.createNativeQuery(sql, Course.class).getResultList();
+	}
+
+	@Override
+	public List<DistrictsDto> getDistricts(String city) {
+		final String sql = "SELECT * FROM districts WHERE id LIKE :cityPrefix";
+	    return session.createNativeQuery(sql, DistrictsDto.class)
+	            	.setParameter("cityPrefix", city + "%")
+	            	.getResultList();
 	}
 
 }
