@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import tw.idv.ixercise.course.dao.CourseDao;
 import tw.idv.ixercise.course.entity.Course;
+import tw.idv.ixercise.course.entity.DistrictsDto;
 
 @Repository
 public class CourseDaoImpl implements CourseDao {
@@ -109,9 +110,9 @@ public class CourseDaoImpl implements CourseDao {
 	}
 
 	@Override
-	public List<Object[]> getDistricts(Integer city) {
-		final String sql = "SELECT id, name FROM districts WHERE id LIKE :cityPrefix";
-	    return session.createNativeQuery(sql, Object[].class)
+	public List<DistrictsDto> getDistricts(String city) {
+		final String sql = "SELECT * FROM districts WHERE id LIKE :cityPrefix";
+	    return session.createNativeQuery(sql, DistrictsDto.class)
 	            	.setParameter("cityPrefix", city + "%")
 	            	.getResultList();
 	}

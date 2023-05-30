@@ -810,14 +810,14 @@
                     var city = $("#city").val();
                     console.log("city: " + city)
                     $.ajax({
-                        url: "/ixercise/course/districts" + city,
+                        url: "/ixercise/course/districts/" + city,
                         type: "GET",
                         contentType: 'application/json',
                         success: function (resp) {
                             console.log("resp>>" + resp);
                             let tableData = '';
                             for (let i = 0; i < resp.length; i++) {
-                                tableData += ` <option selected disabled value="">${resp[i].name}</option>`;
+                                tableData += `<option selected disabled value="">${resp[i].name}</option>`;
                             }
                             $("#district").append(tableData);
                         },
@@ -826,7 +826,6 @@
                         }
                     });
                 });
-
 
                 // 监听選擇照片之後
                 //let photolistener = $("#photo-dropzone");

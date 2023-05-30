@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import tw.idv.ixercise.core.Core;
 import tw.idv.ixercise.course.entity.Course;
+import tw.idv.ixercise.course.entity.DistrictsDto;
 import tw.idv.ixercise.course.service.CourseService;
 
 @RestController
@@ -112,8 +113,13 @@ public class CourseController {
 	}
 	
 	@GetMapping("/districts/{city}")
-    public List<Object[]> getDistricts(@PathVariable Integer city) {
-        List<Object[]> districts = service.getDistricts(city);
+    public List<DistrictsDto> getDistricts(@PathVariable("city") String city) {
+        List<DistrictsDto> districts = service.getDistricts(city);
+        for (DistrictsDto district : districts) {
+        	
+            System.out.println(district.getName());
+        }
+
         return districts;
     }
 	

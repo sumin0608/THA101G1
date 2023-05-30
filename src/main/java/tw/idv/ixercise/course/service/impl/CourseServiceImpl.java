@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.ixercise.course.dao.CourseDao;
 import tw.idv.ixercise.course.entity.Course;
+import tw.idv.ixercise.course.entity.DistrictsDto;
 import tw.idv.ixercise.course.service.CourseService;
 
 @Service
@@ -64,7 +65,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Object[]> getDistricts(Integer city) {
+	public List<DistrictsDto> getDistricts(String city) {
 		return dao.getDistricts(city);
 	}
 }

@@ -3,6 +3,7 @@ package tw.idv.ixercise.course.service;
 import java.util.List;
 
 import tw.idv.ixercise.course.entity.Course;
+import tw.idv.ixercise.course.entity.DistrictsDto;
 
 public interface CourseService {
 
@@ -18,6 +19,6 @@ public interface CourseService {
 
 	List<Course> findcategoryId(String categoryId);
 	
-	List<Object[]> getDistricts(Integer city);
+	List<DistrictsDto> getDistricts(String city);
 
 }
