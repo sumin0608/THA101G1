@@ -9,6 +9,7 @@
     <!-- 引入bootstarp跟共用css內容========================================= -->
     <link href="../lib/css/styles.css" rel="stylesheet" />
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="../lib/css/style_jimmy_awosomeLoading.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
@@ -393,6 +394,19 @@
         </div> -->
     </header>
     <!-- Header====================================================================================== -->
+    <!-- loading -->
+    <div class="lightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <div id="loading-element" class="la-ball-climbing-dot la-dark la-3x">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- loading -->
     <br>
     <!-- <hr> -->
     <!-- main-content -->
@@ -420,7 +434,8 @@
                                     <div class="text-left">
                                         <!-- EVENT title-->
                                         <div class="event_title">
-                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)</h5>
+                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)
+                                            </h5>
                                         </div>
                                         <!-- EVENT location -> City & Place -->
                                         <div class="mb-2 event_location">
@@ -445,7 +460,8 @@
                                         </div>
 
                                         <div class="col-8 ms-2 c-details">
-                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate">
+                                                Dawdddd0000000ddddoo
                                             </h6>
                                             <span class=" text-muted">sss</span>
                                         </div>
@@ -471,7 +487,8 @@
                                     <div class="text-left">
                                         <!-- EVENT title-->
                                         <div class="event_title">
-                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)</h5>
+                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)
+                                            </h5>
                                         </div>
                                         <!-- EVENT location -> City & Place -->
                                         <div class="mb-2 event_location">
@@ -496,7 +513,8 @@
                                         </div>
 
                                         <div class="col-8 ms-2 c-details">
-                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate">
+                                                Dawdddd0000000ddddoo
                                             </h6>
                                             <span class=" text-muted">sss</span>
                                         </div>
@@ -761,6 +779,33 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
+
+
+        // 显示加载动画和灯箱效果
+        function showLoadingAnimation() {
+            // 添加类名 "show" 到 .lightbox
+            $('.lightbox').addClass('show');
+        }
+
+        // 隐藏加载动画和灯箱效果
+        function hideLoadingAnimation() {
+            // 移除类名 "show" 从 .lightbox
+            $('.lightbox').removeClass('show');
+        }
+
+        // 示例：在发送请求之前显示加载动画和灯箱效果
+        $(document).on('ajaxStart', function () {
+            showLoadingAnimation();
+        });
+
+        // 示例：在请求完成后隐藏加载动画和灯箱效果
+        $(document).on('ajaxStop', function () {
+            // 延迟2秒后隐藏加载动画
+            setTimeout(function () {
+                hideLoadingAnimation();
+            }, 2000);
+        });
+
     </script>
 </body>
 

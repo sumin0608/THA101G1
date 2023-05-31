@@ -3,6 +3,7 @@ package tw.idv.ixercise.course.dao;
 import java.util.List;
 
 import tw.idv.ixercise.course.entity.Course;
+import tw.idv.ixercise.course.entity.DistrictsDto;
 
 public interface CourseDao {
 
@@ -23,4 +24,6 @@ public interface CourseDao {
 	public List<Course> selectByCity(String city);
 
 	public List<Course> selectByCreator(Integer creator);
+	
+	public List<DistrictsDto> getDistricts(String city);
 }
