@@ -111,10 +111,17 @@ public class CourseDaoImpl implements CourseDao {
 
 	@Override
 	public List<DistrictsDto> getDistricts(String city) {
-		final String sql = "SELECT * FROM districts WHERE id LIKE :cityPrefix";
+		final String sql = "SELECT * FROM districts WHERE city= :cityPrefix";
 	    return session.createNativeQuery(sql, DistrictsDto.class)
-	            	.setParameter("cityPrefix", city + "%")
+	            	.setParameter("cityPrefix", city)
 	            	.getResultList();
 	}
+	
+//	public List<DistrictsDto> getDistricts(String city) {
+//		final String sql = "SELECT * FROM districts WHERE id LIKE :cityPrefix";
+//	    return session.createNativeQuery(sql, DistrictsDto.class)
+//	            	.setParameter("cityPrefix", city + "%")
+//	            	.getResultList();
+//	}
 
 }

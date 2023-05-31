@@ -985,7 +985,6 @@
                     tableData2 += `               data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                     tableData2 += `        </div>`;
                     tableData2 += `        <div class="col-8 ms-2 c-details">`
-                    tableData2 += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`;
                     // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
                     // $.ajax({
                     //     url: "/ixercise/member",
@@ -1000,6 +999,7 @@
                     //         alert("Error: " + xhr.responseText);
                     //     }
                     // });
+                    tableData2 += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`;
                     tableData2 += `            <span class=" text-muted">還沒想好放什麼</span>`;
                     tableData2 += `        </div>`;
                     tableData2 += `</div>`;
