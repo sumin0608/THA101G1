@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tw.idv.ixercise.report.entity.Article;
 import tw.idv.ixercise.report.entity.Report;
 import tw.idv.ixercise.report.service.articleServiceImpl;
-import tw.idv.ixercise.report.service.reportServiceImpl;
+import tw.idv.ixercise.report.service.reportService;
 
 @Controller
 @RequestMapping("/back/")
@@ -21,7 +21,7 @@ public class reportController {
 	
 	
 	@Autowired
-	private reportServiceImpl service;
+	private reportService service;
 	
 	
 	@GetMapping({"/reportmember"})

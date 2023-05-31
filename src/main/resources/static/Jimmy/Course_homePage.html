@@ -840,7 +840,7 @@
                             tableData += `<a href="">`;
                             tableData += `<div class="photo">`
                             tableData += `<img class="card-img-top event_pic"
-                                            src="../lib/img/course/${resp[i].photo}" alt="..." />`;
+                                            src="/ixercise/lib/img/course/${resp[i].photo}" alt="..." />`;
                             tableData += `</div>`;
                             tableData += `<div class="card-body p-2">`;
                             tableData += `<div class="text-left">`;
@@ -904,19 +904,19 @@
                 console.log("city: " + city_option);
                 console.log("time: " + time_option);
                 $.ajax({
-                    url: "/ixercise/course/" + city_option,
+                    url: "/ixercise/course/",
                     type: "GET",
                     dataType: "json",
-                    success: function (resp) {
-                        console.log("resp>>" + resp);
-
-                    },
+                    success: handleDistrictsResponse,
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
                     }
                 });
             });//$('#btn_selecter_search')結束
+            function handleDistrictsResponse(resp) {
+                console.log("resp>>" + resp);
 
+            };
 
 
 
