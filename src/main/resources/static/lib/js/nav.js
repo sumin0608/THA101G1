@@ -219,7 +219,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                    <!-- 登入 註冊=========================================================================== -->\n' +
     '\n' +
     '                    <li id="loginbtn" class="nav-item dropdown mx-2 my-auto">\n' +
-    '                        <a href="Login.html" class="btn btn-primary btn-lg" tabindex="-1" role="button"\n' +
+    '                        <a href="ixercise/Account/Login.html" class="btn btn-primary btn-lg" tabindex="-1" role="button"\n' +
     '                            aria-disabled="true">登入</a>\n' +
     '                        <a href="SignUp.html" class="btn btn-primary btn-lg" tabindex="-1" role="button"\n' +
     '                            aria-disabled="true">註冊</a>\n' +
