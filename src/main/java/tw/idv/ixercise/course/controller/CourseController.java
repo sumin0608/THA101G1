@@ -72,7 +72,7 @@ public class CourseController {
 	
 	@GetMapping
 	public List<Course> findAll() {
-		System.out.println("成功查到!");
+		System.out.println("成功查到!All");
 		List<Course> courses = service.findall();
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
@@ -81,12 +81,22 @@ public class CourseController {
 	
 	@GetMapping("/{city}")
 	public List<Course> findCity(@RequestParam("city") String city) {
-		System.out.println("成功查到!");
+		System.out.println("成功查到!city");
 		List<Course> courses = service.findCity(city);
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
 		return courses;
 	}
+	
+	@GetMapping("/corseId/{corseId}")
+	public Course findCity(@PathVariable("corseId") Integer corseId) {
+		System.out.println("成功查到!corseId");
+		Course course = service.findcorseId(corseId);
+		course.setSuccessful(true);
+		course.setMessage("第一筆資料");
+		return course;
+	}
+	
 	
 	@PostMapping("/upload-photo")
 	public String uploadPhoto(@RequestParam("file") MultipartFile file) {
@@ -97,11 +107,10 @@ public class CourseController {
 			String projectRootPath = System.getProperty("user.dir");
 			String relativePath = "src/main/resources/static/lib/img/";
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-			// 构建存储文件的路径
+			// 建存储路径
 			String filePath =  projectRootPath + "/" + relativePath + "course/"+fileName;
 			// 创建目标文件对象
 			File destFile = new File(filePath);
-			
 			System.out.println("儲存位置>>"+destFile);
 			file.transferTo(destFile);
 			// 返回存储的文件路径，可以在保存评论的控制器中使用?

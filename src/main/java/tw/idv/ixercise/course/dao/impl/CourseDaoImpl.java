@@ -81,7 +81,7 @@ public class CourseDaoImpl implements CourseDao {
 
 	@Override
 	public Course selectByCourseId(Integer cocurseId) {
-		String sql = "SELECT * FROM course WHERE cocurseID = :cocurseId";
+		String sql = "SELECT * FROM course WHERE courseID = :cocurseId";
 		return session.createNativeQuery(sql, Course.class).setParameter("cocurseId", cocurseId).uniqueResult();
 	}
 

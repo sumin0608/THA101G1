@@ -886,15 +886,14 @@
                     console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
                     // let paymentMethod = $("#paymentMethod").val();
 
-                    // 步驟一、先存圖片
-                    let file = photodropzone[0].files[0];
+
                     // 检查是否有有填欄位
+                    let file = photodropzone[0].files[0];
                     if (!file) {
                         photodropzone.siblings('.invalid-feedback').show(); // 显示错误消息
                         return; // 中断操作
                     }
-                    let photo = file.name;
-                    // console.log("photo>>" + photo);
+                    // 圖片讀取
                     let formData = new FormData();
                     formData.append('file', file);
 
@@ -951,6 +950,10 @@
                         return;
                     }
                     // 检查是否有有填欄位--結束
+
+                    let photo = file.name;
+                    // console.log("photo>>" + photo);
+                    // 步驟一、先存圖片
                     $.ajax({
                         url: "/ixercise/course/upload-photo",
                         type: 'POST',
