@@ -325,7 +325,7 @@
                             <div class="card-body ms-5">
                                 <h5 class="card-title mb-4">Username</h5>
                                 <p class="card-text mb-4">所在城市/OO歲</p>
-                                <a href="" class="d-grid gap-2 w-50 mb-3">
+                                <a id="accEditPage" href="" class="d-grid gap-2 w-50 mb-3">
                                     <button class="btn btn-primary" type="button">編輯個人資訊</button>
                                 </a>
                                 <a href="" class="d-grid gap-2 w-50">
@@ -904,8 +904,8 @@
         // const avatarinside = document.querySelector("#avatarinside");
         // const useravatar = document.querySelector("#useravatar");
 
-        if (accountPhoto !== null) {
-            const imageBinaryStr = atob(accountPhoto);
+        if (accphoto !== "null") {
+            const imageBinaryStr = atob(accphoto);
             let len = imageBinaryStr.length;
             const uint8Array = new Uint8Array(len);
             while (len--) {
@@ -920,6 +920,15 @@
             // avatarinside.src = nophoto;
         }
 
+    //     ========================================================
+        const accEditPage = document.querySelector("#accEditPage");
+
+        accEditPage.href = getContextPath()+"/Account/AccountEdit.html";
+
+
+        function getContextPath() {
+            return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
+        }
 
     </script>
 

@@ -411,12 +411,15 @@
                     sessionStorage.setItem("accountNickname", accountNickname);
                     sessionStorage.setItem("accountLevel", accountLevel);
                     sessionStorage.setItem("accountPhoto", accountPhoto);
-                    // location = "../index.html";
+                    location = getContextPath()+"/index.html";
                 } else {
                     errMsg.textContent = message;
                 }
             })
     })
+    function getContextPath() {
+        return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
+    }
 
 </script>
 </body>
