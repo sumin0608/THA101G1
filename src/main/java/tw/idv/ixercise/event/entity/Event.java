@@ -1,8 +1,11 @@
 package tw.idv.ixercise.event.entity;
 
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.*;
+import tw.idv.ixercise.event.repository.CustomTimeDeserializer;
 
 import javax.persistence.*;
 import java.sql.*;
@@ -29,8 +32,12 @@ public class Event{
     private String eventName;
     private Integer price;
     private Date eventDate;
+    //    @JsonDeserialize(using = CustomTimeDeserializer.class)
+    @JsonFormat(pattern = "HH:mm:ss")
     private Time startTime;
-    private Date deadline;
+    private Timestamp deadline;
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+    @Column(insertable = false)
     private Timestamp createDate;
     private Integer maxAttendees;
     private String description;
@@ -42,7 +49,9 @@ public class Event{
     private String city;
     private String district;
     private Integer categoryId;
+    @Column(insertable = false)
     private Integer currentAttendees;
+    @Column(insertable = false)
     private Integer status;
     private Integer paymentMethod;
 

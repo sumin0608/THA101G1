@@ -418,9 +418,9 @@
     <!-- Header====================================================================================== -->
 
     <!-- main-content -->
-    <div class="container main-content">
+    <div class="container ">
         <!-- 請在這裡作業 -->
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12">
 
                 <div class="container custom-container  px-4 px-lg-5 mt-5">
@@ -428,22 +428,22 @@
                     <!-- <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> -->
                     <!-- <div class="row gx-4 gx-lg-5 row-cols-12 justify-content-center"> -->
 
-                    <div class="col -12 row ">
-                        <div class="row col-2"></div>
+                    <div class="col -12 row mb-4">
+                        <div class=" col-2 "></div>
 
-                        <div class="col-8 formpad " style="background-color: #E9E9E9; padding-top: 10px;">
+                        <div class="col-md-8 col-sm-12 formpad " style="background-color: #E9E9E9; padding-top: 10px;">
 
                             <!-- ================================================form -----submit ================================================== -->
                             <!-- <form action="aaa.html" method="get" class="row g-3 needs-validation" novalidate> -->
-<!--                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"-->
-<!--                                enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>-->
-                                <!-- <form action="#" method="post" enctype="multipart/form-data" class="row g-3 needs-validation"
+                            <!--                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"-->
+                            <!--                                enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>-->
+                            <!-- <form action="#" method="post" enctype="multipart/form-data" class="row g-3 needs-validation"
                     novalidate> -->
 
-<!--                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"-->
-<!--                                  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>-->
-                            <form method="post" class="row g-3 needs-validation" novalidate>
-<!--                            <div class="row g-3 needs-validation" novalidate>-->
+                            <!--                            <form action="http://localhost:8081/THA101G1/EventAddServlet" method="post"-->
+                            <!--                                  enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>-->
+                            <form class="row g-3 needs-validation pb-4" method="post" novalidate>
+                                <!--                            <div class="row g-3 needs-validation" novalidate>-->
                                 <br>
                                 <h1>創辦活動表單</h1>
                                 <hr>
@@ -585,19 +585,22 @@
                                     <div class="col-sm-12"></div>
                                     <label class="form-label">活動地址</label>
                                     <input type="text" name="address" placeholder="活動地址..." class="form-control"
-                                        id="address" value="111" required>
+                                           id="address" required value="111">
                                     <div class="invalid-feedback">
                                         Please choose a username.
                                     </div>
                                 </div>
 
                                 <br>
-                                <!-- Fith row -->
+
+
+                                <br>
+                                <!--  row Six -->
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <label class="form-label">活動日期</label>
                                         <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
-                                            class="form-control" value="2023-05-07" required>
+                                               class="form-control" required value="2023-05-07">
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -606,40 +609,25 @@
                                     <div class="col-sm-5">
                                         <label class="form-label">活動開始時間</label>
                                         <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                            class="form-control" value="22:10:00" required>
+                                               class="form-control" required value="22:10:00">
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
-
                                     </div>
-                                    <!-- <div class="col-sm-4">
-
-
-                        </div> -->
-
 
                                 </div>
 
-                                <br>
-                                <!--  row Six -->
+                                <!-- Fith row -->
                                 <div class="row">
-                                    <div class="col-sm-5">
-                                        <label class="form-label">活動日期</label>
-                                        <input type="date" id="lastVerifyDate" name="lastVerifyDate"
-                                            placeholder="活動日期..." class="form-control" value="2023-05-07" required>
+                                    <div class="col-sm-7">
+                                        <label class="form-label">最後審核時間</label>
+                                        <input class="form-control" id="deadline" name="deadline"
+                                               placeholder="活動日期..."
+                                               required type="datetime-local" value="2023-05-07 22:10">
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            Please enter a last verify time.
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
-                                        <label class="form-label">活動開始時間</label>
-                                        <input type="time" id="lastVerifyTime" name="lastVerifyTime"
-                                            placeholder="活動開始時間..." class="form-control" value="22:10:00" required>
-                                        <div class="invalid-feedback">
-                                            Please choose a username.
-                                        </div>
-                                    </div>
-
                                 </div>
 
                                 <br>
@@ -725,28 +713,30 @@
                         </div>
                     </div> -->
                                 <!-- <br> -->
-                        </form>
-                        </form>
-                        <div class="col-2"></div>
-                    </div>
+                                <!-- </form>
+                                </form> -->
+                                <div class="col-2"></div>
+                        </div>
 
-                    <!-- </div> -->
-                </div>
-                <!-- Product actions-->
-                <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <!-- </div> -->
+                    </div>
+                    <!-- Product actions-->
+                    <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             
         </div> -->
+                </div>
+
+
+                <!-- <p>team1</p> -->
+
+
             </div>
 
+            <!-- ============================================================================================ -->
 
-
-
-            <!-- <p>team1</p> -->
-
-
+            <!-- ============================================================================================ -->
 
         </div>
-    </div>
     </div>
 
 
@@ -827,11 +817,14 @@
                 // ========================================================================
                 if (input.files && input.files[0]) {
                     if (input.files[0].type.match('image.*')) {
-                        var reader = new FileReader();
-                        reader.onload = function () {
-                            $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
-                        };
-                        reader.readAsDataURL(input.files[0]);
+
+                        $("#previewBox").html('<img src="' + URL.createObjectURL(input.files[0]) + '" class="preview_img">');
+                        // var reader = new FileReader();
+                        // reader.onload = function () {
+                        //     $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
+                        // };
+                        // reader.readAsDataURL(input.files[0]);
+
                     }
                 }
             }
@@ -938,12 +931,12 @@
                                 event.address = $("#address").val();
                                 event.price = $("#price").val();
                                 event.eventDate = $("#eventDate").val();
-                                event.startTime = $("#startTime").val();
-                                event.lastVerifyDate = $("#lastVerifyDate").val();
-                                event.lastVerifyTime = $("#lastVerifyTime").val();
+                                event.startTime = $("#startTime").val() + ':00';
                                 event.maxAttendees = $("#maxAttendees").val();
                                 event.paymentMethod = $("#paymentMethod").val();
                                 event.description = $("#description").val();
+                                event.deadline = $("#deadline").val();
+
 
                                 // console.log(event);
                                 //
@@ -951,11 +944,26 @@
                                 // if (img_base64_el) {
                                 //     event.img_base64 = img_base64_el.getAttribute("src");
                                 // }
+                                var img_base64_el = document.querySelector(".preview_img");
+                                console.log(img_base64_el);
+                                let img_base64;
+                                if (img_base64_el) {
+                                    img_base64 = img_base64_el.getAttribute("src");
+                                }
+
+                                console.log("eventPhoto: " + img_base64);
+
+                                const photouploas = new FileReader();
+
 
                                 // 把資料存到session 裡面-先不存到資料庫- 給預覽頁面座使用
-                                 let formData = JSON.stringify(event);
+                                let formData = JSON.stringify(event);
                                 sessionStorage.setItem("Event", formData);
-                                    console.log(formData);
+                                sessionStorage.setItem("eventphoto", img_base64);
+                                console.log(formData);
+                                //direct to the preview page
+                                // window.location.href = "Event_preview_page.html";
+
                                 $.ajax({
                                     // url: 'http://localhost:8081/THA101G1/event/photo', // Replace with the actual servlet URL
                                     url: "http://localhost:8080/ixercise/events/create",
@@ -983,7 +991,7 @@
                         }, false)
                     })
 
-                function upLoadPhoto(eventId){
+                function upLoadPhoto(eventId) {
                     var photoFile = $('#photo-dropzone')[0].files[0];
                     let photo1 = new FormData();
                     photo1.append("photo", photoFile);
@@ -997,7 +1005,7 @@
                         url: "http://localhost:8080/ixercise/events/create/images/" + eventId,
                         type: 'PUT',
                         data: photo1,
-                        dataType: 'multipart', // 或者使用 'text'
+                        // dataType: 'json', // 或者使用 'text'
                         // contentType: "application/json; charset=utf-8",
                         enctype: 'multipart/form-data',
                         processData: false,
@@ -1006,7 +1014,7 @@
                             // Handle success response here
                             console.log(response);
                             // /create/images/{eventId}
-                            upLoadPhoto(response);
+                            // upLoadPhoto(response);
                         },
                         error: function (xhr, status, error) {
                             // Handle error here
@@ -1020,6 +1028,36 @@
 
             })()
             // =========================== 資料送出 ========================= //
+            // =========================== session storge ========================= //
+
+
+            const data = sessionStorage.getItem('Event');
+            console.log("data: " + data);
+
+            if (data != null) {
+                const sessionFormData = JSON.parse(data);   //sessionFormData
+                // ============ photo -> are not processing due to troublesome
+                // $("#previewBox").html('<img src="' + sessionFormData.img_base64 + '" class="preview_img">');     // imgElement.src = 'data:image/png;base64,' + base64Data;
+                // $("#photo-dropzone").val(sessionFormData.photo_dropzone);
+                // $('#photo-dropzone').prop('files', sessionFormData.photo_dropzone);;
+
+                $("#event_name").val(sessionFormData.eventName);
+                $("#categoryId").val(sessionFormData.categoryId);
+                $("#city").val(sessionFormData.city);
+                $("#district").val(sessionFormData.district);
+                $("#location").val(sessionFormData.location);
+                $("#address").val(sessionFormData.address);
+                $("#price").val(sessionFormData.price);
+                $("#eventDate").val(sessionFormData.eventDate);
+                $("#startTime").val(sessionFormData.startTime);
+                $("#lastVerifyDate").val(sessionFormData.lastVerifyDate);
+                $("#lastVerifyTime").val(sessionFormData.lastVerifyTime);
+                $("#maxAttendees").val(sessionFormData.maxAttendees);
+                $("#paymentMethod").val(sessionFormData.paymentMethod);
+                $("#description").val(sessionFormData.description);
+
+            }
+
 
         }); //Load ====
         // function updateEventPhoto(eventId, photoData) {

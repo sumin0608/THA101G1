@@ -12,6 +12,10 @@ import tw.idv.ixercise.event.service.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/events")
@@ -35,10 +39,24 @@ public class TestController {
 
     @PostMapping(value = "/create")
     public Integer createEvent(@RequestBody Event event) {
+//        return eventRepository.save(event).getEventId();
+
         System.out.println(event);
         System.out.println("createEvent(Event)");
         System.out.println("createEvssssssent(Event)");
         System.out.println("createEvssssssent(Event)");
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+//        Time startTime = event.getStartTime();
+//        System.out.println(startTime);
+//        String format = simpleDateFormat.format(startTime);
+
+//        event.setStartTime(Time.valueOf(format));
+
+        // Format startTime to "HH:mm:ss" format
+//        LocalTime localTime = LocalTime.parse((CharSequence) event.getStartTime());
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        String formattedStartTime = localTime.format(formatter);
+//        event.setStartTime(formattedStartTime);
 
         return eventService.saveEvent(event).getEventId();
     }
@@ -48,14 +66,9 @@ public class TestController {
     public String uploadEvent(@RequestParam("photo") MultipartFile photo, @PathVariable Integer eventId) throws IOException {
         System.out.println(photo);
         try {
-//            byte[] bytes1 = photo.getInputStream().readAllBytes();
             InputStream is = photo.getInputStream();
             byte[] bytes = is.readAllBytes();
             is.close();
-
-//            byte[] bytes = photo.getBytes();
-//            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-//            byte[] bytes1 = byteArrayInputStream.readAllBytes();
 
             Event event = eventService.findEventById(eventId);
             if (event != null) {

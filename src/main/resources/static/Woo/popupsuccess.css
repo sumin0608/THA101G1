@@ -15,15 +15,15 @@
 } */
 
 body {
-    background-color: #3c5077;
+    /* background-color: #3c5077; */
 }
 
 .applyResult {
     width: 400px;
     max-width: 80%;
-    background-color: #fff;
+    background-color: #87f6fcdf;
     border-radius: 6px;
-    position: absolute;
+    /* position: absolute; */
     top: 30%;
     left: 50%;
     text-align: center;
@@ -33,6 +33,15 @@ body {
     color: #333;
     /* visibility: hidden; */
     transition: transform 0.4s, top 1s;
+
+    /* top: 50%;
+    left: 50%; */
+    /* width: 30em;
+    height: 18em; */
+    margin-top: -1em;
+    margin-left: -1em;
+    position: fixed;
+
 }
 
 .open-applyResult {

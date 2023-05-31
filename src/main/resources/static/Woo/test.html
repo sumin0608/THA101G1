@@ -27,7 +27,7 @@
 
         }
 
-        .wtbtn {
+        .popupbtn {
             color: #B6B6B6;
             /* background-color: #ffc107; */
             background-color: #F9F9F9;
@@ -123,7 +123,7 @@
                                 <button aria-label="Close" class="btn btn-primary ylbtn" data-bs-dismiss="modal"
                                         onclick="openApplyPopup()">Confirm
                                 </button>
-                                <button aria-label="Close" class="btn btn-primary wtbtn" data-bs-dismiss="modal"
+                                <button aria-label="Close" class="btn btn-primary popupbtn" data-bs-dismiss="modal"
                                         type="button">Cancel
                                 </button>
 
@@ -137,36 +137,8 @@
         </div>
     </div>
 </div>
-<div aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" class="modal fade" id="exampleModalToggle2"
-     tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img alt="" src="image/200-tick.png">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
-                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-            </div>
-            <div class="modal-body">
-                Hide this modal and show the first with the button below.
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to
-                    first
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- ================================================== -->
-<!-- <button class="btn btn-primary" data-bs-target="#applyResult" data-bs-toggle="modal">submit modal</button> -->
-<!-- <div class="modal fade" id="applyResult" aria-hidden="true" aria-labelledby="" tabindex="-1"> -->
-<!-- <button class="btn btn-primary ylbtn"  onclick="openApplyPopup()">Confirm</button> -->
-
-<!-- <button type="submit" class="btn btn-primary">submit</button> -->
-<!-- <div class="suscontainer"> -->
-
-<!-- <div class="modal-dialog modal-dialog-centered"> -->
 <div class="applyResult container" id="applyResult">
     <img alt="" id="check_cross_mark" src="image/200-tick.png">
 
@@ -176,7 +148,7 @@
             <div class="d-grid gap-2 " id="">
                 <h2>報名已送出</h2>
                 <p>請等待主揪審核....</p>
-                <button class="btn btn-primary wtbtn" onclick="closeApplyPopup()" type="button">確認</button>
+                <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認</button>
             </div>
         </div>
     </div>
