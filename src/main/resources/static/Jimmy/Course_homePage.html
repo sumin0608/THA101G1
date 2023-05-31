@@ -9,6 +9,7 @@
     <!-- 引入bootstarp跟共用css內容========================================= -->
     <link href="../lib/css/styles.css" rel="stylesheet" />
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="../lib/css/style_jimmy_awosomeLoading.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
@@ -129,10 +130,10 @@
                                     </input>
                                 </div>
                                 <div class="col-4 ps-0">
-                                    <button class="btn border border-1 border-dark" type="submit">Search</button>
+                                    <button id="search_btn" class="btn border border-1 border-dark"
+                                        type="submit">Search</button>
                                 </div>
                             </div>
-
                             <!-- </form> -->
                             <!-- ================================================================== -->
                             <!-- <div class="collapse" id="collapseExample"> -->
@@ -144,37 +145,61 @@
                                             <!-- <label for=""></label> -->
                                             <select class="form-select form-select-sm col-3 mb-3"
                                                 aria-label="Default select example">
-                                                <option selected>頁面 </option>
+                                                <option selected>頁面</option>
                                                 <option value="1">商城</option>
                                                 <option value="2">論壇</option>
                                                 <option value="3">活動</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
-                                            <select class="form-select form-select-sm"
+                                            <select id="select_sport" class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>運動類型 </option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option selected disabled>運動類型 </option>
+                                                <option value="1">足球</option>
+                                                <option value="2">籃球</option>
+                                                <option value="3">網球</option>
+                                                <option value="4">排球</option>
+                                                <option value="5">橄欖球</option>
+                                                <option value="6">棒球</option>
+                                                <option value="7">曲棍球</option>
+                                                <option value="8">高爾夫球</option>
+                                                <option value="9">羽毛球</option>
+                                                <option value="10">乒乓球</option>
+                                                <option value="11">壁球</option>
+                                                <option value="12">手球</option>
+                                                <option value="13">保齡球</option>
+                                                <option value="1">有氧操課</option>
+                                                <option value="2">重訓課</option>
+                                                <option value="3">瑜伽課</option>
+                                                <option value="4">舞蹈課</option>
+                                                <option value="5">腹肌課</option>
+                                                <option value="6">動感單車課</option>
+                                                <option value="7">跳繩課</option>
+                                                <option value="8">拳擊課</option>
+                                                <option value="9">跳舞操課</option>
+                                                <option value="10">瑜伽拉伸課</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
-                                            <select class="form-select form-select-sm"
+                                            <select id="select_city" class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>各自設定 </option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option selected disabled>搜尋城市</option>
+                                                <option value="1">台北市</option>
+                                                <option value="2">基隆</option>
+                                                <option value="4">新北市</option>
+                                                <option value="5">宜蘭</option>
+                                                <option value="7">新竹</option>
+                                                <option value="8">桃園</option>
                                             </select>
                                         </div>
                                         <div class="col-3">
-                                            <select class="form-select form-select-sm"
+                                            <select id="select_time" class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected>各自設定 </option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option selected value="0" disabled>上課時段</option>
+                                                <option value="1">上午(06:00~12:00)</option>
+                                                <option value="2">下午(12:00~18:00)</option>
+                                                <option value="3">晚上(18:00~24:00)</option>
+                                                <!-- <option value="4">深夜(24:00~06:00)</option> -->
                                             </select>
                                         </div>
                                         <div class="row">
@@ -185,7 +210,9 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
+                                                <button class="btn btn-danger" id="btn_selecter_search"
+                                                    type="submit">搜尋篩選</button>
                                             </div>
                                         </div>
                                     </div>
@@ -393,6 +420,19 @@
         </div> -->
     </header>
     <!-- Header====================================================================================== -->
+    <!-- loading 加載動畫區 -->
+    <div class="lightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <div id="loading-element" class="la-ball-climbing-dot la-dark la-3x">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- loading 加載動畫區 -->
     <br>
     <!-- <hr> -->
     <!-- main-content -->
@@ -403,9 +443,11 @@
                 <hr>
                 <br>
                 <!-- ======================zzz===================================================================================== -->
-                <div class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
-                    <div class="col mb-5 event_card_container">
-                        <div class="card h-100 p-0 mb-0 event_card event_card">
+                <div id="input_card"
+                    class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
+                    <!-- 第一個card -->
+                    <div class="col mb-5 event_card_container" style="border: 1px solid red;">
+                        <div class="card h-100 p-0 mb-0 event_card event_card" style="border: 3px solid yellow;">
                             <!-- EVENT link-->
                             <a href="">
                                 <!-- EVENT image-->
@@ -414,13 +456,13 @@
                                         src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="
                                         alt="..." />
                                 </div>
-
                                 <!-- EVENT details-->
                                 <div class="card-body p-2">
                                     <div class="text-left">
                                         <!-- EVENT title-->
                                         <div class="event_title">
-                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)</h5>
+                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)
+                                            </h5>
                                         </div>
                                         <!-- EVENT location -> City & Place -->
                                         <div class="mb-2 event_location">
@@ -430,22 +472,19 @@
                                         <div class="event_start_time">
                                             <p class="card-text text-muted">星期四,四月 6日 08:30</p>
                                         </div>
-
                                     </div>
                                 </div>
                                 <!-- Product actions-->
-
                                 <div class="card-footer p-2  bg-transparent justify-content-between">
-
                                     <div class="d-flex flex-row align-items-center event_creater">
                                         <div class="member-icon">
                                             <img src="https://picsum.photos/300/200/?random=10"
                                                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">
                                         </div>
-
                                         <div class="col-8 ms-2 c-details">
-                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate">
+                                                Dawdddd0000000ddddoo
                                             </h6>
                                             <span class=" text-muted">sss</span>
                                         </div>
@@ -455,6 +494,7 @@
                             </a>
                         </div>
                     </div>
+                    <!-- 第二個card -->
                     <div class="col mb-5 event_card_container">
                         <div class="card h-100 p-0 mb-0 event_card event_card">
                             <!-- EVENT link-->
@@ -471,7 +511,8 @@
                                     <div class="text-left">
                                         <!-- EVENT title-->
                                         <div class="event_title">
-                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)</h5>
+                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)
+                                            </h5>
                                         </div>
                                         <!-- EVENT location -> City & Place -->
                                         <div class="mb-2 event_location">
@@ -496,7 +537,8 @@
                                         </div>
 
                                         <div class="col-8 ms-2 c-details">
-                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate">
+                                                Dawdddd0000000ddddoo
                                             </h6>
                                             <span class=" text-muted">sss</span>
                                         </div>
@@ -513,8 +555,7 @@
                                 Sale
                             </div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <img class="card-img-top" src="/ixercise/lib/img/course/bulb.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -752,8 +793,11 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
-
     <script>
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
@@ -761,6 +805,216 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
+
+
+        $(document).ready(function () {
+            // loading 加載動畫區
+            // 燈箱效果開關
+            function showLoadingAnimation() {
+                $('.lightbox').addClass('show');
+            }
+            function hideLoadingAnimation() {
+                $('.lightbox').removeClass('show');
+            }
+            // 在發送请求之前加载燈箱效果
+            $(document).on('ajaxStart', function () {
+                showLoadingAnimation();
+            });
+            // 在请求完成后隐藏加载燈箱效果
+            $(document).on('ajaxStop', function () {
+                setTimeout(function () {
+                    hideLoadingAnimation();
+                }, 1000);
+            });
+            // loading 加載動畫區--結束
+
+            // search撈全部課程
+            $('#search_btn').on('click', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "/ixercise/course",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        let tableData = '';
+                        for (let i = 0; i < resp.length; i++) {
+                            tableData += `<div class="col mb-5 event_card_container">`;
+                            tableData += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                            tableData += `<a href="">`;
+                            tableData += `<div class="photo">`
+                            tableData += `<img class="card-img-top event_pic"
+                                            src="/ixercise/lib/img/course/${resp[i].photo}" alt="..." />`;
+                            tableData += `</div>`;
+                            tableData += `<div class="card-body p-2">`;
+                            tableData += `<div class="text-left">`;
+                            tableData += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5></div>`;
+                            tableData += `   <div class="mb-2 event_location">`;
+                            tableData += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
+                            tableData += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
+                            tableData += `   </div>`;
+                            tableData += `   <div class="event_start_time">`;
+                            tableData += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                            tableData += `   </div>`;
+                            tableData += `</div>`;
+                            tableData += `</div>`;
+                            //             <!-- Product actions-->
+                            tableData += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                            tableData += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                            tableData += `        <div class="member-icon">`;
+                            tableData += `            <img src="https://picsum.photos/300/200/?random=10"`;
+                            tableData += `               class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"`;
+                            tableData += `               data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                            tableData += `        </div>`;
+                            tableData += `        <div class="col-8 ms-2 c-details">`;
+                            tableData += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`;
+                            // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                            // $.ajax({
+                            //     url: "/ixercise/member",
+                            //     type: "GET",
+                            //     dataType: "json",
+                            //     data: { id: resp[i].creator }, // 将 creator 作为参数传递
+                            //     success: function (memberResp) {
+                            //         let memberName = memberResp.name;
+                            //         // 在这里可以使用 memberName 进行操作
+                            //     },
+                            //     error: function (xhr, status, error) {
+                            //         alert("Error: " + xhr.responseText);
+                            //     }
+                            // });
+                            tableData += `            <span class=" text-muted">還沒想好放什麼</span>`;
+                            tableData += `        </div>`;
+                            tableData += `</div>`;
+                            tableData += `</div>`;
+                            tableData += `</a >`;
+                            tableData += `</div>`;
+                            tableData += `</div>`;
+                        }
+                        $("#input_card").empty().append(tableData);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            }); //$('#search_btn')結束
+
+            // search撈篩選課程
+            $('#btn_selecter_search').on('click', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "/ixercise/course",
+                    type: "GET",
+                    dataType: "json",
+                    success: handleDistrictsResponse,
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            }); //success:
+            function handleDistrictsResponse(resp) {
+                var sport_option = $('#select_sport option:selected').text();
+                var city_option = $('#select_city option:selected').text();
+                var time_option = $('#select_time option:selected').val();
+                var sportValue = (sport_option !== "運動類型") ? sport_option : "";
+                var cityValue = (city_option !== "搜尋城市") ? city_option : "";
+                var timeValue = (time_option != 0) ? time_option : "";
+                console.log("sport: " + sportValue);
+                console.log("city: " + cityValue);
+                console.log("time: " + timeValue);
+                // filter篩選:運動類型、城市
+                let filteredData0 = resp.filter(function (item) {
+                    if ((!sportValue || item.categoryId === sportValue) &&
+                        (!cityValue || item.city === cityValue)) {
+                        return true;
+                    }
+                });
+                // 時間
+                let filteredData = filteredData0.filter(function (item) {
+                    if (!timeValue) {
+                        return true;
+                    } else if (timeValue == 1) {
+                        // 上午时间范围：06:00 ~ 12:00
+                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
+                        return startTime > "06:00:00" && startTime < "12:00:00";
+                    } else if (timeValue == 2) {
+                        // 下午时间范围：12:00 ~ 18:00
+                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
+                        return startTime >= "12:00:00" && startTime < "18:00:00";
+                    } else if (timeValue == 3) {
+                        // 晚上时间范围：18:00 ~ 24:00
+                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
+                        return startTime >= "18:00:00" && startTime < "24:00:00";
+                    }
+                });
+
+                if (filteredData.length > 0) {
+                    for (let i = 0; i < filteredData.length; i++) {
+                        console.log("filteredData[i]: " + filteredData[i].eventName + "," + filteredData[i].categoryId);
+                    }
+                } else {
+                    console.log("No data found");
+                    swal("Warning!", "QQ無符合資料", "warning");
+                }
+
+                let tableData2 = '';
+                for (let i = 0; i < filteredData.length; i++) {
+                    tableData2 += `<div class="col mb-5 event_card_container">`;
+                    tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                    tableData2 += `<a href="">`;
+                    tableData2 += `<div class="photo">`
+                    tableData2 += `<img class="card-img-top event_pic"
+                                        src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="..." />`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="card-body p-2">`;
+                    tableData2 += `<div class="text-left">`;
+                    tableData2 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${filteredData[i].eventName}</h5></div>`;
+                    tableData2 += `   <div class="mb-2 event_location">`;
+                    tableData2 += `        <span class="card-text  text-muted event_city">${filteredData[i].city}</span>`;
+                    tableData2 += `        <span class="card-text text-muted event_place">${filteredData[i].location}</span>`;
+                    tableData2 += `   </div>`;
+                    tableData2 += `   <div class="event_start_time">`;
+                    tableData2 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                    tableData2 += `   </div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                    tableData2 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                    tableData2 += `        <div class="member-icon">`;
+                    tableData2 += `            <img src="https://picsum.photos/300/200/?random=10"`;
+                    tableData2 += `               class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"`;
+                    tableData2 += `               data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                    tableData2 += `        </div>`;
+                    tableData2 += `        <div class="col-8 ms-2 c-details">`
+                    tableData2 += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`;
+                    // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                    // $.ajax({
+                    //     url: "/ixercise/member",
+                    //     type: "GET",
+                    //     dataType: "json",
+                    //     data: { id: resp[i].creator }, // 将 creator 作为参数传递
+                    //     success: function (memberResp) {
+                    //         let memberName = memberResp.name;
+                    //         // 在这里可以使用 memberName 进行操作
+                    //     },
+                    //     error: function (xhr, status, error) {
+                    //         alert("Error: " + xhr.responseText);
+                    //     }
+                    // });
+                    tableData2 += `            <span class=" text-muted">還沒想好放什麼</span>`;
+                    tableData2 += `        </div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</a >`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                }//$('#btn_selecter_search')結束
+
+                $("#input_card").empty().append(tableData2);
+            };
+
+
+
+        });//$(document).ready--結束
     </script>
 </body>
 

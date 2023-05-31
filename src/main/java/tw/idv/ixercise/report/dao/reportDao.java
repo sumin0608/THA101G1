@@ -5,7 +5,9 @@ import tw.idv.ixercise.report.entity.Report;
 
 public interface reportDao {
 	
-	public Article selectById(Integer id);
+	
+	
+	public Report selectById(Integer id);
 
 
 }

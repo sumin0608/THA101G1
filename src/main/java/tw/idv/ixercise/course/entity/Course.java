@@ -1,7 +1,6 @@
 package tw.idv.ixercise.course.entity;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -10,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import tw.idv.ixercise.core.Core;
 import lombok.AllArgsConstructor;
@@ -33,8 +34,10 @@ public class Course extends Core {
 	private String eventName;
 	private Integer expectedPrice;
 	private Date courseStartDate;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp courseStartTime; 
-	private Time courseDuration;
+	private String courseDuration;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp registrationDeadline;
 	private Timestamp courseCreationDate;
 	private Integer maximumCapacity;
@@ -53,6 +56,7 @@ public class Course extends Core {
 	@Column(insertable = false)
 	private Integer paidAdvertising;
 	@Column(insertable = false)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp paidAdvertisingTime;
 
 	public Course() {
