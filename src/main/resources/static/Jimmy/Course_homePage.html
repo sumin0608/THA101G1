@@ -195,7 +195,7 @@
                                         <div class="col-3">
                                             <select id="select_time" class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected disabled>上課時段</option>
+                                                <option selected value="0" disabled>上課時段</option>
                                                 <option value="1">上午(06:00~12:00)</option>
                                                 <option value="2">下午(12:00~18:00)</option>
                                                 <option value="3">晚上(18:00~24:00)</option>
@@ -211,8 +211,8 @@
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
                                                     id="btn-reset-search">重置</button>
-                                                <button class="btn border border-1 border-dark" id="btn_selecter_search"
-                                                    type="submit">Search</button>
+                                                <button class="btn btn-danger" id="btn_selecter_search"
+                                                    type="submit">搜尋篩選</button>
                                             </div>
                                         </div>
                                     </div>
@@ -793,6 +793,10 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
     <script>
         $("#searchbar").focus("click", function () {
@@ -820,7 +824,7 @@
             $(document).on('ajaxStop', function () {
                 setTimeout(function () {
                     hideLoadingAnimation();
-                }, 2000);
+                }, 1000);
             });
             // loading 加載動畫區--結束
 
@@ -862,8 +866,8 @@
                             tableData += `               class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"`;
                             tableData += `               data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                             tableData += `        </div>`;
-                            tableData += `        <div class="col-8 ms-2 c-details">`
-                            tableData += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`
+                            tableData += `        <div class="col-8 ms-2 c-details">`;
+                            tableData += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`;
                             // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
                             // $.ajax({
                             //     url: "/ixercise/member",
@@ -897,14 +901,8 @@
             // search撈篩選課程
             $('#btn_selecter_search').on('click', function (e) {
                 e.preventDefault();
-                let sport_option = $('#select_sport option:selected').text();
-                let city_option = $('#select_city option:selected').text();
-                let time_option = $('#select_time option:selected').val();
-                console.log("sport: " + sport_option);
-                console.log("city: " + city_option);
-                console.log("time: " + time_option);
                 $.ajax({
-                    url: "/ixercise/course/",
+                    url: "/ixercise/course",
                     type: "GET",
                     dataType: "json",
                     success: handleDistrictsResponse,
@@ -912,10 +910,106 @@
                         alert("Error: " + xhr.responseText);
                     }
                 });
-            });//$('#btn_selecter_search')結束
+            }); //success:
             function handleDistrictsResponse(resp) {
-                console.log("resp>>" + resp);
+                var sport_option = $('#select_sport option:selected').text();
+                var city_option = $('#select_city option:selected').text();
+                var time_option = $('#select_time option:selected').val();
+                var sportValue = (sport_option !== "運動類型") ? sport_option : "";
+                var cityValue = (city_option !== "搜尋城市") ? city_option : "";
+                var timeValue = (time_option != 0) ? time_option : "";
+                console.log("sport: " + sportValue);
+                console.log("city: " + cityValue);
+                console.log("time: " + timeValue);
+                // filter篩選:運動類型、城市
+                let filteredData0 = resp.filter(function (item) {
+                    if ((!sportValue || item.categoryId === sportValue) &&
+                        (!cityValue || item.city === cityValue)) {
+                        return true;
+                    }
+                });
+                // 時間
+                let filteredData = filteredData0.filter(function (item) {
+                    if (!timeValue) {
+                        return true;
+                    } else if (timeValue == 1) {
+                        // 上午时间范围：06:00 ~ 12:00
+                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
+                        return startTime > "06:00:00" && startTime < "12:00:00";
+                    } else if (timeValue == 2) {
+                        // 下午时间范围：12:00 ~ 18:00
+                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
+                        return startTime >= "12:00:00" && startTime < "18:00:00";
+                    } else if (timeValue == 3) {
+                        // 晚上时间范围：18:00 ~ 24:00
+                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
+                        return startTime >= "18:00:00" && startTime < "24:00:00";
+                    }
+                });
 
+                if (filteredData.length > 0) {
+                    for (let i = 0; i < filteredData.length; i++) {
+                        console.log("filteredData[i]: " + filteredData[i].eventName + "," + filteredData[i].categoryId);
+                    }
+                } else {
+                    console.log("No data found");
+                    swal("Warning!", "QQ無符合資料", "warning");
+                }
+
+                let tableData2 = '';
+                for (let i = 0; i < filteredData.length; i++) {
+                    tableData2 += `<div class="col mb-5 event_card_container">`;
+                    tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                    tableData2 += `<a href="">`;
+                    tableData2 += `<div class="photo">`
+                    tableData2 += `<img class="card-img-top event_pic"
+                                        src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="..." />`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="card-body p-2">`;
+                    tableData2 += `<div class="text-left">`;
+                    tableData2 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${filteredData[i].eventName}</h5></div>`;
+                    tableData2 += `   <div class="mb-2 event_location">`;
+                    tableData2 += `        <span class="card-text  text-muted event_city">${filteredData[i].city}</span>`;
+                    tableData2 += `        <span class="card-text text-muted event_place">${filteredData[i].location}</span>`;
+                    tableData2 += `   </div>`;
+                    tableData2 += `   <div class="event_start_time">`;
+                    tableData2 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                    tableData2 += `   </div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                    tableData2 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                    tableData2 += `        <div class="member-icon">`;
+                    tableData2 += `            <img src="https://picsum.photos/300/200/?random=10"`;
+                    tableData2 += `               class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"`;
+                    tableData2 += `               data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                    tableData2 += `        </div>`;
+                    tableData2 += `        <div class="col-8 ms-2 c-details">`
+                    tableData2 += `            <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${resp[i].creator}</h6>`;
+                    // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                    // $.ajax({
+                    //     url: "/ixercise/member",
+                    //     type: "GET",
+                    //     dataType: "json",
+                    //     data: { id: resp[i].creator }, // 将 creator 作为参数传递
+                    //     success: function (memberResp) {
+                    //         let memberName = memberResp.name;
+                    //         // 在这里可以使用 memberName 进行操作
+                    //     },
+                    //     error: function (xhr, status, error) {
+                    //         alert("Error: " + xhr.responseText);
+                    //     }
+                    // });
+                    tableData2 += `            <span class=" text-muted">還沒想好放什麼</span>`;
+                    tableData2 += `        </div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</a >`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                }//$('#btn_selecter_search')結束
+
+                $("#input_card").empty().append(tableData2);
             };
 
 

@@ -1,7 +1,6 @@
 package tw.idv.ixercise.course.entity;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
