@@ -10,5 +10,6 @@ public interface AccountService {
     Account login(Account account);
 //    boolean save(Account account);
     List<Account> findAll();
-    Account edit(Account account);
+    Account findById(Integer AccountId);
+    Account updateById(Account account);
 }

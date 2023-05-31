@@ -66,7 +66,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public Account edit(Account account) {
+    public Account updateById(Account account) {
 //        找資料庫裡的舊會員資料
         Account oAccount = repo.findByAccountId(account.getAccountId());
         String newPassword = account.getAccountPassword();
@@ -102,6 +102,11 @@ public class AccountServiceImpl implements AccountService {
 
     public List<Account> findAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public Account findById(Integer AccountId) {
+        return repo.findByAccountId(AccountId);
     }
 //        public Account saveById(Account account){
 //            return repo.save(account);
