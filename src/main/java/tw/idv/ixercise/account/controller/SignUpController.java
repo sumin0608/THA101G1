@@ -20,7 +20,8 @@ public class SignUpController {
             account.setSuccessful(false);
             return account;
         }
-        System.out.println(service.signUp(account));
+//        System.out.println(service.signUp(account));
+
         return service.signUp(account);
     }
 }

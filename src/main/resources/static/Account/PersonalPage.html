@@ -318,7 +318,7 @@
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-4 m-3" style="width:250px;height:250px;">
-                            <img src="../lib/img/square.jpg" alt="..."
+                            <img id="pageavatar" src="../lib/img/square.jpg" alt="..."
                                 class="border w-100 h-100 overflow-hidden rounded-circle" style="object-fit:cover;">
                         </div>
                         <div class="col-7 my-auto">
@@ -867,34 +867,43 @@
     <!-- 引入所需函式庫 -->
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
     <!-- ================================================================= -->
 
     <script>
-        $("#searchbar").focus("click", function () {
-            $("#searchcard").removeClass("d-none");
-        });
-        $("#btn-close-search").on("click", function () {
-            $("#searchcard").addClass("d-none");
-        })
+        // const accountId = sessionStorage.getItem("accountId");
+        // const accountNickname = sessionStorage.getItem("accountNickname");
+        // const accountLevel = sessionStorage.getItem("accountLevel");
+        // const accountPhoto = sessionStorage.getItem("accountPhoto");
+        const pageavatar = document.querySelector("#pageavatar");
+        // const nickname = document.querySelector("#accountNickname");
+        // const logout = document.querySelector("#logout");
+        // const loginbtn = document.querySelector("#loginbtn");
+        // const avataroutside = document.querySelector("#avataroutside");
+        // const avatarinside = document.querySelector("#avatarinside");
+        // const useravatar = document.querySelector("#useravatar");
+
+        if(accountPhoto !== null){
+            const imageBinaryStr = atob(accountPhoto);
+            let len = imageBinaryStr.length;
+            const uint8Array = new Uint8Array(len);
+            while (len--) {
+                uint8Array[len] = imageBinaryStr.charCodeAt(len);
+            }
+            const blob = new Blob([uint8Array]);
+            pageavatar.src = URL.createObjectURL(blob);
+            // avatarinside.src = URL.createObjectURL(blob);
+        } else{
+            const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
+            pageavatar.src = nophoto;
+            // avatarinside.src = nophoto;
+        }
+
+
     </script>
 
-    <!-- 一條參加紀錄====================== -->
-    <!-- <div href="#" class="list-group-item list-group-item-action" aria-current="true" style="height: 118px;">
-        <div class="row h-100">
-            <div class="col-2 h-100">
-                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px" height="100px"
-                    class="overflow-hidden rounded-circle object-fit-cover">
-            </div>
-            <div class="col-8">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Tibame一起寫code</h5>
-                </div>
-                <p class="mb-1">星數</p>
-                <p class="mb-1">評論內容評論內容</p>
-            </div>
-        </div>
-    </div> -->
+
 </body>
 
 </html>

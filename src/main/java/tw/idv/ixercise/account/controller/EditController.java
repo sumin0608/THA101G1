@@ -26,12 +26,17 @@ public class EditController {
         } else {
             account.setSuccessful(true);
         }
+        System.out.println(account);
         return account;
     }
 
+
+//    這個暫時不使用
     @PostMapping
     public Core checkOldPassword(@RequestBody Account account, @SessionAttribute("account") Account oAccount) {
         final Core core = new Core();
+        System.out.println(account);
+        System.out.println(oAccount);
         if (account == null) {
             core.setMessage("無會員資料");
             core.setSuccessful(false);
@@ -40,8 +45,11 @@ public class EditController {
             core.setSuccessful(false);
         } else {
             final String currentPassword = oAccount.getAccountPassword();
-            final String newPassword = account.getAccountPassword();
-            if (Objects.equals(newPassword, currentPassword)) {
+            final String oldPassword = account.getAccountPassword();
+            System.out.println(currentPassword);
+            System.out.println(oldPassword);
+            System.out.println(Objects.equals(oldPassword, currentPassword));
+            if (Objects.equals(oldPassword, currentPassword)) {
                 core.setSuccessful(true);
             } else {
                 core.setMessage("舊密碼錯誤");
@@ -66,12 +74,18 @@ public class EditController {
             account.setSuccessful(false);
             return account;
         }
+
+
         account.setAccountId(oAccount.getAccountId());
         account = service.edit(account);
         if (account.isSuccessful()) {
+//            model的用意??
             model.addAttribute("account", account);
+            oAccount.setAccountPassword(account.getAccountPassword());
         }
-
+//        System.out.println(account);
+        account.setMessage("修改成功");
+        account.setSuccessful(true);
         return account;
     }
 

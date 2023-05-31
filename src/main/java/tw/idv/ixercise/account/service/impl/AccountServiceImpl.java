@@ -7,6 +7,7 @@ import tw.idv.ixercise.account.dao.AccountRepository;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,15 +74,13 @@ public class AccountServiceImpl implements AccountService {
             account.setAccountPassword(oAccount.getAccountPassword());
         }
 
-//        if(account.)
-//               新舊密碼一樣的話 執行更新
-
         account.setAccountId(oAccount.getAccountId());
         account.setAccountPhone(oAccount.getAccountPhone());
         account.setAccountLevel(oAccount.getAccountLevel());
         account.setAccountId(oAccount.getAccountId());
         account.setAccountBirthday(oAccount.getAccountBirthday());
         account.setAccountCreatetime(oAccount.getAccountCreatetime());
+        account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
         account.setAccountGender(oAccount.getAccountGender());
         account.setAccountReport(oAccount.getAccountReport());
         account.setAccountVerify(oAccount.getAccountVerify());

@@ -222,26 +222,28 @@
                     </li>
 
                     <!-- 會員頭像========================================================= -->
-                    <li class="nav-item dropdown mx-2 my-auto">
-                        <img src="https://picsum.photos/300/200/?random=10"
-                            class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
-                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
-                            height="36">
+                    <li id="useravatar" class="nav-item dropdown mx-2 my-auto d-none">
+                        <img id="avataroutside"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
+                            class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36"
+                            style="object-fit: cover;">
 
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
 
                             <li>
-                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                    src="https://picsum.photos/200/200/?random=10">
+                                <img id="avatarinside" class="dropdown-item overflow-hidden p-2 rounded-circle"
+                                    src="https://picsum.photos/200/200/?random=10" style="object-fit: cover;">
                             </li>
                             <li>
-                                <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
+                                <span id="accountNickname"
+                                    class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#!">查看個人資料</a>
+                                <a class="dropdown-item" href="AccountEdit.html">查看個人資料</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#!">聊天列表</a>
@@ -252,8 +254,21 @@
                             <li>
                                 <a class="dropdown-item" href="#!">課程管理</a>
                             </li>
+                            <li>
+                                <a id="logout" class="dropdown-item" href="Ixerciseindex.html">登出</a>
+                            </li>
                         </ul>
                     </li>
+                    <!-- 登入 註冊=========================================================================== -->
+
+                    <li id="loginbtn" class="nav-item dropdown mx-2 my-auto">
+                        <a href="Login.html" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+                            aria-disabled="true">登入</a>
+                        <a href="SignUp.html" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+                            aria-disabled="true">註冊</a>
+                    </li>
+
+
                 </ul>
                 <!-- 購物車的按鈕============================================================= -->
                 <form class="d-flex">
@@ -2638,6 +2653,50 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
+
+        // ======================================================
+
+        const accountNickname = sessionStorage.getItem("accountNickname");
+        const accountLevel = sessionStorage.getItem("accountLevel");
+        const accountPhoto = sessionStorage.getItem("accountPhoto");
+        const nickname = document.querySelector("#accountNickname");
+        const logout = document.querySelector("#logout");
+        const loginbtn = document.querySelector("#loginbtn");
+        const avataroutside = document.querySelector("#avataroutside");
+        const avatarinside = document.querySelector("#avatarinside");
+        const useravatar = document.querySelector("#useravatar");
+
+
+
+        // if (accountNickname) {
+        //     loginbtn.classList.add("d-none");
+        //     useravatar.classList.remove("d-none");
+        //     nickname.textContent = accountNickname;
+        //     const imageBinaryStr = atob(accountPhoto);
+        //     let len = imageBinaryStr.length;
+        //     const uint8Array = new Uint8Array(len);
+        //     while (len--) {
+        //         uint8Array[len] = imageBinaryStr.charCodeAt(len);
+        //     }
+        //     const blob = new Blob([uint8Array]);
+        //     avataroutside.src = URL.createObjectURL(blob);
+        //     avatarinside.src = URL.createObjectURL(blob);
+
+
+        // } else {
+        //     loginbtn.classList.remove("d-none");
+        //     useravatar.classList.add("d-none");
+        // }
+
+        logout.addEventListener("click", function () {
+            sessionStorage.removeItem("accountNickname");
+
+            fetch("Account/Logout");
+            location = ""
+        })
+
+
+
     </script>
 </body>
 

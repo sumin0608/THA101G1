@@ -1,10 +1,12 @@
 package tw.idv.ixercise.account.entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Arrays;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,9 +45,11 @@ public class Account extends Core {
 
 	private Date accountBirthday;
 	@Column(insertable = false)
-	private Date accountCreatetime;
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	private Timestamp accountCreatetime;
 	@Column(insertable = false)
-	private Date accountUpdatetime;
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	private Timestamp accountUpdatetime;
 
 	private Integer accountGender;
 
