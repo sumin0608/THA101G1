@@ -44,6 +44,16 @@ public class CourseCommentController {
 		
 		return courseComments;
 	}
+	
+	@GetMapping("/attendrecord/{accountIdReviewer}")
+	public List<CourseComment> getAccountIdReviewer(@PathVariable("accountIdReviewer") Integer accountIdReviewer) {
+		System.out.println("成功查到!accountIdReviewer");
+		List<CourseComment> courseComments = service.findaccountIdReviewer(accountIdReviewer);
+		courseComments.get(0).setSuccessful(true);
+		courseComments.get(0).setMessage("第一筆資料");
+		
+		return courseComments;
+	}
 
 	@PostMapping
 	public Core save(@RequestBody CourseComment courseComment) {

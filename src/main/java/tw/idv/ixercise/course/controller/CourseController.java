@@ -72,7 +72,7 @@ public class CourseController {
 	
 	@GetMapping
 	public List<Course> findAll() {
-		System.out.println("成功查到!");
+		System.out.println("成功查到!All");
 		List<Course> courses = service.findall();
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
@@ -81,12 +81,22 @@ public class CourseController {
 	
 	@GetMapping("/{city}")
 	public List<Course> findCity(@RequestParam("city") String city) {
-		System.out.println("成功查到!");
+		System.out.println("成功查到!city");
 		List<Course> courses = service.findCity(city);
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
 		return courses;
 	}
+	
+	@GetMapping("/corseId/{corseId}")
+	public Course findCity(@PathVariable("corseId") Integer corseId) {
+		System.out.println("成功查到!corseId");
+		Course course = service.findcorseId(corseId);
+		course.setSuccessful(true);
+		course.setMessage("第一筆資料");
+		return course;
+	}
+	
 	
 	@PostMapping("/upload-photo")
 	public String uploadPhoto(@RequestParam("file") MultipartFile file) {

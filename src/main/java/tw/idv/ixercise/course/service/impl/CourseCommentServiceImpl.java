@@ -22,12 +22,25 @@ public class CourseCommentServiceImpl implements CourseCommentService {
 		if (dao.selectCourseCommentByaccountIdReviewed(accountIdReviewed) == null) {
 			List<CourseComment> courseComments = new ArrayList<>();
 			CourseComment courseComment1 = new CourseComment();
-			courseComment1.setMessage("沒有評論");
+			courseComment1.setMessage("沒有被評論過");
 			courseComment1.setSuccessful(false);
 			courseComments.add(courseComment1);
 			return courseComments;
 		}
-		return dao.selectAll();
+		return dao.selectCourseCommentByaccountIdReviewed(accountIdReviewed);
+	}
+	
+	@Override
+	public List<CourseComment> findaccountIdReviewer(Integer accountIdReviewer) {
+		if (dao.selectCourseCommentByaccountIdReviewer(accountIdReviewer) == null) {
+			List<CourseComment> courseComments = new ArrayList<>();
+			CourseComment courseComment1 = new CourseComment();
+			courseComment1.setMessage("沒有評論過");
+			courseComment1.setSuccessful(false);
+			courseComments.add(courseComment1);
+			return courseComments;
+		}
+		return dao.selectCourseCommentByaccountIdReviewer(accountIdReviewer);
 	}
 	
 	@Transactional
@@ -41,5 +54,6 @@ public class CourseCommentServiceImpl implements CourseCommentService {
 	public boolean remove(Integer commentId) {
 		return dao.deleteCourseComment(commentId) > 0;
 	}
+
 
 }

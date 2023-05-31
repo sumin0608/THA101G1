@@ -18,7 +18,9 @@ public interface CourseService {
 	List<Course> findCity(String city);
 
 	List<Course> findcategoryId(String categoryId);
-	
+
+	Course findcorseId(Integer courseId);
+
 	List<DistrictsDto> getDistricts(String city);
 
 }
