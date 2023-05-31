@@ -97,11 +97,10 @@ public class CourseController {
 			String projectRootPath = System.getProperty("user.dir");
 			String relativePath = "src/main/resources/static/lib/img/";
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-			// 构建存储文件的路径
+			// 建存储路径
 			String filePath =  projectRootPath + "/" + relativePath + "course/"+fileName;
 			// 创建目标文件对象
 			File destFile = new File(filePath);
-			
 			System.out.println("儲存位置>>"+destFile);
 			file.transferTo(destFile);
 			// 返回存储的文件路径，可以在保存评论的控制器中使用?
