@@ -508,7 +508,7 @@
             const accountPhone = document.querySelector("#accountPhone");
             const accountPassword = document.querySelector("#accountPassword");
             const accountEmail = document.querySelector("#accountEmail");
-            const accountNickname = document.querySelector("#accountNickname");
+            const accNickname = document.querySelector("#accountNickname");
             // const accountLevel = document.querySelector("#accountLevel")
             // const accountState = document.querySelector("#accountState")
             const locationcity = document.querySelector("#locationcity");
@@ -526,7 +526,7 @@
 
 
             btn1.addEventListener('click', () => {
-
+                console.log(accNickname.value);
                 msg.textContent = '';
                 const fileReader = new FileReader();
                 fileReader.addEventListener('load', e => {
@@ -538,7 +538,7 @@
                             accountPhone: accountPhone.value,
                             accountPassword: accountPassword.value,
                             accountEmail: accountEmail.value,
-                            accountNickname: accountNickname.value,
+                            accountNickname: accNickname.value,
                             accountAddress: accountAdd,
                             accountName: accountName.value,
                             accountBirthday: accountBirthday.value,
@@ -557,7 +557,7 @@
                                 btn1.disabled = true;
                                 msg.className = 'info';
                                 msg.textContent = '註冊成功';
-                                location = "../index.html";
+                                // location = "../index.html";
                             } else {
                                 msg.className = 'error';
                                 msg.textContent = '註冊失敗';

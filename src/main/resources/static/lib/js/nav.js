@@ -89,7 +89,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                                <button class="btn btn-primary" type="button"\n' +
     '                                                    id="btn-close-search">關閉</button>\n' +
     '                                                <button class="btn btn-primary" type="reset"\n' +
-    '                                                    id="btn-close-search">重置</button>\n' +
+    '                                                    id="resetsearch">重置</button>\n' +
     '                                            </div>\n' +
     '                                        </div>\n' +
     '                                    </div>\n' +
@@ -493,10 +493,10 @@ btnCloseSearch.addEventListener("click", function () {
 
 const personalpage = document.querySelector("#personalpage")
 
-const accountId = sessionStorage.getItem("accountId");
-const accountNickname = sessionStorage.getItem("accountNickname");
-const accountLevel = sessionStorage.getItem("accountLevel");
-const accountPhoto = sessionStorage.getItem("accountPhoto");
+const accid = sessionStorage.getItem("accountId");
+const accnickname = sessionStorage.getItem("accountNickname");
+const acclevel = sessionStorage.getItem("accountLevel");
+const accphoto = sessionStorage.getItem("accountPhoto");
 const nickname = document.querySelector("#accountNickname");
 const logout = document.querySelector("#logout");
 const loginbtn = document.querySelector("#loginbtn");
@@ -504,17 +504,17 @@ const avataroutside = document.querySelector("#avataroutside");
 const avatarinside = document.querySelector("#avatarinside");
 const useravatar = document.querySelector("#useravatar");
 
-if (accountId) {
+if (accid) {
     loginbtn.classList.add("d-none");
     useravatar.classList.remove("d-none");
-    nickname.textContent = accountNickname;
-    console.log(accountPhoto);
+    nickname.textContent = accnickname;
+    console.log(accphoto);
     personalpage.href = "Account/PersonalPage.html";
 
-    if(accountPhoto.length > 0 ){
-        console.log(accountPhoto);
+    if(accphoto !== "null" || accphoto !== null ){
+        console.log(accphoto);
         console.log("進IF")
-        const imageBinaryStr = atob(accountPhoto);
+        const imageBinaryStr = atob(accphoto);
         let len = imageBinaryStr.length;
         const uint8Array = new Uint8Array(len);
         while (len--) {
@@ -564,4 +564,8 @@ logout.addEventListener("click", function () {
     fetch("Account/Logout");
     location = "index.html";
 })
+
+function getContextPath() {
+    return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
+}
 // });
