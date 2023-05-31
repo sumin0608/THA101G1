@@ -19,6 +19,7 @@ import tw.idv.ixercise.report.entity.Article;
 import tw.idv.ixercise.report.entity.Report;
 import tw.idv.ixercise.report.service.articleServiceImpl;
 import tw.idv.ixercise.report.service.reportService;
+import tw.idv.ixercise.report.service.reportServiceImpl;
 
 @Controller
 @RequestMapping("/back/")
@@ -26,7 +27,7 @@ public class reportController {
 	
 	
 	@Autowired
-	private reportService service;
+	private reportServiceImpl service;
 	
 	
 	@GetMapping({"/memberlist"})
