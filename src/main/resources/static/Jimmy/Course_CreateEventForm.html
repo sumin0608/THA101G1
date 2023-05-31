@@ -810,8 +810,11 @@
 
                 //撈該縣市的區
                 $("#city").change(function () {
-                    var city = $("#city").val();
-                    console.log("city: " + city)
+                    // var city = $("#city").val();
+                    // console.log("city: " + city);
+                    var city = $("#city option:selected").text();
+                    console.log("cityText: " + city);
+
                     $.ajax({
                         url: "/ixercise/course/districts/" + city,
                         type: "GET",
