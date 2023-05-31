@@ -171,7 +171,10 @@ text-align: center;
     text-align: center;
     }
 
+.reasonarea{
+    width: 200px;
 
+}
 
     </style>
     
@@ -570,22 +573,14 @@ text-align: center;
         
     };
 
-    $.ajax({url : "http://localhost:8080/ixercise/back/reportmember", // 資料請求的網址
+    $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求的網址
             type : "GET",
             dataType : "json",
 
             success : function(data) {
             var html = "";
       
-            console.log(data);
-
-            // if( obj.reportType==1){
-            //     reporta=="性騷擾";
-            // }else if( obj.reportType==3){
-            //     reporta=="廣告不實"
-            // }else{
-            //     reporta=="單純不喜歡";
-            // }
+  
             
             
             $.each(data,function(index, obj) {
@@ -593,8 +588,23 @@ text-align: center;
                         html += '<td class="pl-4">' + obj.reportId+ '</td>';
                         html += '<td class="font-medium mb-0">  <h5 class="font-medium mb-0">' + obj.memberId2+ '</h5></td>';
                         html += '<td>  <span class=" text-danger">' + obj.reportType+ "</td>";
-                        html += '<td>   <span class="text-muted" >隱藏在黑暗力量的鑰匙啊在我</span>' + obj.reportReason+ '</td>';
-                        html +='<td><p>10/10<p><span class="text-muted">'+obj.reportTime+'</span><br></td>';
+                           
+                            var truncatedContent="";
+                            if (obj.reportReason.length> 36) {
+                                truncatedContent = obj.reportReason.substring(0,36) + "..."; 
+                       
+                            }else{
+                                truncatedContent =obj.reportReason;
+                            }
+                            
+                            html += '<td class="reasonarea">  ' + truncatedContent+ '</td>';
+
+                        var backendTime = obj.reportTime;
+                        var dateObj = new Date(backendTime);
+                        var date = dateObj.toISOString().split('T')[0];
+                        var date1 = dateObj.toISOString().split('T')[1].split('.')[0];
+
+                        html +='<td><p class="text-muted">'+date+'</p> <span>'+date1+'<span>  <br></td>';
                         html += '<td><select class="form-control category-select" id="exampleFormControlSelect1">'+
                                                     '<option>'+obj.reportStatus+'</option>'+
                                                    '<option>'+'性騷擾'+'</option>'+
@@ -618,6 +628,40 @@ text-align: center;
 								console.log("AJAX Error:", error);
 							}
 						});
+</script>
+
+<script>
+
+var selectElement = $('.category-select');
+
+// 对选择的<select>元素执行操作
+selectElement.val('某个选项的值'); // 设置选中项的值
+selectElement.on('change', function() {
+  
+    var selectedOption = $(this).val();
+
+// 构建包含所选选项值的数据对象
+var formData = {
+  reportStatus: selectedOption
+};
+
+// 发送 AJAX 请求到后端进行处理
+$.ajax({
+  url: 'http://localhost:8080/ixercise/back/reportmember',
+  type: 'PUT',
+  data: formData,
+  success: function(response) {
+    // 数据保存成功后的处理逻辑
+    console.log('Data saved successfully!');
+  },
+  error: function(error) {
+    // 数据保存失败的处理逻辑
+    console.error('Error saving data:', error);
+  }
+});
+
+
+});
 </script>
      
 

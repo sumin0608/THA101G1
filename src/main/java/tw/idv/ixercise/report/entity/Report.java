@@ -2,6 +2,7 @@ package tw.idv.ixercise.report.entity;
 
 import java.sql.Time;
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,17 +33,19 @@ public class Report {
 		private Integer memberId;
 	    private Integer reportType;
 	    private Integer memberId2;
-	    private Time reportTime;
+	    private Date reportTime;
 	    private String reportReason;
 	    private Integer reportStatus;
-	    private Byte[] reportPicture;
+	    private String reportPicture;
 	    
-	    @Override
-	    public String toString() {
-	    	return "Report [reportId=" + reportId + ", MemberId=" + memberId + ", reportType=" + reportType + ", articleId="
-	    			+ memberId2 + ", reportTime=" + reportTime + ", reportReason=" + reportReason + ", reportStatus="
-	    			+ reportStatus + ", reportPicture=" + Arrays.toString(reportPicture) + "]";
-	    }
+		@Override
+		public String toString() {
+			return "Report [reportId=" + reportId + ", memberId=" + memberId + ", reportType=" + reportType
+					+ ", memberId2=" + memberId2 + ", reportTime=" + reportTime + ", reportReason=" + reportReason
+					+ ", reportStatus=" + reportStatus + ", reportPicture=" + reportPicture + "]";
+		}
+	    
+	   
 
 	
 	    

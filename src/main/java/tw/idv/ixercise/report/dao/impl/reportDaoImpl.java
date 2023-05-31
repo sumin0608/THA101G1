@@ -18,7 +18,16 @@ public class reportDaoImpl implements reportDao {
 	private Session session;
 	
 	
+	public boolean insert(Report report) {
+		session.persist(report);
+			return true;
+		}
 	
+	
+	public boolean update(int reportStatus){
+		session.get(Report.class,1);
+		return true;
+	}
 
 	@Override
 	public Report selectById(Integer id) {
@@ -33,6 +42,7 @@ public class reportDaoImpl implements reportDao {
 				.createQuery(hql,  Report.class)
 				.getResultList();
 	}
+	
 
 	
 
