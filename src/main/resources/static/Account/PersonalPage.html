@@ -348,8 +348,8 @@
                         </div>
                         <div class="col-7 my-auto">
                             <div class="card-body ms-5">
-                                <h5 class="card-title mb-4">Username</h5>
-                                <p class="card-text mb-4">所在城市/OO歲</p>
+                                <h5 id="pgnickname" class="card-title mb-4">Username</h5>
+                                <p id="pgcity" class="card-text mb-4">所在城市/OO歲</p>
                                 <a id="accEditPage" href="" class="d-grid gap-2 w-50 mb-3">
                                     <button class="btn btn-primary" type="button">編輯個人資訊</button>
                                 </a>
@@ -916,6 +916,7 @@
     <script src="../lib/js/nav.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
     <script src="../lib/js/jimmy_personalPage.js"></script>
+    <script src="../lib/js/PersonalPage_Account.js"></script>
     <!-- 漂亮alert! -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- 載入 Font Awesome -->
@@ -923,43 +924,6 @@
     <!-- ================================================================= -->
 
     <script>
-        // const accountId = sessionStorage.getItem("accountId");
-        // const accountNickname = sessionStorage.getItem("accountNickname");
-        // const accountLevel = sessionStorage.getItem("accountLevel");
-        // const accountPhoto = sessionStorage.getItem("accountPhoto");
-        const pageavatar = document.querySelector("#pageavatar");
-        // const nickname = document.querySelector("#accountNickname");
-        // const logout = document.querySelector("#logout");
-        // const loginbtn = document.querySelector("#loginbtn");
-        // const avataroutside = document.querySelector("#avataroutside");
-        // const avatarinside = document.querySelector("#avatarinside");
-        // const useravatar = document.querySelector("#useravatar");
-
-        if (accphoto !== "null") {
-            const imageBinaryStr = atob(accphoto);
-            let len = imageBinaryStr.length;
-            const uint8Array = new Uint8Array(len);
-            while (len--) {
-                uint8Array[len] = imageBinaryStr.charCodeAt(len);
-            }
-            const blob = new Blob([uint8Array]);
-            pageavatar.src = URL.createObjectURL(blob);
-            // avatarinside.src = URL.createObjectURL(blob);
-        } else {
-            const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
-            pageavatar.src = nophoto;
-            // avatarinside.src = nophoto;
-        }
-
-    //     ========================================================
-        const accEditPage = document.querySelector("#accEditPage");
-
-        accEditPage.href = getContextPath()+"/Account/AccountEdit.html";
-
-
-        function getContextPath() {
-            return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
-        }
 
     </script>
 
