@@ -1,11 +1,17 @@
 package tw.idv.ixercise.event.entity;
 
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.*;
+import tw.idv.ixercise.event.repository.CustomTimeDeserializer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.sql.*;
+import java.util.List;
+
 @ToString
 @Setter
 @Getter
@@ -28,9 +34,15 @@ public class Event{
     @Column(name = "eventName") //若 程式端名稱 與 資料庫端名稱 相同(不區分⼤⼩寫)時，會⾃動映射 --> 可省略 @Column
     private String eventName;
     private Integer price;
+    @Future
     private Date eventDate;
+    //    @JsonDeserialize(using = CustomTimeDeserializer.class)
+    @JsonFormat(pattern = "HH:mm:ss")
     private Time startTime;
-    private Date deadline;
+    @Future
+    private Timestamp deadline;
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+    @Column(insertable = false)
     private Timestamp createDate;
     private Integer maxAttendees;
     private String description;
@@ -42,9 +54,14 @@ public class Event{
     private String city;
     private String district;
     private Integer categoryId;
+    @Column(insertable = false)
     private Integer currentAttendees;
+    @Column(insertable = false)
     private Integer status;
     private Integer paymentMethod;
+
+    @Transient
+    private List<Event> eventList;
 
 
     public Event(String eventName,Integer price){

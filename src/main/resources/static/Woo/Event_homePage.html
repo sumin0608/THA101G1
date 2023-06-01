@@ -45,7 +45,7 @@
         } */
         /* ================================================ */
 
-        .event_card img.event_pic {
+        .event_card .event_card_content .event_link .photo img.event_pic {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -78,7 +78,7 @@
             overflow: hidden;
         }
 
-        .event_card:hover {
+        .event_card_content:hover {
             /* box-shadow: 0 0 45px gray; */
             /* padding: 1.5em .5em .5em;
             border-radius: 2em; */
@@ -412,51 +412,55 @@
                 <hr>
                 <br>
                 <!-- ======================zzz===================================================================================== -->
-                <div class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
-                    <div class="col mb-5 event_card_container">
-                        <div class="card h-100 p-0 mb-0 event_card event_card">
+                <div class="row gx-4 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left event_cards_container"
+                     id="event_cards_container">
+                    <div class="col mb-5 event_card">
+                        <div class="card h-100 p-0 mb-0 event_card_content">
                             <!-- EVENT link-->
-                            <a href="">
+                            <a class="event_link" href="">
                                 <!-- EVENT image-->
                                 <div class="photo">
                                     <img class="card-img-top event_pic"
-                                        src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="
-                                        alt="..." />
+                                         alt="..."
+                                         src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="/>
                                 </div>
-
                                 <!-- EVENT details-->
                                 <div class="card-body p-2">
                                     <div class="text-left">
                                         <!-- EVENT title-->
                                         <div class="event_title">
-                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)</h5>
+                                            <h5 class="card-title fw-bolder  text-truncate event_name">
+                                                大里故鄉唱歌、吃飯(現在到9點)</h5>
                                         </div>
                                         <!-- EVENT location -> City & Place -->
-                                        <div class="mb-2 event_location">
+                                        <div class="mb-2 event_place">
                                             <span class="card-text  text-muted event_city">台北市</span>
-                                            <span class="card-text text-muted event_place"> 盈峰河濱河濱足球場</span>
+                                            <span class="card-text text-muted event_location"> 盈峰河濱河濱足球場</span>
                                         </div>
-                                        <div class="event_start_time">
-                                            <p class="card-text text-muted">星期四,四月 6日 08:30</p>
+                                        <div class="event_start_datetime">
+                                            <span class="card-text text-muted event_start_date">星期四,四月 6日</span>
+                                            <span class="card-text text-muted event_start_time">08:30</span>
                                         </div>
 
                                     </div>
                                 </div>
                                 <!-- Product actions-->
-
                                 <div class="card-footer p-2  bg-transparent justify-content-between">
 
                                     <div class="d-flex flex-row align-items-center event_creater">
                                         <div class="member-icon">
                                             <img src="https://picsum.photos/300/200/?random=10"
-                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">
+                                                 aria-expanded="false" class="overflow-hidden rounded-circle p-0 member_profile_pic"
+                                                 data-bs-toggle="dropdown" height="36" href="#"
+                                                 role="button"
+                                                 width="36">
                                         </div>
 
-                                        <div class="col-8 ms-2 c-details">
-                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                        <div class="col-8 ms-2 c-details member_details">
+                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name">
+                                                Dawdddd0000000ddddoo
                                             </h6>
-                                            <span class=" text-muted">sss</span>
+                                            <span class=" text-muted member_intro">sss</span>
                                         </div>
                                         <!-- <div class="col-2"></div> -->
                                     </div>
@@ -464,57 +468,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col mb-5 event_card_container">
-                        <div class="card h-100 p-0 mb-0 event_card event_card">
-                            <!-- EVENT link-->
-                            <a href="">
-                                <!-- EVENT image-->
-                                <div class="photo">
 
-                                    <img class="card-img-top event_pic" src="https://picsum.photos/300/200/?random=10"
-                                        alt="..." />
-                                </div>
 
-                                <!-- EVENT details-->
-                                <div class="card-body p-2">
-                                    <div class="text-left">
-                                        <!-- EVENT title-->
-                                        <div class="event_title">
-                                            <h5 class="card-title fw-bolder  text-truncate">大里故鄉唱歌、吃飯(現在到9點)</h5>
-                                        </div>
-                                        <!-- EVENT location -> City & Place -->
-                                        <div class="mb-2 event_location">
-                                            <span class="card-text  text-muted event_city">台北市</span>
-                                            <span class="card-text text-muted event_place"> 盈峰河濱河濱足球場</span>
-                                        </div>
-                                        <div class="event_start_time">
-                                            <p class="card-text text-muted">星期四,四月 6日 08:30</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- Product actions-->
-
-                                <div class="card-footer p-2  bg-transparent justify-content-between">
-
-                                    <div class="d-flex flex-row align-items-center event_creater">
-                                        <div class="member-icon">
-                                            <img src="https://picsum.photos/300/200/?random=10"
-                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">
-                                        </div>
-
-                                        <div class="col-8 ms-2 c-details">
-                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
-                                            </h6>
-                                            <span class=" text-muted">sss</span>
-                                        </div>
-                                        <!-- <div class="col-2"></div> -->
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
@@ -716,11 +671,45 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a>
+                                    cart</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>eventId</th>
+
+                            <th> creatorId</th>
+
+                            <th> eventName</th>
+
+                            <th>price</th>
+
+                            <th>eventDate</th>
+
+                            <th>startTime</th>
+
+                            <!-- <th>deadline</th> -->
+
+                            <!-- <th>createDate</th> -->
+
+                            <th>maxAttendees</th>
+                            <th>categoryId</th>
+                            <th>description</th>
+                            <th>photo</th>
+                            <!-- <th><img src="https://picsum.photos/300/200/?random=10"></th> -->
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody></tbody>
+
+                    </table>
                 </div>
                 <!-- =========================================================================================================== -->
 
@@ -766,6 +755,129 @@
     <script>
         $("#searchbar").on("click", function () {
             $("#searchcard").toggleClass("d-none");
+        });
+
+        // const tbody = document.querySelector('tbody');
+        // const url = "http://localhost:8080/ixercise/event/get/204";
+        // fetch(url)
+        //     .then(resp => resp.json())
+        //     .then(evt => {
+        //         // for (let evt of evtList) {
+
+        //         tbody.innerHTML += `
+        // 		<tr>
+        // 			<td>${evt.eventId}</td>
+        // 			<td>${evt.creatorId}</td>
+        // 			<td>${evt.eventName}</td>
+        // 			<td>${evt.price}</td>
+        // 			<td>${evt.eventDate}</td>
+        // 			<td>${evt.startTime}</td>
+        // 			<td>${evt.maxAttendees}</td>
+        // 			<td>${evt.categoryId}</td>
+        // 			<td>${evt.description}</td>
+
+        //             <td><img src="https://picsum.photos/300/200/?random=10"></td>
+        // 		</tr>
+        // 		`;
+
+        //         // }
+        //         // <td>${evt.photo}</td>
+        //     });
+
+        addEventListener("DOMContentLoaded", (load) => {
+            const event_cards_container = document.querySelector('#event_cards_container');
+            const urls = "http://localhost:8080/ixercise/event/get";
+            fetch(urls)
+                .then(resp => resp.json())
+                .then(evtList => {
+                    event_cards_container.innerHTML = "";
+                    for (let evt of evtList) {
+
+                        // tbody.innerHTML += `
+                        // <tr>
+                        // 	<td>${evt.eventId}</td>
+                        // 	<td>${evt.creatorId}</td>
+                        // 	<td>${evt.eventName}</td>
+                        // 	<td>${evt.price}</td>
+                        // 	<td>${evt.eventDate}</td>
+                        // 	<td>${evt.startTime}</td>
+                        // 	<td>${evt.maxAttendees}</td>
+                        // 	<td>${evt.categoryId}</td>
+                        // 	<td>${evt.description}</td>
+
+                        //     <td><img src="https://picsum.photos/300/200/?random=10"></td>
+                        // </tr>
+                        // `;
+
+
+                        event_cards_container.innerHTML += `
+                
+            
+                
+                <div class="col mb-5 event_card">
+                        <div class="card h-100 p-0 mb-0 event_card_content">
+                            <!-- EVENT link-->
+                            <a href="http://localhost:8080/ixercise/Woo/Event_intro_page.html?evt=${evt.eventId}" class="event_link">
+                                <!-- EVENT image-->
+                                <div class="photo">
+                                    <img class="card-img-top event_pic"
+                                        src='http://localhost:8080/ixercise/event/image/${evt.eventId}'
+                                        alt="..." />
+                                </div>
+                                <!-- EVENT details-->
+                                <div class="card-body p-2">
+                                    <div class="text-left">
+                                        <!-- EVENT title-->
+                                        <div class="event_title">
+                                            <h5 class="card-title fw-bolder  text-truncate event_name">${evt.eventName}</h5>
+                                        </div>
+                                        <!-- EVENT location -> City & Place -->
+                                        <div class="mb-2 event_place">
+                                            <span class="card-text  text-muted event_city">${evt.city}</span>
+                                            <span class="card-text text-muted event_location"> ${evt.location}</span>
+                                        </div>
+                                        <div class="event_start_datetime">
+                                            <span class="card-text text-muted event_start_date">${evt.eventDate}</span>
+                                            <span class="card-text text-muted event_start_time">${evt.startTime}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-2  bg-transparent justify-content-between">
+
+                                    <div class="d-flex flex-row align-items-center event_creater">
+                                        <div class="member-icon">
+                                            <img src="https://picsum.photos/300/200/?random=10"
+                                                class="overflow-hidden rounded-circle p-0 member_profile_pic" href="#"
+                                                role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
+                                                height="36">
+                                        </div>
+
+                                        <div class="col-8 ms-2 c-details member_details">
+                                            <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name">
+                                                Dawdddd0000000ddddoo
+                                            </h6>
+                                            <span class=" text-muted member_intro">sss</span>
+                                        </div>
+                                        <!-- <div class="col-2"></div> -->
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                
+                
+                
+                
+                `;
+
+
+                    }
+                    // <td>${evt.photo}</td>
+                });
+
+
         });
     </script>
 </body>

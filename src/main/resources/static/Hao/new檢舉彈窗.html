@@ -317,19 +317,28 @@
 
   
   <!-- 檢舉內文 -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+
             <form role="form" class="form-horizontal">
             <div class="modal-header modal-header-info ">
                 <h2 class="modal-title  " id="exampleModalLabel">檢舉</h2>
                 <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
           <div class="modal-body">
+
+            <div class="form-group">
+                <input type="hidden" id="memberId" class="form-control-file" name="memberId" value="123">
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" id="memberId2" class="form-control-file" name="memberId2" value="321">
+            </div>
                 
   <!-- 檢舉時間 -->
                 <div class="form-group">
-                  <label class="col-sm-2 text-muted" for="inputTo"><span class="glyphicon glyphicon-user"></span>檢舉時間</label>
+                  <label class="col-sm-2 text-muted" for="inputTo">檢舉時間</label>
                   <div class="col-sm-12"><input type="date" class="form-control" id="inputTo" placeholder="comma separated list of recipients"></div>
                 </div>
     <!-- 檢舉原因 -->
@@ -337,16 +346,18 @@
 
                 <div class="row">
                     <div class="col-sm-12">
+
                         <div class="form-group">
-                            <label class="col-sm-2 text-muted" for="inputTo"><span class="glyphicon glyphicon-user"></span>檢舉類別</label>
-                                <select class="custom-select col-sm-12   custom-select-lg mb-3 ">
-                                    <option selected class="text-muted ">請選擇</option>
-                                    <option value="1">廣告不實</option>
-                                    <option value="2">性騷擾</option>
-                                    <option value="3">價格太貴</option>
-                                </select>
+                            <label class="col-sm-2 text-muted" for="inputTo1">檢舉類別</label>
+                                <select class="custom-select col-sm-12  orm-control custom-select-lg mb-3" id="inputTo1" name="reportType" required>
+                                      <option value="">選擇檢舉類別</option>
+                                      <option value="1">性騷擾</option>
+                                      <option value="2">廣告不實</option>
+                                      <option value="3">詐騙</option>
+                                    </select>
+                                
                             <div class="invalid-feedback">
-                                Please choose a username.
+                              選一個選項
                             </div>
                         </div>
                     </div>
@@ -362,7 +373,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="description">檢舉內容</label>
-                            <textarea class="form-control" name="description" id="description" rows="5"
+                            <textarea class="form-control" name="reportReason" id="description" rows="5"
                                 required></textarea>
                             <div class="invalid-feedback">
                                這一定要輸入
@@ -371,15 +382,15 @@
                     </div>
                 </div>
 
+                    <div>
+                        <input type="hidden" class="form-control-file" id="reportStatus" name="reportStatus" value="0">
+                    </div>
 
                 
                 <div class="col-md-12 ms-auto">
                     <label for="description" class="text-muted">檢舉圖片</label>
                        <div class="card mt-1">
-                        
-                                            <div class="card-body">
-                                             
-                                               
+                                            <div class="card-body">                                      
 
                                                 <div class="form-group">
                                                     <label for="photo-dropzone forDhotoDrop"></label>
@@ -408,28 +419,27 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <input type="file" class="form-control-file" name="photo"
-                                            id="photo-dropzone" aria-describedby="fileHelp" accept="image/*"
+                                            <input type="file" class="form-control-file" name="reportPicture"
+                                            id="reportPicture" aria-describedby="fileHelp" accept="image/*"
                                             required>
 
                                             <!-- <button type="button" class="btn btn-danger  " id="delete-btn ">刪除照片</button> -->
                                         </div>
-
-
                 </div>
             </div>
              <div class="modal-footer">
-              <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-              <button type="submit" class="btn btn-primary" data-bs-toggle="popover" title="Popover title" data-bs-content="檢舉就會送出 確定嗎?">檢舉</button>
+              <button type="reset" id="closeButton" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+              <button type="submit"  class="btn btn-primary" data-bs-toggle="popover" title="Popover title" data-bs-content="檢舉就會送出 確定嗎?">檢舉</button>
             
               <!-- <button type="submit" class="btn btn-primary">檢舉</button> -->
             </div>
             </form>
-
-
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div>
+
+
+    
   </div>
 
 
@@ -480,6 +490,120 @@
             $("#searchcard").addClass("d-none");
         })
     </script>
+
+  
+        <script>
+  // 获取表单元素
+  var form = document.querySelector('.form-horizontal');
+
+
+  // 监听表单提交事件
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // 阻止表单默认提交行为
+
+    // 创建对象以存储表单数据
+    var formData = {};
+   
+    var base64String = ""; 
+
+    var fileInput = document.getElementById('reportPicture');
+var file = fileInput.files[0];
+
+
+var reader = new FileReader();
+reader.onload = function(event) {
+  base64String = btoa(event.target.result);
+  
+  // 获取表单字段的值
+  formData.memberId=document.getElementById('memberId').value;
+  formData.reportType = document.getElementById('inputTo1').value;
+  formData.memberId2=document.getElementById('memberId2').value;
+   formData.reportTime = document.getElementById('inputTo').value;  // 轉換為 ISO 格式的字串
+console.log(formData.reportTime);
+
+  formData.reportReason= document.getElementById('description').value;
+  formData.reportStatus = document.getElementById('reportStatus').value;
+   formData.reportPicture =base64String ;
+
+
+// 將 base64String 傳送到後端
+// ...
+
+
+  // 将表单数据转换为 JSON 字符串
+  var mydata = JSON.stringify(formData);
+  console.log(mydata);
+
+  // 进一步处理 JSON 数据，例如通过 AJAX 发送到服务器等
+
+$.ajax({
+url:  "http://localhost:8080/ixercise/back/reportmember",
+type: 'POST',
+contentType: 'application/json',
+data: mydata,
+success: function(response) {
+  // 請求成功，進行相應的處理
+  console.log(response);
+  showConfirmationPopup();
+},
+error: function(xhr, status, error) {
+  // 請求失敗，處理錯誤
+  console.error(error);
+}
+});
+
+
+  // 彈窗（可选）
+
+
+  function showConfirmationPopup() {
+  // 创建弹窗元素
+  $('#closeButton').trigger('click');
+  var popup = $('<div class="confirmation-popup">資料成功送出</div>');
+
+  // 添加到页面中
+  $('body').append(popup);
+
+  // 设置样式和动画效果
+  popup.css({
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '20px',
+    background: '#fff',
+    border: '1px solid #ccc',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+    zIndex: '9999'
+  });
+
+  // 设置弹窗自动关闭的定时器
+  setTimeout(function() {
+    popup.fadeOut(function() {
+      // 关闭弹窗后进行清理操作
+      popup.remove();
+    });
+  }, 3000); // 3秒后自动关闭弹窗
+}
+
+  
+
+
+  // 清除表单字段的值（可选）
+  form.reset();
+
+};
+
+console.log(base64String);
+
+
+reader.readAsBinaryString(file);
+
+  });
+</script>
+
+
+
 </body>
 
 </html>

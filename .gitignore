@@ -15,6 +15,7 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+<<<<<<< HEAD
 spring.log.2023-05-29.0.gz
 .metadata/.lock
 .metadata/.log
@@ -51,3 +52,13 @@ spring.log.2023-05-29.0.gz
 .metadata/.plugins/org.eclipse.tips.ide/dialog_settings.xml
 .metadata/.plugins/org.eclipse.ui.intro/introstate
 .metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+=======
+spring.log.2023-05-22.0.gz
+spring.log.2023-05-24.0.gz
+spring.log.2023-05-25.0.gz
+spring.log.2023-05-26.0.gz
+/spring.log.2023-05-28.0.gz
+/spring.log.2023-05-30.0.gz
+/spring.log
+spring.log.2023-05-31.0.gz
+>>>>>>> main

@@ -93,7 +93,7 @@
                             <!-- ================================================================== -->
                             <!-- <div class="collapse" id="collapseExample"> -->
                             <div id="searchcard" class="d-none">
-                                <div class="card card-body w-50 position-fixed">
+                                <div class="searchbarthing w-50 position-fixed">
                                     <!-- <form action="" class="row mb-0"> -->
                                     <div class="row mb-0">
                                         <div class="col-3">
@@ -187,41 +187,41 @@
                         </svg>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
                             <!-- 一條通知====================================================== -->
-
-                            <div class="list-group">
+                            <!-- 完成版 600px -->
+                            <div class="list-group notifyunread">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
+                                    style="height: 93px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
+                                                <p class="mb-1" style=" overflow: hidden;">
+                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                                </p>
+                                                <small style="white-space: nowrap;">3 days ago</small>
                                             </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="list-group">
+                            <div class="list-group notifyunread">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
+                                    style="height: 93px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
                                             <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
+                                                <p class="mb-1" style=" overflow: hidden;">
+                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                                </p>
+                                                <small style="white-space: nowrap;">3 days ago</small>
                                             </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
                                         </div>
                                     </div>
                                 </a>
@@ -240,7 +240,7 @@
 
                             <li>
                                 <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
+                                    src="https://picsum.photos/200/200/?random=10">
                             </li>
                             <li>
                                 <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -293,50 +293,70 @@
         <!-- 請在這裡作業 -->
         <div class="row">
             <!-- 課程介紹區 -->
-            <div class="col-md-9 p-5 mb-4 bg-light rounded-3" style="border: solid green;">
-                <div class="container-fluid py-5" style="border: solid red;">
-                    <h1 class="display-5 fw-bold">TRX體能訓練</h1>
+            <div id="course_content_place" class="col-md-9 p-5 mb-4 bg-light rounded-3">
+                <div id="course_content" class="container-fluid py-5" style="border: solid yellow;">
+                    <h1 class="display-5 fw-bold" id="eventName">TRX體能訓練123</h1>
+                    運動類型:<span id="categoryId">運動類型</span>
                     <div class="photo">
-                        <img class="card-img-top event_pic"
+                        <img id="photo" class="card-img-top event_pic"
                             src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="
                             alt="..." />
                     </div>
+                    <div id="location" class="fw-bold">地點(ex:運動中心)</div>
                     <div class="d-flex small text-dark mb-2">
-                        <span>台北市</span>
-                        <span>&nbsp;中山區</span>
-                        <span>&nbsp;南京東路三段219號5樓</span>
-                    </div>
-                    <div class="d-flex small text-dark mb-2">
-                        日期 時間
-                    </div>
-                    <div class="d-flex justify-content-end small text-dark mb-2">
-                        教練名字
+                        <span id="city">台北市</span>&nbsp;
+                        <span id="district">中山區</span>&nbsp;
+                        <a id="detailedAddress" href="#" style="color: black;">南京東路三段219號5樓</a>
                     </div>
                     <div class="d-flex small text-dark mb-2">
-                        報名人數
+                        <!-- <span id="courseStartDate">日期</span> -->
+                        <span id="courseStartTime">&nbsp;時間</span>
                     </div>
-                    <p class="col-md-8 fs-4">
-                        挑戰你的身體極限，讓你感受到獨特的全身運動體驗！透過懸吊設備的力量，你能夠提升核心肌肉的穩定性、增強肌肉力量和耐力，同時鍛鍊身體平衡力和靈活性，成為更健康、更自信的自己！</p>
-                    <button class="btn btn-primary btn-lg" type="button">報名課程</button>
+                    <div class="d-flex small text-dark mb-2">
+                        新台幣:$
+                        <span id="expectedPrice">費用</span>
+                        &nbsp;&nbsp;課程時長:
+                        <span id="courseDuration">課程時長</span>小時
+                    </div>
+                    <div class=" d-flex justify-content-end text-dark mb-2">
+                        教練名字: <span id="creator">教練名字</span>
+                    </div>
+                    <div class="d-flex small text-dark mb-2">
+                        報名人數上限:<span id="maximumCapacity">報名人數上限</span>
+                    </div>
+                    <div class="d-flex small text-dark mb-2">
+                        目前報名人數:<span id="currentEnrolment">目前報名人數</span>
+                    </div>
+
+                    <div class="d-flex small text-dark mb-2">
+                        報名截止日:<span id="registrationDeadline">報名截止日</span>
+                    </div>
+                    <p id="description" class="col-md-8 fs-4 description">
+                        挑戰你的身體極限，讓你感受到獨特的全身運動體驗！透過懸吊設備的力量，你能夠提升核心肌肉的穩定性、增強肌肉力量和耐力，同時鍛鍊身體平衡力和靈活性，成為更健康、更自信的自己！
+                    </p>
+                    <button id="paymoney" class="btn btn-primary btn-lg" type="button">報名課程</button>
                 </div>
+
+
+
             </div>
-            <!-- 瀏覽紀錄區 預計最多顯示5筆-->
+            <!-- 側邊瀏覽紀錄區 預計最多顯示5筆-->
             <aside class="col-3" style="border: solid green;">
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
                         <!-- 圖片 -->
-                        <div class="col-md-4">
+                        <div class="col-md-4 a_photo">
                             <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
                         </div>
                         <!-- 內容 -->
                         <div class="col-md-8">
-                            <p class="card-tex my-0">瀏覽紀錄1</p>
-                            <p class="card-text"><small class="text-muted">新北市</small>
+                            <p class="card-tex my-0 a_eventName">瀏覽紀錄1</p>
+                            <p class="card-text"><small class="text-muted a_city">新北市</small>
                             </p>
                         </div>
                     </div>
                 </div>
-                <!--  -->
+                <!--瀏覽紀錄2-->
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
                         <!-- 圖片 -->
@@ -351,7 +371,7 @@
                         </div>
                     </div>
                 </div>
-                <!--  -->
+                <!--瀏覽紀錄3-->
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
                         <!-- 圖片 -->
@@ -372,15 +392,16 @@
             <div class="row align-items-md-stretch" style="border: solid green;">
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
-                        <h2>其他課程(同個教練)</h2>
-                        <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron
+                        <h2 class="o_eventName">其他課程(同個教練)</h2>
+                        <p class="o_description">Swap the background-color utility and add a `.text-*` color utility to
+                            mix up the jumbotron
                             look. Then, mix and match with additional component themes and more.</p>
-                        <button class="btn btn-outline-light" type="button">更多資料</button>
+                        <button id="morecoursebtn" class="btn btn-outline-light" type="button">更多資料</button>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
-                        <h2>教練介紹</h2>
+                        <h2 class="o_creator">教練介紹</h2>
                         <p>Or, keep it light and add a border for some added definition to the boundaries of your
                             content. Be sure to look under the hood at the source HTML here as we've adjusted the
                             alignment and sizing of both column's content for equal-height.</p>
@@ -393,7 +414,8 @@
     <br>
     <br>
     <!-- owl.carousel -->
-    <div class="owl-carousel owl-theme">
+    <!-- 其他非同教練的課程 -->
+    <!-- <div class="owl-carousel owl-theme">
         <div class="item">
             <h4>1</h4>
         </div>
@@ -430,8 +452,11 @@
         <div class="item">
             <h4>12</h4>
         </div>
-    </div>
+    </div> -->
     <br>
+    <div id="courseInfo">
+        紙上得來終覺淺，絕知此事要躬行。
+    </div>
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
@@ -460,7 +485,12 @@
     </footer>
     <!-- footer結束================================================================================= -->
 
-    <script>
+    <!-- 引入所需函式庫 -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/owl_carousel/owl.carousel.min.js"></script>
+    <!-- ================================================================= -->
+    <!-- <script>
         $(document).ready(function () {
             // owl.carousel
             $(".owl-carousel").owlCarousel({
@@ -480,12 +510,7 @@
                 }
             });
         });
-    </script>
-    <!-- 引入所需函式庫 -->
-    <script src="../lib/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/js/popper.min.js"></script>
-    <script src="../lib/owl_carousel/owl.carousel.min.js"></script>
-    <!-- ================================================================= -->
+    </script> -->
     <script>
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
@@ -493,6 +518,94 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
+
+        $(document).ready(function () {
+            console.log("有人嗎");
+
+            // <!-- 課程介紹區 -->
+            var urlParams = new URLSearchParams(window.location.search);
+            var courseId = urlParams.get('courseId');
+
+            // 使用courseId进行其他操作
+            console.log('courseId:', courseId);
+            // var courseId = sessionStorage.getItem('courseId');
+            $.ajax({
+                url: '/ixercise/course/corseId/' + courseId,
+                type: 'GET',
+                success: function (response) {
+                    console.log(response);
+                    $("#eventName").text(response.eventName);
+                    $("#categoryId").text(response.categoryId);
+                    $("#photo").attr("src", "/ixercise/lib/img/course/" + response.photo);
+                    $("#location").text(response.location);
+                    $("#city").text(response.city);
+                    $("#district").text(response.district);
+                    $("#detailedAddress").text(response.detailedAddress);
+                    // $("#courseStartDate").text(response.courseStartDate);
+                    $("#courseStartTime").text(response.courseStartTime);
+                    $("#expectedPrice").text(response.expectedPrice);
+                    $("#courseDuration").text(response.courseDuration);
+                    $("#creator").text(response.creator);
+                    $("#maximumCapacity").text(response.maximumCapacity);
+                    $("#currentEnrolment").text(response.currentEnrolment);
+                    $("#registrationDeadline").text(response.registrationDeadline);
+                    $("#description").text(response.description);
+                    // <!-- 下排課程推薦 -->
+                    // 1.其他課程(同個教練)
+                    $.ajax({
+                        url: '/ixercise/course/',
+                        type: 'GET',
+                        async: false,//
+                        success: handleResponse,
+                        error: function (xhr, status, error) {
+                            console.log(error);
+                        }
+                    });
+                    function handleResponse(response) {
+                        console.log(response);
+                        // filter篩選:
+                        var creator = $("#creator").text().trim();
+                        console.log("creator: " + creator);
+                        console.log("courseIdr: " + courseId);
+                        let filteredData0 = response.filter(function (item) {
+                            if ((item.creator == creator) && (item.courseId != courseId)) {
+                                return true;
+                            }
+                        });
+                        console.log("filteredData0: " + filteredData0);
+                        $(".o_eventName").text(filteredData0[0].eventName);
+                        $(".o_description").text(filteredData0[0].description);
+                        var other_courseId = filteredData0[0].courseId;
+                        console.log("其他課程(同個教練):", other_courseId);
+                        // btn其他課程(同個教練)
+                        $("#morecoursebtn").on("click", function (e) {
+                            console.log("123");
+                            e.preventDefault();
+
+                            console.log("其他課程(同個教練)courseId: " + other_courseId);
+                            var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + other_courseId;
+                            window.open(url, '_blank');
+                        });
+                    };
+                    // 2.教練介紹
+                    $.ajax({
+
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+
+
+
+
+
+
+
+
+        });
     </script>
 </body>
 

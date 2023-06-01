@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ixercise</title>
+    <!-- 引入bootstarp跟共用css內容========================================= -->
+    <link href="../lib/css/styles.css" rel="stylesheet" />
+    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <!-- 引入頁籤icon======================================================= -->
+    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
+    <!-- =========================================== -->
+    <style>
+        .square-image {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            width: 74px;
+            height: 74px;
+            object-fit: cover;
+        }
+
+        .notifyp {
+            height: 60px;
+            /* width: 350px; */
+            /* padding: 10px;
+            border: 2px solid #4d4d4d;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            box-sizing: border-box; */
+        }
+
+        .displaynone {
+            display: none;
+        }
+
+        /* ===== 重要性的星號 ===== */
+
+        /* div.star_block {
+            display: inline-block;
+        } */
+
+        /* 手型滑鼠指針樣式 */
+        div.star_block>span.star {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 3px;
+        }
+
+        div.star_block>span.star.-on {
+            color: yellow;
+        }
+
+        div.fixstar_block>span.fixstar.-on {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 我是V6，修改如下 -->
+    <!-- 1.修正會員彈出選單頭像會跑版的問題 -->
+    <!-- 2.修正通知圖片會有跑板問題 -->
+    <!-- 以下導覽列=================================================================================== -->
+    <!-- 增加w-100 sticky-top -->
+    <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
+        <div class=" container-fluid px-4 px-lg-0 me-4 ">
+
+            <!-- 商標===================================================================== -->
+            <a class="navbar-brand m-0 px-4" href="#!">
+                <img src="../lib/img/IX-nobackground.png" alt="" width="91" height="60">
+            </a>
+            <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <!-- 商標的右邊整條============================================================ -->
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+                <ul class="navbar-nav mb-2 mb-lg-0 w-100">
+                    <!-- 搜尋欄=============================================================== -->
+                    <!-- <li class="nav-item my-auto">
+                    <form class="d-flex">
+                        <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
+                        <button class="btn border border-2 border-dark" type="submit">Search</button>
+                    </form>
+                </li> -->
+
+                    <li class="nav-item my-auto">
+                        <form class="d-flex row">
+                            <div class="row" style="width: 400px; max-width: 400px;">
+                                <div class="col-8 pe-0">
+                                    <input class="form-control" id="searchbar" type="search" placeholder="搜尋..."
+                                        aria-label="Search" role="button">
+                                    </input>
+                                </div>
+                                <div class="col-4 ps-0">
+                                    <button class="btn border border-1 border-dark" type="submit">Search</button>
+                                </div>
+                            </div>
+
+                            <!-- </form> -->
+                            <!-- ================================================================== -->
+                            <!-- <div class="collapse" id="collapseExample"> -->
+                            <div id="searchcard" class="d-none">
+                                <div class="searchbarthing w-50 position-fixed">
+                                    <!-- <form action="" class="row mb-0"> -->
+                                    <div class="row mb-0">
+                                        <div class="col-3">
+                                            <!-- <label for=""></label> -->
+                                            <select class="form-select form-select-sm col-3 mb-3"
+                                                aria-label="Default select example">
+                                                <option selected>頁面</option>
+                                                <option value="1">商城</option>
+                                                <option value="2">論壇</option>
+                                                <option value="3">活動</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-select-sm"
+                                                aria-label="Default select example">
+                                                <option selected>運動類型</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-select-sm"
+                                                aria-label="Default select example">
+                                                <option selected>各自設定</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-select-sm"
+                                                aria-label="Default select example">
+                                                <option selected>各自設定</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <!-- <div class="col-9"></div> -->
+                                            <div class="col-12 ">
+                                                <!-- <button class="btn btn-primary" type="submit"> 查詢
+                                        </button> -->
+                                                <button class="btn btn-primary" type="button" id="btn-close-search">關閉
+                                                </button>
+                                                <button class="btn btn-primary" type="reset" id="btn-close-search">重置
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </li>
+
+                    <!-- <div class="collapse  d-block" id="collapseExample">
+                </div> -->
+
+
+                    <!-- 辦活動============================================================= -->
+                    <li class="nav-item fs-5 ms-auto my-auto">
+                        <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動
+                        </a>
+                    </li>
+                    <!-- 其他主頁  ========================================================== -->
+                    <li class="nav-item fs-5 dropdown my-auto">
+                        <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">其他主頁
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">首頁</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">商城</a></li>
+                            <li><a class="dropdown-item" href="#!">論壇</a></li>
+                            <li><a class="dropdown-item" href="#!">活動</a></li>
+                            <li><a class="dropdown-item" href="#!">課程</a></li>
+                        </ul>
+                    </li>
+                    <!-- 鈴鐺============================================================= -->
+                    <!-- 還有一顆填滿的bi-bell-fill -->
+                    <!-- 操控.n-dot來控制有無紅點 -->
+                    <li class="nav-item dropdown my-auto">
+                        <div class="n-dot"></div>
+                        <svg width="36" height="36" fill="currentColor"
+                            class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                        </svg>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                            <!-- 一條通知====================================================== -->
+                            <!-- 完成版 600px -->
+                            <div class="list-group notifyunread">
+                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 93px; width:600px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <p class="mb-1" style=" overflow: hidden;">
+                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                                </p>
+                                                <small style="white-space: nowrap;">3 days ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="list-group notifyunread">
+                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 93px; width:600px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <p class="mb-1" style=" overflow: hidden;">
+                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                                </p>
+                                                <small style="white-space: nowrap;">3 days ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- 會員頭像========================================================= -->
+                    <li class="nav-item dropdown mx-2 my-auto">
+                        <img src="https://picsum.photos/300/200/?random=10"
+                            class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
+                            height="36">
+
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+
+                            <li>
+                                <img class="dropdown-item p-2 overflow-hidden rounded-circle"
+                                    src="https://picsum.photos/200/200/?random=10">
+                            </li>
+                            <li>
+                                <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">查看個人資料</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">聊天列表</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">活動管理</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">課程管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 購物車的按鈕============================================================= -->
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark d-flex text-nowrap" type="button">
+                        <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
+                        <i class="bi-cart-fill me-1"></i>
+                        購物車
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- 導覽列結束=================================================================================== -->
+
+    <!-- 這裡大概是放廣告 -->
+    <!-- Header====================================================================================== -->
+    <!-- <header>
+    <div class="container-fluid p-0">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active w-100 object-fit-cover">
+                    <img src="https://picsum.photos/1920/300/?random=10" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item w-100 object-fit-cover">
+                    <img src="https://picsum.photos/1920/300/?random=11" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item w-100 object-fit-cover">
+                    <img src="https://picsum.photos/1920/300/?random=12" class="d-block" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</header> -->
+    <!-- Header====================================================================================== -->
+
+    <div class="container main-content py-5">
+        <!-- 請在這裡作業 -->
+        <div class="row border justify-content-center">
+            <div class="col-10">
+                <!-- <div class="row justify-content-center">
+                <div class="col-8"> -->
+                <!-- 原本有下style="max-width: 540px;" -->
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-4 m-3" style="width:250px;height:250px;">
+                            <img id="pageavatar" src="../lib/img/square.jpg" alt="..."
+                                class="border w-100 h-100 overflow-hidden rounded-circle" style="object-fit:cover;">
+                        </div>
+                        <div class="col-7 my-auto">
+                            <div class="card-body ms-5">
+                                <h5 id="pgnickname" class="card-title mb-4">Username</h5>
+                                <p id="pgcity" class="card-text mb-4">所在城市/OO歲</p>
+                                <a id="accEditPage" href="" class="d-grid gap-2 w-50 mb-3">
+                                    <button class="btn btn-primary" type="button">編輯個人資訊</button>
+                                </a>
+                                <a href="" class="d-grid gap-2 w-50">
+                                    <button class="btn btn-primary" type="button">成為教練</button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- =================================================================== -->
+                <!-- 我是頁籤======= -->
+                <!-- 會員簡介過往評價舉辦紀錄我的最愛論壇紀錄行事曆購物紀錄參加紀錄 -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile" aria-selected="true">會員簡介
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="evaluate-tab" data-bs-toggle="tab" data-bs-target="#evaluate"
+                            type="button" role="tab" aria-controls="evaluate" aria-selected="false">過往評價
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="attendrecord-tab" data-bs-toggle="tab"
+                            data-bs-target="#attendrecord" type="button" role="tab" aria-controls="attendrecord"
+                            aria-selected="false">參加紀錄
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="holdrecord-tab" data-bs-toggle="tab" data-bs-target="#holdrecord"
+                            type="button" role="tab" aria-controls="holdrecord" aria-selected="false">舉辦紀錄
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <!-- personalinf是用來隱藏個人資訊的頁籤 -->
+                    <li class="nav-item personalinf" role="presentation">
+                        <button class="nav-link" id="favorite-tab" data-bs-toggle="tab" data-bs-target="#favorite"
+                            type="button" role="tab" aria-controls="favorite" aria-selected="false">我的最愛
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <li class="nav-item personalinf" role="presentation">
+                        <button class="nav-link" id="forum-tab" data-bs-toggle="tab" data-bs-target="#forum"
+                            type="button" role="tab" aria-controls="forum" aria-selected="false">論壇紀錄
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <li class="nav-item personalinf" role="presentation">
+                        <button class="nav-link" id="calendar-tab" data-bs-toggle="tab" data-bs-target="#calendar"
+                            type="button" role="tab" aria-controls="calendar" aria-selected="false">行事曆
+                        </button>
+                    </li>
+                    <!-- =================================================== -->
+                    <li class="nav-item personalinf" role="presentation">
+                        <button class="nav-link" id="shoprecord-tab" data-bs-toggle="tab" data-bs-target="#shoprecord"
+                            type="button" role="tab" aria-controls="shoprecord" aria-selected="false">購物紀錄
+                        </button>
+                    </li>
+                    <li class="nav-item personalinf" role="presentation">
+                        <button class="nav-link" id="evaluatemanager-tab" data-bs-toggle="tab"
+                            data-bs-target="#evaluatemanager" type="button" role="tab" aria-controls="evaluatemanager"
+                            aria-selected="false">評價管理
+                        </button>
+                    </li>
+
+                </ul>
+
+
+                <!-- 我是內容 -->
+                <!-- =================================================== -->
+                <div class="tab-content my-3" id="myTabContent">
+                    <!-- 會員簡介================= -->
+                    <!-- show active -->
+                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul>
+                                    <li class="">自我介紹(教練版本)
+                                        <p>因為重訓我得到了體態改變與自信，
+                                            為了幫助更多人我當了教練，而在多年的教學經驗裡，
+                                            除了課程的規劃、運動習慣的養成以外，最重要的是找出最適合每個人的方式，
+                                            讓訓練不再只是一層不變的枯燥。所以訓練什麼時候有效果？
+                                            就從你愛上訓練、專注於眼前的每一下開始。
+                                        </p>
+                                    </li>
+                                    <li>
+                                        專長
+                                        <p>重量訓練、體態調整、健美訓練、功能性訓練</p>
+                                    </li>
+                                    <li>
+                                        證照
+                                        <p>
+                                            AASFP亞洲體適能教練證
+                                        </p>
+                                        <p>
+                                            中華民國體適能C級教練證
+                                        </p>
+                                        <p>
+                                            ISCA國際C級健身教練證
+                                        </p>
+                                        <p>
+                                            中華民國紅十字協會CPR+AED
+                                        </p>
+                                    </li>
+                                    <li class="">性別
+                                    </li>
+                                    <li class="">星座
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 評價紀錄======================== -->
+                    <div class="tab-pane fade " id="evaluate" role="tabpanel" aria-labelledby="evaluate-tab">
+                        <button type="button" class="btn btn-primary">活動</button>
+                        <button type="button" class="btn btn-primary coursebtn_evaluate">課程</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+
+                                <div class="list-group evaluatelist">
+                                    <!-- 一條紀錄====================== -->
+                                    <!-- <div id="session_id" data-memberid="1001" style="display: none;">假裝之後要抓session裡會員的id</div> -->
+                                    <div href="#" class="list-group-item list-group-item-action re_commentplace"
+                                        aria-current="true" style="height: 118px; border: solid red; overflow: hidden;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100 overflow-hidden">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="rounded-circle" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1 re_course">(課程名稱)Tibame一起寫code</h5>
+                                                    <small class="re_reviewerId">留言者id</small>
+                                                    <small class="re_createdAt">日期 3 days ago</small>
+                                                </div>
+                                                <!-- <p class="mb-1 re_commentRating">星數</p> -->
+                                                <div class='fixstar_block'>
+                                                    <span class='fixstar -on' data-star='1'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar -on' data-star='2'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar -on' data-star='3'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar -on' data-star='4'><i
+                                                            class='fas fa-star'></i></span>
+                                                    <span class='fixstar' data-star='5'><i
+                                                            class='fas fa-star'></i></span>
+                                                </div>
+                                                <div class="col-10" style="overflow:auto;">
+                                                    sssssssssssssssssssssssssssssssssssskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容評論內容qqqqqq
+                                                    <!-- <p class="mb-1 re_commentContent">評論內容評論內容評論</p> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 放ajax回傳進.evaluatelist -->
+
+                                </div>
+                                <!-- </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 參加紀錄============================ -->
+                    <div class="tab-pane fade" id="attendrecord" role="tabpanel" aria-labelledby="attendrecord-tab">
+                        <button type="button" class="btn btn-primary">活動</button>
+                        <!-- jimmy修改 -->
+                        <button type="button" class="btn btn-primary" id="coursebtn_attendrecord">課程</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+
+
+                                <div class="list-group attendrecordlist">
+                                    <!-- 一條紀錄====================== -->
+                                    <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px; border: solid purple; ">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/300/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1 ">活動標題List group item heading</h5>
+                                                </div>
+                                                <p class="mb-1">活動時間</p>
+                                                <small>報名狀態: </small><small class="attendstatus">已完成</small>
+                                                <!-- 隱藏區!-->
+                                                <div class="show_givecomment"> <!-- 用來判斷if/else顯現下方"前往評價"按鈕 -->
+                                                    <p>未評價</p>
+                                                </div>
+                                                <div class="courseId displaynone">3</div>
+                                                <div class="accountIdReviewed displaynone">1003</div>
+                                                <div class="accountIdReviewer displaynone">2002</div>
+                                                <!-- 隱藏區 -->
+                                            </div>
+                                            <div class="col-2">
+                                                <a class="btn btn-primary givecomment" href="#" role="button">前往評價</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 放ajax回傳進.attendrecordlist -->
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- 舉辦紀錄============================ -->
+                    <div class="tab-pane fade" id="holdrecord" role="tabpanel" aria-labelledby="holdrecord-tab">
+                        <button type="button" class="btn btn-primary">活動</button>
+                        <!-- jimmy修改 -->
+                        <button type="button" class="btn btn-primary coursebtn_holdrecord">課程</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+                                <!-- <ul class="p-0" aria-labelledby=""> -->
+
+                                <!-- <div class="list-group"> -->
+
+                                <div class="list-group holdrecordlist">
+                                    <!-- 一條紀錄====================== -->
+                                    <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">活動標題List group item heading</h5>
+                                                </div>
+                                                <p class="mb-1">活動時間</p>
+                                                <small>報名狀態</small>
+                                            </div>
+                                            <div class="col-2 ">
+                                                <a class="btn btn-primary mb-1" href="#" role="button">審核參加者</a>
+                                                <a class="btn btn-primary" href="#" role="button">付費廣告　</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </div> -->
+                                <!-- </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 我的最愛============================ -->
+                    <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
+                        <button type="button" class="btn btn-primary">教練</button>
+                        <button type="button" class="btn btn-primary">商品</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+                                <!-- <ul class="p-0" aria-labelledby=""> -->
+
+                                <div class="list-group favoritelist">
+
+                                    <!-- 一條紀錄====================== -->
+                                    <div href="#" class="list-group-item list-group-item-action " aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden rounded-circle"
+                                                    style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">教練名稱</h5>
+                                                </div>
+                                                <!-- <p class="mb-1">星數</p> -->
+                                                <p class="mb-1">教練專長</p>
+                                            </div>
+                                            <div class="col-2 ">
+                                                <a class="btn btn-primary mb-1" href="#" role="button">取消最愛</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- =================================== -->
+                                    <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden rounded-circle"
+                                                    style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">商品名稱</h5>
+                                                </div>
+                                                <!-- <p class="mb-1">星數</p> -->
+                                                <p class="mb-1">商品描述</p>
+                                                <p class="mb-1">商品編號：</p>
+                                                <p class="mb-1">商品單價：</p>
+                                            </div>
+                                            <div class="col-2 ">
+                                                <a class="btn btn-primary mb-1" href="#" role="button">取消最愛</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ======================================= -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 論壇紀錄============================ -->
+                    <div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                        <button type="button" class="btn btn-primary">發文紀錄</button>
+                        <button type="button" class="btn btn-primary">儲存草稿</button>
+                        <button type="button" class="btn btn-primary">儲存文章</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+
+
+                                <div class="list-group forumlist">
+                                    <!-- 一條紀錄====================== -->
+                                    <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">文章標題</h5>
+                                                </div>
+                                                <p class="mb-1">發布時間</p>
+                                                <!-- <small>報名狀態</small> -->
+                                            </div>
+                                            <div class="col-2 ">
+                                                <a class="btn btn-primary mb-1" href="#" role="button">編輯文章</a>
+                                                <a class="btn btn-primary" href="#" role="button">刪除文章</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 行事曆============================ -->
+                    <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="calendar-tab">
+                        行事曆
+                    </div>
+                    <!-- 購物紀錄============================ -->
+                    <div class="tab-pane fade" id="shoprecord" role="tabpanel" aria-labelledby="shoprecord-tab">
+
+                        <!-- 一條購物紀錄 -->
+                        <table class="table mb-2" style="background-color: lightgray;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">訂單編號</th>
+                                    <th scope="col">訂購日期</th>
+                                    <th scope="col">訂單狀態</th>
+                                    <th scope="col">訂單金額</th>
+                                    <th scope="col">付款狀態</th>
+                                    <th scope="col">配送狀態</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">100101</td>
+                                    <td>2023/04/12</td>
+                                    <td>訂單成立</td>
+                                    <td>$789</td>
+                                    <td>信用卡一次付清</td>
+                                    <td>運送中</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary">取消/退貨</button>
+                        <button type="button" class="btn btn-primary">聯繫客服</button>
+                        <!-- 操控productevaluate決定是否顯示這顆按鈕 -->
+                        <button type="button" class="btn btn-primary productevaluate">評價商品</button>
+                        <div class="row mb-5 mt-1 border border-2 border-dark">
+                            <div class="col-12">
+                                <div class="list-group orderlist">
+
+
+                                    <!-- 一條紀錄====================== -->
+                                    <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">商品名稱</h5>
+                                                </div>
+                                                <p class="mb-1">商品編號：</p>
+                                                <p class="mb-1">商品數量：</p>
+                                                <p class="mb-1">商品單價：</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="overflow-hidden" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">商品名稱</h5>
+                                                </div>
+                                                <p class="mb-1">商品編號：</p>
+                                                <p class="mb-1">商品數量：</p>
+                                                <p class="mb-1">商品單價：</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!--評價管理============================= -->
+                    <div class="tab-pane fade " id="evaluatemanager" role="tabpanel"
+                        aria-labelledby="evaluatemanager-tab">
+
+                        <button type="button" class="btn btn-primary">活動</button>
+                        <button type="button" class="btn btn-primary" id="coursebtn_evaluatemanager">課程</button>
+                        <div class="row border my-3">
+                            <div class="col-12">
+                                <!-- <ul class="p-0" aria-labelledby=""> -->
+
+                                <div class="list-group evaluatemanagerlist">
+
+                                    <!-- 一條紀錄====================== -->
+                                    <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100 overflow-hidden">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    height="100px" class="rounded-circle" style="object-fit:cover;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">Tibame一起寫code</h5>
+                                                </div>
+                                                <p class="mb-1">星數</p>
+                                                <p class="mb-1">評論內容評論內容</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 放ajax回傳進.evaluatemanagerlist -->
+
+                                    <!-- ============================ -->
+                                    <!-- <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                        style="height: 118px;">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100">
+                                                <img src="https://picsum.photos/500/200/?random=10" alt=""
+                                                    width="100px" height="100px"
+                                                    class="overflow-hidden rounded-circle object-fit-cover">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">活動標題List group item heading</h5>
+                                                </div>
+                                                <p class="mb-1">活動時間</p>
+                                                <small>報名狀態</small>
+                                            </div>
+                                            <div class="col-2">
+                                                <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                                <!-- </ul> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ======================================================== -->
+
+
+                <!-- 一條通知====================================================== -->
+                <!-- <div class="row">
+                <div class="col-12">
+                    <ul class="p-0" aria-labelledby="">
+
+                        <div class="list-group">
+                            <div href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                style="height: 118px;">
+                                <div class="row h-100">
+                                    <div class="col-2 h-100">
+                                        <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                            height="100px" style="object-fit:cover;">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">活動標題List group item heading</h5>
+                                        </div>
+                                        <p class="mb-1">活動時間</p>
+                                        <small>報名狀態</small>
+                                    </div>
+                                    <div class="col-2">
+                                        <a class="btn btn-primary" href="#" role="button">前往評價</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div> -->
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 以下footer================================================================================= -->
+    <footer class="footer py-5 footer-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p class="m-0 text-white h3">客服中心</p>
+                    <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
+                    <p class="m-0 text-white">Tel: 02-2712-0589</p>
+                </div>
+                <div class="col-3">
+                    <p class="m-0 text-white h3">快速使用</p>
+                    <a class="d-block" href="">註冊會員</a>
+                    <a class="d-block" href="">舉辦活動</a>
+                    <a class="d-block" href="">常見問題</a>
+                </div>
+                <div class="col-3">
+                    <p class="m-0 text-white h3">主要頁面</p>
+                    <a class="d-block" href="">首頁</a>
+                    <a class="d-block" href="">活動</a>
+                    <a class="d-block" href="">論壇</a>
+                    <a class="d-block" href="">商城</a>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer結束================================================================================= -->
+    <!-- 引入所需函式庫 -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="../lib/js/jimmy_personalPage.js"></script>
+    <script src="../lib/js/PersonalPage_Account.js"></script>
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <!-- ================================================================= -->
+
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>
