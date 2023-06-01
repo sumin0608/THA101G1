@@ -8,8 +8,9 @@ public interface AccountService {
 
     Account signUp(Account account);
     Account login(Account account);
-//    boolean save(Account account);
     List<Account> findAll();
     Account findById(Integer AccountId);
     Account updateById(Account account);
+    Boolean remove(Integer accountId);
+    Account save(Account account);
 }

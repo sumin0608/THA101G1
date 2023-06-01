@@ -64,26 +64,27 @@ public class AccountServiceImpl implements AccountService {
         return account;
     }
 
+    //透過ID更新會員資料==================================================
     @Transactional
     @Override
     public Account updateById(Account account) {
 //        找資料庫裡的舊會員資料
         Account oAccount = repo.findByAccountId(account.getAccountId());
         String newPassword = account.getAccountPassword();
-        if(newPassword == null || newPassword.isEmpty()){
+        if (newPassword == null || newPassword.isEmpty()) {
             account.setAccountPassword(oAccount.getAccountPassword());
         }
 
-        account.setAccountId(oAccount.getAccountId());
-        account.setAccountPhone(oAccount.getAccountPhone());
-        account.setAccountLevel(oAccount.getAccountLevel());
-        account.setAccountId(oAccount.getAccountId());
-        account.setAccountBirthday(oAccount.getAccountBirthday());
-        account.setAccountCreatetime(oAccount.getAccountCreatetime());
+//        account.setAccountId(oAccount.getAccountId());
+//        account.setAccountPhone(oAccount.getAccountPhone());
+//        account.setAccountLevel(oAccount.getAccountLevel());
+//        account.setAccountId(oAccount.getAccountId());
+//        account.setAccountBirthday(oAccount.getAccountBirthday());
+//        account.setAccountCreatetime(oAccount.getAccountCreatetime());
         account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
-        account.setAccountGender(oAccount.getAccountGender());
-        account.setAccountReport(oAccount.getAccountReport());
-        account.setAccountVerify(oAccount.getAccountVerify());
+//        account.setAccountGender(oAccount.getAccountGender());
+//        account.setAccountReport(oAccount.getAccountReport());
+//        account.setAccountVerify(oAccount.getAccountVerify());
 
 //      怎麼判斷修改成功與否?
         account = repo.save(account);
@@ -93,12 +94,15 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
-//    @Override
-//    @Transactional
-//    public boolean save(Account account) {
-////        return repo.update(account) > 0;
-//        return repo.save(account) != null;
-//    }
+public Boolean remove(Integer AccountId){
+        repo.deleteById(AccountId);
+        return !(repo.existsById(AccountId));
+}
+
+    @Override
+    public Account save(Account account) {
+        return repo.save(account);
+    }
 
     public List<Account> findAll() {
         return repo.findAll();
@@ -108,7 +112,5 @@ public class AccountServiceImpl implements AccountService {
     public Account findById(Integer AccountId) {
         return repo.findByAccountId(AccountId);
     }
-//        public Account saveById(Account account){
-//            return repo.save(account);
-//    }
+
 }
