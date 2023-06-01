@@ -542,7 +542,7 @@
                     $("#district").text(response.district);
                     $("#detailedAddress").text(response.detailedAddress);
                     // $("#courseStartDate").text(response.courseStartDate);
-                    $("#courseStartTime").text(response.courseStartTime);
+                    $("#courseStartTime").text(response.courseStartTime.subString(0, 16));
                     $("#expectedPrice").text(response.expectedPrice);
                     $("#courseDuration").text(response.courseDuration);
                     $("#creator").text(response.creator);

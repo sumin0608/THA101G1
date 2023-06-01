@@ -806,7 +806,7 @@
 
 
         $(document).ready(function () {
-            // loading 加載動畫區
+            // <<loading 加載動畫區>>
             // 燈箱效果開關
             function showLoadingAnimation() {
                 $('.lightbox').addClass('show');
@@ -822,11 +822,25 @@
             $(document).on('ajaxStop', function () {
                 setTimeout(function () {
                     hideLoadingAnimation();
-                }, 1000);
-            });
-            // loading 加載動畫區--結束
+                }, 500);
+            });// <<loading 加載動畫區--結束>>
 
-            // search撈全部課程
+            // <<lazy-loading創建一個 Intersection Observer 實例>>
+            // if (i === resp.length - 1) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = $(entry.target);
+                        const src = img.data('src');
+                        img.attr('src', src);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+
+
+            // <<search撈全部課程>>
             $('#search_btn').on('click', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -841,8 +855,8 @@
                             tableData += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
                             tableData += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
                             tableData += `<div class="photo">`
-                            tableData += `<img class="card-img-top event_pic"
-                                            src="/ixercise/lib/img/course/${resp[i].photo}" alt="..." />`;
+                            tableData += `<img class="card-img-top event_pic lazy"
+                                            data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，      絕知此事要躬行" />`;
                             tableData += `</div>`;
                             tableData += `<div class="card-body p-2">`;
                             tableData += `<div class="text-left">`;
@@ -888,8 +902,16 @@
                             tableData += `</a >`;
                             tableData += `</div>`;
                             tableData += `</div>`;
+
                         }
                         $("#input_card").empty().append(tableData);
+                        // 延遲加載圖像
+                        const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
+                        console.log("lazyImages: " + lazyImages);
+                        lazyImages.forEach((image) => {
+                            observer.observe(image);
+                        });
+                        //<<lazy-loading--結束>>
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
@@ -897,19 +919,19 @@
                 });
             }); //$('#search_btn')結束
 
-            // search撈篩選課程
+            // <<search撈篩選課程>>
             $('#btn_selecter_search').on('click', function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: "/ixercise/course",
                     type: "GET",
                     dataType: "json",
-                    success: handleDistrictsResponse,
+                    success: handleDistrictsResponse,//
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
                     }
                 });
-            }); //success:
+            }); //success:實際function
             function handleDistrictsResponse(resp) {
                 var sport_option = $('#select_sport option:selected').text();
                 var city_option = $('#select_city option:selected').text();
@@ -961,8 +983,8 @@
                     tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
                     tableData2 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
                     tableData2 += `<div class="photo">`
-                    tableData2 += `<img class="card-img-top event_pic"
-                                        src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="..." />`;
+                    tableData2 += `<img class="card-img-top event_pic "
+                                        src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
                     tableData2 += `</div>`;
                     tableData2 += `<div class="card-body p-2">`;
                     tableData2 += `<div class="text-left">`;
