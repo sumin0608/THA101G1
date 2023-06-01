@@ -24,6 +24,21 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+// 用來轉換base64的圖片變成一個暫存連結
+const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
 
+function getcreateObjURL (base64photo){
+    if(base64photo == null || base64photo == "null"){
+        return nophoto;
+    }
+    const imageBinaryStr = atob(base64photo);
+    let len = imageBinaryStr.length;
+    const uint8Array = new Uint8Array(len);
+    while (len--) {
+        uint8Array[len] = imageBinaryStr.charCodeAt(len);
+    }
+    const blob = new Blob([uint8Array]);
+    return URL.createObjectURL(blob);
+}
 
 

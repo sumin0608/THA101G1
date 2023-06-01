@@ -10,7 +10,7 @@ const pageavatar = document.querySelector("#pageavatar");
 // const avatarinside = document.querySelector("#avatarinside");
 // const useravatar = document.querySelector("#useravatar");
 const pgnickname = document.querySelector("#pgnickname");
-pgnickname.textContent = accountNickname;
+pgnickname.textContent = accnickname;
 
 if (accphoto !== "null") {
     const imageBinaryStr = atob(accphoto);
@@ -23,17 +23,25 @@ if (accphoto !== "null") {
     pageavatar.src = URL.createObjectURL(blob);
     // avatarinside.src = URL.createObjectURL(blob);
 } else {
-    const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
+    // const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
     pageavatar.src = nophoto;
     // avatarinside.src = nophoto;
 }
 
 //     ========================================================
 const accEditPage = document.querySelector("#accEditPage");
-window.addEventListener("load",function(){
-    accEditPage.href = getContextPath()+"/Account/AccountEdit.html";
+accEditPage.href = getContextPath()+"/Account/AccountEdit.html";
 
-})
+function getcreateObjURL (base64photo){
+    const imageBinaryStr = atob(base64photo);
+    let len = imageBinaryStr.length;
+    const uint8Array = new Uint8Array(len);
+    while (len--) {
+        uint8Array[len] = imageBinaryStr.charCodeAt(len);
+    }
+    const blob = new Blob([uint8Array]);
+    return URL.createObjectURL(blob);
+}
 
 
 function getContextPath() {

@@ -3,6 +3,7 @@ package tw.idv.ixercise.account.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.LessAccount;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
@@ -16,8 +17,8 @@ public class ManageController {
     private AccountService service;
 
     @GetMapping
-    public List<Account> manage() {
-        return service.findAll();
+    public List<LessAccount> manage() {
+        return service.findAllLessInfo();
     }
 
     @DeleteMapping("{accountId}")

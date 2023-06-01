@@ -1,22 +1,21 @@
 package tw.idv.ixercise.account.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import tw.idv.ixercise.core.Core;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Date;
 import java.sql.Timestamp;
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class LessAccount extends Core {
 
         private static final long serialVersionUID = -4157805481963417348L;
@@ -25,23 +24,12 @@ public class LessAccount extends Core {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer accountId;
 
-        private String accountPhone;
-
-        private String accountPassword;
-
-        private String accountEmail;
-
-        private String accountNickname;
-
         private Integer accountLevel;
 
         private Integer accountState;
 
-        private String accountAddress;
-
         private String accountName;
 
-        private Date accountBirthday;
         @Column(insertable = false)
         @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
         private Timestamp accountCreatetime;
@@ -49,17 +37,13 @@ public class LessAccount extends Core {
         @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
         private Timestamp accountUpdatetime;
 
-        private Integer accountGender;
-
-        private byte[] accountPhoto;
-
-        private byte[] accountIdoc;
-
-        private String accountIntro;
-
-        private Integer accountReport;
-
-        private String accountBank;
-
-        private String accountVerify;
+        public LessAccount(Account account) {
+                super(account.isSuccessful(), account.getMessage());
+                this.accountId = account.getAccountId();
+                this.accountLevel = account.getAccountLevel();
+                this.accountState = account.getAccountState();
+                this.accountName = account.getAccountName();
+                this.accountCreatetime = account.getAccountCreatetime();
+                this.accountUpdatetime = account.getAccountUpdatetime();
+        }
 }

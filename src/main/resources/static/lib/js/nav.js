@@ -240,8 +240,6 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '        </div>';
 
 
-
-
 // 按鈕事件=================================================================================
 const searchbar = document.querySelector("#searchbar");
 const btnCloseSearch = document.querySelector("#btn-close-search");
@@ -260,35 +258,39 @@ const accid = sessionStorage.getItem("accountId");
 const accnickname = sessionStorage.getItem("accountNickname");
 const acclevel = sessionStorage.getItem("accountLevel");
 const accphoto = sessionStorage.getItem("accountPhoto");
-const nickname = document.querySelector("#nicknameinavatar");
+const avatarnickname = document.querySelector("#nicknameinavatar");
 const logout = document.querySelector("#logout");
 const loginbtn = document.querySelector("#loginbtn");
 const avataroutside = document.querySelector("#avataroutside");
 const avatarinside = document.querySelector("#avatarinside");
 const useravatar = document.querySelector("#useravatar");
+const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
+
 
 if (accid) {
     loginbtn.classList.add("d-none");
     useravatar.classList.remove("d-none");
-    nickname.textContent = accnickname;
+    avatarnickname.textContent = accnickname;
 
     personalpage.href = "Account/PersonalPage.html";
 
-    if (accphoto !== "null") {
+    if (!(accphoto == "null" || accphoto == null)) {
 
-        const imageBinaryStr = atob(accphoto);
-        let len = imageBinaryStr.length;
-        const uint8Array = new Uint8Array(len);
-        while (len--) {
-            uint8Array[len] = imageBinaryStr.charCodeAt(len);
-        }
-        const blob = new Blob([uint8Array]);
-        avataroutside.src = URL.createObjectURL(blob);
-        avatarinside.src = URL.createObjectURL(blob);
+        avataroutside.src = getcreateObjURL(accphoto);
+        avatarinside.src = getcreateObjURL(accphoto);
+        // const imageBinaryStr = atob(accphoto);
+        // let len = imageBinaryStr.length;
+        // const uint8Array = new Uint8Array(len);
+        // while (len--) {
+        //     uint8Array[len] = imageBinaryStr.charCodeAt(len);
+        // }
+        // const blob = new Blob([uint8Array]);
+        // avataroutside.src = URL.createObjectURL(blob);
+        // avatarinside.src = URL.createObjectURL(blob);
         // avataroutside.src = "123";
         // avatarinside.src = "123";
     } else {
-        const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
+        // const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
         avataroutside.src = nophoto;
         avatarinside.src = nophoto;
 
@@ -324,7 +326,7 @@ logout.addEventListener("click", function () {
     sessionStorage.removeItem("accountPhoto");
 
     fetch("Account/Logout");
-    location = getContextPath()+"/index.html";
+    location = getContextPath() + "/index.html";
 })
 
 
@@ -335,16 +337,28 @@ const loginb = document.querySelector("#loginb");
 const signupb = document.querySelector("#signupb");
 
 
+ixicon.href = getContextPath() + "/index.html";
+personalpage.href = getContextPath() + "/Account/PersonalPage.html";
+logout.href = getContextPath() + "/index.html";
+loginb.href = getContextPath() + "/Account/Login.html";
+signupb.href = getContextPath() + "/Account/SignUp.html";
 
-
-
-ixicon.href = getContextPath()+"/index.html";
-personalpage.href = getContextPath()+"/Account/PersonalPage.html";
-logout.href = getContextPath()+"/index.html";
-loginb.href = getContextPath()+"/Account/Login.html";
-signupb.href = getContextPath()+"/Account/SignUp.html";
+function getcreateObjURL(base64photo) {
+    if (base64photo == null || base64photo == "null") {
+        return nophoto;
+    }
+    const imageBinaryStr = atob(base64photo);
+    let len = imageBinaryStr.length;
+    const uint8Array = new Uint8Array(len);
+    while (len--) {
+        uint8Array[len] = imageBinaryStr.charCodeAt(len);
+    }
+    const blob = new Blob([uint8Array]);
+    return URL.createObjectURL(blob);
+}
 
 function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
+
 // });

@@ -60,7 +60,7 @@ public class EditController {
     }
 
 
-    @PutMapping
+    @PutMapping("update")
     public Account edit(Model model, @RequestBody Account account, @SessionAttribute("account") Account oAccount) {
 //        驗證傳進來的會員資料
         if (account == null) {

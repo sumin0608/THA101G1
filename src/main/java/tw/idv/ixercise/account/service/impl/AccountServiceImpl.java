@@ -5,11 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tw.idv.ixercise.account.dao.AccountRepository;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.LessAccount;
 import tw.idv.ixercise.account.service.AccountService;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -75,16 +76,16 @@ public class AccountServiceImpl implements AccountService {
             account.setAccountPassword(oAccount.getAccountPassword());
         }
 
-//        account.setAccountId(oAccount.getAccountId());
-//        account.setAccountPhone(oAccount.getAccountPhone());
-//        account.setAccountLevel(oAccount.getAccountLevel());
-//        account.setAccountId(oAccount.getAccountId());
-//        account.setAccountBirthday(oAccount.getAccountBirthday());
-//        account.setAccountCreatetime(oAccount.getAccountCreatetime());
+        account.setAccountId(oAccount.getAccountId());
+        account.setAccountPhone(oAccount.getAccountPhone());
+        account.setAccountLevel(oAccount.getAccountLevel());
+        account.setAccountId(oAccount.getAccountId());
+        account.setAccountBirthday(oAccount.getAccountBirthday());
+        account.setAccountCreatetime(oAccount.getAccountCreatetime());
         account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
-//        account.setAccountGender(oAccount.getAccountGender());
-//        account.setAccountReport(oAccount.getAccountReport());
-//        account.setAccountVerify(oAccount.getAccountVerify());
+        account.setAccountGender(oAccount.getAccountGender());
+        account.setAccountReport(oAccount.getAccountReport());
+        account.setAccountVerify(oAccount.getAccountVerify());
 
 //      怎麼判斷修改成功與否?
         account = repo.save(account);
@@ -94,10 +95,10 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
-public Boolean remove(Integer AccountId){
+    public Boolean remove(Integer AccountId) {
         repo.deleteById(AccountId);
         return !(repo.existsById(AccountId));
-}
+    }
 
     @Override
     public Account save(Account account) {
@@ -107,6 +108,20 @@ public Boolean remove(Integer AccountId){
     public List<Account> findAll() {
         return repo.findAll();
     }
+
+    @Override
+    public List<LessAccount> findAllLessInfo() {
+        List<Account> acclist = repo.findAll();
+        List<LessAccount> lAacc =new ArrayList<>();
+        for (Account acc : acclist) {
+            LessAccount la = new LessAccount(acc);
+            lAacc.add(la);
+        }
+
+        return lAacc;
+    }
+
+//    後台用
 
     @Override
     public Account findById(Integer AccountId) {
