@@ -32,8 +32,8 @@ public class Account extends Core {
 	private String accountPhone;
 
 	private String accountPassword;
-	@NotNull
-	@Email
+//	@NotNull
+//	@Email
 	private String accountEmail;
 
 	private String accountNickname;
