@@ -70,6 +70,8 @@
             margin-bottom: 15px;
             margin-right: 1rem;
             display: inline-block;
+            vertical-align: middle;
+
         }
 
         .btngps {
@@ -410,7 +412,7 @@
                     <button class="wtbtn" id="categoryId" onclick="">健身
                     </button>
                     <h3 class=" fw-bold card-title " id="eventName">TRX體能訓練</h3>
-                    <div class="fw-bold card-text" id="location">地點:</div>
+                    <div class="fw-bold card-text" id="placeInfoTitle">地點:</div>
                     <div class="small text-dark mb-2">
                         <span class="card-text" id="city">台北市</span>
                         <span class="card-text" id="district">&nbsp;中山區</span>
@@ -618,7 +620,7 @@
 </script>
 
 
-<script>
+<!-- <script>
     $(document).ready(function () {
         // owl.carousel
         $(".owl-carousel").owlCarousel({
@@ -638,7 +640,7 @@
             }
         });
     });
-</script>
+</script> -->
 <script>
     $("#searchbar").focus("click", function () {
         $("#searchcard").removeClass("d-none");
@@ -653,9 +655,12 @@
 
     // =========================== session storge ========================= //
     addEventListener("DOMContentLoaded", (load) => {
+        // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        sessionStorage.setItem("accountId", 1);
+        // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         const event_cards_container = document.querySelector('#event_cards_container');
-        const urls = "http://localhost:8080/ixercise/event/get/" + myParam;
+        const urls = "../event/get/" + myParam;
         fetch(urls)
             .then(resp => resp.json())
             .then(event => {
@@ -671,15 +676,15 @@
                 // 	<td>${evt.description}</td>
 
                 $("#eventName").text(event.eventName);
-                $("img#photo").attr('src', 'http://localhost:8080/ixercise/event/image/' + event.eventId);
+                $("img#photo").attr('src', '../event/image/' + event.eventId);
                 $("#city").text(event.city);
                 $("#district").html('&nbsp;' + event.district);
-                $("#location").text(event.location);
+                $("#location").html('&nbsp;' + event.location);
                 $("#detailedAddress").text(event.address);
-                $("#eventStartDate").text(event.eventDate);
-                $("#eventStartTime").text(event.startTime);
-                $("#eventLastVerifyDateAndTime").html('&nbsp;(最後審核日期:' + event.deadline + ')');
-                $("#paymentMethod").text(event.paymentMethod);
+                $("#eventStartDate").text(event.eventStartDate);
+                $("#eventStartTime").text(event.eventStartTime);
+                $("#eventLastVerifyDateAndTime").html('&nbsp;(最後審核日期:' + event.lastVerifyDateAndTime + ')');
+                $("#paymentMethod").text(event.moneyDivisionMethod);
 
                 $("#expectedExpense").html("費用: &dollar;" + event.price);
                 $("#maxAttendees").text("名額: " + event.maxAttendees + "人");

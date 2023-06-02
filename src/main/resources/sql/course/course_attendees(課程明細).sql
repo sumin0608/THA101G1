@@ -1,7 +1,7 @@
 CREATE TABLE course_attendees (
 `attendId` int NOT NULL AUTO_INCREMENT,
 `courseId` int DEFAULT NULL,
-`account_Id` int DEFAULT NULL,
+`accountId` int DEFAULT NULL,
   `attendTime` timestamp NULL DEFAULT NULL,`status` int NOT NULL DEFAULT '0' COMMENT '1.待審核2.通過3.未通過4:退出',`reason` text NOT NULL,
   `paymentStatus` int DEFAULT '1' COMMENT '1.未付款\n2.已付款\n3.申請退款\n4:已退款',
   `commentStatus` int DEFAULT '0' COMMENT '0.未評價1.已評價',

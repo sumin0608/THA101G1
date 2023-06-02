@@ -470,18 +470,15 @@
                                                         檔案格式</small>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!-- <label for="preview-dropzone forDhotoDrop">或將圖片拖放至此處</label> -->
                                                     <!-- ===zzzz===== -->
                                                     <div id="previewBox">
-                                                        <span class="text">選擇圖片</span>
+                                                        <span class="text">點我 或 將圖片丟進來</span>
                                                         <!-- 
                                                 <img id="preview" src="#" alt="圖片預覽"
                                                     style="max-width: 100%; max-height: 200px;"> -->
 
                                                     </div>
                                                     <!-- ======== -->
-                                                    <!-- <input type="file" class="form-control-file d-none" id="preview-dropzone"
-                                            accept="image/*"> -->
                                                 </div> <br>
                                                 <button type="button" class="btn btn-danger" id="delete-btn">刪除</button>
 
@@ -609,7 +606,7 @@
                                     <div class="col-sm-5">
                                         <label class="form-label">活動開始時間</label>
                                         <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                               class="form-control" required value="22:10:00">
+                                               class="form-control" required step="600" value="22:10:00">
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -782,7 +779,62 @@
 
         //==================================== image upload js ======================zzzz=================================================================
         $(document).ready(function () {
-            // let preview_el = document.querySelector("#previewBox");
+
+            // ============================  setting input for time and datetime only allow 5 minutes intervals ================ start ======
+
+            // get input elements
+            const start = document.getElementById('startTime');
+            const end = document.getElementById('startTime');
+            const deadline = document.getElementById('deadline');
+
+
+            deadline.addEventListener('change', () => {
+                // Splitting the date and time
+                const [datePart, timePart] = deadline.value.split("T");
+                const newTime = rounder(timePart);
+                deadline.value = `${datePart}T${newTime}`;
+            });
+
+            start.addEventListener('change', () => {
+                const newTimes = rounder(start.value);
+                end.value = `${newTimes}`;
+            });
+
+            function rounder(timeInput) {
+                // get hours and minutes as integer values
+                //  21:50 --> ["21", "50"]//
+                let hours = parseInt(timeInput.split(':')[0]);
+                let minutes = parseInt(timeInput.split(':')[1]);
+
+                // const result = Number((num / 5).toFixed(0) * 5);
+                // const num = 52.4281; --> 50
+                // const num = 52.5281; --> 55 (52.5 / 5 => 10.5 , toFixed(0) <小數點第1位 (0)> => 10 * 5 => 50)
+                // const num = 53; --> 55
+
+                // minutes = Math.round(minutes / 10) * 10;                 // 10 minutes intervals
+                minutes = Number((minutes / 5).toFixed(0) * 5);     //讓用戶只能設定時間以每五分鐘的間隔 set the input time to only allow every 5 minutes intervals
+
+                // if an hour is exceeded, add it to hours instead
+                // and account for a day passing by
+
+                if (minutes >= 60) {
+                    hours = (hours + 1) % 24;
+                    minutes -= 60;
+                }
+                // reformat values as strings with a fix length of 2
+                hours = (hours < 10 ? `0${hours}` : `${hours}`);
+                console.log(hours);
+                minutes = (minutes < 10 ? `0${minutes}` : `${minutes}`);
+                // assign new value to the end input
+
+                return `${hours}:${minutes}:00`;
+            }
+
+            // ============================  setting input for time and datetime only allow 5 minutes intervals ================ end ======
+
+            //==================================== image preview ================================================================= start ========
+
+            // #previewBox can only be click when no images are in the input files
             $("#previewBox").on("click", function () {
 
                 console.log($(this).attr("restrictChange"));
@@ -794,15 +846,13 @@
             });
 
             // Preview selected image
-            $("#photo-dropzone, #preview-dropzone").change(function () {
+            $("#photo-dropzone").change(function () {
                 readURL(this);
             });
 
             // Delete selected image
             $("#delete-btn").click(function () {
-                $("#photo-dropzone").val("");
-                // $("#preview-dropzone").val("");
-                $("#previewBox").html('<span class="text">選擇圖片</span>');
+                $("#previewBox").html('<span class="text">點我 或 將圖片丟進來</span>');
                 $("#previewBox").removeAttr("restrictChange");
             });
 
@@ -829,7 +879,7 @@
                 }
             }
 
-            // ==================================
+            // ==================== allow preview events==============
 
             // Allow preview area to be a drop zone
             var previewArea = document.getElementById('previewBox');
@@ -851,7 +901,7 @@
             });
             // ==add=
 
-            //===================drop== zzzz=================
+            //===================drop photo preview =================
             previewArea.addEventListener('drop', function (e) {
                 e.stopPropagation();
                 e.preventDefault();
@@ -869,7 +919,6 @@
                         // $('#photo-dropzone').val("aaaa");
                         // $('#photo-dropzone').val(file.name);
                         $('#photo-dropzone').prop('files', files);;
-                        // $('#preview-dropzone').val("");
                     };
 
                     reader.readAsDataURL(file);
@@ -887,10 +936,8 @@
                     reader.onload = function () {
                         // $('#preview').attr('src', reader.result);
                         $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
-                        // $('#photo-dropzone').val("aaaa");
                         // $('#photo-dropzone').val(file.name);
                         $('#photo-dropzone').prop('files', files);;
-                        // $('#preview-dropzone').val("");
                     };
 
                     reader.readAsDataURL(file);
@@ -931,11 +978,16 @@
                                 event.address = $("#address").val();
                                 event.price = $("#price").val();
                                 event.eventDate = $("#eventDate").val();
-                                event.startTime = $("#startTime").val() + ':00';
+                                // event.startTime = $("#startTime").val() + ':00';
+                                event.startTime = $("#startTime").val();
                                 event.maxAttendees = $("#maxAttendees").val();
                                 event.paymentMethod = $("#paymentMethod").val();
                                 event.description = $("#description").val();
                                 event.deadline = $("#deadline").val();
+
+                                // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                                event.creatorId = sessionStorage.getItem("accountId");
+                                // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
                                 // console.log(event);
@@ -966,7 +1018,7 @@
 
                                 $.ajax({
                                     // url: 'http://localhost:8081/THA101G1/event/photo', // Replace with the actual servlet URL
-                                    url: "http://localhost:8080/ixercise/events/create",
+                                    url: "../event/create",
                                     type: 'POST',
                                     data: formData,
                                     dataType: 'json',
@@ -1002,7 +1054,7 @@
 
                     $.ajax({
                         // url: 'http://localhost:8081/THA101G1/event/photo', // Replace with the actual servlet URL
-                        url: "http://localhost:8080/ixercise/events/create/images/" + eventId,
+                        url: "../event/create/image/" + eventId,
                         type: 'PUT',
                         data: photo1,
                         // dataType: 'json', // 或者使用 'text'
@@ -1030,6 +1082,9 @@
             // =========================== 資料送出 ========================= //
             // =========================== session storge ========================= //
 
+            // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            sessionStorage.setItem("accountId", "1");
+            // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
             const data = sessionStorage.getItem('Event');
             console.log("data: " + data);
