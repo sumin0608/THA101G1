@@ -27,16 +27,16 @@ public class CourseAttendee extends Core {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int attendId;
-	private int courseId;
+	private Integer attendId;
+	private Integer courseId;
 	@Column(name = "account_Id")
-	private int accountId;
+	private Integer accountId;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp attendTime;
-	private int status;
+	private Integer status;
 	private String reason;
-	private int paymentStatus;
-	private int commentStatus;
+	private Integer paymentStatus;
+	private Integer commentStatus;
 
 	public CourseAttendee() {
 	}
