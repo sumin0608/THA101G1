@@ -105,7 +105,7 @@ public class CourseDaoImpl implements CourseDao {
 
 	@Override
 	public List<Course> selectAll() {
-		final String sql = "SELECT * FROM course";
+		final String sql = "SELECT * FROM course order by courseStartDate DESC";
 		return session.createNativeQuery(sql, Course.class).getResultList();
 	}
 
