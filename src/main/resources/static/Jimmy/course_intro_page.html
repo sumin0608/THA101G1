@@ -489,6 +489,11 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/owl_carousel/owl.carousel.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
     <!-- <script>
         $(document).ready(function () {
@@ -522,7 +527,7 @@
         $(document).ready(function () {
             console.log("有人嗎");
 
-            // <!-- 課程介紹區 -->
+            // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
             var urlParams = new URLSearchParams(window.location.search);
             var courseId = urlParams.get('courseId');
 
