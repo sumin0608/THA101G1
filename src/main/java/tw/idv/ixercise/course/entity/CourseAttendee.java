@@ -29,7 +29,6 @@ public class CourseAttendee extends Core {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer attendId;
 	private Integer courseId;
-	@Column(name = "account_Id")
 	private Integer accountId;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp attendTime;
