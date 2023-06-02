@@ -2,6 +2,7 @@ package tw.idv.ixercise.course.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,8 @@ public class CourseAttendee extends Core {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int attendId;
 	private int courseId;
-	private int memberId;
+	@Column(name = "account_Id")
+	private int accountId;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp attendTime;
 	private int status;
