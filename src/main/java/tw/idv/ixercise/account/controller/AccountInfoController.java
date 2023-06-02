@@ -3,9 +3,12 @@ package tw.idv.ixercise.account.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.CourseAccount;
 import tw.idv.ixercise.account.entity.LessAccount;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("Account")
@@ -13,6 +16,11 @@ public class AccountInfoController {
 
     @Autowired
     AccountService service;
+
+    @GetMapping("FindAllForCourse")
+    public List<CourseAccount> manage() {
+        return service.findAllCourseInfo();
+    }
 
     @GetMapping({"Info/{AccountId}"})
     public LessAccount findAccountById(@PathVariable Integer AccountId) {

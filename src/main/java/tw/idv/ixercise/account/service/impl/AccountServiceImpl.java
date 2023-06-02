@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tw.idv.ixercise.account.dao.AccountRepository;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.CourseAccount;
 import tw.idv.ixercise.account.entity.LessAccount;
 import tw.idv.ixercise.account.service.AccountService;
 
@@ -17,6 +18,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository repo;
+
 
     // 新增===============================================================
     @Override
@@ -120,6 +122,19 @@ public class AccountServiceImpl implements AccountService {
 
         return lAacc;
     }
+
+    @Override
+    public List<CourseAccount> findAllCourseInfo() {
+        List<Account> acclist = repo.findAll();
+        List<CourseAccount> lAacc = new ArrayList<>();
+        for (Account acc : acclist) {
+            CourseAccount la = new CourseAccount(acc);
+            lAacc.add(la);
+        }
+
+        return lAacc;
+    }
+
 
 //    後台用
 
