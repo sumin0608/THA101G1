@@ -112,7 +112,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<LessAccount> findAllLessInfo() {
         List<Account> acclist = repo.findAll();
-        List<LessAccount> lAacc =new ArrayList<>();
+        List<LessAccount> lAacc = new ArrayList<>();
         for (Account acc : acclist) {
             LessAccount la = new LessAccount(acc);
             lAacc.add(la);

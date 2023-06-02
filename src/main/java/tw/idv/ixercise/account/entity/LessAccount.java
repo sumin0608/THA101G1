@@ -14,7 +14,6 @@ import java.sql.Timestamp;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class LessAccount extends Core {
 

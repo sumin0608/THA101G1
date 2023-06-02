@@ -465,7 +465,7 @@
     function init() {
         btn1.addEventListener('click', async function () {
             const passwordcheck = await checkOldPassword();
-            console.log(passwordcheck);
+            // console.log(passwordcheck);
             if (passwordcheck) {
                 edit();
                 msg.textContent = "修改成功"
@@ -485,7 +485,7 @@
                 address.value = body["accountAddress"];
                 intro.value = body["accountIntro"];
                 ibase64 = body["accountPhoto"]
-                console.log(ibase64)
+                // console.log(ibase64)
                 // const imageBinaryStr = atob(body["accountPhoto"]);
                 // let len = imageBinaryStr.length;
                 // const uint8Array = new Uint8Array(len);
@@ -624,7 +624,10 @@
                         address.value = addressValue;
                         sessionStorage.setItem('accountPhoto', imageValue);
                         intro.value = introValue;
-                        base64Str2Avatar();
+                        // base64Str2Avatar();
+                        let photosrcupdate = getcreateObjURL(imageValue);
+                        avataroutside.src = photosrcupdate;
+                        avatarinside.src = photosrcupdate;
                     } else {
                         msg.className = 'error';
                     }
@@ -641,20 +644,20 @@
             fileReader.readAsBinaryString(photo.files[0]);
         }
 
-        function base64Str2Avatar() {
-            const img = sessionStorage.getItem('accountPhoto');
-            if (!img) {
-                return;
-            }
-            const imageBinaryStr = atob(img);
-            let len = imageBinaryStr.length;
-            const uint8Array = new Uint8Array(len);
-            while (len--) {
-                uint8Array[len] = imageBinaryStr.charCodeAt(len);
-            }
-            const blob = new Blob([uint8Array]);
-            document.querySelector('#avatar').src = URL.createObjectURL(blob);
-        }
+        // function base64Str2Avatar() {
+        //     const img = sessionStorage.getItem('accountPhoto');
+        //     if (!img) {
+        //         return;
+        //     }
+        //     const imageBinaryStr = atob(img);
+        //     let len = imageBinaryStr.length;
+        //     const uint8Array = new Uint8Array(len);
+        //     while (len--) {
+        //         uint8Array[len] = imageBinaryStr.charCodeAt(len);
+        //     }
+        //     const blob = new Blob([uint8Array]);
+        //     document.querySelector('#avatar').src = URL.createObjectURL(blob);
+        // }
     }
 
 

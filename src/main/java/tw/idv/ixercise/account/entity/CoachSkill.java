@@ -28,15 +28,17 @@ public class CoachSkill extends Core {
     Integer sportType;
     @Column
     byte[] licensePhoto;
+    @Column
+    Integer skillState;
 
-    @Override
-    public String toString() {
-        return "CoachSkill{" +
-                "skillId=" + skillId +
-                ", accountId=" + accountId +
-                ", licenseId=" + licenseId +
-                ", sportType=" + sportType +
-                ", licensePhoto=" + Arrays.toString(licensePhoto) +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "CoachSkill{" +
+//                "skillId=" + skillId +
+//                ", accountId=" + accountId +
+//                ", licenseId=" + licenseId +
+//                ", sportType=" + sportType +
+//                ", licensePhoto=" + Arrays.toString(licensePhoto) +
+//                '}';
+//    }
 }
