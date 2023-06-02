@@ -17,8 +17,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-@RestController
-@RequestMapping("/events")
+//@RestController
+//@RequestMapping("/events")
 public class TestController {
     private EventService eventService;
 
@@ -61,8 +61,30 @@ public class TestController {
         return eventService.saveEvent(event).getEventId();
     }
 
-//    @PostMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-@PutMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    //read image by id - get (eventId) : return byte[] of binary of the specific photo
+    //difficulty - request header is too large
+    @GetMapping(value = "/image/{eventId}")
+    public ResponseEntity<byte[]> getEventImage(@PathVariable Integer eventId) throws IOException {
+        Event findEventById = eventRepository.findById(eventId).orElse(null);
+//        System.out.println(findEventById);
+        byte[] photo = findEventById.getPhoto();
+
+        if (photo != null) {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            outputStream.write(photo);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG); // Replace with the correct media type
+            headers.setContentLength(outputStream.size());
+            return ResponseEntity.ok().headers(headers).body(outputStream.toByteArray());
+//            return new ResponseEntity<>(outputStream.toByteArray(), headers, HttpStatus.OK);
+        }
+        return ResponseEntity.notFound().build();
+
+//        return photo;
+    }
+
+    //    @PostMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+    @PutMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String uploadEvent(@RequestParam("photo") MultipartFile photo, @PathVariable Integer eventId) throws IOException {
         System.out.println(photo);
         try {

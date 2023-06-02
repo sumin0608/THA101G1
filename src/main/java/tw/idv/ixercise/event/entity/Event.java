@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.*;
+import tw.idv.ixercise.core.*;
 import tw.idv.ixercise.event.repository.CustomTimeDeserializer;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Future;
 import java.sql.*;
 import java.util.List;
 
-@ToString
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -22,7 +23,7 @@ import java.util.List;
 // 啟用審計(Auditing)的實體中都必須註冊這個 Listener，否則是沒有效果
 @EntityListeners(AuditingEntityListener.class)
 // (Java端)類別名 與 (資料庫端)資料表名 相同時，可省略name
-public class Event{
+public class Event extends Core {
 
 
     private static final long serialVersionUID = 1L;
@@ -53,22 +54,72 @@ public class Event{
     private String address;
     private String city;
     private String district;
+    //    @JsonIgnore
+//    @JsonInclude(JsonInclude.Include.NON_NULL) // Include the property during deserialization if it's not null
     private Integer categoryId;
     @Column(insertable = false)
     private Integer currentAttendees;
     @Column(insertable = false)
     private Integer status;
+    //    @JsonIgnore
+//    @JsonInclude(JsonInclude.Include.NON_NULL) // Include the property during deserialization if it's not null
     private Integer paymentMethod;
+
+    //====== messages =====
+//    @Transient
+//    private String messages;
+//    @Transient
+//    private boolean successful;
+    // ===== reformatting ======
+    @Transient
+    private String moneyDivisionMethod;
+    @Transient
+    private String eventStatus;
+    @Transient
+    private String lastVerifyDateAndTime;
+    @Transient
+    private String eventStartDate;
+    @Transient
+    private String eventStartTime;
 
     @Transient
     private List<Event> eventList;
 
 
-    public Event(String eventName,Integer price){
-        this.eventName=eventName;
-        this.price=price;
+    public Event(String eventName, Integer price) {
+        this.eventName = eventName;
+        this.price = price;
     }
 
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId=" + eventId +
+                ", creatorId=" + creatorId +
+                ", eventName='" + eventName + '\'' +
+                ", price=" + price +
+                ", eventDate=" + eventDate +
+                ", startTime=" + startTime +
+                ", deadline=" + deadline +
+                ", createDate=" + createDate +
+                ", maxAttendees=" + maxAttendees +
+                ", description='" + description + '\'' +
+                ", location='" + location + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                ", categoryId=" + categoryId +
+                ", currentAttendees=" + currentAttendees +
+                ", status=" + status +
+                ", paymentMethod=" + paymentMethod +
+                ", moneyDivisionMethod='" + moneyDivisionMethod + '\'' +
+                ", lastVerifyDateAndTime='" + lastVerifyDateAndTime + '\'' +
+                ", eventStartDate='" + eventStartDate + '\'' +
+                ", eventStartTime='" + eventStartTime + '\'' +
+                ", eventList=" + eventList +
+                '}';
+    }
 }
 
 

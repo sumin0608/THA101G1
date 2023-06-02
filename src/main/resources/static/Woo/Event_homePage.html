@@ -127,7 +127,7 @@
                                 aria-label="Search" data-bs-toggle="collapse" href="#collapseExample" role="button"
                                 aria-expanded="false" aria-controls="collapseExample">
                             </input>
-                            <button class="btn border border-1 border-dark" type="submit">Search</button>
+                            <button class="btn border border-1 border-dark" id="searchbtn" type="submit">Search</button>
                         </form>
 
 
@@ -420,8 +420,7 @@
                             <a class="event_link" href="">
                                 <!-- EVENT image-->
                                 <div class="photo">
-                                    <img class="card-img-top event_pic"
-                                         alt="..."
+                                    <img alt="..." class="card-img-top event_pic"
                                          src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="/>
                                 </div>
                                 <!-- EVENT details-->
@@ -449,10 +448,9 @@
 
                                     <div class="d-flex flex-row align-items-center event_creater">
                                         <div class="member-icon">
-                                            <img src="https://picsum.photos/300/200/?random=10"
-                                                 aria-expanded="false" class="overflow-hidden rounded-circle p-0 member_profile_pic"
-                                                 data-bs-toggle="dropdown" height="36" href="#"
-                                                 role="button"
+                                            <img aria-expanded="false" class="overflow-hidden rounded-circle p-0 member_profile_pic"
+                                                 data-bs-toggle="dropdown"
+                                                 height="36" href="#" role="button" src="https://picsum.photos/300/200/?random=10"
                                                  width="36">
                                         </div>
 
@@ -757,6 +755,12 @@
             $("#searchcard").toggleClass("d-none");
         });
 
+
+        // $("#searchbtn").change(function () {
+
+        // })
+
+
         // const tbody = document.querySelector('tbody');
         // const url = "http://localhost:8080/ixercise/event/get/204";
         // fetch(url)
@@ -786,17 +790,21 @@
 
         addEventListener("DOMContentLoaded", (load) => {
             const event_cards_container = document.querySelector('#event_cards_container');
-            const urls = "http://localhost:8080/ixercise/event/get";
-            fetch(urls)
-                .then(resp => resp.json())
-                .then(evtList => {
-                    event_cards_container.innerHTML = "";
-                    for (let evt of evtList) {
+            const urls = "../event/get";
+            fetchevent(urls);
 
-                        // tbody.innerHTML += `
-                        // <tr>
-                        // 	<td>${evt.eventId}</td>
-                        // 	<td>${evt.creatorId}</td>
+            // let fetchfun =
+            function fetchevent(urls) {
+                fetch(urls)
+                    .then(resp => resp.json())
+                    .then(evtList => {
+                        event_cards_container.innerHTML = "";
+                        for (let evt of evtList) {
+
+                            // tbody.innerHTML += `
+                            // <tr>
+                            // 	<td>${evt.eventId}</td>
+                            // 	<td>${evt.creatorId}</td>
                         // 	<td>${evt.eventName}</td>
                         // 	<td>${evt.price}</td>
                         // 	<td>${evt.eventDate}</td>
@@ -821,7 +829,7 @@
                                 <!-- EVENT image-->
                                 <div class="photo">
                                     <img class="card-img-top event_pic"
-                                        src='http://localhost:8080/ixercise/event/image/${evt.eventId}'
+                                        src='../event/image/${evt.eventId}'
                                         alt="..." />
                                 </div>
                                 <!-- EVENT details-->
@@ -873,11 +881,51 @@
                 `;
 
 
-                    }
-                    // <td>${evt.photo}</td>
-                });
+                        }
+
+                        // <td>${evt.photo}</td>
+                    })
+                    .catch(function (error) {
+                        // 處理錯誤
+                        console.log('發生錯誤：', error);
+                    });
+            };
+
+            $("#searchbtn").on("click", function (e) {
+                e.preventDefault();
+                const searchinput = $("#searchbar").val();
+                console.log(searchinput);
+                $("#searchcard").toggleClass("d-none");
+                // 建立一個新的 URLSearchParams 物件
+                var params = new URLSearchParams();
+                // 設定請求參數
+                params.append('searchInput', searchinput);
+                // params.append('param2', 'value2');
+
+                // 構建要發送的請求 URL
+                console.log(params);
+                var url = '../event/get/input/?' + params.toString();
+                // var urlss = "../event/get/input/" + searchinput;
+                console.log(url);
+
+                fetchevent(url);
+                //     // 使用 Fetch 函式發送 GET 請求
+                //     fetch(url)
+                //         .then(function (response) {
+                //             // 處理回應
+                //             return response.json();
+                //         })
+                //         .then(function (data) {
+                //             // 處理回傳的資料
+                //             console.log(data);
+                //         })
+                //         .catch(function (error) {
+                //             // 處理錯誤
+                //             console.log('發生錯誤：', error);
+                //         });
 
 
+            });
         });
     </script>
 </body>
