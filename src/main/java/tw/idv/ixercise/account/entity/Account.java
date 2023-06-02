@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -26,11 +28,12 @@ public class Account extends Core {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer accountId;
-
+	@NotNull
 	private String accountPhone;
 
 	private String accountPassword;
-
+	@NotNull
+	@Email
 	private String accountEmail;
 
 	private String accountNickname;
