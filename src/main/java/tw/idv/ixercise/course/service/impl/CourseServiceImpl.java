@@ -53,6 +53,16 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
+	public Course findcorseId(Integer corseId) {
+		if(dao.selectByCourseId(corseId)==null) {
+			Course course1= new Course();
+			course1.setMessage("找不到Id");
+			return course1;
+		}
+		return dao.selectByCourseId(corseId);
+	}
+	
+	@Override
 	public List<Course> findcategoryId(String categoryId) {
 		if(dao.selectBycategoryId(categoryId)==null) {
 			List<Course> courses =new ArrayList<>();
@@ -68,4 +78,6 @@ public class CourseServiceImpl implements CourseService {
 	public List<DistrictsDto> getDistricts(String city) {
 		return dao.getDistricts(city);
 	}
+
+
 }

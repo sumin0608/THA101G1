@@ -5,11 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tw.idv.ixercise.account.dao.AccountRepository;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.LessAccount;
 import tw.idv.ixercise.account.service.AccountService;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -64,13 +65,14 @@ public class AccountServiceImpl implements AccountService {
         return account;
     }
 
+    //透過ID更新會員資料==================================================
     @Transactional
     @Override
-    public Account edit(Account account) {
+    public Account updateById(Account account) {
 //        找資料庫裡的舊會員資料
         Account oAccount = repo.findByAccountId(account.getAccountId());
         String newPassword = account.getAccountPassword();
-        if(newPassword == null || newPassword.isEmpty()){
+        if (newPassword == null || newPassword.isEmpty()) {
             account.setAccountPassword(oAccount.getAccountPassword());
         }
 
@@ -93,17 +95,37 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
-//    @Override
-//    @Transactional
-//    public boolean save(Account account) {
-////        return repo.update(account) > 0;
-//        return repo.save(account) != null;
-//    }
+    public Boolean remove(Integer AccountId) {
+        repo.deleteById(AccountId);
+        return !(repo.existsById(AccountId));
+    }
+
+    @Override
+    public Account save(Account account) {
+        return repo.save(account);
+    }
 
     public List<Account> findAll() {
         return repo.findAll();
     }
-//        public Account saveById(Account account){
-//            return repo.save(account);
-//    }
+
+    @Override
+    public List<LessAccount> findAllLessInfo() {
+        List<Account> acclist = repo.findAll();
+        List<LessAccount> lAacc = new ArrayList<>();
+        for (Account acc : acclist) {
+            LessAccount la = new LessAccount(acc);
+            lAacc.add(la);
+        }
+
+        return lAacc;
+    }
+
+//    後台用
+
+    @Override
+    public Account findById(Integer AccountId) {
+        return repo.findByAccountId(AccountId);
+    }
+
 }

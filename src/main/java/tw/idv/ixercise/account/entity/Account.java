@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -26,11 +28,12 @@ public class Account extends Core {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer accountId;
-
+	@NotNull
 	private String accountPhone;
 
 	private String accountPassword;
-
+	@NotNull
+	@Email
 	private String accountEmail;
 
 	private String accountNickname;
@@ -64,18 +67,18 @@ public class Account extends Core {
 	private String accountBank;
 
 	private String accountVerify;
-	@Override
-	public String toString() {
-		return "[accountId=" + accountId + ", accountPhone=" + accountPhone + ", accountPassword="
-				+ accountPassword + ", accountEmail=" + accountEmail + ", accountNickname=" + accountNickname
-				+ ", accountLevel=" + accountLevel + ", accountState=" + accountState + ", accountAddress="
-				+ accountAddress + ", accountName=" + accountName + ", accountBirthday=" + accountBirthday
-				+ ", accountCreatetime=" + accountCreatetime + ", accountUpdatetime=" + accountUpdatetime
-				+ ", accountGender=" + accountGender + ", accountPhoto=" + Arrays.toString(accountPhoto)
-				+ ", accountIdoc=" + Arrays.toString(accountIdoc) + ", accountIntro=" + accountIntro
-				+ ", accountReport=" + accountReport + ", accountBank=" + accountBank + ", accountVerify="
-				+ accountVerify + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "[accountId=" + accountId + ", accountPhone=" + accountPhone + ", accountPassword="
+//				+ accountPassword + ", accountEmail=" + accountEmail + ", accountNickname=" + accountNickname
+//				+ ", accountLevel=" + accountLevel + ", accountState=" + accountState + ", accountAddress="
+//				+ accountAddress + ", accountName=" + accountName + ", accountBirthday=" + accountBirthday
+//				+ ", accountCreatetime=" + accountCreatetime + ", accountUpdatetime=" + accountUpdatetime
+//				+ ", accountGender=" + accountGender + ", accountPhoto=" + Arrays.toString(accountPhoto)
+//				+ ", accountIdoc=" + Arrays.toString(accountIdoc) + ", accountIntro=" + accountIntro
+//				+ ", accountReport=" + accountReport + ", accountBank=" + accountBank + ", accountVerify="
+//				+ accountVerify + "]";
+//	}
 	
 
 

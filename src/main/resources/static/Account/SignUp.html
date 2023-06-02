@@ -526,7 +526,8 @@
 
 
             btn1.addEventListener('click', () => {
-                console.log(accNickname.value);
+                // console.log(nickname);
+                // console.log(accNickname.value);
                 msg.textContent = '';
                 const fileReader = new FileReader();
                 fileReader.addEventListener('load', e => {
@@ -557,7 +558,7 @@
                                 btn1.disabled = true;
                                 msg.className = 'info';
                                 msg.textContent = '註冊成功';
-                                // location = "../index.html";
+                                location = getContextPath()+"/index.html";
                             } else {
                                 msg.className = 'error';
                                 msg.textContent = '註冊失敗';
@@ -580,6 +581,10 @@
                 }
             });
         });
+
+        function getContextPath() {
+            return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
+        }
     </script>
 </body>
 

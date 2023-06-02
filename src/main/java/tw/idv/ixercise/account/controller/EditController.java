@@ -60,13 +60,14 @@ public class EditController {
     }
 
 
-    @PutMapping
+    @PutMapping("update")
     public Account edit(Model model, @RequestBody Account account, @SessionAttribute("account") Account oAccount) {
 //        驗證傳進來的會員資料
         if (account == null) {
-            account.setMessage("無會員資料");
-            account.setSuccessful(false);
-            return account;
+            Account acc = new Account();
+            acc.setMessage("無會員資料");
+            acc.setSuccessful(false);
+            return acc;
         }
 //        驗證Session裡的會員資料是否為空
         if (oAccount == null) {
@@ -77,7 +78,7 @@ public class EditController {
 
 
         account.setAccountId(oAccount.getAccountId());
-        account = service.edit(account);
+        account = service.updateById(account);
         if (account.isSuccessful()) {
 //            model的用意??
             model.addAttribute("account", account);

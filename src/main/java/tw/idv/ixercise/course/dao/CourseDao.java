@@ -17,7 +17,7 @@ public interface CourseDao {
 
 	public List<Course> selectByName(String eventName);
 
-	public Course selectByCourseId(Integer cocurseId);
+	public Course selectByCourseId(Integer corseId);
 
 	public List<Course> selectBycategoryId(String categoryId);
 
