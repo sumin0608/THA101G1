@@ -11795,10 +11795,14 @@ h5,
 }
 
 #sidebar {
+    height: 100%;
     min-width: 270px;
     max-width: 270px;
-    background: #f2f2f2;
-    color: #fff;
+    background-image: linear-gradient(90deg,
+            rgba(66, 184, 131, 0.8) 0%,
+            rgba(39, 179, 137, 0.8) 19%,
+            rgba(100, 126, 255, 0.8) 100%) !important;
+    color: black;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
@@ -11820,7 +11824,7 @@ h5,
 }
 
 #sidebar h1 .logo {
-    color: #fff;
+    color: black;
 }
 
 #sidebar h1 .logo span {
@@ -11925,7 +11929,8 @@ h5,
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    background: #3445b4;
+    /* background: #3445b4; */
+    background: rgba(39, 179, 137, 0.8);
     border-radius: 10px;
 }
 
