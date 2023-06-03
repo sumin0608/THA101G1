@@ -3,7 +3,10 @@ package tw.idv.ixercise.course.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -26,18 +29,17 @@ import tw.idv.ixercise.course.service.CourseService;
 @RestController
 @RequestMapping("/course")
 public class CourseController {
-	
+
 	@Autowired
 	private CourseService service;
-	
+
 //	// 測試
 //		@GetMapping("/hello3")
 //	    public String hello() {
 //			System.out.println("前端成功抵達~");
 //	        return "Hello, World! My bro";
 //	    }
-	
-		
+
 	@PostMapping
 	public Core save(@RequestBody Course course) {
 		final Core core = new Core();
@@ -45,16 +47,15 @@ public class CourseController {
 			core.setMessage("請輸入課程描述");
 			core.setSuccessful(false);
 		} else {
-		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-		course.setCourseCreationDate(currentTimestamp);
-		core.setMessage("新增成功");
-		core.setSuccessful(service.save(course));
+			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+			course.setCourseCreationDate(currentTimestamp);
+			core.setMessage("新增成功");
+			core.setSuccessful(service.save(course));
 		}
 		System.out.println("新增成功");
 		return core;
 	}
-	
-	
+
 	@PutMapping
 	@ResponseBody
 	public Core edit(@RequestBody Course course) {
@@ -63,13 +64,13 @@ public class CourseController {
 			core.setMessage("請輸入課程描述");
 			core.setSuccessful(false);
 		} else {
-		core.setMessage("修改成功");
-		core.setSuccessful(service.edit(course));
+			core.setMessage("修改成功");
+			core.setSuccessful(service.edit(course));
 		}
 		System.out.println("修改成功");
 		return core;
 	}
-	
+
 	@GetMapping
 	public List<Course> findAll() {
 		System.out.println("成功查到!All");
@@ -78,7 +79,7 @@ public class CourseController {
 		courses.get(0).setMessage("第一筆資料");
 		return courses;
 	}
-	
+
 	@GetMapping("/{city}")
 	public List<Course> findCity(@RequestParam("city") String city) {
 		System.out.println("成功查到!city");
@@ -87,17 +88,35 @@ public class CourseController {
 		courses.get(0).setMessage("第一筆資料");
 		return courses;
 	}
-	
-	@GetMapping("/corseId/{corseId}")
-	public Course findCity(@PathVariable("corseId") Integer corseId) {
-		System.out.println("成功查到!corseId");
+
+	@GetMapping("/courseId/{courseId}")
+	public Course findCity(@PathVariable("courseId") Integer corseId) {
+		System.out.println("成功到!course/courseId/");
 		Course course = service.findcorseId(corseId);
 		course.setSuccessful(true);
 		course.setMessage("第一筆資料");
 		return course;
 	}
-	
-	
+
+//	模糊查詢
+	@GetMapping("/fuzzySearch/{searchInput}")
+	public Optional<List<Course>> fuzzySearch(@PathVariable("searchInput") String searchInput) {
+		List<Course> courses = service.findCoursesByInput(searchInput);
+		System.out.println("fuzzySearch:"+searchInput);
+		LocalDate currentDate = LocalDate.now();
+		List<Course> filteredCourses = courses.stream().
+				filter(course -> {
+					LocalDate startDate = course.getCourseStartDate().toLocalDate();
+					return startDate.isAfter(currentDate); //回傳boolean
+				}).peek(course ->System.out.println("偷看模糊查詢: "+course.getEventName()))
+				.collect(Collectors.toList());
+		if(!filteredCourses.isEmpty()) {
+			filteredCourses.get(0).setSuccessful(true);
+	        filteredCourses.get(0).setMessage("模糊查詢結果");
+		}
+		return Optional.ofNullable(filteredCourses);
+	}
+
 	@PostMapping("/upload-photo")
 	public String uploadPhoto(@RequestParam("file") MultipartFile file) {
 		if (file.isEmpty()) {
@@ -108,10 +127,10 @@ public class CourseController {
 			String relativePath = "src/main/resources/static/lib/img/";
 			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 			// 建存储路径
-			String filePath =  projectRootPath + "/" + relativePath + "course/"+fileName;
+			String filePath = projectRootPath + "/" + relativePath + "course/" + fileName;
 			// 创建目标文件对象
 			File destFile = new File(filePath);
-			System.out.println("儲存位置>>"+destFile);
+			System.out.println("儲存位置>>" + destFile);
 			file.transferTo(destFile);
 			// 返回存储的文件路径，可以在保存评论的控制器中使用?
 			return filePath;
@@ -120,17 +139,16 @@ public class CourseController {
 			return "文件上傳失敗";
 		}
 	}
-	
-	@GetMapping("/districts/{city}")
-    public List<DistrictsDto> getDistricts(@PathVariable("city") String city) {
-        List<DistrictsDto> districts = service.getDistricts(city);
-        for (DistrictsDto district : districts) {
-        	
-            System.out.println(district.getName());
-        }
 
-        return districts;
-    }
-	
-	
+	@GetMapping("/districts/{city}")
+	public List<DistrictsDto> getDistricts(@PathVariable("city") String city) {
+		List<DistrictsDto> districts = service.getDistricts(city);
+		for (DistrictsDto district : districts) {
+
+			System.out.println(district.getName());
+		}
+
+		return districts;
+	}
+
 }

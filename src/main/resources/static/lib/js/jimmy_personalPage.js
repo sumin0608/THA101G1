@@ -16,9 +16,9 @@ $(document).ready(function () {
                 if (successful === true) {
                     for (let i = 0; i < resp.length; i++) {
                         let createdAt = new Date(resp[i].createdAt);
-                        let formattedDate = createdAt.toISOString().split('T')[0]; //只拿日期，切掉時間
                         let eventName;
                         let courseStartDate;
+                        let formattedDate = createdAt.toISOString().split('T')[0]; //只拿日期，切掉時間
                         tableData += `<div href="#" class="list-group-item list-group-item-action re_commentplace"
                                 aria-current="true" style="height: 118px;">`
                         tableData += `<div class="row h-100">`
@@ -30,7 +30,7 @@ $(document).ready(function () {
                         tableData += `<div class="d-flex w-100 justify-content-between">`
                         //串接課程資料，用課程id(courseId)去找對應的中文名字
                         $.ajax({
-                            url: "/ixercise/course/corseId/" + resp[i].courseId,
+                            url: "/ixercise/course/courseId/" + resp[i].courseId,
                             type: "GET",
                             dataType: "json",
                             data: { id: resp[i].courseId }, //
@@ -78,45 +78,98 @@ $(document).ready(function () {
         });
     });
 
-    // 頁籤<<參加紀錄的課程>>>>>>>>>>>>>>>>>>>>>要改!!course_attendees>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // 頁籤<<參加紀錄的課程>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     $(document).on("click", '#coursebtn_attendrecord', function () {
-        console.log(this);
+        // console.log(this);
         $.ajax({
-            url: "/ixercise/coursecomment/attendrecord/" + 1, //假設1號會員{accountIdReviewer}，之後抓session會員id
+            url: "/ixercise/courseAttendee/accountId/" + 2, //假設2號會員{accountId}，之後抓session會員id
             type: "GET",
             contexttype: "application/json",
             // data: JSON.stringify({}),
-            success: function (resp) {
-                console.log("resp>>" + resp[0].commentContent);
-                const successful2 = resp[0].successful;
-                console.log("success2>>" + successful2);
-                if (successful2 === true) {
-                    let tableData2 = '';
-                    for (let i = 0; i < resp.length; i++) {
-                        tableData2 += `<div href="#" class="list-group-item list-group-item-action" aria-current="true" style="height: 118px;">`;
-                        tableData2 += `<div class="row h-100">`;
-                        tableData2 += `<div class="col-2 h-100">
-                                <img src="https://picsum.photos/300/200/?random=10" alt="" width="100px"
-                                    height="100px" class="overflow-hidden" style="object-fit:cover;">
-                                </div>`;
-                        tableData2 += `<div class="col-8">`;
+            success: function (resp1) {
+                console.log("resp1.reason:>>" + resp1[0].reason);
+                const resp1successful2 = resp1[0].successful;
+                console.log("resp1successful2:" + resp1successful2);
+                let tableData2 = '';
+                if (resp1successful2 === true) {
+                    for (let i = 0; i < resp1.length; i++) {
+                        if (resp1[i].commentStatus == 0) {      //0是尚未評價
+                            console.log("進入迴圈");
+                            tableData2 += `<div id="listpapa" >`;
 
-                        tableData2 += ` <div class="d-flex w-100 justify-content-between"><h5 class="mb-1 ">${resp[i].courseId}</h5></div>`;
-                        tableData2 += ` <p class="mb-1">活動時間</p>`;
-                        tableData2 += ` <small>報名狀態: </small><small class="attendstatus">已完成</small>`;
-                        tableData2 += `<div class="show_givecomment"><p>未評價</p></div>`;
+                            tableData2 += `<div href="#" class="list-group-item list-group-item-action" aria-current="true" style="height: 118px;">`;
+                            tableData2 += `<div class="row h-100">`;
+                            tableData2 += `<div class="show_givecomment" style="display:none;">評價狀態:<p>${resp1[i].commentStatus}</p></div>`;
 
-                        tableData2 += `<div class="courseId displaynone">courseId:${resp[i].courseId}</div>
-                                <div class="accountIdReviewed displaynone">accountIdReviewed:${resp[i].accountIdReviewed}</div>
-                                <div class="accountIdReviewer displaynone">accountIdReviewer:${resp[i].accountIdReviewer}</div>`;
-
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="col-2"><a class="btn btn-primary givecomment" href="#" role="button">前往評價</a></div>`;
-                        tableData2 += `</div>;`
-                        tableData2 += `</div>`;
+                            $.ajax({
+                                url: "/ixercise/course/courseId/" + resp1[i].courseId, //2號會員參加的{courseId}
+                                type: "GET",
+                                contexttype: "application/json",
+                                async: false, //非同步的（asynchronous），表示該請求是同步的
+                                success: function (resp) {
+                                    console.log("resp.eventName2>>" + resp.eventName);
+                                    console.log("successful2>>" + resp.successful);
+                                    if (resp.successful === true) {
+                                        tableData2 += `<div class="col-2 h-100">
+                                                        <img src="/ixercise/lib/img/course/${resp.photo}" alt="紙上得來終覺淺，絕知此事要躬行" width="100px"
+                                                        height="100px" class="overflow-hidden" style="object-fit:cover;">
+                                                        </div>`;
+                                        tableData2 += `<div class="col-8">`;
+                                        tableData2 += ` <div class="d-flex w-100 justify-content-between"><h5 class="mb-1 ">${resp.eventName}</h5></div>`;
+                                        tableData2 += ` <p class="mb-1">活動日期: ${resp.courseStartDate}</p>`;
+                                        tableData2 += ` <small>狀態: </small><small class="attendstatus">已完成</small>`;
+                                        //隱藏區courseId
+                                        tableData2 += `<div class="courseId displaynone">courseId:${resp.courseId}</div>`;
+                                        tableData2 += `</div>`;
+                                        tableData2 += `<div class="col-2"><a class="btn btn-primary givecomment" href="#" role="button">前往評價</a></div>`;
+                                        tableData2 += `</div>`;
+                                        tableData2 += `</div>`;
+                                        // <!-- 評論欄位 -->
+                                        tableData2 += `<div class="card col-12 commentplace displaynone">
+                                                        <div class="card-body p-4">
+                                                            <div class="d-flex flex-start w-100">`;
+                                        //撈會員session照片
+                                        tableData2 += `<img class="rounded-circle shadow-1-strong me-3"
+                                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
+                                                            alt="帥哥" width="65" height="65" />`;
+                                        tableData2 += `         <div class="w-100">
+                                                                    <h5>留言評論</h5>
+                                                                    <!-- 評分星星 -->
+                                                                    <div class='star_block'>
+                                                                        <span class='star' data-star='1'><i class='fas fa-star'></i></span>
+                                                                        <span class='star' data-star='2'><i class='fas fa-star'></i></span>
+                                                                        <span class='star' data-star='3'><i class='fas fa-star'></i></span>
+                                                                        <span class='star' data-star='4'><i class='fas fa-star'></i></span>
+                                                                        <span class='star' data-star='5'><i class='fas fa-star'></i></span>
+                                                                    </div>
+                                                                    <div class="form-outline">
+                                                                        <textarea class="form-control textareac" id="textAreaExample"
+                                                                            rows="4"></textarea>
+                                                                        <label class="form-label"
+                                                                            for="textAreaExample">若欲檢舉請勾選，並詳述您的體驗</label>
+                                                                    </div>
+                                                                    <!-- 下方按鈕 -->
+                                                                    <div class="d-flex justify-content-between mt-3">
+                                                                        <button type="button" class="btn btn-danger sendcomment">
+                                                                            Send
+                                                                            <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>`;  //<!-- 評論欄位 -->
+                                        tableData2 += `</div>`;
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    alert("Error: " + xhr.responseText);
+                                }
+                            });//內層$.ajax()結束
+                        }
                     }
-                    $(".attendrecordlist").empty().append(tableData2);
                 }
+                $(".attendrecordlist").empty().append(tableData2);
             },
             error: function (xhr, status, error) {
                 alert("Error: " + xhr.responseText);
@@ -127,7 +180,7 @@ $(document).ready(function () {
 
     // 頁籤<<評價管理的課程>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     $("#coursebtn_evaluatemanager").click(function () {
-        console.log(this);
+        // console.log(this);
         $.ajax({
             url: "/ixercise/coursecomment/attendrecord/" + 1, //假設1號會員{accountIdReviewer}，之後抓session會員id
             type: "GET",
@@ -155,12 +208,14 @@ $(document).ready(function () {
                         tableData3 += `<div class="d-flex w-100 justify-content-between">`
                         //串接課程資料，用課程id(courseId)去找對應的中文名字
                         $.ajax({
-                            url: "/ixercise/course/corseId/" + resp[i].courseId,
+                            url: "/ixercise/course/courseId/" + resp[i].courseId, //抓session會員
                             type: "GET",
                             dataType: "json",
-                            data: { id: resp[i].courseId }, //
-                            async: false, // 设置为同步请求，确保获取到eventName后再进行下一步 
+                            // data: { id: resp[i].courseId },
+                            async: false, // 设置同步请求，确保eventName后再进行下一步 
                             success: function (c) {
+                                console.log("c: " + c);
+                                console.log("c.eventNamec: " + c.eventName);
                                 eventName3 = c.eventName;
                                 courseStartDate3 = c.courseStartDate;
                             },
@@ -170,7 +225,7 @@ $(document).ready(function () {
                         });
                         tableData3 += `<h5 class="mb-1 re_course">${eventName3}</h5>`
                         tableData3 += `<p class="mb-1">日期:${courseStartDate3}</p>`;
-                        tableData3 += `<small class="re_reviewedId">教練Id:${resp[i].accountIdReviewed}</small>`
+                        tableData3 += `<small class="re_reviewedId">教練id:${resp[i].accountIdReviewed}</small>`
                         tableData3 += `<small class="re_createdAt">留言日期:${formattedDate3}</small>`
                         tableData3 += `</div>`
 
@@ -199,123 +254,97 @@ $(document).ready(function () {
         });
     });
 
-    // 用來判斷if/else顯現下方"前往評價"按鈕，如果評論過按鈕隱藏
-    var show_givecomment = $('.show_givecomment p').text();
-    console.log(show_givecomment);
-    if (show_givecomment === "已評價") {
-        $('.givecomment').addClass('displaynone');
-    }
-    // 前往評價 按鈕打開隱藏評論區
-    // $('.givecomment').click(function () {
-    //     $('.commentplace').toggleClass('displaynone');
-    // });
+
+
     // 檢舉勾勾
     $('.report').click(function () {
         var isChecked = $('.flexCheckDefault').prop('checked');
         $('.flexCheckDefault').prop('checked', !isChecked);
     });
     // 評分星星
-    $(".star_block").on('click', '.star', function () {
+    $(document).on('click', '.star_block .star', function () {
         $(this).siblings().removeClass('-on');
         $(this).addClass('-on');
         $(this).prevAll().addClass('-on');
     });
     // Delete selected image
-    $(".delete-btn").click(function () {
-        $(".photo-dropzone").val("");
-    });
+    // $(".delete-btn").click(function () {
+    //     $(".photo-dropzone").val("");
+    // });
 
-    //修改評論
-    $(document).on('click', '.editcomment', function (e) {
-        e.preventDefault();
-        console.log(".editcomment: " + this);
+    // 前往評價 按鈕打開(最近的)隱藏評論區
+    $(document).on('click', '.givecomment', function (e) {
+        var commentPlace = $(this).closest('#listpapa').find('.commentplace');
+        commentPlace.toggleClass('displaynone');
+        // $('.commentplace').toggleClass('displaynone');
     });
 
     //送出評論
     $(document).on('click', '.sendcomment', function (e) {
         e.preventDefault();
-        // 步驟一、、先存圖片
-        let fileInput = $(".photo-dropzone")[0];
-        let file = fileInput.files[0];
-
+        // resp1[i].commentStatus == 0;
         // 沒寫評論先擋
         let commentContent = $(".textareac").val();
         let commentRating = $('.star.-on:last').data('star');
+        console.log("commentContent: " + commentContent);
+        console.log("commentRating: " + commentRating);
+
         if (commentContent == "") {
             console.log("沒寫評論");
             swal("請寫評論!!!", "say something", "warning");
         } else if (commentRating == null) {
             console.log("沒給星星");
             swal("請給星星，最低一顆!!!", "say something", "warning");
-        } else {
-            let formData = new FormData();
-            formData.append('file', file);
+        }
+        else {
+            //     let formData = new FormData();
+            //     formData.append('file', file);
+
+            // 步驟二、存入資料庫
+            let courseId = $(".courseId").text();
+            let accountIdReviewed = $(".accountIdReviewed").text();
+            let accountIdReviewer = $(".accountIdReviewer").text();
+            console.log(accountIdReviewed);
+            // console.log(commentContent);
+            // console.log(commentRating);
+            // console.log("photo=" + photo);
             $.ajax({
-                url: "/ixercise/coursecomment/upload-photo",
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    // 步驟二、存入資料庫
-                    let courseId = $(".courseId").text();
-                    let accountIdReviewed = $(".accountIdReviewed").text();
-                    let accountIdReviewer = $(".accountIdReviewer").text();
-                    let photo;
-                    if (file != null) {
-                        var a = true
-                    } else { var a = false };
-                    console.log("a=" + a);
-                    if (a === true) {
-                        photo = file.name;
-                    } else { photo = null }
-                    // console.log(accountIdReviewed);
-                    // console.log(commentContent);
-                    // console.log(commentRating);
-                    console.log("photo=" + photo);
-                    $.ajax({
-                        url: "/ixercise/coursecomment",
-                        type: "POST",
-                        contentType: 'application/json',
-                        data: JSON.stringify({
-                            courseId: courseId,
-                            accountIdReviewed: accountIdReviewed,
-                            accountIdReviewer: accountIdReviewer,
-                            commentContent: commentContent,
-                            commentRating: commentRating,
-                            photo: photo
-                        }),
-                        success: function (resp) {
-                            console.log("resp>>" + resp);
-                            swal("Warning!", resp.message, "warning");
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
-                },// 步驟二、結束
+                url: "/ixercise/coursecomment",
+                type: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    courseId: courseId,
+                    accountIdReviewed: accountIdReviewed,
+                    accountIdReviewer: accountIdReviewer,
+                    commentContent: commentContent,
+                    commentRating: commentRating
+                }),
+                success: function (resp) {
+                    console.log("resp>>" + resp);
+                    swal("Warning!", resp.message, "warning");
+                },
                 error: function (xhr, status, error) {
                     alert("Error: " + xhr.responseText);
                 }
             });
+            // 步驟二、結束
         };
         var textarea = $('.textareac');// 清空textarea的值
         textarea.val('');
         $('.star').siblings().removeClass('-on');// 清空星星
         $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
         $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
+    });//送出評論-結束
+
+    //修改評論--不開放
+    $(document).on('click', '.editcomment', function (e) {
+        e.preventDefault();
+        console.log(".editcomment: " + this);
+        alert("來不及了，送出就不要後悔，哈哈");
     });
-    //送出評論-結束
 
-
-
-    // 頁籤<<舉辦活動的課程>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    $(".coursebtn_holdrecord").click(function () {
-        console.log(this);
-    });
-
-    // // 打開評價
-    // $('#unflodcomment').click(function () {
-    //     $('.commentplace').toggleClass('displaynone');
+    // 頁籤<<舉辦活動的課程>>>>>不寫在這>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // $(".coursebtn_holdrecord").click(function () {
+    //  console.log(this);
     // });
 });
