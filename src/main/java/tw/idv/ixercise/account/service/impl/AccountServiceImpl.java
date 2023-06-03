@@ -81,6 +81,7 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountId(oAccount.getAccountId());
         account.setAccountPhone(oAccount.getAccountPhone());
         account.setAccountLevel(oAccount.getAccountLevel());
+        account.setAccountState(oAccount.getAccountState());
         account.setAccountId(oAccount.getAccountId());
         account.setAccountBirthday(oAccount.getAccountBirthday());
         account.setAccountCreatetime(oAccount.getAccountCreatetime());
