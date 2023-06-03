@@ -48,4 +48,16 @@ public class ManageController {
         return core;
     }
 
+    @PutMapping("modify")
+    public Core modifyLevel(@RequestBody Account account) {
+        final Core core = new Core();
+
+        if (account == null) {
+            core.setMessage("改動失敗");
+            core.setSuccessful(false);
+            return core;
+        } else {
+            return service.modifyacc(account);
+        }
+    }
 }

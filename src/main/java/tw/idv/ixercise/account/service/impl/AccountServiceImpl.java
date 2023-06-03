@@ -8,6 +8,7 @@ import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.entity.CourseAccount;
 import tw.idv.ixercise.account.entity.LessAccount;
 import tw.idv.ixercise.account.service.AccountService;
+import tw.idv.ixercise.core.Core;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -30,12 +31,46 @@ public class AccountServiceImpl implements AccountService {
             account.setSuccessful(false);
             return account;
         }
+
         account.setAccountLevel(1);
         account.setAccountState(1);
+        account.setAccountVerify(genAuthCode());
+        account.setAccountReport(0);
+        account.setAccountCreatetime(new Timestamp(System.currentTimeMillis()));
+        account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
+        System.out.println(account);
+        System.out.println("==================");
         account = repo.save(account);
+        System.out.println(account);
         account.setMessage("註冊成功");
         account.setSuccessful(true);
         return account;
+    }
+
+    //產生驗證碼
+    public String genAuthCode() {
+        String x = new String();
+        while (true) {
+            int ran = (int) (Math.random() * 3);
+            switch (ran) {
+                case 0:
+                    int i1 = (int) (Math.random() * 10 + 48);
+                    x += (char) i1;
+                    break;
+                case 1:
+                    int i2 = (int) (Math.random() * 26 + 65);
+                    x += (char) i2;
+                    break;
+                case 2:
+                    int i3 = (int) (Math.random() * 26 + 97);
+                    x += (char) i3;
+                    break;
+            }
+            if (x.length() == 8) {
+                break;
+            }
+        }
+        return x;
     }
 
     // 查詢登入=============================================================
@@ -142,6 +177,18 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account findById(Integer AccountId) {
         return repo.findByAccountId(AccountId);
+    }
+
+    @Override
+    public Core modifyacc(Account account){
+        Account acc = repo.findByAccountId(account.getAccountId());
+        acc.setAccountLevel(account.getAccountLevel());
+        acc.setAccountState(account.getAccountState());
+        repo.save(acc);
+        Core core = new Core();
+        core.setMessage("修改成功");
+        core.setSuccessful(true);
+        return core;
     }
 
 }
