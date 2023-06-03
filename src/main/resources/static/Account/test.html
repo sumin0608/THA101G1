@@ -27,6 +27,14 @@
             3
         </label>
     </div>
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script>
+        let id = 3;
+        var gen = document.querySelector('[name=accountGender]:checked');
+        // gen.addEventListener("change", console.log(gen.value))
+        $("input[name=accountGender][value=" + id + "]").attr('checked', true);
+
+    </script>
 </body>
 
 </html>
