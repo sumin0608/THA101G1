@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -97,7 +98,7 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/commentStatus/{commentStatus}")
-	public List<CourseAttendee> getAttendeesByCommentStatus(Integer commentStatus) {
+	public List<CourseAttendee> getAttendeesByCommentStatus(@PathVariable("commentStatus") Integer commentStatus) {
 		System.out.println("成功查到!getAttendeesByCommentStatus");
 		List<CourseAttendee> ca = service.getAttendeesByCommentStatus(commentStatus);
 		ca.get(0).setSuccessful(true);
@@ -106,7 +107,7 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/status/{status}")
-	public List<CourseAttendee> getStatus(Integer status) {
+	public List<CourseAttendee> getStatus(@PathVariable("status") Integer status) {
 		System.out.println("成功查到!getStatus");
 		List<CourseAttendee> ca = service.getStatus(status);
 		ca.get(0).setSuccessful(true);
@@ -115,8 +116,8 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/accountId/{accountId}")
-	public List<CourseAttendee> getAttendeesByAccountId(Integer accountId) {
-		System.out.println("成功查到! getAttendeesByAccountId");
+	public List<CourseAttendee> getAttendeesByAccountId(@PathVariable("accountId")Integer accountId) {
+		System.out.println("成功到! getAttendeesByAccountId");
 		List<CourseAttendee> ca = service.getAttendeesByAccountId(accountId);
 		ca.get(0).setSuccessful(true);
 		ca.get(0).setMessage("第一筆資料");
@@ -124,8 +125,8 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/courseId/{courseId}")
-	public List<CourseAttendee> getAttendeesByCourseId(Integer courseId) {
-		System.out.println("成功查到!getAttendeesByCourseId");
+	public List<CourseAttendee> getAttendeesByCourseId(@PathVariable("corseId") Integer courseId) {
+		System.out.println("成功到!getAttendeesByCourseId");
 		List<CourseAttendee> ca = service.getAttendeesByCourseId(courseId);
 		ca.get(0).setSuccessful(true);
 		ca.get(0).setMessage("第一筆資料");

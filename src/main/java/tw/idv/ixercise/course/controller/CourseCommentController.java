@@ -45,6 +45,7 @@ public class CourseCommentController {
 		return courseComments;
 	}
 	
+	// 頁籤<<評價管理的課程>>
 	@GetMapping("/attendrecord/{accountIdReviewer}")
 	public List<CourseComment> getAccountIdReviewer(@PathVariable("accountIdReviewer") Integer accountIdReviewer) {
 		System.out.println("成功查到!accountIdReviewer");

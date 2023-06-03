@@ -89,9 +89,9 @@ public class CourseController {
 		return courses;
 	}
 
-	@GetMapping("/corseId/{corseId}")
-	public Course findCity(@PathVariable("corseId") Integer corseId) {
-		System.out.println("成功查到!corseId");
+	@GetMapping("/courseId/{courseId}")
+	public Course findCity(@PathVariable("courseId") Integer corseId) {
+		System.out.println("成功到!course/courseId/");
 		Course course = service.findcorseId(corseId);
 		course.setSuccessful(true);
 		course.setMessage("第一筆資料");
