@@ -897,7 +897,7 @@
                         tableData += `</div>`;
                         tableData += `<div class="col-8 ms-2 c-details">`;
                         // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
-                        tableData += `      <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${memberName}</h6>`;
+                        tableData += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
                         tableData += `      <span class=" text-muted">還沒想好放什麼</span>`;
                         tableData += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
                         tableData += `</div>`;
@@ -1025,7 +1025,7 @@
                                         data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                     tableData2 += `</div>`;
                     tableData2 += `<div class="col-8 ms-2 c-details">`
-                    tableData2 += `      <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${memberName}</h6>`;
+                    tableData2 += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
                     // tableData2 += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練編號:${resp[i].creator}</h6>`;
                     tableData2 += `     <span class=" text-muted">還沒想好放什麼</span>`;
                     tableData2 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
@@ -1101,7 +1101,7 @@
                                             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                             tableData3 += `</div>`;
                             tableData3 += `<div class="col-8 ms-2 c-details">`;
-                            tableData3 += `     <h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${memberName}</h6>`;
+                            tableData3 += `     教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
                             tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
                             tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
                             tableData3 += `</div></div></div></a ></div></div>`;
@@ -1129,10 +1129,14 @@
             $('#input_card').on('click', '.eventLink', function (e) {
                 e.preventDefault();
                 let courseId_hide = $(this).closest('.event_card_container').find('.courseId_hide').text();
+                let thismemberName = $(this).closest('.event_card_container').find('h6').text().trim();
                 console.log("courseId_hide: " + courseId_hide);
-                sessionStorage.setItem('courseId', courseId_hide);
+                console.log("thismemberName: " + thismemberName);
 
-                var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + courseId_hide;
+                sessionStorage.setItem('courseId', courseId_hide);
+                sessionStorage.setItem('thismemberName', thismemberName);
+
+                var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + courseId_hide + '&thismemberName=' + thismemberName;
                 window.open(url, '_blank');
             });
 
