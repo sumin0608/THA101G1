@@ -24,5 +24,7 @@ public interface CourseService {
 	List<DistrictsDto> getDistricts(String city);
 	
 	List<Course> findCoursesByInput(String searchInput);
+	
+	List<Course> findCoursesByCreator(Integer creator);
 
 }

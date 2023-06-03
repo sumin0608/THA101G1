@@ -73,7 +73,7 @@ public class CourseController {
 
 	@GetMapping
 	public List<Course> findAll() {
-		System.out.println("成功查到!All");
+		System.out.println("成功到!findAll");
 		List<Course> courses = service.findall();
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
@@ -82,7 +82,7 @@ public class CourseController {
 
 	@GetMapping("/{city}")
 	public List<Course> findCity(@RequestParam("city") String city) {
-		System.out.println("成功查到!city");
+		System.out.println("成功到!findCity");
 		List<Course> courses = service.findCity(city);
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
@@ -97,6 +97,16 @@ public class CourseController {
 		course.setMessage("第一筆資料");
 		return course;
 	}
+	
+	@GetMapping("/creator/{creator}")
+	public List<Course> findCreator(@PathVariable("creator") Integer creator) {
+		System.out.println("成功到!findCreator");
+		List<Course> courses = service.findCoursesByCreator(creator);
+		courses.get(0).setSuccessful(true);
+		courses.get(0).setMessage("第一筆資料");
+		return courses;
+	}
+	
 
 //	模糊查詢
 	@GetMapping("/fuzzySearch/{searchInput}")

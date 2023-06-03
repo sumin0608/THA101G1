@@ -356,13 +356,25 @@
                         </li>
                         <li>
                             <div id="bar3"><span class="fa fa-briefcase mr-3"></span>學員參加審核</div>
-                            <a id="audit1" class="nav-link" href="">已審核</a>
-                            <a id="audit2" class="nav-link" href="">未審核</a>
+                            <ul class="sub-list2" style="list-style: none;">
+                                <li>
+                                    <a id="audit1" class="nav-link" href="">已審核</a>
+                                </li>
+                                <li>
+                                    <a id="audit2" class="nav-link" href="">未審核</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <div id="bar4"><span class="fa fa-sticky-note mr-3"></span>學員退出活動申請</div>
-                            <a id="leave1" class="nav-link" href="">已審核</a>
-                            <a id="leave2" class="nav-link" href="">未審核</a>
+                            <ul class="sub-list2" style="list-style: none;">
+                                <li>
+                                    <a id="leave1" class="nav-link" href="">已審核</a>
+                                </li>
+                                <li>
+                                    <a id="leave2" class="nav-link" href="">未審核</a>
+                                </li>
+                            </ul>
                         </li>
                         <!-- <li>
                             <a href="#"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
@@ -377,6 +389,8 @@
                 </div>
             </nav>
         </div>
+        <!-- sidebar -->
+
         <!-- main-content -->
         <div class="container main-content" style="border: solid red;">
             <!-- 請在這裡作業 -->
@@ -411,8 +425,8 @@
 
                 <div class="col-12 col-md-3" style="border: solid black;">
                     <label for="" class="form-label">所在城市</label>
-                    <select class="form-select" id="city" name="city">
-                        <option selected disabled value="">請選擇..</option>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>請選擇..</option>
                         <option value="1">台北市</option>
                         <option value="2">基隆</option>
                         <option value="4">新北市</option>
@@ -420,9 +434,52 @@
                         <option value="7">新竹</option>
                         <option value="8">桃園</option>
                     </select>
-
                 </div>
-            </div>
+                <div class="col-4 col-md-3" style="border: solid black;"> </div>
+                <div class="col-4 col-md-3" style="border: solid black;"> </div>
+                <div class="col-4 col-md-3" style="border: solid black;"> </div>
+
+                <div class="col-12" style="border: solid black;">
+                    <div class="row g-0 align-items-center">
+                        <!-- <div class="col-12 " style="max-width: 450px;"> -->
+                        <!-- 圖片 -->
+                        <div class="col-md-3" style="border: solid purple;">
+                            <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
+                        </div>
+                        <!-- 內容 -->
+                        <div class="col-md-9" style="border: solid peru;">
+                            <p class="card-tex my-0">學員名字</p>
+                            <p class="card-text"><small class="text-muted">寫一下參加原因，心得，台北女、27、有養貓</small>
+                            </p>
+                            <div style="text-align: right;">
+                                <a class="btn btn-primary" href="#" role="button">同意</a>
+                                <a class="btn btn-primary" href="#" role="button">不同意</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12" style="border: solid black;">
+                    <div class="row g-0 align-items-center">
+                        <!-- <div class="col-12 " style="max-width: 450px;"> -->
+                        <!-- 圖片 -->
+                        <div class="col-md-3" style="border: solid purple;">
+                            <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
+                        </div>
+                        <!-- 內容 -->
+                        <div class="col-md-9" style="border: solid peru;">
+                            <p class="card-tex my-0">學員名字</p>
+                            <p class="card-text"><small class="text-muted">寫一下參加原因，心得，台北女、27、有養貓</small>
+                            </p>
+                            <div style="text-align: right;">
+                                <a class="btn btn-primary" href="#" role="button">同意</a>
+                                <a class="btn btn-primary" href="#" role="button">不同意</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- row -->
+        </div> <!-- container -->
     </section>
 
 
@@ -498,7 +555,7 @@
             $('#c2').on('click', function (e) {
                 console.log(this);
                 $.ajax({
-                    url: "/ixercise/course",
+                    url: "/ixercise/course/creator/" + 3,//會員accountId=3
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
@@ -515,11 +572,25 @@
             // 暫存課程
             $('#c3').on('click', function (e) {
                 console.log(this);
+                $.ajax({
+                    url: "/ixercise/course/creator/" + 3,//會員accountId=3
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
             });
 
             // 被檢舉課程
             $('#c4').on('click', function (e) {
                 console.log(this);
+
             });
 
             // <<學員參加審核>>  1.待審核2.通過3.未通過4:退出
@@ -527,7 +598,7 @@
             $('#audit1').on('click', function (e) {
                 console.log("audit1>>" + this);
                 $.ajax({
-                    url: "/ixercise/courseAttendee/commentStatus" + 2,
+                    url: "/ixercise/courseAttendee",  //先拿全部
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
@@ -568,8 +639,8 @@
 
 
 
-            // $("#weatherresult").html(`<p>${(new Date()).toLocaleDateString()}</p>`);
         // <<<<天氣api>>>>
+            // $("#weatherresult").html(`<p>${(new Date()).toLocaleDateString()}</p>`);
         // $("#citypicker").change(function () {
         //     console.log(this.value);
         //     if (!(this.value == null || this.value == "")) {
