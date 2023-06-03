@@ -18,7 +18,26 @@
 
     <!-- =========================================== -->
     <style>
+        .spical-button {
+            background-color: green;
+            color: antiquewhite;
+        }
 
+        /* 自定义按钮样式 */
+        .custom-button {
+            /* background-color: #f2f2f2; */
+            background-color: transparent;
+            border: none;
+            color: #333;
+            padding: 1px 5px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        /* 鼠标悬停时的样式 */
+        .custom-button:hover {
+            background-color: #ddd;
+        }
     </style>
 </head>
 
@@ -319,9 +338,9 @@
     </section> -->
     <!-- 篩選器+天氣 ===================================================================================== -->
 
-    <!-- sidebar -->
     <section>
-        <div class="wrapper d-flex align-items-stretch" style="position: fixed;top: 15%;z-index: 1000;">
+        <!-- sidebar -->
+        <div class="wrapper d-flex align-items-stretch" style="position: fixed;top: 12%;z-index: 1000;">
             <nav id="sidebar">
                 <div class="custom-menu">
                     <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -340,17 +359,19 @@
                             <div id="bar2"><span class="fa fa-user mr-3"></span>課程管理</div>
                             <ul class="sub-list1" style="list-style: none;">
                                 <li>
-                                    <div id="c1" class="nav-link">已開設課程</div>
+                                    <button id="c1" class="custom-button">已開設課程</button>
                                 </li>
                                 <li>
-                                    <div id="c2" class="nav-link">已結束課程<span class="msg-counter">7</span>
-                                    </div>
+                                    <button id="c2" class="custom-button">已結束課程</button><span
+                                        class="msg-counter">7</span>
                                 </li>
                                 <li>
-                                    <div id="c3" class="nav-link">暫存課程<span class="msg-counter">7</span></div>
+                                    <button id="c3" class="custom-button">暫存課程<span
+                                            class="msg-counter">7</span></button>
                                 </li>
                                 <li>
-                                    <div id="c4" class="nav-link">被檢舉課程<span class="msg-counter">7</span></div>
+                                    <button id="c4" class="custom-button">被檢舉課程<span
+                                            class="msg-counter">7</span></button>
                                 </li>
                             </ul>
                         </li>
@@ -398,6 +419,7 @@
                 <table id="courseList0" class="table">
                     <thead style="background-color:rgba(66, 184, 131, 1)">
                         <tr>
+                            <th></th>
                             <th>courseID</th>
                             <th>eventName</th>
                             <th>courseStartTime</th>
@@ -410,15 +432,16 @@
                     </thead>
                     <tbody id="aaa">
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td><button class="btn btn-primary alterbtn">修改</button></td>
-                            <td><button class="btn btn-danger deletebtn">刪除</button></td>
+                            <td style="background-color:rgba(66, 184, 131, 0.5)">0</td>
+                            <td>courseID</td>
+                            <td>eventName</td>
+                            <td>courseStartTime</td>
+                            <td>city</td>
+                            <td>categoryID</td>
+                            <td>courseStatus</td>
+                            <td>paidAdvertising</td>
+                            <td><button id="alterbtn" class="btn btn-primary alterbtn">修改</button></td>
+                            <td><button id="deletebtn" class="btn btn-danger deletebtn">刪除</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -435,13 +458,14 @@
                         <option value="8">桃園</option>
                     </select>
                 </div>
+
                 <div class="col-4 col-md-3" style="border: solid black;"> </div>
                 <div class="col-4 col-md-3" style="border: solid black;"> </div>
                 <div class="col-4 col-md-3" style="border: solid black;"> </div>
 
+
                 <div class="col-12" style="border: solid black;">
                     <div class="row g-0 align-items-center">
-                        <!-- <div class="col-12 " style="max-width: 450px;"> -->
                         <!-- 圖片 -->
                         <div class="col-md-3" style="border: solid purple;">
                             <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
@@ -459,27 +483,11 @@
                     </div>
                 </div>
 
-                <div class="col-12" style="border: solid black;">
-                    <div class="row g-0 align-items-center">
-                        <!-- <div class="col-12 " style="max-width: 450px;"> -->
-                        <!-- 圖片 -->
-                        <div class="col-md-3" style="border: solid purple;">
-                            <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
-                        </div>
-                        <!-- 內容 -->
-                        <div class="col-md-9" style="border: solid peru;">
-                            <p class="card-tex my-0">學員名字</p>
-                            <p class="card-text"><small class="text-muted">寫一下參加原因，心得，台北女、27、有養貓</small>
-                            </p>
-                            <div style="text-align: right;">
-                                <a class="btn btn-primary" href="#" role="button">同意</a>
-                                <a class="btn btn-primary" href="#" role="button">不同意</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- row -->
-        </div> <!-- container -->
+            </div> <!-- row結束 -->
+        </div> <!-- container結束 -->
+
+        <button id="deletebtn" class="spical-button">刪除</button>
+
     </section>
 
 
@@ -523,27 +531,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
 
+    <script>
+        $('#alterbtn').on('click', function (e) {
+            console.log("有啊?");
+        });
+        $('#deletebtn').on('click', function (e) {
+            console.log("對吧?");
+        });
+
+    </script>
 
     <script>
         $(document).ready(function () {
-            // <<課程管理>>
-            // 已開設課程
+            // <<課程管理>> 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
+            // 一、已開設課程
             $('#c1').on('click', function (e) {
+                e.preventDefault();
                 console.log(this);
                 $.ajax({
-                    url: "/ixercise/course",
+                    url: "/ixercise/course/creator/" + 3, //會員accountId=3
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
-                        console.log("resp>>" + resp);
-                        // filter篩選:會員accountId
-                        let filteredData0 = resp.filter(function (item) {
-                            if (item.creator === 3) {  //會員accountId=3
-                                console.log("filteredData0>>" + filteredData0);
+                        // console.log("resp>>" + resp);
+                        // filter篩選:日期
+                        let currentDate = new Date();
+                        var filteredData0 = [];
+                        filteredData0 = resp.filter(function (item) {
+                            var StartTime = new Date(item.courseStartTime);
+                            console.log("StartTime>>" + StartTime);
+                            if (StartTime > currentDate) {
                                 return true;
                             }
                         });
-
+                        let appendFrom1 = '';
+                        for (let i in filteredData0) {
+                            console.log("filteredData0-creator>>" + filteredData0[i].creator);
+                            appendFrom1 += `
+                                            <tr>
+                                                <td>${Number(i) + 1}</td>
+                                                <td>${filteredData0[i].courseId}</td>
+                                                <td>${filteredData0[i].eventName}</td>
+                                                <td>${filteredData0[i].courseStartTime}</td>
+                                                <td>${filteredData0[i].city}</td>
+                                                <td>${filteredData0[i].categoryId}</td>
+                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${filteredData0[i].paidAdvertising}</td>
+                                                <td><button class="btn btn-primary alterbtn">修改</button></td>
+                                                <td><button class="btn btn-danger deletebtn">刪除</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendFrom1);
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
@@ -551,7 +590,19 @@
                 });
             });
 
-            // 已結束課程
+            // alterbtn
+            $('document').on('click', '.alterbtn', function (e) {
+                // e.preventDefault;
+                console.log("alterbtn");
+            });
+            // deletebtn
+            $('#aaa').on('click', '.deletebtn', function (e) {
+                // e.preventDefault;
+                console.log("deletebtn");
+                swal("Warning!", "要確定內!", "warning");
+            });
+
+            // 二、已結束課程
             $('#c2').on('click', function (e) {
                 console.log(this);
                 $.ajax({
@@ -560,7 +611,34 @@
                     dataType: "json",
                     success: function (resp) {
                         console.log("resp>>" + resp);
-
+                        // filter篩選:日期
+                        let currentDate = new Date();
+                        var filteredData0 = [];
+                        filteredData0 = resp.filter(function (item) {
+                            var StartTime = new Date(item.courseStartTime);
+                            console.log("StartTime>>" + StartTime);
+                            if (StartTime < currentDate) {
+                                return true;
+                            }
+                        });
+                        let appendFrom2 = '';
+                        for (let i in filteredData0) {
+                            console.log("filteredData0-creator>>" + filteredData0[i].creator);
+                            appendFrom2 += `
+                                            <tr>
+                                                <td>${Number(i) + 1}</td>
+                                                <td>${filteredData0[i].courseId}</td>
+                                                <td>${filteredData0[i].eventName}</td>
+                                                <td>${filteredData0[i].courseStartTime}</td>
+                                                <td>${filteredData0[i].city}</td>
+                                                <td>${filteredData0[i].categoryId}</td>
+                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${filteredData0[i].paidAdvertising}</td>
+                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendFrom2);
 
                     },
                     error: function (xhr, status, error) {
@@ -568,6 +646,13 @@
                     }
                 });
             });
+            // checkbtn
+            $('document').on('click', '.checkbtn', function (e) {
+                // e.preventDefault;
+                console.log("deletebtn");
+                swal("Check!", "你看一下", "success");
+            });
+
 
             // 暫存課程
             $('#c3').on('click', function (e) {
@@ -578,7 +663,35 @@
                     dataType: "json",
                     success: function (resp) {
                         console.log("resp>>" + resp);
-
+                        // filter篩選:日期
+                        let currentDate = new Date();
+                        var filteredData0 = [];
+                        filteredData0 = resp.filter(function (item) {
+                            var StartTime = new Date(item.courseStartTime);
+                            console.log("StartTime>>" + StartTime);
+                            if (StartTime > currentDate) {
+                                return true;
+                            }
+                        });
+                        let appendFrom3 = '';
+                        for (let i in filteredData0) {
+                            console.log("filteredData0-creator>>" + filteredData0[i].creator);
+                            appendFrom3 += `
+                                            <tr>
+                                                <td>${Number(i) + 1}</td>
+                                                <td>${filteredData0[i].courseId}</td>
+                                                <td>${filteredData0[i].eventName}</td>
+                                                <td>${filteredData0[i].courseStartTime}</td>
+                                                <td>${filteredData0[i].city}</td>
+                                                <td>${filteredData0[i].categoryId}</td>
+                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${filteredData0[i].paidAdvertising}</td>
+                                                <td><button class="btn btn-primary alterbtn">修改</button></td>
+                                                <td><button class="btn btn-danger deletebtn">刪除</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendFrom3);
 
                     },
                     error: function (xhr, status, error) {
@@ -603,8 +716,43 @@
                     dataType: "json",
                     success: function (resp) {
                         console.log("resp>>" + resp);
+                        let appendaudit1 = '';
 
+                        var code = 0;
 
+                        var filteredDataAudit1 = [];
+                        filteredDataAudit1 = resp.filter(function (item) {
+                            console.log("StartTime>>");
+                            if (resp.status === 2) {   //2.通過3.未通過4:退出
+                                return true;
+                            }
+                        });
+                        for (let i in filteredDataAudit1) {
+                            //在接個select code
+                            appendaudit1 += `<div></div>`;
+                            //要分段接會員了
+                            appendaudit1 += `
+                                < div class="col-12" style = "border: solid black;" >
+                                    <!-- 圖片 -->
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-md-3" style="border: solid purple;">
+                                            <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
+                                        </div>
+                                        <!-- 內容 -->
+                                        <div class="col-md-9" style="border: solid peru;">
+                                            <p class="card-tex my-0">學員名字:</p>
+                                            <p class="card-text"><small class="text-muted">寫一下參加原因，心得，台北女、27、有養貓</small>
+                                            </p>
+                                            <div style="text-align: right;">
+                                                <a class="btn btn-primary" href="#" role="button">同意</a>
+                                                <a class="btn btn-primary" href="#" role="button">不同意</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </ >
+                                `;
+                        }
+                        $('#aaa').empty().append(appendaudit1);
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
@@ -628,8 +776,20 @@
                         alert("Error: " + xhr.responseText);
                     }
                 });
-
             });
+
+            // <<學員退出活動申請>>
+            //已審核
+            $('#leave1').on('click', function (e) {
+                console.log("leave1>>" + this);
+            });
+            //未審核 
+            $('#leave2').on('click', function (e) {
+                console.log("leave2>>" + this);
+            });
+
+
+
         });
 
 
@@ -640,7 +800,7 @@
 
 
         // <<<<天氣api>>>>
-            // $("#weatherresult").html(`<p>${(new Date()).toLocaleDateString()}</p>`);
+            // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
         // $("#citypicker").change(function () {
         //     console.log(this.value);
         //     if (!(this.value == null || this.value == "")) {
@@ -658,9 +818,9 @@
         //             lang: "zh_TW"
         //         }).done(function (msg) {
         //             console.log("success!!!");
-        //             // $("#weatherresult").html(`<p>${(new Date()).toLocaleDateString()}</p>`);
+        //             // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
         //             $("#weatherresult").append(msg.weather[0].description);
-        //             $("#weatherresult").append(`<img src='https://openweathermap.org/img/wn/${msg.weather[0].icon}.png'/>`);
+        //             $("#weatherresult").append(`< img src = 'https://openweathermap.org/img/wn/${msg.weather[0].icon}.png' />`);
         //         }
         //         ).fail(function (xhr, status, error) {
         //             // 处理请求失败的情况
