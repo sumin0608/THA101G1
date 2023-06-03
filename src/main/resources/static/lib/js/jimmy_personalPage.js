@@ -95,6 +95,8 @@ $(document).ready(function () {
                     for (let i = 0; i < resp1.length; i++) {
                         if (resp1[i].commentStatus == 0) {      //0是尚未評價
                             console.log("進入迴圈");
+                            tableData2 += `<div id="listpapa" >`;
+
                             tableData2 += `<div href="#" class="list-group-item list-group-item-action" aria-current="true" style="height: 118px;">`;
                             tableData2 += `<div class="row h-100">`;
                             tableData2 += `<div class="show_givecomment" style="display:none;">評價狀態:<p>${resp1[i].commentStatus}</p></div>`;
@@ -148,13 +150,6 @@ $(document).ready(function () {
                                                                     </div>
                                                                     <!-- 下方按鈕 -->
                                                                     <div class="d-flex justify-content-between mt-3">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input flexCheckDefault" type="checkbox"
-                                                                                value="">
-                                                                            <button type="button" class="btn btn-success report">
-                                                                                檢舉
-                                                                            </button>
-                                                                        </div>
                                                                         <button type="button" class="btn btn-danger sendcomment">
                                                                             Send
                                                                             <i class="fas fa-long-arrow-alt-right ms-1"></i>
@@ -164,6 +159,7 @@ $(document).ready(function () {
                                                             </div>
                                                         </div>
                                                     </div>`;  //<!-- 評論欄位 -->
+                                        tableData2 += `</div>`;
                                     }
                                 },
                                 error: function (xhr, status, error) {
@@ -184,7 +180,7 @@ $(document).ready(function () {
 
     // 頁籤<<評價管理的課程>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     $("#coursebtn_evaluatemanager").click(function () {
-        console.log(this);
+        // console.log(this);
         $.ajax({
             url: "/ixercise/coursecomment/attendrecord/" + 1, //假設1號會員{accountIdReviewer}，之後抓session會員id
             type: "GET",
@@ -212,12 +208,14 @@ $(document).ready(function () {
                         tableData3 += `<div class="d-flex w-100 justify-content-between">`
                         //串接課程資料，用課程id(courseId)去找對應的中文名字
                         $.ajax({
-                            url: "/ixercise/course/corseId/" + resp[i].courseId, //抓session會員
+                            url: "/ixercise/course/courseId/" + resp[i].courseId, //抓session會員
                             type: "GET",
                             dataType: "json",
-                            data: { id: resp[i].courseId }, //
+                            // data: { id: resp[i].courseId },
                             async: false, // 设置同步请求，确保eventName后再进行下一步 
                             success: function (c) {
+                                console.log("c: " + c);
+                                console.log("c.eventNamec: " + c.eventName);
                                 eventName3 = c.eventName;
                                 courseStartDate3 = c.courseStartDate;
                             },
@@ -227,7 +225,7 @@ $(document).ready(function () {
                         });
                         tableData3 += `<h5 class="mb-1 re_course">${eventName3}</h5>`
                         tableData3 += `<p class="mb-1">日期:${courseStartDate3}</p>`;
-                        tableData3 += `<small class="re_reviewedId">教練Id:${resp[i].accountIdReviewed}</small>`
+                        tableData3 += `<small class="re_reviewedId">教練id:${resp[i].accountIdReviewed}</small>`
                         tableData3 += `<small class="re_createdAt">留言日期:${formattedDate3}</small>`
                         tableData3 += `</div>`
 
@@ -264,7 +262,7 @@ $(document).ready(function () {
         $('.flexCheckDefault').prop('checked', !isChecked);
     });
     // 評分星星
-    $(".star_block").on('click', '.star', function () {
+    $(document).on('click', '.star_block .star', function () {
         $(this).siblings().removeClass('-on');
         $(this).addClass('-on');
         $(this).prevAll().addClass('-on');
@@ -274,87 +272,69 @@ $(document).ready(function () {
     //     $(".photo-dropzone").val("");
     // });
 
-    // 前往評價 按鈕打開隱藏評論區
+    // 前往評價 按鈕打開(最近的)隱藏評論區
     $(document).on('click', '.givecomment', function (e) {
-        $('.commentplace').toggleClass('displaynone');
+        var commentPlace = $(this).closest('#listpapa').find('.commentplace');
+        commentPlace.toggleClass('displaynone');
+        // $('.commentplace').toggleClass('displaynone');
     });
 
     //送出評論
     $(document).on('click', '.sendcomment', function (e) {
         e.preventDefault();
         // resp1[i].commentStatus == 0;
-        // 步驟一、、先存圖片--暫時不開放
-        // let fileInput = $(".photo-dropzone")[0];
-        // let file = fileInput.files[0];
-
         // 沒寫評論先擋
         let commentContent = $(".textareac").val();
         let commentRating = $('.star.-on:last').data('star');
+        console.log("commentContent: " + commentContent);
+        console.log("commentRating: " + commentRating);
+
         if (commentContent == "") {
             console.log("沒寫評論");
             swal("請寫評論!!!", "say something", "warning");
         } else if (commentRating == null) {
             console.log("沒給星星");
             swal("請給星星，最低一顆!!!", "say something", "warning");
-        } else {
-            let formData = new FormData();
-            formData.append('file', file);
+        }
+        else {
+            //     let formData = new FormData();
+            //     formData.append('file', file);
+
+            // 步驟二、存入資料庫
+            let courseId = $(".courseId").text();
+            let accountIdReviewed = $(".accountIdReviewed").text();
+            let accountIdReviewer = $(".accountIdReviewer").text();
+            console.log(accountIdReviewed);
+            // console.log(commentContent);
+            // console.log(commentRating);
+            // console.log("photo=" + photo);
             $.ajax({
-                url: "/ixercise/coursecomment/upload-photo",
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    // 步驟二、存入資料庫
-                    let courseId = $(".courseId").text();
-                    let accountIdReviewed = $(".accountIdReviewed").text();
-                    let accountIdReviewer = $(".accountIdReviewer").text();
-                    // let photo;
-                    // if (file != null) {
-                    //     var a = true
-                    // } else { var a = false };
-                    // console.log("a=" + a);
-                    // if (a === true) {
-                    //     photo = file.name;
-                    // } else { photo = null }
-                    console.log(accountIdReviewed);
-                    // console.log(commentContent);
-                    // console.log(commentRating);
-                    console.log("photo=" + photo);
-                    $.ajax({
-                        url: "/ixercise/coursecomment",
-                        type: "POST",
-                        contentType: 'application/json',
-                        data: JSON.stringify({
-                            courseId: courseId,
-                            accountIdReviewed: accountIdReviewed,
-                            accountIdReviewer: accountIdReviewer,
-                            commentContent: commentContent,
-                            commentRating: commentRating
-                            // ,photo: photo
-                        }),
-                        success: function (resp) {
-                            console.log("resp>>" + resp);
-                            swal("Warning!", resp.message, "warning");
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
-                },// 步驟二、結束
+                url: "/ixercise/coursecomment",
+                type: "POST",
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    courseId: courseId,
+                    accountIdReviewed: accountIdReviewed,
+                    accountIdReviewer: accountIdReviewer,
+                    commentContent: commentContent,
+                    commentRating: commentRating
+                }),
+                success: function (resp) {
+                    console.log("resp>>" + resp);
+                    swal("Warning!", resp.message, "warning");
+                },
                 error: function (xhr, status, error) {
                     alert("Error: " + xhr.responseText);
                 }
             });
+            // 步驟二、結束
         };
         var textarea = $('.textareac');// 清空textarea的值
         textarea.val('');
         $('.star').siblings().removeClass('-on');// 清空星星
         $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
         $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
-    });
-    //送出評論-結束
+    });//送出評論-結束
 
     //修改評論--不開放
     $(document).on('click', '.editcomment', function (e) {
@@ -367,7 +347,4 @@ $(document).ready(function () {
     // $(".coursebtn_holdrecord").click(function () {
     //  console.log(this);
     // });
-
-
-
 });
