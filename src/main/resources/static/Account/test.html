@@ -9,6 +9,16 @@
 </head>
 
 <body>
+
+    <select id="aclevel" className="form-select">
+        <option value="1">一般用戶</option>
+        <option value="2" selected>教練</option>
+    </select>
+
+    <select id="acstate" className="form-select">
+        <option value="0">停用</option>
+        <option value="1">啟用</option>
+    </select>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="accountGender" id="male" value="1">
         <label class="form-check-label" for="male">
@@ -27,12 +37,37 @@
             3
         </label>
     </div>
+
+    <button type="button" class="btn btn-danger">Danger</button>
+
+    <td><button type="button" class="btn btn-primary aaa account-link" data-account-id="123">修改</button></td>
+
+
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
     <script>
         let id = 3;
         var gen = document.querySelector('[name=accountGender]:checked');
         // gen.addEventListener("change", console.log(gen.value))
         $("input[name=accountGender][value=" + id + "]").attr('checked', true);
+
+        // const btn1 = document.querySelector("#")
+
+        var html = `<select id="acstate${obj.accountId}" className="form-select">
+        <option value="0">停用</option>
+        <option value="1">啟用</option>
+    </select>
+`
+
+
+        $(document).on("click", ".account-link", function () {
+            var accountId = $(this).data("account-id");
+            sendArticleId(accountId);
+        });
+
+        function sendArticleId(accountId) {
+            console.log(accountId);
+        }
+
 
     </script>
 </body>

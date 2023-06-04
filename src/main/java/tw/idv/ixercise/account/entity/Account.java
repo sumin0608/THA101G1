@@ -67,18 +67,18 @@ public class Account extends Core {
 	private String accountBank;
 
 	private String accountVerify;
-//	@Override
-//	public String toString() {
-//		return "[accountId=" + accountId + ", accountPhone=" + accountPhone + ", accountPassword="
-//				+ accountPassword + ", accountEmail=" + accountEmail + ", accountNickname=" + accountNickname
-//				+ ", accountLevel=" + accountLevel + ", accountState=" + accountState + ", accountAddress="
-//				+ accountAddress + ", accountName=" + accountName + ", accountBirthday=" + accountBirthday
-//				+ ", accountCreatetime=" + accountCreatetime + ", accountUpdatetime=" + accountUpdatetime
-//				+ ", accountGender=" + accountGender + ", accountPhoto=" + Arrays.toString(accountPhoto)
-//				+ ", accountIdoc=" + Arrays.toString(accountIdoc) + ", accountIntro=" + accountIntro
-//				+ ", accountReport=" + accountReport + ", accountBank=" + accountBank + ", accountVerify="
-//				+ accountVerify + "]";
-//	}
+	@Override
+	public String toString() {
+		return "[accountId=" + accountId + ", accountPhone=" + accountPhone + ", accountPassword="
+				+ accountPassword + ", accountEmail=" + accountEmail + ", accountNickname=" + accountNickname
+				+ ", accountLevel=" + accountLevel + ", accountState=" + accountState + ", accountAddress="
+				+ accountAddress + ", accountName=" + accountName + ", accountBirthday=" + accountBirthday
+				+ ", accountCreatetime=" + accountCreatetime + ", accountUpdatetime=" + accountUpdatetime
+				+ ", accountGender=" + accountGender + ", accountPhoto=" + Arrays.toString(accountPhoto)
+				+ ", accountIdoc=" + Arrays.toString(accountIdoc) + ", accountIntro=" + accountIntro
+				+ ", accountReport=" + accountReport + ", accountBank=" + accountBank + ", accountVerify="
+				+ accountVerify + "]";
+	}
 	
 
 

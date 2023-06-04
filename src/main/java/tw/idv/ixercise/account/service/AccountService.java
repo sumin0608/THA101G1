@@ -3,6 +3,7 @@ package tw.idv.ixercise.account.service;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.entity.CourseAccount;
 import tw.idv.ixercise.account.entity.LessAccount;
+import tw.idv.ixercise.core.Core;
 
 import java.util.List;
 
@@ -26,4 +27,7 @@ public interface AccountService {
     Boolean remove(Integer accountId);
 
     Account save(Account account);
+//    為了後台修改權限跟狀態
+    Core modifyacc(Account account);
+
 }

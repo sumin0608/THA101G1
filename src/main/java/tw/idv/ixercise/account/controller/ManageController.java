@@ -27,11 +27,15 @@ public class ManageController {
         if (accountId == null) {
             core.setMessage("無會員Id");
             core.setSuccessful(false);
-        } else {
-            core.setSuccessful(service.remove(accountId));
+            return core;
         }
-        return core;
+        if (service.remove(accountId)) {
+            return new Core(true, "刪除成功");
+        } else {
+            return new Core(false, "刪除失敗");
+        }
     }
+
 
     @PutMapping
     public Core save(@RequestBody Account account) {
@@ -48,4 +52,16 @@ public class ManageController {
         return core;
     }
 
+    @PutMapping("modify")
+    public Core modifyLevel(@RequestBody Account account) {
+        final Core core = new Core();
+
+        if (account == null) {
+            core.setMessage("改動失敗");
+            core.setSuccessful(false);
+            return core;
+        } else {
+            return service.modifyacc(account);
+        }
+    }
 }
