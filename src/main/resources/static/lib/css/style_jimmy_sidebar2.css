@@ -1,0 +1,79 @@
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#sidebar {
+    height: 100%;
+    min-width: 270px;
+    max-width: 270px;
+    background-image: linear-gradient(90deg,
+            rgba(66, 184, 131, 0.8) 0%,
+            rgba(39, 179, 137, 0.9) 19%,
+            rgba(100, 126, 255, 1) 100%) !important;
+    color: black;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    transform: translateX(-100%);
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+#sidebar .custom-menu {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin-right: -30px;
+    /* WebKit 浏览器（例如 Chrome 和 Safari）、 Opera 浏览器、通用的过渡属性 */
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+#sidebar .custom-menu .btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* <!-- 漢堡 --> */
+#sidebar .custom-menu .btn i {
+    margin-right: -40px;
+    font-size: 14px;
+}
+
+#sidebar .custom-menu .btn.btn-primary {
+    background: transparent;
+    border-color: transparent;
+}
+
+#sidebar .custom-menu .btn.btn-primary:after {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    /* 旋轉 */
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    /* background: #3445b4; */
+    background-image: linear-gradient(90deg,
+            rgba(66, 184, 131, 0.8) 0%,
+            rgba(39, 179, 137, 0.8) 19%,
+            rgba(100, 126, 255, 1) 100%) !important;
+    border-radius: 10px;
+}
