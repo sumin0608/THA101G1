@@ -1,11 +1,10 @@
 const nav = document.querySelector(".navbar");
 
-
 nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '            <!-- 商標===================================================================== -->\n' +
     '            <a class="navbar-brand m-0 px-4" href="http://localhost:8080/ixercise/index.html">\n' +
-    '                <img src="./lib/img/IX-nobackground.png" alt="" width="91" height="60">\n' +
+    '                <img src="/ixercise/lib/img/IX-nobackground.png" alt="" width="91" height="60">\n' +
     '            </a>\n' +
     '            <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->\n' +
     '            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"\n' +
@@ -57,28 +56,51 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                        <div class="col-3">\n' +
     '                                            <select class="form-select form-select-sm"\n' +
     '                                                aria-label="Default select example">\n' +
-    '                                                <option selected>運動類型 </option>\n' +
-    '                                                <option value="1">One</option>\n' +
-    '                                                <option value="2">Two</option>\n' +
-    '                                                <option value="3">Three</option>\n' +
+    '                                                <option selected disabled>運動類型</option>\n' +
+    '<option value="1">足球</option>\n' +
+    '<option value="2">籃球</option>\n' +
+    '<option value="3">網球</option>\n' +
+    '<option value="4">排球</option>\n' +
+    '<option value="5">橄欖球</option>\n' +
+    '<option value="6">棒球</option>\n' +
+    '<option value="7">曲棍球</option>\n' +
+    '<option value="8">高爾夫球</option>\n' +
+    '<option value="9">羽毛球</option>\n' +
+    '<option value="10">乒乓球</option>\n' +
+    '<option value="11">壁球</option>\n' +
+    '<option value="12">手球</option>\n' +
+    '<option value="13">保齡球</option>\n' +
+    '<option value="1">有氧操課</option>\n' +
+    '<option value="2">重訓課</option>\n' +
+    '<option value="3">瑜伽課</option>\n' +
+    '<option value="4">舞蹈課</option>\n' +
+    '<option value="5">腹肌課</option>\n' +
+    '<option value="6">動感單車課</option>\n' +
+    '<option value="7">跳繩課</option>\n' +
+    '<option value="8">拳擊課</option>\n' +
+    '<option value="9">跳舞操課</option>\n' +
+    '<option value="10">瑜伽拉伸課</option>\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
     '                                        <div class="col-3">\n' +
     '                                            <select class="form-select form-select-sm"\n' +
     '                                                aria-label="Default select example">\n' +
-    '                                                <option selected>各自設定 </option>\n' +
-    '                                                <option value="1">One</option>\n' +
-    '                                                <option value="2">Two</option>\n' +
-    '                                                <option value="3">Three</option>\n' +
+    '                                                <option selected disabled>搜尋城市</option>\n' +
+    '<option value="1">台北市</option>\n' +
+    '<option value="2">基隆</option>\n' +
+    '<option value="4">新北市</option>\n' +
+    '<option value="5">宜蘭</option>\n' +
+    '<option value="7">新竹</option>\n' +
+    '<option value="8">桃園</option>\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
     '                                        <div class="col-3">\n' +
     '                                            <select class="form-select form-select-sm"\n' +
     '                                                aria-label="Default select example">\n' +
-    '                                                <option selected>各自設定 </option>\n' +
-    '                                                <option value="1">One</option>\n' +
-    '                                                <option value="2">Two</option>\n' +
-    '                                                <option value="3">Three</option>\n' +
+    '                                                <option selected disabled>上課時段</option>\n' +
+    '<option value="1">上午(06:00~12:00)</option>\n' +
+    '<option value="2">下午(12:00~18:00)</option>\n' +
+    '<option value="3">晚上(18:00~24:00)</option>\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
     '                                        <div class="row">\n' +
@@ -89,7 +111,11 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                                <button class="btn btn-primary" type="button"\n' +
     '                                                    id="btn-close-search">關閉</button>\n' +
     '                                                <button class="btn btn-primary" type="reset"\n' +
-    '                                                    id="resetsearch">重置</button>\n' +
+    '                                                    id="btn-reset-search">重置</button>\n' +
+
+    '<button class="btn btn-danger" id="btn_selecter_search"\n' +
+    'type="submit">搜尋篩選</button>\n' +
+
     '                                            </div>\n' +
     '                                        </div>\n' +
     '                                    </div>\n' +

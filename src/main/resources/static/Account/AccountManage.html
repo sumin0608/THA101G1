@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
-    <link
-            href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-            rel="stylesheet"/>
-    <link href="../lib/css/backstyle.css" rel="stylesheet"/>
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="../lib/css/backstyle.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <style>
         .totalcolor1 {
             background: linear-gradient(180deg, rgb(237, 242, 240) 0%,
-            rgb(224, 231, 229) 50%, rgb(232, 233, 236) 100%) !important;
+                    rgb(224, 231, 229) 50%, rgb(232, 233, 236) 100%) !important;
         }
 
         .navtotalcolor {
             background: linear-gradient(90deg, rgba(66, 184, 131, 1) 0%,
-            rgba(39, 179, 137, 1) 50%, rgba(100, 126, 255, 1) 100%) !important;
+                    rgba(39, 179, 137, 1) 50%, rgba(100, 126, 255, 1) 100%) !important;
         }
 
         nav a {
@@ -31,7 +28,7 @@
             color: black !important;
         }
 
-        nav > a {
+        nav>a {
             font-size: 16px !important;
             color: black !important;
         }
@@ -87,9 +84,12 @@
 
         .aaa {
             display: flex;
-            align-items: center; /* 垂直居中 */
-            justify-content: center; /* 水平居中 */
-            text-align: center; /* 对齐文本 */
+            align-items: center;
+            /* 垂直居中 */
+            justify-content: center;
+            /* 水平居中 */
+            text-align: center;
+            /* 对齐文本 */
         }
 
         .color {
@@ -108,222 +108,217 @@
     </style>
 
 </head>
+
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand m-0 px-4 " href="#!"> <img
-            src="../lib/img/IX-nobackground copy.png" alt="" width="150"
-            height="70">
-    </a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 "
-            id="sidebarToggle" href="#!">
-        <i class="fas fa-bars"></i>
-    </button>
-    <!-- Navbar Search-->
-    <form
-            class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
-            <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
-        </div>
-    </form>
-    <!-- Navbar-->
-
-
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
-        <li class="nav-item dropdown  "><a
-                class="nav-link dropdown-toggle  " id="navbarDropdown" href="#"
-                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end "
-                aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                <li>
-                    <hr class="dropdown-divider"/>
-                </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
-
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav justify-content-center ">
-                    <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-                    <a class="nav-link " href="index.html">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-house-fill"></i>
-                        </div>
-                        後臺中心
-                    </a>
-                    <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-flag-fill"></i>
-                        </div>
-                        檢舉
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-
-                            <a class="nav-link" href="">檢舉會員<span class="msg-counter reportspan">7</span></a>
-                            <a class="nav-link" href="">檢舉活動<span class="msg-counter reportspan">7</span></a>
-                            <a class="nav-link" href="">檢舉文章<span class="msg-counter reportspan">7</span></a>
-                            <a class="nav-link" href="">檢舉課程<span class="msg-counter reportspan">7</span></a>
-                        </nav>
-                    </div>
-
-
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-chat-left-dots-fill"></i>
-                        </div>
-                        文章
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">文章管理</a>
-
-                        </nav>
-                    </div>
-
-
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-calendar-event-fill"></i>
-                        </div>
-                        活動
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">活動管理</a>
-
-                        </nav>
-                    </div>
-
-
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-cart-fill"></i>
-                        </div>
-                        商城
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">商品管理</a>
-                            <a class="nav-link" href="">訂單管理</a>
-                            <a class="nav-link" href="">退貨管理</a>
-
-
-                        </nav>
-                    </div>
-
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-book-fill"></i>
-                        </div>
-                        課程
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">課程管理</a>
-                            <a class="nav-link" href="">審核退費</a>
-
-                        </nav>
-                    </div>
-
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutssssss" aria-expanded="false"
-                       aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-person-fill"></i>
-                        </div>
-                        帳號
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-
-                    <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">會員管理
-                                <span class="msg-counter accountspan">7</span>
-                            </a>
-                            <a class="nav-link" href="">管理員管理
-                                <span class="msg-counter adminspan">7</span>
-                            </a>
-                            <a class="nav-link" href="">審核教練資格
-                                <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
-                            </a>
-                        </nav>
-                    </div>
-
-                </div>
+    <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand m-0 px-4 " href="#!"> <img src="../lib/img/IX-nobackground copy.png" alt="" width="150"
+                height="70">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
+                <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
             </div>
-
-        </nav>
-    </div>
-
-    <!--以上nav-->
+        </form>
+        <!-- Navbar-->
 
 
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid px-4">
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
+            <li class="nav-item dropdown  "><a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav justify-content-center ">
+                        <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
+                        <a class="nav-link " href="index.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-house-fill"></i>
+                            </div>
+                            後臺中心
+                        </a>
+                        <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-flag-fill"></i>
+                            </div>
+                            檢舉
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+
+                                <a class="nav-link" href="">檢舉會員<span class="msg-counter reportspan">7</span></a>
+                                <a class="nav-link" href="">檢舉活動<span class="msg-counter reportspan">7</span></a>
+                                <a class="nav-link" href="">檢舉文章<span class="msg-counter reportspan">7</span></a>
+                                <a class="nav-link" href="">檢舉課程<span class="msg-counter reportspan">7</span></a>
+                            </nav>
+                        </div>
 
 
-                <div class="card mb-4">
-                    <div class="card-header">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-chat-left-dots-fill"></i>
+                            </div>
+                            文章
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">文章管理</a>
 
-                        <h2>會員管理</h2>
+                            </nav>
+                        </div>
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-calendar-event-fill"></i>
+                            </div>
+                            活動
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">活動管理</a>
+
+                            </nav>
+                        </div>
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-cart-fill"></i>
+                            </div>
+                            商城
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">商品管理</a>
+                                <a class="nav-link" href="">訂單管理</a>
+                                <a class="nav-link" href="">退貨管理</a>
+
+
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-book-fill"></i>
+                            </div>
+                            課程
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">課程管理</a>
+                                <a class="nav-link" href="">審核退費</a>
+
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutssssss" aria-expanded="false"
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            帳號
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+
+                        <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="">會員管理
+                                    <span class="msg-counter accountspan">7</span>
+                                </a>
+                                <a class="nav-link" href="">管理員管理
+                                    <span class="msg-counter adminspan">7</span>
+                                </a>
+                                <a class="nav-link" href="">審核教練資格
+                                    <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
+                                </a>
+                            </nav>
+                        </div>
+
                     </div>
-                    <div class="card-body">
-                        <table id="datatablesSimple">
+                </div>
 
-                            <thead>
-                            <tr>
-                                <th>會員編號</th>
-                                <th>會員名稱</th>
-                                <th>會員層級</th>
-                                <th>會員權限</th>
-                                <th>帳號建立時間</th>
-                                <th>最後修改時間</th>
-                                <th></th>
+            </nav>
+        </div>
 
-                            </tr>
-                            </thead>
-                            <!-- <tfoot>
+        <!--以上nav-->
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+
+                            <h2>會員管理</h2>
+                        </div>
+                        <div class="card-body">
+                            <table class="table" id="">
+
+                                <thead>
+                                    <tr>
+                                        <th>會員編號</th>
+                                        <th>會員名稱</th>
+                                        <th>會員層級</th>
+                                        <th>會員權限</th>
+                                        <th>帳號建立時間</th>
+                                        <th>最後修改時間</th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <!-- <tfoot>
                                     <tr>
                                         <th>Name</th>
                                         <th>Position</th>
@@ -333,272 +328,442 @@
                                         <th>Salary</th>
                                     </tr>
                                 </tfoot> -->
-                            <tbody id="aaa">
+                                <tbody id="aaa">
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="modal fade" id="exampleModal" tabindex="-1"
-                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content ">
-                        <div class="modal-header ">
-                            <h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content ">
+                            <div class="modal-header ">
+                                <h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
-                        </div>
-
-
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row"></div>
-
-
-                                <div class="col-md-12">
-
-                                    <div class="table-responsive">
-                                        <table class="table table-user-information">
-                                            <tbody id="aaaa">
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-
                             </div>
 
+
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row"></div>
+
+
+                                    <div class="col-md-12">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-user-information">
+                                                <tbody id="aaaa">
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </main>
-
-
-        <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
-
-        <script>
-            let data_obj = {
-                "accountId": 1,
-                "accountName": 123,
-                "accountLevel": 1,
-                "accountState": 2,
-                "accountCreatetime": "2023/06/01 18:40:56",
-                "accountUpdatetime": "2023/06/01 18:40:56"
-            };
-
-            $.ajax({
-                url: "http://localhost:8080/ixercise/Account/Manage", // 資料請求的網址
-                type: "GET",
-                dataType: "json",
-
-                success: function (data) {
-                    var html = "";
-                    console.log(data);
-
-                    $.each(data, function (index, obj) {
-                        html += "<tr>";
-                        html += "<td>" + obj.accountId + "</td>";
-                        html += "<td>" + obj.accountName + "</td>";
-                        html += "<td>" + obj.accountLevel + "</td>";
-                        html += "<td>" + obj.accountState + "</td>";
-                        html += "<td>" + obj.accountCreatetime + "</td>";
-                        html += "<td>" + obj.accountUpdatetime + "</td>";
-                        html += '<td><button type="button" class="btn btn-primary aaa article-link" data-bs-toggle="modal" data-bs-target="#exampleModal"'
-                            + 'data-article-id="' + obj.accountId + '">更多資訊</button></td>';
-                        html += "</tr>";
-                    });
-                    $("#aaa").append(html);
-                },
-                error: function (xhr, status, error) {
-                    console.log("AJAX Error:", error);
-                }
-            });
-        </script>
+            </main>
 
 
-        <script>
-            $(document).on("click", ".article-link", function () {
-                var articleId = $(this).data("article-id");
-                sendArticleId(articleId);
-            });
-
-            function sendArticleId(articleId) {
-                // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
-                $("#aaaa").empty();
-
-                $.ajax({
-                    url: 'http://localhost:8080/ixercise/Account/Manage/' + articleId + '', // 資料請求的網址
-                    type: "GET",
-                    dataType: "json",
-
-                    success: function (data) {
-                        var html = ""
-                        // "<tr>" +
-                        // "<td>successful</td>" +
-                        // "<td>true</td>" +
-                        // "</tr>" +
-                        // "<tr>" +
-                        // "<td>message</td>" +
-                        // "<td>null</td>" +
-                        // "</tr>" +
+            <!--以下footer-->
 
 
-                        let accmap = new Map();
-                        $.each(data, function (key, value) {
-                            accmap.set(key, value);
-                        });
-                        console.log(getcreateObjURL(accmap.get("accountPhoto")));
-
-                        let accsrc = accmap.get("accountGender") != null || accmap.get("accountGender") != "null" ? getcreateObjURL(accmap.get("accountPhoto")) : null;
-                        let accphsrc = ""
-                        if (accsrc) {
-                            accphsrc = 'src="' + accsrc + '"';
-                        } else {
-
-                            accphsrc = 'src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"'
-                        }
-                        console.log(accsrc);
-                        console.log(accphsrc);
-
-                        html += "<tr>" +
-                            "<td>會員編號</td>" +
-                            "<td>" + accmap.get("accountId") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>會員電話</td>" +
-                            "<td>" + accmap.get("accountPhone") + "</td>" +
-                            "</tr>" +
-                            // "<tr>" +
-                            // "<td>會員密碼</td>" +
-                            // "<td>****</td>" +
-                            // "</tr>" +
-                            // "<tr>" +
-                            "<td>會員信箱</td>" +
-                            "<td>" + accmap.get("accountEmail") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>暱稱</td>" +
-                            "<td>" + accmap.get("accountNickname") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>會員層級</td>" +
-                            "<td>" + accmap.get("accountLevel") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>會員狀態</td>" +
-                            "<td>" + accmap.get("accountState") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>會員地址</td>" +
-                            "<td>" + accmap.get("accountAddress") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>會員姓名</td>" +
-                            "<td>" + accmap.get("accountName") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>生日</td>" +
-                            "<td>" + accmap.get("accountBirthday") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>帳號創建時間</td>" +
-                            "<td>" + accmap.get("accountCreatetime") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>最後修改時間</td>" +
-                            "<td>" + accmap.get("accountUpdatetime") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>性別</td>" +
-                            "<td>" + accmap.get("accountGender") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>頭像</td>" +
-                            "<td> <img " + accphsrc + "style='position:relative'></td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>身分證明</td>" +
-                            "<td>" + accmap.get("accountIdoc") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>自我介紹</td>" +
-                            "<td>" + accmap.get("accountIntro") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>檢舉次數</td>" +
-                            "<td>" + accmap.get("accountReport") + "</td>" +
-                            "</tr>" +
-                            "<tr>" +
-                            "<td>銀行帳戶</td>" +
-                            "<td>" + accmap.get("accountBank") + "</td>" +
-                            "</tr>" +
-                            // "<tr>" +
-                            // "<td>驗證碼</td>" +
-                            // "<td>'"+ accmap.get("accountVerify") +"'</td>" +
-                            // "</tr>" +
-                            "</tbody>";
-                        $("#aaaa").append(html);
-                    },
-
-                    // ===============================================
-                    //     $.each(data, function (key, value) {
-                    //         html += "<tr>";
-                    //         html += "<td>" + key + "</td>";
-                    //         html += "<td>" + value + "</td>";
-                    //
-                    //         html += "</tr>";
-                    //     });
-                    //     $("#aaaa").append(html);
-                    // },
-                    //     ===============================================
-                    error: function (xhr, status, error) {
-                        console.log("AJAX Error:", error);
-                    }
-                });
-            }
-
-        </script>
-
-
-        <!--以下footer-->
-
-
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div
-                        class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                    <div>
-                        <a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-                        &amp; Conditions</a>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a> &middot; <a href="#">Terms
+                                &amp; Conditions</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
-</div>
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-<script src="../lib/js/backtai.js"></script>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-        crossorigin="anonymous"></script>
+    <script src="../lib/js/backtai.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
-<script
-        src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-<script src="../lib/js/datatables-demo.js"></script>
+    <script src="../lib/js/datatables-demo.js"></script>
 
+    <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
+
+    <script>
+        let data_obj = {
+            "accountId": 1,
+            "accountName": 123,
+            "accountLevel": 1,
+            "accountState": 2,
+            "accountCreatetime": "2023/06/01 18:40:56",
+            "accountUpdatetime": "2023/06/01 18:40:56"
+        };
+
+        $.ajax({
+            url: "http://localhost:8080/ixercise/Account/Manage", // 資料請求的網址
+            type: "GET",
+            dataType: "json",
+
+            success: function (data) {
+                var html = "";
+                console.log(data);
+
+                $.each(data, function (index, obj) {
+                    html += "<tr>";
+                    html += "<td>" + obj.accountId + "</td>";
+                    html += "<td>" + obj.accountName + "</td>";
+                    html += "<td>" + obj.accountLevel + "</td>";
+                    html += "<td>" + obj.accountState + "</td>";
+                    html += "<td>" + obj.accountCreatetime + "</td>";
+                    html += "<td>" + obj.accountUpdatetime + "</td>";
+                    html += '<td><button type="button" class="btn btn-primary aaa article-link" data-bs-toggle="modal" data-bs-target="#exampleModal"'
+                        + 'data-article-id="' + obj.accountId + '">更多資訊</button></td>';
+                    html += "</tr>";
+                });
+                $("#aaa").append(html);
+            },
+            error: function (xhr, status, error) {
+                console.log("AJAX Error:", error);
+            }
+        });
+    </script>
+
+    <!--先註解 這裡的code都沒問題-->
+    <script>
+    // $(document).on("click", ".article-link", function () {
+    //     var articleId = $(this).data("article-id");
+    //     sendArticleId(articleId);
+    // });
+    //
+    // function sendArticleId(articleId) {
+    //     // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
+    //     $("#aaaa").empty();
+    //
+    //     $.ajax({
+    //         url: 'http://localhost:8080/ixercise/Account/Manage/' + articleId + '', // 資料請求的網址
+    //         type: "GET",
+    //         dataType: "json",
+    //
+    //         success: function (data) {
+    //             var html = ""
+    //
+    //             let accmap = new Map();
+    //             $.each(data, function (key, value) {
+    //                 // console.log(typeof value + ",,," +value);
+    //                 // if(key == "accountPhoto"){
+    //                 //     accmap.set(key, value);
+    //                 // }
+    //                 // if(value == null){
+    //                 //     accmap.set(key, "無資料");
+    //                 // }else{
+    //                 //     accmap.set(key, value);
+    //                 // }
+    //                 accmap.set(key, value);
+    //             });
+    //             // console.log(getcreateObjURL(accmap.get("accountPhoto")));
+    //
+    //             let accsrc = accmap.get("accountPhoto") != null || accmap.get("accountPhoto") != "null" ? getcreateObjURL(accmap.get("accountPhoto")) : null;
+    //             let accphsrc = ""
+    //             if (accsrc) {
+    //                 accphsrc = 'src="' + accsrc + '"';
+    //             } else {
+    //
+    //                 accphsrc = 'src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"'
+    //             }
+    //             // console.log(accsrc);
+    //             // console.log(accphsrc);
+    //
+    //             html += "<tr>" +
+    //                 "<td>會員編號</td>" +
+    //                 "<td>" + accmap.get("accountId") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>會員電話</td>" +
+    //                 "<td>" + accmap.get("accountPhone") + "</td>" +
+    //                 "</tr>" +
+    //                 // "<tr>" +
+    //                 // "<td>會員密碼</td>" +
+    //                 // "<td>****</td>" +
+    //                 // "</tr>" +
+    //                 // "<tr>" +
+    //                 "<td>會員信箱</td>" +
+    //                 "<td>" + accmap.get("accountEmail") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>暱稱</td>" +
+    //                 "<td>" + accmap.get("accountNickname") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>會員層級</td>" +
+    //                 "<td>" + accmap.get("accountLevel") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>會員狀態</td>" +
+    //                 "<td>" + accmap.get("accountState") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>會員地址</td>" +
+    //                 "<td>" + accmap.get("accountAddress") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>會員姓名</td>" +
+    //                 "<td>" + accmap.get("accountName") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>生日</td>" +
+    //                 "<td>" + accmap.get("accountBirthday") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>帳號創建時間</td>" +
+    //                 "<td>" + accmap.get("accountCreatetime") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>最後修改時間</td>" +
+    //                 "<td>" + accmap.get("accountUpdatetime") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>性別</td>" +
+    //                 "<td>" + accmap.get("accountGender") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>頭像</td>" +
+    //                 "<td> <img " + accphsrc + "style='position:relative'></td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>身分證明</td>" +
+    //                 "<td>" + accmap.get("accountIdoc") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>自我介紹</td>" +
+    //                 "<td>" + accmap.get("accountIntro") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>檢舉次數</td>" +
+    //                 "<td>" + accmap.get("accountReport") + "</td>" +
+    //                 "</tr>" +
+    //                 "<tr>" +
+    //                 "<td>銀行帳戶</td>" +
+    //                 "<td>" + accmap.get("accountBank") + "</td>" +
+    //                 "</tr>" +
+    //                 // "<tr>" +
+    //                 // "<td>驗證碼</td>" +
+    //                 // "<td>'"+ accmap.get("accountVerify") +"'</td>" +
+    //                 // "</tr>" +
+    //                 "</tbody>";
+    //             $("#aaaa").append(html);
+    //         },
+    //
+    //         // ===============================================
+    //         //     $.each(data, function (key, value) {
+    //         //         html += "<tr>";
+    //         //         html += "<td>" + key + "</td>";
+    //         //         html += "<td>" + value + "</td>";
+    //         //
+    //         //         html += "</tr>";
+    //         //     });
+    //         //     $("#aaaa").append(html);
+    //         // },
+    //         //     ===============================================
+    //         error: function (xhr, status, error) {
+    //             console.log("AJAX Error:", error);
+    //         }
+    //     });
+    // }
+
+    </script>
+    <!--都沒問題-->
+    <!--實驗開始-->
+    <script>
+        // 註冊點擊事件
+        $(document).on("click", ".article-link", function () {
+            var articleId = $(this).data("article-id");
+            sendArticleId(articleId);
+        });
+
+        function sendArticleId(articleId) {
+            //     // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
+            $("#aaaa").empty();
+
+            let html = '<div class="row justify-content-center">\n' +
+                '                    <div class="col-10">\n' +
+                '                        <form>\n' +
+                '                            <fieldset>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountId" class="form-label"></label>\n' +
+                '                                    <input type="text" id="accountId" name="accountId" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountPhone" class="form-label">電話</label>\n' +
+                '                                    <input type="text" id="accountPhone" name="accountPhone" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '\n' +
+                // '                                <div class="mb-1">\n' +
+                // '                                    <label for="accountPassword" class="form-label">密碼</label>\n' +
+                // '                                    <input type="password" id="accountPassword" name="" class="form-control"\n' +
+                // '                                        placeholder="">\n' +
+                // '                                </div>\n' +
+                // '\n' +
+                // '                                <div class="mb-1">\n' +
+                // '                                    <label for="accountPasswordCheck" class="form-label">確認密碼</label>\n' +
+                // '                                    <input type="password" id="accountPasswordCheck" name="accountPasswordCheck"\n' +
+                // '                                        class="form-control" placeholder="">\n' +
+                // '                                </div>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountEmail" class="form-label">Email</label>\n' +
+                '                                    <input type="text" id="accountEmail" name="accountEmail" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountNickname" class="form-label">暱稱</label>\n' +
+                '                                    <input type="text" id="accountNickname" name="accountNickname" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '\n' +
+                // '                                <div class="mb-1">\n' +
+                // '                                    <label for="locationcity" class="form-label">所在城市</label>\n' +
+                // '                                    <select id="locationcity" name="locationcity" class="form-select">\n' +
+                // '                                        <option value="臺北市">臺北市</option>\n' +
+                // '                                        <option value="基隆市">基隆市</option>\n' +
+                // '                                        <option value="連江縣">連江縣</option>\n' +
+                // '                                        <option value="新北市">新北市</option>\n' +
+                // '                                        <option value="宜蘭縣">宜蘭縣</option>\n' +
+                // '                                        <option value="新竹市">新竹市</option>\n' +
+                // '                                        <option value="新竹縣">新竹縣</option>\n' +
+                // '                                        <option value="桃園市">桃園市</option>\n' +
+                // '                                        <option value="苗栗縣">苗栗縣</option>\n' +
+                // '                                        <option value="臺中市">臺中市</option>\n' +
+                // '                                        <option value="彰化縣">彰化縣</option>\n' +
+                // '                                        <option value="南投縣">南投縣</option>\n' +
+                // '                                        <option value="嘉義市">嘉義市</option>\n' +
+                // '                                        <option value="嘉義縣">嘉義縣</option>\n' +
+                // '                                        <option value="雲林縣">雲林縣</option>\n' +
+                // '                                        <option value="臺南市">臺南市</option>\n' +
+                // '                                        <option value="高雄市">高雄市</option>\n' +
+                // '                                        <option value="澎湖縣">澎湖縣</option>\n' +
+                // '                                        <option value="金門縣">金門縣</option>\n' +
+                // '                                        <option value="屏東縣">屏東縣</option>\n' +
+                // '                                        <option value="台東縣">台東縣</option>\n' +
+                // '                                        <option value="花蓮縣">花蓮縣</option>\n' +
+                // '                                    </select>\n' +
+                // '\n' +
+                // '                                </div>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountLevel" class="form-label">會員層級</label>\n' +
+                '                                    <input type="text" id="accountLevel" name="accountLevel" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountState" class="form-label">會員狀態</label>\n' +
+                '                                    <input type="text" id="accountState" name="accountState" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountAddress" class="form-label">地址</label>\n' +
+                '                                    <input type="text" id="accountAddress" name="accountAddress" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountName" class="form-label">姓名</label>\n' +
+                '                                    <input type="text" id="accountName" name="accountName" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountBirthday" class="form-label">生日</label>\n' +
+                '                                    <input type="date" id="accountBirthday" name="accountBirthday" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountCreatetime" class="form-label">生日</label>\n' +
+                '                                    <input type="date" id="accountCreatetime" name="accountCreatetime" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountUpdatetime" class="form-label">生日</label>\n' +
+                '                                    <input type="date" id="accountUpdatetime" name="accountUpdatetime" class="form-control"\n' +
+                '                                        placeholder="">\n' +
+                '                                </div>\n' +
+                '\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label class="mb-1">性別</label>\n' +
+                '                                    <br>\n' +
+                '                                    <div class="form-check form-check-inline">\n' +
+                '                                        <input class="form-check-input" type="radio" name="accountGender" id="male"\n' +
+                '                                            value="1">\n' +
+                '                                        <label class="form-check-label" for="male">\n' +
+                '                                            男\n' +
+                '                                        </label>\n' +
+                '                                    </div>\n' +
+                '                                    <div class="form-check form-check-inline">\n' +
+                '                                        <input class="form-check-input" type="radio" name="accountGender" id="female"\n' +
+                '                                            value="2">\n' +
+                '                                        <label class="form-check-label" for="female">\n' +
+                '                                            女\n' +
+                '                                        </label>\n' +
+                '                                    </div>\n' +
+                '                                    <div class="form-check form-check-inline">\n' +
+                '                                        <input class="form-check-input" type="radio" name="accountGender" id="private"\n' +
+                '                                            value="0">\n' +
+                '                                        <label class="form-check-label" for="private">\n' +
+                '                                            不公開\n' +
+                '                                        </label>\n' +
+                '                                    </div>\n' +
+                '                                </div>\n' +
+                '\n' +
+                '                                <div class="mb-1">\n' +
+                '                                    <label for="accountIntro" class="form-label">自我介紹</label>\n' +
+                '                                    <textarea class="form-control" id="accountIntro" name="accountIntro"\n' +
+                '                                        rows="3"></textarea>\n' +
+                '                                </div>\n' +
+                '                                <div class="mb-3">\n' +
+                '                                    <label for="accountPhoto" class="form-label">會員頭像</label>\n' +
+                '                                    <input class="form-control" type="file" id="accountPhoto" name="accountPhoto">\n' +
+                '                                </div>\n' +
+                '                                <!-- <div style="width:150px;height:150px;"> -->\n' +
+                '                                <!-- <img id="img" class="overflow-hidden rounded-circle" alt="" style="object-fit: cover;"\n' +
+                '                                    width="100px" height="100px"> -->\n' +
+                '                                <!-- </div> -->\n' +
+                '                                <div id="preview" style="width:150px;height:150px;">\n' +
+                '                                    <span class="text">預覽圖</span>\n' +
+                '                                </div>\n' +
+                '\n' +
+                '                                <button type="button" id="sendform" class="btn btn-primary">送出</button>\n' +
+                '                            </fieldset>\n' +
+                '                        </form>\n' +
+                '                        <div id="msg" class="error"></div>\n' +
+                '                    </div>\n' +
+                '                </div>'
+            $("#aaaa").append(html);
+
+
+        }
+        //       radio給值
+        $("input[name=accountGender][value=" + id + "]").attr('checked', true);
+    </script>
 </body>
+
 </html>

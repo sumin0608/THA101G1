@@ -294,7 +294,7 @@
         <div class="row">
             <!-- 課程介紹區 -->
             <div id="course_content_place" class="col-md-9 p-5 mb-4 bg-light rounded-3">
-                <div id="course_content" class="container-fluid py-5" style="border: solid yellow;">
+                <div id="course_content" class="container-fluid py-5"> <!-- style="border: solid yellow;" -->
                     <h1 class="display-5 fw-bold" id="eventName">TRX體能訓練123</h1>
                     運動類型:<span id="categoryId">運動類型</span>
                     <div class="photo">
@@ -389,10 +389,11 @@
             </aside>
 
             <!-- 下排課程推薦 -->
-            <div class="row align-items-md-stretch" style="border: solid green;">
+            <div class="row align-items-md-stretch"> <!-- style="border: solid green;" -->
                 <div class="col-md-6">
                     <div class="h-100 p-5 text-white bg-dark rounded-3">
-                        <h2 class="o_eventName">其他課程(同個教練)</h2>
+                        <h2>其他課程</h2>
+                        <h4 class="o_eventName">其他課程(同個教練)</h4>
                         <p class="o_description">Swap the background-color utility and add a `.text-*` color utility to
                             mix up the jumbotron
                             look. Then, mix and match with additional component themes and more.</p>
@@ -401,11 +402,13 @@
                 </div>
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
-                        <h2 class="o_creator">教練介紹</h2>
-                        <p>Or, keep it light and add a border for some added definition to the boundaries of your
+                        <h2>教練介紹</h2>
+                        <h4 class="o_creator">教練介紹</h4>
+                        <p id="accountIntro_place">Or, keep it light and add a border for some added definition to the
+                            boundaries of your
                             content. Be sure to look under the hood at the source HTML here as we've adjusted the
                             alignment and sizing of both column's content for equal-height.</p>
-                        <button class="btn btn-outline-secondary" type="button">更多資料</button>
+                        <button id="trainerbtn" class="btn btn-outline-secondary" type="button">更多資料</button>
                     </div>
                 </div>
             </div>
@@ -454,9 +457,9 @@
         </div>
     </div> -->
     <br>
-    <div id="courseInfo">
+    <!-- <div id="courseInfo">
         紙上得來終覺淺，絕知此事要躬行。
-    </div>
+    </div> -->
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
@@ -489,6 +492,11 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/owl_carousel/owl.carousel.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
     <!-- <script>
         $(document).ready(function () {
@@ -522,15 +530,17 @@
         $(document).ready(function () {
             console.log("有人嗎");
 
-            // <!-- 課程介紹區 -->
+            // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
             var urlParams = new URLSearchParams(window.location.search);
             var courseId = urlParams.get('courseId');
-
-            // 使用courseId进行其他操作
-            console.log('courseId:', courseId);
+            var thismemberName = urlParams.get('thismemberName');
+            console.log('urlParams-courseId:', courseId);
+            console.log('urlParams-教練名稱:', thismemberName);
+            $("#creator").text(thismemberName);
             // var courseId = sessionStorage.getItem('courseId');
+
             $.ajax({
-                url: '/ixercise/course/corseId/' + courseId,
+                url: '/ixercise/course/courseId/' + courseId,
                 type: 'GET',
                 success: function (response) {
                     console.log(response);
@@ -542,15 +552,19 @@
                     $("#district").text(response.district);
                     $("#detailedAddress").text(response.detailedAddress);
                     // $("#courseStartDate").text(response.courseStartDate);
-                    $("#courseStartTime").text(response.courseStartTime.subString(0, 16));
+                    var courseStartTime = (response.courseStartTime).substring(0, 5);
+                    $("#courseStartTime").text(courseStartTime);
                     $("#expectedPrice").text(response.expectedPrice);
                     $("#courseDuration").text(response.courseDuration);
-                    $("#creator").text(response.creator);
+                    // $("#creator").text(response.creator);
                     $("#maximumCapacity").text(response.maximumCapacity);
                     $("#currentEnrolment").text(response.currentEnrolment);
                     $("#registrationDeadline").text(response.registrationDeadline);
                     $("#description").text(response.description);
                     // <!-- 下排課程推薦 -->
+                    let creator = response.creator;
+                    console.log("$(#creator).text(response.creator): " + creator);
+
                     // 1.其他課程(同個教練)
                     $.ajax({
                         url: '/ixercise/course/',
@@ -562,11 +576,10 @@
                         }
                     });
                     function handleResponse(response) {
-                        console.log(response);
+                        // console.log(response);
                         // filter篩選:
-                        var creator = $("#creator").text().trim();
-                        console.log("creator: " + creator);
-                        console.log("courseIdr: " + courseId);
+                        console.log("filter篩選用:creator: " + creator);
+                        console.log("filter篩選用:courseId: " + courseId);
                         let filteredData0 = response.filter(function (item) {
                             if ((item.creator == creator) && (item.courseId != courseId)) {
                                 return true;
@@ -586,11 +599,30 @@
                             var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + other_courseId;
                             window.open(url, '_blank');
                         });
-                    };
+                    }; //1.其他課程(同個教練)--結束
+
                     // 2.教練介紹
                     $.ajax({
-
-                    });
+                        url: '/ixercise/Account/Manage/' + creator,
+                        type: 'GET',
+                        async: false,//
+                        success: function (m) {
+                            console.log(m);
+                            $(".o_creator").text(m.accountName);
+                            $("#accountIntro_place").text(m.accountIntro);
+                            // btn教練介紹
+                            $("#trainerbtn").on("click", function (e) {
+                                console.log("456");
+                                e.preventDefault();
+                                // @@@@@@@@@怎麼去看別人頁面@@@@@@@@@@@@
+                                var url = '/ixercise/Account/PersonalPage.html';
+                                window.open(url, '_blank');
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.log(error);
+                        }
+                    });   // 2.教練介紹--結束
 
                 },
                 error: function (xhr, status, error) {

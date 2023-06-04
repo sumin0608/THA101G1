@@ -305,20 +305,20 @@
 
                             <div class="mb-3">
                                 <label for="oldPassword" class="form-label">請輸入舊密碼</label>
-                                <input type="text" id="oldPassword" class="form-control" placeholder="">
+                                <input type="password" id="oldPassword" class="form-control" placeholder="">
                             </div>
                             <div class="mb-3">
                                 <label for="newPassword" class="form-label">新密碼</label>
-                                <input type="text" id="newPassword" class="form-control" placeholder="">
+                                <input type="password" id="newPassword" class="form-control" placeholder="">
                             </div>
                             <div class="mb-3">
                                 <label for="confirmPassword" class="form-label">確認密碼</label>
-                                <input type="text" id="confirmPassword" class="form-control" placeholder="">
+                                <input type="password" id="confirmPassword" class="form-control" placeholder="">
                             </div>
-                            <!--                            <div class="mb-3">-->
-                            <!--                                <label for="birthday" class="form-label">生日</label>-->
-                            <!--                                <input type="date" id="birthday" class="form-control" placeholder="">-->
-                            <!--                            </div>-->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="">
+                            </div>
                             <div class="mb-3">
                                 <label for="name" class="form-label">真實姓名</label>
                                 <input type="text" id="name" class="form-control" placeholder="">
@@ -439,7 +439,7 @@
     const oldPassword = document.querySelector("#oldPassword");
     const newPassword = document.querySelector("#newPassword");
     const confirmPassword = document.querySelector("#confirmPassword");
-    const birthday = document.querySelector("#birthday");
+    // const birthday = document.querySelector("#birthday");
     const name = document.querySelector("#name");
     const acceditnickname = document.querySelector("#nickname");
     const city = document.querySelector("#city");
@@ -450,6 +450,7 @@
     const msg = document.querySelector("#msg");
     const currentUser = document.querySelector("#currentUser");
     const updatetime = document.querySelector("#lastUpdatedDate");
+    const accEmail = document.querySelector("#email");
     let ibase64;
     window.addEventListener("load", function () {
 
@@ -484,7 +485,8 @@
                 name.value = body["accountName"];
                 address.value = body["accountAddress"];
                 intro.value = body["accountIntro"];
-                ibase64 = body["accountPhoto"]
+                ibase64 = body["accountPhoto"];
+                accEmail.value = body["accountEmail"];
                 // console.log(ibase64)
                 // const imageBinaryStr = atob(body["accountPhoto"]);
                 // let len = imageBinaryStr.length;
@@ -593,6 +595,7 @@
                 body: JSON.stringify({
                     accountPassword: newPassword.value,
                     // accountBirthday: birthday.value,
+                    accountEmail: accEmail.value,
                     accountName: name.value,
                     accountNickname: acceditnickname.value,
                     accountAddress: address.value,
