@@ -332,14 +332,12 @@
                                     <option value="3">棒球</option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="certName" class="form-label">證照名稱</label>
-                                <select id="certName" class="form-select">
-                                    <option value="1">AAA</option>
-                                    <option value="2">BBB</option>
-                                    <option value="3">CCC</option>
-                                </select>
+                                <input type="text" id="certName" class="form-control" placeholder="">
                             </div>
+
 
                             <div class="mb-3">
                                 <label for="licensePhoto" class="form-label">證照照片</label>
@@ -414,7 +412,7 @@
                 body: JSON.stringify({
                     accountId: sessionStorage.getItem("accountId"),
                     sportType: sportType.value,
-                    licenseId: certName.value,
+                    licenseName: certName.value,
                     licensePhoto: imageBase64,
 
                 }),
@@ -428,11 +426,11 @@
                         // }
                         btn1.disabled = true;
                         msg.className = 'info';
-                        msg.textContent = '註冊成功';
+                        msg.textContent = '申請成功';
                         // location = getContextPath() + "/index.html";
                     } else {
                         msg.className = 'error';
-                        msg.textContent = '註冊失敗';
+                        msg.textContent = '申請失敗';
                     }
                 });
         });

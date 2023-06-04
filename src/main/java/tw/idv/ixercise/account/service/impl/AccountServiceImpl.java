@@ -4,21 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tw.idv.ixercise.account.dao.AccountRepository;
-import tw.idv.ixercise.account.entity.Account;
-import tw.idv.ixercise.account.entity.CourseAccount;
-import tw.idv.ixercise.account.entity.LessAccount;
+import tw.idv.ixercise.account.dao.CoachSkillRepository;
+import tw.idv.ixercise.account.entity.*;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository repo;
+
+    @Autowired
+    private CoachSkillRepository csrepo;
 
 
     // 新增===============================================================
@@ -149,7 +152,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<LessAccount> findAllLessInfo() {
-        List<Account> acclist = repo.findAll();
+        List<Account> acclist = repo.findAllForUser();
         List<LessAccount> lAacc = new ArrayList<>();
         for (Account acc : acclist) {
             LessAccount la = new LessAccount(acc);
@@ -180,7 +183,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Core modifyacc(Account account){
+    public Core modifyacc(Account account) {
         Account acc = repo.findByAccountId(account.getAccountId());
         acc.setAccountLevel(account.getAccountLevel());
         acc.setAccountState(account.getAccountState());
@@ -189,6 +192,22 @@ public class AccountServiceImpl implements AccountService {
         core.setMessage("修改成功");
         core.setSuccessful(true);
         return core;
+    }
+
+    @Override
+    public PgAccount findForPg(Integer accountId) {
+        Account acc = repo.findByAccountId(accountId);
+        int level = acc.getAccountLevel();
+
+        if (level == 1) {
+            return new PgAccount(acc);
+        } else if (level == 2) {
+            List<CoachSkill> beforecheckli = csrepo.findAllByAccountId(accountId);
+            List<CoachSkill> csli = beforecheckli.stream().filter(coachSkill -> coachSkill.getSkillState() == 1).collect(Collectors.toList());
+            return new PgAccount(acc, csli);
+        } else {
+            return new PgAccount(false, "查詢錯誤");
+        }
     }
 
 }
