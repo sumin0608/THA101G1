@@ -1,29 +1,25 @@
-$("#holdrecord-tab").click(function (e) {
-    const actId = sessionStorage.getItem("accountId");
-    const url = "course/corseId/" + actId;
-    const historyContainer = document.querySelector("#event_history_container");
+addEventListener("DOMContentLoaded", () => {
+    $("#holdrecord-tab").click(function (e) {
+        const actId = sessionStorage.getItem("accountId");
+        const url = "../course/creator/" + actId;
+        const historyContainer = document.querySelector("#course-history-list");
+        console.log(historyContainer);
 // 使用 Fetch 函式發送 GET 請求
-    fetch(url)
-        .then(function (response) {
-            // 處理回應
+        fetch(url)
+            .then(function (response) {
+                // 處理回應
 
-            return response.json();
-        })
-        .then(function (courseList) {
-            // 處理回傳的資料
-            console.log(courseList);
+                return response.json();
+            })
+            .then(function (courseList) {
+                // 處理回傳的資料
+                console.log(courseList);
+                historyContainer.innerHTML = "";
+                for (let courseKey of courseList) {
+                    console.log(courseKey.eventName);
 
-            for (const courseKey in courseList) {
-
-
-                historyContainer.innerhtml += `
-                                       <div class="col-12">
-                                <!-- <ul class="p-0" aria-labelledby=""> -->
-
-                                <!-- <div class="list-group"> -->
-
-                                <div class="list-group holdrecordlist">
-                                    <!-- 一條紀錄====================== -->
+                    historyContainer.innerHTML += `
+                                                  <!-- 一條紀錄====================== -->
                                     <div href="#" class="list-group-item list-group-item-action" aria-current="true"
                                         style="height: 118px;">
                                         <div class="row h-100">
@@ -44,17 +40,15 @@ $("#holdrecord-tab").click(function (e) {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- </div> -->
-                                <!-- </ul> -->
-                            </div>
-            `;
+                `;
 
-            }
-        })
-        .catch(function (error) {
-            // 處理錯誤
-            console.log('發生錯誤：', error);
-        });
+                }
+            })
+            .catch(function (error) {
+                // 處理錯誤
+                console.log('發生錯誤：', error);
+            });
+
+    });
 
 });
