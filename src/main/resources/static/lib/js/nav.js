@@ -70,16 +70,17 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '<option value="11">壁球</option>\n' +
     '<option value="12">手球</option>\n' +
     '<option value="13">保齡球</option>\n' +
-    '<option value="1">有氧操課</option>\n' +
-    '<option value="2">重訓課</option>\n' +
-    '<option value="3">瑜伽課</option>\n' +
-    '<option value="4">舞蹈課</option>\n' +
-    '<option value="5">腹肌課</option>\n' +
-    '<option value="6">動感單車課</option>\n' +
-    '<option value="7">跳繩課</option>\n' +
-    '<option value="8">拳擊課</option>\n' +
-    '<option value="9">跳舞操課</option>\n' +
-    '<option value="10">瑜伽拉伸課</option>\n' +
+    '<option value="14">有氧操課</option>\n' +
+    '<option value="15">重訓課</option>\n' +
+    '<option value="16">瑜伽課</option>\n' +
+    '<option value="17">舞蹈課</option>\n' +
+    '<option value="18">腹肌課</option>\n' +
+    '<option value="19">動感單車課</option>\n' +
+    '<option value="20">跳繩課</option>\n' +
+    '<option value="21">拳擊課</option>\n' +
+    '<option value="22">跳舞操課</option>\n' +
+    '<option value="23">瑜伽拉伸課</option>\n' +
+    '<option value="24">其他</option>\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
     '                                        <div class="col-3">\n' +
@@ -297,10 +298,13 @@ if (accid) {
     loginbtn.classList.add("d-none");
     useravatar.classList.remove("d-none");
     avatarnickname.textContent = accnickname;
+    // const accidforpg = "/" + accid;
+    // console.log(accidforpg);
+    personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
+// personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
 
-    personalpage.href = "Account/PersonalPage.html";
-
-    if (!(accphoto == "null" || accphoto == null)) {
+console.log(typeof accphoto);
+    if (accphoto && accphoto.length > 0) {
 
         avataroutside.src = getcreateObjURL(accphoto);
         avatarinside.src = getcreateObjURL(accphoto);
@@ -364,7 +368,7 @@ const signupb = document.querySelector("#signupb");
 
 
 ixicon.href = getContextPath() + "/index.html";
-personalpage.href = getContextPath() + "/Account/PersonalPage.html";
+// personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
 logout.href = getContextPath() + "/index.html";
 loginb.href = getContextPath() + "/Account/Login.html";
 signupb.href = getContextPath() + "/Account/SignUp.html";

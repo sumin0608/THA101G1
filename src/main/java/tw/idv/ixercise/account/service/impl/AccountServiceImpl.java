@@ -200,8 +200,12 @@ public class AccountServiceImpl implements AccountService {
         int level = acc.getAccountLevel();
 
         if (level == 1) {
+            acc.setSuccessful(true);
+            acc.setMessage("查詢成功-會員");
             return new PgAccount(acc);
         } else if (level == 2) {
+            acc.setSuccessful(true);
+            acc.setMessage("查詢成功-教練");
             List<CoachSkill> beforecheckli = csrepo.findAllByAccountId(accountId);
             List<CoachSkill> csli = beforecheckli.stream().filter(coachSkill -> coachSkill.getSkillState() == 1).collect(Collectors.toList());
             return new PgAccount(acc, csli);
