@@ -23,3 +23,15 @@ spring.log.2023-05-26.0.gz
 /spring.log.2023-05-30.0.gz
 /spring.log
 spring.log.2023-05-31.0.gz
+*.log
+compiler.xml
+/.idea/compiler.xml
+/.idea/dataSources.xml
+/.idea/encodings.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/spring.log.2023-06-03.0.gz
+/THA101G1.iml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml

@@ -38,6 +38,8 @@
         </label>
     </div>
 
+    <button type="button" class="btn btn-danger">Danger</button>
+
     <td><button type="button" class="btn btn-primary aaa account-link" data-account-id="123">修改</button></td>
 
 
@@ -50,9 +52,9 @@
 
         // const btn1 = document.querySelector("#")
 
-        var html = `<select id="aclevel" className="form-select">
-        <option value="1">一般用戶</option>
-        <option value="2" selected>教練</option>
+        var html = `<select id="acstate${obj.accountId}" className="form-select">
+        <option value="0">停用</option>
+        <option value="1">啟用</option>
     </select>
 `
 

@@ -461,9 +461,11 @@
                 html += "<td>" + statehtml + "</td>";
                 html += "<td>" + obj.accountCreatetime + "</td>";
                 html += "<td>" + obj.accountUpdatetime + "</td>";
-                html += '<td><button type="button" class="btn btn-primary aaa article-link" data-bs-toggle="modal" data-bs-target="#exampleModal"'
+                html += '<td><button type="button" class="btn btn-primary aaa article-link d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#exampleModal"'
                     + 'data-article-id="' + obj.accountId + '">更多資訊</button>';
-                html += '<button type="button" class="btn btn-primary aaa account-link" data-account-id="' + obj.accountId + '">修改</button></td>'
+                html += '<button type="button" class="btn btn-primary aaa account-link d-inline-block me-1" data-account-id="' + obj.accountId + '">修改</button>'
+                html += '<button type="button" class="btn btn-danger aaa delete-link d-inline-block me-1" data-del-id="' + obj.accountId + '">刪除</button></td>'
+
                 html += "</tr>";
             });
             $("#aaa").append(html);
@@ -487,7 +489,35 @@
 
         editAccount(accountId, aclevel, acstate);
     });
+    $(document).on("click", ".delete-link", function () {
+        var deid = $(this).data("del-id");
+        // let aclevel = document.querySelector(`#aclevel-${accountId}`).value
+        // let acstate = document.querySelector(`#acstate-${accountId}`).value
 
+        delAccount(deid);
+    });
+    // ===========================================
+    function delAccount(deid){
+        fetch('Manage/'+deid, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                accountId: deid
+            }),
+        })
+            .then(resp => resp.json())
+            .then(body => {
+                let {successful, message} = body;
+                if (successful) {
+                    alert(message);
+                    location.reload();
+                } else {
+                    alert(message);
+                }
+            })
+    }
     // ===========================================
     function editAccount(id, le, st) {
         console.log(typeof id, typeof le, typeof st);
