@@ -86,103 +86,130 @@
             <button type="button" class="btn btn-danger send-btn">上傳</button>
         </div>
 
-        <!-- 引入所需函式庫 -->
-        <script src="../lib/js/bootstrap.bundle.min.js"></script>
-        <script src="../lib/js/popper.min.js"></script>
-        <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-        <!-- ================================================================= -->
-        <script>
-            $(document).ready(function () {
-                // 上傳圖片測試
-                $(".send-btn").on("click", function (event) {
-                    let fileInput = $(".photo-dropzone")[0];
-                    let file = fileInput.files[0];
-                    // 创建 FormData 对象
-                    let formData = new FormData();
-                    formData.append('file', file);
-                    console.log(file.name);
-                    $.ajax({
-                        url: "/ixercise/coursecomment/upload-photo",
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) {
-                            console.log(response);
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
+    </div>
+    <button type="button" class="btn btn-danger delete-btn" id="testbtn">test</button>
+    </div>
+    <!-- 引入所需函式庫 -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!-- ================================================================= -->
+    <script>
+        $(document).ready(function () {
+
+            $('#testbtn').on('click', function (e) {
+                console.log(this);
+                $.ajax({
+                    url: "/ixercise/course/creator/" + 2,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        console.log("resp1>>" + resp[0].eventName);
+
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
                 });
-
-                $("#getall").on("click", function (event) {
-                    event.preventDefault(); // 防止表單提交
-                    // 使用Ajax取得課程列表
-                    $.ajax({
-                        url: "/Team1/allCourseServlet",
-                        type: "GET",
-                        dataType: "json",
-                        success: function (resp) {
-                            console.log("resp>>" + resp);
-
-                            $("#result").empty().append("成功");
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
-                });
-
-
-                $("#getsingle").on('click', function (e) {
-                    e.preventDefault();
-                    let word = $("#searchname").val();
-                    console.log("關鍵字=" + word);
-
-                    $.ajax({
-                        url: "/Team1/oneCourseServlet",
-                        type: "GET",
-                        data: { creator: word },
-                        success: function (resp) {
-                            console.log("resp>>" + resp);
-                            const tostring = JSON.stringify(resp.message);//要轉字串才能
-                            const tostring4 = JSON.stringify(resp.successful);//要轉字串才能
-                            console.log("message>>" + tostring);
-                            console.log("message4>>" + tostring4);
-                            $("#result").empty().append(tostring);
-                            let tableData = '';
-                            let certItem = resp;
-                            // if (tostring4 === true) {
-                            //     tableData += `<tr class="table_tr">`;
-                            //     tableData += `<td class="number_td">${certItem.number}</td>`;
-                            //     tableData += `<td class="certName_td"> ${certItem.certName}</td >`;
-                            //     tableData += `<td class="englishCertName_td"> ${certItem.englishCertName}</td > `;
-                            //     tableData += `<td class="abbrName_td"> ${certItem.abbrName}</td > `;
-                            //     tableData += `<td><button class="btn btn-primary alterbtn">修改</button></td > `;
-                            //     tableData += `<td><button class="btn btn-danger deletebtn">刪除</button></td > `;
-                            //     tableData += `</tr>`;
-                            //     tableData += `<tr class="table_update -none">`;
-                            //     tableData += `<td class="number_update">${certItem.number}</td>`;
-                            //     tableData += `<td><input type='text' class='certName_updatet' placeholder='請輸入更新…'/></td > `;
-                            //     tableData += `<td><input type='text' class='englishCertName_updatet' placeholder='請輸入更新…'/></td > `;
-                            //     tableData += `<td class="abbrName_update"><input type='text' class='abbrName_updatet' placeholder='請輸入更新…'/></td > `;
-                            //     tableData += `<td colspan="2"><button class="btn btn-primary sendbtn">送出修改</button></td > `;
-                            //     tableData += `</tr>`;
-                            // }
-                            // else {
-                            //     tableData += `<tr><td class=">查無此名稱</td ></tr>`
-                            // }
-                            // $("#courseList").empty().append(tableData);
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
-                });
-
             });
-        </script>
+
+
+
+
+
+            // 上傳圖片測試
+            $(".send-btn").on("click", function (event) {
+                let fileInput = $(".photo-dropzone")[0];
+                let file = fileInput.files[0];
+                // 创建 FormData 对象
+                let formData = new FormData();
+                formData.append('file', file);
+                console.log(file.name);
+                $.ajax({
+                    url: "/ixercise/coursecomment/upload-photo",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            $("#getall").on("click", function (event) {
+                event.preventDefault(); // 防止表單提交
+                // 使用Ajax取得課程列表
+                $.ajax({
+                    url: "/Team1/allCourseServlet",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+
+                        $("#result").empty().append("成功");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+
+            $("#getsingle").on('click', function (e) {
+                e.preventDefault();
+                let word = $("#searchname").val();
+                console.log("關鍵字=" + word);
+
+                $.ajax({
+                    url: "/Team1/oneCourseServlet",
+                    type: "GET",
+                    data: { creator: word },
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        const tostring = JSON.stringify(resp.message);//要轉字串才能
+                        const tostring4 = JSON.stringify(resp.successful);//要轉字串才能
+                        console.log("message>>" + tostring);
+                        console.log("message4>>" + tostring4);
+                        $("#result").empty().append(tostring);
+                        let tableData = '';
+                        let certItem = resp;
+                        // if (tostring4 === true) {
+                        //     tableData += `<tr class="table_tr">`;
+                        //     tableData += `<td class="number_td">${certItem.number}</td>`;
+                        //     tableData += `<td class="certName_td"> ${certItem.certName}</td >`;
+                        //     tableData += `<td class="englishCertName_td"> ${certItem.englishCertName}</td > `;
+                        //     tableData += `<td class="abbrName_td"> ${certItem.abbrName}</td > `;
+                        //     tableData += `<td><button class="btn btn-primary alterbtn">修改</button></td > `;
+                        //     tableData += `<td><button class="btn btn-danger deletebtn">刪除</button></td > `;
+                        //     tableData += `</tr>`;
+                        //     tableData += `<tr class="table_update -none">`;
+                        //     tableData += `<td class="number_update">${certItem.number}</td>`;
+                        //     tableData += `<td><input type='text' class='certName_updatet' placeholder='請輸入更新…'/></td > `;
+                        //     tableData += `<td><input type='text' class='englishCertName_updatet' placeholder='請輸入更新…'/></td > `;
+                        //     tableData += `<td class="abbrName_update"><input type='text' class='abbrName_updatet' placeholder='請輸入更新…'/></td > `;
+                        //     tableData += `<td colspan="2"><button class="btn btn-primary sendbtn">送出修改</button></td > `;
+                        //     tableData += `</tr>`;
+                        // }
+                        // else {
+                        //     tableData += `<tr><td class=">查無此名稱</td ></tr>`
+                        // }
+                        // $("#courseList").empty().append(tableData);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+        });
+    </script>
 </body>
 
 </html>
