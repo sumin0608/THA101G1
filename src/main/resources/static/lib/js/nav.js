@@ -303,7 +303,7 @@ if (accid) {
     personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
 // personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
 
-console.log(typeof accphoto);
+// console.log(typeof accphoto);
     if (accphoto && accphoto.length > 0) {
 
         avataroutside.src = getcreateObjURL(accphoto);
