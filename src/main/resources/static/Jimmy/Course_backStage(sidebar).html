@@ -478,13 +478,34 @@
                                             style="background-color: #E9E9E9; padding-top: 10px;">
                                             <form id="myform" method="post" enctype="multipart/form-data"
                                                 class="row g-3 needs-validation" novalidate>
+                                                <!-- image upload ====ccccc===================  -->
+                                                <div class="card mt-5 justify-content-center text-center">
+                                                    <div class="card-body">
+                                                        <!-- <div class="form-group "> -->
+                                                        <div id="previewBox">
+                                                            <img id="photo" class="card-img-top event_pic"
+                                                                src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="
+                                                                alt="..." />
+                                                            <div id="photoname">photoname</div>
+                                                            <label for="photo-dropzone forDhotoDrop">點擊下方更新圖片</label>
+                                                            <input type="file" class="form-control-file"
+                                                                name="photo-dropzone" id="photo-dropzone"
+                                                                aria-describedby="fileHelp" accept="image/*">
+                                                            <br>
+                                                            <button type="button" class="btn btn-danger"
+                                                                id="delete-btn">刪除</button>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                                <!-- image upload ====ccccc===================  -->
                                                 <!-- Zero row 之後抓會員的session-->
                                                 <div></div>
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <label for="" class="form-label">creator</label>
-                                                        <div id="creator">3</div>
+                                                        <div id="creator">會員accountId</div>
                                                     </div>
                                                     <br>
                                                     <!-- First row -->
@@ -748,15 +769,6 @@
                                                     <!-- row eight -->
                                                     <hr>
                                                     <br>
-                                                    <!-- row nine -->
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <button type="submit" id="btn_submit"
-                                                                class="btn btn-primary">
-                                                                創辦活動
-                                                            </button>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -773,25 +785,198 @@
                     </div>
                 </div><!-- Modal -->
 
+                <!-- Modal 已結束課程使用staticBackdropOnlySee-->
+                <div class="modal fade" id="staticBackdropOnlySee" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">已結束課程</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
 
-                <!-- Button trigger modal -->
-                <!-- <button type="button" class="btn btn-primary col-3 col-md-3" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">
-                    Launch static backdrop modal
-                </button> -->
+                                <div class="container custom-container  px-4 px-lg-5 mt-5">
+                                    <div class="col-12 row ">
+                                        <div class="col-12 formpad "
+                                            style="background-color: #E9E9E9; padding-top: 10px;border: solid red;">
+                                            <form id="myform" method="post" enctype="multipart/form-data"
+                                                class="row g-3 needs-validation" novalidate>
+                                                <br>
+                                                <h3>歷史活動表單</h3>
+                                                <hr>
+                                                <!-- image upload ====ccccc===================  -->
+                                                <div class="card mt-5 justify-content-center text-center">
+                                                    <div class="card-body">
+                                                        <!-- <div class="form-group "> -->
+                                                        <div id="previewBox1">
+                                                            <img id="photo1" class="card-img-top event_pic"
+                                                                src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="
+                                                                alt="..." />
+                                                        </div>
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                                <!-- image upload ====ccccc===================  -->
+                                                <!-- Zero row 之後抓會員的session-->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label for="creator" class="form-label">creator</label>
+                                                        <div id="creator1" name="creator"
+                                                            style="background-color: whitesmoke;">3</div>
+                                                    </div>
+                                                    <!-- First row -->
+                                                    <div class="row">
+                                                        <label for="event_name" class="form-label">聚會名稱</label>
+                                                        <div id="event_name1" name="event_name"
+                                                            style="background-color: whitesmoke;">111</div>
+                                                    </div>
+                                                    <hr>
+                                                    <br>
+                                                    <!-- Second row -->
+                                                    <!-- <div class="row"> -->
+                                                    <div class="col-sm-4">
+                                                        <label for="" class="form-label">聚會類型</label>
+                                                        <div id="categoryId1" name="categoryId"
+                                                            style="background-color: whitesmoke;">222</div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label for="" class="form-label">所在城市</label>
+                                                        <div id="city1" name="city"
+                                                            style="background-color: whitesmoke;">223</div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label for="" class="form-label">所在地區</label>
+                                                        <div id="district1" name="district"
+                                                            style="background-color: whitesmoke;">224</div>
+                                                    </div>
+                                                    <!-- </div> -->
+                                                    <br>
+                                                    <!-- Third row -->
+                                                    <div class="col-sm-8">
+                                                        <label class="form-label">場地名稱</label>
+                                                        <div id="location1" name="location"
+                                                            style="background-color: whitesmoke;">331</div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label">預計花費</label>
+                                                        <div id="price1" name="price"
+                                                            style="background-color: whitesmoke;">332</div>
+                                                    </div>
+                                                    <hr>
+                                                    <br>
+                                                    <!-- Forth row -->
+                                                    <div class="col-sm-12"></div>
+                                                    <label class="form-label">活動地址</label>
+                                                    <div name="address" id="address1"
+                                                        style="background-color: whitesmoke;">441</div>
+                                                    <br>
+                                                    <!-- Fith row -->
+                                                    <div class="col-sm-5">
+                                                        <label class="form-label">活動日期</label>
+                                                        <div type="date" id="eventDate1" name="eventDate"
+                                                            style="background-color: whitesmoke;">551
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <label class="form-label">活動開始時間</label>
+                                                        <div type="time" id="startTime1" name="startTime"
+                                                            style="background-color: whitesmoke;">
+                                                            552</div>
+                                                    </div>
+                                                    <br>
+                                                    <!--  row Six -->
+                                                    <div class="col-sm-5">
+                                                        <label class="form-label">報名截止日期</label>
+                                                        <div id="lastVerifyDate1" name="lastVerifyDate"
+                                                            style="background-color: whitesmoke;">661
+                                                        </div>
+                                                    </div>
+                                                    <div class=" col-sm-5">
+                                                        <label class="form-label">報名截止時間</label>
+                                                        <div id="lastVerifyTime1" name="lastVerifyTime"
+                                                            style="background-color: whitesmoke;">662
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- row  seven -->
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label">人數上限</label>
+                                                        <div id="maxAttendees1" name="maxAttendees"
+                                                            style="background-color: whitesmoke;">771</div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label">課程時長(小時)</label>
+                                                        <div id="courseDuration1" name="courseDuration"
+                                                            style="background-color: whitesmoke;">772
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label class="form-label">付費方式</label>
+                                                        <div id="paymentMethod1" name="paymentMethod"
+                                                            style="background-color: whitesmoke;">773</div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- row eight -->
+                                                    <div class="col-sm-12">
+                                                        <label for="description">聚會描述和備註</label>
+                                                        <div name="description" id="description1"
+                                                            style="background-color: whitesmoke;">881</div>
+                                                    </div>
+                                                    <br>
+                                                    <hr>
+                                                    <div class="col-sm-3">
+                                                        <label for="" class="form-label">課程狀態</label>
+                                                        <div id="courseStatus1" name="courseStatus"
+                                                            style="background-color: whitesmoke;">991</div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="" class="form-label">要不要買廣告</label>
+                                                        <div id="paidAdvertising1" name="paidAdvertising"
+                                                            style="background-color: whitesmoke;">992
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label class="form-label">廣告時效</label>
+                                                        <div id="paidAdvertisingTime11" name="paidAdvertisingTime1"
+                                                            style="background-color: whitesmoke;">993</div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label class="form-label">--</label>
+                                                        <div id="paidAdvertisingTime21" name="paidAdvertisingTime2"
+                                                            style="background-color: whitesmoke;">994</div>
+                                                    </div>
+                                                    <hr>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <!-- Modal -->
+                            </div> <!--"modal-body" -->
+                            <div class="modal-footer">
+                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Modal -->
+
+                <!-- Modal 審核區使用staticBackdropPass-->
                 <div class="modal fade" id="staticBackdropPass" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">修改課程</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">審核參加者</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                123審核區
+                                審核參加者~123
                             </div> <!--"modal-body" -->
                             <div class="modal-footer">
                                 <button id="modalClose" type="button" class="btn btn-secondary"
@@ -802,6 +987,11 @@
                         </div>
                     </div>
                 </div><!-- Modal -->
+
+
+
+
+
             </div> <!-- row結束 -->
         </div> <!-- container結束 -->
     </main>
@@ -857,7 +1047,9 @@
 
     <script>
         $(document).ready(function () {
+
             // <<課程管理>> 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
             // 一、已開設課程
             $('#c1').on('click', function (e) {
                 e.preventDefault();
@@ -917,7 +1109,7 @@
                 // e.preventDefault;
                 console.log("alterbtn");
                 var courseId = $(this).closest('tr').find('td:eq(1)').text();
-                console.log("deletebtn clicked. Course ID: " + courseId);
+                console.log("alterbtn clicked. Course ID: " + courseId);
                 var creator = 3; //會員session id
 
                 $.ajax({
@@ -926,7 +1118,11 @@
                     dataType: "json",
                     data: { courseId: courseId },
                     success: function (resp) {
-                        console.log("resp>>" + resp);
+                        // console.log("resp>>" + resp);
+                        $("#photo").attr("src", "/ixercise/lib/img/course/" + resp.photo);
+                        $("#photoname").text(resp.photo);
+
+                        $("#creator").text(resp.creator);
                         $("#event_name").val(resp.eventName);
                         $("#price").val(resp.expectedPrice);
                         $("#eventDate").val(resp.courseStartDate);
@@ -972,7 +1168,6 @@
                             }
                         });
 
-
                         $("#categoryId option").filter(function () {
                             return $(this).text() == resp.categoryId;
                         }).prop("selected", true);
@@ -989,11 +1184,20 @@
                     }
                 });
             });
+
+            // Delete selected image
+            $("#delete-btn").click(function () {
+                $("#photo-dropzone").val("");
+            });
+
             // modalSend
             $('#modalSend').on('click', function (e) {
                 // e.preventDefault;
-                console.log("modalSend");
-                swal("Warning!", "還沒寫!", "warning");
+                // console.log("modalSend");
+                var courseId = $(this).closest('tr').find('td:eq(1)').text();
+                let photodropzone = $("#photo-dropzone");
+
+                let photo = $("#photoname").text();
                 let creator = $("#creator").text();
                 let eventName = $("#event_name").val();
                 let expectedPrice = $("#price").val();
@@ -1004,7 +1208,7 @@
                 let lastVerifyDate = $("#lastVerifyDate").val();
                 let lastVerifyTime = $("#lastVerifyTime").val();
                 let registrationDeadline = lastVerifyDate + " " + lastVerifyTime + ":00";
-                console.log("registrationDeadline>>" + registrationDeadline);
+                // console.log("registrationDeadline>>" + registrationDeadline);
                 let maximumCapacity = $("#maxAttendees").val();
                 let description = $("#description").val();
                 let location = $("#location").val();
@@ -1020,10 +1224,19 @@
                 let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
                 let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
                 let paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
-                console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
+                // console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
                 // let paymentMethod = $("#paymentMethod").val();
 
                 // 检查是否有有填欄位
+                let file = photodropzone[0].files[0];
+                // if (!file) {
+                //     photodropzone.siblings('.invalid-feedback').show(); // 显示错误消息
+                //     return; // 中断操作
+                // }
+                // 圖片讀取
+                let formData = new FormData();
+                formData.append('file', file);
+
                 if (!eventName) {
                     $('#eventName').siblings('.invalid-feedback').show();
                     return;
@@ -1076,46 +1289,46 @@
                     $('#description').siblings('.invalid-feedback').show();
                     return;
                 }
-                console.log("沒錯都有填");
+                console.log("沒錯!都有填");
                 // 检查是否有有填欄位--結束
-                // 
-                //         // 步驟二、存入資料庫
-                //         $.ajax({
-                //             url: "/ixercise/course",
-                //             type: "POST",
-                //             contentType: 'application/json',
-                //             data: JSON.stringify({
-                //                 creator: creator,
-                //                 photo: photo,
-                //                 eventName: eventName,
-                //                 expectedPrice: expectedPrice,
-                //                 courseStartDate: courseStartDate,
-                //                 courseStartTime: courseStartTime,
-                //                 courseDuration: courseDuration,
-                //                 registrationDeadline: registrationDeadline,
-                //                 maximumCapacity: maximumCapacity,
-                //                 description: description,
-                //                 location: location,
-                //                 city: city,
-                //                 district: district,
-                //                 detailedAddress: detailedAddress,
-                //                 categoryId: categoryId,
-                //                 courseStatus: courseStatus,
-                //                 paidAdvertising: paidAdvertising,
-                //                 paidAdvertisingTime: paidAdvertisingTime
-                //             }),
-                //             success: function (resp) {
-                //                 console.log("resp>>" + resp);
-                //                 $('#myform').reset(); //清空表單
-                //                 // swal("Warning!", resp.message, "warning");
-                //             },
-                //             error: function (xhr, status, error) {
-                //                 alert("Error: " + xhr.responseText);
-                //             }
-                //         });
-                //     },// 步驟二、結束
 
+                // 步驟二、存入資料庫
+                $.ajax({
+                    url: "/ixercise/course",
+                    type: "PUT",
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        courseId: courseId,
+
+                        photo: photo,
+                        eventName: eventName,
+                        expectedPrice: expectedPrice,
+                        courseStartDate: courseStartDate,
+                        courseStartTime: courseStartTime,
+                        courseDuration: courseDuration,
+                        registrationDeadline: registrationDeadline,
+                        maximumCapacity: maximumCapacity,
+                        description: description,
+                        location: location,
+                        city: city,
+                        district: district,
+                        detailedAddress: detailedAddress,
+                        categoryId: categoryId,
+                        courseStatus: courseStatus,
+                        paidAdvertising: paidAdvertising,
+                        paidAdvertisingTime: paidAdvertisingTime
+                    }),
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        // $('#myform').reset(); //清空表單
+                        swal("Warning!", resp.message, "warning");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
             });
+
             // deletebtn
             $('#aaa').on('click', '.deletebtn', function (e) {
                 // e.preventDefault;
@@ -1186,7 +1399,7 @@
                                                 <td>${filteredData0[i].categoryId}</td>
                                                 <td>${filteredData0[i].courseStatus}</td>
                                                 <td>${filteredData0[i].paidAdvertising}</td>
-                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                                <td><button class="btn btn-primary checkbtn" data-bs-toggle="modal" data-bs-target="#staticBackdropOnlySee">查看</button></td>
                                             </tr>
                                             `;
                         }
@@ -1199,13 +1412,57 @@
                 });
             });
 
-            // checkbtn
+            // checkbtn  配合modal審核
             $('#aaa').on('click', '.checkbtn', function (e) {
                 // e.preventDefault;
                 console.log("checkbtn");
-                swal("Check!", "你看一下", "success");
-            });
+                swal("Check!", "僅供觀看，無法修改", "success");
 
+                var courseId = $(this).closest('tr').find('td:eq(1)').text();
+                console.log("deletebtn clicked. Course ID: " + courseId);
+                var creator = 3; //會員session id
+
+                $.ajax({
+                    url: "/ixercise/course/courseId/" + courseId,
+                    type: "GET",
+                    dataType: "json",
+                    data: { courseId: courseId },
+                    success: function (resp) {
+                        $("#photo1").attr("src", "/ixercise/lib/img/course/" + resp.photo);
+                        $("#creator1").text(resp.creator);
+                        $("#event_name1").val(resp.eventName);
+                        $("#price1").val(resp.expectedPrice);
+                        $("#eventDate1").val(resp.courseStartDate);
+                        $("#courseDuration1").val(resp.courseDuration);
+
+                        var timePart = resp.courseStartTime.split(' ')[1];
+                        // console.log("courseStartTime:", courseStartTime);
+                        // console.log("timePart:", timePart);
+                        $("#startTime1").val(timePart);
+
+                        var lastVerifyDate = resp.registrationDeadline.split(' ')[0];
+                        var lastVerifyTime = resp.registrationDeadline.split(' ')[1];
+                        $("#lastVerifyDate1").val(lastVerifyDate);
+                        $("#lastVerifyTime1").val(lastVerifyTime);
+                        $("#maxAttendees1").val(resp.maximumCapacity);
+                        $("#description1").val(resp.description);
+                        $("#location1").val(resp.location);
+                        $("#cit1").val(resp.city);
+                        $("#district1").val(resp.district);
+                        $("#categoryId1").val(resp.categoryId);
+
+                        $("#address1").val(resp.detailedAddress);
+                        $("#courseStatus1").val(resp.courseStatus);
+                        var paidAdvertisingTime1 = resp.paidAdvertisingTime.split(' ')[0];
+                        var paidAdvertisingTime2 = resp.paidAdvertisingTime.split(' ')[1];
+                        $("#paidAdvertisingTime1").val(paidAdvertisingTime1);
+                        $("#paidAdvertisingTime2").val(paidAdvertisingTime2);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
 
             // 三、、暫存課程   1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
             $('#c3').on('click', function (e) {
@@ -1251,7 +1508,7 @@
                                                 <td>${filteredData0[i].categoryId}</td>
                                                 <td>${filteredData0[i].courseStatus}</td>
                                                 <td>${filteredData0[i].paidAdvertising}</td>
-                                                <td><button class="btn btn-primary alterbtn">修改</button></td>
+                                                <td><button class="btn btn-primary alterbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">修改</button></td>
                                                 <td><button class="btn btn-danger deletebtn">刪除</button></td>
                                             </tr>
                                             `;
@@ -1338,7 +1595,7 @@
             });
 
             // 選擇審核狀態: 2.通過3.未通過4:退出
-            $(document).on('change', '#selecthead select', function () {
+            $(document).on('change', '#selecthead2 select', function () {
                 let selectedValue = $(this).val();
                 console.log("selectedValue= " + selectedValue);
 
@@ -1387,12 +1644,14 @@
                 $('#th5').text("status");
                 $('#th6').text("paymentStatus");
                 $('#th7').text("");
-                var appendaudit1head = '';
-                appendaudit1head += `<label for="" class="form-label">審核狀態:</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected value="1">待審核</option>
-                                        </select>`;
-                $('#selecthead').empty().append(appendaudit1head);
+                let appendaudit1head1 = '';
+                let appendaudit1head2 = '';
+                appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
+                appendaudit1head2 += `<select class="form-select" aria-label="Default select example">
+                                        <option selected value="1">未審核</option>
+                                    </select>`;
+                $('#selecthead1').empty().append(appendaudit1head1);
+                $('#selecthead2').empty().append(appendaudit1head2);
 
                 $.ajax({
                     url: "/ixercise/courseAttendee/status/" + 1,
@@ -1402,7 +1661,7 @@
                         console.log("未審核resp>>" + filteredDataAudit2);
                         let appendaudit2 = '';
                         for (let i in filteredDataAudit2) {
-                            let reason = filteredDataAudit1[i].reason;
+                            let reason = filteredDataAudit2[i].reason;
                             let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
                             //要分段接會員了accountId
                             appendaudit2 += `
