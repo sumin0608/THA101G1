@@ -64,4 +64,10 @@ public class ManageController {
             return service.modifyacc(account);
         }
     }
+
+    //    for Admin==========================================
+    @GetMapping("ForAdmin")
+    public List<LessAccount> manageAdmin() {
+        return service.findAllLessInfoAdmin();
+    }
 }

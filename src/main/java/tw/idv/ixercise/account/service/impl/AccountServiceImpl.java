@@ -176,6 +176,16 @@ public class AccountServiceImpl implements AccountService {
             CourseAccount la = new CourseAccount(acc);
             lAacc.add(la);
         }
+        return lAacc;
+    }
+    @Override
+    public List<LessAccount>findAllLessInfoAdmin(){
+        List<Account> acclist = repo.findAllForAdmin();
+        List<LessAccount> lAacc = new ArrayList<>();
+        for (Account acc : acclist) {
+            LessAccount la = new LessAccount(acc);
+            lAacc.add(la);
+        }
 
         return lAacc;
     }

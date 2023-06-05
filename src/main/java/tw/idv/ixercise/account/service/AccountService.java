@@ -31,6 +31,10 @@ public interface AccountService {
 //    為了後台修改權限跟狀態
     Core modifyacc(Account account);
 
+    List<LessAccount>findAllLessInfoAdmin();
+
+
+//    for personal page===============================
     PgAccount findForPg(Integer accountId);
 
     Core VerifyEmail(String accountEmail);
@@ -38,5 +42,7 @@ public interface AccountService {
     Core InputVerify(Account account);
 
     Core forgetPassword(Account account);
+
+
 
 }

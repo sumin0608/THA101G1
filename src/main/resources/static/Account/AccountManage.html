@@ -428,7 +428,7 @@
     // accgen.textContent = accGenMap[accountGender];
     // =====================================
     $.ajax({
-        url: "http://localhost:8080/ixercise/Account/Manage", // 資料請求的網址
+        url: "Manage", // 資料請求的網址
         type: "GET",
         dataType: "json",
 
@@ -561,7 +561,7 @@
         $("#aaaa").empty();
 
         $.ajax({
-            url: 'http://localhost:8080/ixercise/Account/Manage/' + articleId + '', // 資料請求的網址
+            url: 'Manage/' + articleId + '', // 資料請求的網址
             type: "GET",
             dataType: "json",
 

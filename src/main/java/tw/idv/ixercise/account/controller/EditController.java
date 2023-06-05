@@ -56,6 +56,7 @@ public class EditController {
                 core.setSuccessful(false);
             }
         }
+
         return core;
     }
 

@@ -417,7 +417,7 @@
     };
 
     $.ajax({
-        url: "http://localhost:8080/ixercise/Account/Manage", // 資料請求的網址
+        url: "Manage/ForAdmin", // 資料請求的網址
         type: "GET",
         dataType: "json",
 
@@ -428,18 +428,17 @@
             console.log(data);
 
             $.each(data, function (index, obj) {
-                if (obj.accountLevel == 1) {
+                // if (obj.accountLevel == 3) {
 
                     var levelhtml = `<select id="aclevel-${obj.accountId}" className="form-select">
-                                     <option value="1" selected>一般用戶</option>
-                                     <option value="2">教練</option>
+                                     <option value="3" disabled selected>管理員</option>
                                      </select>`
-                } else {
-                    var levelhtml = `<select id="aclevel-${obj.accountId}" className="form-select">
-                                     <option value="1">一般用戶</option>
-                                     <option value="2" selected>教練</option>
-                                     </select>`
-                }
+                // } else {
+                //     var levelhtml = `<select id="aclevel-${obj.accountId}" className="form-select">
+                //                      <option value="1">一般用戶</option>
+                //                      <option value="2" selected>教練</option>
+                //                      </select>`
+                // }
 
                 if (obj.accountState == 0) {
                     var statehtml = `<select id="acstate-${obj.accountId}" className="form-select">
