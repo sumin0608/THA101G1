@@ -2,13 +2,14 @@ package tw.idv.ixercise.course.service.impl;
 
 import java.sql.*;
 import java.util.*;
+import java.util.stream.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import tw.idv.ixercise.core.*;
 import tw.idv.ixercise.course.dao.*;
-import tw.idv.ixercise.course.dao.impl.*;
 import tw.idv.ixercise.course.entity.*;
 import tw.idv.ixercise.course.service.CourseAttendeeService;
 
@@ -119,23 +120,44 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 
 	@Override
 	public List<Course> getCalendar(Integer accountId) {
-		List<CourseAttendee> byAccountId = repository.findByAccountId(accountId);
-		System.out.println(byAccountId);
-		//prepare an empty list -> for ids (selected by accountId)
-		List<Integer> ids = new ArrayList<>();
 		//purpose -> get calendar / get attended courses haven't started yet
 		//1. get a list of courseId  by accountId
 		//2. use each courseId -> to find the(each) corresponding course
-		//3. compare course Start time with now or by status
-//		Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
-		byAccountId.forEach(courseAttendee -> ids.add(courseAttendee.getCourseId()));
-		System.out.println("list of IDS");
-		System.out.println(ids);
+		//3. filter result -> compare course Start time with now or by status
+		//4. return filtered list
+		//reference --> Test04FindFirstLazy.java
+		List<Course> filteredCourseList;
+		List<CourseAttendee> byAccountId = repository.findByAccountId(accountId);
 
-		List<Course> byIdIn = courseRepository.findByCourseIdIn(ids);
-		System.out.println("print out each course for an account");
-		byIdIn.forEach(System.out::println);
-		return byIdIn;
+		if (!byAccountId.isEmpty()) {
+			//prepare an empty list -> for ids (selected by accountId)
+			List<Integer> ids = new ArrayList<>();
+
+			//get all attended courses' ID BY his accountId
+			byAccountId.forEach(courseAttendee -> ids.add(courseAttendee.getCourseId()));
+
+			//拿當下時間
+			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+
+			//查詢並過濾已開始(結束)的課程壢
+			// List<course> ->  stream -> filter(time) -> collect.toList
+			filteredCourseList = courseRepository.findByCourseIdIn(ids).stream()
+					.peek(e -> System.out.println(e))
+					.filter(course -> course.getCourseStartTime().after(currentTimestamp))
+//					.peek(course -> {course.setSuccessful(true); course.setMessage("成功查詢參加課程");})
+					.collect(Collectors.toList());
+			if (filteredCourseList.isEmpty()) {
+				System.out.println("<<<<<isEmpty>>>>>>>>");
+				filteredCourseList.add(new Course.Builder().setMessage("未有任何活動即將開始").setSuccessful(false).build());
+			}
+		} else {
+			filteredCourseList = new ArrayList<>();
+			filteredCourseList.add(new Course.Builder().setMessage("此Id未參加任何課程").setSuccessful(false).build());
+		}
+
+		System.out.println("calendar ->sss");
+		System.out.println(filteredCourseList);
+		return filteredCourseList;
 	}
 
 }

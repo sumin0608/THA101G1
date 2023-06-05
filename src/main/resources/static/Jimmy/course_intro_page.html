@@ -7,15 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- 引入bootstarp跟共用css內容========================================= -->
-    <link href="../lib/css/styles.css" rel="stylesheet" />
-    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="../lib/css/styles.css" rel="stylesheet"/>
+    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet"/>
     <!-- 引入頁籤icon======================================================= -->
-    <link rel="icon" type="image/x-icon" href="../lib/img/IX.png" />
+    <link href="../lib/img/IX.png" rel="icon" type="image/x-icon"/>
     <!--  owl.carousel -->
-    <link rel="stylesheet" href="../lib/owl_carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="../lib/owl_carousel/owl.theme.default.min.css" />
+    <link href="../lib/owl_carousel/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="../lib/owl_carousel/owl.theme.default.min.css" rel="stylesheet"/>
     <!-- jquery -->
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+
+    //danny 修改
+    <link href="../Woo/popupsuccess.css" rel="stylesheet">
+    <link href="../Woo/css/css_for_course_intro.css" rel="stylesheet">
     <!-- =========================================== -->
     <style>
         .bd-placeholder-img {
@@ -334,10 +338,114 @@
                     <p id="description" class="col-md-8 fs-4 description">
                         挑戰你的身體極限，讓你感受到獨特的全身運動體驗！透過懸吊設備的力量，你能夠提升核心肌肉的穩定性、增強肌肉力量和耐力，同時鍛鍊身體平衡力和靈活性，成為更健康、更自信的自己！
                     </p>
-                    <button id="paymoney" class="btn btn-primary btn-lg" type="button">報名課程</button>
+                    <div class="col-sm-6 ">
+                        <div class="d-grid gap-2 " id="popUpBtn">
+                            <button class="btn btn-primary applybtn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                                    id="paymoney" type="button">報名課程
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
 
+            </div>
+
+            <!-- ==========================================================================-->
+            <!-- <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button> -->
+
+            <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade" id="exampleModalToggle"
+                 tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!-- <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1> -->
+                            <!-- <h5 class="modal-title" id="myModalLabel">Modal Title</h5> -->
+                            <!-- ======================================================================= -->
+                            <div class=" p-2  bg-transparent justify-content-between" id="exampleModalToggleLabel">
+
+                                <div class="d-flex flex-row align-items-center event_creater">
+                                    <div class="member-icon">
+                                        <img aria-expanded="false" class="overflow-hidden rounded-circle p-0"
+                                             data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
+                                             src="https://images.wsj.net/im-236521/OR" width="36">
+                                    </div>
+
+                                    <div class="col-8 ms-2 c-details">
+                                        <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                        </h6>
+                                        <span class=" text-muted">sss</span>
+                                    </div>
+                                    <!-- <div class="col-2"></div> -->
+                                </div>
+                            </div>
+                            <!-- ======================================================================= -->
+                            <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                            <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button> -->
+                        </div>
+                        <div class="modal-body">
+                            <!-- Show a second modal and hide this one with the button below. -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                    <textarea class="form-control event_participate" id="description" name="description"
+                                              placeholder="聚會描述和備註" required rows="3"></textarea>
+                                            <div class="invalid-feedback">
+                                                Please choose a username.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container">
+                                <!-- <button class="btn btn-primary ylbtn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button> -->
+                                <!-- <br> -->
+
+                                <!-- ================================================== -->
+
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-8 ">
+
+                                        <div class="d-grid gap-2 " id="popUpFormButtons">
+                                            <!-- <button class="btn btn-primary ylbtn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" onclick="">Confirm</button> -->
+                                            <button aria-label="Close" class="btn btn-primary ylbtn"
+                                                    data-bs-dismiss="modal"
+                                                    onclick="openApplyPopup()">Confirm
+                                            </button>
+                                            <button aria-label="Close" class="btn btn-primary popupbtn"
+                                                    data-bs-dismiss="modal"
+                                                    type="button">Cancel
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ================================================== -->
+                            </div>
+                            <!-- container -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ================================================== -->
+            <div class="applyResult container " id="applyResult">
+                <img alt="" id="check_cross_mark" src="image/200-tick.png">
+
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-8">
+                        <div class="d-grid gap-2 " id="">
+                            <h2>報名已送出</h2>
+                            <p>請等待主揪審核....</p>
+                            <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- 側邊瀏覽紀錄區 預計最多顯示5筆-->
@@ -631,12 +739,38 @@
             });
 
 
+        });
+    </script>
+    //==== danni 修改 ===========================================================
+    <script>
+        let applyResult = document.querySelector("#applyResult");
+        let applyResulth2 = document.querySelector("#applyResult h2");
+
+        function openApplyPopup() {
+            console.log("hiii")
+            $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
+            $("#applyResult h2").text("報名失敗");
+            $("#applyResult p").text("報名失敗");
+
+            applyResult.classList.add("open-applyResult");
+            //ajax
+            // <img src="image/404-wrong.png" alt="">
+        }
+
+        function closeApplyPopup() {
+            applyResult.classList.remove("open-applyResult");
+        }
 
 
-
-
-
-
+        $(document).ready(function () {
+            // Handle form submission
+            $('#myModal form').on('submit', function (e) {
+                e.preventDefault(); // Prevent actual form submission
+                // Perform your desired actions here
+                alert('Form submitted!');
+                // Optionally, you can close the modal
+                $('#myModal').modal('hide');
+            });
         });
     </script>
 </body>
