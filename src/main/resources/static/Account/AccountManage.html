@@ -415,7 +415,18 @@
         "accountCreatetime": "2023/06/01 18:40:56",
         "accountUpdatetime": "2023/06/01 18:40:56"
     };
-
+    // map用法===========================
+    // const accLevelMap = {
+    //     1: '一般用戶',
+    //     1: '教練',
+    //     3: '管理員'
+    // };
+    // const accStateMap = {
+    //     0: '停用',
+    //     1: '啟用',
+    // };
+    // accgen.textContent = accGenMap[accountGender];
+    // =====================================
     $.ajax({
         url: "http://localhost:8080/ixercise/Account/Manage", // 資料請求的網址
         type: "GET",
@@ -478,6 +489,8 @@
 
 <!--先註解 這裡的code都沒問題-->
 <script>
+
+
     $(document).on("click", ".article-link", function () {
         var articleId = $(this).data("article-id");
         sendArticleId(articleId);
@@ -689,204 +702,8 @@
 
 </script>
 <!--都沒問題-->
-<!--實驗開始-->
-<script>
-    // 註冊點擊事件
-    // $(document).on("click", ".article-link", function () {
-    //     var articleId = $(this).data("article-id");
-    //     sendArticleId(articleId);
-    // });
-    //
-    // function sendArticleId(articleId) {
-    //     //     // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
-    //     $("#aaaa").empty();
-    //
-    //     let html = '<div class="row justify-content-center">\n' +
-    //         '                    <div class="col-10">\n' +
-    //         '                        <form>\n' +
-    //         '                            <fieldset>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountId" class="form-label"></label>\n' +
-    //         '                                    <input type="text" id="accountId" name="accountId" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountPhone" class="form-label">電話</label>\n' +
-    //         '                                    <input type="text" id="accountPhone" name="accountPhone" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    //         // '                                <div class="mb-1">\n' +
-    //         // '                                    <label for="accountPassword" class="form-label">密碼</label>\n' +
-    //         // '                                    <input type="password" id="accountPassword" name="" class="form-control"\n' +
-    //         // '                                        placeholder="">\n' +
-    //         // '                                </div>\n' +
-    //         // '\n' +
-    //         // '                                <div class="mb-1">\n' +
-    //         // '                                    <label for="accountPasswordCheck" class="form-label">確認密碼</label>\n' +
-    //         // '                                    <input type="password" id="accountPasswordCheck" name="accountPasswordCheck"\n' +
-    //         // '                                        class="form-control" placeholder="">\n' +
-    //         // '                                </div>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountEmail" class="form-label">Email</label>\n' +
-    //         '                                    <input type="text" id="accountEmail" name="accountEmail" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountNickname" class="form-label">暱稱</label>\n' +
-    //         '                                    <input type="text" id="accountNickname" name="accountNickname" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    // '                                <div class="mb-1">\n' +
-    // '                                    <label for="locationcity" class="form-label">所在城市</label>\n' +
-    // '                                    <select id="locationcity" name="locationcity" class="form-select">\n' +
-    // '                                        <option value="臺北市">臺北市</option>\n' +
-    // '                                        <option value="基隆市">基隆市</option>\n' +
-    // '                                        <option value="連江縣">連江縣</option>\n' +
-    // '                                        <option value="新北市">新北市</option>\n' +
-    // '                                        <option value="宜蘭縣">宜蘭縣</option>\n' +
-    // '                                        <option value="新竹市">新竹市</option>\n' +
-    // '                                        <option value="新竹縣">新竹縣</option>\n' +
-    // '                                        <option value="桃園市">桃園市</option>\n' +
-    // '                                        <option value="苗栗縣">苗栗縣</option>\n' +
-    // '                                        <option value="臺中市">臺中市</option>\n' +
-    // '                                        <option value="彰化縣">彰化縣</option>\n' +
-    // '                                        <option value="南投縣">南投縣</option>\n' +
-    // '                                        <option value="嘉義市">嘉義市</option>\n' +
-    // '                                        <option value="嘉義縣">嘉義縣</option>\n' +
-    // '                                        <option value="雲林縣">雲林縣</option>\n' +
-    // '                                        <option value="臺南市">臺南市</option>\n' +
-    // '                                        <option value="高雄市">高雄市</option>\n' +
-    // '                                        <option value="澎湖縣">澎湖縣</option>\n' +
-    // '                                        <option value="金門縣">金門縣</option>\n' +
-    // '                                        <option value="屏東縣">屏東縣</option>\n' +
-    // '                                        <option value="台東縣">台東縣</option>\n' +
-    // '                                        <option value="花蓮縣">花蓮縣</option>\n' +
-    // '                                    </select>\n' +
-    // '\n' +
-    // '                                </div>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountLevel" class="form-label">會員層級</label>\n' +
-    //         '                                    <input type="text" id="accountLevel" name="accountLevel" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountState" class="form-label">會員狀態</label>\n' +
-    //         '                                    <input type="text" id="accountState" name="accountState" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountAddress" class="form-label">地址</label>\n' +
-    //         '                                    <input type="text" id="accountAddress" name="accountAddress" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountName" class="form-label">姓名</label>\n' +
-    //         '                                    <input type="text" id="accountName" name="accountName" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountBirthday" class="form-label">生日</label>\n' +
-    //         '                                    <input type="date" id="accountBirthday" name="accountBirthday" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountCreatetime" class="form-label">註冊時間</label>\n' +
-    //         '                                    <input type="datetime" id="accountCreatetime" name="accountCreatetime" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountUpdatetime" class="form-label">最後修改時間</label>\n' +
-    //         '                                    <input type="datetime" id="accountUpdatetime" name="accountUpdatetime" class="form-control"\n' +
-    //         '                                        placeholder="">\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label class="mb-1">性別</label>\n' +
-    //         '                                    <br>\n' +
-    //         '                                    <div class="form-check form-check-inline">\n' +
-    //         '                                        <input class="form-check-input" type="radio" name="accountGender" id="male"\n' +
-    //         '                                            value="1">\n' +
-    //         '                                        <label class="form-check-label" for="male">\n' +
-    //         '                                            男\n' +
-    //         '                                        </label>\n' +
-    //         '                                    </div>\n' +
-    //         '                                    <div class="form-check form-check-inline">\n' +
-    //         '                                        <input class="form-check-input" type="radio" name="accountGender" id="female"\n' +
-    //         '                                            value="2">\n' +
-    //         '                                        <label class="form-check-label" for="female">\n' +
-    //         '                                            女\n' +
-    //         '                                        </label>\n' +
-    //         '                                    </div>\n' +
-    //         '                                    <div class="form-check form-check-inline">\n' +
-    //         '                                        <input class="form-check-input" type="radio" name="accountGender" id="private"\n' +
-    //         '                                            value="0">\n' +
-    //         '                                        <label class="form-check-label" for="private">\n' +
-    //         '                                            不公開\n' +
-    //         '                                        </label>\n' +
-    //         '                                    </div>\n' +
-    //         '                                </div>\n' +
-    //         '\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountIntro" class="form-label">自我介紹</label>\n' +
-    //         '                                    <textarea class="form-control" id="accountIntro" name="accountIntro"\n' +
-    //         '                                        rows="3"></textarea>\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-3">\n' +
-    //         '                                    <label for="accountPhoto" class="form-label">會員頭像</label>\n' +
-    //         '                                    <input class="form-control" type="file" id="accountPhoto" name="accountPhoto">\n' +
-    //         '                                </div>\n' +
-    //         '                                <!-- <div style="width:150px;height:150px;"> -->\n' +
-    //         '                                <!-- <img id="img" class="overflow-hidden rounded-circle" alt="" style="object-fit: cover;"\n' +
-    //         '                                    width="100px" height="100px"> -->\n' +
-    //         '                                <!-- </div> -->\n' +
-    //
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountReport" class="form-label">檢舉成立次數</label>\n' +
-    //         '                                    <input class="form-control" id="accountReport" name="accountIntro"\n' +
-    //         '                                        rows="3">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-1">\n' +
-    //         '                                    <label for="accountBank" class="form-label">銀行帳戶</label>\n' +
-    //         '                                    <input class="form-control" id="accountBank" name="accountIntro"\n' +
-    //         '                                        rows="3">\n' +
-    //         '                                </div>\n' +
-    //         '                                <div class="mb-3">\n' +
-    //         '                                    <label for="accountIdoc" class="form-label">身分證明</label>\n' +
-    //         '                                    <input class="form-control" type="file" id="accountIdoc" name="accountIdoc">\n' +
-    //         '                                </div>\n' +
-    //
-    //         '                                <div id="preview" style="width:150px;height:150px;">\n' +
-    //         '                                    <img id="img" src="" alt="" class="overflow-hidden rounded-circle" style="object-fit: cover;" width="150px" height="150px">\n' +
-    //         '                                </div>\n' +
-    //
-    //         '                                <div id="idocpreview" style="width:150px;height:150px;">\n' +
-    //         '                                    <img id="idocimg" src="" alt="" class="overflow-hidden rounded-circle" style="object-fit: cover;" width="150px" height="150px">\n' +
-    //         '                                </div>\n' +
-    //
-    //         '\n' +
-    //         '                                <button type="button" id="sendform" class="btn btn-primary">送出</button>\n' +
-    //         '                            </fieldset>\n' +
-    //         '                        </form>\n' +
-    //         '                        <div id="msg" class="error"></div>\n' +
-    //         '                    </div>\n' +
-    //         '                </div>'
-    //     $("#aaaa").append(html);
-    //
-    //
-    // }
 
-    //       radio給值
-    // $("input[name=accountGender][value=" + id + "]").attr('checked', true);
-</script>
+
 </body>
 
 </html>

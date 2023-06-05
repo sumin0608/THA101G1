@@ -1,4 +1,3 @@
-
 const sportTypeMap = {
     1: '足球',
     2: '籃球',
@@ -30,11 +29,13 @@ const accGenMap = {
     1: '男',
     2: '女'
 };
+
 // 改變pg內容的變數
 const pageavatar = document.querySelector("#pageavatar");
 const pgcity = document.querySelector("#pgcity");
 const pgnickname = document.querySelector("#pgnickname");
 const applytbc = document.querySelector("#applytobecoach");//申請成為教練按鈕
+const addsk = document.querySelector("#addskill");
 const accEditPage = document.querySelector("#accEditPage");//編輯個人頁面按鈕
 const accgen = document.querySelector("#accgen");//性別
 const pgaccintro = document.querySelector("#pgaccintro");//自我介紹
@@ -43,16 +44,21 @@ const pgaccskillli = document.querySelector("#pgaccskillli");
 
 
 // =====================================================
-applytbc.href = getContextPath() + '/Account/ApplyToBeCoach.html'
+applytbc.href = getContextPath() + '/Account/ApplyToBeCoach.html';
 accEditPage.href = getContextPath() + "/Account/AccountEdit.html";
+addsk.href = getContextPath() + "/Account/AddSkill.html";
 
 // 刷新會員資訊==========================================
 const urlParams = new URLSearchParams(window.location.search);
 const urlaccId = urlParams.get('accountId');
 
-if(urlaccId == accid){
-    applytbc.classList.remove("d-none");
+if (urlaccId == accid) {
     accEditPage.classList.remove("d-none");
+    if (acclevel == 2) {
+        addsk.classList.remove("d-none");
+    } else {
+        applytbc.classList.remove("d-none");
+    }
 }
 
 fetch('PersonalPage/' + urlaccId)
@@ -95,7 +101,7 @@ fetch('PersonalPage/' + urlaccId)
                 sktable.innerHTML += skilltd;
 
 
-            }else{
+            } else {
                 alert("查詢異常");
                 location.assign(getContextPath() + "/index.html")
             }

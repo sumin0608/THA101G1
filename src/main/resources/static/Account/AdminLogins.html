@@ -320,17 +320,18 @@
                                 <legend class="h1 mb-4">登入後台</legend>
 
                                 <div class="mb-3">
-                                    <label for="TextInput" class="form-label">Email</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <label for="ademail" class="form-label">Email</label>
+                                    <input type="text" id="ademail" class="form-control" placeholder="">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="TextInput" class="form-label">密碼</label>
-                                    <input type="text" id="TextInput" class="form-control" placeholder="">
+                                    <label for="adps" class="form-label">密碼</label>
+                                    <input type="password" id="adps" class="form-control" placeholder="">
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">送出</button>
+                                <button id="btnsend" type="button" class="btn btn-primary">送出</button>
                             </fieldset>
                             <a href="">忘記密碼?</a>
+                            <div id="msg" class="error"></div>
                         </form>
                     </div>
                 </div>
@@ -373,15 +374,44 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
     <!-- ================================================================= -->
 
     <script>
-        $("#searchbar").focus("click", function () {
-            $("#searchcard").removeClass("d-none");
-        });
-        $("#btn-close-search").on("click", function () {
-            $("#searchcard").addClass("d-none");
-        })
+      const ademail = document.getElementById("ademail");
+      const adps = document.getElementById("adps");
+      const btnsend = document.getElementById("btnsend");
+
+      btnsend.addEventListener("click",loginforad);
+
+      function loginforad(){
+          fetch("Login", {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                  accountAccountEmail: ademail.value,
+                  accountPassword: adps.value
+              })
+
+          })
+              .then(resp => resp.json())
+              .then(body => {
+                  errMsg.textContent = '';
+                  const {successful, message} = body;
+                  if (successful) {
+                      const {accountId, accountNickname,accountState, accountLevel, accountPhoto} = body;
+                      sessionStorage.setItem("accountId", accountId);
+                      sessionStorage.setItem("accountNickname", accountNickname);
+                      sessionStorage.setItem("accountLevel", accountLevel);
+                      sessionStorage.setItem("accountState",accountState);
+                      sessionStorage.setItem("accountPhoto", accountPhoto);
+                      location = getContextPath()+"/index.html";
+                  } else {
+                      errMsg.textContent = message;
+                  }
+              })
+      }
+
     </script>
 </body>
 
