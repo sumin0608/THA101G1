@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Document</title>
+    <!-- 引入bootstarp跟共用css內容========================================= -->
+    <link href="../lib/css/styles.css" rel="stylesheet"/>
+    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <!-- 引入頁籤icon======================================================= -->
+    <link href="../lib/img/IX.png" rel="icon" type="image/x-icon"/>
+    <!--  owl.carousel -->
+    <link href="../lib/owl_carousel/owl.carousel.min.css" rel="stylesheet"/>
+    <link href="../lib/owl_carousel/owl.theme.default.min.css" rel="stylesheet"/>
+    <!-- jquery -->
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="popupsuccess.css" rel="stylesheet">
+    <!-- =========================================== -->
+    <style>
+        .wtbtn {
+            color: #B6B6B6;
+            /* background-color: #ffc107; */
+            background-color: #FFF;
+            padding: 0 10px;
+            border: 1px solid #A7A7A7;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            height: 34px;
+            margin-bottom: 10px;
+
+        }
+
+        /* yellow preview button */
+        .ylbtn {
+            color: #B6B6B6;
+            /* background-color: #ffc107; */
+            background-color: #FFF366;
+
+            border: 1px solid #A7A7A7;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+
+        }
+
+        .applybtn {
+
+            /* background-color: #ffc107; */
+            padding: 0 10px;
+            border: 1px solid #A7A7A7;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            height: 34px;
+            margin-bottom: 10px;
+        }
+
+        .btngp {
+            color: #B6B6B6;
+
+            background-color: #FFF;
+            padding: 1% 30px;
+            border: 1px solid #A7A7A7;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            height: 34px;
+            margin-bottom: 15px;
+            margin-right: 1rem;
+            display: inline-block;
+        }
+
+        .btngps {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .popupbtn {
+            color: #B6B6B6;
+            /* background-color: #ffc107; */
+            background-color: #F9F9F9;
+
+            border: 1px solid #A7A7A7;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+        }
+
+        textarea.event_participate {
+            /* max-height: 200px; */
+            max-height: 270px;
+            min-height: 200px;
+            background-color: #F3F3F3;
+
+        }
+
+        #popUpFormButtons button {
+            margin-bottom: 15px;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        /* ======================================= */
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* owl.carousel */
+        .owl-theme .item {
+            height: 10rem;
+            background: #4dc7a0;
+            padding: 1rem;
+        }
+
+        .owl-carousel .item h4 {
+            color: #fff;
+            font-weight: 400;
+            font-size: 1.4375rem;
+            margin-top: 0rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 以下導覽列=================================================================================== -->
+<!-- 增加w-100 sticky-top -->
+<nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
+    <div class=" container-fluid px-4 px-lg-0 me-4 ">
+
+        <!-- 商標===================================================================== -->
+        <a class="navbar-brand m-0 px-4" href="#!">
+            <img alt="" height="60" src="../lib/img/IX-nobackground.png" width="91">
+        </a>
+        <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
+                type="button"><span class="navbar-toggler-icon"></span></button>
+
+        <!-- 商標的右邊整條============================================================ -->
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+            <ul class="navbar-nav mb-2 mb-lg-0 w-100">
+                <!-- 搜尋欄=============================================================== -->
+                <!-- <li class="nav-item my-auto">
+                <form class="d-flex">
+                    <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
+                    <button class="btn border border-2 border-dark" type="submit">Search</button>
+                </form>
+            </li> -->
+
+                <li class="nav-item my-auto">
+                    <form class="d-flex row">
+                        <div class="row" style="width: 400px; max-width: 400px;">
+                            <div class="col-8 pe-0">
+                                <input aria-label="Search" class="form-control" id="searchbar" placeholder="搜尋..."
+                                       role="button" type="search">
+                                </input>
+                            </div>
+                            <div class="col-4 ps-0">
+                                <button class="btn border border-1 border-dark" type="submit">Search</button>
+                            </div>
+                        </div>
+
+                        <!-- </form> -->
+                        <!-- ================================================================== -->
+                        <!-- <div class="collapse" id="collapseExample"> -->
+                        <div class="d-none" id="searchcard">
+                            <div class="searchbarthing w-50 position-fixed">
+                                <!-- <form action="" class="row mb-0"> -->
+                                <div class="row mb-0">
+                                    <div class="col-3">
+                                        <!-- <label for=""></label> -->
+                                        <select aria-label="Default select example"
+                                                class="form-select form-select-sm col-3 mb-3">
+                                            <option selected>頁面</option>
+                                            <option value="1">商城</option>
+                                            <option value="2">論壇</option>
+                                            <option value="3">活動</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select aria-label="Default select example"
+                                                class="form-select form-select-sm">
+                                            <option selected>運動類型</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select aria-label="Default select example"
+                                                class="form-select form-select-sm">
+                                            <option selected>各自設定</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select aria-label="Default select example"
+                                                class="form-select form-select-sm">
+                                            <option selected>各自設定</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <!-- <div class="col-9"></div> -->
+                                        <div class="col-12 ">
+                                            <!-- <button class="btn btn-primary" type="submit"> 查詢
+                                    </button> -->
+                                            <button class="btn btn-primary" id="btn-close-search" type="button">關閉
+                                            </button>
+                                            <button class="btn btn-primary" id="btn-close-search" type="reset">重置
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+
+                <!-- <div class="collapse  d-block" id="collapseExample">
+            </div> -->
+
+
+                <!-- 辦活動============================================================= -->
+                <li class="nav-item fs-5 ms-auto my-auto">
+                    <a aria-current="page" class="nav-link active h-100 " href="#!">辦活動
+                    </a>
+                </li>
+                <!-- 其他主頁  ========================================================== -->
+                <li class="nav-item fs-5 dropdown my-auto">
+                    <a aria-expanded="false" class="nav-link dropdown-toggle navalable" data-bs-toggle="dropdown"
+                       href="#" id="navbarDropdown" role="button">其他主頁
+                    </a>
+                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#!">首頁</a></li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li><a class="dropdown-item" href="#!">商城</a></li>
+                        <li><a class="dropdown-item" href="#!">論壇</a></li>
+                        <li><a class="dropdown-item" href="#!">活動</a></li>
+                        <li><a class="dropdown-item" href="#!">課程</a></li>
+                    </ul>
+                </li>
+                <!-- 鈴鐺============================================================= -->
+                <!-- 還有一顆填滿的bi-bell-fill -->
+                <!-- 操控.n-dot來控制有無紅點 -->
+                <li class="nav-item dropdown my-auto">
+                    <div class="n-dot"></div>
+                    <svg class="bi bi-bell dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown"
+                         fill="currentColor" height="36" id="navbarDropdown" role="button" viewBox="0 0 16 16"
+                         width="36">
+                        <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                    </svg>
+                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-lg-end">
+                        <!-- 一條通知====================================================== -->
+                        <!-- 完成版 600px -->
+                        <div class="list-group notifyunread">
+                            <a aria-current="true" class="list-group-item list-group-item-action" href="#"
+                               style="height: 93px; width:600px;">
+                                <div class="row h-100">
+                                    <div class="col-2 h-100">
+                                        <img alt="" height="72px" src="https://picsum.photos/150/200/?random=10"
+                                             style="object-fit:cover" width="72px">
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <p class="mb-1" style=" overflow: hidden;">
+                                                一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                            </p>
+                                            <small style="white-space: nowrap;">3 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="list-group notifyunread">
+                            <a aria-current="true" class="list-group-item list-group-item-action" href="#"
+                               style="height: 93px; width:600px;">
+                                <div class="row h-100">
+                                    <div class="col-2 h-100">
+                                        <img alt="" height="72px" src="https://picsum.photos/150/200/?random=10"
+                                             style="object-fit:cover" width="72px">
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <p class="mb-1" style=" overflow: hidden;">
+                                                一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+                                            </p>
+                                            <small style="white-space: nowrap;">3 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </ul>
+                </li>
+
+                <!-- 會員頭像========================================================= -->
+                <li class="nav-item dropdown mx-2 my-auto">
+                    <img aria-expanded="false" class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0"
+                         data-bs-toggle="dropdown" height="36" href="#" id="navbarDropdown" role="button"
+                         src="https://picsum.photos/300/200/?random=10" width="36">
+
+                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-lg-end">
+
+                        <li>
+                            <img class="dropdown-item overflow-hidden p-2 rounded-circle"
+                                 src="https://picsum.photos/200/200/?random=10">
+                        </li>
+                        <li>
+                            <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider"/>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">查看個人資料</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">聊天列表</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">活動管理</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#!">課程管理</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- 購物車的按鈕============================================================= -->
+            <form class="d-flex">
+                <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
+                    <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
+                    <i class="bi-cart-fill me-1"></i>
+                    購物車
+                    <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<!-- 導覽列結束=================================================================================== -->
+
+<!-- 這裡大概是放廣告 -->
+<!-- <header class="bg-dark py-5">
+<div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+        <h1 class="display-4 fw-bolder">Shop in style</h1>
+        <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+    </div>
+</div>
+</header> -->
+<!-- Header====================================================================================== -->
+
+<!-- main-content -->
+<div class="container">
+    <!-- 請在這裡作業 -->
+    <div class="row justify-content-center">
+        <!-- 課程介紹區 -->
+        <div class="col-md-9 p-5 mb-4 bg-light rounded-3 mt-4" style="border: solid green;">
+            <div class="container-fluid pt-1 pb-4 card ps-0 pe-0">
+                <!-- ============================================== -->
+                <div class="card-header p-2  bg-transparent justify-content-between">
+                    <div class="d-flex flex-row align-items-center event_creater">
+                        <div class="member-icon">
+                            <img aria-expanded="false"
+                                 class="overflow-hidden rounded-circle p-0 member_profile_pic" data-bs-toggle="dropdown"
+                                 height="36"
+                                 href="#" role="button" src="https://picsum.photos/300/200/?random=10" width="36">
+                        </div>
+
+                        <div class="col-8 ms-2 c-details member_details">
+                            <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name">
+                                Dawdddd0000000ddddoo
+                            </h6>
+                            <span class=" text-muted member_intro">sss</span>
+                        </div>
+                        <!-- <div class="col-2"></div> -->
+                    </div>
+                </div>
+                <!-- ============================================== -->
+
+
+                <div class="photo_container " id="photo_container">
+                    <img alt="..." class="card-img-top event_pic " id="photo"
+                         src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="/>
+                </div>
+                <div class="card-body">
+                    <button class="wtbtn" id="categoryId" onclick="">健身
+                    </button>
+                    <h3 class=" fw-bold card-title " id="eventName">TRX體能訓練</h3>
+                    <div class="fw-bold card-text" id="location">地點:</div>
+                    <div class="small text-dark mb-2">
+                        <span class="card-text" id="city">台北市</span>
+                        <span class="card-text" id="district">&nbsp;中山區</span>
+                        <span class="fw-bold card-text" id="location">&nbsp;板橋運動中心健身房</span>
+                        <div>
+                            <a href="#" id="detailedAddress" style="color: black;">南京東路三段219號5樓</a>
+                        </div>
+                    </div>
+                    <div class="small text-dark mb-2">
+                        <span class="fw-bold card-text" id="times">時間:</span>
+                        <span id="eventStartDate">星期四,四月 6日 </span>
+                        <span id="eventStartTime">&nbsp;13:30</span>
+
+                        <span id="eventLastVerifyDateAndTime">&nbsp;(最後審核日期: 星期三 四月 5 日 9:30)</span>
+                    </div>
+
+                    <div class=" d-flex justify-content-end small text-dark mb-2" id="creator">
+                        教練名字
+                    </div>
+                    <div class="my-3 btngps">
+                        <span class="btngp" id="paymentMethod" onclick="">各付各的</span>
+                        <span class="btngp" id="expectedExpense" onclick="">費用:$0</span>
+                        <span class="btngp" id="maxAttendees" onclick="">名額: 5人</span>
+                    </div>
+                    <p class="col-md-8 fs-5 description" id="description">
+                        挑戰你的身體極限，讓你感受到獨特的全身運動體驗！透過懸吊設備的力量，你能夠提升核心肌肉的穩定性、增強肌肉力量和耐力，同時鍛鍊身體平衡力和靈活性，成為更健康、更自信的自己！</p>
+                    <div class="col-sm-6 ">
+                        <div class="d-grid gap-2 " id="popUpFormButtons">
+                            <button class="btn btn-primary applybtn" data-bs-target="#exampleModalToggle"
+                                    data-bs-toggle="modal" type="button">報名
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ==========================================================================-->
+<!-- <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button> -->
+
+<div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade" id="exampleModalToggle"
+     tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1> -->
+                <!-- <h5 class="modal-title" id="myModalLabel">Modal Title</h5> -->
+                <!-- ======================================================================= -->
+                <div class=" p-2  bg-transparent justify-content-between" id="exampleModalToggleLabel">
+
+                    <div class="d-flex flex-row align-items-center event_creater">
+                        <div class="member-icon">
+                            <img aria-expanded="false" class="overflow-hidden rounded-circle p-0"
+                                 data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
+                                 src="https://images.wsj.net/im-236521/OR" width="36">
+                        </div>
+
+                        <div class="col-8 ms-2 c-details">
+                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                            </h6>
+                            <span class=" text-muted">sss</span>
+                        </div>
+                        <!-- <div class="col-2"></div> -->
+                    </div>
+                </div>
+                <!-- ======================================================================= -->
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+            </div>
+            <div class="modal-body">
+                <!-- Show a second modal and hide this one with the button below. -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                    <textarea class="form-control event_participate" id="description" name="description"
+                                              placeholder="聚會描述和備註" required rows="3"></textarea>
+                                <div class="invalid-feedback">
+                                    Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="container">
+                    <!-- <button class="btn btn-primary ylbtn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button> -->
+                    <!-- <br> -->
+
+                    <!-- ================================================== -->
+
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8 ">
+
+                            <div class="d-grid gap-2 " id="popUpFormButtons">
+                                <!-- <button class="btn btn-primary ylbtn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" onclick="">Confirm</button> -->
+                                <button aria-label="Close" class="btn btn-primary ylbtn" data-bs-dismiss="modal"
+                                        onclick="openApplyPopup()">Confirm
+                                </button>
+                                <button aria-label="Close" class="btn btn-primary popupbtn" data-bs-dismiss="modal"
+                                        type="button">Cancel
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ================================================== -->
+                </div>
+                <!-- container -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================== -->
+<div class="applyResult container " id="applyResult">
+    <img alt="" id="check_cross_mark" src="image/200-tick.png">
+
+
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <div class="d-grid gap-2 " id="">
+                <h2>報名已送出</h2>
+                <p>請等待主揪審核....</p>
+                <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+
+<!-- 以下footer================================================================================= -->
+<footer class="footer py-5 footer-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <p class="m-0 text-white h3">客服中心</p>
+                <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
+                <p class="m-0 text-white">Tel: 02-2712-0589</p>
+            </div>
+            <div class="col-3">
+                <p class="m-0 text-white h3">快速使用</p>
+                <a class="d-block" href="">註冊會員</a>
+                <a class="d-block" href="">舉辦活動</a>
+                <a class="d-block" href="">常見問題</a>
+            </div>
+            <div class="col-3">
+                <p class="m-0 text-white h3">主要頁面</p>
+                <a class="d-block" href="">首頁</a>
+                <a class="d-block" href="">活動</a>
+                <a class="d-block" href="">論壇</a>
+                <a class="d-block" href="">商城</a>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</footer>
+<!-- footer結束================================================================================= -->
+
+
+<!-- 引入所需函式庫 -->
+<script src="../lib/js/bootstrap.bundle.min.js"></script>
+<script src="../lib/js/popper.min.js"></script>
+<script src="../lib/owl_carousel/owl.carousel.min.js"></script>
+<!-- ================================================================= -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    let applyResult = document.querySelector("#applyResult");
+    let applyResulth2 = document.querySelector("#applyResult h2");
+
+    function openApplyPopup() {
+        $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
+        $("#applyResult h2").text("報名失敗");
+        $("#applyResult p").text("報名失敗");
+
+        applyResult.classList.add("open-applyResult");
+        //ajax
+        // <img src="image/404-wrong.png" alt="">
+    }
+
+    function closeApplyPopup() {
+        applyResult.classList.remove("open-applyResult");
+    }
+
+
+    $(document).ready(function () {
+        // Handle form submission
+        $('#myModal form').on('submit', function (e) {
+            e.preventDefault(); // Prevent actual form submission
+            // Perform your desired actions here
+            alert('Form submitted!');
+            // Optionally, you can close the modal
+            $('#myModal').modal('hide');
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // owl.carousel
+        $(".owl-carousel").owlCarousel({
+            loop: true, // 循環播放
+            margin: 10, // 外距 10px
+            nav: true, // 顯示點點
+            responsive: {
+                0: {
+                    items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+                },
+                600: {
+                    items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+                },
+                1000: {
+                    items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+                }
+            }
+        });
+    });
+</script>
+<script>
+    $("#searchbar").focus("click", function () {
+        $("#searchcard").removeClass("d-none");
+    });
+    $("#btn-close-search").on("click", function () {
+        $("#searchcard").addClass("d-none");
+    })
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('evt');
+    console.log(myParam);
+
+    // =========================== session storge ========================= //
+    addEventListener("DOMContentLoaded", (load) => {
+
+        const event_cards_container = document.querySelector('#event_cards_container');
+        const urls = "http://localhost:8080/ixercise/event/get/" + myParam;
+        fetch(urls)
+            .then(resp => resp.json())
+            .then(event => {
+                // event_cards_container.innerHTML ="";
+                // 	<td>${evt.eventId}</td>
+                // 	<td>${evt.creatorId}</td>
+                // 	<td>${evt.eventName}</td>
+                // 	<td>${evt.price}</td>
+                // 	<td>${evt.eventDate}</td>
+                // 	<td>${evt.startTime}</td>
+                // 	<td>${evt.maxAttendees}</td>
+                // 	<td>${evt.categoryId}</td>
+                // 	<td>${evt.description}</td>
+
+                $("#eventName").text(event.eventName);
+                $("img#photo").attr('src', 'http://localhost:8080/ixercise/event/image/' + event.eventId);
+                $("#city").text(event.city);
+                $("#district").html('&nbsp;' + event.district);
+                $("#location").text(event.location);
+                $("#detailedAddress").text(event.address);
+                $("#eventStartDate").text(event.eventDate);
+                $("#eventStartTime").text(event.startTime);
+                $("#eventLastVerifyDateAndTime").html('&nbsp;(最後審核日期:' + event.deadline + ')');
+                $("#paymentMethod").text(event.paymentMethod);
+
+                $("#expectedExpense").html("費用: &dollar;" + event.price);
+                $("#maxAttendees").text("名額: " + event.maxAttendees + "人");
+                $("#description").text(event.description);
+
+            });
+
+
+        const data = sessionStorage.getItem('Event');
+        const eventPhoto = sessionStorage.getItem('eventphoto');
+
+        console.log("data: " + data);
+        console.log("eventPhoto: " + eventPhoto);
+
+        if (data != null && eventPhoto != null) {
+            const sessionFormData = JSON.parse(data);   //sessionFormData
+            // ============ photo -> are not processing due to troublesome
+            // $("#previewBox").html('<img src="' + sessionFormData.img_base64 + '" class="preview_img">');     // imgElement.src = 'data:image/png;base64,' + base64Data;
+            // $("#photo-dropzone").val(sessionFormData.photo_dropzone);
+            // $('#photo-dropzone').prop('files', sessionFormData.photo_dropzone);;
+
+            $("#eventName").html(sessionFormData.eventName);
+            $("#categoryId").html(sessionFormData.categoryId);
+            $("#city").html(sessionFormData.city);
+            $("#district").html(sessionFormData.district);
+            $("#location").html(sessionFormData.location);
+            $("#detailedAddress").html(sessionFormData.address);
+            $("#expectedExpense").html(sessionFormData.price);
+            $("#eventStartDate").html(sessionFormData.eventDate);
+            $("#eventStartTime").html(sessionFormData.startTime);
+            $("#lastVerifyDate").html(sessionFormData.lastVerifyDate);
+            $("#lastVerifyTime").html(sessionFormData.lastVerifyTime);
+            $("#maxAttendees").html(sessionFormData.maxAttendees);
+            $("#paymentMethod").html(sessionFormData.paymentMethod);
+            $("#description").html(sessionFormData.description);
+
+            $("#photo").attr("src", eventPhoto);
+
+        }
+        // =========================== session storge ========================= //
+    }); //Load ====
+</script>
+</script>
+</body>
+
+</html>
