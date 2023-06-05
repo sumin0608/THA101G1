@@ -10,6 +10,29 @@
     <link href="../lib/css/styles.css" rel="stylesheet" />
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
     <style>
+        /* <!-- sidebar --> */
+        .b-example-divider {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        main {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh;
+            height: -webkit-fill-available;
+            max-height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        /* <!-- sidebar --> */
+
         table {
             border-collapse: collapse;
         }
@@ -24,47 +47,119 @@
 </head>
 
 <body>
-    <div style="margin-top: 1%;">
-        <div>
-            <button class="btn" id="getall" style="background-color:rgba(66, 184, 131, 1)">查看全部</button>
-            <button class="btn" id="getsingle" style="background-color:#bdbebd;margin-left: 2%;">搜尋:</button>
-            <div style="display: inline-block;">
-                <input class="form-control" id="searchname" type="search" placeholder="搜尋證照中文名..." aria-label="Search"
-                    role="button">
-                </input>
+    <main>
+        <!-- sidebar -->
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+                <span class="fs-4">Sidebar</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#home" />
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#speedometer2" />
+                        </svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#table" />
+                        </svg>
+                        Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#grid" />
+                        </svg>
+                        Products
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#people-circle" />
+                        </svg>
+                        Customers
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                    id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong>
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
             </div>
-            <div style="display: inline-block; margin-left: 2%;"><span>狀態:</span></div>
-            <div id="result" style="display: inline-block; margin-left: 2%;color: red;"></div>
         </div>
-        <br>
-        <table id="courseList0" class="table">
-            <thead style="background-color:rgba(66, 184, 131, 1)">
-                <tr>
-                    <th>編號</th>
-                    <th>證照中文名</th>
-                    <th>證照英文名</th>
-                    <th>證照英文縮寫</th>
-                    <th colspan="2">修改</th>
-                </tr>
-                <tr style="color: red;background-color:#bdbebd">
-                    <td>number</td>
-                    <td>certName</td>
-                    <td>englishCertName</td>
-                    <td>abbrName</td>
-                    <td colspan="2"></td>
-                </tr>
-            </thead>
-            <!-- 這裡將用Ajax取得課程列表後再填入 -->
-            <tbody id="courseList">
-                <tr>
-                    <td class="number_td">n</td>
-                    <td class="certName_td">EX:张三</td>
-                    <td class="englishCertName_td">25</td>
-                    <td class="abbrName_td">北京</td>
-                    <!-- <td><button class="btn btn-primary alterbtn">修改</button></td>
+        <div class="b-example-divider"></div>
+        <!-- sidebar -->
+        <div style="margin-top: 1%; border: solid purple;">
+            <div>
+                <button class="btn" id="getall" style="background-color:rgba(66, 184, 131, 1)">查看全部</button>
+                <button class="btn" id="getsingle" style="background-color:#bdbebd;margin-left: 2%;">搜尋:</button>
+                <div style="display: inline-block;">
+                    <input class="form-control" id="searchname" type="search" placeholder="搜尋證照中文名..."
+                        aria-label="Search" role="button">
+                    </input>
+                </div>
+                <div style="display: inline-block; margin-left: 2%;"><span>狀態:</span></div>
+                <div id="result" style="display: inline-block; margin-left: 2%;color: red;"></div>
+            </div>
+            <br>
+            <table id="courseList0" class="table">
+                <thead style="background-color:rgba(66, 184, 131, 1)">
+                    <tr>
+                        <th>編號</th>
+                        <th>證照中文名</th>
+                        <th>證照英文名</th>
+                        <th>證照英文縮寫</th>
+                        <th colspan="2">修改</th>
+                    </tr>
+                    <tr style="color: red;background-color:#bdbebd">
+                        <td>number</td>
+                        <td>certName</td>
+                        <td>englishCertName</td>
+                        <td>abbrName</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </thead>
+                <!-- 這裡將用Ajax取得課程列表後再填入 -->
+                <tbody id="courseList">
+                    <tr>
+                        <td class="number_td">n</td>
+                        <td class="certName_td">EX:张三</td>
+                        <td class="englishCertName_td">25</td>
+                        <td class="abbrName_td">北京</td>
+                        <!-- <td><button class="btn btn-primary alterbtn">修改</button></td>
                     <td><button class="btn btn-danger deletebtn">刪除</button></td> -->
-                </tr>
-                <!-- <tr class="table_update -none">
+                    </tr>
+                    <!-- <tr class="table_update -none">
                     <td class="number_update">${certItem.number}</td>
                     <td class="certName_update"><input type='text' class='task_update' placeholder='請輸入更新…' /></td>
                     <td class="englishCertName_update"><input type='text' class='task_update' placeholder='請輸入更新…' />
@@ -72,117 +167,145 @@
                     <td class="abbrName_update"><input type='text' class='task_update' placeholder='請輸入更新…' /></td>
                     <td colspan="2"><button class="btn btn-primary sendbtn">送出修改</button></td>
                 </tr> -->
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-        <!-- 檢舉照片 -->
-        <div class="card-body">
-            <div class="form-group">
-                <label for="photo-dropzone forDhotoDrop">點擊上傳圖片</label>
-                <input type="file" class="form-control-file photo-dropzone" name="photo" aria-describedby="fileHelp"
-                    accept="image/*">
+            <!-- 檢舉照片 -->
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="photo-dropzone forDhotoDrop">點擊上傳圖片</label>
+                    <input type="file" class="form-control-file photo-dropzone" name="photo" aria-describedby="fileHelp"
+                        accept="image/*">
+                </div>
+                <button type="button" class="btn btn-danger delete-btn">刪除照片</button>
+                <button type="button" class="btn btn-danger send-btn">上傳</button>
             </div>
-            <button type="button" class="btn btn-danger delete-btn">刪除照片</button>
-            <button type="button" class="btn btn-danger send-btn">上傳</button>
-        </div>
+    </main>
+    <br>
+    </div>
+    <button type="button" class="btn btn-danger delete-btn" id="testbtn">test</button>
+    </div>
+    <!-- 引入所需函式庫 -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!-- ================================================================= -->
+    <script>
+        $(document).ready(function () {
 
-        <!-- 引入所需函式庫 -->
-        <script src="../lib/js/bootstrap.bundle.min.js"></script>
-        <script src="../lib/js/popper.min.js"></script>
-        <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-        <!-- ================================================================= -->
-        <script>
-            $(document).ready(function () {
-                // 上傳圖片測試
-                $(".send-btn").on("click", function (event) {
-                    let fileInput = $(".photo-dropzone")[0];
-                    let file = fileInput.files[0];
-                    // 创建 FormData 对象
-                    let formData = new FormData();
-                    formData.append('file', file);
-                    console.log(file.name);
-                    $.ajax({
-                        url: "/ixercise/coursecomment/upload-photo",
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) {
-                            console.log(response);
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
+            $('#testbtn').on('click', function (e) {
+                console.log(this);
+                $.ajax({
+                    url: "/ixercise/course/creator/" + 2,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        console.log("resp1>>" + resp[0].eventName);
+
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
                 });
-
-                $("#getall").on("click", function (event) {
-                    event.preventDefault(); // 防止表單提交
-                    // 使用Ajax取得課程列表
-                    $.ajax({
-                        url: "/Team1/allCourseServlet",
-                        type: "GET",
-                        dataType: "json",
-                        success: function (resp) {
-                            console.log("resp>>" + resp);
-
-                            $("#result").empty().append("成功");
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
-                });
-
-
-                $("#getsingle").on('click', function (e) {
-                    e.preventDefault();
-                    let word = $("#searchname").val();
-                    console.log("關鍵字=" + word);
-
-                    $.ajax({
-                        url: "/Team1/oneCourseServlet",
-                        type: "GET",
-                        data: { creator: word },
-                        success: function (resp) {
-                            console.log("resp>>" + resp);
-                            const tostring = JSON.stringify(resp.message);//要轉字串才能
-                            const tostring4 = JSON.stringify(resp.successful);//要轉字串才能
-                            console.log("message>>" + tostring);
-                            console.log("message4>>" + tostring4);
-                            $("#result").empty().append(tostring);
-                            let tableData = '';
-                            let certItem = resp;
-                            // if (tostring4 === true) {
-                            //     tableData += `<tr class="table_tr">`;
-                            //     tableData += `<td class="number_td">${certItem.number}</td>`;
-                            //     tableData += `<td class="certName_td"> ${certItem.certName}</td >`;
-                            //     tableData += `<td class="englishCertName_td"> ${certItem.englishCertName}</td > `;
-                            //     tableData += `<td class="abbrName_td"> ${certItem.abbrName}</td > `;
-                            //     tableData += `<td><button class="btn btn-primary alterbtn">修改</button></td > `;
-                            //     tableData += `<td><button class="btn btn-danger deletebtn">刪除</button></td > `;
-                            //     tableData += `</tr>`;
-                            //     tableData += `<tr class="table_update -none">`;
-                            //     tableData += `<td class="number_update">${certItem.number}</td>`;
-                            //     tableData += `<td><input type='text' class='certName_updatet' placeholder='請輸入更新…'/></td > `;
-                            //     tableData += `<td><input type='text' class='englishCertName_updatet' placeholder='請輸入更新…'/></td > `;
-                            //     tableData += `<td class="abbrName_update"><input type='text' class='abbrName_updatet' placeholder='請輸入更新…'/></td > `;
-                            //     tableData += `<td colspan="2"><button class="btn btn-primary sendbtn">送出修改</button></td > `;
-                            //     tableData += `</tr>`;
-                            // }
-                            // else {
-                            //     tableData += `<tr><td class=">查無此名稱</td ></tr>`
-                            // }
-                            // $("#courseList").empty().append(tableData);
-                        },
-                        error: function (xhr, status, error) {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    });
-                });
-
             });
-        </script>
+
+
+
+
+
+            // 上傳圖片測試
+            $(".send-btn").on("click", function (event) {
+                let fileInput = $(".photo-dropzone")[0];
+                let file = fileInput.files[0];
+                // 创建 FormData 对象
+                let formData = new FormData();
+                formData.append('file', file);
+                console.log(file.name);
+                $.ajax({
+                    url: "/ixercise/coursecomment/upload-photo",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            $("#getall").on("click", function (event) {
+                event.preventDefault(); // 防止表單提交
+                // 使用Ajax取得課程列表
+                $.ajax({
+                    url: "/Team1/allCourseServlet",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+
+                        $("#result").empty().append("成功");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+
+            $("#getsingle").on('click', function (e) {
+                e.preventDefault();
+                let word = $("#searchname").val();
+                console.log("關鍵字=" + word);
+
+                $.ajax({
+                    url: "/Team1/oneCourseServlet",
+                    type: "GET",
+                    data: { creator: word },
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        const tostring = JSON.stringify(resp.message);//要轉字串才能
+                        const tostring4 = JSON.stringify(resp.successful);//要轉字串才能
+                        console.log("message>>" + tostring);
+                        console.log("message4>>" + tostring4);
+                        $("#result").empty().append(tostring);
+                        let tableData = '';
+                        let certItem = resp;
+                        // if (tostring4 === true) {
+                        //     tableData += `<tr class="table_tr">`;
+                        //     tableData += `<td class="number_td">${certItem.number}</td>`;
+                        //     tableData += `<td class="certName_td"> ${certItem.certName}</td >`;
+                        //     tableData += `<td class="englishCertName_td"> ${certItem.englishCertName}</td > `;
+                        //     tableData += `<td class="abbrName_td"> ${certItem.abbrName}</td > `;
+                        //     tableData += `<td><button class="btn btn-primary alterbtn">修改</button></td > `;
+                        //     tableData += `<td><button class="btn btn-danger deletebtn">刪除</button></td > `;
+                        //     tableData += `</tr>`;
+                        //     tableData += `<tr class="table_update -none">`;
+                        //     tableData += `<td class="number_update">${certItem.number}</td>`;
+                        //     tableData += `<td><input type='text' class='certName_updatet' placeholder='請輸入更新…'/></td > `;
+                        //     tableData += `<td><input type='text' class='englishCertName_updatet' placeholder='請輸入更新…'/></td > `;
+                        //     tableData += `<td class="abbrName_update"><input type='text' class='abbrName_updatet' placeholder='請輸入更新…'/></td > `;
+                        //     tableData += `<td colspan="2"><button class="btn btn-primary sendbtn">送出修改</button></td > `;
+                        //     tableData += `</tr>`;
+                        // }
+                        // else {
+                        //     tableData += `<tr><td class=">查無此名稱</td ></tr>`
+                        // }
+                        // $("#courseList").empty().append(tableData);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+        });
+    </script>
 </body>
 
 </html>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
+import tw.idv.ixercise.core.Core;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,5 +41,9 @@ public class LoginController {
         }
     return account;
 
+    }
+    @PostMapping("BackStage")
+    public Core loginForAdmin(){
+        return null;
     }
 }

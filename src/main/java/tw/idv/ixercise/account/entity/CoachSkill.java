@@ -7,7 +7,6 @@ import lombok.Setter;
 import tw.idv.ixercise.core.Core;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 @Table
@@ -23,7 +22,7 @@ public class CoachSkill extends Core {
     @Column
     Integer accountId;
     @Column
-    Integer licenseId;
+    String licenseName;
     @Column
     Integer sportType;
     @Column

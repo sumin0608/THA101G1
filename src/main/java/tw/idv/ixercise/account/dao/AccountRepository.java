@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import tw.idv.ixercise.account.entity.Account;
 
+import java.util.List;
 
 
 public interface AccountRepository extends JpaRepository<Account,Integer>{
@@ -18,5 +19,16 @@ public interface AccountRepository extends JpaRepository<Account,Integer>{
             nativeQuery = true
     )
     Account findForLogin(String accountPhone, String accountPassword);
+
+    @Query(
+            value = "SELECT * from ACCOUNT where accountLevel = 1 or accountLevel = 2",
+            nativeQuery = true
+    )
+    List<Account> findAllForUser();
+    @Query(
+            value = "SELECT * from ACCOUNT where accountLevel = 3",
+            nativeQuery = true
+    )
+    List<Account> findAllForAdmin();
 
 }

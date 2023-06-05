@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ixercise</title>
+    <!-- 引入bootstarp跟共用css內容========================================= -->
+    <link href="../lib/css/styles.css" rel="stylesheet" />
+    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- 引入頁籤icon======================================================= -->
+    <link rel="icon" type="image/x-icon" href="../lib/img/IX.png" />
+    <!-- 引入sidebar========================================= -->
+    <link rel="stylesheet" href="../lib/css/style_jimmy_sidebar2.css">
+    <style>
+        /* sidebar的<li>當按鈕 */
+        .custom-button {
+            /* background-color: #f2f2f2; */
+            background-color: transparent;
+            border: none;
+            color: #333;
+            padding: 1px 5px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .custom-button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body class="body-color">
+
+    <!-- 以下導覽列=================================================================================== -->
+    <!-- 增加w-100 sticky-top -->
+    <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
+        <div class=" container-fluid px-4 px-lg-0 me-4 ">
+
+            <!-- 商標===================================================================== -->
+            <a class="navbar-brand m-0 px-4" href="#!">
+                <img src="../lib/img/IX-nobackground.png" alt="" width="91" height="60">
+            </a>
+            <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <!-- 商標的右邊整條============================================================ -->
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+                <ul class="navbar-nav mb-2 mb-lg-0 w-100">
+                    <!-- 搜尋欄=============================================================== -->
+                    <!-- <li class="nav-item my-auto">
+                        <form class="d-flex">
+                            <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
+                            <button class="btn border border-2 border-dark" type="submit">Search</button>
+                        </form>
+                    </li> -->
+
+                    <li class="nav-item my-auto">
+                        <form class="d-flex ">
+                            <input class="form-control" id="searchbar" type="search" placeholder="找活動..."
+                                aria-label="Search" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                            </input>
+                            <button class="btn border border-1 border-dark" type="submit">Search</button>
+                        </form>
+
+
+                        <!-- ================================================================== -->
+                        <!-- <div class="collapse" id="collapseExample"> -->
+                        <div class="card card-body top-25 start-25 position-fixed d-none" id="searchcard">
+                            <div class="container-fluid w-100">
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option class="disable" selected>頁面 </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <select class="form-select form-select-sm" aria-label="Default select example">
+                                            <option selected>Open </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </li>
+
+                    <!-- <div class="collapse  d-block" id="collapseExample">
+                    </div> -->
+
+
+                    <!-- 辦活動============================================================= -->
+                    <li class="nav-item fs-5 ms-auto my-auto">
+                        <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動
+                        </a>
+                    </li>
+                    <!-- 其他主頁  ========================================================== -->
+                    <li class="nav-item fs-5 dropdown my-auto">
+                        <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">其他主頁
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">首頁</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">商城</a></li>
+                            <li><a class="dropdown-item" href="#!">論壇</a></li>
+                            <li><a class="dropdown-item" href="#!">活動</a></li>
+                        </ul>
+                    </li>
+                    <!-- 鈴鐺============================================================= -->
+                    <!-- 還有一顆填滿的bi-bell-fill -->
+                    <!-- 操控.n-dot來控制有無紅點 -->
+                    <li class="nav-item dropdown my-auto">
+                        <div class="n-dot"></div>
+                        <svg width="36" height="36" fill="currentColor"
+                            class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                        </svg>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                            <!-- 一條通知====================================================== -->
+
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 96px; width:600px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/150/200/?random=10"
+                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 96px; width:600px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/150/200/?random=10"
+                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- 會員頭像========================================================= -->
+                    <li class="nav-item dropdown mx-2 my-auto">
+                        <img src="https://picsum.photos/300/200/?random=10"
+                            class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
+                            height="36">
+
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+
+                            <li>
+                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
+                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
+                            </li>
+                            <li>
+                                <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">查看個人資料</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">聊天列表</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 購物車的按鈕============================================================= -->
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
+                        <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
+                        <i class="bi-cart-fill me-1"></i>
+                        購物車
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- 導覽列結束=================================================================================== -->
+
+    <!-- 這裡大概是放廣告 -->
+    <!-- Header====================================================================================== -->
+    <!-- <header>
+        <div class="container-fluid p-0">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active w-100 object-fit-cover">
+                        <img src="https://picsum.photos/1920/300/?random=10" class="d-block" alt="...">
+                    </div>
+                    <div class="carousel-item w-100 object-fit-cover">
+                        <img src="https://picsum.photos/1920/300/?random=11" class="d-block" alt="...">
+                    </div>
+                    <div class="carousel-item w-100 object-fit-cover">
+                        <img src="https://picsum.photos/1920/300/?random=12" class="d-block" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </header> -->
+    <!-- Header====================================================================================== -->
+
+    <!-- 篩選器+天氣 -->
+    <!-- <section>
+        <div class="form-group text-right" style="text-align: right; border:solid #0a58ca;">
+            <div id="weatherresult" style="text-align: right; border: solid red;">看天氣區</div>
+            <ul style="display: inline-block;">
+                <li style="list-style: none;">
+                    <select id="citypicker" class="float-right">
+                        <option value="1668341">城市天氣</option>
+                        <option value="1668341">台北</option>
+                        <option value="1668341">新北</option>
+                        <option value="1674199">宜蘭</option>
+                        <option value="1675151">新竹</option>
+                        <option value="1668399">台中</option>
+                        <option value="1668355">台南</option>
+                        <option value="1673820">高雄</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </section> -->
+    <!-- 篩選器+天氣 ===================================================================================== -->
+
+    <main>
+        <!-- sidebar -->
+        <div class="wrapper d-flex align-items-stretch" style="position: fixed;height: 100%; top: 12%;z-index: 1000;">
+            <nav id="sidebar">
+                <!-- 漢堡 -->
+                <div class="custom-menu">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <ul class="list-unstyled components mb-5">
+                        <li class="active">
+                            <div id="bar1"><span class="fa fa-home mr-3"></span>教練課程管理中心</div>
+                        </li>
+                        <hr>
+                        <li>
+                            <div id="bar2"><span class="fa fa-user mr-3"></span>課程管理</div>
+                            <ul class="sub-list1" style="list-style: none;">
+                                <li>
+                                    <button id="c1" class="custom-button">已開設課程</button>
+                                </li>
+                                <li>
+                                    <button id="c2" class="custom-button">已結束課程</button>
+                                </li>
+                                <li>
+                                    <button id="c3" class="custom-button">暫存課程</button>
+                                </li>
+                                <li>
+                                    <button id="c4" class="custom-button">被檢舉課程</button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div id="bar3"><span class="fa fa-briefcase mr-3"></span>學員參加審核</div>
+                            <ul class="sub-list2" style="list-style: none;">
+                                <li>
+                                    <button id="audit1" class="custom-button" href="">已審核 <span
+                                            class="badge bg-secondary">2</span></button>
+                                </li>
+                                <li>
+                                    <button id="audit2" class="custom-button" href="">未審核 <span
+                                            class="badge bg-secondary">5</span></button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div id="bar4"><span class="fa fa-sticky-note mr-3"></span>學員退出活動申請</div>
+                            <ul class="sub-list2" style="list-style: none;">
+                                <li>
+                                    <button id="leave1" class="custom-button" href="">已審核 </button>
+                                </li>
+                                <li>
+                                    <button id="leave2" class="custom-button" href="">未審核 <span
+                                            class="badge bg-secondary">5</span></button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- sidebar -->
+
+        <!-- main-content -->
+        <div id="containerplace" class="container main-content">
+            <!-- 請在這裡作業 -->
+            <div class="row">
+                <div id="selecthead1" class="col-12 col-md-3 text-end"></div>
+                <div id="selecthead2" class="col-4 col-md-3"> </div>
+                <div class="col-4 col-md-3"> </div>
+                <div class="col-4 col-md-3"> </div>
+                <br>
+
+                <table id="courseList0" class="table">
+                    <thead style="background-color:rgba(66, 184, 131, 1)">
+                        <tr>
+                            <th></th>
+                            <th id="th1">courseID</th>
+                            <th id="th2">eventName</th>
+                            <th id="th3">courseStartTime</th>
+                            <th id="th4">city</th>
+                            <th id="th5">categoryID</th>
+                            <th id="th6">courseStatus</th>
+                            <th id="th7">paidAdvertising</th>
+                            <th colspan="2">修改</th>
+                        </tr>
+                    </thead>
+                    <tbody id="aaa">
+                        <tr>
+                            <td style="background-color:rgba(66, 184, 131, 0.5)">0</td>
+                            <td>courseID</td>
+                            <td>eventName</td>
+                            <td>courseStartTime</td>
+                            <td>city</td>
+                            <td>categoryID</td>
+                            <td>courseStatus</td>
+                            <td>paidAdvertising</td>
+                            <td><button id="alterbtn" class="btn btn-primary alterbtn">修改</button></td>
+                            <td><button id="deletebtn" class="btn btn-danger deletebtn">刪除</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 原長條圖+文字列表，暫時放棄 -->
+                <!-- <div class="col-12" style="border: solid black;">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-3" style="border: solid purple;">
+                            <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
+                        </div>
+                        <div class="col-md-9" style="border: solid peru;">
+                            <p class="card-tex my-0">學員名字</p>
+                            <p class="card-text"><small class="text-muted">寫一下參加原因，心得，台北女、27、有養貓</small>
+                            </p>
+                            <div style="text-align: right;">
+                                <a class="btn btn-primary" href="#" role="button">同意</a>
+                                <a class="btn btn-primary" href="#" role="button">不同意</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary col-3 col-md-3" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Launch static backdrop modal
+                </button> -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">修改課程</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- 創建表單 -->
+                                <div class="container custom-container  px-4 px-lg-5 mt-5">
+                                    <div class="col -12 row ">
+                                        <div class="row col-2"></div>
+                                        <div class="col-8 formpad "
+                                            style="background-color: #E9E9E9; padding-top: 10px;">
+                                            <form id="myform" method="post" enctype="multipart/form-data"
+                                                class="row g-3 needs-validation" novalidate>
+                                                <!-- Zero row 之後抓會員的session-->
+                                                <div></div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label for="" class="form-label">creator</label>
+                                                        <div id="creator">3</div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- First row -->
+                                                    <div class="row">
+                                                        <div class="col-sm-12"></div>
+                                                        <label for="event_name" class="form-label">聚會名稱</label>
+                                                        <input type="text" id="event_name" name="event_name"
+                                                            placeholder="請輸入聚會名稱..." class="form-control"
+                                                            value="start your event" required>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            必填!
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <br>
+                                                    <!-- Second row -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label for="" class="form-label">聚會類型</label>
+                                                            <select class="form-select" id="categoryId"
+                                                                name="categoryId" aria-label="Default select example"
+                                                                required>
+                                                                <option selected disabled value="">請選擇..</option>
+                                                                <option value="1">足球</option>
+                                                                <option value="2">籃球</option>
+                                                                <option value="3">網球</option>
+                                                                <option value="4">排球</option>
+                                                                <option value="5">橄欖球</option>
+                                                                <option value="6">棒球</option>
+                                                                <option value="7">曲棍球</option>
+                                                                <option value="8">高爾夫球</option>
+                                                                <option value="9">羽毛球</option>
+                                                                <option value="10">乒乓球</option>
+                                                                <option value="11">壁球</option>
+                                                                <option value="12">手球</option>
+                                                                <option value="13">保齡球</option>
+                                                                <option value="14">有氧操課</option>
+                                                                <option value="15">重訓課</option>
+                                                                <option value="16">瑜伽課</option>
+                                                                <option value="17">舞蹈課</option>
+                                                                <option value="18">腹肌課</option>
+                                                                <option value="19">動感單車課</option>
+                                                                <option value="20">跳繩課</option>
+                                                                <option value="21">拳擊課</option>
+                                                                <option value="22">跳舞操課</option>
+                                                                <option value="23">瑜伽拉伸課</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="" class="form-label">所在城市</label>
+                                                            <select class="form-select" id="city" name="city"
+                                                                aria-label="Default select example" required>
+                                                                <option selected disabled value="">請選擇..</option>
+                                                                <option value="1">台北市</option>
+                                                                <option value="2">基隆</option>
+                                                                <option value="4">新北市</option>
+                                                                <option value="5">宜蘭</option>
+                                                                <option value="7">新竹</option>
+                                                                <option value="8">桃園</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label for="" class="form-label">所在地區</label>
+                                                            <select class="form-select" id="district" name="district"
+                                                                aria-label="Default select example" required>
+                                                                <option selected disabled value="">請選擇..</option>
+                                                                <option value="1">Ex.松山區</option>
+
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- Third row -->
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <label class="form-label">場地名稱</label>
+                                                            <input type="text" id="location" name="location"
+                                                                placeholder="請輸入聚會場地名稱..." class="form-control" value=""
+                                                                required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label class="form-label">預計花費</label>
+                                                            <input type="number" id="price" name="price" min="0"
+                                                                placeholder="預計花費" class="form-control" value="300"
+                                                                required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <br>
+                                                    <!-- Forth row -->
+                                                    <div class="row">
+                                                        <div class="col-sm-12"></div>
+                                                        <label class="form-label">活動地址</label>
+                                                        <input type="text" name="address" placeholder="活動地址..."
+                                                            class="form-control" id="address" value="" required>
+                                                        <div class="invalid-feedback">
+                                                            必填!
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- Fith row -->
+                                                    <div class="row">
+                                                        <div class="col-sm-5">
+                                                            <label class="form-label">活動日期</label>
+                                                            <input type="date" id="eventDate" name="eventDate"
+                                                                placeholder="活動日期..." class="form-control"
+                                                                value="2023-05-06" required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <label class="form-label">活動開始時間</label>
+                                                            <input type="time" id="startTime" name="startTime"
+                                                                placeholder="活動開始時間..." class="form-control" required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!--  row Six -->
+                                                    <div class="row">
+                                                        <div class="col-sm-5">
+                                                            <label class="form-label">報名截止日期</label>
+                                                            <input type="date" id="lastVerifyDate" name="lastVerifyDate"
+                                                                placeholder="報名截止日期..." class="form-control"
+                                                                value="2023-05-07" required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <label class="form-label">報名截止時間</label>
+                                                            <input type="time" id="lastVerifyTime" name="lastVerifyTime"
+                                                                placeholder="報名截止時間..." class="form-control" required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- row  seven ===================================== Javascript ==============================================-->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="form-label">人數上限</label>
+                                                            <input type="number" id="maxAttendees" name="maxAttendees"
+                                                                placeholder="聚會人數上限" min="1" max="100"
+                                                                class="form-control" value="10" required>
+                                                            <div class="invalid-feedback">
+                                                                Please write something.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label class="form-label">課程時長(小時)</label>
+                                                            <input type="number" id="courseDuration"
+                                                                name="courseDuration" placeholder="課程時長"
+                                                                class="form-control" min="0.5" max="24" value="0.5"
+                                                                step="0.5" required>
+                                                            <div class="invalid-feedback">
+                                                                Please write something.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <label class="form-label">付費方式</label>
+                                                            <select class="form-select" id="paymentMethod"
+                                                                name="paymentMethod" aria-label="Default select example"
+                                                                required>
+                                                                <option value="" selected disabled>請選擇..</option>
+                                                                <option value="1">線上刷卡</option>
+                                                                <option value="2">現場繳費</option>
+                                                                <option value="3">免費課程</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- row eight -->
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="description">聚會描述和備註</label>
+                                                                <textarea class="form-control" name="description"
+                                                                    id="description" rows="3" required></textarea>
+                                                                <div class="invalid-feedback">
+                                                                    請與教練分享參加目標與期望。
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <label for="" class="form-label">課程狀態</label>
+                                                            <select class="form-select" id="courseStatus"
+                                                                name="courseStatus" aria-label="Default select example"
+                                                                required>
+                                                                <option value="1">可參加</option>
+                                                                <option value="2">暫停報名</option>
+                                                                <option value="3">截止報名</option>
+                                                                <option value="4">滿團</option>
+                                                                <!-- <option value="5">強制下架</option> -->
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label for="" class="form-label">要不要買廣告</label>
+                                                            <select class="form-select" id="paidAdvertising"
+                                                                name="paidAdvertising"
+                                                                aria-label="Default select example" required>
+                                                                <option value="0">不買</option>
+                                                                <option value="1">買</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label class="form-label">廣告時效</label>
+                                                            <input type="date" id="paidAdvertisingTime1"
+                                                                name="paidAdvertisingTime1" placeholder="日期..."
+                                                                class="form-control" value="2024-05-08" required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <label class="form-label">--</label>
+                                                            <input type="time" id="paidAdvertisingTime2"
+                                                                name="paidAdvertisingTime2" placeholder="時間..."
+                                                                class="form-control" value="11:11" required>
+                                                            <div class="invalid-feedback">
+                                                                必填!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <!-- row eight -->
+                                                    <hr>
+                                                    <br>
+                                                    <!-- row nine -->
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <button type="submit" id="btn_submit"
+                                                                class="btn btn-primary">
+                                                                創辦活動
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> <!--"modal-body" -->
+                            <div class="modal-footer">
+                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="modalSend" type="button" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Modal -->
+
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary col-3 col-md-3" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Launch static backdrop modal
+                </button> -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdropPass" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">修改課程</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                123審核區
+                            </div> <!--"modal-body" -->
+                            <div class="modal-footer">
+                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="modalPass" type="button" class="btn btn-primary">接受報名</button>
+                                <button id="modalUnPass" type="button" class="btn btn-primary">拒絕報名</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Modal -->
+            </div> <!-- row結束 -->
+        </div> <!-- container結束 -->
+    </main>
+
+
+
+
+    <!-- 以下footer================================================================================= -->
+    <!-- <footer class="footer py-5 footer-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p class="m-0 text-white h3">客服中心</p>
+                    <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
+                    <p class="m-0 text-white">Tel: 02-2712-0589</p>
+                </div>
+                <div class="col-3">
+                    <p class="m-0 text-white h3">快速使用</p>
+                    <a class="d-block" href="">註冊會員</a>
+                    <a class="d-block" href="">舉辦活動</a>
+                    <a class="d-block" href="">常見問題</a>
+                </div>
+                <div class="col-3">
+                    <p class="m-0 text-white h3">主要頁面</p>
+                    <a class="d-block" href="">首頁</a>
+                    <a class="d-block" href="">活動</a>
+                    <a class="d-block" href="">論壇</a>
+                    <a class="d-block" href="">商城</a>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </footer> -->
+    <!-- footer結束================================================================================= -->
+
+    <!-- 引入所需函式庫 -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
+    <!-- 漂亮alert! -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- 載入 Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <!-- ================================================================= -->
+
+
+    <script>
+        document.getElementById("sidebarCollapse").addEventListener("click", function () {
+            document.getElementById("sidebar").classList.toggle("active");
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // <<課程管理>> 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            // 一、已開設課程
+            $('#c1').on('click', function (e) {
+                e.preventDefault();
+                console.log(this);
+                // 表頭
+                $('#th1').text("courseId");
+                $('#th2').text("eventName");
+                $('#th3').text("courseStartTime");
+                $('#th4').text("city");
+                $('#th5').text("categoryId");
+                $('#th6').text("courseStatus");
+                $('#th7').text("paidAdvertising");
+                $.ajax({
+                    url: "/ixercise/course/creator/" + 3, //會員accountId=3
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        // console.log("已開設課程resp>>" + resp);
+                        // filter篩選:日期
+                        let currentDate = new Date();
+                        var filteredData0 = [];
+                        filteredData0 = resp.filter(function (item) {
+                            var StartTime = new Date(item.courseStartTime);
+                            console.log("StartTime>>" + StartTime);
+                            if (StartTime > currentDate) {
+                                return true;
+                            }
+                        });
+                        let appendFrom1 = '';
+                        for (let i in filteredData0) {
+                            console.log("filteredData0-creator>>" + filteredData0[i].creator);
+                            appendFrom1 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredData0[i].courseId}</td>
+                                                <td>${filteredData0[i].eventName}</td>
+                                                <td>${filteredData0[i].courseStartTime}</td>
+                                                <td>${filteredData0[i].city}</td>
+                                                <td>${filteredData0[i].categoryId}</td>
+                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${filteredData0[i].paidAdvertising}</td>
+                                                <td><button type="button" class="btn btn-primary alterbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">修改</button></td>
+                                                <td><button class="btn btn-danger deletebtn">刪除</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendFrom1);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            // alterbtn   <<<目前未開放修改照片>>>
+            $('#aaa').on('click', '.alterbtn', function (e) {
+                // e.preventDefault;
+                console.log("alterbtn");
+                var courseId = $(this).closest('tr').find('td:eq(1)').text();
+                console.log("deletebtn clicked. Course ID: " + courseId);
+                var creator = 3; //會員session id
+
+                $.ajax({
+                    url: "/ixercise/course/courseId/" + courseId,
+                    type: "GET",
+                    dataType: "json",
+                    data: { courseId: courseId },
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        $("#event_name").val(resp.eventName);
+                        $("#price").val(resp.expectedPrice);
+                        $("#eventDate").val(resp.courseStartDate);
+                        $("#courseDuration").val(resp.courseDuration);
+
+                        var timePart = resp.courseStartTime.split(' ')[1];
+                        // console.log("courseStartTime:", courseStartTime);
+                        // console.log("timePart:", timePart);
+                        $("#startTime").val(timePart);
+
+                        var lastVerifyDate = resp.registrationDeadline.split(' ')[0];
+                        var lastVerifyTime = resp.registrationDeadline.split(' ')[1];
+                        $("#lastVerifyDate").val(lastVerifyDate);
+                        $("#lastVerifyTime").val(lastVerifyTime);
+
+                        $("#maxAttendees").val(resp.maximumCapacity);
+                        $("#description").val(resp.description);
+                        $("#location").val(resp.location);
+
+                        $("#city option").filter(function () {
+                            return $(this).text() == resp.city;
+                        }).prop("selected", true);
+
+                        $("#district").empty().append('<option selected disabled value="">加载中...</option>');
+                        //撈該縣市的區
+                        $.ajax({
+                            url: "/ixercise/course/districts/" + resp.city,
+                            type: "GET",
+                            contentType: 'application/json',
+                            success: function (resp0) {
+                                let tableData = '';
+                                for (let i = 0; i < resp0.length; i++) {
+                                    tableData += `<option value="${Number(i).name}">${resp0[i].name}</option>`;
+                                }
+                                $("#district").empty().append(tableData);
+
+                                $("#district option").filter(function () {
+                                    return $(this).text() == resp.district;
+                                }).prop("selected", true);
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
+
+
+                        $("#categoryId option").filter(function () {
+                            return $(this).text() == resp.categoryId;
+                        }).prop("selected", true);
+
+                        $("#address").val(resp.detailedAddress);
+                        $("#courseStatus").val(resp.courseStatus);
+                        var paidAdvertisingTime1 = resp.paidAdvertisingTime.split(' ')[0];
+                        var paidAdvertisingTime2 = resp.paidAdvertisingTime.split(' ')[1];
+                        $("#paidAdvertisingTime1").val(paidAdvertisingTime1);
+                        $("#paidAdvertisingTime2").val(paidAdvertisingTime2);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+            // modalSend
+            $('#modalSend').on('click', function (e) {
+                // e.preventDefault;
+                console.log("modalSend");
+                swal("Warning!", "還沒寫!", "warning");
+                let creator = $("#creator").text();
+                let eventName = $("#event_name").val();
+                let expectedPrice = $("#price").val();
+                let courseStartDate = $("#eventDate").val();
+                let courseStartTime = courseStartDate + " " + $("#startTime").val() + ":00";
+                let courseDuration = $("#courseDuration").val();
+
+                let lastVerifyDate = $("#lastVerifyDate").val();
+                let lastVerifyTime = $("#lastVerifyTime").val();
+                let registrationDeadline = lastVerifyDate + " " + lastVerifyTime + ":00";
+                console.log("registrationDeadline>>" + registrationDeadline);
+                let maximumCapacity = $("#maxAttendees").val();
+                let description = $("#description").val();
+                let location = $("#location").val();
+                // let city = $("#city").val();
+                let city = $("#city option:selected").text();
+
+                let district = $("#district").val();
+                let detailedAddress = $("#address").val();
+                let categoryId = $("#categoryId option:selected").text();
+
+                let courseStatus = $("#courseStatus").val();
+                let paidAdvertising = $("#paidAdvertising").val();
+                let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
+                let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
+                let paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
+                console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
+                // let paymentMethod = $("#paymentMethod").val();
+
+                // 检查是否有有填欄位
+                if (!eventName) {
+                    $('#eventName').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!expectedPrice) {
+                    $('#expectedPrice').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!courseStartDate) {
+                    $('#courseStartDate').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!$("#startTime").val()) {
+                    $("#startTime").siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!courseDuration) {
+                    $('#courseDuration').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!$("#lastVerifyTime").val()) {
+                    $("#lastVerifyTime").siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!maximumCapacity) {
+                    $('#maximumCapacity').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!location || location == "請選擇..") {
+                    $('#location').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!city || city == "請選擇..") {
+                    $('#city').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!district) {
+                    $('#district').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!detailedAddress) {
+                    $('#detailedAddress').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!categoryId) {
+                    $('#categoryId').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!description) {
+                    $('#description').siblings('.invalid-feedback').show();
+                    return;
+                }
+                console.log("沒錯都有填");
+                // 检查是否有有填欄位--結束
+                // 
+                //         // 步驟二、存入資料庫
+                //         $.ajax({
+                //             url: "/ixercise/course",
+                //             type: "POST",
+                //             contentType: 'application/json',
+                //             data: JSON.stringify({
+                //                 creator: creator,
+                //                 photo: photo,
+                //                 eventName: eventName,
+                //                 expectedPrice: expectedPrice,
+                //                 courseStartDate: courseStartDate,
+                //                 courseStartTime: courseStartTime,
+                //                 courseDuration: courseDuration,
+                //                 registrationDeadline: registrationDeadline,
+                //                 maximumCapacity: maximumCapacity,
+                //                 description: description,
+                //                 location: location,
+                //                 city: city,
+                //                 district: district,
+                //                 detailedAddress: detailedAddress,
+                //                 categoryId: categoryId,
+                //                 courseStatus: courseStatus,
+                //                 paidAdvertising: paidAdvertising,
+                //                 paidAdvertisingTime: paidAdvertisingTime
+                //             }),
+                //             success: function (resp) {
+                //                 console.log("resp>>" + resp);
+                //                 $('#myform').reset(); //清空表單
+                //                 // swal("Warning!", resp.message, "warning");
+                //             },
+                //             error: function (xhr, status, error) {
+                //                 alert("Error: " + xhr.responseText);
+                //             }
+                //         });
+                //     },// 步驟二、結束
+
+            });
+            // deletebtn
+            $('#aaa').on('click', '.deletebtn', function (e) {
+                // e.preventDefault;
+                console.log("deletebtn");
+                var isconfirm = confirm('你確定嗎？');
+                if (isconfirm) {
+                    var courseId = $(this).closest('tr').find('td:eq(1)').text();
+                    console.log("deletebtn clicked. Course ID: " + courseId);
+
+                    $.ajax({
+                        url: "/ixercise/course/courseId/" + courseId,
+                        type: "DELETE",
+                        dataType: "json",
+                        data: {
+                            courseId: courseId
+                        },
+                        success: function (resp) {
+                            console.log("resp>>" + resp);
+                            alert("刪除成功請刷新頁面")
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                } else {
+                    alert('你已取消刪除');
+                }
+
+            });
+
+
+            // 二、已結束課程
+            $('#c2').on('click', function (e) {
+                $.ajax({
+                    url: "/ixercise/course/creator/" + 3,//會員accountId=3
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        // 表頭
+                        $('#th1').text("courseId");
+                        $('#th2').text("eventName");
+                        $('#th3').text("courseStartTime");
+                        $('#th4').text("city");
+                        $('#th5').text("categoryId");
+                        $('#th6').text("courseStatus");
+                        $('#th7').text("paidAdvertising");
+                        // filter篩選:日期
+                        let currentDate = new Date();
+                        var filteredData0 = [];
+                        filteredData0 = resp.filter(function (item) {
+                            var StartTime = new Date(item.courseStartTime);
+                            console.log("StartTime>>" + StartTime);
+                            if (StartTime < currentDate) {
+                                return true;
+                            }
+                        });
+                        let appendFrom2 = '';
+                        for (let i in filteredData0) {
+                            console.log("filteredData0-creator>>" + filteredData0[i].creator);
+                            appendFrom2 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredData0[i].courseId}</td>
+                                                <td>${filteredData0[i].eventName}</td>
+                                                <td>${filteredData0[i].courseStartTime}</td>
+                                                <td>${filteredData0[i].city}</td>
+                                                <td>${filteredData0[i].categoryId}</td>
+                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${filteredData0[i].paidAdvertising}</td>
+                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendFrom2);
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            // checkbtn
+            $('#aaa').on('click', '.checkbtn', function (e) {
+                // e.preventDefault;
+                console.log("checkbtn");
+                swal("Check!", "你看一下", "success");
+            });
+
+
+            // 三、、暫存課程   1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
+            $('#c3').on('click', function (e) {
+                // console.log(this);
+                $.ajax({
+                    url: "/ixercise/course/creator/" + 3,//會員accountId=3
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("暫存課程resp>>" + resp);
+                        // 表頭
+                        $('#th1').text("courseId");
+                        $('#th2').text("eventName");
+                        $('#th3').text("courseStartTime");
+                        $('#th4').text("city");
+                        $('#th5').text("categoryId");
+                        $('#th6').text("courseStatus");
+                        $('#th7').text("paidAdvertising");
+                        // filter篩選:日期
+                        let currentDate = new Date();
+                        var filteredData0 = [];
+                        filteredData0 = resp.filter(function (item) {
+                            var StartTime = new Date(item.courseStartTime);
+                            console.log("StartTime>>" + StartTime);
+                            if ((StartTime > currentDate) && (item.courseStatus == 2)) {
+                                return true;
+                            }
+                        });
+                        if (filteredData0.length === 0) {
+                            swal("Warning!", "沒有暫存課程", "warning");
+                        }
+
+                        let appendFrom3 = '';
+                        for (let i in filteredData0) {
+                            console.log("filteredData0-creator>>" + filteredData0[i].creator);
+                            appendFrom3 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredData0[i].courseId}</td>
+                                                <td>${filteredData0[i].eventName}</td>
+                                                <td>${filteredData0[i].courseStartTime}</td>
+                                                <td>${filteredData0[i].city}</td>
+                                                <td>${filteredData0[i].categoryId}</td>
+                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${filteredData0[i].paidAdvertising}</td>
+                                                <td><button class="btn btn-primary alterbtn">修改</button></td>
+                                                <td><button class="btn btn-danger deletebtn">刪除</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendFrom3);
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            // 四、被檢舉課程
+            $('#c4').on('click', function (e) {
+                console.log(this);
+                swal("Warning!", "還沒寫!", "warning");
+            });
+
+
+
+            // <<學員參加審核>>  1.待審核2.通過3.未通過4:退出 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            //一、已審核
+            $('#audit1').on('click', function (e) {
+                console.log("audit1>>" + this);
+                // 表頭
+                $('#th1').text("accountId");
+                $('#th2').text("courseId");
+                $('#th3').text("attendTime");
+                $('#th4').text("reason");
+                $('#th5').text("status");
+                $('#th6').text("paymentStatus");
+                $('#th7').text("");
+                let appendaudit1head1 = '';
+                let appendaudit1head2 = '';
+                appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
+                appendaudit1head2 += `<select class="form-select" aria-label="Default select example">
+                                        <option selected value="2">已通過</option>
+                                        <option value="3">未通過</option>
+                                        <option value="4">已退出</option>
+                                    </select>`;
+                $('#selecthead1').empty().append(appendaudit1head1);
+                $('#selecthead2').empty().append(appendaudit1head2);
+                $.ajax({
+                    url: "/ixercise/courseAttendee",  //先拿全部
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp) {
+                        console.log("已審核resp>>" + resp);
+                        let appendaudit1 = '';
+
+                        var filteredDataAudit1 = [];
+                        filteredDataAudit1 = resp.filter(function (item) {
+                            console.log("item.status>>" + item.status);
+                            if (item.status == 2) {   //2.通過3.未通過4:退出
+                                return true;
+                            }
+                        });
+                        console.log("filteredDataAudit1>>" + filteredDataAudit1);
+                        for (let i in filteredDataAudit1) {
+                            //要分段接會員了accountId
+                            let reason = filteredDataAudit1[i].reason;
+                            let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
+                            appendaudit1 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredDataAudit1[i].accountId}</td>
+                                                <td>${filteredDataAudit1[i].courseId}</td>
+                                                <td>${filteredDataAudit1[i].attendTime}</td>
+                                                <td>${truncatedReason}</td>
+                                                <td>${filteredDataAudit1[i].status}</td>
+                                                <td>${filteredDataAudit1[i].paymentStatus}</td>
+                                                <td></td>
+                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendaudit1);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            // 選擇審核狀態: 2.通過3.未通過4:退出
+            $(document).on('change', '#selecthead select', function () {
+                let selectedValue = $(this).val();
+                console.log("selectedValue= " + selectedValue);
+
+                $.ajax({
+                    url: "/ixercise/courseAttendee/status/" + selectedValue,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (filteredDataAudit1) {
+                        console.log("未審核resp>>" + filteredDataAudit1);
+                        let appendaudit1 = '';
+                        for (let i in filteredDataAudit1) {
+                            let reason = filteredDataAudit1[i].reason;
+                            let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
+                            //要分段接會員了accountId
+                            appendaudit1 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredDataAudit1[i].accountId}</td>
+                                                <td>${filteredDataAudit1[i].courseId}</td>
+                                                <td>${filteredDataAudit1[i].attendTime}</td>
+                                                <td>${truncatedReason}</td>
+                                                <td>${filteredDataAudit1[i].status}</td>
+                                                <td>${filteredDataAudit1[i].paymentStatus}</td>
+                                                <td></td>
+                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendaudit1);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+
+            //二、未審核 
+            $('#audit2').on('click', function (e) {
+                console.log("audit2>>" + this);
+                // 表頭
+                $('#th1').text("accountId");
+                $('#th2').text("courseId");
+                $('#th3').text("attendTime");
+                $('#th4').text("reason");
+                $('#th5').text("status");
+                $('#th6').text("paymentStatus");
+                $('#th7').text("");
+                var appendaudit1head = '';
+                appendaudit1head += `<label for="" class="form-label">審核狀態:</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected value="1">待審核</option>
+                                        </select>`;
+                $('#selecthead').empty().append(appendaudit1head);
+
+                $.ajax({
+                    url: "/ixercise/courseAttendee/status/" + 1,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (filteredDataAudit2) {
+                        console.log("未審核resp>>" + filteredDataAudit2);
+                        let appendaudit2 = '';
+                        for (let i in filteredDataAudit2) {
+                            let reason = filteredDataAudit1[i].reason;
+                            let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
+                            //要分段接會員了accountId
+                            appendaudit2 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredDataAudit2[i].accountId}</td>
+                                                <td>${filteredDataAudit2[i].courseId}</td>
+                                                <td>${filteredDataAudit2[i].attendTime}</td>
+                                                <td>${truncatedReason}</td>
+                                                <td>${filteredDataAudit2[i].status}</td>
+                                                <td>${filteredDataAudit2[i].paymentStatus}</td>
+                                                <td></td>
+                                                <td><button class="btn btn-primary checkpassbtn" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdropPass">查看</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendaudit2);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
+            // checkpassbtn，配合modal審核
+            $('#aaa').on('click', '.checkpassbtn', function (e) {
+                // e.preventDefault;
+                console.log("checkpassbtn");
+                swal("Check!", "還沒寫", "success");
+            });
+
+            // modalSend
+            $('#modalPass').on('click', function (e) {
+                // e.preventDefault;
+                console.log("modalPass");
+                swal("Warning!", "還沒寫!", "warning");
+            });
+
+
+
+            // <<學員退出活動申請>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            //已審核
+            $('#leave1').on('click', function (e) {
+                console.log("leave1>>" + this);
+                swal("Warning!", "還沒寫!", "warning");
+            });
+            //未審核 
+            $('#leave2').on('click', function (e) {
+                console.log("leave2>>" + this);
+                swal("Warning!", "還沒寫!", "warning");
+            });
+
+
+        });
+
+
+
+
+
+
+
+
+        // <<<<天氣api>>>>
+            // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
+        // $("#citypicker").change(function () {
+        //     console.log(this.value);
+        //     if (!(this.value == null || this.value == "")) {
+        //         ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", this.value);
+        //     } else {
+        //         $("#weatherresults").html("");  // 清空
+        //     }
+        // });
+        // function ajaxCallJsonP(url, cityID) {
+        //     // console.log(url, cityID);
+        //     var data = $.getJSON(url,
+        //         {
+        //             id: cityID,
+        //             appid: "14550c20a1f07f3a8f42b63a1acf4002",
+        //             lang: "zh_TW"
+        //         }).done(function (msg) {
+        //             console.log("success!!!");
+        //             // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
+        //             $("#weatherresult").append(msg.weather[0].description);
+        //             $("#weatherresult").append(`< img src = 'https://openweathermap.org/img/wn/${msg.weather[0].icon}.png' />`);
+        //         }
+        //         ).fail(function (xhr, status, error) {
+        //             // 处理请求失败的情况
+        //             console.log("error!!!");
+        //         });
+        // };
+    </script>
+</body>
+
+</html>

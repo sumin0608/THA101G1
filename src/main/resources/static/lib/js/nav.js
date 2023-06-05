@@ -1,11 +1,10 @@
 const nav = document.querySelector(".navbar");
 
-
 nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '            <!-- 商標===================================================================== -->\n' +
     '            <a class="navbar-brand m-0 px-4" href="http://localhost:8080/ixercise/index.html">\n' +
-    '                <img src="./lib/img/IX-nobackground.png" alt="" width="91" height="60">\n' +
+    '                <img src="/ixercise/lib/img/IX-nobackground.png" alt="" width="91" height="60">\n' +
     '            </a>\n' +
     '            <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->\n' +
     '            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"\n' +

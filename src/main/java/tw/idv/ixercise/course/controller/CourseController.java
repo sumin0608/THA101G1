@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,16 @@ public class CourseController {
 		return core;
 	}
 
+	@DeleteMapping("/courseId/{courseId}")
+	public Core remove(@PathVariable("courseId") Integer courseId) {
+		final Core core = new Core();
+		core.setMessage("刪除成功");
+		core.setSuccessful(service.remove(courseId));
+		System.out.println("刪除成功");
+		return core;
+	}
+	
+	
 	@PutMapping
 	@ResponseBody
 	public Core edit(@RequestBody Course course) {
@@ -73,7 +84,7 @@ public class CourseController {
 
 	@GetMapping
 	public List<Course> findAll() {
-		System.out.println("成功查到!All");
+		System.out.println("成功到!findAll");
 		List<Course> courses = service.findall();
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
@@ -82,7 +93,7 @@ public class CourseController {
 
 	@GetMapping("/{city}")
 	public List<Course> findCity(@RequestParam("city") String city) {
-		System.out.println("成功查到!city");
+		System.out.println("成功到!findCity");
 		List<Course> courses = service.findCity(city);
 		courses.get(0).setSuccessful(true);
 		courses.get(0).setMessage("第一筆資料");
@@ -97,6 +108,16 @@ public class CourseController {
 		course.setMessage("第一筆資料");
 		return course;
 	}
+	
+	@GetMapping("/creator/{creator}")
+	public List<Course> findCreator(@PathVariable("creator") Integer creator) {
+		System.out.println("成功到!findCreator");
+		List<Course> courses = service.findCoursesByCreator(creator);
+		courses.get(0).setSuccessful(true);
+		courses.get(0).setMessage("第一筆資料");
+		return courses;
+	}
+	
 
 //	模糊查詢
 	@GetMapping("/fuzzySearch/{searchInput}")

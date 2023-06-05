@@ -97,4 +97,16 @@ public class CourseServiceImpl implements CourseService {
 		return searchCourse;
 	}
 
+	@Override
+	public List<Course> findCoursesByCreator(Integer creator) {
+		System.out.println("到Service層findCoursesByCreator"+creator);
+		List<Course> searchCourse = repository.findByCreator(creator);
+		if(!searchCourse.isEmpty()) {
+			System.out.println("此Creator查詢成功");
+		} else {
+			System.out.println("此Creator查詢無資料");
+		}
+		return searchCourse;
+	}
+
 }

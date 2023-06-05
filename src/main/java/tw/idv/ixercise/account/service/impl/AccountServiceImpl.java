@@ -4,20 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tw.idv.ixercise.account.dao.AccountRepository;
-import tw.idv.ixercise.account.entity.Account;
-import tw.idv.ixercise.account.entity.CourseAccount;
-import tw.idv.ixercise.account.entity.LessAccount;
+import tw.idv.ixercise.account.dao.CoachSkillRepository;
+import tw.idv.ixercise.account.entity.*;
 import tw.idv.ixercise.account.service.AccountService;
+import tw.idv.ixercise.core.Core;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository repo;
+
+    @Autowired
+    private CoachSkillRepository csrepo;
 
 
     // 新增===============================================================
@@ -30,12 +34,46 @@ public class AccountServiceImpl implements AccountService {
             account.setSuccessful(false);
             return account;
         }
+
         account.setAccountLevel(1);
         account.setAccountState(1);
+        account.setAccountVerify(genAuthCode());
+        account.setAccountReport(0);
+        account.setAccountCreatetime(new Timestamp(System.currentTimeMillis()));
+        account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
+        System.out.println(account);
+        System.out.println("==================");
         account = repo.save(account);
+        System.out.println(account);
         account.setMessage("註冊成功");
         account.setSuccessful(true);
         return account;
+    }
+
+    //產生驗證碼
+    public String genAuthCode() {
+        String x = new String();
+        while (true) {
+            int ran = (int) (Math.random() * 3);
+            switch (ran) {
+                case 0:
+                    int i1 = (int) (Math.random() * 10 + 48);
+                    x += (char) i1;
+                    break;
+                case 1:
+                    int i2 = (int) (Math.random() * 26 + 65);
+                    x += (char) i2;
+                    break;
+                case 2:
+                    int i3 = (int) (Math.random() * 26 + 97);
+                    x += (char) i3;
+                    break;
+            }
+            if (x.length() == 8) {
+                break;
+            }
+        }
+        return x;
     }
 
     // 查詢登入=============================================================
@@ -114,7 +152,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<LessAccount> findAllLessInfo() {
-        List<Account> acclist = repo.findAll();
+        List<Account> acclist = repo.findAllForUser();
         List<LessAccount> lAacc = new ArrayList<>();
         for (Account acc : acclist) {
             LessAccount la = new LessAccount(acc);
@@ -142,6 +180,34 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account findById(Integer AccountId) {
         return repo.findByAccountId(AccountId);
+    }
+
+    @Override
+    public Core modifyacc(Account account) {
+        Account acc = repo.findByAccountId(account.getAccountId());
+        acc.setAccountLevel(account.getAccountLevel());
+        acc.setAccountState(account.getAccountState());
+        repo.save(acc);
+        Core core = new Core();
+        core.setMessage("修改成功");
+        core.setSuccessful(true);
+        return core;
+    }
+
+    @Override
+    public PgAccount findForPg(Integer accountId) {
+        Account acc = repo.findByAccountId(accountId);
+        int level = acc.getAccountLevel();
+
+        if (level == 1) {
+            return new PgAccount(acc);
+        } else if (level == 2) {
+            List<CoachSkill> beforecheckli = csrepo.findAllByAccountId(accountId);
+            List<CoachSkill> csli = beforecheckli.stream().filter(coachSkill -> coachSkill.getSkillState() == 1).collect(Collectors.toList());
+            return new PgAccount(acc, csli);
+        } else {
+            return new PgAccount(false, "查詢錯誤");
+        }
     }
 
 }
