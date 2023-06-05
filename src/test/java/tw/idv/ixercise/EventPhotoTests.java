@@ -48,9 +48,10 @@ class EventPhotoTests {
 //        coursesByCreator.forEach(System.out::println);
 
         //getCalendar --> passed
-        List<Course> calendar = courseAttendeeService.getCalendar(5);
-        System.out.println(calendar);
-//        calendar.forEach(System.out::println);
+        List<Course> calendar = courseAttendeeService.getCalendar(4);
+        System.out.println("<<<<<<<<< unit test result >>>>>>>>>");
+        System.out.println(calendar.get(0).getMessage());
+        calendar.forEach(System.out::println);
 
         // get photo test --> passed
 //        Event photo = eventDao.getPhoto(204);

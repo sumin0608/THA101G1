@@ -1,0 +1,82 @@
+.wtbtn {
+    color: #B6B6B6;
+    /* background-color: #ffc107; */
+    background-color: #FFF;
+    padding: 0 10px;
+    border: 1px solid #A7A7A7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    height: 34px;
+    margin-bottom: 10px;
+
+}
+
+/* yellow preview button */
+.ylbtn {
+    color: #B6B6B6;
+    /* background-color: #ffc107; */
+    background-color: #FFF366;
+
+    border: 1px solid #A7A7A7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+
+}
+
+.applybtn {
+
+    /* background-color: #ffc107; */
+    padding: 0 10px;
+    border: 1px solid #A7A7A7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    height: 34px;
+    margin-bottom: 10px;
+}
+
+.btngp {
+    color: #B6B6B6;
+
+    background-color: #FFF;
+    padding: 1% 30px;
+    border: 1px solid #A7A7A7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    height: 34px;
+    margin-bottom: 15px;
+    margin-right: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.btngps {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.popupbtn {
+    color: #B6B6B6;
+    /* background-color: #ffc107; */
+    background-color: #F9F9F9;
+
+    border: 1px solid #A7A7A7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+
+textarea.event_participate {
+    /* max-height: 200px; */
+    max-height: 270px;
+    min-height: 200px;
+    background-color: #F3F3F3;
+
+}
+
+#popUpFormButtons button {
+    margin-bottom: 15px;
+}
+
+img {
+    object-fit: cover;
+}
