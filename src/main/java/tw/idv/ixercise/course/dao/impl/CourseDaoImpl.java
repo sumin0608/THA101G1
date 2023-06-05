@@ -48,7 +48,7 @@ public class CourseDaoImpl implements CourseDao {
 				.append("paidAdvertisingTime = :paidAdvertisingTime,")
 				.append("courseCreationDate = NOW() ").append("WHERE courseId = :courseId");
 		
-		Query query = session.createQuery(hql.toString());
+		Query <Integer> query = session.createQuery(hql.toString());
 		query.setParameter("eventName", course.getEventName())
 			.setParameter("expectedPrice", course.getExpectedPrice())
 			.setParameter("courseStartDate", course.getCourseStartDate())
@@ -63,8 +63,9 @@ public class CourseDaoImpl implements CourseDao {
 		query.setParameter("location", course.getLocation())
 			.setParameter("city", course.getCity())
 			.setParameter("district", course.getDistrict())
-			.setParameter("district", course.getDistrict())
 			.setParameter("detailedAddress", course.getDetailedAddress())
+			.setParameter("categoryId", course.getCategoryId())
+			
 			.setParameter("courseStatus", course.getCourseStatus())
 			.setParameter("paidAdvertising", course.getPaidAdvertising())
 			.setParameter("paidAdvertisingTime", course.getPaidAdvertisingTime())

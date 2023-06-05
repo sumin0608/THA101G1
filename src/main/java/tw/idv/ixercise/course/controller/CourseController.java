@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,16 @@ public class CourseController {
 		return core;
 	}
 
+	@DeleteMapping("/courseId/{courseId}")
+	public Core remove(@PathVariable("courseId") Integer courseId) {
+		final Core core = new Core();
+		core.setMessage("刪除成功");
+		core.setSuccessful(service.remove(courseId));
+		System.out.println("刪除成功");
+		return core;
+	}
+	
+	
 	@PutMapping
 	@ResponseBody
 	public Core edit(@RequestBody Course course) {
