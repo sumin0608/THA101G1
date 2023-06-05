@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 
-import tw.idv.ixercise.course.entity.CourseAttendee;
+import tw.idv.ixercise.course.entity.*;
 
 public interface CourseAttendeeService {
 
@@ -27,5 +27,7 @@ public interface CourseAttendeeService {
 	List<CourseAttendee> getAttendeesByAccountId(Integer accountId);
 
 	List<CourseAttendee> getAttendeesByCourseId(Integer courseId);
+
+	List<Course> getCalendar(Integer accountId);
 
 }

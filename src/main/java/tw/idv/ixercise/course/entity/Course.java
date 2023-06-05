@@ -3,24 +3,17 @@ package tw.idv.ixercise.course.entity;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.*;
 import tw.idv.ixercise.core.Core;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 @Setter
 @Getter
 @AllArgsConstructor
-
+@ToString
 @Entity
 @Table(name = "course")
 public class Course extends Core {
@@ -58,6 +51,9 @@ public class Course extends Core {
 	@Column(insertable = false)
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp paidAdvertisingTime;
+
+	@Transient
+	private String statusString;
 
 	public Course() {
 	}

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.ixercise.core.Core;
-import tw.idv.ixercise.course.entity.CourseAttendee;
+import tw.idv.ixercise.course.entity.*;
 import tw.idv.ixercise.course.service.CourseAttendeeService;
 
 @RestController
@@ -131,5 +131,13 @@ public class CourseAttendeeController {
 		ca.get(0).setSuccessful(true);
 		ca.get(0).setMessage("第一筆資料");
 		return ca;
+	}
+
+	@GetMapping("calander/{accountId}")
+	public List<Course> getCalendar(@PathVariable Integer accountId) {
+		List<Course> calendarList = service.getCalendar(accountId);
+		System.out.println("getCalendar>>>>>>");
+		System.out.println(calendarList);
+		return calendarList;
 	}
 }
