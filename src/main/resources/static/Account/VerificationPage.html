@@ -234,7 +234,7 @@
 
                         <li>
                             <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                 src="https://picsum.photos/200/200/?random=10">
+                                 src="">
                         </li>
                         <li>
                             <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -329,7 +329,7 @@
                                 <div class="row">
                                     <div class="col-8">
                                         <input id="accemail" type="text" class="form-control"
-                                               placeholder="" value="" disabled>
+                                               placeholder="" value="">
                                     </div>
                                     <div class="col-4">
                                         <button id="btnver" type="button" class="btn btn-primary">送出驗證碼</button>
@@ -404,22 +404,53 @@
     const btnver = document.querySelector("#btnver");
     const accvertypein = document.querySelector("#accvertypein");
     const btnsend = document.querySelector("#btnsend");
+    const msg = document.querySelector("#msg")
 
     accemail.value = sessionStorage.getItem("accountEmail");
-    btnver.addEventListener("click",sendver);
+    btnver.addEventListener("click", sendver);
+    btnsend.addEventListener("click", send);
 
-    function sendver(){
-      fetch('',{
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-              accountEmail:accemail.value
-          }),
-      })
-        .then(resp => resp.json())
-          .then(body => {
-              console.log(body);
-          });
+    function sendver() {
+        fetch('Verify', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                accountEmail: accemail.value
+            }),
+        })
+            .then(resp => resp.json())
+            .then(body => {
+                const {successful, message} = body;
+                if (successful) {
+                    msg.className = 'text-success';
+                } else {
+                    msg.className = 'error';
+                }
+                msg.textContent = message;
+
+            });
+    }
+
+    function send() {
+        fetch('InputVerify', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                accountEmail: accemail.value,
+                accountVerify: accvertypein.value
+            }),
+        })
+            .then(resp => resp.json())
+            .then(body => {
+                const {successful, message} = body;
+                if (successful) {
+                    msg.className = 'text-success';
+                } else {
+                    msg.className = 'error';
+                }
+                msg.textContent = message;
+                location = getContextPath() + "/Account/Login.html";
+            });
     }
 
 

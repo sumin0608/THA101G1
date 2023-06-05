@@ -327,13 +327,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="accountPassword" class="form-label">密碼</label>
-                                <input type="text" id="accountPassword" class="form-control" placeholder="">
+                                <input type="password" id="accountPassword" class="form-control" placeholder="">
                             </div>
 
                             <button id="btn1" type="button" class="btn btn-primary">送出</button>
                         </fieldset>
                         <div id="errMsg" class="error"></div>
-                        <a href="">忘記密碼?</a>
+                        <a id="forgetpassword" href="">忘記密碼?</a>
                     </form>
                 </div>
             </div>
@@ -391,6 +391,12 @@
     const phone = document.querySelector("#accountPhone");
     const password = document.querySelector("#accountPassword");
     const errMsg = document.querySelector("#errMsg");
+    const forgetps = document.querySelector("#forgetpassword");
+    // ====================================
+    forgetps.href = getContextPath() + '/Account/ForgetPassword.html';
+
+
+    // ===================================
     document.getElementById("btn1").addEventListener("click", function () {
         fetch("Login", {
             method: 'POST',

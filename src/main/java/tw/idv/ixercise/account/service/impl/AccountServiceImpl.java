@@ -3,15 +3,21 @@ package tw.idv.ixercise.account.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tw.idv.ixercise.account.controller.MailController;
 import tw.idv.ixercise.account.dao.AccountRepository;
 import tw.idv.ixercise.account.dao.CoachSkillRepository;
 import tw.idv.ixercise.account.entity.*;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 @Service
@@ -175,7 +181,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
-//    後台用
+//    後台用=======================================================================
 
     @Override
     public Account findById(Integer AccountId) {
@@ -213,5 +219,135 @@ public class AccountServiceImpl implements AccountService {
             return new PgAccount(false, "查詢錯誤");
         }
     }
+
+    //    寄Email========================================================
+    @Override
+    @Transactional
+    public Core VerifyEmail(String accountEmail) {
+        Account account = repo.findByAccountEmail(accountEmail);
+        boolean s = sendVerifymail(account.getAccountEmail(), account.getAccountNickname(), account.getAccountVerify());
+
+        Core core;
+        if (s) {
+            core = new Core(s, "寄送成功");
+        } else {
+            core = new Core(false, "寄送失敗");
+        }
+        return core;
+    }
+
+    @Override
+    public Core InputVerify(Account account) {
+        Account acc = repo.findByAccountEmail(account.getAccountEmail());
+        if (Objects.equals(acc.getAccountVerify(), account.getAccountVerify())) {
+            acc.setAccountVerify(genAuthCode());
+            repo.save(acc);
+            return new Core(true, "驗證成功");
+        } else {
+            return new Core(false, "驗證失敗");
+        }
+    }
+
+    public boolean sendVerifymail(String accountEmail, String accountNickname, String accountVerify) {
+
+        String to = accountEmail;
+
+        String subject = "驗證碼通知";
+
+        String ch_name = accountNickname;
+        String passRandom = accountVerify;
+        String messageText = "Hello! " + ch_name + " 此為您的驗證碼: " + passRandom + "\n" + " 請回到頁面上輸入";
+
+
+        return sendMail(to, subject, messageText);
+
+
+    }
+
+    public boolean sendForgetPassword(String accountEmail, String accountNickname, String accountPassword) {
+
+        String to = accountEmail;
+
+        String subject = "密碼通知";
+
+        String ch_name = accountNickname;
+        String passRandom = accountPassword;
+        String messageText = "Hello! " + ch_name + " 臨時密碼為: " + passRandom + "\n" + "請登入後修改密碼";
+
+
+        return sendMail(to, subject, messageText);
+
+
+    }
+
+    public boolean sendMail(String to, String subject, String messageText) {
+
+        try {
+            // 設定使用SSL連線至 Gmail smtp Server
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
+
+            // ●設定 gmail 的帳號 & 密碼 (將藉由你的Gmail來傳送Email)
+            // ●1) 登入你的Gmail的:
+            // ●2) 點選【管理你的 Google 帳戶】
+            // ●3) 點選左側的【安全性】
+
+            // ●4) 完成【兩步驟驗證】的所有要求如下:
+            //     ●4-1) (請自行依照步驟要求操作之.....)
+
+            // ●5) 完成【應用程式密碼】的所有要求如下:
+            //     ●5-1) 下拉式選單【選取應用程式】--> 選取【郵件】
+            //     ●5-2) 下拉式選單【選取裝置】--> 選取【Windows 電腦】
+            //     ●5-3) 最後按【產生】密碼
+            final String myGmail = "bullhead01@gmail.com";
+            final String myGmail_password = "smzmwjfrudswaujq";
+            Session session = Session.getInstance(props, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(myGmail, myGmail_password);
+                }
+            });
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(myGmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+
+            //設定信中的主旨
+            message.setSubject(subject);
+            //設定信中的內容
+            message.setText(messageText);
+
+            Transport.send(message);
+            return true;
+        } catch (MessagingException e) {
+
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    @Transactional
+    public Core forgetPassword(Account account) {
+        Account oAcc = repo.findByAccountEmail(account.getAccountEmail());
+        Account acc = repo.findByAccountEmail(account.getAccountEmail());
+        if (acc == null) {
+            return new Core(false, "查無此信箱");
+        }
+        acc.setAccountPassword(acc.getAccountVerify());
+        boolean s = sendForgetPassword(acc.getAccountEmail(), acc.getAccountNickname(), acc.getAccountPassword());
+        if(s){
+            acc.setAccountVerify(genAuthCode());
+            repo.save(acc);
+        }else{
+            repo.save(oAcc);
+            return new Core(false,"無法寄出，請洽管理員");
+        }
+        return new Core(true, "臨時密碼已寄出，請至信箱確認");
+    }
+
 
 }

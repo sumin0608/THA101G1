@@ -14,7 +14,7 @@ public interface AccountRepository extends JpaRepository<Account,Integer>{
     Account findByAccountId(Integer accountId);
     Account findByAccountPhone(String accountPhone);
 
-    String findAccountVerifyByAccountEmail(String accountEmail);
+    Account findByAccountEmail(String accountEmail);
 
     @Query(
             value = "select * from ACCOUNT where accountPhone = :accountPhone AND accountPassword = :accountPassword",

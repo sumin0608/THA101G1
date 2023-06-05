@@ -33,4 +33,10 @@ public interface AccountService {
 
     PgAccount findForPg(Integer accountId);
 
+    Core VerifyEmail(String accountEmail);
+
+    Core InputVerify(Account account);
+
+    Core forgetPassword(Account account);
+
 }
