@@ -2,8 +2,9 @@ package tw.idv.ixercise.shopbackstage.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.core.Core;
 import tw.idv.ixercise.shopbackstage.entity.Product;
+import tw.idv.ixercise.shopbackstage.service.ProductManagementService;
 import tw.idv.ixercise.shopbackstage.service.ProductService;
 
 import java.util.List;
@@ -15,16 +16,17 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    @Autowired
+    private ProductManagementService managementService;
+
     @GetMapping("Manage")
     public List<Product> manage() {
-
         return service.findAll();
     }
-    @GetMapping({"Manage/{id}"})
+
+    @GetMapping("Manage/{id}")
     public Product findProductByIdFullInfo(@PathVariable Integer id) {
-
         Product pd = service.findById(id);
-
 
         if (pd == null) {
             Product pdNotFind = new Product();
@@ -33,38 +35,40 @@ public class ProductController {
             return pdNotFind;
         } else {
             pd.setSuccessful(true);
-
             return pd;
         }
     }
 
-//    @DeleteMapping("{accountId}")
-//    public Core remove(@PathVariable Integer accountId) {
-//        final Core core = new Core();
-//        if (accountId == null) {
-//            core.setMessage("無會員Id");
-//            core.setSuccessful(false);
-//        } else {
-//            core.setSuccessful(service.remove(accountId));
-//        }
-//        return core;
-//    }
-//
-//    @PutMapping
-//    public Core save(@RequestBody Account account) {
-//        final Core core = new Core();
-//        if (account == null) {
-//            core.setMessage("無會員資訊");
-//            core.setSuccessful(false);
-//        } else {
-////           如何判斷是否修改成功??
-//            service.save(account);
-//            core.setMessage("修改成功");
-//            core.setSuccessful(true);
-//        }
-//        return core;
-//    }
+    @DeleteMapping("Manage/{id}")
+    public Core remove(@PathVariable Integer id) {
+        Core core = new Core();
+        if (id == null) {
+            core.setMessage("無商品Id");
+            core.setSuccessful(false);
+        } else {
+            boolean success = managementService.removeProduct(id);
+            if (success) {
+                core.setMessage("刪除成功");
+                core.setSuccessful(true);
+            } else {
+                core.setMessage("刪除失敗");
+                core.setSuccessful(false);
+            }
+        }
+        return core;
+    }
 
+    @PutMapping("Manage")
+    public Core save(@RequestBody Product product) {
+        Core core = new Core();
+        if (product == null) {
+            core.setMessage("無商品資訊");
+            core.setSuccessful(false);
+        } else {
+            managementService.saveProduct(product);
+            core.setMessage("修改成功");
+            core.setSuccessful(true);
+        }
+        return core;
+    }
 }
-
-
