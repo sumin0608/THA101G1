@@ -6,9 +6,9 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.ixercise.course.dao.*;
-import tw.idv.ixercise.course.dao.impl.*;
 import tw.idv.ixercise.course.entity.*;
 import tw.idv.ixercise.course.service.CourseAttendeeService;
 
@@ -63,27 +63,31 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		return savedAttendee != null;
 	}
 
+	@Transactional
 	@Override
 	public void remove(CourseAttendee courseAttendee) {
 		System.out.println("成功到remove(CourseAttendee)>");
 		repository.delete(courseAttendee);
 	}
 
+	@Transactional
 	@Override
 	public boolean updateStatusById(Integer attendId, Integer status) {
-		System.out.println("成功到updateStatusById>"+"attendId:"+attendId+"status:"+status);
+		System.out.println("成功到updateStatusById>"+"attendId:"+attendId+" status:"+status);
 		return repository.updateCourseAttendeeStatus(attendId, status)>0;
 	}
 
+	@Transactional
 	@Override
 	public boolean updateCourseAttendeeReason(Integer attendId, String reason) {
-		System.out.println("成功到updateeAttendeeReason>"+"attendId:"+attendId+"reason:"+reason);
+		System.out.println("成功到updateeAttendeeReason>"+"attendId:"+attendId+" reason:"+reason);
 		return repository.updateCourseAttendeeReason(attendId, reason)>0;
 	}
 
+	@Transactional
 	@Override
 	public boolean updateCourseAttendeeCommentStatus(Integer attendId, Integer commentStatus) {
-		System.out.println("成功到updateCourseAttendeeCommentStatus>"+"attendId:"+attendId+"commentStatus:"+commentStatus);
+		System.out.println("成功到updateCourseAttendeeCommentStatus>"+"attendId:"+attendId+" commentStatus:"+commentStatus);
 		return repository.updateCourseAttendeeCommentStatus(attendId, commentStatus)>0;
 	}
 
@@ -118,6 +122,12 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 	}
 
 	@Override
+	public CourseAttendee getAttendeesByAttendId(Integer attendId) {
+		System.out.println("成功到findByAttendId>>" + attendId);
+		return repository.findByAttendId(attendId);
+	}
+	
+	@Override
 	public List<Course> getCalendar(Integer accountId) {
 		List<CourseAttendee> byAccountId = repository.findByAccountId(accountId);
 		System.out.println(byAccountId);
@@ -137,5 +147,6 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		byIdIn.forEach(System.out::println);
 		return byIdIn;
 	}
+
 
 }

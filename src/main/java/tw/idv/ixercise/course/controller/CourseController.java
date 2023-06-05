@@ -76,9 +76,26 @@ public class CourseController {
 			core.setSuccessful(false);
 		} else {
 			core.setMessage("修改成功");
-			core.setSuccessful(service.edit(course));
+			core.setSuccessful(true);
+//			service.edit(course);
+			service.updateCourse(course.getCourseId(), course.getEventName(),
+		            course.getExpectedPrice(), course.getCourseStartDate(), course.getCourseStartTime(),
+		            course.getCourseDuration(), course.getRegistrationDeadline(), course.getMaximumCapacity(),
+		            course.getDescription(), course.getPhoto(), course.getLocation(), course.getCity(),
+		            course.getDistrict(), course.getDetailedAddress(), course.getCategoryId(),
+		            course.getCourseStatus(), course.getPaidAdvertising(), course.getPaidAdvertisingTime());
 		}
 		System.out.println("修改成功");
+		return core;
+	}
+	
+	@PutMapping("/course123")
+	public Core edit2( @RequestParam("courseId")Integer courseId, @RequestParam("eventName")String eventName, @RequestParam("expectedPrice")Integer expectedPrice) {
+		final Core core = new Core();
+		core.setMessage("edit2成功");
+		core.setSuccessful(true);
+		service.updateCourseEventName(courseId, eventName, expectedPrice);
+		System.out.println("edit2成功");
 		return core;
 	}
 

@@ -1,7 +1,11 @@
 package tw.idv.ixercise.course.service.impl;
 
-import java.text.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +26,9 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	CourseDao dao;
 
+	@PersistenceContext
+    private EntityManager entityManager;
+	
 	private static final Map<Integer, String> statusMap;
 
 	static {
@@ -46,11 +53,13 @@ public class CourseServiceImpl implements CourseService {
 		return dao.insertCourse(course) > 0;
 	}
 
+	@Transactional
 	@Override
 	public boolean remove(Integer courseId) {
 		return dao.deleteByCourseId(courseId) > 0;
 	}
-
+	
+	@Transactional
 	@Override
 	public boolean edit(Course course) {
 		return dao.upateByCourseId(course) > 0;
@@ -131,5 +140,28 @@ public class CourseServiceImpl implements CourseService {
 		}
 		return searchCourse;
 	}
+
+	
+	@Override
+	@Transactional
+	public void updateCourse(Integer courseId, String eventName, Integer expectedPrice, Date courseStartDate,
+			Timestamp courseStartTime, String courseDuration, Timestamp registrationDeadline, Integer maximumCapacity,
+			String description, String photo, String location, String city, String district, String detailedAddress,
+			String categoryId, Integer courseStatus, Integer paidAdvertising, Timestamp paidAdvertisingTime) {
+		
+		repository.updateCourse(courseId, eventName, expectedPrice, courseStartDate, courseStartTime,
+                courseDuration, registrationDeadline, maximumCapacity, description, photo, location,
+                city, district, detailedAddress, categoryId, courseStatus, paidAdvertising, paidAdvertisingTime);
+		
+		entityManager.flush();
+	}
+
+	@Override
+	public void updateCourseEventName(Integer courseId, String eventName, Integer expectedPrice) {
+		repository.updateCourseEventName(courseId, eventName, expectedPrice);
+		
+	}
+	
+	
 
 }

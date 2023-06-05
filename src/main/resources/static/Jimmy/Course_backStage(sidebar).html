@@ -458,7 +458,7 @@
                     Launch static backdrop modal
                 </button> -->
 
-                <!-- Modal -->
+                <!-- Modal 創建表單-->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
@@ -503,9 +503,13 @@
                                                 <div></div>
                                                 <br>
                                                 <div class="row">
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-6">
                                                         <label for="" class="form-label">creator</label>
                                                         <div id="creator">會員accountId</div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <label for="" class="form-label">courseId</label>
+                                                        <div id="courseId">courseId</div>
                                                     </div>
                                                     <br>
                                                     <!-- First row -->
@@ -971,12 +975,17 @@
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">審核參加者</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">審核參加者&nbsp;&nbsp;</h5>
+                                <div id="staticBackdropattendId" style="display: none;"></div>
+                                &nbsp;課程名稱: <div id="staticBackdropPassEventName"></div>
+                                &nbsp;報名時間: <div id="staticBackdropPassTime"></div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
+                            參加原因:
                             <div class="modal-body">
-                                審核參加者~123
+                                <div class="form-control event_participate" id="staticBackdropPassText"
+                                    name="description"></div>
                             </div> <!--"modal-body" -->
                             <div class="modal-footer">
                                 <button id="modalClose" type="button" class="btn btn-secondary"
@@ -988,7 +997,30 @@
                     </div>
                 </div><!-- Modal -->
 
-
+                <!-- Modal 審核區使用(已經審核完成)staticPassCheck-->
+                <div class="modal fade" id="staticBackdropPass1" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">審核參加者(已審核)&nbsp;</h5>
+                                &nbsp;課程名稱: <div id="staticBackdropPassEventName1"></div>
+                                &nbsp;報名時間: <div id="staticBackdropPassTime1"></div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            參加原因
+                            <div class="modal-body">
+                                <div class="form-control event_participate" id="staticBackdropPassText1"
+                                    name="description"></div>
+                            </div> <!--"modal-body" -->
+                            <div class="modal-footer">
+                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Modal -->
 
 
 
@@ -1043,6 +1075,48 @@
         document.getElementById("sidebarCollapse").addEventListener("click", function () {
             document.getElementById("sidebar").classList.toggle("active");
         });
+        const sportTypeMap = {
+            1: '足球',
+            2: '籃球',
+            3: '網球',
+            4: '排球',
+            5: '橄欖球',
+            6: '棒球',
+            7: '曲棍球',
+            8: '高爾夫球',
+            9: '羽毛球',
+            10: '乒乓球',
+            11: '壁球',
+            12: '手球',
+            13: '保齡球',
+            14: '有氧操課',
+            15: '重訓課',
+            16: '瑜伽課',
+            17: '舞蹈課',
+            18: '腹肌課',
+            19: '動感單車課',
+            20: '跳繩課',
+            21: '拳擊課',
+            22: '跳舞操課',
+            23: '瑜伽拉伸課',
+            24: '其他'
+        };
+
+        const courseTypeMap = {
+            1: '可參加',
+            2: '暫停報名',
+            3: '截止報名',
+            4: '滿團',
+            5: '強制下架'
+        };
+
+        const auditTypeMap = {
+            1: '待審核',
+            2: '通過',
+            3: '未通過',
+            4: '退出'
+        };
+
     </script>
 
     <script>
@@ -1089,7 +1163,7 @@
                                                 <td>${filteredData0[i].courseStartTime}</td>
                                                 <td>${filteredData0[i].city}</td>
                                                 <td>${filteredData0[i].categoryId}</td>
-                                                <td>${filteredData0[i].courseStatus}</td>
+                                                <td>${courseTypeMap[filteredData0[i].courseStatus]}</td>
                                                 <td>${filteredData0[i].paidAdvertising}</td>
                                                 <td><button type="button" class="btn btn-primary alterbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">修改</button></td>
                                                 <td><button class="btn btn-danger deletebtn">刪除</button></td>
@@ -1104,7 +1178,7 @@
                 });
             });
 
-            // alterbtn   <<<目前未開放修改照片>>>
+            // alterbtn  
             $('#aaa').on('click', '.alterbtn', function (e) {
                 // e.preventDefault;
                 console.log("alterbtn");
@@ -1119,9 +1193,10 @@
                     data: { courseId: courseId },
                     success: function (resp) {
                         // console.log("resp>>" + resp);
+
+                        $("#courseId").text(resp.courseId);
                         $("#photo").attr("src", "/ixercise/lib/img/course/" + resp.photo);
                         $("#photoname").text(resp.photo);
-
                         $("#creator").text(resp.creator);
                         $("#event_name").val(resp.eventName);
                         $("#price").val(resp.expectedPrice);
@@ -1190,17 +1265,18 @@
                 $("#photo-dropzone").val("");
             });
 
-            // modalSend
+            // modalSend <<<目前未開放修改照片>>>
             $('#modalSend').on('click', function (e) {
                 // e.preventDefault;
                 // console.log("modalSend");
-                var courseId = $(this).closest('tr').find('td:eq(1)').text();
+                let courseId = $("#courseId").text();
                 let photodropzone = $("#photo-dropzone");
 
-                let photo = $("#photoname").text();
+                let oldphotoname = $("#photoname").text();
                 let creator = $("#creator").text();
                 let eventName = $("#event_name").val();
                 let expectedPrice = $("#price").val();
+
                 let courseStartDate = $("#eventDate").val();
                 let courseStartTime = courseStartDate + " " + $("#startTime").val() + ":00";
                 let courseDuration = $("#courseDuration").val();
@@ -1293,14 +1369,16 @@
                 // 检查是否有有填欄位--結束
 
                 // 步驟二、存入資料庫
+                console.log("courseId:", courseId);
+                console.log("eventName:", eventName);
+                console.log("expectedPrice:", expectedPrice);
                 $.ajax({
                     url: "/ixercise/course",
                     type: "PUT",
                     contentType: 'application/json',
                     data: JSON.stringify({
                         courseId: courseId,
-
-                        photo: photo,
+                        photo: oldphotoname,
                         eventName: eventName,
                         expectedPrice: expectedPrice,
                         courseStartDate: courseStartDate,
@@ -1322,6 +1400,7 @@
                         console.log("resp>>" + resp);
                         // $('#myform').reset(); //清空表單
                         swal("Warning!", resp.message, "warning");
+                        $('#staticBackdrop').modal('hide');
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
@@ -1541,7 +1620,7 @@
                 $('#th4').text("reason");
                 $('#th5').text("status");
                 $('#th6').text("paymentStatus");
-                $('#th7').text("");
+                $('#th7').text("attendId");
                 let appendaudit1head1 = '';
                 let appendaudit1head2 = '';
                 appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
@@ -1579,10 +1658,11 @@
                                                 <td>${filteredDataAudit1[i].courseId}</td>
                                                 <td>${filteredDataAudit1[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
-                                                <td>${filteredDataAudit1[i].status}</td>
+                                                <td>${auditTypeMap[filteredDataAudit1[i].status]}</td>
                                                 <td>${filteredDataAudit1[i].paymentStatus}</td>
-                                                <td></td>
-                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                                <td>${filteredDataAudit1[i].attendId}</td>
+                                                <td><button class="btn btn-primary Passcheckbtn" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdropPass1">查看</button></td>
                                             </tr>
                                             `;
                         }
@@ -1617,10 +1697,11 @@
                                                 <td>${filteredDataAudit1[i].courseId}</td>
                                                 <td>${filteredDataAudit1[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
-                                                <td>${filteredDataAudit1[i].status}</td>
+                                                <td>${auditTypeMap[filteredDataAudit1[i].status]}</td>
                                                 <td>${filteredDataAudit1[i].paymentStatus}</td>
-                                                <td></td>
-                                                <td><button class="btn btn-primary checkbtn">查看</button></td>
+                                                <td>${filteredDataAudit1[i].attendId}</td>
+                                                <td><button class="btn btn-primary Passcheckbtn" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdropPass1">查看</button></td>
                                             </tr>
                                             `;
                         }
@@ -1632,6 +1713,27 @@
                 });
             });
 
+            // Passcheckbtn，配合modal已審核區
+            $('#aaa').on('click', '.Passcheckbtn', function (e) {
+                // e.preventDefault;
+                console.log("配合modal已審核區");
+                // swal("Check!", "還沒寫", "success");
+                var attendId = $(this).closest('tr').find('td:eq(7)').text();
+                $.ajax({
+                    url: "/ixercise/courseAttendee/attendId/" + attendId,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("resp>>" + data);
+                        $('#staticBackdropPassEventName1').text(data.courseId);
+                        $('#staticBackdropPassTime1').text(data.attendTime);
+                        $('#staticBackdropPassText1').text(data.reason);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
 
             //二、未審核 
             $('#audit2').on('click', function (e) {
@@ -1643,7 +1745,7 @@
                 $('#th4').text("reason");
                 $('#th5').text("status");
                 $('#th6').text("paymentStatus");
-                $('#th7').text("");
+                $('#th7').text("attendId");
                 let appendaudit1head1 = '';
                 let appendaudit1head2 = '';
                 appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
@@ -1671,9 +1773,9 @@
                                                 <td>${filteredDataAudit2[i].courseId}</td>
                                                 <td>${filteredDataAudit2[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
-                                                <td>${filteredDataAudit2[i].status}</td>
+                                                <td>${auditTypeMap[filteredDataAudit2[i].status]}</td>
                                                 <td>${filteredDataAudit2[i].paymentStatus}</td>
-                                                <td></td>
+                                                <td>${filteredDataAudit2[i].attendId}</td>
                                                 <td><button class="btn btn-primary checkpassbtn" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdropPass">查看</button></td>
                                             </tr>
@@ -1687,20 +1789,82 @@
                 });
             });
 
-            // checkpassbtn，配合modal審核
+
+            // checkpassbtn，配合modal未審核區
             $('#aaa').on('click', '.checkpassbtn', function (e) {
                 // e.preventDefault;
                 console.log("checkpassbtn");
-                swal("Check!", "還沒寫", "success");
+                // swal("Check!", "還沒寫", "success");
+
+                var attendId = $(this).closest('tr').find('td:eq(7)').text();
+                $.ajax({
+                    url: "/ixercise/courseAttendee/attendId/" + attendId,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("resp>>" + data);
+                        $('#staticBackdropPassEventName').text(data.courseId);
+                        $('#staticBackdropPassTime').text(data.attendTime);
+                        $('#staticBackdropattendId').text(data.attendId);
+                        $('#staticBackdropPassText').text(data.reason);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+
             });
 
             // modalSend
             $('#modalPass').on('click', function (e) {
                 // e.preventDefault;
                 console.log("modalPass");
-                swal("Warning!", "還沒寫!", "warning");
+                // swal("Warning!", "還沒寫!", "warning");
+                var attendId = $('#staticBackdropattendId').text();
+                console.log("attendId: " + attendId);
+                $.ajax({
+                    url: "/ixercise/courseAttendee/updateStatusById",
+                    type: "PUT",
+                    data: {
+                        attendId: attendId,
+                        status: 2
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("resp>>" + data);
+                        swal("Warning!", data.message, "warning");
+                        $('#staticBackdropPass').modal('hide');
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
             });
 
+            $('#modalUnPass').on('click', function (e) {
+                // e.preventDefault();
+                console.log("modalUnPass");
+                // swal("Warning!", "還沒寫!", "warning");
+                var attendId = $('#staticBackdropattendId').text();
+                console.log("attendId: " + attendId);
+                $.ajax({
+                    url: "/ixercise/courseAttendee/updateStatusById",
+                    type: "PUT",
+                    data: {
+                        attendId: attendId,
+                        status: 3
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("resp>>" + data);
+                        swal("Warning!", data.message, "warning");
+                        $('#staticBackdropPass').modal('hide');
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
 
 
             // <<學員退出活動申請>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1709,11 +1873,87 @@
                 console.log("leave1>>" + this);
                 swal("Warning!", "還沒寫!", "warning");
             });
+
             //未審核 
             $('#leave2').on('click', function (e) {
                 console.log("leave2>>" + this);
-                swal("Warning!", "還沒寫!", "warning");
+                // swal("Warning!", "還沒寫!", "warning");
+                // 表頭
+                $('#th1').text("accountId");
+                $('#th2').text("courseId");
+                $('#th3').text("attendTime");
+                $('#th4').text("reason");
+                $('#th5').text("status");
+                $('#th6').text("paymentStatus");
+                $('#th7').text("attendId");
+                let appendaudit1head1 = '';
+                let appendaudit1head2 = '';
+                appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
+                appendaudit1head2 += `<select class="form-select" aria-label="Default select example">
+                                        <option selected value="1">未審核</option>
+                                    </select>`;
+                $('#selecthead1').empty().append(appendaudit1head1);
+                $('#selecthead2').empty().append(appendaudit1head2);
+
+                $.ajax({
+                    url: "/ixercise/courseAttendee/status/" + 4,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (filteredDataAudit2) {
+                        console.log("未審核resp>>" + filteredDataAudit2);
+                        let appendaudit2 = '';
+                        for (let i in filteredDataAudit2) {
+                            let reason = filteredDataAudit2[i].reason;
+                            let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
+                            //要分段接會員了accountId
+                            appendaudit2 += `
+                                            <tr>
+                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                                <td>${filteredDataAudit2[i].accountId}</td>
+                                                <td>${filteredDataAudit2[i].courseId}</td>
+                                                <td>${filteredDataAudit2[i].attendTime}</td>
+                                                <td>${truncatedReason}</td>
+                                                <td>${auditTypeMap[filteredDataAudit2[i].status]}</td>
+                                                <td>${filteredDataAudit2[i].paymentStatus}</td>
+                                                <td>${filteredDataAudit2[i].attendId}</td>
+                                                <td><button class="btn btn-primary leaveAgreebtn">同意</button></td>
+                                            </tr>
+                                            `;
+                        }
+                        $('#aaa').empty().append(appendaudit2);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
             });
+
+            // leaveAgreebtn
+            $('.leaveAgreebtn').on('click', function (e) {
+                // e.preventDefault();
+                console.log("leaveAgreebtn");
+                // swal("Warning!", "還沒寫!", "warning");
+                // var attendId = $('#staticBackdropattendId').text();
+                var attendId = $(this).closest('tr').find('td:eq(7)').text();
+                console.log("attendId: " + attendId);
+                $.ajax({
+                    url: "/ixercise/courseAttendee/updateStatusById",
+                    type: "PUT",
+                    data: {
+                        attendId: attendId,
+                        status: 5
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("resp>>" + data);
+                        swal("Warning!", data.message, "warning");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+
 
 
         });

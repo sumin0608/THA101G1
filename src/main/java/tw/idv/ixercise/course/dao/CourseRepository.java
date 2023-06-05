@@ -32,7 +32,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	            "c.location = :location, c.city = :city, c.district = :district, " +
 	            "c.detailedAddress = :detailedAddress, c.categoryId = :categoryId, " +
 	            "c.courseStatus = :courseStatus, c.paidAdvertising = :paidAdvertising, " +
-	            "c.paidAdvertisingTime = :paidAdvertisingTime " +
+	            "c.paidAdvertisingTime = :paidAdvertisingTime, c.courseCreationDate = NOW() " +
 	            "WHERE c.courseId = :courseId")
 	    void updateCourse(@Param("courseId") Integer courseId, @Param("eventName") String eventName,
 	                      @Param("expectedPrice") Integer expectedPrice, @Param("courseStartDate") Date courseStartDate,
@@ -45,6 +45,12 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	                      @Param("courseStatus") Integer courseStatus, @Param("paidAdvertising") Integer paidAdvertising,
 	                      @Param("paidAdvertisingTime") Timestamp paidAdvertisingTime);
 
+	    @Transactional
+		@Modifying
+	    @Query("UPDATE Course c SET c.eventName = :eventName, c.expectedPrice = :expectedPrice WHERE c.courseId = :courseId")
+	    void updateCourseEventName(@Param("courseId") Integer courseId, @Param("eventName") String eventName,@Param("expectedPrice") Integer expectedPrice);
 
+	    
+	    
 	List<Course> findByCourseIdIn(List<Integer> ids);
 }

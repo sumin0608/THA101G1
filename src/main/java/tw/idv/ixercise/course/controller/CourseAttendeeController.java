@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.ixercise.core.Core;
@@ -48,7 +49,7 @@ public class CourseAttendeeController {
 	}
 
 	@PutMapping("/updateStatusById")
-	public Core updateStatusById(Integer attendId, Integer status) {
+	public Core updateStatusById(@RequestParam("attendId") Integer attendId,@RequestParam("status") Integer status) {
 		final Core core = new Core();
 		core.setSuccessful(service.updateStatusById(attendId, status));
 		System.out.println("現在是updateStatusById~");
@@ -132,9 +133,19 @@ public class CourseAttendeeController {
 		ca.get(0).setMessage("第一筆資料");
 		return ca;
 	}
+	
+	@GetMapping("/attendId/{attendId}")
+	public CourseAttendee getAttendeesByAttendId(@PathVariable("attendId") Integer attendId) {
+		System.out.println("成功到!getAttendeesByAttendId");
+		CourseAttendee ca = service.getAttendeesByAttendId(attendId);
+		ca.setSuccessful(true);
+		ca.setMessage("第一筆資料");
+		return ca;
+	}
+	
 
 	@GetMapping("calander/{accountId}")
-	public List<Course> getCalendar(@PathVariable Integer accountId) {
+	public List<Course> getCalendar(@PathVariable("accountId") Integer accountId) {
 		List<Course> calendarList = service.getCalendar(accountId);
 		System.out.println("getCalendar>>>>>>");
 		System.out.println(calendarList);

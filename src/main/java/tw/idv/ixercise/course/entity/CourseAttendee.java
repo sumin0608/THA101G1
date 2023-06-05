@@ -20,7 +20,7 @@ import tw.idv.ixercise.core.Core;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "course_attendees")
+@Table(name = "CourseAttendee")
 public class CourseAttendee extends Core {
 	private static final long serialVersionUID = 1L;
 	
