@@ -56,11 +56,17 @@ public class BuyButtonServlet extends HttpServlet {
 			
 			
 		request.setCharacterEncoding("UTF-8");	
-		String name = request.getParameter("input");
+		String buyButtonname = request.getParameter("input");
 		String productName = request.getParameter("productName");
 		product p = new implProduct().query(productName);
 		HttpSession session = request.getSession();
-		if("購買".equals(name)) {
+		
+		String name=(String)session.getAttribute("buyProductName");
+		
+		System.out.println(name);
+		
+		
+		if("購買".equals(buyButtonname)) {
 			if(p!=null) {
 				session.setAttribute("P", p);
 				response.sendRedirect("description.jsp");
@@ -68,9 +74,9 @@ public class BuyButtonServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.println("<h1>無此商品</h1>");
 			}
-		}else if("加入購物車".equals(name)) {
-			
-			response.sendRedirect("Cart.jsp");
+		}else if("加入購物車".equals(buyButtonname)) {
+			session.setAttribute("P", p);
+			response.sendRedirect("addDefaultListServlet");
 		}
 		
 		

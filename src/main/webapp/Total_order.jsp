@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="tw.idv.ixercise.store.dao.*,tw.idv.ixercise.store.entity.*"
-    import = "java.util.*"
+    import="java.util.*"
+    import="java.text.*"
     %>
-    
-<% 
+
+<%
+
 product p = (product)session.getAttribute("P");
-List<product> l =(List)session.getAttribute("L");
+Date dNow = new Date();
+SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+List<product> L =(List)session.getAttribute("L");
+List<porder> l = (List)session.getAttribute("L");
 %>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -24,9 +29,7 @@ List<product> l =(List)session.getAttribute("L");
     <link rel="icon" type="image/x-icon" href="./lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
-.aaa{
-text-align:center !important;
-}
+
     </style>
 </head>
 
@@ -251,7 +254,7 @@ text-align:center !important;
                         <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
                         <i class="bi-cart-fill me-1"></i>
                         購物車
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=l.size() %></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=L.size() %></span>
                     </button>
                 </form>
             </div>
@@ -302,34 +305,115 @@ text-align:center !important;
     <div class="container main-content">
         <!-- 請在這裡作業 -->
         <div class="row">
-            <div class="col-12 aaa">
+            <div class="col-12">
 		         <div style="border-color:gray;border-width:1px;border-style:solid;padding:5px; margin-top:20px;">
+		           <form action="ShopListServlet" method="post">
 				     <table class="table">
 						  <thead>
 						    <tr>
-						      <img class="card-img-top" src="lib/img/<%=p.getPicture()%>" alt="..." />
-						      <th>商品說明</th> 
+						      <th scope="col">訂購資訊</th> 
 						      <td></td>
-						      
-						      
+						      <td></td>
+						      <td></td>
 						    </tr>
 						  </thead>
 						  <tbody>
 						  	<tr>
-						        <td><h5 style="color:red;"><%=p.getProductName() %></h5></td>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">商品圖片</font></th>
+						      <% for(porder o:l){
+						  				product pr=new implProduct().query(o.getProductName());
+						  				
+						  				out.println(
+						  					"<td align='center' width='200' height='200'><img src= lib/img/"+pr.getPicture()+">"
+						  			
+						  		   );				  			
+						  				
+						  		}%>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						  	<tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單編號</font></th>
+						      <td><input name="porderNo" class="form-control" type="search" placeholder="訂單編號..." aria-label="Search" maxlength="5" style="width:200px"></td>
+						      <td></td>
+						      <td></td>
 						    </tr>
 						    <tr>
-						        <td><p><%=p.getComment() %></p></td>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">產品編號</font></th>
+						      <td><%for(porder o:l){
+						  				product pr=new implProduct().query(o.getProductName());
+						  				
+						  				out.println(pr.getProductNo()+"  ");
+						  			} %></td>
+						      <td></td>
+						      <td></td>
 						    </tr>
 						    <tr>
-							    <td align="center">
-							    	<form action="DescriptionServlet" method="post">
-							      		<input name="input" class="btn btn-outline-dark d-flex text-nowrap" type="submit" value="確定購買">
-			                        </form>
-	                    		</td>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂購商品</font></th>
+						      <td><%for(porder o:l){
+						    	  	product pr=new implProduct().query(o.getProductName());
+						    	  	out.println(pr.getProductName()+"  ");
+						      		} %></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">購買數量</font></th>
+						      <td>
+						             <%for(porder o:l){
+						    	  	product pr=new implProduct().query(o.getProductName());
+						    	  	out.println(pr.getProductName()+"<select name='pamount' class='form-select form-select-sm' aria-label='Default select example' style='width:60px'> <option value='1'>1</option> <option value='2'>2</option> <option value='3'>3</option> </select>" + "  ");
+						      		} %>         
+                             </td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂購人姓名</font></th>
+						      <td><input name="name" class="form-control" type="search" placeholder="輸入姓名..." aria-label="Search" maxlength="5" style="width:200px"></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單時間</font></th>
+						      <!--<td><input name="pdate" type="date" id="start" name="trip-start" value="2023-12-22" min="2018-01-01" max="2023-12-31"></td>-->
+						      <td><%out.print(ft.format(dNow));%></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">電話號碼</font></th>
+						      <td>
+						      	<input name="phone" class="form-control" type="search" placeholder="輸入電話號碼..." aria-label="Search" maxlength="10" style="width:300px"> 
+						      	<p>可輸入手機號碼或市話。</p>
+						      </td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">住家地址</font></th>
+						      <td><input name="address" class="form-control" type="search" placeholder="輸入住家地址..." aria-label="Search" maxlength="45"></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">電子信箱</font></th>
+						      <td><input name="email" class="form-control" type="email" placeholder="輸入電子信箱..." aria-label="Search" maxlength="50"></td>
+						      <td></td>
+						      <td></td>
+						    </tr>
+						    <tr>
+						      <td></td>
+						      <td align="center">
+						      			
+			                                <input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="提交" style="margin-bottom:20px">
+			                        	
+                    		  </td>
+						      <td></td>
 						    </tr>
 						  </tbody>
 					</table>
+					</form>
 				</div>
 				<div class="blank" style="margin-bottom:20px;"></div>								
             </div>

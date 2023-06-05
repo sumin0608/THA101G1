@@ -4,8 +4,9 @@
     import = "java.util.*"
     %>
  <% 
- List<porder> L =(List)session.getAttribute("L");
- 
+ //List<product> l =(List)session.getAttribute("L");
+ List<porder> l =(List)session.getAttribute("L");
+
  %>   
  
 <!DOCTYPE html>
@@ -87,14 +88,18 @@
                                             </select>
                                         </div>
                                         <div class="col-3">
+                                           
+                                           <form action="SwitchPageServlet" method="post">
                                             <select class="form-select form-select-sm"
                                                 aria-label="Default select example"
-                                                onchange="javascript:location.href=this.value;">
+                                               name="sportyStyle">
                                                 <option selected>運動類型 </option>
-                                                <option value="pageV5.jsp">籃球</option>
-                                                <option value="baseball01.jsp">棒球</option>
-                                                <option value="soccer01.jsp">足球</option>
+                                                <option value="進入籃球商城">籃球</option>
+                                                <option value="進入棒球商城">棒球</option>
+                                                <option value="進入足球商城">足球</option>
                                             </select>
+                                            <input type="submit" value="ok">
+                                            </form>
                                         </div>
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
@@ -244,17 +249,23 @@
                         </ul>
                     </li>
                 </ul>
+                
                 <!-- 購物車的按鈕============================================================= -->
-                <form class="d-flex">
+                <form action="CartServlet" method="post" class="d-flex">
+                	<input name="productName" type="hidden" value="購物車">
+        		</form>
+        		<form action="CartServlet" method="post" class="d-flex">
+                	<input name="productName" type="hidden" value="購物車">
                     <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-                        <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
+                    
+                        
                         <i class="bi-cart-fill me-1"></i>
                         購物車
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=L.size() %></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=l.size() %></span>
                     </button>
-                </form>
-            </div>
-        </div>
+                 </form>
+          		</div>
+        	</div>
     </nav>
     <!-- 導覽列結束=================================================================================== -->
 
@@ -339,6 +350,7 @@
 			                                	<form action="BuyButtonServlet" method="post">
 			                                		<input name="productName" type="hidden" value="斯伯丁 籃球">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
+			                                	
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                	</form>
 			                                </div>

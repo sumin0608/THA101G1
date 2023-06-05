@@ -9,6 +9,7 @@ public class porder {
 	private String name;
 	private String productName;
 	private Integer pamount;
+
 	private Date pdate;
 	private String phone;
 	private String email;
@@ -27,6 +28,7 @@ public class porder {
 		this.name = name;
 		this.productName = productName;
 		this.pamount = pamount;
+		
 		this.phone = phone;
 		this.email = email;
 		this.pdate = new Date();

@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="tw.idv.ixercise.store.dao.*,tw.idv.ixercise.store.entity.*"
-    import="java.sql.Date"
+    import="java.util.*"
+    import="java.text.*"
     %>
 
 <%
-//String Productname=request.getParameter("productName");
-//product p = new implProduct().query(Productname);
+//List<porder> l = (List)session.getAttribute("L");
 product p = (product)session.getAttribute("P");
-//Date d = new Date()
+Date dNow = new Date();
+SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+List<product> L =(List)session.getAttribute("L");
 //以上是訂單用到
 //String Productname = request.getParameter("productName");
 //product s = new implProduct().query(Productname);
@@ -255,7 +257,7 @@ product p = (product)session.getAttribute("P");
                         <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
                         <i class="bi-cart-fill me-1"></i>
                         購物車
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=L.size() %></span>
                     </button>
                 </form>
             </div>
@@ -308,7 +310,7 @@ product p = (product)session.getAttribute("P");
         <div class="row">
             <div class="col-12">
 		         <div style="border-color:gray;border-width:1px;border-style:solid;padding:5px; margin-top:20px;">
-		           <form action="insertPorderServlet" method="post">
+		           <form action="ShopListServlet" method="post">
 				     <table class="table">
 						  <thead>
 						    <tr>
@@ -364,7 +366,8 @@ product p = (product)session.getAttribute("P");
 						    </tr>
 						    <tr>
 						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單時間</font></th>
-						      <td><input name="pdate" type="date" id="start" name="trip-start" value="2023-12-22" min="2018-01-01" max="2023-12-31"></td>
+						      <!--<td><input name="pdate" type="date" id="start" name="trip-start" value="2023-12-22" min="2018-01-01" max="2023-12-31"></td>-->
+						      <td><%out.print(ft.format(dNow));%></td>
 						      <td></td>
 						      <td></td>
 						    </tr>

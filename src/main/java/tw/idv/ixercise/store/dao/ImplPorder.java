@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import tw.idv.ixercise.store.entity.porder;
 
 public class ImplPorder implements PorderDao{
-	
+	public static void main(String[] args) {
+		porder pr = new porder("1","aaa","bbb","ccc",555,"ddd","eee");
+		new ImplPorder().insert(pr);
+		
+	}
 	
 
 	@Override
@@ -29,7 +33,7 @@ public class ImplPorder implements PorderDao{
 			pstmt.setDate(6, d);
 			pstmt.setString(7, p.getPhone());
 			pstmt.setString(8, p.getEmail());
-			
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -465,13 +465,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/clothes03.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball07.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">湖人James球衣</h5>
+		                                    <h5 class="fw-bolder">黑色籃球金邊</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -489,7 +489,7 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                 	<form action="BuyButtonServlet" method="post">
-		                                 			<input name="productName" type="hidden" value="湖人James球衣">
+		                                 			<input name="productName" type="hidden" value="黑色籃球金邊">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                </form>
@@ -504,13 +504,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/clothes04.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball08.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">Wade熱火球衣</h5>
+		                                    <h5 class="fw-bolder">黑白色籃球</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -528,7 +528,7 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-		                                			<input name="productName" type="hidden" value="Wade熱火球衣">
+		                                			<input name="productName" type="hidden" value="黑白色籃球">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                </form>
@@ -543,13 +543,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/Nike01.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball09.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">限量球鞋</h5>
+		                                    <h5 class="fw-bolder">黃黑色籃球</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -567,7 +567,7 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-		                                			<input name="productName" type="hidden" value="限量球鞋">
+		                                			<input name="productName" type="hidden" value="黃黑色籃球">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                </form>
@@ -582,13 +582,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/Nike02.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball10.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">黑色球鞋</h5>
+		                                    <h5 class="fw-bolder">室內室外兩用籃球</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -606,7 +606,7 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 		                                <div class="text-center">
 		                                	<form action="BuyButtonServlet" method="post">
-		                                			<input name="productName" type="hidden" value="黑色球鞋">
+		                                			<input name="productName" type="hidden" value="室內室外兩用籃球">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                </form>
@@ -621,13 +621,13 @@
 		                                Sale
 		                            </div>
 		                            <!-- Product image-->
-		                            <img class="card-img-top" src="lib/img/basketball02.jpg"
+		                            <img class="card-img-top" src="lib/img/basketball11.jpg"
 		                                alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4" style="color: red;">
 		                                <div class="text-center">
 		                                    <!-- Product name-->
-		                                    <h5 class="fw-bolder">標準版 籃球</h5>
+		                                    <h5 class="fw-bolder">藍色籃球</h5>
 		                                    <!-- Product reviews-->
 		                                    <div class="d-flex justify-content-center small text-warning mb-2">
 		                                        <div class="bi-star-fill"></div>
@@ -645,7 +645,7 @@
 		                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
 		                                <div class="text-center">
 		                                		<form action="BuyButtonServlet" method="post">
-		                                			<input name="productName" type="hidden" value="標準版 籃球">
+		                                			<input name="productName" type="hidden" value="藍色籃球">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="購買" style="margin-bottom:20px">
 			                                		<input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="加入購物車" style="margin-bottom:20px">
 			                                	</form>

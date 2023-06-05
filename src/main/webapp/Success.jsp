@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="tw.idv.ixercise.store.dao.*,tw.idv.ixercise.store.entity.*"
+    import = "tw.idv.ixercise.store.entity.*"
     import = "java.util.*"
     %>
     
+    
 <% 
-product p = (product)session.getAttribute("P");
-List<product> l =(List)session.getAttribute("L");
-%>
+ //List<product> l =(List)session.getAttribute("L");
+ List<porder> l =(List)session.getAttribute("L");
+
+ %>  
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
@@ -17,16 +19,14 @@ List<product> l =(List)session.getAttribute("L");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ixercise</title>
     <!-- 引入bootstarp跟共用css內容========================================= -->
-    <link href="./lib/css/styles.css" rel="stylesheet" />
-    <link href="./lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="lib/css/styles.css" rel="stylesheet" />
+    <link href="lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
-    <link rel="icon" type="image/x-icon" href="./lib/img/IX-nobackground.png" />
+    <link rel="icon" type="image/x-icon" href="lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
-.aaa{
-text-align:center !important;
-}
+
     </style>
 </head>
 
@@ -39,7 +39,7 @@ text-align:center !important;
 
             <!-- 商標===================================================================== -->
             <a class="navbar-brand m-0 px-4" href="#!">
-                <img src="./lib/img/IX-nobackground.png" alt="" width="91" height="60">
+                <img src="lib/img/IX-nobackground.png" alt="" width="91" height="60">
             </a>
             <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -89,13 +89,18 @@ text-align:center !important;
                                             </select>
                                         </div>
                                         <div class="col-3">
+                                           
+                                           <form action="SwitchPageServlet" method="post">
                                             <select class="form-select form-select-sm"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example"
+                                               name="sportyStyle">
                                                 <option selected>運動類型 </option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="進入籃球商城">籃球</option>
+                                                <option value="進入棒球商城">棒球</option>
+                                                <option value="進入足球商城">足球</option>
                                             </select>
+                                            <input type="submit" value="ok">
+                                            </form>
                                         </div>
                                         <div class="col-3">
                                             <select class="form-select form-select-sm"
@@ -245,23 +250,29 @@ text-align:center !important;
                         </ul>
                     </li>
                 </ul>
+                
                 <!-- 購物車的按鈕============================================================= -->
-                <form class="d-flex">
+                <form action="CartServlet" method="post" class="d-flex">
+                	<input name="productName" type="hidden" value="購物車">
+        		</form>
+        		<form action="CartServlet" method="post" class="d-flex">
+                	<input name="productName" type="hidden" value="購物車">
                     <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-                        <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
+                    
+                        
                         <i class="bi-cart-fill me-1"></i>
                         購物車
                         <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=l.size() %></span>
                     </button>
-                </form>
-            </div>
-        </div>
+                 </form>
+          		</div>
+        	</div>
     </nav>
     <!-- 導覽列結束=================================================================================== -->
 
     <!-- 這裡大概是放廣告 -->
     <!-- Header====================================================================================== -->
-    <!-- <header>
+     <header>
         <div class="container-fluid p-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -295,38 +306,38 @@ text-align:center !important;
                 </button>
             </div>
         </div>
-    </header> -->
+    </header> 
     <!-- Header====================================================================================== -->
 
-    <!-- main-content -->
+   <!-- main-content -->
     <div class="container main-content">
         <!-- 請在這裡作業 -->
         <div class="row">
-            <div class="col-12 aaa">
+            <div class="col-12">
 		         <div style="border-color:gray;border-width:1px;border-style:solid;padding:5px; margin-top:20px;">
 				     <table class="table">
 						  <thead>
 						    <tr>
-						      <img class="card-img-top" src="lib/img/<%=p.getPicture()%>" alt="..." />
-						      <th>商品說明</th> 
+						      <th scope="col">訂購資訊</th> 
 						      <td></td>
-						      
-						      
+						      <td></td>
+						      <td></td>
 						    </tr>
 						  </thead>
 						  <tbody>
 						  	<tr>
-						        <td><h5 style="color:red;"><%=p.getProductName() %></h5></td>
+						      <td align="center"><h1>購買成功</h1></td>
+						      <td></td>
+						      <td></td>
 						    </tr>
 						    <tr>
-						        <td><p><%=p.getComment() %></p></td>
-						    </tr>
-						    <tr>
-							    <td align="center">
-							    	<form action="DescriptionServlet" method="post">
-							      		<input name="input" class="btn btn-outline-dark d-flex text-nowrap" type="submit" value="確定購買">
-			                        </form>
-	                    		</td>
+						      <td></td>
+						      <td align="center">
+						      		<form action="makeListServlet" method="post">
+						      		    <input name="input" class="btn btn-outline-dark mt-auto" type="submit" value="回到商城" style="margin-bottom:20px">
+						      		</form>
+                    		  </td>
+						      <td></td>
 						    </tr>
 						  </tbody>
 					</table>
@@ -336,7 +347,8 @@ text-align:center !important;
         </div>
     </div>
 			
-    
+							
+							
 
 
     <!-- 以下footer================================================================================= -->
@@ -367,9 +379,9 @@ text-align:center !important;
     </footer>
     <!-- footer結束================================================================================= -->
     <!-- 引入所需函式庫 -->
-    <script src="./lib/js/bootstrap.bundle.min.js"></script>
-    <script src="./lib/js/popper.min.js"></script>
-    <script src="./lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="lib/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/js/popper.min.js"></script>
+    <script src="lib/vendors/jquery/jquery-3.6.4.min.js"></script>
     <!-- ================================================================= -->
 
     <script>

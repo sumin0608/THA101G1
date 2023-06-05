@@ -6,19 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ShopButtonServlet
+ * Servlet implementation class SwitchPageServlet
  */
-@WebServlet("/ShopButtonServlet")
-public class ShopButtonServlet extends HttpServlet {
+@WebServlet("/SwitchPageServlet")
+public class SwitchPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopButtonServlet() {
+    public SwitchPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +30,13 @@ public class ShopButtonServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("input");
-		HttpSession session=request.getSession();
-		session.setAttribute("buyProductName", name);
-		
-		
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String name=request.getParameter("sportyStyle");
+		System.out.println(name);
 		if("進入籃球商城".equals(name)) {
 			response.sendRedirect("pageV5.jsp");
 		}else if("進入棒球商城".equals(name)) {

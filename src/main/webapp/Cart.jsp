@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import = "java.util.*"
     import = "tw.idv.ixercise.store.entity.*"
@@ -7,8 +7,11 @@
     
     
 <%
-List<porder> l=(List)session.getAttribute("L");
+List<porder> l = (List)session.getAttribute("L");
 
+ //product p = (product)session.getAttribute("P");
+ 
+ //List<product> pr = (List)session.getAttribute("L");
 %>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -251,7 +254,7 @@ List<porder> l=(List)session.getAttribute("L");
                         <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
                         <i class="bi-cart-fill me-1"></i>
                         購物車
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=l.size() %></span>
                     </button>
                 </form>
             </div>
@@ -315,26 +318,50 @@ List<porder> l=(List)session.getAttribute("L");
 						  </thead>
 						  <tbody>
 						  	<%
-						  		for(porder o:l)
-						  		{	
-						  			String productName=o.getProductName();
-						  			product p=new implProduct().query(productName);
-						  			String img=p.getPicture();
-						  			out.println("<tr><td>"+o.getId()+
-						  					"<td>"+img
-						  					
-						  					);
+						  		
 						  			
 						  			
-						  		}
-						  	
+						  			
+						  			
+						  			/*for(porder p:l)
+						  			{
+						  				product pr=new implProduct().query(p.getProductName());
+						  				//String img=pr.getPicture();
+						  				out.println(
+							  					"<tr><td align='center' width='200' height='200'><img src= lib/img/"+pr.getPicture()+">"+
+							  					"<td>"+p.getProductName()
+							  					
+							  					
+							  					);
+						  			}*/
+						  			int sum=0;//計算總價
+						  			for(porder o:l){
+						  				product pr=new implProduct().query(o.getProductName());
+						  				sum=sum+(o.getPamount()*pr.getPrice());
+						  				
+						  				out.println(
+						  					"<tr><td align='center' width='200' height='200'><img src= lib/img/"+pr.getPicture()+">"+
+						  					"<td>"+o.getProductName()+
+						  					"<td>"+pr.getComment()+
+						  					"<td>"+o.getPamount()
+						  			
+						  		   );				  			
+						  				
+						  			}
+						  			out.println("<tr><td colspan=4 align=center>總共"+sum+"元");	
+						  			//out.println(l);
+						  			
+						  			/*out.println(
+						  					"<tr><td align='center' width='200' height='200'><img src= lib/img/"+p.getPicture()+">"+
+						  					"<td>"+p.getProductName());*/
 						  	%>
 						    <tr>
 						      <td></td>
 						      <td align="center">
-						      	<button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-		                        提交
-                    			</button>
+						      <form action="Total_order.jsp" method="post">
+						      	<input class="btn btn-outline-dark d-flex text-nowrap" type="submit" value="統一結帳">
+		                        </form>
+                    			
                     		  </td>
 						      <td></td>
 						    </tr>

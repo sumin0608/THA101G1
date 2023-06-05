@@ -1,7 +1,7 @@
 package tw.idv.ixercise.store.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,37 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import tw.idv.ixercise.store.dao.ImplPorder;
-import tw.idv.ixercise.store.entity.porder;
 import tw.idv.ixercise.store.entity.product;
 
-/**
- * Servlet implementation class insertPorderServlet
- */
-@WebServlet("/insertPorderServlet")
-public class insertPorderServlet extends HttpServlet {
+@WebServlet("/makeListServlet")
+public class makeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public insertPorderServlet() {
+    
+    public makeListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<product> pr = new ArrayList();
 		HttpSession session=request.getSession();
-		List<porder> l=(List)session.getAttribute("L");
+		session.setAttribute("L",pr);
 		
-		
-		for(porder p:l)
-		{
-			new ImplPorder().insert(p);
-		}
-		
-		response.sendRedirect("Success.jsp");
+		response.sendRedirect("shop.jsp");
 	}
 
 }
