@@ -40,7 +40,7 @@ public class ProductController {
     }
 
     @DeleteMapping("Manage/{id}")
-    public Core remove(@PathVariable Integer id) {
+    public Core remove(@PathVariable("id") Integer id) {
         Core core = new Core();
         if (id == null) {
             core.setMessage("無商品Id");
