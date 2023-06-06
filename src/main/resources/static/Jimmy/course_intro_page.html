@@ -17,7 +17,7 @@
     <!-- jquery -->
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
 
-    //danny 修改
+<!--    danny 修改-->
     <link href="../Woo/popupsuccess.css" rel="stylesheet">
     <link href="../Woo/css/css_for_course_intro.css" rel="stylesheet">
     <!-- =========================================== -->
@@ -436,14 +436,14 @@
             </div>
             <!-- ================================================== -->
             <div class="applyResult container " id="applyResult">
-                <img alt="" id="check_cross_mark" src="image/200-tick.png">
+                <img alt="" id="check_cross_mark" src="image/404-wrong.png">
 
 
                 <div class="row justify-content-center">
                     <div class="col-sm-8">
                         <div class="d-grid gap-2 " id="">
-                            <h2>報名已送出</h2>
-                            <p>請等待主揪審核....</p>
+                            <h2>報名失敗</h2>
+                            <p>報名失敗</p>
                             <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認
                             </button>
                         </div>
@@ -746,20 +746,35 @@
 
         function openApplyPopup() {
             //ajax
-            // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
-            var urlParams = new URLSearchParams(window.location.search);
-            var courseId = urlParams.get('courseId');
-            const accountId = sessionStorage.getItem("accountId");
+            // <!-- 課程介紹區 -->
+            抓Course_homePage.html傳來的courseId
+            let urlParams = new URLSearchParams(window.location.search);
+            let courseId = urlParams.get('courseId');
+            let accountId = sessionStorage.getItem("accountId");
+            const reason = $("#attendReason").val();
             // Data to be sent in the request body
+            if (courseId == null) {
+                alert("為選取到課程");
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
+            if (accountId == null) {
+                alert("請先登入");
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
+            if (reason == "") {
+                alert("請輸入報名理由>.<")
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
             const course = {
                 courseId: courseId,
                 accountId: accountId,
+                reason: reason
             };
-            console.log($("#attendReason").val());
-            course.reason = $("#attendReason").val();
-            console.log(course)
 
-// Send POST request using fetch
+            // Send POST request using fetch
             fetch("../courseAttendee", {
                 method: "POST",
                 headers: {
@@ -783,6 +798,9 @@
                 })
                 .catch(error => {
                     console.error("Error:", error);
+                    // $("#applyResult p").text(error);
+                    applyResult.classList.add("open-applyResult");
+                    return;
                     // Handle any errors
                 });
 
