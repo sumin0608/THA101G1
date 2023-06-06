@@ -23,11 +23,13 @@ public class ProductController {
     @Autowired
     private ProductManagementService managementService;
 
+    //詳細資訊
     @GetMapping("Manage")
     public List<Product> manage() {
         return service.findAll();
     }
 
+    //陳列商品
     @GetMapping("Manage/{id}")
     public Product findProductByIdFullInfo(@PathVariable Integer id) {
         Product pd = service.findById(id);
@@ -43,6 +45,7 @@ public class ProductController {
         }
     }
 
+    //刪除商品
     @DeleteMapping("Manage/{id}")
     public Core remove(@PathVariable("id") Integer id) {
         Core core = new Core();
@@ -62,16 +65,31 @@ public class ProductController {
         return core;
     }
 
+    //修改商品
     @PutMapping("Manage")
     public Core save(@RequestBody Product product) {
         Core core = new Core();
         if (product == null) {
-            core.setMessage("無商品資訊");
+            core.setMessage("无商品信息");
             core.setSuccessful(false);
         } else {
-            managementService.saveProduct(product);
-            core.setMessage("修改成功");
-            core.setSuccessful(true);
+            Product existingProduct = service.findById(product.getId());
+            if (existingProduct != null) {
+                // 保留原始图片和评论值
+                if (StringUtils.isEmpty(product.getPicture())) {
+                    product.setPicture(existingProduct.getPicture());
+                }
+                if (StringUtils.isEmpty(product.getComment())) {
+                    product.setComment(existingProduct.getComment());
+                }
+
+                managementService.saveProduct(product);
+                core.setMessage("修改成功");
+                core.setSuccessful(true);
+            } else {
+                core.setMessage("商品不存在");
+                core.setSuccessful(false);
+            }
         }
         return core;
     }
