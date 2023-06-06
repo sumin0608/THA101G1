@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("Account/Login")
+@RequestMapping("Account")
 public class LoginController {
 
     @Autowired
     private AccountService service;
 
-    @PostMapping
+    @PostMapping("Login")
     public Account login(HttpServletRequest req, @RequestBody Account account) {
 
         System.out.println("controller being req");
@@ -44,7 +44,7 @@ public class LoginController {
 
     }
 
-    @PostMapping("ForAd")
+    @PostMapping("LoginForAd")
     public Core loginForAdmin(HttpServletRequest req, @RequestBody Account account) {
 
 

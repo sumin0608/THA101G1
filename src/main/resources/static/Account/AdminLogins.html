@@ -382,15 +382,16 @@
       const ademail = document.getElementById("ademail");
       const adps = document.getElementById("adps");
       const btnsend = document.getElementById("btnsend");
+      const errMsg = document.getElementById("msg");
 
       btnsend.addEventListener("click",loginforad);
 
       function loginforad(){
-          fetch("", {
+          fetch("LoginForAd", {
               method: 'POST',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
-                  accountAccountEmail: ademail.value,
+                  accountEmail: ademail.value,
                   accountPassword: adps.value
               })
 

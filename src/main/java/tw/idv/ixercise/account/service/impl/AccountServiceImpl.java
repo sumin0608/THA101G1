@@ -131,6 +131,12 @@ public class AccountServiceImpl implements AccountService {
             account.setSuccessful(false);
             return account;
         }
+        if(account.getAccountState() == 0){
+            account = new Account();
+            account.setMessage("帳號已停權");
+            account.setSuccessful(false);
+            return account;
+        }
 
         account.setMessage("登入成功");
         account.setSuccessful(true);
@@ -156,6 +162,18 @@ public class AccountServiceImpl implements AccountService {
         if (account == null) {
             account = new Account();
             account.setMessage("帳號或密碼錯誤");
+            account.setSuccessful(false);
+            return account;
+        }
+        if(account.getAccountLevel() != 3){
+            account = new Account();
+            account.setMessage("登入錯誤");
+            account.setSuccessful(false);
+            return account;
+        }
+        if(account.getAccountState() == 0){
+            account = new Account();
+            account.setMessage("帳號已停權");
             account.setSuccessful(false);
             return account;
         }
