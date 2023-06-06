@@ -111,8 +111,7 @@ public class CourseAttendeeController {
 	public List<CourseAttendee> getStatus(@PathVariable("status") Integer status) {
 		System.out.println("成功查到!getStatus");
 		List<CourseAttendee> ca = service.getStatus(status);
-		ca.get(0).setSuccessful(true);
-		ca.get(0).setMessage("第一筆資料");
+		System.out.println(ca.get(0).getMessage());
 		return ca;
 	}
 

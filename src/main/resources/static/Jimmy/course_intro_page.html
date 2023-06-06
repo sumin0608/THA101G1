@@ -306,11 +306,13 @@
                     <div class="d-flex small text-dark mb-2">
                         <span id="city">台北市</span>&nbsp;
                         <span id="district">中山區</span>&nbsp;
-                        <a id="detailedAddress" href="#" style="color: black;">南京東路三段219號5樓</a>
+                        <a id="detailedAddress" href="https://www.google.com/maps/"
+                            style="color: black;">南京東路三段219號5樓</a>
                     </div>
                     <div class="d-flex small text-dark mb-2">
                         <!-- <span id="courseStartDate">日期</span> -->
-                        <span id="courseStartTime">&nbsp;時間</span>
+                        日期&nbsp;
+                        <span id="courseStartTime">時間</span>
                     </div>
                     <div class="d-flex small text-dark mb-2">
                         新台幣:$
@@ -319,7 +321,7 @@
                         <span id="courseDuration">課程時長</span>小時
                     </div>
                     <div class=" d-flex justify-content-end text-dark mb-2">
-                        教練名字: <span id="creator">教練名字</span>
+                        教練名字&nbsp;:<span id="creator">教練名字</span>
                     </div>
                     <div class="d-flex small text-dark mb-2">
                         報名人數上限:<span id="maximumCapacity">報名人數上限</span>
@@ -337,48 +339,40 @@
                     <button id="paymoney" class="btn btn-primary btn-lg" type="button">報名課程</button>
                 </div>
 
-
-
             </div>
             <!-- 側邊瀏覽紀錄區 預計最多顯示5筆-->
-            <aside class="col-3" style="border: solid green;">
+            <!-- <aside class="col-3" style="border: solid green;">
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
-                        <!-- 圖片 -->
                         <div class="col-md-4 a_photo">
                             <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
                         </div>
-                        <!-- 內容 -->
                         <div class="col-md-8">
                             <p class="card-tex my-0 a_eventName">瀏覽紀錄1</p>
                             <p class="card-text"><small class="text-muted a_city">新北市</small>
                             </p>
                         </div>
                     </div>
-                </div>
-                <!--瀏覽紀錄2-->
-                <div class="card mb-3" style="max-width: 450px;">
+                </div> -->
+            <!--瀏覽紀錄2-->
+            <!-- <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
-                        <!-- 圖片 -->
                         <div class="col-md-4" style="border: solid red;">
                             <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
                         </div>
-                        <!-- 內容 -->
                         <div class="col-md-8" style="border: solid red;">
                             <p class="card-tex my-0">瑜珈</p>
                             <p class="card-text"><small class="text-muted">台北市</small>
                             </p>
                         </div>
                     </div>
-                </div>
-                <!--瀏覽紀錄3-->
-                <div class="card mb-3" style="max-width: 450px;">
+                </div> -->
+            <!--瀏覽紀錄3-->
+            <!-- <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0 align-items-center">
-                        <!-- 圖片 -->
                         <div class="col-md-4" style="border: solid red;">
                             <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." class="img-fluid">
                         </div>
-                        <!-- 內容 -->
                         <div class="col-md-8" style="border: solid red;">
                             <p class="card-tex my-0">棒球</p>
                             <p class="card-text"><small class="text-muted">台北市</small>
@@ -386,7 +380,8 @@
                         </div>
                     </div>
                 </div>
-            </aside>
+            </aside> -->
+
 
             <!-- 下排課程推薦 -->
             <div class="row align-items-md-stretch"> <!-- style="border: solid green;" -->
@@ -417,7 +412,7 @@
     <br>
     <br>
     <!-- owl.carousel -->
-    <!-- 其他非同教練的課程 -->
+    <!-- 其他非同教練的課程推薦 -->
     <!-- <div class="owl-carousel owl-theme">
         <div class="item">
             <h4>1</h4>
@@ -457,9 +452,7 @@
         </div>
     </div> -->
     <br>
-    <!-- <div id="courseInfo">
-        紙上得來終覺淺，絕知此事要躬行。
-    </div> -->
+
     <!-- 以下footer================================================================================= -->
     <footer class="footer py-5 footer-color">
         <div class="container">
@@ -519,6 +512,7 @@
             });
         });
     </script> -->
+
     <script>
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
@@ -552,7 +546,7 @@
                     $("#district").text(response.district);
                     $("#detailedAddress").text(response.detailedAddress);
                     // $("#courseStartDate").text(response.courseStartDate);
-                    var courseStartTime = (response.courseStartTime).substring(0, 5);
+                    var courseStartTime = (response.courseStartTime).substring(0, 16);
                     $("#courseStartTime").text(courseStartTime);
                     $("#expectedPrice").text(response.expectedPrice);
                     $("#courseDuration").text(response.courseDuration);
@@ -590,7 +584,7 @@
                         $(".o_description").text(filteredData0[0].description);
                         var other_courseId = filteredData0[0].courseId;
                         console.log("其他課程(同個教練):", other_courseId);
-                        // btn其他課程(同個教練)
+                        // @@@@@@@@@btn其他課程(同個教練)@@@@@@@@@
                         $("#morecoursebtn").on("click", function (e) {
                             console.log("123");
                             e.preventDefault();
@@ -614,8 +608,8 @@
                             $("#trainerbtn").on("click", function (e) {
                                 console.log("456");
                                 e.preventDefault();
-                                // @@@@@@@@@怎麼去看別人頁面@@@@@@@@@@@@
-                                var url = '/ixercise/Account/PersonalPage.html';
+                                // @@@@@@@@@去看教練個人頁面@@@@@@@@@@@@
+                                var url = '/ixercise/Account/PersonalPage.html?accountId=' + creator;
                                 window.open(url, '_blank');
                             });
                         },
@@ -630,8 +624,11 @@
                 }
             });
 
+            // 2.教練介紹按鈕
+            $('.btn-outline-secondary').on('click', function (e) {
 
 
+            });
 
 
 

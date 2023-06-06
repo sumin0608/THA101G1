@@ -6,7 +6,7 @@ CREATE TABLE `course` (
   `maximumCapacity` int NOT NULL,`description` text NOT NULL,`photo` varchar(255) NOT NULL,
   `location` varchar(50) NOT NULL,`city` varchar(10) NOT NULL,`district` varchar(10) NOT NULL,
   `detailedAddress` varchar(100) NOT NULL,`categoryID` varchar(10) NOT NULL,`currentEnrolment` int DEFAULT '0',
-  `courseStatus` int DEFAULT '1' COMMENT '1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架' ,`paidAdvertising` int DEFAULT '0',`paidAdvertisingTime` timestamp NULL DEFAULT NULL,
+  `courseStatus` int DEFAULT '1' COMMENT '1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架' ,`paidAdvertising` int DEFAULT '0',`paidAdvertisingTime` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`courseID`)
 );
 

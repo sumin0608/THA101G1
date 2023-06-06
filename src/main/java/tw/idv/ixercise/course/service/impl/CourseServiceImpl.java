@@ -134,8 +134,14 @@ public class CourseServiceImpl implements CourseService {
 			//Consumer -> lambda expression (設定回傳的課程 狀態)
 			searchCourse.forEach(course -> course.setStatusString(statusMap.getOrDefault(course.getCourseStatus(), "無此課程狀態，請洽詢管理員")));
 			System.out.println("此Creator查詢成功");
+			searchCourse.get(0).setSuccessful(true);
+			searchCourse.get(0).setMessage("第一筆資料成功");
 		} else {
-			System.out.println("此Creator查詢無資料");
+			Course ca1 = new Course();
+			ca1.setSuccessful(false);
+			ca1.setMessage("沒有資料");
+			searchCourse.add(ca1);
+			System.out.println("此Creator查詢無創辦課程紀錄");
 			// set message -> 您無創辦課程紀錄
 		}
 		return searchCourse;

@@ -514,6 +514,7 @@
                                 <option value="21">拳擊課</option>
                                 <option value="22">跳舞操課</option>
                                 <option value="23">瑜伽拉伸課</option>
+                                <option value="24">其他</option>
                             </select>
                             <div class="invalid-feedback">
                                 必填!
@@ -710,7 +711,7 @@
                             <div class="col-sm-3">
                                 <label class="form-label">廣告時效</label>
                                 <input type="date" id="paidAdvertisingTime1" name="paidAdvertisingTime1"
-                                    placeholder="日期..." class="form-control" value="2024-05-08" required>
+                                    placeholder="日期..." class="form-control" value="">
                                 <div class="invalid-feedback">
                                     必填!
                                 </div>
@@ -718,7 +719,7 @@
                             <div class="col-sm-3">
                                 <label class="form-label">--</label>
                                 <input type="time" id="paidAdvertisingTime2" name="paidAdvertisingTime2"
-                                    placeholder="時間..." class="form-control" value="11:11" required>
+                                    placeholder="時間..." class="form-control" value="">
                                 <div class="invalid-feedback">
                                     必填!
                                 </div>
@@ -727,7 +728,7 @@
                         <br>
                         <!-- row eight -->
                         <!-- <div class="row"> -->
-                        <div class="form-check" style="border: solid #FFF366;">
+                        <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="gridCheck" required>
                             <label class="form-check-label" for="gridCheck">
                                 我已閱讀並同意免責聲明
@@ -850,7 +851,7 @@
                         console.log("resp>>" + resp);
                         let tableData = '';
                         for (let i = 0; i < resp.length; i++) {
-                            tableData += `<option selected disabled value="">${resp[i].name}</option>`;
+                            tableData += `<option selected value="">${resp[i].name}</option>`;
                         }
                         $("#district").empty().append(tableData);
                     },
@@ -881,12 +882,14 @@
             //     console.log("cityText: " + cityText);
             // });
 
+            // 送出表單
             $('#btn_submit').on('click', function (e) {
                 e.preventDefault();
                 let photodropzone = $("#photo-dropzone");
                 let creator = $("#creator").text();
                 let eventName = $("#event_name").val();
                 let expectedPrice = $("#price").val();
+                // console.log("expectedPrice>>" + expectedPrice);
                 let courseStartDate = $("#eventDate").val();
                 let courseStartTime = courseStartDate + " " + $("#startTime").val() + ":00";
                 let courseDuration = $("#courseDuration").val();
@@ -901,15 +904,22 @@
                 // let city = $("#city").val();
                 let city = $("#city option:selected").text();
 
-                let district = $("#district").val();
+                let district = $("#district option:selected").text();
+                console.log("district>>" + district);
                 let detailedAddress = $("#address").val();
                 let categoryId = $("#categoryId option:selected").text();
 
                 let courseStatus = $("#courseStatus").val();
                 let paidAdvertising = $("#paidAdvertising").val();
-                let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
-                let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
-                let paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
+                console.log("paidAdvertising代碼>>" + paidAdvertising);
+                let paidAdvertisingTime;
+                if (paidAdvertising == 0) {
+                    paidAdvertisingTime = "2040-01-01 00:00:00";
+                } else {
+                    let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
+                    let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
+                    paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
+                }
                 console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
                 // let paymentMethod = $("#paymentMethod").val();
 
@@ -979,7 +989,7 @@
                 // 检查是否有有填欄位--結束
 
                 let photo = file.name;
-                // console.log("photo>>" + photo);
+                console.log("photo>>" + photo);
                 // 步驟一、先存圖片
                 $.ajax({
                     url: "/ixercise/course/upload-photo",
@@ -989,10 +999,12 @@
                     contentType: false,
                     success: function (response) {
                         console.log(response);
+                        console.log("照片存成功");
                         // 步驟二、存入資料庫
                         $.ajax({
                             url: "/ixercise/course",
                             type: "POST",
+                            async: false,//非同步的（asynchronous），表示該請求是同步的
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 creator: creator,
@@ -1015,14 +1027,14 @@
                                 paidAdvertisingTime: paidAdvertisingTime
                             }),
                             success: function (resp) {
-                                console.log("resp>>" + resp);
-                                $('#myform').reset(); //清空表單
-                                // swal("Warning!", resp.message, "warning");
+                                // console.log("resp>>" + resp);
+                                swal("Warning!", resp.message, "warning");
                             },
                             error: function (xhr, status, error) {
                                 alert("Error: " + xhr.responseText);
                             }
                         });
+                        $('#myform').reset(); //清空表單
                     },// 步驟二、結束
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
