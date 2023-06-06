@@ -115,7 +115,7 @@ public class AccountServiceImpl implements AccountService {
         final String accountPassword = account.getAccountPassword();
 
         if (accountPhone == null) {
-            account.setMessage("帳號未輸入");
+            account.setMessage("電話未輸入");
             account.setSuccessful(false);
             return account;
         }
@@ -125,6 +125,34 @@ public class AccountServiceImpl implements AccountService {
             return account;
         }
         account = repo.findForLogin(accountPhone, accountPassword);
+        if (account == null) {
+            account = new Account();
+            account.setMessage("帳號或密碼錯誤");
+            account.setSuccessful(false);
+            return account;
+        }
+
+        account.setMessage("登入成功");
+        account.setSuccessful(true);
+        return account;
+    }
+
+    @Override
+    public Account loginForAd(Account account) {
+        final String accountEmail = account.getAccountEmail();
+        final String accountPassword = account.getAccountPassword();
+
+        if (accountEmail == null) {
+            account.setMessage("信箱未輸入");
+            account.setSuccessful(false);
+            return account;
+        }
+        if (accountPassword == null) {
+            account.setMessage("密碼未輸入");
+            account.setSuccessful(false);
+            return account;
+        }
+        account = repo.findForAdLogin(accountEmail, accountPassword);
         if (account == null) {
             account = new Account();
             account.setMessage("帳號或密碼錯誤");

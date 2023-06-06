@@ -20,31 +20,50 @@ public class LoginController {
     private AccountService service;
 
     @PostMapping
-    public Account login(HttpServletRequest req, @RequestBody Account account){
+    public Account login(HttpServletRequest req, @RequestBody Account account) {
 
         System.out.println("controller being req");
 
-        if(account.getAccountPhone() == null || account.getAccountPassword() == null){
+        if (account.getAccountPhone() == null || account.getAccountPassword() == null) {
             account.setMessage("無會員資料");
             account.setSuccessful(false);
             return account;
         }
 
         account = service.login(account);
-        if(account.isSuccessful()){
-            if(req.getSession(false) != null){
+        if (account.isSuccessful()) {
+            if (req.getSession(false) != null) {
                 req.changeSessionId();
             }
             final HttpSession session = req.getSession();
-            session.setAttribute("loggedin",true);
-            session.setAttribute("account",account);
+            session.setAttribute("loggedin", true);
+            session.setAttribute("account", account);
         }
 
-    return account;
+        return account;
 
     }
-    @PostMapping("BackStage")
-    public Core loginForAdmin(){
-        return null;
+
+    @PostMapping("ForAd")
+    public Core loginForAdmin(HttpServletRequest req, @RequestBody Account account) {
+
+
+        if (account.getAccountEmail() == null || account.getAccountPassword() == null) {
+            account.setMessage("無會員資料");
+            account.setSuccessful(false);
+            return account;
+        }
+
+        account = service.loginForAd(account);
+        if (account.isSuccessful()) {
+            if (req.getSession(false) != null) {
+                req.changeSessionId();
+            }
+            final HttpSession session = req.getSession();
+            session.setAttribute("loggedin", true);
+            session.setAttribute("account", account);
+        }
+
+        return account;
     }
 }

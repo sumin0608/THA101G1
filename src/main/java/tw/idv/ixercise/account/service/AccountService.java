@@ -10,6 +10,7 @@ public interface AccountService {
     Account signUp(Account account);
 
     Account login(Account account);
+    Account loginForAd(Account account);
 
     List<Account> findAll();
 
