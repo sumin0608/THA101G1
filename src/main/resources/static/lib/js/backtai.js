@@ -44,5 +44,35 @@ function getcreateObjURL (base64photo){
 function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
-
+// sidebar連結處理================================================================
+document.getElementById("accmanage").href = getContextPath() + "/Account/AccountManage.html"
+document.getElementById("admanage").href = getContextPath() + "/Account/AdminManage.html"
+document.getElementById("skmanage").href = getContextPath() + "/Account/SkillManage.html"
+// ================================================================================
+const sportTypeMap = {
+    1: '足球',
+    2: '籃球',
+    3: '網球',
+    4: '排球',
+    5: '橄欖球',
+    6: '棒球',
+    7: '曲棍球',
+    8: '高爾夫球',
+    9: '羽毛球',
+    10: '乒乓球',
+    11: '壁球',
+    12: '手球',
+    13: '保齡球',
+    14: '有氧操課',
+    15: '重訓課',
+    16: '瑜伽課',
+    17: '舞蹈課',
+    18: '腹肌課',
+    19: '動感單車課',
+    20: '跳繩課',
+    21: '拳擊課',
+    22: '跳舞操課',
+    23: '瑜伽拉伸課',
+    24: '其他'
+};
 

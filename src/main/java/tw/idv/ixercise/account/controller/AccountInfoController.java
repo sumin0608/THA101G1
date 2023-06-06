@@ -65,6 +65,4 @@ public class AccountInfoController {
     public PgAccount findAcInfoForPg(@PathVariable Integer accountId){
         return service.findForPg(accountId);
     }
-
-
 }

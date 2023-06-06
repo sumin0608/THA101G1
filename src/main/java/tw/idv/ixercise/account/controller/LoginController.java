@@ -39,6 +39,7 @@ public class LoginController {
             session.setAttribute("loggedin",true);
             session.setAttribute("account",account);
         }
+
     return account;
 
     }

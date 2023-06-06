@@ -131,7 +131,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動\n' +
+    '                        <a class="nav-link active h-100 " aria-current="page" href="">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -140,14 +140,14 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                            data-bs-toggle="dropdown" aria-expanded="false">其他主頁\n' +
     '                        </a>\n' +
     '                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">\n' +
-    '                            <li><a class="dropdown-item" href="#!">首頁</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">首頁</a></li>\n' +
     '                            <li>\n' +
     '                                <hr class="dropdown-divider" />\n' +
     '                            </li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">商城</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">論壇</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">活動</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">課程</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">商城</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">課程</a></li>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '                    <!-- 鈴鐺============================================================= -->\n' +
@@ -231,13 +231,13 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a id="personalpage" class="dropdown-item" href="" >查看個人資料</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="#!">聊天列表</a>\n' +
+    '                                <a class="dropdown-item" href="">聊天列表</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="#!">活動管理</a>\n' +
+    '                                <a class="dropdown-item" href="">活動管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="#!">課程管理</a>\n' +
+    '                                <a class="dropdown-item" href="">課程管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
     '                                <a id="logout" class="dropdown-item" href="">登出</a>\n' +
@@ -299,10 +299,13 @@ if (accid) {
     loginbtn.classList.add("d-none");
     useravatar.classList.remove("d-none");
     avatarnickname.textContent = accnickname;
+    // const accidforpg = "/" + accid;
+    // console.log(accidforpg);
+    personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
+// personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
 
-    personalpage.href = "Account/PersonalPage.html";
-
-    if (!(accphoto == "null" || accphoto == null)) {
+// console.log(typeof accphoto);
+    if (accphoto && accphoto.length > 0) {
 
         avataroutside.src = getcreateObjURL(accphoto);
         avatarinside.src = getcreateObjURL(accphoto);
@@ -366,7 +369,7 @@ const signupb = document.querySelector("#signupb");
 
 
 ixicon.href = getContextPath() + "/index.html";
-personalpage.href = getContextPath() + "/Account/PersonalPage.html";
+// personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
 logout.href = getContextPath() + "/index.html";
 loginb.href = getContextPath() + "/Account/Login.html";
 signupb.href = getContextPath() + "/Account/SignUp.html";

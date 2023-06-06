@@ -1,10 +1,12 @@
 $(document).ready(function () {
+    let LSaccountId = localStorage.getItem('accountId');
+    console.log("LSaccountId=" + LSaccountId);
 
     // 頁籤<<評價紀錄的課程>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     $(".coursebtn_evaluate").click(function () {
         console.log(this);
         $.ajax({
-            url: "/ixercise/coursecomment/" + 1, //假設1號會員"/{accountIdReviewed}，之後抓session會員id
+            url: "/ixercise/coursecomment/" + LSaccountId, //假設2號會員{accountId}
             type: "GET",
             contexttype: "application/json",
             // data: JSON.stringify({}),
@@ -82,7 +84,7 @@ $(document).ready(function () {
     $(document).on("click", '#coursebtn_attendrecord', function () {
         // console.log(this);
         $.ajax({
-            url: "/ixercise/courseAttendee/accountId/" + 2, //假設2號會員{accountId}，之後抓session會員id
+            url: "/ixercise/courseAttendee/accountId/" + LSaccountId, //假設2號會員{accountId}
             type: "GET",
             contexttype: "application/json",
             // data: JSON.stringify({}),
@@ -102,7 +104,7 @@ $(document).ready(function () {
                             tableData2 += `<div class="show_givecomment" style="display:none;">評價狀態:<p>${resp1[i].commentStatus}</p></div>`;
 
                             $.ajax({
-                                url: "/ixercise/course/courseId/" + resp1[i].courseId, //2號會員參加的{courseId}
+                                url: "/ixercise/course/courseId/" + resp1[i].courseId, //會員參加的{courseId}
                                 type: "GET",
                                 contexttype: "application/json",
                                 async: false, //非同步的（asynchronous），表示該請求是同步的
@@ -128,10 +130,12 @@ $(document).ready(function () {
                                         tableData2 += `<div class="card col-12 commentplace displaynone">
                                                         <div class="card-body p-4">
                                                             <div class="d-flex flex-start w-100">`;
-                                        //撈會員session照片
-                                        tableData2 += `<img class="rounded-circle shadow-1-strong me-3"
-                                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"
-                                                            alt="帥哥" width="65" height="65" />`;
+                                        //撈會員照片???現在會員照片存哪???
+                                        tableData2 += `<img class="rounded-circle shadow-1-strong me-3"`;
+
+                                        tableData2 += `src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp"`;
+
+                                        tableData2 += `alt="帥哥" width="65" height="65" />`;
                                         tableData2 += `         <div class="w-100">
                                                                     <h5>留言評論</h5>
                                                                     <!-- 評分星星 -->
@@ -175,14 +179,41 @@ $(document).ready(function () {
                 alert("Error: " + xhr.responseText);
             }
         });
-
     });
+
+    //分段接會員accountId
+
+    // try {
+    //     let accountPhoto = await GETaccountPhotoById(resp[i].accountId);
+    //     appendaudit2 += `<td>${accountPhoto}</td>`;
+    // } catch (error) {
+    //     console.error(error);
+    //     appendaudit2 += `<td>Error retrieving</td>`;
+    // }
+
+    function GETaccountPhotoById(input) {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "/ixercise/Account/Manage/" + input,  //會員accountId
+                type: "GET",
+                dataType: "json",
+                success: function (resp) {
+                    var accountPhoto = resp.accountPhoto;
+                    resolve("/ixercise/lib/img/account/" + accountPhoto);
+                },
+                error: function (xhr, status, error) {
+                    reject(error);
+                }
+            });
+        });
+    }
+
 
     // 頁籤<<評價管理的課程>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     $("#coursebtn_evaluatemanager").click(function () {
         // console.log(this);
         $.ajax({
-            url: "/ixercise/coursecomment/attendrecord/" + 1, //假設1號會員{accountIdReviewer}，之後抓session會員id
+            url: "/ixercise/coursecomment/attendrecord/" + LSaccountId, //假設2號會員{accountId}
             type: "GET",
             contexttype: "application/json",
             // data: JSON.stringify({}),

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
+import tw.idv.ixercise.core.Core;
 
 @RestController
 @RequestMapping("Account/SignUp")
@@ -24,4 +25,19 @@ public class SignUpController {
 
         return service.signUp(account);
     }
+
+    @PostMapping("AddAdmin")
+    public Core addforAdmin(@RequestBody Account account) {
+        if (account == null) {
+            account = new Account();
+            account.setMessage("請填寫內容");
+            account.setSuccessful(false);
+            return account;
+        }
+
+
+        return service.addAdmin(account);
+    }
+
+
 }

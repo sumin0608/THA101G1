@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `trainerCert`;
+
 CREATE TABLE `course` (
   `courseID` int NOT NULL AUTO_INCREMENT,`creator` int NOT NULL COMMENT 'memberID',`eventName` varchar(50) NOT NULL,
   `expectedPrice` int NOT NULL,`courseStartDate` date NOT NULL,`courseStartTime` datetime NOT NULL,

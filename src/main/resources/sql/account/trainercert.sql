@@ -21,4 +21,3 @@ VALUES
     (8, '國際教練證照', 'International Coach Certification', 'ICC'),
     (9, '羽球教練證照', 'Badminton Coach Certification', 'BCC'),
     (10, '跑步教練證照', 'Running Coach Certification', 'RCC');
-SELECT * FROM THA101G1.trainerCert;
