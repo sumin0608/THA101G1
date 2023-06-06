@@ -13,6 +13,7 @@ import tw.idv.ixercise.core.Core;
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Entity
 @Table(name = "course")
@@ -55,7 +56,36 @@ public class Course extends Core {
 	@Transient
 	private String statusString;
 
-	public Course() {
+
+	public Course(Course.Builder builder) {
+		this.setMessage(builder.message);
+		this.setSuccessful(builder.successful);
+	}
+
+	//setter chain --> Builder
+	public static class Builder {
+		private String message = "";
+		private boolean successful;
+
+
+		public Builder setMessage(String message) {
+			this.message = message;
+			return this;
+		}
+
+		public Builder setSuccessful(Boolean successful) {
+			this.successful = successful;
+			return this;
+		}
+
+		public Course build() {
+			return new Course(this);
+		}
+
+		private void Course(Builder builder) {
+			message = builder.message;
+			successful = builder.successful;
+		}
 	}
 
 //	public TrainerCourse(Integer courseId, Integer memberId, String eventName, Integer expectedPrice, Date courseStartDate, Timestamp courseStartTime, Timestamp courseDuration, Timestamp registrationDeadline, Timestamp courseCreationDate, Integer maximumCapacity, String description, byte[] photo, String location, String city, String district, String detailedAddress, Integer categoryId, Integer currentEnrolment, Integer courseStatus, Integer paidAdvertising, Timestamp paidAdvertisingTime) {

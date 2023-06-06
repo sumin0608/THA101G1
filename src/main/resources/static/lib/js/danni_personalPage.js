@@ -2,8 +2,8 @@ addEventListener("DOMContentLoaded", () => {
 
     console.log(getContextPath());
 
+    const actId = sessionStorage.getItem("accountId");
     $("#holdrecord-tab").click(function (e) {
-        const actId = sessionStorage.getItem("accountId");
         const url = "../course/creator/" + actId;
         const historyContainer = document.querySelector("#course-history-list");
         console.log(historyContainer);
@@ -56,10 +56,12 @@ addEventListener("DOMContentLoaded", () => {
 
 
     const course_calendar_list = document.querySelector('#course-calendar-list');
-    const urls = "../event/get";
-    const calendar = document.querySelector("#calendar");
+    const urls = getContextPath() + "/courseAttendee/calander/" + actId;
+    // http://localhost:8080/ixercise/courseAttendee/calander/5
+    const calendar = document.querySelector("#calendar-tab");
     calendar.addEventListener('click', () => {
-
+        console.log("calendar has been clicked");
+        console.log(urls);
         fetch(urls)
             .then(resp => resp.json())
             .then(evtList => {
