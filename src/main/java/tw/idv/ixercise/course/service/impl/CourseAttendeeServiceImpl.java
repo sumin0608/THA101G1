@@ -46,8 +46,11 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 			//拿到欲報名課程的最後省和時間
 			attendDeadline = course.getRegistrationDeadline();
 
+			System.out.println(course.getRegistrationDeadline());
+			System.out.println(courseAttendee.getAttendTime());
+
 			//判斷此課程報名時間是否已截止
-			if (attendDeadline.before(currentTimestamp)) {
+			if (attendDeadline.after(currentTimestamp)) {
 //				courseAttendee.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
 				savedAttendee = repository.save(courseAttendee);
 			} else {

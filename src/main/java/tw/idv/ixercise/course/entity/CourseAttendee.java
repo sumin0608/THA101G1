@@ -2,11 +2,7 @@ package tw.idv.ixercise.course.entity;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -31,9 +27,12 @@ public class CourseAttendee extends Core {
 	private Integer accountId;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp attendTime;
+	@Column(insertable = false)
 	private Integer status;
 	private String reason;
+	@Column(insertable = false)
 	private Integer paymentStatus;
+	@Column(insertable = false)
 	private Integer commentStatus;
 
 	public CourseAttendee() {

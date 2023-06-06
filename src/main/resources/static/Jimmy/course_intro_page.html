@@ -390,7 +390,8 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                    <textarea class="form-control event_participate" id="description" name="description"
+                                    <textarea class="form-control event_participate" id="attendReason"
+                                              name="attendReason"
                                               placeholder="聚會描述和備註" required rows="3"></textarea>
                                             <div class="invalid-feedback">
                                                 Please choose a username.
@@ -739,18 +740,52 @@
             });
 
 
-        });
-    </script>
-    //==== danni 修改 ===========================================================
-    <script>
+        }); // ==document ready ===
+        //==== danni 修改 ===========================================================
         let applyResult = document.querySelector("#applyResult");
         let applyResulth2 = document.querySelector("#applyResult h2");
 
         function openApplyPopup() {
-            console.log("hiii")
-            $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
-            $("#applyResult h2").text("報名失敗");
-            $("#applyResult p").text("報名失敗");
+            //ajax
+            // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
+            var urlParams = new URLSearchParams(window.location.search);
+            var courseId = urlParams.get('courseId');
+            const accountId = sessionStorage.getItem("accountId");
+            // Data to be sent in the request body
+            const course = {
+                courseId: courseId,
+                accountId: accountId,
+            };
+            console.log($("#attendReason").val());
+            course.reason = $("#attendReason").val();
+            console.log(course)
+
+// Send POST request using fetch
+            fetch("../courseAttendee", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(course)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Response:", data);
+                    // Handle the response data
+                    if (data.successful === true) {
+                        $("#applyResult img#check_cross_mark").attr("src", "image/200-tick.png");
+                        $("#applyResult h2").text("報名已送出");
+                        $("#applyResult p").text("請等待主揪審核....");
+                    } else {
+                        $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
+                        $("#applyResult h2").text("報名失敗");
+                        $("#applyResult p").text("報名失敗");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    // Handle any errors
+                });
 
             applyResult.classList.add("open-applyResult");
             //ajax
@@ -772,6 +807,7 @@
                 $('#myModal').modal('hide');
             });
         });
+
     </script>
 </body>
 
