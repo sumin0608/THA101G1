@@ -307,7 +307,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLabel">詳細資料</h2>
+                            <h2 class="modal-title" id="exampleModalLabel">新增商品</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
@@ -540,8 +540,8 @@
 
         $("#aaaa").empty();
         var pdhtml = '';
-        adhtml += `<form>
-            <legend class="h1 mb-4">新增商品</legend>
+        pdhtml += `
+
             <div class="mb-1">
                 <label for="pdno" class="form-label">商品編號</label>
                 <input type="text" id="pdno" name="pdno" class="form-control"
@@ -549,12 +549,12 @@
             </div>
             <div class="mb-1">
                 <label for="pdname" class="form-label">商品名稱</label>
-                <input type="password" id="pdname" name="pdname" class="form-control"
+                <input type="text" id="pdname" name="pdname" class="form-control"
                     placeholder="">
             </div>
             <div class="mb-1">
                 <label for="pdphoto" class="form-label">商品圖片</label>
-                <input type="password" id="pdphoto" name="pdphoto"
+                <input type="file" id="pdphoto" name="pdphoto"
                     class="form-control" placeholder="">
             </div>
             <div class="mb-3">
@@ -569,15 +569,14 @@
             </div>
             <div class="mb-3">
                 <label for="pdcom" class="form-label">商品描述</label>
-                <input type="text" id="pdcom" name="pdcom" class="form-control"
-                    placeholder="">
+                <textarea class="form-control" id="pdcom" name="pdcom" rows="3"></textarea>
             </div>
             <button id="sendpd" type="button" class="btn btn-primary me-1">新增</button>
             <div id="msg" class="text-danger"></div>
-            </form>
+
             `
         // console.log(adhtml);
-        $("#aaaa").append(adhtml);
+        $("#aaaa").append(pdhtml);
         const sendpd = document.querySelector("#sendpd");
         sendpd.addEventListener('click', sendpdinfo);
     }
@@ -585,7 +584,7 @@
     function sendpdinfo() {
         const pdno = document.querySelector("#pdno");
         const pdname = document.querySelector("#pdname");
-        const pdphoto = document.querySelector("#pdphoto");
+        // const pdphoto = document.querySelector("#pdphoto");
         const pdprice = document.querySelector("#pdprice");
         const pdamount = document.querySelector("#pdamount");
         const pdcom = document.querySelector("#pdcom");
@@ -596,9 +595,10 @@
         const fileInput = document.getElementById('pdphoto');
         const file = fileInput.files[0];
         const formData = new FormData();
-        formData.append('picture', file);
+        formData.append('file', file);
+        let photoname = file.name;
 
-        fetch('/upload', {
+        fetch('/ixercise/Shop/uploadshopphoto', {
             method: 'POST',
             body: formData
         })
@@ -606,7 +606,7 @@
             .then(data => {
                 // 处理响应结果
                 console.log(data);
-                sendformvalue;
+                sendformvalue();
             })
             .catch(error => {
                 // 处理错误
@@ -614,30 +614,27 @@
             });
 
         function sendformvalue() {
-            fetch('', {
+            fetch('/ixercise/Shop/AddProduct', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    accountPassword: acps.value,
-                    accountEmail: adem.value,
-                    accountName: adname.value,
+                    productNo: pdno.value,
+                    productName: pdname.value,
+                    picture: photoname,
+                    price: pdprice.value,
+                    amount: pdamount.value,
+                    comment: pdcom.value
                 }),
             })
                 .then(resp => resp.json())
                 .then(body => {
                     const {successful, message} = body;
                     if (successful) {
-                        // for (let input of inputs) {
-                        //     input.disabled = true;
-                        // }
-                        // sessionStorage.setItem("accountEmail",accountEmail);
-                        sendad.disabled = true;
-                        msg.className = 'text-success';
-                        msg.textContent = message;
+                        sendpd.disabled = true;
+                        alert(message);
 
                     } else {
-                        msg.className = 'text-danger';
-                        msg.textContent = message;
+                        alert(message);
                     }
                 });
         }
