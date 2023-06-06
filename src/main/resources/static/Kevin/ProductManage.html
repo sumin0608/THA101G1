@@ -368,71 +368,97 @@
         "articleType": 2
     };
 
-    $.ajax({
-        url: "http://localhost:8080/ixercise/Shop/Manage", // 資料請求的網址
-        type: "GET",
-        dataType: "json",
-
-        success: function (data) {
-            var html = "";
-            console.log(data);
-
-            $.each(data, function (index, obj) {
-                html += "<tr>";
-                html += "<td>" + obj.productNo + "</td>";
-                html += "<td>" + obj.productName + "</td>";
-                html += "<td>" + obj.price + "</td>";
-                html += "<td>" + obj.amount + "</td>";
-                // html += "<td>" + obj.articleState + "</td>";
-                // html += "<td>" + obj.articleType + "</td>";
-
-
-                html += '<td><button type="button" class="btn btn-primary aaa article-link d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#exampleModal"'
-                    + 'data-article-id="' + obj.id + '">更多資訊</button>';
-                html += '<button type="button" class="btn btn-primary aaa account-link d-inline-block me-1" data-account-link="' + obj.id + '">修改</button>'
-                html += '<button type="button" class="btn btn-danger aaa delete-link d-inline-block me-1" data-del-id="' + obj.id + '">刪除</button></td>'
-                html += "</tr>";
-            });
-            $("#aaa").append(html);
-        },
-        error: function (xhr, status, error) {
-            console.log("AJAX Error:", error);
-        }
+    $(document).ready(function () {
+        // 加載商品數據
+        loadProducts();
     });
+
+    function loadProducts() {
+        $.ajax({
+            url: "http://localhost:8080/ixercise/Shop/Manage",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var html = "";
+                $.each(data, function (index, obj) {
+                    html += "<tr>";
+                    html += '<td><input type="text" class="form-control input-field productNo-input" value="' + obj.productNo + '" disabled></td>';
+                    html += '<td><input type="text" class="form-control input-field productName-input" value="' + obj.productName + '" disabled></td>';
+                    html += '<td><input type="text" class="form-control input-field price-input" value="' + obj.price + '" disabled></td>';
+                    html += '<td><input type="text" class="form-control input-field amount-input" value="' + obj.amount + '" disabled></td>';
+                    html += '<td>';
+                    html += '<button type="button" class="btn btn-primary aaa article-link d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-article-id="' + obj.id + '">更多資訊</button>';
+                    html += '<button type="button" class="btn btn-primary aaa edit-link d-inline-block me-1" data-edit-id="' + obj.id + '">修改</button>';
+                    html += '<button type="button" class="btn btn-danger aaa delete-link d-inline-block me-1" data-del-id="' + obj.id + '">刪除</button>';
+                    html += '<button type="button" class="btn btn-success aaa save-link d-none d-inline-block me-1" data-save-id="' + obj.id + '">保存</button>';
+                    html += '</td>';
+                    html += "</tr>";
+                });
+                $("#aaa").html(html);
+            },
+            error: function (xhr, status, error) {
+                console.log("AJAX Error:", error);
+            }
+        });
+    }
 
 </script>
 
 
 <script>
 
-    //詳細資料
-    $(document).on("click", ".article-link", function () {
-        var articleId = $(this).data("article-id");
-        sendArticleId(articleId);
+    $(document).on("click", ".edit-link", function () {
+        var id = $(this).data("edit-id");
+        var row = $(this).closest("tr");
+        row.find(".input-field").prop("disabled", false);
+        row.find(".edit-link").addClass("d-none");
+        row.find(".save-link").removeClass("d-none");
     });
 
-    //修改
-    $(document).on("click", ".account-link", function () {
-        var accountId = $(this).data("account-id");
-        let productNo = document.querySelector(`#productNo-${id}`).value
-        let productName = document.querySelector(`#productName-${id}`).value
-        let price = document.querySelector(`#price-${id}`).value
-        let amount = document.querySelector(`#amount-${id}`).value
+    $(document).on("click", ".save-link", function () {
+        var id = $(this).data("save-id");
+        var row = $(this).closest("tr");
+        var productNo = row.find(".productNo-input").val();
+        var productName = row.find(".productName-input").val();
+        var price = row.find(".price-input").val();
+        var amount = row.find(".amount-input").val();
 
-        editProduct(id, productNo,productName,price,amount);
+        // Call the function to save the changes to the backend
+        saveProduct(id, productNo, productName, price, amount);
     });
 
-    //刪除
+    function saveProduct(id, productNo, productName, price, amount) {
+        var data = {
+            id: id,
+            productNo: productNo,
+            productName: productName,
+            price: price,
+            amount: amount
+        };
+
+        $.ajax({
+            url: "http://localhost:8080/ixercise/Shop/Manage",
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert(response.message);
+                // Reload the products after saving changes
+                loadProducts();
+            },
+            error: function (xhr, status, error) {
+                console.log("AJAX Error:", error);
+            }
+        });
+    }
+
     $(document).on("click", ".delete-link", function () {
         var deid = $(this).data("del-id");
         deleteProduct(deid);
     });
 
-    // =====================================
-
-    //刪除
     function deleteProduct(productId) {
-        productId = parseInt(productId); // 将产品 ID 转换为整数类型
+        productId = parseInt(productId);
 
         fetch("http://localhost:8080/ixercise/Shop/Manage/" + productId, {
             method: "DELETE",
@@ -445,7 +471,7 @@
             .then((data) => {
                 if (data.successful) {
                     alert(data.message);
-                    location.reload(); // 刷新页面以更新数据
+                    loadProducts(); // Reload the products after deleting
                 } else {
                     alert(data.message);
                 }
@@ -455,35 +481,29 @@
             });
     }
 
-    //==================================
-    //詳細資料
+    $(document).on("click", ".article-link", function () {
+        var articleId = $(this).data("article-id");
+        sendArticleId(articleId);
+    });
+
     function sendArticleId(articleId) {
-        // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
         $("#aaaa").empty();
 
         $.ajax({
-            url: 'http://localhost:8080/ixercise/Shop/Manage/' + articleId + '', // 資料請求的網址
+            url: 'http://localhost:8080/ixercise/Shop/Manage/' + articleId,
             type: "GET",
             dataType: "json",
-
             success: function (data) {
                 var html = "";
 
-
                 $.each(data, function (key, value) {
-                    console.log(typeof key +"==="+ key)
-
-                    if(key === "successful" || key === "message" ){
-
-                    }else{
-                        html += "<tr>";
-                        html += "<td>" + key + "</td>";
-                        html += "<td>" + value + "</td>";
-
-                        html += "</tr>";
+                    if (key === "successful" || key === "message") {
+                        return;
                     }
-
-
+                    html += "<tr>";
+                    html += "<td>" + key + "</td>";
+                    html += "<td>" + value + "</td>";
+                    html += "</tr>";
                 });
                 $("#aaaa").append(html);
             },
@@ -492,11 +512,6 @@
             }
         });
     }
-
-    //======================================
-    //修改
-
-
 
 </script>
 
