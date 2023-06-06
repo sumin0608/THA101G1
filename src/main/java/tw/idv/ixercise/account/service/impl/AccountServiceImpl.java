@@ -13,6 +13,7 @@ import tw.idv.ixercise.core.Core;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
     private CoachSkillRepository csrepo;
 
 
-    // 新增===============================================================
+    // 新增會員===============================================================
     @Override
     @Transactional
     public Account signUp(Account account) {
@@ -47,16 +48,42 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountReport(0);
         account.setAccountCreatetime(new Timestamp(System.currentTimeMillis()));
         account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
-        System.out.println(account);
-        System.out.println("==================");
+//        System.out.println(account);
+//        System.out.println("==================");
         account = repo.save(account);
-        System.out.println(account);
+//        System.out.println(account);
         account.setMessage("註冊成功");
         account.setSuccessful(true);
         return account;
     }
 
-    //產生驗證碼
+    //    新增管理員
+    @Override
+    @Transactional
+    public Core addAdmin(Account account) {
+        if (repo.findByAccountEmail(account.getAccountEmail()) != null) {
+            return new Core(false, "此信箱已被使用");
+        }
+        int ran = (int) (Math.random() * 99999999);
+        System.out.println(ran);
+        account.setAccountPhone("09" + ran);
+        account.setAccountAddress("管理員專用");
+        account.setAccountLevel(3);
+        account.setAccountState(1);
+        account.setAccountVerify(genAuthCode());
+        account.setAccountReport(0);
+        account.setAccountCreatetime(new Timestamp(System.currentTimeMillis()));
+        account.setAccountUpdatetime(new Timestamp(System.currentTimeMillis()));
+        account.setAccountNickname("管理員");
+        account.setAccountBirthday(new Date(0));
+        account.setAccountGender(0);
+        account.setAccountIntro("管理員");
+
+        repo.save(account);
+        return new Core(true, "新增成功");
+    }
+
+    //產生驗證碼=================================================
     public String genAuthCode() {
         String x = new String();
         while (true) {
@@ -178,20 +205,37 @@ public class AccountServiceImpl implements AccountService {
         }
         return lAacc;
     }
+
+
+    //    後台用=======================================================================
     @Override
-    public List<LessAccount>findAllLessInfoAdmin(){
+    public List<LessAccount> findAllLessInfoAdmin() {
         List<Account> acclist = repo.findAllForAdmin();
         List<LessAccount> lAacc = new ArrayList<>();
         for (Account acc : acclist) {
             LessAccount la = new LessAccount(acc);
             lAacc.add(la);
         }
-
         return lAacc;
     }
 
+    @Override
+    public List<SkillManageDTO> findAllSkill() {
+        List<CoachSkill> csli = csrepo.findAllSkillForAd();
 
-//    後台用=======================================================================
+//        if (csli == null) {
+//            CoachSkill cs = new CoachSkill();
+//            cs.setSuccessful(false);
+//            cs.setMessage("查無資料");
+//            csli.add(cs);
+//        }
+        List<SkillManageDTO> skm = new ArrayList<>();
+        for (CoachSkill cs : csli) {
+            SkillManageDTO sk = new SkillManageDTO(cs, repo.findAccountNameByAccountId(cs.getAccountId()));
+            skm.add(sk);
+        }
+        return skm;
+    }
 
     @Override
     public Account findById(Integer AccountId) {
@@ -229,6 +273,12 @@ public class AccountServiceImpl implements AccountService {
             return new PgAccount(false, "查詢錯誤");
         }
     }
+    @Override
+    public CoachSkill findSkById(Integer skillId){
+        CoachSkill cs = csrepo.findById(skillId).orElse(new CoachSkill(false,"查無此申請"));
+        return cs;
+    }
+
 
     //    寄Email========================================================
     @Override
@@ -349,12 +399,12 @@ public class AccountServiceImpl implements AccountService {
         }
         acc.setAccountPassword(acc.getAccountVerify());
         boolean s = sendForgetPassword(acc.getAccountEmail(), acc.getAccountNickname(), acc.getAccountPassword());
-        if(s){
+        if (s) {
             acc.setAccountVerify(genAuthCode());
             repo.save(acc);
-        }else{
+        } else {
             repo.save(oAcc);
-            return new Core(false,"無法寄出，請洽管理員");
+            return new Core(false, "無法寄出，請洽管理員");
         }
         return new Core(true, "臨時密碼已寄出，請至信箱確認");
     }

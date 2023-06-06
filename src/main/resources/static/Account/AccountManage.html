@@ -8,7 +8,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Dashboard - SB Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
+<!--    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>-->
     <link href="../lib/css/backstyle.css" rel="stylesheet"/>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
@@ -112,7 +112,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
     <!-- Navbar Brand-->
-    <a class="navbar-brand m-0 px-4 " href="#!"> <img src="../lib/img/IX-nobackground copy.png" alt="" width="150"
+    <a class="navbar-brand m-0 px-4 " href=""> <img src="../lib/img/IX-nobackground copy.png" alt="" width="150"
                                                       height="70">
     </a>
     <!-- Sidebar Toggle-->
@@ -134,12 +134,12 @@
                                            role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
                 class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><a class="dropdown-item" href="">Settings</a></li>
+                <li><a class="dropdown-item" href="">Activity Log</a></li>
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li><a class="dropdown-item" href="">Logout</a></li>
             </ul>
         </li>
     </ul>
@@ -273,14 +273,14 @@
                     <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">會員管理
-                                <span class="msg-counter accountspan">7</span>
+                            <a id="accmanage" class="nav-link" href="">會員管理
+<!--                                <span class="msg-counter accountspan">7</span>-->
                             </a>
-                            <a class="nav-link" href="">管理員管理
-                                <span class="msg-counter adminspan">7</span>
+                            <a id="admanage" class="nav-link" href="">管理員管理
+<!--                                <span class="msg-counter adminspan">7</span>-->
                             </a>
-                            <a class="nav-link" href="">審核教練資格
-                                <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
+                            <a id="skmanage" class="nav-link" href="">審核教練資格
+<!--                                <span class="msg-counter coachapplyspan" style="right:45px;">7</span>-->
                             </a>
                         </nav>
                     </div>
@@ -589,9 +589,9 @@
 
                 });
                 // console.log(getcreateObjURL(accmap.get("accountPhoto")));
-                console.log(typeof accmap.get("accountPhoto") + accmap.get("accountPhoto") );
-                console.log(accmap.get("accountPhoto") != null);
-                console.log(accmap.get("accountPhoto") != "null");
+                // console.log(typeof accmap.get("accountPhoto") + accmap.get("accountPhoto") );
+                // console.log(accmap.get("accountPhoto") != null);
+                // console.log(accmap.get("accountPhoto") != "null");
                 let accsrc = accmap.get("accountPhoto") != "無資料"  ? getcreateObjURL(accmap.get("accountPhoto")) : null;
                 let accphsrc = ""
                 if (accsrc) {

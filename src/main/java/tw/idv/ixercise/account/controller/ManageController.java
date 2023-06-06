@@ -3,7 +3,9 @@ package tw.idv.ixercise.account.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.CoachSkill;
 import tw.idv.ixercise.account.entity.LessAccount;
+import tw.idv.ixercise.account.entity.SkillManageDTO;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
@@ -69,5 +71,21 @@ public class ManageController {
     @GetMapping("ForAdmin")
     public List<LessAccount> manageAdmin() {
         return service.findAllLessInfoAdmin();
+    }
+
+    @GetMapping("SkillReview")
+    public List<SkillManageDTO> manageSkill(){
+//        List<SkillManageDTO> skm = service.findAllSkill();
+//        if(skm == null){
+//
+//        }
+        return service.findAllSkill();
+    }
+    @GetMapping("Skill/{skillId}")
+    public CoachSkill findSkillForManage(@PathVariable Integer skillId){
+        if(skillId == null){
+            return new CoachSkill(false,"查詢錯誤");
+        }
+        return service.findSkById(skillId);
     }
 }

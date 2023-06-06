@@ -18,18 +18,23 @@ public class CoachSkill extends Core {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    Integer skillId;
+    private Integer skillId;
     @Column
-    Integer accountId;
+    private Integer accountId;
     @Column
-    String licenseName;
+    private String licenseName;
     @Column
-    Integer sportType;
+    private Integer sportType;
     @Column
-    byte[] licensePhoto;
+    private byte[] licensePhoto;
     @Column
-    Integer skillState;
+    private Integer skillState;
+    @Transient
+    private String accountName;
 
+    public CoachSkill(boolean success,String message){
+        super(success, message);
+    }
 //    @Override
 //    public String toString() {
 //        return "CoachSkill{" +

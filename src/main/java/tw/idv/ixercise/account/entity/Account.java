@@ -41,7 +41,7 @@ public class Account extends Core {
     private Integer accountLevel;
 
     private Integer accountState;
-
+    @NotNull
     private String accountAddress;
 
     private String accountName;

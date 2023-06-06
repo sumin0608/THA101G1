@@ -1,9 +1,6 @@
 package tw.idv.ixercise.account.service;
 
-import tw.idv.ixercise.account.entity.Account;
-import tw.idv.ixercise.account.entity.CourseAccount;
-import tw.idv.ixercise.account.entity.LessAccount;
-import tw.idv.ixercise.account.entity.PgAccount;
+import tw.idv.ixercise.account.entity.*;
 import tw.idv.ixercise.core.Core;
 
 import java.util.List;
@@ -33,6 +30,11 @@ public interface AccountService {
 
     List<LessAccount>findAllLessInfoAdmin();
 
+    Core addAdmin(Account account);
+
+    List<SkillManageDTO> findAllSkill();
+
+    CoachSkill findSkById(Integer skillId);
 
 //    for personal page===============================
     PgAccount findForPg(Integer accountId);

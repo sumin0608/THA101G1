@@ -36,5 +36,9 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
             nativeQuery = true
     )
     List<Account> findAllForAdmin();
-
+    @Query(
+            value = "SELECT accountName from ACCOUNT where accountId = :accountId",
+            nativeQuery = true
+    )
+    String findAccountNameByAccountId(Integer accountId);
 }
