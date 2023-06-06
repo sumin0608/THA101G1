@@ -411,10 +411,15 @@
                         sessionStorage.setItem("accountPhoto", accountPhoto);
                         location = getContextPath() + "/index.html";
 
-                        localStorage.setItem("accountId", accountId);
-                        localStorage.setItem("accountNickname", accountNickname);
-                        localStorage.setItem("accountLevel", accountLevel);
-                        localStorage.setItem("accountPhoto", accountPhoto);
+                        const expirationTime = 5 * 60 * 60 * 1000; // 5 小時的毫秒數
+                        const currentTime = new Date().getTime(); // 當前時間的毫秒數
+                        const expirationTimestamp = currentTime + expirationTime;
+                        setTimeout(function () {
+                            localStorage.setItem("accountId", accountId);
+                            localStorage.setItem("accountNickname", accountNickname);
+                            localStorage.setItem("accountLevel", accountLevel);
+                            localStorage.setItem("accountPhoto", accountPhoto);
+                        }, expirationTime);
                     } else {
                         errMsg.textContent = message;
                     }
