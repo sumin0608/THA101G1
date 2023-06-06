@@ -418,18 +418,7 @@
                         </tr>
                     </thead>
                     <tbody id="aaa">
-                        <!-- <tr>
-                            <td style="background-color:rgba(66, 184, 131, 0.5)">0</td>
-                            <td>courseID</td>
-                            <td>eventName</td>
-                            <td>courseStartTime</td>
-                            <td>city</td>
-                            <td>categoryID</td>
-                            <td>courseStatus</td>
-                            <td>paidAdvertising</td>
-                            <td><button id="alterbtn" class="btn btn-primary alterbtn">修改</button></td>
-                            <td><button id="deletebtn" class="btn btn-danger deletebtn">刪除</button></td>
-                        </tr> -->
+
                     </tbody>
                 </table>
 
@@ -1125,6 +1114,8 @@
 
     <script>
         $(document).ready(function () {
+            let LSaccountId = localStorage.getItem('accountId');
+            console.log("LSaccountId=" + LSaccountId);
 
             // <<課程管理>> 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1147,7 +1138,7 @@
             //    撈出已開設課程
             function getAllYourCourse() {
                 $.ajax({
-                    url: "/ixercise/course/creator/" + 3, //會員accountId=3
+                    url: "/ixercise/course/creator/" + LSaccountId, //會員accountId=3
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
@@ -1297,7 +1288,7 @@
                 }
             }
 
-            // modalSend 
+            // modalSend 送出修改按鈕
             $('#modalSend').on('click', function (e) {
                 // e.preventDefault;
                 // console.log("modalSend");
@@ -1497,7 +1488,7 @@
             // 二、已結束課程
             $('#c2').on('click', function (e) {
                 $.ajax({
-                    url: "/ixercise/course/creator/" + 3,//會員accountId=3
+                    url: "/ixercise/course/creator/" + LSaccountId,//會員accountId
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
@@ -1554,7 +1545,7 @@
 
                 var courseId = $(this).closest('tr').find('td:eq(1)').text();
                 console.log("deletebtn clicked. Course ID: " + courseId);
-                var creator = 3; //會員session id
+                var creator = LSaccountId; //會員accountId
 
                 $.ajax({
                     url: "/ixercise/course/courseId/" + courseId,
@@ -1602,7 +1593,7 @@
             $('#c3').on('click', function (e) {
                 // console.log(this);
                 $.ajax({
-                    url: "/ixercise/course/creator/" + 3,//會員accountId=3
+                    url: "/ixercise/course/creator/" + LSaccountId,//會員accountId
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
@@ -1669,12 +1660,12 @@
             $('#audit1').on('click', function (e) {
                 console.log("audit1>>" + this);
                 // 表頭
-                $('#th1').text("accountId");
-                $('#th2').text("courseId");
-                $('#th3').text("attendTime");
-                $('#th4').text("reason");
+                $('#th1').text("會員名稱");
+                $('#th2').text("課程名稱");
+                $('#th3').text("報名時間");
+                $('#th4').text("參加原因");
                 $('#th5').text("status");
-                $('#th6').text("paymentStatus");
+                $('#th6').text("付款狀態");
                 $('#th7').text("attendId");
                 let appendaudit1head1 = '';
                 let appendaudit1head2 = '';
@@ -1682,7 +1673,7 @@
                 appendaudit1head2 += `<select class="form-select" aria-label="Default select example">
                                         <option selected value="2">已通過</option>
                                         <option value="3">未通過</option>
-                                        <option value="4">已退出</option>
+                                        <option value="5">已退出</option>
                                     </select>`;
                 $('#selecthead1').empty().append(appendaudit1head1);
                 $('#selecthead2').empty().append(appendaudit1head2);
@@ -1690,36 +1681,51 @@
                     url: "/ixercise/courseAttendee",  //先拿全部
                     type: "GET",
                     dataType: "json",
-                    success: function (resp) {
+                    success: async function (resp) {
                         console.log("已審核resp>>" + resp);
                         let appendaudit1 = '';
 
                         var filteredDataAudit1 = [];
                         filteredDataAudit1 = resp.filter(function (item) {
                             console.log("item.status>>" + item.status);
-                            if (item.status == 2) {   //2.通過3.未通過4:退出
+                            if (item.status == 2) {  //2.通過3.未通過 5:退出成功
                                 return true;
                             }
                         });
                         console.log("filteredDataAudit1>>" + filteredDataAudit1);
                         for (let i in filteredDataAudit1) {
-                            //要分段接會員了accountId
                             let reason = filteredDataAudit1[i].reason;
                             let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
-                            appendaudit1 += `
-                                            <tr>
-                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
-                                                <td>${filteredDataAudit1[i].accountId}</td>
-                                                <td>${filteredDataAudit1[i].courseId}</td>
-                                                <td>${filteredDataAudit1[i].attendTime}</td>
+                            appendaudit1 += `<tr>
+                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                `;
+                            //分段接會員accountId
+                            // appendaudit1 += `<td>${filteredDataAudit1[i].accountId}</td>`;
+                            try {
+                                let accountName = await GETaccountNameById(filteredDataAudit1[i].accountId);
+                                appendaudit1 += `<td>${accountName}</td>`;
+                            } catch (error) {
+                                console.error(error);
+                                appendaudit1 += `<td>Error retrieving</td>`;
+                            }
+
+                            //分段接課程courseId
+                            // appendaudit1 += `<td>${filteredDataAudit1[i].courseId}</td>
+                            try {
+                                let eventName = await GETcourseNameById(filteredDataAudit1[i].courseId);
+                                appendaudit1 += `<td>${eventName}</td>`;
+                            } catch (error) {
+                                console.error(error);
+                                appendaudit1 += `<td>Error retrieving</td>`;
+                            }
+                            appendaudit1 += `   <td>${filteredDataAudit1[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
                                                 <td>${auditTypeMap[filteredDataAudit1[i].status]}</td>
                                                 <td>${filteredDataAudit1[i].paymentStatus}</td>
                                                 <td>${filteredDataAudit1[i].attendId}</td>
                                                 <td><button class="btn btn-primary Passcheckbtn" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdropPass1">查看</button></td>
-                                            </tr>
-                                            `;
+                                            </tr>`;
                         }
                         $('#aaa').empty().append(appendaudit1);
                     },
@@ -1729,7 +1735,40 @@
                 });
             });
 
-            // 選擇審核狀態: 2.通過3.未通過4:退出
+            function GETaccountNameById(input) {
+                return new Promise(function (resolve, reject) {
+                    $.ajax({
+                        url: "/ixercise/Account/Manage/" + input,  //會員accountId
+                        type: "GET",
+                        dataType: "json",
+                        success: function (resp) {
+                            resolve(resp.accountName);
+                        },
+                        error: function (xhr, status, error) {
+                            reject(error);
+                        }
+                    });
+                });
+            }
+
+            function GETcourseNameById(input) {
+                return new Promise(function (resolve, reject) {
+                    $.ajax({
+                        url: "/ixercise/course/courseId/" + input,  //課程courseId
+                        type: "GET",
+                        dataType: "json",
+                        success: function (resp) {
+                            resolve(resp.eventName);
+                        },
+                        error: function (xhr, status, error) {
+                            reject(error);
+                        }
+                    });
+                });
+            }
+
+
+            // 選擇審核狀態: 1.參加待審核2.通過3.未通過4:退出待審核5:退出成功
             $(document).on('change', '#selecthead2 select', function () {
                 let selectedValue = $(this).val();
                 console.log("selectedValue= " + selectedValue);
@@ -1738,27 +1777,47 @@
                     url: "/ixercise/courseAttendee/status/" + selectedValue,
                     type: "GET",
                     dataType: "json",
-                    success: function (filteredDataAudit1) {
+                    success: async function (filteredDataAudit1) {
                         console.log("未審核resp>>" + filteredDataAudit1);
                         let appendaudit1 = '';
-                        for (let i in filteredDataAudit1) {
-                            let reason = filteredDataAudit1[i].reason;
-                            let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
-                            //要分段接會員了accountId
-                            appendaudit1 += `
-                                            <tr>
-                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
-                                                <td>${filteredDataAudit1[i].accountId}</td>
-                                                <td>${filteredDataAudit1[i].courseId}</td>
-                                                <td>${filteredDataAudit1[i].attendTime}</td>
+                        if (filteredDataAudit1[0].successful) {
+                            for (let i in filteredDataAudit1) {
+                                let reason = filteredDataAudit1[i].reason;
+                                let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
+                                //要分段接會員了accountId
+                                appendaudit1 += `<tr>
+                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
+                                `;
+                                //分段接會員accountId
+                                // appendaudit1 += `<td>${filteredDataAudit1[i].accountId}</td>`;
+                                try {
+                                    let accountName = await GETaccountNameById(filteredDataAudit1[i].accountId);
+                                    appendaudit1 += `<td>${accountName}</td>`;
+                                } catch (error) {
+                                    console.error(error);
+                                    appendaudit1 += `<td>Error retrieving</td>`;
+                                }
+
+                                //分段接課程courseId
+                                // appendaudit1 += `<td>${filteredDataAudit1[i].courseId}</td>
+                                try {
+                                    let eventName = await GETcourseNameById(filteredDataAudit1[i].courseId);
+                                    appendaudit1 += `<td>${eventName}</td>`;
+                                } catch (error) {
+                                    console.error(error);
+                                    appendaudit1 += `<td>Error retrieving</td>`;
+                                }
+                                appendaudit1 += `   <td>${filteredDataAudit1[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
                                                 <td>${auditTypeMap[filteredDataAudit1[i].status]}</td>
                                                 <td>${filteredDataAudit1[i].paymentStatus}</td>
                                                 <td>${filteredDataAudit1[i].attendId}</td>
                                                 <td><button class="btn btn-primary Passcheckbtn" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdropPass1">查看</button></td>
-                                            </tr>
-                                            `;
+                                            </tr>`;
+                            }
+                        } else {
+                            swal("Warning!", "沒有資料", "warning");
                         }
                         $('#aaa').empty().append(appendaudit1);
                     },
@@ -1795,12 +1854,12 @@
             $('#audit2').on('click', function (e) {
                 console.log("audit2>>" + this);
                 // 表頭
-                $('#th1').text("accountId");
-                $('#th2').text("courseId");
-                $('#th3').text("attendTime");
-                $('#th4').text("reason");
+                $('#th1').text("會員名稱");
+                $('#th2').text("課程名稱");
+                $('#th3').text("報名時間");
+                $('#th4').text("參加原因");
                 $('#th5').text("status");
-                $('#th6').text("paymentStatus");
+                $('#th6').text("付款狀態");
                 $('#th7').text("attendId");
                 let appendaudit1head1 = '';
                 let appendaudit1head2 = '';
@@ -1812,49 +1871,12 @@
                 $('#selecthead2').empty().append(appendaudit1head2);
 
                 joinApplyUnchecked();
-                // $.ajax({
-                //     url: "/ixercise/courseAttendee/status/" + 1,
-                //     type: "GET",
-                //     dataType: "json",
-                //     success: function (filteredDataAudit2) {
-                //         console.log("未審核resp>>" + filteredDataAudit2);
-                //         let appendaudit2 = '';
-                //         if (filteredDataAudit2.length > 0) {
-                //             for (let i in filteredDataAudit2) {
-                //                 let reason = filteredDataAudit2[i].reason;
-                //                 // console.log("reason:" + reason);
-                //                 let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
-                //                 //要分段接會員了accountId
-                //                 appendaudit2 += `
-                //                             <tr>
-                //                                 <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
-                //                                 <td>${filteredDataAudit2[i].accountId}</td>
-                //                                 <td>${filteredDataAudit2[i].courseId}</td>
-                //                                 <td>${filteredDataAudit2[i].attendTime}</td>
-                //                                 <td>${truncatedReason}</td>
-                //                                 <td>${auditTypeMap[filteredDataAudit2[i].status]}</td>
-                //                                 <td>${filteredDataAudit2[i].paymentStatus}</td>
-                //                                 <td>${filteredDataAudit2[i].attendId}</td>
-                //                                 <td><button class="btn btn-primary checkpassbtn" data-bs-toggle="modal"
-                //                                         data-bs-target="#staticBackdropPass">查看</button></td>
-                //                             </tr>
-                //                             `;
-                //             }
-                //         } else if (resp[0].successful === false) {
-                //             swal("Warning!", "沒有資料", "warning");
-                //         }
-                //         $('#aaa').empty().append(appendaudit2);
-                //     },
-                //     error: function (xhr, status, error) {
-                //         alert("Error: " + xhr.responseText);
-                //     }
-                // });
             });
 
             // <<學員退出活動申請>>>>---撈出未審核 
             function joinApplyUncheck() {
                 $.ajax({
-                    url: "/ixercise/courseAttendee/status/" + 1,
+                    url: "/ixercise/courseAttendee/status/" + LSaccountId, //會員accountId
                     type: "GET",
                     dataType: "json",
                     success: function (filteredDataAudit2) {
@@ -1991,7 +2013,7 @@
                 $('#selecthead1').empty().append(appendaudit1head1);
                 $('#selecthead2').empty().append(appendaudit1head2);
                 $.ajax({
-                    url: "/ixercise/courseAttendee/status/" + 5,
+                    url: "/ixercise/courseAttendee/status/" + 5, //5:退出成功
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
@@ -2081,7 +2103,7 @@
             // <<學員退出活動申請>>>>---撈出未審核 
             function leaveApplyUncheck() {
                 $.ajax({
-                    url: "/ixercise/courseAttendee/status/" + 4,
+                    url: "/ixercise/courseAttendee/status/" + 4, //4:退出待審核
                     type: "GET",
                     dataType: "json",
                     success: function (resp) {
