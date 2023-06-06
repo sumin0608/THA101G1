@@ -3,7 +3,6 @@ package tw.idv.ixercise.account.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tw.idv.ixercise.account.controller.MailController;
 import tw.idv.ixercise.account.dao.AccountRepository;
 import tw.idv.ixercise.account.dao.CoachSkillRepository;
 import tw.idv.ixercise.account.entity.*;
@@ -273,10 +272,25 @@ public class AccountServiceImpl implements AccountService {
             return new PgAccount(false, "查詢錯誤");
         }
     }
+
     @Override
-    public CoachSkill findSkById(Integer skillId){
-        CoachSkill cs = csrepo.findById(skillId).orElse(new CoachSkill(false,"查無此申請"));
+    public CoachSkill findSkById(Integer skillId) {
+        CoachSkill cs = csrepo.findById(skillId).orElse(new CoachSkill(false, "查無此申請"));
         return cs;
+    }
+
+    @Override
+    public Core modifySkillApply(CoachSkill coachSkill) {
+       CoachSkill cs = csrepo.findById(coachSkill.getSkillId()).orElse(new CoachSkill(false,"查詢不到此筆申請"));
+       if(Objects.equals(cs.getSkillState(),coachSkill.getSkillState())){
+           return new Core(false,"請調整狀態後再送出");
+       }
+
+       cs.setSkillState(coachSkill.getSkillState());
+       if(csrepo.save(cs) == null){
+           return new Core(false,"修改失敗");
+       }
+       return new Core(true,"修改成功");
     }
 
 

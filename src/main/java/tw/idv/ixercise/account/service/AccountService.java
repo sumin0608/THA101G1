@@ -36,6 +36,8 @@ public interface AccountService {
 
     CoachSkill findSkById(Integer skillId);
 
+    Core modifySkillApply(CoachSkill coachSkill);
+
 //    for personal page===============================
     PgAccount findForPg(Integer accountId);
 

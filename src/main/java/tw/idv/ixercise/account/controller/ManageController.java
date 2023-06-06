@@ -88,4 +88,12 @@ public class ManageController {
         }
         return service.findSkById(skillId);
     }
+
+    @PostMapping("Skill/Modify")
+    public Core findSkillForManage(@RequestBody CoachSkill coachSkill){
+        if(coachSkill == null){
+            return new CoachSkill(false,"此筆申請異常");
+        }
+        return service.modifySkillApply(coachSkill);
+    }
 }

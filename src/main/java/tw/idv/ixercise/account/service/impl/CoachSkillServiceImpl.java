@@ -46,4 +46,6 @@ public class CoachSkillServiceImpl implements CoachSkillService {
         repo.save(cs);
         return new Core(true,"申請成功");
     }
+
+//    public Core
 }
