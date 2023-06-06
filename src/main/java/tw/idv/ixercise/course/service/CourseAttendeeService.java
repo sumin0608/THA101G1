@@ -26,7 +26,10 @@ public interface CourseAttendeeService {
 
 	List<CourseAttendee> getAttendeesByAccountId(Integer accountId);
 
+
 	List<CourseAttendee> getAttendeesByCourseId(Integer courseId);
+	
+	CourseAttendee getAttendeesByAttendId(Integer attendId);
 
 	List<Course> getCalendar(Integer accountId);
 

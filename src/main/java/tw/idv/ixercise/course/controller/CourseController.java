@@ -76,7 +76,14 @@ public class CourseController {
 			core.setSuccessful(false);
 		} else {
 			core.setMessage("修改成功");
-			core.setSuccessful(service.edit(course));
+			core.setSuccessful(true);
+//			service.edit(course);
+			service.updateCourse(course.getCourseId(), course.getEventName(),
+		            course.getExpectedPrice(), course.getCourseStartDate(), course.getCourseStartTime(),
+		            course.getCourseDuration(), course.getRegistrationDeadline(), course.getMaximumCapacity(),
+		            course.getDescription(), course.getPhoto(), course.getLocation(), course.getCity(),
+		            course.getDistrict(), course.getDetailedAddress(), course.getCategoryId(),
+		            course.getCourseStatus(), course.getPaidAdvertising(), course.getPaidAdvertisingTime());
 		}
 		System.out.println("修改成功");
 		return core;
@@ -112,9 +119,8 @@ public class CourseController {
 	@GetMapping("/creator/{creator}")
 	public List<Course> findCreator(@PathVariable("creator") Integer creator) {
 		System.out.println("成功到!findCreator");
-		List<Course> courses = service.findCoursesByCreator(creator);
-		courses.get(0).setSuccessful(true);
-		courses.get(0).setMessage("第一筆資料");
+		List<Course> courses = service.findCoursesByCreator(creator);		
+		System.out.println(courses.get(0).getMessage());
 		return courses;
 	}
 	
@@ -139,9 +145,11 @@ public class CourseController {
 	}
 
 	@PostMapping("/upload-photo")
-	public String uploadPhoto(@RequestParam("file") MultipartFile file) {
+	public Core uploadPhoto(@RequestParam("file") MultipartFile file) {
+		final Core core = new Core();
 		if (file.isEmpty()) {
-			return "上傳的文件為空";
+			core.setMessage("照片儲存失敗");
+			return core;
 		}
 		try {
 			String projectRootPath = System.getProperty("user.dir");
@@ -154,11 +162,11 @@ public class CourseController {
 			System.out.println("儲存位置>>" + destFile);
 			file.transferTo(destFile);
 			// 返回存储的文件路径，可以在保存评论的控制器中使用?
-			return filePath;
+			core.setMessage(filePath);
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "文件上傳失敗";
 		}
+		return core;
 	}
 
 	@GetMapping("/districts/{city}")

@@ -7,6 +7,7 @@ import java.util.stream.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.ixercise.core.*;
 import tw.idv.ixercise.course.dao.*;
@@ -43,7 +44,7 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
 
 		if (course != null) {
-			//拿到欲報名課程的最後省和時間
+			// 拿到欲報名課程的最後省和時間
 			attendDeadline = course.getRegistrationDeadline();
 
 			System.out.println(course.getRegistrationDeadline());
@@ -67,46 +68,61 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		return savedAttendee != null;
 	}
 
+	@Transactional
 	@Override
 	public void remove(CourseAttendee courseAttendee) {
 		System.out.println("成功到remove(CourseAttendee)>");
 		repository.delete(courseAttendee);
 	}
 
+	@Transactional
 	@Override
 	public boolean updateStatusById(Integer attendId, Integer status) {
-		System.out.println("成功到updateStatusById>"+"attendId:"+attendId+"status:"+status);
-		return repository.updateCourseAttendeeStatus(attendId, status)>0;
+		System.out.println("成功到updateStatusById>" + "attendId:" + attendId + " status:" + status);
+		return repository.updateCourseAttendeeStatus(attendId, status) > 0;
 	}
 
+	@Transactional
 	@Override
 	public boolean updateCourseAttendeeReason(Integer attendId, String reason) {
-		System.out.println("成功到updateeAttendeeReason>"+"attendId:"+attendId+"reason:"+reason);
-		return repository.updateCourseAttendeeReason(attendId, reason)>0;
+		System.out.println("成功到updateeAttendeeReason>" + "attendId:" + attendId + " reason:" + reason);
+		return repository.updateCourseAttendeeReason(attendId, reason) > 0;
 	}
 
+	@Transactional
 	@Override
 	public boolean updateCourseAttendeeCommentStatus(Integer attendId, Integer commentStatus) {
-		System.out.println("成功到updateCourseAttendeeCommentStatus>"+"attendId:"+attendId+"commentStatus:"+commentStatus);
-		return repository.updateCourseAttendeeCommentStatus(attendId, commentStatus)>0;
+		System.out.println(
+				"成功到updateCourseAttendeeCommentStatus>" + "attendId:" + attendId + " commentStatus:" + commentStatus);
+		return repository.updateCourseAttendeeCommentStatus(attendId, commentStatus) > 0;
 	}
 
 	@Override
 	public List<CourseAttendee> getAllAttendeesSortedByAttendTime(Sort sort) {
-		System.out.println("成功到ffindAll(sort)>"+sort);
+		System.out.println("成功到ffindAll(sort)>" + sort);
 		return repository.findAll(sort);
 	}
 
 	@Override
 	public List<CourseAttendee> getAttendeesByCommentStatus(Integer commentStatus) {
-		System.out.println("成功到findByCommentStatus>>"+commentStatus);
+		System.out.println("成功到findByCommentStatus>>" + commentStatus);
 		return repository.findByCommentStatus(commentStatus);
 	}
 
 	@Override
 	public List<CourseAttendee> getStatus(Integer status) {
-		System.out.println("成功到findByStatus>>"+status);
-		return repository.findByStatus(status);
+		System.out.println("成功到findByStatus>>" + status);
+		List<CourseAttendee> ca = repository.findByStatus(status);
+		if (!ca.isEmpty()) {
+			ca.get(0).setSuccessful(true);
+			ca.get(0).setMessage("第一筆資料成功");
+		} else {
+			CourseAttendee ca1 = new CourseAttendee();
+			ca1.setSuccessful(false);
+			ca1.setMessage("沒有資料");
+			ca.add(ca1);
+		}
+		return ca;
 	}
 
 	@Override
@@ -119,6 +135,12 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 	public List<CourseAttendee> getAttendeesByCourseId(Integer courseId) {
 		System.out.println("成功到findByCourseId>>" + courseId);
 		return repository.findByCourseId(courseId);
+	}
+
+	@Override
+	public CourseAttendee getAttendeesByAttendId(Integer attendId) {
+		System.out.println("成功到findByAttendId>>" + attendId);
+		return repository.findByAttendId(attendId);
 	}
 
 	@Override

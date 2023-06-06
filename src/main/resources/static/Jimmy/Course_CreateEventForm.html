@@ -13,6 +13,9 @@
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
     <style>
         .test {
             /* color: #e9e90e; */
@@ -409,348 +412,354 @@
     <div class="container main-content">
         <!-- 請在這裡作業 -->
         <div class="row">
-            <div class="col-12">
+            <!-- <div class="col-12"> -->
 
-                <div class="container custom-container  px-4 px-lg-5 mt-5">
-                    <!-- ===============form================== -->
-                    <!-- <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> -->
-                    <!-- <div class="row gx-4 gx-lg-5 row-cols-12 justify-content-center"> -->
-                    <div class="col -12 row ">
-                        <div class="row col-2"></div>
-                        <div class="col-8 formpad " style="background-color: #E9E9E9; padding-top: 10px;">
+            <!-- <div class="container custom-container  px-4 px-lg-5 mt-5"> -->
+            <!-- ===============form================== -->
+            <!-- <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> -->
+            <!-- <div class="col -12 row "> -->
+            <!-- <div class="row col-2"></div> -->
+            <div class="col-12  formpad " style="background-color: #E9E9E9; padding-top: 10px; border: solid #0a58ca;">
 
-                            <!-- ================================================form -----submit ================================================== -->
-                            <!-- <form action="aaa.html" method="get" class="row g-3 needs-validation" novalidate> -->
-                            <form id="myform" method="post" enctype="multipart/form-data"
-                                class="row g-3 needs-validation" novalidate>
-                                <br>
-                                <h1>創辦活動表單</h1>
-                                <hr>
-                                <!-- ======================================================image upload ====ccccc============================================================================  -->
-                                <div class="row justify-content-center">
-                                    <div class="row col-1"></div>
-                                    <div class="col-md-10  text-center">
-                                        <div class="card mt-5">
-                                            <div class="card-body">
-                                                <h5 class="card-title">設定活動封面</h5>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="photo-dropzone forDhotoDrop">點擊下方或將圖片拖放至下方處</label>
-                                                    <input type="file" class="form-control-file" name="photo-dropzone"
-                                                        id="photo-dropzone" aria-describedby="fileHelp" accept="image/*"
-                                                        required>
-                                                    <div class="invalid-feedback">
-                                                        必填圖片!
-                                                    </div>
-                                                    <br>
-                                                    <small id="fileHelp" class="form-text text-muted">支援 JPG, JPEG, PNG
-                                                        檔案格式</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div id="previewBox">
-                                                        <span class="text">選擇圖片</span>
-                                                        <!-- <img id="preview" src="#" alt="圖片預覽" style="max-width: 100%; max-height: 200px;"> -->
-                                                    </div>
-                                                    <!-- <input type="file" class="form-control-file d-none" id="preview-dropzone"
+                <!-- ================================================form -----submit ================================================== -->
+                <!-- <form action="aaa.html" method="get" class="row g-3 needs-validation" novalidate> -->
+                <form id="myform" method="post" enctype="multipart/form-data" class=" g-3 needs-validation" novalidate>
+                    <br>
+                    <h1>創辦活動表單</h1>
+                    <hr>
+                    <!-- ======================================================image upload ====ccccc============================================================================  -->
+                    <div class="row justify-content-center">
+                        <div class="row col-1"></div>
+                        <div class="col-md-10  text-center">
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">設定活動封面</h5>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="photo-dropzone forDhotoDrop">點擊下方或將圖片拖放至下方處</label>
+                                        <input type="file" class="form-control-file" name="photo-dropzone"
+                                            id="photo-dropzone" aria-describedby="fileHelp" accept="image/*" required>
+                                        <div class="invalid-feedback">
+                                            必填圖片!
+                                        </div>
+                                        <br>
+                                        <small id="fileHelp" class="form-text text-muted">支援 JPG, JPEG, PNG
+                                            檔案格式</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="previewBox">
+                                            <span class="text">選擇圖片</span>
+                                            <!-- <img id="preview" src="#" alt="圖片預覽" style="max-width: 100%; max-height: 200px;"> -->
+                                        </div>
+                                        <!-- <input type="file" class="form-control-file d-none" id="preview-dropzone"
                                             accept="image/*"> -->
-                                                </div>
-                                                <br>
-                                                <button type="button" class="btn btn-danger" id="delete-btn">刪除</button>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class="row col-1"></div>
+                                    <br>
+                                    <button type="button" class="btn btn-danger" id="delete-btn">刪除</button>
                                 </div>
-                                <!-- ======================================================image upload ====ccccc============================================================================  -->
-                                <!-- Zero row 之後抓會員的session-->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <label for="" class="form-label">creator</label>
-                                        <div id="creator">3</div>
-                                    </div>
-                                    <br>
-                                    <!-- First row -->
-                                    <div class="row">
-                                        <div class="col-sm-12"></div>
-                                        <label for="event_name" class="form-label">聚會名稱</label>
-                                        <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
-                                            class="form-control" value="111" required>
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <br>
-                                    <!-- Second row -->
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label for="" class="form-label">聚會類型</label>
-                                            <select class="form-select" id="categoryId" name="categoryId"
-                                                aria-label="Default select example" required>
-                                                <option selected disabled value="">請選擇..</option>
-                                                <option value="1">足球</option>
-                                                <option value="2">籃球</option>
-                                                <option value="3">網球</option>
-                                                <option value="4">排球</option>
-                                                <option value="5">橄欖球</option>
-                                                <option value="6">棒球</option>
-                                                <option value="7">曲棍球</option>
-                                                <option value="8">高爾夫球</option>
-                                                <option value="9">羽毛球</option>
-                                                <option value="10">乒乓球</option>
-                                                <option value="11">壁球</option>
-                                                <option value="12">手球</option>
-                                                <option value="13">保齡球</option>
-                                                <option value="14">有氧操課</option>
-                                                <option value="15">重訓課</option>
-                                                <option value="16">瑜伽課</option>
-                                                <option value="17">舞蹈課</option>
-                                                <option value="18">腹肌課</option>
-                                                <option value="19">動感單車課</option>
-                                                <option value="20">跳繩課</option>
-                                                <option value="21">拳擊課</option>
-                                                <option value="22">跳舞操課</option>
-                                                <option value="23">瑜伽拉伸課</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label for="" class="form-label">所在城市</label>
-                                            <select class="form-select" id="city" name="city"
-                                                aria-label="Default select example" required>
-                                                <option selected disabled value="">請選擇..</option>
-                                                <option value="1">台北市</option>
-                                                <option value="2">基隆</option>
-                                                <option value="4">新北市</option>
-                                                <option value="5">宜蘭</option>
-                                                <option value="7">新竹</option>
-                                                <option value="8">桃園</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label for="" class="form-label">所在地區</label>
-                                            <select class="form-select" id="district" name="district"
-                                                aria-label="Default select example" required>
-                                                <option selected disabled value="">請選擇..</option>
-                                                <option value="1">Ex.松山區</option>
+                            </div>
+                        </div>
+                        <div class="row col-1"></div>
+                    </div>
+                    <!-- ======================================================image upload ====ccccc============================================================================  -->
+                    <!-- Zero row 之後抓會員的session-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="" class="form-label">creator</label>
+                            <div id="creator">3</div>
+                        </div>
+                        <br>
+                        <!-- First row -->
+                        <div class="col-sm-12">
+                            <!-- <div class="col-sm-12"></div> -->
+                            <label for="event_name" class="form-label">聚會名稱</label>
+                            <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
+                                class="form-control" value="111" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <!-- Second row -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">聚會類型</label>
+                            <select class="form-select" id="categoryId" name="categoryId"
+                                aria-label="Default select example" required>
+                                <option selected disabled value="">請選擇..</option>
+                                <option value="1">足球</option>
+                                <option value="2">籃球</option>
+                                <option value="3">網球</option>
+                                <option value="4">排球</option>
+                                <option value="5">橄欖球</option>
+                                <option value="6">棒球</option>
+                                <option value="7">曲棍球</option>
+                                <option value="8">高爾夫球</option>
+                                <option value="9">羽毛球</option>
+                                <option value="10">乒乓球</option>
+                                <option value="11">壁球</option>
+                                <option value="12">手球</option>
+                                <option value="13">保齡球</option>
+                                <option value="14">有氧操課</option>
+                                <option value="15">重訓課</option>
+                                <option value="16">瑜伽課</option>
+                                <option value="17">舞蹈課</option>
+                                <option value="18">腹肌課</option>
+                                <option value="19">動感單車課</option>
+                                <option value="20">跳繩課</option>
+                                <option value="21">拳擊課</option>
+                                <option value="22">跳舞操課</option>
+                                <option value="23">瑜伽拉伸課</option>
+                                <option value="24">其他</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">所在城市</label>
+                            <select class="form-select" id="city" name="city" aria-label="Default select example"
+                                required>
+                                <option selected disabled value="">請選擇..</option>
+                                <option value="1">台北市</option>
+                                <option value="2">基隆</option>
+                                <option value="4">新北市</option>
+                                <option value="5">宜蘭</option>
+                                <option value="7">新竹</option>
+                                <option value="8">桃園</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">所在地區</label>
+                            <select class="form-select" id="district" name="district"
+                                aria-label="Default select example" required>
+                                <option selected disabled value="">請選擇..</option>
+                                <option value="1">Ex.松山區</option>
 
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
+                            </select>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <br>
+                        <!-- Third row -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-8" style="margin-top: 2px;">
+                            <label class="form-label">場地名稱</label>
+                            <input type="text" id="location" name="location" placeholder="請輸入聚會場地名稱..."
+                                class="form-control" value="" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label">預計花費</label>
+                            <input type="number" id="price" name="price" min="0" placeholder="預計花費" class="form-control"
+                                value="111" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <hr>
+                        <br>
+                        <!-- Forth row -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-12">
+                            <label class="form-label">活動地址</label>
+                            <input type="text" name="address" placeholder="活動地址..." class="form-control" id="address"
+                                value="" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <br>
+                        <!-- Fith row -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-5">
+                            <label class="form-label">活動日期</label>
+                            <div class="input-group date" id="eventDate1">
+                                <input type="text" id="eventDate" name="eventDate" placeholder="90天內活動日期..."
+                                    class="form-control" value="" required>
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="form-label">活動開始時間</label>
+                            <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-4"></div> -->
+                        <!-- </div> -->
+                        <br>
+                        <!--  row Six -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-5">
+                            <label class="form-label">報名截止日期</label>
+                            <div class="input-group date" id="eventDate2">
+                                <input type="text" id="lastVerifyDate" name="lastVerifyDate" placeholder="報名截止日期..."
+                                    class="form-control" value="" required>
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="form-label">報名截止時間</label>
+                            <input type="time" id="lastVerifyTime" name="lastVerifyTime" placeholder="報名截止時間..."
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <br>
+                        <!-- row  seven ===================================== Javascript ==============================================-->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-4">
+                            <label class="form-label">人數上限</label>
+                            <input type="number" id="maxAttendees" name="maxAttendees" placeholder="聚會人數上限" min="1"
+                                max="100" class="form-control" value="10" required>
+                            <div class="invalid-feedback">
+                                Please write something.
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label">課程時長(小時)</label>
+                            <input type="number" id="courseDuration" name="courseDuration" placeholder="課程時長"
+                                class="form-control" min="0.5" max="24" value="0.5" step="0.5" required>
+                            <div class="invalid-feedback">
+                                Please write something.
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label">付費方式</label>
+                            <select class="form-select" id="paymentMethod" name="paymentMethod"
+                                aria-label="Default select example" required>
+                                <option value="" selected disabled>請選擇..</option>
+                                <option value="1">線上刷卡</option>
+                                <option value="2">現場繳費</option>
+                                <option value="3">免費課程</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                        <br>
+                        <!-- row eight -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="description">聚會描述和備註</label>
+                                    <textarea class="form-control" name="description" id="description" rows="3"
+                                        required></textarea>
+                                    <div class="invalid-feedback">
+                                        請與教練分享參加目標與期望。
                                     </div>
-                                    <br>
-                                    <!-- Third row -->
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <label class="form-label">場地名稱</label>
-                                            <input type="text" id="location" name="location" placeholder="請輸入聚會場地名稱..."
-                                                class="form-control" value="" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="form-label">預計花費</label>
-                                            <input type="number" id="price" name="price" min="0" placeholder="預計花費"
-                                                class="form-control" value="111" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <br>
-                                    <!-- Forth row -->
-                                    <div class="row">
-                                        <div class="col-sm-12"></div>
-                                        <label class="form-label">活動地址</label>
-                                        <input type="text" name="address" placeholder="活動地址..." class="form-control"
-                                            id="address" value="" required>
-                                        <div class="invalid-feedback">
-                                            必填!
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!-- Fith row -->
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <label class="form-label">活動日期</label>
-                                            <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
-                                                class="form-control" value="2023-05-06" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <label class="form-label">活動開始時間</label>
-                                            <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                                class="form-control" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <!-- <div class="col-sm-4"></div> -->
-                                    </div>
-                                    <br>
-                                    <!--  row Six -->
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <label class="form-label">報名截止日期</label>
-                                            <input type="date" id="lastVerifyDate" name="lastVerifyDate"
-                                                placeholder="報名截止日期..." class="form-control" value="2023-05-07"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <label class="form-label">報名截止時間</label>
-                                            <input type="time" id="lastVerifyTime" name="lastVerifyTime"
-                                                placeholder="報名截止時間..." class="form-control" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!-- row  seven ===================================== Javascript ==============================================-->
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label">人數上限</label>
-                                            <input type="number" id="maxAttendees" name="maxAttendees"
-                                                placeholder="聚會人數上限" min="1" max="100" class="form-control" value="10"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please write something.
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="form-label">課程時長(小時)</label>
-                                            <input type="number" id="courseDuration" name="courseDuration"
-                                                placeholder="課程時長" class="form-control" min="0.5" max="24" value="0.5"
-                                                step="0.5" required>
-                                            <div class="invalid-feedback">
-                                                Please write something.
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <label class="form-label">付費方式</label>
-                                            <select class="form-select" id="paymentMethod" name="paymentMethod"
-                                                aria-label="Default select example" required>
-                                                <option value="" selected disabled>請選擇..</option>
-                                                <option value="1">線上刷卡</option>
-                                                <option value="2">現場繳費</option>
-                                                <option value="3">免費課程</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!-- row eight -->
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label for="description">聚會描述和備註</label>
-                                                <textarea class="form-control" name="description" id="description"
-                                                    rows="3" required></textarea>
-                                                <div class="invalid-feedback">
-                                                    請與教練分享參加目標與期望。
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label for="" class="form-label">課程狀態</label>
-                                            <select class="form-select" id="courseStatus" name="courseStatus"
-                                                aria-label="Default select example" required>
-                                                <option value="1">可參加</option>
-                                                <option value="2">暫停報名</option>
-                                                <option value="3">截止報名</option>
-                                                <option value="4">滿團</option>
-                                                <!-- <option value="5">強制下架</option> -->
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label for="" class="form-label">要不要買廣告</label>
-                                            <select class="form-select" id="paidAdvertising" name="paidAdvertising"
-                                                aria-label="Default select example" required>
-                                                <option value="0">不買</option>
-                                                <option value="1">買</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label class="form-label">廣告時效</label>
-                                            <input type="date" id="paidAdvertisingTime1" name="paidAdvertisingTime1"
-                                                placeholder="日期..." class="form-control" value="2024-05-08" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label class="form-label">--</label>
-                                            <input type="time" id="paidAdvertisingTime2" name="paidAdvertisingTime2"
-                                                placeholder="時間..." class="form-control" value="11:11" required>
-                                            <div class="invalid-feedback">
-                                                必填!
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <!-- row eight -->
-                                    <div class="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                                            <label class="form-check-label" for="gridCheck">
-                                                我已閱讀並同意免責聲明
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <br>
-                                    <!-- row nine -->
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <button type="submit" id="btn_submit" class="btn btn-primary">
-                                                創辦活動
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="row justify-content-center">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label for="" class="form-label">課程狀態</label>
+                                <select class="form-select" id="courseStatus" name="courseStatus"
+                                    aria-label="Default select example" required>
+                                    <option value="1">可參加</option>
+                                    <option value="2">暫停報名</option>
+                                    <option value="3">截止報名</option>
+                                    <option value="4">滿團</option>
+                                    <!-- <option value="5">強制下架</option> -->
+                                </select>
+                                <div class="invalid-feedback">
+                                    必填!
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="" class="form-label">要不要買廣告</label>
+                                <select class="form-select" id="paidAdvertising" name="paidAdvertising"
+                                    aria-label="Default select example" required>
+                                    <option value="0">不買</option>
+                                    <option value="1">買</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    必填!
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="form-label">廣告時效</label>
+                                <input type="date" id="paidAdvertisingTime1" name="paidAdvertisingTime1"
+                                    placeholder="日期..." class="form-control" value="">
+                                <div class="invalid-feedback">
+                                    必填!
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="form-label">--</label>
+                                <input type="time" id="paidAdvertisingTime2" name="paidAdvertisingTime2"
+                                    placeholder="時間..." class="form-control" value="">
+                                <div class="invalid-feedback">
+                                    必填!
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- row eight -->
+                        <!-- <div class="row"> -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <label class="form-check-label" for="gridCheck">
+                                我已閱讀並同意免責聲明
+                            </label>
+                        </div>
+                        <!-- </div> -->
+                        <hr>
+                        <br>
+                        <!-- row nine -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="submit" id="btn_submit" class="btn btn-primary">
+                                    創辦活動
+                                </button>
+                            </div>
+                        </div>
+                        <!-- <div class="row justify-content-center">
                         <div class="col-sm-8 ">
                             <div class="d-grid gap-2 ">
                                 <button class="btn btn-primary ylbtn" type="button">預覽</button>
                             </div>
                         </div>
                     </div> -->
-                                </div>
-                            </form>
-                            <div class="col-4" style="color: #B6B6B6;"> 送出前請再次確認表單資訊</div>
-                        </div>
                     </div>
-                </div>
+                </form>
+                <div class="col-4" style="color: #B6B6B6;"> 送出前請再次確認表單資訊</div>
             </div>
         </div>
+        <!-- </div> -->
+        <!-- </div> -->
+        <!-- </div> -->
         <br>
     </div>
 
@@ -792,6 +801,9 @@
     <!-- 載入 Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- ================================================================= -->
+    <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
     <script>
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
@@ -807,6 +819,22 @@
 
         //==================================== image upload js ======================zzzz=================================================================
         $(document).ready(function () {
+            // 防止選今天以前的日期
+            $('#eventDate1').datetimepicker({
+                date: null,
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-tw'),
+                minDate: moment().add(1, 'days'),
+                maxDate: moment().add(90, 'days'),
+            });
+            $('#eventDate2').datetimepicker({
+                date: null,
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-tw'),
+                minDate: moment().add(1, 'days'),
+                maxDate: moment().add(90, 'days'),
+            });
+
 
             //撈該縣市的區
             $("#city").change(function () {
@@ -823,7 +851,7 @@
                         console.log("resp>>" + resp);
                         let tableData = '';
                         for (let i = 0; i < resp.length; i++) {
-                            tableData += `<option selected disabled value="">${resp[i].name}</option>`;
+                            tableData += `<option selected value="">${resp[i].name}</option>`;
                         }
                         $("#district").empty().append(tableData);
                     },
@@ -854,12 +882,14 @@
             //     console.log("cityText: " + cityText);
             // });
 
+            // 送出表單
             $('#btn_submit').on('click', function (e) {
                 e.preventDefault();
                 let photodropzone = $("#photo-dropzone");
                 let creator = $("#creator").text();
                 let eventName = $("#event_name").val();
                 let expectedPrice = $("#price").val();
+                // console.log("expectedPrice>>" + expectedPrice);
                 let courseStartDate = $("#eventDate").val();
                 let courseStartTime = courseStartDate + " " + $("#startTime").val() + ":00";
                 let courseDuration = $("#courseDuration").val();
@@ -874,15 +904,22 @@
                 // let city = $("#city").val();
                 let city = $("#city option:selected").text();
 
-                let district = $("#district").val();
+                let district = $("#district option:selected").text();
+                console.log("district>>" + district);
                 let detailedAddress = $("#address").val();
                 let categoryId = $("#categoryId option:selected").text();
 
                 let courseStatus = $("#courseStatus").val();
                 let paidAdvertising = $("#paidAdvertising").val();
-                let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
-                let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
-                let paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
+                console.log("paidAdvertising代碼>>" + paidAdvertising);
+                let paidAdvertisingTime;
+                if (paidAdvertising == 0) {
+                    paidAdvertisingTime = "2040-01-01 00:00:00";
+                } else {
+                    let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
+                    let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
+                    paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
+                }
                 console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
                 // let paymentMethod = $("#paymentMethod").val();
 
@@ -952,7 +989,7 @@
                 // 检查是否有有填欄位--結束
 
                 let photo = file.name;
-                // console.log("photo>>" + photo);
+                console.log("photo>>" + photo);
                 // 步驟一、先存圖片
                 $.ajax({
                     url: "/ixercise/course/upload-photo",
@@ -962,10 +999,12 @@
                     contentType: false,
                     success: function (response) {
                         console.log(response);
+                        console.log("照片存成功");
                         // 步驟二、存入資料庫
                         $.ajax({
                             url: "/ixercise/course",
                             type: "POST",
+                            async: false,//非同步的（asynchronous），表示該請求是同步的
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 creator: creator,
@@ -988,14 +1027,14 @@
                                 paidAdvertisingTime: paidAdvertisingTime
                             }),
                             success: function (resp) {
-                                console.log("resp>>" + resp);
-                                $('#myform').reset(); //清空表單
-                                // swal("Warning!", resp.message, "warning");
+                                // console.log("resp>>" + resp);
+                                swal("Warning!", resp.message, "warning");
                             },
                             error: function (xhr, status, error) {
                                 alert("Error: " + xhr.responseText);
                             }
                         });
+                        $('#myform').reset(); //清空表單
                     },// 步驟二、結束
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);

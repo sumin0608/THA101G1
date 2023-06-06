@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.ixercise.course.dao.CourseDao;
 import tw.idv.ixercise.course.entity.Course;
@@ -30,9 +31,10 @@ public class CourseDaoImpl implements CourseDao {
 		return 1;
 	}
 
+	@Transactional
 	@Override
 	public int upateByCourseId(Course course) {
-		final StringBuilder hql = new StringBuilder().append("UPDATE course SET ");
+		final StringBuilder hql = new StringBuilder().append("UPDATE Course SET ");
 
 		hql.append("eventName = :eventName,").append("expectedPrice = :expectedPrice,")
 				.append("courseStartDate = :courseStartDate,").append("courseStartTime = :courseStartTime,")
@@ -48,13 +50,15 @@ public class CourseDaoImpl implements CourseDao {
 				.append("paidAdvertisingTime = :paidAdvertisingTime,")
 				.append("courseCreationDate = NOW() ").append("WHERE courseId = :courseId");
 		
-		Query <Integer> query = session.createQuery(hql.toString());
+		Query query = session.createQuery(hql.toString());
 		query.setParameter("eventName", course.getEventName())
 			.setParameter("expectedPrice", course.getExpectedPrice())
 			.setParameter("courseStartDate", course.getCourseStartDate())
 			.setParameter("courseStartTime", course.getCourseStartTime())
 			.setParameter("courseDuration", course.getCourseDuration())
-			.setParameter("maximumCapacity", course.getMaximumCapacity());
+			.setParameter("registrationDeadline", course.getRegistrationDeadline())
+			.setParameter("maximumCapacity", course.getMaximumCapacity())
+			.setParameter("description", course.getDescription());
 		
 		if (course.getPhoto() != null) {
 			query.setParameter("photo", course.getPhoto());
