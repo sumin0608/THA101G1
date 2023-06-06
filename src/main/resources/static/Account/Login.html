@@ -62,11 +62,11 @@
             <ul class="navbar-nav mb-2 mb-lg-0 w-100">
                 <!-- 搜尋欄=============================================================== -->
                 <!-- <li class="nav-item my-auto">
-                    <form class="d-flex">
-                        <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
-                        <button class="btn border border-2 border-dark" type="submit">Search</button>
-                    </form>
-                </li> -->
+                <form class="d-flex">
+                    <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
+                    <button class="btn border border-2 border-dark" type="submit">Search</button>
+                </form>
+            </li> -->
 
                 <li class="nav-item my-auto">
                     <form class="d-flex row">
@@ -129,12 +129,10 @@
                                         <!-- <div class="col-9"></div> -->
                                         <div class="col-12 ">
                                             <!-- <button class="btn btn-primary" type="submit"> 查詢
-                                        </button> -->
-                                            <button class="btn btn-primary" type="button"
-                                                    id="btn-close-search">關閉
+                                    </button> -->
+                                            <button class="btn btn-primary" type="button" id="btn-close-search">關閉
                                             </button>
-                                            <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置
+                                            <button class="btn btn-primary" type="reset" id="btn-close-search">重置
                                             </button>
                                         </div>
                                     </div>
@@ -144,7 +142,7 @@
                 </li>
 
                 <!-- <div class="collapse  d-block" id="collapseExample">
-                </div> -->
+            </div> -->
 
 
                 <!-- 辦活動============================================================= -->
@@ -274,39 +272,39 @@
 <!-- 這裡大概是放廣告 -->
 <!-- Header====================================================================================== -->
 <!-- <header>
-    <div class="container-fluid p-0">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active w-100 object-fit-cover">
-                    <img src="https://picsum.photos/1920/300/?random=10" class="d-block" alt="...">
-                </div>
-                <div class="carousel-item w-100 object-fit-cover">
-                    <img src="https://picsum.photos/1920/300/?random=11" class="d-block" alt="...">
-                </div>
-                <div class="carousel-item w-100 object-fit-cover">
-                    <img src="https://picsum.photos/1920/300/?random=12" class="d-block" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+<div class="container-fluid p-0">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active w-100 object-fit-cover">
+                <img src="https://picsum.photos/1920/300/?random=10" class="d-block" alt="...">
+            </div>
+            <div class="carousel-item w-100 object-fit-cover">
+                <img src="https://picsum.photos/1920/300/?random=11" class="d-block" alt="...">
+            </div>
+            <div class="carousel-item w-100 object-fit-cover">
+                <img src="https://picsum.photos/1920/300/?random=12" class="d-block" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+</div>
 </header> -->
 <!-- Header====================================================================================== -->
 
@@ -417,12 +415,25 @@
                     sessionStorage.setItem("accountNickname", accountNickname);
                     sessionStorage.setItem("accountLevel", accountLevel);
                     sessionStorage.setItem("accountPhoto", accountPhoto);
-                    location = getContextPath()+"/index.html";
+                    location = getContextPath() + "/index.html";
+
+                    const expirationTime = 5 * 60 * 60 * 1000; // 5 小時的毫秒數
+                    const currentTime = new Date().getTime(); // 當前時間的毫秒數
+                    const expirationTimestamp = currentTime + expirationTime;
+                    setTimeout(function () {
+                        localStorage.setItem("accountId", accountId);
+                        localStorage.setItem("accountNickname", accountNickname);
+                        localStorage.setItem("accountLevel", accountLevel);
+                        localStorage.setItem("accountPhoto", accountPhoto);
+                    }, expirationTime);
+
+
                 } else {
                     errMsg.textContent = message;
                 }
             })
     })
+
     function getContextPath() {
         return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
     }

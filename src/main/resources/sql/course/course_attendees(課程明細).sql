@@ -1,4 +1,4 @@
-CREATE TABLE course_attendees (
+CREATE TABLE CourseAttendee (
 `attendId` int NOT NULL AUTO_INCREMENT,
 `courseId` int DEFAULT NULL,
 `accountId` int DEFAULT NULL,

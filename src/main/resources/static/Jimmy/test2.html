@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+
+    <form action="">
+        <label class="form-label">活動日期</label>
+        <div class="input-group date" id="eventDate1">
+            <input type="text" id="eventDate" name="eventDate" placeholder="活動日期..." class="form-control" value=""
+                required>
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </span>
+        </div>
+    </form>
+
+
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#eventDate1').datetimepicker({
+                date: null,
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-tw'),
+                daysOfWeekDisabled: [0, 6],
+                minDate: moment().add(1, 'days'),
+                maxDate: moment().add(30, 'days'),
+                disabledDates: [
+                    moment().add(1, 'days'),
+                    moment().add(2, 'days'),
+                    '2021-10-10',
+                    '2021-12-25'
+                ]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

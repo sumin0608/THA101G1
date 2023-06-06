@@ -3,24 +3,18 @@ package tw.idv.ixercise.course.entity;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.*;
 import tw.idv.ixercise.core.Core;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 @Setter
 @Getter
 @AllArgsConstructor
-
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "course")
 public class Course extends Core {
@@ -59,7 +53,39 @@ public class Course extends Core {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp paidAdvertisingTime;
 
-	public Course() {
+	@Transient
+	private String statusString;
+
+
+	public Course(Course.Builder builder) {
+		this.setMessage(builder.message);
+		this.setSuccessful(builder.successful);
+	}
+
+	//setter chain --> Builder
+	public static class Builder {
+		private String message = "";
+		private boolean successful;
+
+
+		public Builder setMessage(String message) {
+			this.message = message;
+			return this;
+		}
+
+		public Builder setSuccessful(Boolean successful) {
+			this.successful = successful;
+			return this;
+		}
+
+		public Course build() {
+			return new Course(this);
+		}
+
+		private void Course(Builder builder) {
+			message = builder.message;
+			successful = builder.successful;
+		}
 	}
 
 //	public TrainerCourse(Integer courseId, Integer memberId, String eventName, Integer expectedPrice, Date courseStartDate, Timestamp courseStartTime, Timestamp courseDuration, Timestamp registrationDeadline, Timestamp courseCreationDate, Integer maximumCapacity, String description, byte[] photo, String location, String city, String district, String detailedAddress, Integer categoryId, Integer currentEnrolment, Integer courseStatus, Integer paidAdvertising, Timestamp paidAdvertisingTime) {

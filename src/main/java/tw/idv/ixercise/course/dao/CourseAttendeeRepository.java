@@ -43,4 +43,5 @@ public interface CourseAttendeeRepository extends JpaRepository<CourseAttendee, 
 
 	List<CourseAttendee> findByCourseId(Integer courseId);
 
+	CourseAttendee findByAttendId(Integer attendId);
 }
