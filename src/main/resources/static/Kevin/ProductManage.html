@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Dashboard - SB Admin</title>
-    <link
-            href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-            rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
     <link href="../lib/css/backstyle.css" rel="stylesheet"/>
 
 
@@ -86,9 +84,12 @@
 
         .aaa {
             display: flex;
-            align-items: center; /* 垂直居中 */
-            justify-content: center; /* 水平居中 */
-            text-align: center; /* 对齐文本 */
+            align-items: center;
+            /* 垂直居中 */
+            justify-content: center;
+            /* 水平居中 */
+            text-align: center;
+            /* 对齐文本 */
         }
 
         .color {
@@ -113,25 +114,22 @@
         /*table td, table th {*/
         /*    border: 1px solid black;*/
         /*}*/
-
     </style>
 
 </head>
+
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
     <!-- Navbar Brand-->
-    <a class="navbar-brand m-0 px-4 " href="#!"> <img
-            src="../lib/img/IX-nobackground copy.png" alt="" width="150"
-            height="70">
+    <a class="navbar-brand m-0 px-4 " href="#!"> <img src="../lib/img/IX-nobackground copy.png" alt="" width="150"
+                                                      height="70">
     </a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 "
-            id="sidebarToggle" href="#!">
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!">
         <i class="fas fa-bars"></i>
     </button>
     <!-- Navbar Search-->
-    <form
-            class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
             <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
             <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
@@ -141,12 +139,10 @@
 
 
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
-        <li class="nav-item dropdown  "><a
-                class="nav-link dropdown-toggle  " id="navbarDropdown" href="#"
-                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+        <li class="nav-item dropdown  "><a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#"
+                                           role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
                 class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end "
-                aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">Settings</a></li>
                 <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                 <li>
@@ -169,8 +165,8 @@
                         </div>
                         後臺中心
                     </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-                       aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-flag-fill"></i>
                         </div>
@@ -179,7 +175,8 @@
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="">檢舉會員<span class="msg-counter reportspan">7</span></a>
                             <a class="nav-link" href="">檢舉活動<span class="msg-counter reportspan">7</span></a>
@@ -187,8 +184,8 @@
                             <a class="nav-link" href="">檢舉課程<span class="msg-counter reportspan">7</span></a>
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss"
-                       aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-chat-left-dots-fill"></i>
                         </div>
@@ -197,14 +194,15 @@
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </a>
-                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="">文章查詢</a>
                             <a class="nav-link" href="">文章xxx</a>
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsss"
-                       aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-calendar-event-fill"></i>
                         </div>
@@ -213,14 +211,15 @@
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </a>
-                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="">活動查詢</a>
                             <a class="nav-link" href="">活動xxx</a>
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssss"
-                       aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-cart-fill"></i>
                         </div>
@@ -229,14 +228,15 @@
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </a>
-                    <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="">商城查詢</a>
                             <a class="nav-link" href="">商城xxx</a>
                         </nav>
                     </div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsssss"
-                       aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-book-fill"></i>
                         </div>
@@ -245,7 +245,8 @@
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </a>
-                    <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="">課程查詢</a>
                             <a class="nav-link" href="">課程xxx</a>
@@ -264,6 +265,9 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <h2>商品管理</h2>
+                        <button id="addpdbtn" type="button" class="btn btn-primary me-1" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">新增商品
+                        </button>
                     </div>
                     <div class="card-body">
                         <table class="table" id="table">
@@ -297,12 +301,14 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2 class="modal-title" id="exampleModalLabel">詳細資料</h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
@@ -327,8 +333,7 @@
 
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
-                <div
-                        class="d-flex align-items-center justify-content-between small">
+                <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; Your Website 2023</div>
                     <div>
                         <a href="#">Privacy Policy</a> &middot; <a href="#">Terms
@@ -339,23 +344,17 @@
         </footer>
     </div>
 </div>
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="../lib/js/backtai.js"></script>
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
-<script
-        src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 <script src="../lib/js/datatables-demo.js"></script>
 <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-        crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
 <script>
     let data_obj = {
@@ -471,11 +470,11 @@
 
 
                 $.each(data, function (key, value) {
-                    console.log(typeof key +"==="+ key)
+                    console.log(typeof key + "===" + key)
 
-                    if(key === "successful" || key === "message" ){
+                    if (key === "successful" || key === "message") {
 
-                    }else{
+                    } else {
                         html += "<tr>";
                         html += "<td>" + key + "</td>";
                         html += "<td>" + value + "</td>";
@@ -500,5 +499,125 @@
 
 </script>
 
+<!--新增管理員-->
+<script>
+    const adpd = document.querySelector("#addpdbtn");
+    // const aaaa = document.getElementById("aaaa");
+
+    adpd.addEventListener("click", addpd);
+
+    function addpd() {
+
+
+        $("#aaaa").empty();
+        var pdhtml = '';
+        adhtml += `<form>
+            <legend class="h1 mb-4">新增商品</legend>
+            <div class="mb-1">
+                <label for="pdno" class="form-label">商品編號</label>
+                <input type="text" id="pdno" name="pdno" class="form-control"
+                    placeholder="">
+            </div>
+            <div class="mb-1">
+                <label for="pdname" class="form-label">商品名稱</label>
+                <input type="password" id="pdname" name="pdname" class="form-control"
+                    placeholder="">
+            </div>
+            <div class="mb-1">
+                <label for="pdphoto" class="form-label">商品圖片</label>
+                <input type="password" id="pdphoto" name="pdphoto"
+                    class="form-control" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="pdprice" class="form-label">商品價格</label>
+                <input type="text" id="pdprice" name="pdprice" class="form-control"
+                    placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="pdamount" class="form-label">商品庫存</label>
+                <input type="text" id="pdamount" name="pdamount" class="form-control"
+                    placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="pdcom" class="form-label">商品描述</label>
+                <input type="text" id="pdcom" name="pdcom" class="form-control"
+                    placeholder="">
+            </div>
+            <button id="sendpd" type="button" class="btn btn-primary me-1">新增</button>
+            <div id="msg" class="text-danger"></div>
+            </form>
+            `
+        // console.log(adhtml);
+        $("#aaaa").append(adhtml);
+        const sendpd = document.querySelector("#sendpd");
+        sendpd.addEventListener('click', sendpdinfo);
+    }
+
+    function sendpdinfo() {
+        const pdno = document.querySelector("#pdno");
+        const pdname = document.querySelector("#pdname");
+        const pdphoto = document.querySelector("#pdphoto");
+        const pdprice = document.querySelector("#pdprice");
+        const pdamount = document.querySelector("#pdamount");
+        const pdcom = document.querySelector("#pdcom");
+        const msg = document.querySelector("#msg");
+        // const sendpd = document.querySelector("#sendpd");
+
+
+        const fileInput = document.getElementById('pdphoto');
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('picture', file);
+
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                // 处理响应结果
+                console.log(data);
+                sendformvalue;
+            })
+            .catch(error => {
+                // 处理错误
+                console.error(error);
+            });
+
+        function sendformvalue() {
+            fetch('', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    accountPassword: acps.value,
+                    accountEmail: adem.value,
+                    accountName: adname.value,
+                }),
+            })
+                .then(resp => resp.json())
+                .then(body => {
+                    const {successful, message} = body;
+                    if (successful) {
+                        // for (let input of inputs) {
+                        //     input.disabled = true;
+                        // }
+                        // sessionStorage.setItem("accountEmail",accountEmail);
+                        sendad.disabled = true;
+                        msg.className = 'text-success';
+                        msg.textContent = message;
+
+                    } else {
+                        msg.className = 'text-danger';
+                        msg.textContent = message;
+                    }
+                });
+        }
+
+
+    }
+
+</script>
+
 </body>
+
 </html>
