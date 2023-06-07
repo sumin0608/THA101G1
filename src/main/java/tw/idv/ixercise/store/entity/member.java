@@ -4,7 +4,7 @@ import tw.idv.ixercise.account.entity.Account;
 
 import java.io.Serializable;
 
-public class member implements Serializable {
+public class member implements Serializable{
 	/*private Integer id;
 	private String member_no;
 	private String name;

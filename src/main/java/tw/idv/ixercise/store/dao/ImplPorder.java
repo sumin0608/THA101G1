@@ -10,15 +10,15 @@ import java.util.List;
 import tw.idv.ixercise.store.entity.porder;
 
 public class ImplPorder implements PorderDao{
-	public static void main(String[] args) {
-		List<porder> l=new ImplPorder().queryMemberNo("bbb");
-		
-		for(porder p:l)
-		{
-			System.out.println(p.getId()+"\t"+p.getMemberNo()+"\t"+p.getName());
-		}
-		
-	}
+//	public static void main(String[] args) {
+//		List<porder> l=new ImplPorder().queryMemberNo("bbb");
+//
+//		for(porder p:l)
+//		{
+//			System.out.println(p.getId()+"\t"+p.getMemberNo()+"\t"+p.getName());
+//		}
+//
+//	}
 	
 
 	@Override
@@ -28,6 +28,8 @@ public class ImplPorder implements PorderDao{
 		String sql = "insert into porder(porderNo,memberNo,name,"
 				+ "productName,pamount,pdate,phone,email) "
 				+ "values (?,?,?,?,?,?,?,?)";
+		System.out.println("執行insert");
+		System.out.println(p);
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, p.getPorderNo());

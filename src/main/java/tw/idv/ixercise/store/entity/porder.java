@@ -3,7 +3,7 @@ package tw.idv.ixercise.store.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class porder implements Serializable {
+public class porder implements Serializable{
 	private Integer id;
 	private String porderNo;
 	private String memberNo;

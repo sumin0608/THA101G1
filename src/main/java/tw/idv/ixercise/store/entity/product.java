@@ -2,7 +2,7 @@ package tw.idv.ixercise.store.entity;
 
 import java.io.Serializable;
 
-public class product implements Serializable {
+public class product implements Serializable{
 	private Integer id;
 	private String productNo;
 	private String productName;
