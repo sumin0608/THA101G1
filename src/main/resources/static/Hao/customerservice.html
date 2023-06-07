@@ -525,7 +525,10 @@
     <script>
 
 
-var localStorageValue = localStorage.getItem('accountId');
+var  localStorageId=localStorage.getItem('accountId');
+var  localStorageNickname=localStorage.getItem('accountNickname');
+var  localStoragePhoto=localStorage.getItem('accountPhoto');
+
 // 現在時間
 var currentDate = new Date();
 
@@ -586,10 +589,10 @@ $(document).on('compositionend', 'input.inputvalue', function() {
       let html = `
        
       <div class="chat-message-right mb-4">
-      <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+      <div><img src="data:image/jpeg;base64,`+localStoragePhoto+`" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
       <div class="text-muted small text-nowrap mt-2">${currentTime}</div></div>
       <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-      <div class="font-weight-bold mb-1">henry</div>${input_text }</div></div>
+      <div class="font-weight-bold mb-1">`+localStorageNickname+`</div>${input_text }</div></div>
       `;
       $(".talkstartes").append(html);
       
@@ -659,7 +662,7 @@ function sendMessage(input_text) {
               timestamp = new Date(new Date().getTime() + (480* 60000)).toISOString();
               var jsonObj = {
            "type" : "chat",
-           "sender" : localStorageValue,
+           "sender" : localStorageId,
            "receiver" : 5,
            "message" : input_text,
            "messageTime":timestamp
@@ -723,8 +726,9 @@ console.log(mydata);
 
 	var webSocket;
     var currentDate = new Date();
-    var localStorageValue = localStorage.getItem('accountId');
-
+    var localStorageId = localStorage.getItem('accountId');
+    var  localStorageNickname=localStorage.getItem('accountNickname');
+    var  localStoragePhoto=localStorage.getItem('accountPhoto');
 
     var timezoneOffset = 480; // 台灣時區為 UTC+8，即480分鐘
 
@@ -737,7 +741,7 @@ console.log(mydata);
     console.log(timestamp)
 	function connect() {
 		// create a websocket
-		webSocket = new WebSocket("ws://localhost:8080/ixercise/FriendWS/" +localStorageValue );
+		webSocket = new WebSocket("ws://localhost:8080/ixercise/FriendWS/" +localStorageId );
 
 		webSocket.onopen = function(e) {
 			console.log("Connect Success!");
@@ -745,8 +749,8 @@ console.log(mydata);
              
         var jsonObj = {
 					"type" : "history",
-					"sender" :localStorageValue ,
-					"receiver" : 1,
+					"sender" :localStorageId ,
+					"receiver" : 5,
 					"message" : "",
                     "messageTime":timestamp
 				};
@@ -793,7 +797,7 @@ console.log(mydata);
                             var historyData = JSON.parse(messages[i]);
                             console.log(historyData);
                             var showMsg = historyData.message;
-                            if(historyData.sender==1){
+                            if(historyData.sender==5){
 
                 var text=historyData.messageTime;
                 var datePart = text.substring(5, 10);
@@ -803,7 +807,7 @@ console.log(mydata);
              var formattedText = datePart + "<br>" + timePart;
         
         html += `    <div class="chat-message-left mb-4">
-       <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+       <div><img src="../lib/img/客服圖.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
        <div class="text-muted small text-nowrap mt-2">${formattedText}</div></div>
        <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
        <div class="font-weight-bold mb-1"></div>${historyData.message}</div></div>`;
@@ -820,10 +824,10 @@ console.log(mydata);
         html += `
        
        <div class="chat-message-right mb-4">
-       <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+       <div><img <img src="data:image/jpeg;base64,`+localStoragePhoto+`" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
        <div class="text-muted small text-nowrap mt-2">${formattedText}</div></div>
        <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-       <div class="font-weight-bold mb-1">henry</div>${historyData.message}</div></div>
+       <div class="font-weight-bold mb-1">`+localStorageNickname+`</div>${historyData.message}</div></div>
        `;
     }
 		
@@ -849,7 +853,7 @@ console.log(mydata);
                 let html = `
        
        <div class="chat-message-left mb-4">
-       <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
+       <div><img src="../lib/img/客服圖.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
        <div class="text-muted small text-nowrap mt-2">${formattedText}</div></div>
        <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
        <div class="font-weight-bold mb-1"></div>${jsonObj.message}</div></div>
@@ -934,7 +938,7 @@ console.log(mydata);
 
         var jsonObj = {
 					"type" : "leave",
-					"sender" :localStorageValue ,
+					"sender" :localStorageId,
 					"receiver" : 5,
 					"message" : "",
                     "messageTime":timestamp

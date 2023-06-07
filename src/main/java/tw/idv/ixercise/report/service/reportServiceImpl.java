@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.report.dao.impl.reportDaoImpl;
 import tw.idv.ixercise.report.entity.Report;
 
@@ -31,7 +32,11 @@ public class reportServiceImpl {
 			
 		}
 		
-
+		public Account getAccount(Integer id) {
+			return	dao.getAccount(id);
+		}
+		
+		
 		public Report findone(Integer id) {
 			return dao.selectById(id);
 		}

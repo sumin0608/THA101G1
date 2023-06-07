@@ -389,14 +389,16 @@ div{
                                     <div class="chat">
                                         <div class="chat-header clearfix">
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                                <div class="col-lg-6" id="chathead">
+                                                    <div id="contorl" data-report-id=0>
+                                                    <!-- <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
                                                 
-                                                    <div class="content-column">
+                                                     <div class="content-column">
                                                      <div class="about">
                                                         <div class="name">王大陸</div>
                                                         <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
                                                     </div>
+                                                    </div>  -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 hidden-sm text-right">
@@ -487,6 +489,12 @@ div{
             var self=1;
             var input_text ;
             var timestamp =  new Date(new Date().getTime() + (480* 60000)).toISOString();
+
+            
+            var  localStorageId=localStorage.getItem('accountId');
+            var  localStorageNickname=localStorage.getItem('accountNickname');
+            var  localStoragePhoto=localStorage.getItem('accountPhoto');
+            var idValue ;
         
         // 現在時間
         var currentDate = new Date();
@@ -556,11 +564,11 @@ div{
         function sendMessage(input_text) {
             
             timestamp =  new Date(new Date().getTime() + (480* 60000)).toISOString();
-
+          
         var jsonObj = {
             "type" : "chat",
-            "sender" : 5,
-            "receiver" : 1113,
+            "sender" : localStorageId,
+            "receiver" : idValue,
             "message" : input_text,
             "messageTime":timestamp
         };
@@ -591,23 +599,65 @@ div{
     
 //   });
 
-$(document).ready(function() {
-  $("ul#ulfirst").on("click", "li", function(e) {
-    if ($(this).is("#chattoken")) {
-    
-        $(this).removeClass("change");
-        var jsonObj = {
+
+$(document).on('click', '.chattoken', function(event) {
+  var liElement = $(event.target).closest('li');
+  $(this).removeClass("change");
+  idValue = liElement.attr('id');
+
+ var jsonObj = {
                       "type" : "history",
-                      "sender" :5,
-                      "receiver" : 1113,
+                      "sender" :localStorageId,
+                      "receiver" : idValue,
                       "message" : "",
                       "messageTime":timestamp
                   };
-              webSocket.send(JSON.stringify(jsonObj));
+     webSocket.send(JSON.stringify(jsonObj));
 
-    }
-  });
+  $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+idValue, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+                var headhtml=`<div id="control" data-account-id="`+data.accountId+`"><img src="data:image/jpeg;base64,`+data.accountPhoto+`"  alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                                
+                                                <div class="content-column">
+                                                <div class="about">
+                                                   <div class="name">`+data.accountNickname+`</div>
+                                                   <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                               </div></div> </div> `;
+                        
+                $("#chathead").html(headhtml);
+
+
+
+            },
+        });
+
+
+
+
+
 });
+
+
+// $(document).ready(function() {
+//   $("ul#ulfirst").on("click", "li", function(e) {
+//     if ($(this).is("#chattoken")) {
+    
+//         $(this).removeClass("change");
+//         var jsonObj = {
+//                       "type" : "history",
+//                       "sender" :localStorageId,
+//                       "receiver" : 1113,
+//                       "message" : "",
+//                       "messageTime":timestamp
+//                   };
+//               webSocket.send(JSON.stringify(jsonObj));
+
+//     }
+//   });
+// });
         
         
             
@@ -637,12 +687,14 @@ $(document).ready(function() {
         
             function connect() {
                 // create a websocket
-                webSocket = new WebSocket("ws://localhost:8080/ixercise/FriendWS/1");
+                webSocket = new WebSocket("ws://localhost:8080/ixercise/FriendWS/"+localStorageId);
         
                 webSocket.onopen = function(event) {
-                    console.log("Connect Success!");
+                    console.log("Connect Success!"+localStorageId);
             
                 };
+
+
         
                 webSocket.onmessage = function(event) {
                     var jsonObj = JSON.parse(event.data);
@@ -655,13 +707,16 @@ $(document).ready(function() {
                     else if ("history" == jsonObj.type) {
                         console.log(jsonObj);
                         var html = "";
+
+
+
                         
                         var messages = JSON.parse(jsonObj.message);
                         for (var i = 0; i < messages.length; i++) {
         
                             var historyData = JSON.parse(messages[i]);
                             var showMsg = historyData.message;
-                                        if(historyData.sender==1){
+                                        if(historyData.sender==localStorageId){
                                             console.log(historyData.messageTime);
                                             
                                   var text=historyData.messageTime;
@@ -712,10 +767,17 @@ $(document).ready(function() {
                     
                     else if ("chat" ===jsonObj.type) {
                         console.log(jsonObj);
-                  
 
-                        let html = `
-              <li class="clearfix">
+                        $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+jsonObj.sender, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+                var accountId = $('#control').data('account-id');
+             if(accountId==data.accountId){
+
+                                                let html = `
+                                                <li class="clearfix">
                                             <div class="message-data text-center">
                                                 <span class="message-data-time">${currentTime}</span>
                                             </div>
@@ -725,24 +787,34 @@ $(document).ready(function() {
                     
                     $("#aaa").append(html);
 
+
+             }else {
+
+                
                     //以上是內容
                     //以下是置頂
 
                     var chathtml="";
-                    chathtml=`
-                                            <li class="clearfix change" id="chattoken">
-                                            
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
-                                               
-                                                <div class="content-column">
-                                                 <div class="about">
-                                                    <div class="name">陳再霆</div>
+                    chathtml=`<li class="clearfix change chattoken" id="`+data.accountId+`">
+                        <img src="data:image/jpeg;base64,`+data.accountPhoto+`"alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                    <div class="content-column"><div class="about"><div class="name">`+data.accountNickname+`</div>
                                                     <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
                                                 </div>
                                                 </div>
                                             </li>`;
                                             console.log( chathtml);
                                             $("#ulfirst").prepend(chathtml);
+
+
+             }
+
+
+
+            },
+        });
+                  
+
+                   
 
                         // var li = document.createElement('li');
                         // jsonObj.sender === self ? li.className += 'me' : li.className += 'friend';
@@ -751,13 +823,24 @@ $(document).ready(function() {
                         // document.getElementById("area").appendChild(li);
                         // messagesArea.scrollTop = messagesArea.scrollHeight;
                     }  else if ("leave" === jsonObj.type){
-                        // changeFail(jsonObj.sender);
-                       var leavehtml=`<div class="message-data text-center"><span class="message-data-time ">`+jsonObj.sender+`已經離開聊天室</span></div>`;
 
+                        $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+jsonObj.sender, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+
+                changeFail(data.accountNickname);
+              var leavehtml=`<div class="message-data text-center"><span class="message-data-time ">`+jsonObj.sender+`已經離開聊天室</span></div>`;
+               console.log("有人離開");
                     }
+                });
+
+          }
                    
                     
-                };
+     };
+     //on message 結束
         
                 webSocket.onclose = function(event) {
                     console.log("Disconnected!");
@@ -793,7 +876,7 @@ $(document).ready(function() {
       popup.remove();
       $('#closeButton').trigger('click');
     });
-  }, 1500); // 3秒后自动关闭弹窗
+  }, 4000); // 3秒后自动关闭弹窗
 }
 
             

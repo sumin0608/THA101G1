@@ -20,6 +20,12 @@ public class reportDaoImpl implements reportDao {
 	private Session session;
 	
 	
+public Account getAccount(Integer id){
+		
+	return	 session.get(Account.class,id);
+	
+	
+	}
 	
 	
 	public boolean insert(Report report) {
