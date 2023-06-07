@@ -13,7 +13,7 @@ import tw.idv.ixercise.ecpay.payment.integration.errorMsg.ErrorMessage;
 import tw.idv.ixercise.ecpay.payment.integration.exception.EcpayException;
 
 public class PaymentVerifyBase{
-	protected String confPath = "/ecpay/payment/integration/config/EcpayPayment.xml";
+	protected String confPath = "/EcpayPayment.xml";
 	protected Document doc;
 	public PaymentVerifyBase(){
 		URL fileURL = this.getClass().getResource(confPath);
