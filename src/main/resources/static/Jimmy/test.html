@@ -183,8 +183,59 @@
     </main>
     <br>
     </div>
-    <button type="button" class="btn btn-danger delete-btn" id="testbtn">test</button>
+
+    <div>
+        <button type="button" class="btn btn-danger delete-btn" id="testbtn">test</button>
+        <td><button type="button" class="btn btn-primary alterbtn" data-bs-toggle="modal"
+                data-bs-target="#exampleModalToggle">修改</button></td>
+
+        <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade" id="exampleModalToggle"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">歡迎參加</h5>
+                        <div class=" p-2  bg-transparent justify-content-between" id="exampleModalToggleLabel">
+
+                            <!-- <div class="d-flex flex-row align-items-center event_creater"> -->
+                            <!-- <div class="member-icon">
+                                    <img aria-expanded="false" class="overflow-hidden rounded-circle p-0"
+                                        data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
+                                        src="https://images.wsj.net/im-236521/OR" width="36">
+                                </div>
+                                <div class="col-8 ms-2 c-details">
+                                    <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                    </h6> -->
+                            <!-- <span class=" text-muted">sss</span> -->
+                            <!-- </div> -->
+                            <!-- </div> -->
+                        </div>
+                        <!-- ======================================================================= -->
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control event_participate" id="description"
+                                            name="description" placeholder="請簡單描述想參加的原因" required rows="3"></textarea>
+                                        <div class="invalid-feedback">
+                                            Please write.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="modalPass" type="button" class="btn btn-primary">Confirm</button>
+                        <button id="modalUnPass" type="button" class="btn btn-primary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <!-- 引入所需函式庫 -->
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>

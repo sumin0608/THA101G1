@@ -7,6 +7,8 @@ import lombok.Setter;
 import tw.idv.ixercise.core.Core;
 
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -18,18 +20,23 @@ public class CoachSkill extends Core {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    Integer skillId;
+    private Integer skillId;
     @Column
-    Integer accountId;
+    private Integer accountId;
     @Column
-    String licenseName;
+    private String licenseName;
     @Column
-    Integer sportType;
+    private Integer sportType;
     @Column
-    byte[] licensePhoto;
+    private byte[] licensePhoto;
     @Column
-    Integer skillState;
+    private Integer skillState;
+    @Transient
+    private String accountName;
 
+    public CoachSkill(boolean success,String message){
+        super(success, message);
+    }
 //    @Override
 //    public String toString() {
 //        return "CoachSkill{" +
@@ -40,4 +47,35 @@ public class CoachSkill extends Core {
 //                ", licensePhoto=" + Arrays.toString(licensePhoto) +
 //                '}';
 //    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        CoachSkill that = (CoachSkill) o;
+
+        if (!skillId.equals(that.skillId)) return false;
+        if (!accountId.equals(that.accountId)) return false;
+        if (!licenseName.equals(that.licenseName)) return false;
+        if (!sportType.equals(that.sportType)) return false;
+        if (!Arrays.equals(licensePhoto, that.licensePhoto)) return false;
+        if (!skillState.equals(that.skillState)) return false;
+        return Objects.equals(accountName, that.accountName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + skillId.hashCode();
+        result = 31 * result + accountId.hashCode();
+        result = 31 * result + licenseName.hashCode();
+        result = 31 * result + sportType.hashCode();
+        result = 31 * result + Arrays.hashCode(licensePhoto);
+        result = 31 * result + skillState.hashCode();
+        result = 31 * result + (accountName != null ? accountName.hashCode() : 0);
+        return result;
+    }
 }

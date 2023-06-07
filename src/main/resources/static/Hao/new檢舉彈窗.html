@@ -29,6 +29,11 @@
      border-top-left-radius: 5px;
      border-top-right-radius: 5px;
 }
+.readonly {
+  pointer-events: none;
+  background-color: #f8f8f8;
+  color: #999;
+}
     </style>
 </head>
 
@@ -309,7 +314,7 @@
         <div class="row">
             <div class="col-12">
               <!-- 檢舉按鈕 -->
-<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" id="reportbutton" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
     檢舉按鈕
   </button>
   
@@ -329,17 +334,17 @@
           <div class="modal-body">
 
             <div class="form-group">
-                <input type="hidden" id="memberId" class="form-control-file" name="memberId" value="123">
+                <input type="hidden" id="accountId" class="form-control-file" name="accountId" value=localStorage>
             </div>
 
             <div class="form-group">
-                <input type="hidden" id="memberId2" class="form-control-file" name="memberId2" value="321">
+                <input type="hidden" id="accountId2" class="form-control-file" name="accountId2" value="0937120">
             </div>
                 
   <!-- 檢舉時間 -->
                 <div class="form-group">
-                  <label class="col-sm-2 text-muted" for="inputTo">檢舉時間</label>
-                  <div class="col-sm-12"><input type="date" class="form-control" id="inputTo" placeholder="comma separated list of recipients"></div>
+                  <label class="col-sm-2 text-muted" for="inputTo">檢舉日期時間</label>
+                  <input type="datetime-local" class="form-control readonly" id="inputTo" value="2023-06-04T09:30">
                 </div>
     <!-- 檢舉原因 -->
 
@@ -351,39 +356,33 @@
                             <label class="col-sm-2 text-muted" for="inputTo1">檢舉類別</label>
                                 <select class="custom-select col-sm-12  orm-control custom-select-lg mb-3" id="inputTo1" name="reportType" required>
                                       <option value="">選擇檢舉類別</option>
-                                      <option value="1">性騷擾</option>
-                                      <option value="2">廣告不實</option>
-                                      <option value="3">詐騙</option>
+                                      <option value="性騷擾">性騷擾</option>
+                                      <option value="廣告不實">廣告不實</option>
+                                      <option value="詐騙">詐騙</option>
                                     </select>
                                 
                             <div class="invalid-feedback">
-                              選一個選項
+                              請選一個選項
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-                
-
-
-             
-
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="description">檢舉內容</label>
+                            <label for=" text-muted">檢舉內容</label>
                             <textarea class="form-control" name="reportReason" id="description" rows="5"
                                 required></textarea>
                             <div class="invalid-feedback">
-                               這一定要輸入
+                               請輸入內容
                             </div>
                         </div>
                     </div>
                 </div>
 
                     <div>
-                        <input type="hidden" class="form-control-file" id="reportStatus" name="reportStatus" value="0">
+                        <input type="hidden" class="form-control-file" id="reportStatus" name="reportStatus" value="1">
                     </div>
 
                 
@@ -395,9 +394,6 @@
                                                 <div class="form-group">
                                                     <label for="photo-dropzone forDhotoDrop"></label>
                                                    
-                                                    <div class="invalid-feedback">
-                                                        Please choose a username.
-                                                    </div>
                                                     <br>
                                                     
                                                 </div>
@@ -420,8 +416,7 @@
                                         </div>
                                         <div>
                                             <input type="file" class="form-control-file" name="reportPicture"
-                                            id="reportPicture" aria-describedby="fileHelp" accept="image/*"
-                                            required>
+                                            id="reportPicture" aria-describedby="fileHelp" accept="image/*">
 
                                             <!-- <button type="button" class="btn btn-danger  " id="delete-btn ">刪除照片</button> -->
                                         </div>
@@ -483,6 +478,8 @@
     <!-- ================================================================= -->
 
     <script>
+
+
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
         });
@@ -491,8 +488,31 @@
         })
     </script>
 
+    <script>
+    //預設時間   
+    var formattedDate ;
+    var currentDate;
+
+    var localStorageValue = localStorage.getItem('accountId');;
+    $("#reportbutton").focus("click",function(){
+         currentDate = new Date();
+
+
+var timezoneOffset = 480; // 台灣時區為 UTC+8，即480分鐘
+
+
+currentDate.setMinutes(currentDate.getMinutes() + timezoneOffset);
+
+formattedDate = currentDate.toISOString().slice(0, 16);
+
+
+document.getElementById('inputTo').value = formattedDate;
+       })
+   
+
   
-        <script>
+
+
   // 获取表单元素
   var form = document.querySelector('.form-horizontal');
 
@@ -515,10 +535,13 @@ reader.onload = function(event) {
   base64String = btoa(event.target.result);
   
   // 获取表单字段的值
-  formData.memberId=document.getElementById('memberId').value;
+  formData.accountId= localStorageValue;
+  console.log(localStorageValue);
   formData.reportType = document.getElementById('inputTo1').value;
-  formData.memberId2=document.getElementById('memberId2').value;
-   formData.reportTime = document.getElementById('inputTo').value;  // 轉換為 ISO 格式的字串
+  formData.accountId2=document.getElementById('accountId2').value;
+  
+var timestamp = new Date(formattedDate).getTime();
+   formData.reportTime =timestamp ;  // 轉換為 ISO 格式的字串
 console.log(formData.reportTime);
 
   formData.reportReason= document.getElementById('description').value;
@@ -542,13 +565,18 @@ type: 'POST',
 contentType: 'application/json',
 data: mydata,
 success: function(response) {
-  // 請求成功，進行相應的處理
-  console.log(response);
-  showConfirmationPopup();
+
+    if(response==false){
+        FailPopup();
+    }else{
+
+        ConfirmationPopup();
+    }
+
 },
 error: function(xhr, status, error) {
   // 請求失敗，處理錯誤
-  console.error(error);
+  console.log("忙線中");
 }
 });
 
@@ -556,13 +584,13 @@ error: function(xhr, status, error) {
   // 彈窗（可选）
 
 
-  function showConfirmationPopup() {
-  // 创建弹窗元素
-  $('#closeButton').trigger('click');
-  var popup = $('<div class="confirmation-popup">資料成功送出</div>');
+  function FailPopup() {
+ 
 
+  var popup = $('<div class="confirmation-popup">已經檢舉過了</div>');
+  console.log("我有處理到");
   // 添加到页面中
-  $('body').append(popup);
+  $("body").append(popup);
 
   // 设置样式和动画效果
   popup.css({
@@ -582,10 +610,43 @@ error: function(xhr, status, error) {
     popup.fadeOut(function() {
       // 关闭弹窗后进行清理操作
       popup.remove();
+      $('#closeButton').trigger('click');
     });
-  }, 3000); // 3秒后自动关闭弹窗
+  }, 1500); // 3秒關窗
 }
 
+
+
+function ConfirmationPopup() {
+
+
+  var popup = $('<div class="confirmation-popup">資料成功送出</div>');
+  console.log("我有處理到");
+  // 添加到页面中
+  $("body").append(popup);
+
+  // 设置样式和动画效果
+  popup.css({
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '20px',
+    background: '#fff',
+    border: '1px solid #ccc',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+    zIndex: '9999'
+  });
+
+  // 设置弹窗自动关闭的定时器
+  setTimeout(function() {
+    popup.fadeOut(function() {
+      // 关闭弹窗后进行清理操作
+      popup.remove();
+      $('#closeButton').trigger('click');
+    });
+  }, 1500); // 3秒后自动关闭弹窗
+}
   
 
 

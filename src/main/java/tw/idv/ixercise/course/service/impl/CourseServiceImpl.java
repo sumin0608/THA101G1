@@ -1,7 +1,11 @@
 package tw.idv.ixercise.course.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,17 +26,40 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	CourseDao dao;
 
+	@PersistenceContext
+    private EntityManager entityManager;
+	
+	private static final Map<Integer, String> statusMap;
+
+	static {
+		// Mapping of status values to their Chinese(Taiwanese) string representation
+
+//        1.可參加 (未开始)  2. 活動已結束(+3) 3. 截止報名 4:滿團自行下架 5:自行下架 6:強制下架 ?? 未开始 进行中 (預計結束時間
+		statusMap = new HashMap<>();
+		statusMap.put(1, "可參加");
+		statusMap.put(2, "暫停報名");
+		statusMap.put(3, "截止報名");
+		statusMap.put(4, "滿團");
+		statusMap.put(5, "強制下架");
+//		statusMap.put(5, "自行下架");
+		statusMap.put(6, "活動已結束");
+//		statusMap.put(7, "即將開始");
+//		statusMap.put(7, "进行中");
+	}
+
 	@Transactional
 	@Override
 	public boolean save(Course course) {
 		return dao.insertCourse(course) > 0;
 	}
 
+	@Transactional
 	@Override
 	public boolean remove(Integer courseId) {
 		return dao.deleteByCourseId(courseId) > 0;
 	}
-
+	
+	@Transactional
 	@Override
 	public boolean edit(Course course) {
 		return dao.upateByCourseId(course) > 0;
@@ -99,14 +126,48 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public List<Course> findCoursesByCreator(Integer creator) {
-		System.out.println("到Service層findCoursesByCreator"+creator);
+		System.out.println("到Service層findCoursesByCreator" + creator);
 		List<Course> searchCourse = repository.findByCreator(creator);
-		if(!searchCourse.isEmpty()) {
+
+		System.out.println("creator's courses: " + searchCourse);
+		if (!searchCourse.isEmpty()) {
+			//Consumer -> lambda expression (設定回傳的課程 狀態)
+			searchCourse.forEach(course -> course.setStatusString(statusMap.getOrDefault(course.getCourseStatus(), "無此課程狀態，請洽詢管理員")));
 			System.out.println("此Creator查詢成功");
+			searchCourse.get(0).setSuccessful(true);
+			searchCourse.get(0).setMessage("第一筆資料成功");
 		} else {
-			System.out.println("此Creator查詢無資料");
+			Course ca1 = new Course();
+			ca1.setSuccessful(false);
+			ca1.setMessage("沒有資料");
+			searchCourse.add(ca1);
+			System.out.println("此Creator查詢無創辦課程紀錄");
+			// set message -> 您無創辦課程紀錄
 		}
 		return searchCourse;
 	}
+
+	
+	@Override
+	@Transactional
+	public void updateCourse(Integer courseId, String eventName, Integer expectedPrice, Date courseStartDate,
+			Timestamp courseStartTime, String courseDuration, Timestamp registrationDeadline, Integer maximumCapacity,
+			String description, String photo, String location, String city, String district, String detailedAddress,
+			String categoryId, Integer courseStatus, Integer paidAdvertising, Timestamp paidAdvertisingTime) {
+		
+		repository.updateCourse(courseId, eventName, expectedPrice, courseStartDate, courseStartTime,
+                courseDuration, registrationDeadline, maximumCapacity, description, photo, location,
+                city, district, detailedAddress, categoryId, courseStatus, paidAdvertising, paidAdvertisingTime);
+		
+		entityManager.flush();
+	}
+
+	@Override
+	public void updateCourseEventName(Integer courseId, String eventName, Integer expectedPrice) {
+		repository.updateCourseEventName(courseId, eventName, expectedPrice);
+		
+	}
+	
+	
 
 }

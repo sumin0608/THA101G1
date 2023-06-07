@@ -3,7 +3,9 @@ package tw.idv.ixercise.account.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.CoachSkill;
 import tw.idv.ixercise.account.entity.LessAccount;
+import tw.idv.ixercise.account.entity.SkillManageDTO;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
@@ -63,5 +65,35 @@ public class ManageController {
         } else {
             return service.modifyacc(account);
         }
+    }
+
+    //    for Admin==========================================
+    @GetMapping("ForAdmin")
+    public List<LessAccount> manageAdmin() {
+        return service.findAllLessInfoAdmin();
+    }
+
+    @GetMapping("SkillReview")
+    public List<SkillManageDTO> manageSkill(){
+//        List<SkillManageDTO> skm = service.findAllSkill();
+//        if(skm == null){
+//
+//        }
+        return service.findAllSkill();
+    }
+    @GetMapping("Skill/{skillId}")
+    public CoachSkill findSkillForManage(@PathVariable Integer skillId){
+        if(skillId == null){
+            return new CoachSkill(false,"查詢錯誤");
+        }
+        return service.findSkById(skillId);
+    }
+
+    @PostMapping("Skill/Modify")
+    public Core findSkillForManage(@RequestBody CoachSkill coachSkill){
+        if(coachSkill == null){
+            return new CoachSkill(false,"此筆申請異常");
+        }
+        return service.modifySkillApply(coachSkill);
     }
 }

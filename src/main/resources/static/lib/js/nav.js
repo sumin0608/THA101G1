@@ -53,10 +53,10 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                                <option value="3">活動</option>\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
-    '                                        <div class="col-3">\n' +
-    '                                            <select class="form-select form-select-sm"\n' +
-    '                                                aria-label="Default select example">\n' +
-    '                                                <option selected disabled>運動類型</option>\n' +
+    '<div class="col-3">\n' +
+    '<select class="form-select form-select-sm"\n' +
+    'aria-label="Default select example">\n' +
+    '<option selected disabled>運動類型</option>\n' +
     '<option value="1">足球</option>\n' +
     '<option value="2">籃球</option>\n' +
     '<option value="3">網球</option>\n' +
@@ -70,38 +70,40 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '<option value="11">壁球</option>\n' +
     '<option value="12">手球</option>\n' +
     '<option value="13">保齡球</option>\n' +
-    '<option value="1">有氧操課</option>\n' +
-    '<option value="2">重訓課</option>\n' +
-    '<option value="3">瑜伽課</option>\n' +
-    '<option value="4">舞蹈課</option>\n' +
-    '<option value="5">腹肌課</option>\n' +
-    '<option value="6">動感單車課</option>\n' +
-    '<option value="7">跳繩課</option>\n' +
-    '<option value="8">拳擊課</option>\n' +
-    '<option value="9">跳舞操課</option>\n' +
-    '<option value="10">瑜伽拉伸課</option>\n' +
-    '                                            </select>\n' +
+    '<option value="14">有氧操課</option>\n' +
+    '<option value="15">瑜伽課</option>\n' +
+    '<option value="16">舞蹈課</option>\n' +
+    '<option value="17">腹肌課</option>\n' +
+    '<option value="18">動感單車課</option>\n' +
+    '<option value="19">跳繩課</option>\n' +
+    '<option value="20">重訓課</option>\n' +
+    '<option value="21">拳擊課</option>\n' +
+    '<option value="22">跳舞操課</option>\n' +
+    '<option value="23">瑜伽拉伸課</option>\n' +
+    '<option value="24">其他</option>\n' +
+
+    '</select>\n' +
     '                                        </div>\n' +
     '                                        <div class="col-3">\n' +
     '                                            <select class="form-select form-select-sm"\n' +
     '                                                aria-label="Default select example">\n' +
-    '                                                <option selected disabled>搜尋城市</option>\n' +
+    '<option selected disabled>搜尋城市</option>\n' +
     '<option value="1">台北市</option>\n' +
     '<option value="2">基隆</option>\n' +
     '<option value="4">新北市</option>\n' +
     '<option value="5">宜蘭</option>\n' +
     '<option value="7">新竹</option>\n' +
     '<option value="8">桃園</option>\n' +
-    '                                            </select>\n' +
+    '</select>\n' +
     '                                        </div>\n' +
     '                                        <div class="col-3">\n' +
     '                                            <select class="form-select form-select-sm"\n' +
     '                                                aria-label="Default select example">\n' +
-    '                                                <option selected disabled>上課時段</option>\n' +
+    '<option selected disabled>上課時段</option>\n' +
     '<option value="1">上午(06:00~12:00)</option>\n' +
     '<option value="2">下午(12:00~18:00)</option>\n' +
     '<option value="3">晚上(18:00~24:00)</option>\n' +
-    '                                            </select>\n' +
+    '</select>\n' +
     '                                        </div>\n' +
     '                                        <div class="row">\n' +
     '                                            <!-- <div class="col-9"></div> -->\n' +
@@ -129,7 +131,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動\n' +
+    '                        <a class="nav-link active h-100 " aria-current="page" href="">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -138,14 +140,14 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                            data-bs-toggle="dropdown" aria-expanded="false">其他主頁\n' +
     '                        </a>\n' +
     '                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">\n' +
-    '                            <li><a class="dropdown-item" href="#!">首頁</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">首頁</a></li>\n' +
     '                            <li>\n' +
     '                                <hr class="dropdown-divider" />\n' +
     '                            </li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">商城</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">論壇</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">活動</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="#!">課程</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">商城</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="">課程</a></li>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '                    <!-- 鈴鐺============================================================= -->\n' +
@@ -229,13 +231,13 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a id="personalpage" class="dropdown-item" href="" >查看個人資料</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="#!">聊天列表</a>\n' +
+    '                                <a class="dropdown-item" href="">聊天列表</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="#!">活動管理</a>\n' +
+    '                                <a class="dropdown-item" href="">活動管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="#!">課程管理</a>\n' +
+    '                                <a class="dropdown-item" href="">課程管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
     '                                <a id="logout" class="dropdown-item" href="">登出</a>\n' +
@@ -297,10 +299,13 @@ if (accid) {
     loginbtn.classList.add("d-none");
     useravatar.classList.remove("d-none");
     avatarnickname.textContent = accnickname;
+    // const accidforpg = "/" + accid;
+    // console.log(accidforpg);
+    personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
+// personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
 
-    personalpage.href = "Account/PersonalPage.html";
-
-    if (!(accphoto == "null" || accphoto == null)) {
+// console.log(typeof accphoto);
+    if (accphoto && accphoto.length > 0) {
 
         avataroutside.src = getcreateObjURL(accphoto);
         avatarinside.src = getcreateObjURL(accphoto);
@@ -364,7 +369,7 @@ const signupb = document.querySelector("#signupb");
 
 
 ixicon.href = getContextPath() + "/index.html";
-personalpage.href = getContextPath() + "/Account/PersonalPage.html";
+// personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
 logout.href = getContextPath() + "/index.html";
 loginb.href = getContextPath() + "/Account/Login.html";
 signupb.href = getContextPath() + "/Account/SignUp.html";

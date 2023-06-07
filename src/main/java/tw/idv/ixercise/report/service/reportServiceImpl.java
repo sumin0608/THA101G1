@@ -12,6 +12,7 @@ import tw.idv.ixercise.report.entity.Report;
 
 @Service
 public class reportServiceImpl {
+	
 
 	
 	
@@ -35,18 +36,19 @@ public class reportServiceImpl {
 			return dao.selectById(id);
 		}
 		
-//		boolean update(int reportStatus) {
-//			dao.update(reportStatus);
-//		}
+		public boolean update(Integer id,Integer status) {
+		 return	dao.update(id,status);
+		}
 		
 
-//		@Transactional
-//		public boolean remove(Integer id) {
-//			return dao.deleteById(id) > 0;
-//		}
+		@Transactional
+		public boolean remove(Integer id) {
+			return dao.deleteById(id);
+		}
 
 		@Transactional
 		public boolean save(Report report) {
+			System.out.println(report.getReportTime());
 			return dao.insert(report) ;
 		}
 

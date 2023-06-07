@@ -17,8 +17,25 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
+
 	<dependencies>
-		
+<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.17.1</version>
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/jakarta.mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+
+
 		<!--增加支援JSP-->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -29,6 +46,15 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 		<!--================-->
+		
+		<dependency>
+        <groupId>org.springframework.session</groupId>
+        <artifactId>spring-session-data-redis</artifactId>
+    	</dependency>
+	<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+    </dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

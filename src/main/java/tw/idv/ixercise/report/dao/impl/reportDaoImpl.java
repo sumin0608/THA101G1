@@ -3,6 +3,7 @@ package tw.idv.ixercise.report.dao.impl;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -23,21 +24,30 @@ public class reportDaoImpl implements reportDao {
 			return true;
 		}
 	
+	public boolean deleteById(Integer id) {
+		 Report report = session.get(Report.class, id);
+		 session.remove(report);
+		 System.out.println();
+		 return true;
+	}
 	
-	public boolean update(int reportStatus){
-		session.get(Report.class,1);
+	@Transactional
+	public boolean update(Integer id, Integer reportStatus){
+		
+		Report report = session.get(Report.class,id);
+			report.setReportStatus(reportStatus);
 		return true;
 	}
 
 	@Override
 	public Report selectById(Integer id) {
-	
+	System.out.println(session.get(Report.class, id));
 		return session.get(Report.class, id);
 	}
 	
 	
 	public List <Report> selectAll() {
-		final String hql = " FROM  Report ";
+		final String hql = " FROM  Report ORDER BY id DESC ";
 		return session
 				.createQuery(hql,  Report.class)
 				.getResultList();

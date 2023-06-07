@@ -14,4 +14,10 @@ public interface CoachSkillRepository extends JpaRepository<CoachSkill,Integer> 
             nativeQuery = true
     )
     List<CoachSkill> findAllByAccountId(Integer accountId);
+
+    @Query(
+            value = "SELECT * from COACHSKILL where skillState = 0",
+            nativeQuery = true
+    )
+    List<CoachSkill> findAllSkillForAd();
 }
