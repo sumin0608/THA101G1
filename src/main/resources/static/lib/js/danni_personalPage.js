@@ -1,7 +1,5 @@
 addEventListener("DOMContentLoaded", () => {
 
-    console.log(getContextPath());
-
     const actId = sessionStorage.getItem("accountId");
     $("#holdrecord-tab").click(function (e) {
         const url = "../course/creator/" + actId;
@@ -69,7 +67,7 @@ addEventListener("DOMContentLoaded", () => {
                 for (let course of evtList) {
                     let statusButtons = '';
 
-                    switch (course.courseStatus) {
+                    switch (course.status) {
                         case 1:
                             statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
                             break;
@@ -79,15 +77,21 @@ addEventListener("DOMContentLoaded", () => {
                         case 3:
                             statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
                             break;
+                        case 4:
+                            statusButtons = `<button class="btn btn-danger exitPending" href="#" role="button" disabled>退出待審核　</button>`;
+                            break;
+                        case 5:
+                            statusButtons = `<button class="btn btn-danger exitSuccessful" href="#" role="button" disabled>退出成功　</button>`;
+                            break;
                         default:
                             // Default buttons when course status doesn't match any case
-                            statusButtons = `<a class="btn btn-primary" href="#" role="button">前往聊天室　</a>`;
+                            statusButtons = `<button class="btn btn-primary" href="#" role="button">此課程不存在</button>`;
                             break;
                     }
 
                     course_calendar_list.innerHTML += `
                                             <!-- 一條紀錄====================== -->
-                                        <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="1" aria-current="true"
+                                        <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="${course.attendId}" aria-current="true"
                                              style="height: 118px;">
                                             <div class="row h-100">
                                                 <div class="col-2 h-100">
@@ -99,7 +103,7 @@ addEventListener("DOMContentLoaded", () => {
                                                         <h5 class="mb-1">${course.eventName}</h5>
                                                     </div>
                                                     <p class="mb-1">${course.courseStartDate}</p>
-                                                    <small>${course.statusString}</small>
+                                                    <small>${course.attendeesStatus}</small>
                                                 </div>
                                                 <div class="col-2 status-btn">
 <!--                                                    <a class="ms-5 btn justify-content-end small btn-danger mb-1" href="#" role="button">退出</a>-->
@@ -122,16 +126,7 @@ function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
 
-function cancelParticipation(e) {
-    console.log(e);
-    console.log(this);
-    // fetch()
-}
-
-
 $("#course-calendar-list").on('click', '.cancelParticipation', function (e) {
-    console.log(e);
-    console.log(this);
     let cancelCheck = confirm("確認已提出取消報名此課程");
     if (cancelCheck) {
         console.log(cancelCheck);
@@ -139,7 +134,7 @@ $("#course-calendar-list").on('click', '.cancelParticipation', function (e) {
         console.log(attendId);
         // let update
         // fetch()
-        let urls = `../courseAttendee/updateStatusById?attendId=${attendId}&status=3`;
+        let urls = `../courseAttendee/updateStatusById?attendId=${attendId}&status=4`;
         fetch(urls, {
             method: 'PUT'
         })
@@ -148,9 +143,11 @@ $("#course-calendar-list").on('click', '.cancelParticipation', function (e) {
                 console.log('現在是updateStatusById~');
                 console.log(data);
                 if (!data.successful) {
-                    console.log('修改Status失敗');
+                    alert('退出申請失敗');
                 } else {
-                    console.log('修改Status成功');
+                    location.reload();
+                    // $("#calendar").click();
+                    alert("已提出退出申請");
                 }
             })
             .catch(error => {

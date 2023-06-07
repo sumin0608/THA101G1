@@ -144,10 +144,11 @@ public class CourseAttendeeController {
 	
 
 	@GetMapping("calander/{accountId}")
-	public List<Course> getCalendar(@PathVariable("accountId") Integer accountId) {
-		List<Course> calendarList = service.getCalendar(accountId);
-		System.out.println("getCalendar>>>>>>");
-		System.out.println(calendarList);
-		return calendarList;
-	}
+    public List<CourseAndAttendeesEntity> getCalendar(@PathVariable("accountId") Integer accountId) {
+//		List<Course> calendarList = service.getCalendar(accountId);
+        System.out.println("getCalendar>>>>>>");
+        List<CourseAndAttendeesEntity> calendarList = service.getCalendarList(accountId);
+        System.out.println(calendarList);
+        return calendarList;
+    }
 }

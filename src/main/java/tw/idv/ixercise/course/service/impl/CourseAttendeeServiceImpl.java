@@ -9,7 +9,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import tw.idv.ixercise.core.*;
 import tw.idv.ixercise.course.dao.*;
 import tw.idv.ixercise.course.entity.*;
 import tw.idv.ixercise.course.service.CourseAttendeeService;
@@ -35,6 +34,8 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 	private CourseDao courseDao;
 	@Autowired
 	private CourseRepository courseRepository;
+	@Autowired
+	private CourseAndAttendeesRepository courseAndAttendeesRepository;
 
 	@Override
 	public boolean save(CourseAttendee courseAttendee) {
@@ -145,6 +146,7 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 
 	@Override
 	public List<Course> getCalendar(Integer accountId) {
+
 		//purpose -> get calendar / get attended courses haven't started yet
 		//1. get a list of courseId  by accountId
 		//2. use each courseId -> to find the(each) corresponding course
@@ -152,6 +154,7 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		//4. return filtered list
 		//reference --> Test04FindFirstLazy.java
 		List<Course> filteredCourseList;
+
 		List<CourseAttendee> byAccountId = repository.findByAccountId(accountId);
 
 		if (!byAccountId.isEmpty()) {
@@ -182,6 +185,44 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 
 		System.out.println("calendar ->sss");
 		System.out.println(filteredCourseList);
+		return filteredCourseList;
+	}
+
+
+	@Override
+	public List<CourseAndAttendeesEntity> getCalendarList(Integer accountId) {
+		List<CourseAndAttendeesEntity> filteredCourseList;
+		System.out.println("<<<<<getCalendarList>>>>>>>>>>>>>");
+
+		List<CourseAndAttendeesEntity> findByAccountId = courseAndAttendeesRepository.findByAccountId(accountId);
+
+		System.out.println(findByAccountId);
+
+		if (!findByAccountId.isEmpty()) {
+			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+
+			filteredCourseList = findByAccountId.stream()
+					.filter(course -> course.getCourseStartTime().after(currentTimestamp))
+					.peek(attendees -> attendees.setAttendeesStatus(statusMap.getOrDefault(attendees.getStatus(), "無此狀態")))
+					.collect(Collectors.toList());
+
+			if (filteredCourseList.isEmpty()) {
+				System.out.println("<<<<<isEmpty>>>>>>>>");
+				CourseAndAttendeesEntity caae = new CourseAndAttendeesEntity();
+				caae.setMessage("未有任何活動即將開始");
+				caae.setSuccessful(false);
+				filteredCourseList.add(caae);
+			}
+		} else {
+			filteredCourseList = new ArrayList<>();
+			CourseAndAttendeesEntity caae = new CourseAndAttendeesEntity();
+			caae.setMessage("此Id未參加任何課程");
+			caae.setSuccessful(false);
+			filteredCourseList.add(caae);
+			filteredCourseList.add(caae);
+		}
+		System.out.println("getCalendarList()");
+		filteredCourseList.forEach(System.out::println);
 		return filteredCourseList;
 	}
 

@@ -33,4 +33,5 @@ public interface CourseAttendeeService {
 
 	List<Course> getCalendar(Integer accountId);
 
+    List<CourseAndAttendeesEntity> getCalendarList(Integer accountId);
 }
