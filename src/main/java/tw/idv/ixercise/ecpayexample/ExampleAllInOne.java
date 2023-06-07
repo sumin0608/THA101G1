@@ -1,6 +1,7 @@
 package tw.idv.ixercise.ecpayexample;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.Hashtable;
 import java.util.UUID;
 
@@ -35,8 +36,8 @@ public class ExampleAllInOne {
 //		System.out.println("queryTrade: " + postQueryTrade());
 //		System.out.println("tradeNoAio: " + postTradeNoAio());
 //		System.out.println("fundingReconDetail: " + postFundingReconDetail());
-//		System.out.println("aioCheckOutALL: " + genAioCheckOutALL());
-		System.out.println("aioCheckOutOneTime: " + genAioCheckOutApplePay());
+		System.out.println("aioCheckOutALL: " + genAioCheckOutALL());
+//		System.out.println("aioCheckOutOneTime: " + genAioCheckOutApplePay());
 //		System.out.println("aioCheckOutATM: " + genAioCheckOutATM());
 //		System.out.println("aioCheckOutCVS: " + genAioCheckOutCVS());
 //		System.out.println("aioCheckOutBARCODE: " + genAioCheckOutBARCODE());
@@ -44,6 +45,9 @@ public class ExampleAllInOne {
 //		System.out.println("aioCheckOutOneTime: " + genAioCheckOutOneTime());
 //		System.out.println("aioCheckOutPeriod: " + genAioCheckOutPeriod());
 //		System.out.println("aioCheckOutWebATM: " + genAioCheckOutWebATM());
+//		String confPath = "/EcpayPayment.xml";
+//		URL fileURL = this.getClass().getResource(confPath);
+//		System.out.println("Resource Path: " + fileURL);
 	}
 	private static void initial(){
 		all = new AllInOne("");
@@ -144,6 +148,7 @@ public class ExampleAllInOne {
 		obj.setReturnURL("http://211.23.128.214:5000");
 		obj.setNeedExtraPaidInfo("N");
 		String form = all.aioCheckOut(obj, null);
+
 		return form;
 	}
 	public static String genAioCheckOutApplePay(){
