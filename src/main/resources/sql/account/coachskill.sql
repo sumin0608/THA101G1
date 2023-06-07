@@ -39,10 +39,10 @@ CREATE TABLE `COACHSKILL`
   COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO `COACHSKILL`
 (`SKILLID`, `ACCOUNTID`, `LICENSENAME`, `SPORTTYPE`, `LICENSEPHOTO`, `SKILLSTATE`)
-VALUES (1, 1, '健身教練證照', 1, NULL, 1),
+VALUES (1, 5, '健身教練證照', 1, NULL, 1),
        (2, 2, '營養師證照', 2, NULL, 1),
        (3, 3, '瑜珈教練證照', 3, NULL, 1),
-       (4, 4, '游泳教練證照', 4, NULL, 1),
+       (4, 5, '游泳教練證照', 4, NULL, 1),
        (5, 5, '有氧運動教練證照', 5, NULL, 1),
        (6, 6, '健康管理師證照', 6, NULL, 1),
        (7, 7, '體適能教練證照', 7, NULL, 1),
