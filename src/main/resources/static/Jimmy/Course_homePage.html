@@ -589,6 +589,7 @@
         <script src="../lib/js/bootstrap.bundle.min.js"></script>
         <script src="../lib/js/popper.min.js"></script>
         <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+        <script src="../lib/js/nav.js"></script>
         <!-- <script src="../lib/js/nav.js"></script> -->
         <!-- 漂亮alert! -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -688,7 +689,7 @@
                                 }
                             });
                             tableData += `<div class="member-icon">`;
-                            tableData += `    <img src="https://picsum.photos/300/200/?random=10"
+                            tableData += `    <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
                                                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                             tableData += `</div>`;
@@ -703,6 +704,12 @@
                             tableData += `</a >`;
                             tableData += `</div>`;
                             tableData += `</div>`;
+
+                            var memberid = resp[i].creator;
+                            var avatarid = "avatar-" + memberid;
+                            const avataroutside = document.querySelector("#avatarid");
+                            avataroutside.src = getcreateObjURL(accphoto);
+
                         }
                         $("#input_card").empty().append(tableData);
                         // 延遲加載圖像

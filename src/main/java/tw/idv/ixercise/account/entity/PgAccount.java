@@ -24,26 +24,25 @@ public class PgAccount extends Core {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
-
     private Integer accountLevel;
-
     private Integer accountState;
-
+    private byte[] accountPhoto;
     private String AccountNickname;
     private String accountAddress;
     private Integer accountGender;
     private String accountIntro;
     private List<CoachSkill> CoachSkillList;
 
-    public PgAccount(Boolean result,String msg){
-        super(result,msg);
+    public PgAccount(Boolean result, String msg) {
+        super(result, msg);
     }
 
-    public PgAccount(Account account,List<CoachSkill> CoachSkillList) {
+    public PgAccount(Account account, List<CoachSkill> CoachSkillList) {
         super(account.isSuccessful(), account.getMessage());
         this.accountId = account.getAccountId();
         this.accountLevel = account.getAccountLevel();
         this.accountState = account.getAccountState();
+        this.accountPhoto = account.getAccountPhoto();
         this.AccountNickname = account.getAccountNickname();
         this.accountAddress = account.getAccountAddress();
         this.accountGender = account.getAccountGender();
@@ -56,6 +55,7 @@ public class PgAccount extends Core {
         this.accountId = account.getAccountId();
         this.accountLevel = account.getAccountLevel();
         this.accountState = account.getAccountState();
+        this.accountPhoto = account.getAccountPhoto();
         this.AccountNickname = account.getAccountNickname();
         this.accountAddress = account.getAccountAddress();
         this.accountGender = account.getAccountGender();
