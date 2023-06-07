@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.report.dao.impl.ReportRepository;
 import tw.idv.ixercise.report.entity.Article;
 import tw.idv.ixercise.report.entity.Comment;
@@ -92,6 +93,15 @@ public class reportController {
 		System.out.println("rport"+id);
 	return service.updatereport(id);
 	}
+	
+	
+	@GetMapping({"/getaccount/{id}"})
+	@ResponseBody
+	public Account getaccount(@PathVariable Integer id){
+		System.out.println("Account"+id);
+	return service.getAccount(id);
+	}
+	
 	
 
 	@GetMapping({"/reportmember/{id}"})
