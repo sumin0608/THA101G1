@@ -58,7 +58,7 @@ public class reportController {
 	@ResponseBody
 	public boolean reportadd(@RequestBody Report report){
 		
-		Integer reportTime =  jpa.getcheck(report.getMemberId(), report.getMemberId2());
+		Integer reportTime =  jpa.getcheck(report.getAccountId(), report.getAccountId2());
 		
 		if(reportTime ==0) {
 		service.save(report);

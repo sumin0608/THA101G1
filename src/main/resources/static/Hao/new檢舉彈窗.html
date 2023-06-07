@@ -334,11 +334,11 @@
           <div class="modal-body">
 
             <div class="form-group">
-                <input type="hidden" id="memberId" class="form-control-file" name="memberId" value="317317">
+                <input type="hidden" id="accountId" class="form-control-file" name="accountId" value="317317">
             </div>
 
             <div class="form-group">
-                <input type="hidden" id="memberId2" class="form-control-file" name="memberId2" value="0937120">
+                <input type="hidden" id="accountId2" class="form-control-file" name="accountId2" value="0937120">
             </div>
                 
   <!-- 檢舉時間 -->
@@ -531,9 +531,9 @@ reader.onload = function(event) {
   base64String = btoa(event.target.result);
   
   // 获取表单字段的值
-  formData.memberId=document.getElementById('memberId').value;
+  formData.accountId=document.getElementById('accountId').value;
   formData.reportType = document.getElementById('inputTo1').value;
-  formData.memberId2=document.getElementById('memberId2').value;
+  formData.accountId2=document.getElementById('accountId2').value;
   
 var timestamp = new Date(formattedDate).getTime();
    formData.reportTime =timestamp ;  // 轉換為 ISO 格式的字串

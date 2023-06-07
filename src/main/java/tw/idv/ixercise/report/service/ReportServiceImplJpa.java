@@ -18,8 +18,8 @@ public class ReportServiceImplJpa {
 	        return reportRepository.findByStatus(pageable);
 	    }
 	  
-	  public Integer getcheck(Integer memberId,Integer memberId2) {
-		  return reportRepository.getcheck(memberId,memberId2);
+	  public Integer getcheck(Integer accountId,Integer accountId2) {
+		  return reportRepository.getcheck(accountId,accountId2);
 	  } 
 	  
 	  

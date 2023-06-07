@@ -20,7 +20,7 @@ public interface ReportRepository extends JpaRepository<Report,Integer>{
 	@Query(value="select COUNT(*) from report where reportStatus =1 ",nativeQuery = true)
 	Integer getCount( );
 	
-	@Query(value="select COUNT(*) from report where memberId =?1 and memberId2=?2 ",nativeQuery = true)
+	@Query(value="select COUNT(*) from report where accountId =?1 and accountId2=?2 ",nativeQuery = true)
 	 Integer getcheck(Integer memberId,Integer memberId2) ;
 	
 	   @Query(value="select * FROM  report ORDER BY reportId DESC",nativeQuery = true)
