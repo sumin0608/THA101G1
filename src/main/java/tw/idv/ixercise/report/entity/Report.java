@@ -31,21 +31,21 @@ public class Report {
 	   @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
      	private Integer reportId;
-		private Integer memberId;
+		private Integer accountId;
 	    private String reportType;
-	    private Integer memberId2;
+	    private Integer accountId2;
 	    private Timestamp reportTime;
 	    private String reportReason;
 	    private Integer reportStatus;
 	    private String reportPicture;
-	    
 		@Override
 		public String toString() {
-			return "Report [reportId=" + reportId + ", memberId=" + memberId + ", reportType=" + reportType
-					+ ", memberId2=" + memberId2 + ", reportTime=" + reportTime + ", reportReason=" + reportReason
+			return "Report [reportId=" + reportId + ", accountId=" + accountId + ", reportType=" + reportType
+					+ ", accountId2=" + accountId2 + ", reportTime=" + reportTime + ", reportReason=" + reportReason
 					+ ", reportStatus=" + reportStatus + ", reportPicture=" + reportPicture + "]";
 		}
 	    
+
 	   
 
 	
