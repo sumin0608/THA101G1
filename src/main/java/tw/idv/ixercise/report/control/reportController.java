@@ -32,8 +32,8 @@ import tw.idv.ixercise.report.service.reportServiceImpl;
 @Controller
 @RequestMapping("/back/")
 public class reportController {
-	
-	
+
+
 	@Autowired
 	private reportServiceImpl service;
 	

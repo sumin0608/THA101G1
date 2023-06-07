@@ -23,7 +23,8 @@ public class articleServiceImpl {
 	
 
 	public List<Article> findSome() {
-		return dao.selectSome();
+//		return dao.selectSome();
+		return null;
 	}
 	public List<Article> findAll() {
 		return dao.selectAll();
