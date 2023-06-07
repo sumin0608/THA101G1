@@ -49,7 +49,6 @@ public class reportController {
 	    Pageable pageable = PageRequest.of(page, 10);
 	    Page<Report> reportPage = jpa.findByStatus(pageable);
 	    System.out.println(reportPage);
-	    
 	    return reportPage;
 	}
 	
@@ -85,6 +84,13 @@ public class reportController {
 		System.out.println(id+"  "+status);
 		return service.update(id,status);
 
+	}	
+	
+	@GetMapping({"/reportaccount/{id}"})
+	@ResponseBody
+	public boolean reportupdate1(@PathVariable Integer id){
+		System.out.println("rport"+id);
+	return service.updatereport(id);
 	}
 	
 

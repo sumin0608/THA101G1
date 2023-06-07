@@ -40,6 +40,11 @@ public class reportServiceImpl {
 		 return	dao.update(id,status);
 		}
 		
+		public boolean updatereport(Integer id) {
+			 return	dao.updatereport(id);
+			}
+			
+	
 
 		@Transactional
 		public boolean remove(Integer id) {
