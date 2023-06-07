@@ -2,6 +2,7 @@ package tw.idv.ixercise.ecpay.payment.integration.ecpayOperator;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -247,13 +248,13 @@ public class EcpayFunction {
 		return timeStamp.toString();
 	}
 	
-	public final static Document xmlParser(String uri){
+	public final static Document xmlParser(String inputStream){
 		try{
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(false);
 			factory.setIgnoringElementContentWhitespace(true);
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			return builder.parse(uri);
+			return builder.parse(inputStream);
 		} catch(Exception e){
 			throw new Error(e);
 		}
