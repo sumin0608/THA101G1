@@ -5,7 +5,9 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -33,7 +35,7 @@ public class Account extends Core {
 
     private String accountPassword;
     //	@NotNull
-//	@Email
+	@Email
     private String accountEmail;
 
     private String accountNickname;
@@ -46,6 +48,7 @@ public class Account extends Core {
 
     private String accountName;
 
+    @Past
     private Date accountBirthday;
     @Column(insertable = false)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")

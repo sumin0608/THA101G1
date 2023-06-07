@@ -423,5 +423,12 @@ public class AccountServiceImpl implements AccountService {
         return new Core(true, "臨時密碼已寄出，請至信箱確認");
     }
 
+//   for shop ==============================================================
+public Account searchforshop(String accountPhone,String accountPassword){
+        return repo.findForLogin(accountPhone,accountPassword);
+}
+
+
+
 
 }
