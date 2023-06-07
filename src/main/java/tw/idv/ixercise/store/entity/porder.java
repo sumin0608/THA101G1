@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class porder implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String porderNo;
 	private String memberNo;
@@ -108,6 +110,19 @@ public class porder implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "porder{" +
+				"id=" + id +
+				", porderNo='" + porderNo + '\'' +
+				", memberNo='" + memberNo + '\'' +
+				", name='" + name + '\'' +
+				", productName='" + productName + '\'' +
+				", pamount=" + pamount +
+				", pdate=" + pdate +
+				", phone='" + phone + '\'' +
+				", email='" + email + '\'' +
+				'}';
+	}
 }

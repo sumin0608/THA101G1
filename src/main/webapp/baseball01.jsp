@@ -4,7 +4,7 @@
     import = "java.util.*"
     %>
  <% 
- List<product> L =(List)session.getAttribute("L");
+ List<porder> L =(List)session.getAttribute("L");
  
  %>   
  
@@ -122,7 +122,7 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
                                             </div>
                                         </div>
                                     </div>

@@ -38,7 +38,9 @@ public class addDefaultListServlet extends HttpServlet {
 		
 		//porder p=new porder("p001",m.getMember_no(),m.getName(),pr.getProductName(),1,m.getUsername(),m.getEmail());
 		porder p=new porder("p001","P001",m.getName(),pr.getProductName(),1,m.getUsername(),m.getEmail());
+
 		l.add(p);
+		session.setAttribute("L",l);
 		
 		
 		//HttpSession session=request.getSession();

@@ -8,6 +8,8 @@ request.setCharacterEncoding("UTF-8");
 List<porder> l=(List)session.getAttribute("L");
 String PayWay=request.getParameter("payWay");
 
+	System.out.println("finish + l"+l);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +28,7 @@ String PayWay=request.getParameter("payWay");
 						  			
 						  			for(porder p:l)
 						  			{
+										System.out.println(p);
 						  				product pr=new implProduct().query(p.getProductName());
 						  				String img=pr.getPicture();
 						  				out.println(

@@ -3,6 +3,7 @@ package tw.idv.ixercise.store.entity;
 import java.io.Serializable;
 
 public class product implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String productNo;
 	private String productName;
@@ -83,6 +84,17 @@ public class product implements Serializable{
 		this.amount = amount;
 	}
 
-	
-	
+
+	@Override
+	public String toString() {
+		return "product{" +
+				"id=" + id +
+				", productNo='" + productNo + '\'' +
+				", productName='" + productName + '\'' +
+				", picture='" + picture + '\'' +
+				", price=" + price +
+				", amount=" + amount +
+				", comment='" + comment + '\'' +
+				'}';
+	}
 }

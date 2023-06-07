@@ -32,18 +32,23 @@ public class ShopListServlet extends HttpServlet {
 		product p = (product)session.getAttribute("P");
 		List<porder> l = (List)session.getAttribute("L");
 		member m=(member)session.getAttribute("Member");
-		
+		System.out.println(p);
+		System.out.println(l);
+		System.out.println(m);
 		String porderNo = request.getParameter("porderNo");
 		String num = request.getParameter("pamount");
 		int amount = Integer.parseInt(num);
-		
+		System.out.println(porderNo);
+		System.out.println(num);
+		System.out.println(amount);
 		String address = request.getParameter("address");
 		
 		
 		//porder order = new porder(porderNo,m.getMember_no(),m.getName(),p.getProductName(),amount,m.getPhone(),m.getEmail());
 		porder order = new porder(porderNo,"P001",m.getName(),p.getProductName(),amount,m.getUsername(),m.getEmail());
 		l.add(order);
-		
+		System.out.println(l);
+		session.setAttribute("L",l);
 		
 		response.sendRedirect("PayWay.jsp");
 		

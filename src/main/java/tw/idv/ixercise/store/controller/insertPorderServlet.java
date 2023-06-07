@@ -39,6 +39,7 @@ public class insertPorderServlet extends HttpServlet {
 		for(porder p:l)
 		{
 			new ImplPorder().insert(p);
+			System.out.println(p);
 			
 		}
 		

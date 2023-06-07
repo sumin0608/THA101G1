@@ -28,16 +28,10 @@ public class makeListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<product> pr = new ArrayList();
-		
-		
-		
+
 		HttpSession session=request.getSession();
 		session.setAttribute("L",pr);
-	
-		
-		
-		
-		
+
 		response.sendRedirect("shop.jsp");
 	}
 

@@ -10,7 +10,7 @@
 product p = (product)session.getAttribute("P");
 Date dNow = new Date();
 SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-List<product> L =(List)session.getAttribute("L");
+//List<product> L =(List)session.getAttribute("L");
 List<porder> l = (List)session.getAttribute("L");
 member m=(member)session.getAttribute("Member");
 %>
@@ -127,7 +127,7 @@ member m=(member)session.getAttribute("Member");
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +255,7 @@ member m=(member)session.getAttribute("Member");
                         <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
                         <i class="bi-cart-fill me-1"></i>
                         購物車
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=L.size() %></span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto"><%=l.size() %></span>
                     </button>
                 </form>
             </div>

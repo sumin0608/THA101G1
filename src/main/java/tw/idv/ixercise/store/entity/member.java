@@ -5,6 +5,8 @@ import tw.idv.ixercise.account.entity.Account;
 import java.io.Serializable;
 
 public class member implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	/*private Integer id;
 	private String member_no;
 	private String name;
@@ -43,7 +45,16 @@ public class member implements Serializable{
 		this.accountEmail = accountEmail;
 	}
 
-
+	@Override
+	public String toString() {
+		return "member{" +
+				"accountId=" + accountId +
+				", accountName='" + accountName + '\'' +
+				", accountPhone='" + accountPhone + '\'' +
+				", accountPassword='" + accountPassword + '\'' +
+				", accountEmail='" + accountEmail + '\'' +
+				'}';
+	}
 
 	public Integer getId() {
 		return accountId;

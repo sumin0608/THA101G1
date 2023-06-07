@@ -59,6 +59,7 @@ public class BuyButtonServlet extends HttpServlet {
 		String buyButtonname = request.getParameter("input");
 		String productName = request.getParameter("productName");
 		product p = new implProduct().query(productName);
+		System.out.println("buybutton p ="+p);
 		HttpSession session = request.getSession();
 		
 		String name=(String)session.getAttribute("buyProductName");
@@ -69,13 +70,16 @@ public class BuyButtonServlet extends HttpServlet {
 		if("購買".equals(buyButtonname)) {
 			if(p!=null) {
 				session.setAttribute("P", p);
+				System.out.println(session.getAttribute("P"));
 				response.sendRedirect("description.jsp");
 			}else {
 				PrintWriter out = response.getWriter();
+				System.out.println(session.getAttribute("P"));
 				out.println("<h1>無此商品</h1>");
 			}
 		}else if("加入購物車".equals(buyButtonname)) {
 			session.setAttribute("P", p);
+			System.out.println(session.getAttribute("P"));
 			response.sendRedirect("addDefaultListServlet");
 		}
 		

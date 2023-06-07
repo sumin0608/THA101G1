@@ -8,6 +8,7 @@
 <% 
  //List<product> l =(List)session.getAttribute("L");
  List<porder> l =(List)session.getAttribute("L");
+    System.out.println("payway + L" + l);
 
  %>  
 <!DOCTYPE html>
@@ -128,7 +129,7 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
                                             </div>
                                         </div>
                                     </div>

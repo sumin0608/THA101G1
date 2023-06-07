@@ -1,6 +1,8 @@
 package tw.idv.ixercise.store.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import tw.idv.ixercise.store.dao.implMember;
 import tw.idv.ixercise.store.entity.member;
+import tw.idv.ixercise.store.entity.porder;
+import tw.idv.ixercise.store.entity.product;
 
 @WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
@@ -32,9 +36,11 @@ public class loginServlet extends HttpServlet {
 		session.setAttribute("Member", m);
 		response.sendRedirect("makeListServlet");
 
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(m.getPassword());
+//		System.out.println(session.getAttribute("L"));
+//
+//		System.out.println(username);
+//		System.out.println(password);
+//		System.out.println(m.getPassword());
 	}
 
 }
