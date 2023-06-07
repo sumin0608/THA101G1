@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.report.dao.reportDao;
 import tw.idv.ixercise.report.entity.Article;
 import tw.idv.ixercise.report.entity.Report;
@@ -17,6 +18,14 @@ public class reportDaoImpl implements reportDao {
 
 	@PersistenceContext
 	private Session session;
+	
+	
+public Account getAccount(Integer id){
+		
+	return	 session.get(Account.class,id);
+	
+	
+	}
 	
 	
 	public boolean insert(Report report) {
@@ -38,6 +47,17 @@ public class reportDaoImpl implements reportDao {
 			report.setReportStatus(reportStatus);
 		return true;
 	}
+	
+	@Transactional
+	public boolean updatereport(Integer id){
+		
+		Account account = session.get(Account.class,id);
+		Integer accountReport = account.getAccountReport();
+		System.out.println( accountReport);
+		account.setAccountReport((accountReport+1));
+		return true;
+	}
+	
 
 	@Override
 	public Report selectById(Integer id) {

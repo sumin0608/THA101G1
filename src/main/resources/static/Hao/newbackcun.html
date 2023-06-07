@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="../lib/css/backstyle.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!--自己的css-->
+        <link href="../lib/css/styles.css" rel="stylesheet" />
+        <link href="./chat.css" rel="stylesheet" />
+        <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <style>
+       
+
+       .totalcolor1{
+  background: linear-gradient(
+    180deg,
+    rgb(237, 242, 240) 0%,
+    rgb(224, 231, 229) 50%,
+    rgb(232, 233, 236) 100%
+  ) !important;
+}
+
+.navtotalcolor{
+    background: linear-gradient(
+    90deg,
+    rgba(66, 184, 131, 1) 0%,
+    rgba(39, 179, 137, 1) 50%,
+    rgba(100, 126, 255, 1) 100%
+  ) !important;
+}
+
+nav a{
+    font-size:  20px  !important;
+    color:black !important;
+}
+
+nav>a{
+    font-size:  16px  !important;
+    color:black !important;
+}
+
+.msg-counter {
+  position: absolute;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #f26464;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-weight: 500;
+  font-size: 12px !important;
+  line-height: 1.25;
+  letter-spacing: 0.75px;
+  color: #FFFFFF;
+}
+
+body{
+    background-color:rgb(240, 243, 241);
+    min-height: 1500px;
+  
+}
+.radius{
+    border-radius: 100px; 
+}
+.cardsize{
+    height: 100px   ;
+   
+
+}
+div img {
+
+ 
+  position: absolute;   
+  width: auto;
+  max-height: 100%;
+  
+  
+}
+div{
+    position: relative;
+  
+  
+}
+
+.aaa{
+    display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  text-align: center; /* 对齐文本 */
+}
+
+.color{
+    background-color: rgb(248, 247, 247);
+    text-align: center;
+    height: 50px;
+  border-bottom: 0px;  
+ font-size: 20px ;
+ font-weight: bold;
+ text-align: center;
+
+    }
+    .reportspan{
+        right: 60px;
+    }
+
+    .chat-history{
+    min-height: 500px !important;
+}
+.inline-block{
+    display: inline-block;
+}
+.me{
+    float:right;
+}
+.other{
+    float:left;
+}
+
+.chat-history{
+    min-height: 500px !important;
+}
+.inline-block{
+    display: inline-block;
+}
+.me{
+    float:right;
+}
+.other{
+    float:left;
+}
+
+.avatar-column {
+    float: left;
+    width: 60px;
+}
+
+.content-column {
+    margin-left: 70px;
+    overflow: hidden;
+}
+
+.change{
+    background-color: #ebeb27de;
+}
+    </style>
+    
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand m-0 px-4 " href="#!">
+                <img src="../lib/img/IX-nobackground copy.png" alt="" width="150" height="70">
+            </a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
+                    <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
+                </div>
+            </form>
+            <!-- Navbar-->
+
+
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
+                <li class="nav-item dropdown  ">
+                    <a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="layoutSidenav" >
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav justify-content-center ">
+                            <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
+                            <a class="nav-link " href="index.html">
+                                <div class="sb-nav-link-icon"><i class="bi bi-house-fill"></i></div>
+                                後臺中心
+                            </a>
+                            <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="bi bi-flag-fill"></i></div>
+                               檢舉
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    
+                                    <a class="nav-link" href="">檢舉會員<span class=" msg-counter reportspan">7</span></a>
+                                    <a class="nav-link" href="">檢舉活動<span class="msg-counter reportspan">7</span></a>
+                                    <a class="nav-link" href="">檢舉文章<span class="msg-counter reportspan">7</span></a>
+                                    <a class="nav-link" href="">檢舉課程<span class="msg-counter reportspan">7</span></a>
+                                </nav>
+                            </div>
+
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="bi bi-chat-left-dots-fill"></i></div>
+                               文章
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="">文章查詢</a>
+                                    <a class="nav-link" href="">文章xxx</a>
+                                   
+                                </nav>
+                            </div>
+
+                            
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="bi bi-calendar-event-fill"></i></div>
+                               活動
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="">活動查詢</a>
+                                    <a class="nav-link" href="">活動xxx</a>
+                                   
+                                </nav>
+                            </div>
+
+
+                            
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="bi bi-cart-fill"></i></div>
+                               商城
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="">商城查詢</a>
+                                    <a class="nav-link" href="">商城xxx</a>
+                                   
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="bi bi-book-fill"></i></div>
+                               課程
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="">課程查詢</a>
+                                    <a class="nav-link" href="">課程xxx</a>
+                                   
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssss" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
+                               後臺
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="">後臺推播</a>
+                                    <a class="nav-link" href="">後臺聊天室</a>
+                                   
+                                </nav>
+                            </div>
+
+                           
+                        </div>
+                    </div>
+                    <!-- <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div> -->
+                </nav>
+            </div>
+
+               <!--以上nav-->
+
+
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4 radius  ">
+                        <!-- 請在這裡作業-->
+                        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+                        <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-lg-12">
+                                <div class="card chat-app">
+                                    <div id="plist" class="people-list">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Search...">
+                                        </div>
+                
+                                        <ul class="list-unstyled chat-list mt-2 mb-1" id="ulfirst">
+
+                                            <!-- <li class="clearfix">
+                                                <div class="avatar-column">
+                                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                                </div>
+                                                <div class="content-column">
+                                                    <div class="about">
+                                                        <div class="name">軒民</div>
+                                                        <div class="status"><i class="fa fa-circle offline"></i> 7分鐘前</div>
+                                                    </div>
+                                                </div>
+                                            </li> -->
+
+                                            <li class="clearfix" id="chattoken">
+                                            
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                                   
+                                                <div class="content-column">
+                                                <div class="about">
+                                                    <div class="name">蔡英文</div>
+                                                    <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                                </div>
+                                            </li>
+                                            <li class="clearfix" id="chattoken">
+                                                
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                              
+                                            <div class="content-column">
+                                            <div class="about">
+                                                <div class="name">連戰</div>
+                                                <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                            </div>
+                                            </div>
+                                            </li> 
+
+                                            <li class="clearfix " id="chattoken">
+                                            
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                            
+                                                <div class="content-column">
+                                                 <div class="about">
+                                                    <div class="name">柯文哲</div>
+                                                    <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                                </div>
+                                                </div>
+                                            </li>
+                                            <li class="clearfix" id="chattoken">
+                                            
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                             
+                                                <div class="content-column">
+                                                 <div class="about">
+                                                    <div class="name">王大陸</div>
+                                                    <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                                </div>
+                                                <i class="fa-solid fa-fire fa-2x text-danger"  style="margin-right:25px;"></i>
+                                                </div>
+                                            </li>
+                                        
+                                       
+
+                                        </ul>
+                                    </div>
+                
+                
+                                    <div class="chat">
+                                        <div class="chat-header clearfix">
+                                            <div class="row">
+                                                <div class="col-lg-6" id="chathead">
+                                                    <div id="contorl" data-report-id=0>
+                                                    <!-- <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                                
+                                                     <div class="content-column">
+                                                     <div class="about">
+                                                        <div class="name">王大陸</div>
+                                                        <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                                    </div>
+                                                    </div>  -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 hidden-sm text-right">
+                                                    <!-- <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="chat-history " >
+                                            <ul class="m-b-0" id="aaa">
+                                                <!-- <li class="clearfix">
+                                                    <div class="message-data text-center">
+                                                        <span class="message-data-time ">10:10 AM, 今天</span>
+                                                     
+                                                    </div>
+                                                    <div class="message other-message float-right"> hi~再霆 專案弄得怎樣 </div>
+                                                </li>
+                                                <li class="clearfix">
+                                                    <div class="message-data text-center">
+                                                        <span class="message-data-time">10:12 AM, 今天</span>
+                                                    </div>
+                                                    <div class="message my-message">要見面討論嗎</div>                                    
+                                                </li>                               
+                                                <li class="clearfix">
+                                                    <div class="message-data text-center">
+                                                        <span class="message-data-time">10:15 AM, 今天</span>
+                                                    </div>
+                                                    <div class="message my-message">我有報告告訴你</div>
+                                                </li> -->
+                                            </ul> 
+                                        </div>
+                                        <div class="py-3 px-4 border-top ">
+                                            <div class="input-group">
+                                                <input type="text" class="py-3 form-control inputvalue" placeholder="請輸入文字 ">
+                                                <button type="submit" class="btn btn-primary submit btn-control">Send</button>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+                             <!--以下footer-->
+
+                
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="../lib/js/backtai.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="../lib/js/datatables-demo.js"></script>
+        <script src="../lib/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/js/popper.min.js"></script>
+        <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+        
+
+
+
+  
+
+        <script>
+
+            var webSocket;
+            var Toname;
+            var username;
+            var self=1;
+            var input_text ;
+            var timestamp =  new Date(new Date().getTime() + (480* 60000)).toISOString();
+
+            
+            var  localStorageId=localStorage.getItem('accountId');
+            var  localStorageNickname=localStorage.getItem('accountNickname');
+            var  localStoragePhoto=localStorage.getItem('accountPhoto');
+            var idValue ;
+        
+        // 現在時間
+        var currentDate = new Date();
+        
+        // 获取当前时间的小时、分钟和秒
+        
+        var month = currentDate.getMonth() + 1; // 注意：月份从0开始，所以要加1
+        var day = currentDate.getDate();
+        var hours = currentDate.getHours();
+        var minutes = currentDate.getMinutes();
+        
+        // 格式化月份和日期，确保它们始终显示为两位数
+        // 格式化小时、分钟和秒，确保它们始终显示为两位数
+        month = (month < 10 ? "0" : "") + month;
+        day = (day < 10 ? "0" : "") + day;
+        
+        hours = (hours < 10 ? "0" : "") + hours;
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        
+        // 构建时间字符串
+        var currentTime =month + "/" + day+"<br>"+ hours + ":" + minutes ;
+        
+        // 在控制台上打印当前时间
+
+            
+        
+        $(function(){
+          
+          $("input.inputvalue").on("keydown", function(e){
+            //console.log(e.which);
+            if(e.which == 13){
+              $(".btn-control").click();
+            }
+          });
+          
+          $(".btn-control").on("click", function(){
+           
+           input_text = ($("input.inputvalue").val()).trim();
+           
+        
+            if(input_text == ""){
+              alert("請輸入資料");
+            }else{
+        
+                
+              
+              let html = `
+              <li class="clearfix">
+                                            <div class="message-data text-center">
+                                                <span class="message-data-time">${currentTime}</span>
+                                            </div>
+                                            <div class="message my-message me">${input_text}</div>
+                                        </li> `;
+                                        
+                    sendMessage(input_text) ;
+                    $("#aaa").append(html);
+               
+                    $("input.inputvalue").val("");
+        
+        
+              
+        }
+        });
+
+
+        
+        function sendMessage(input_text) {
+            
+            timestamp =  new Date(new Date().getTime() + (480* 60000)).toISOString();
+          
+        var jsonObj = {
+            "type" : "chat",
+            "sender" : localStorageId,
+            "receiver" : idValue,
+            "message" : input_text,
+            "messageTime":timestamp
+        };
+        
+        webSocket.send(JSON.stringify(jsonObj));
+        
+        }
+        
+        
+        });
+        
+//         $(document).ready(function() {
+//   $("li").on("click", "#chattoken", function(e) {
+   
+    
+//    console.log("我有被執行到")
+      
+    //       var jsonObj = {
+    //                   "type" : "history",
+    //                   "sender" :1,
+    //                   "receiver" : 1113,
+    //                   "message" : "",
+    //                   "messageTime":timestamp
+    //               };
+    //           webSocket.send(JSON.stringify(jsonObj));
+    //   });
+                                 
+    
+//   });
+
+
+$(document).on('click', '.chattoken', function(event) {
+  var liElement = $(event.target).closest('li');
+  $(this).removeClass("change");
+  idValue = liElement.attr('id');
+
+ var jsonObj = {
+                      "type" : "history",
+                      "sender" :localStorageId,
+                      "receiver" : idValue,
+                      "message" : "",
+                      "messageTime":timestamp
+                  };
+     webSocket.send(JSON.stringify(jsonObj));
+
+  $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+idValue, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+                var headhtml=`<div id="control" data-account-id="`+data.accountId+`"><img src="data:image/jpeg;base64,`+data.accountPhoto+`"  alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                                                
+                                                <div class="content-column">
+                                                <div class="about">
+                                                   <div class="name">`+data.accountNickname+`</div>
+                                                   <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                               </div></div> </div> `;
+                        
+                $("#chathead").html(headhtml);
+
+
+
+            },
+        });
+
+
+
+
+
+});
+
+
+// $(document).ready(function() {
+//   $("ul#ulfirst").on("click", "li", function(e) {
+//     if ($(this).is("#chattoken")) {
+    
+//         $(this).removeClass("change");
+//         var jsonObj = {
+//                       "type" : "history",
+//                       "sender" :localStorageId,
+//                       "receiver" : 1113,
+//                       "message" : "",
+//                       "messageTime":timestamp
+//                   };
+//               webSocket.send(JSON.stringify(jsonObj));
+
+//     }
+//   });
+// });
+        
+        
+            
+        
+        
+        //     $(function(){
+        //         $.ajax({
+        // url:  "http://localhost:8080/ixercise/set",
+        // type: 'POST',
+        // contentType: 'application/json',
+        // data: mydata,
+        // success: function(response) {
+        // // 請求成功，進行相應的處理
+        // console.log(response);
+        
+        // },
+        
+        
+        // });
+        
+        //     });
+        // 以下wesocket
+            $(function(){
+        
+                connect();
+        
+        
+            function connect() {
+                // create a websocket
+                webSocket = new WebSocket("ws://localhost:8080/ixercise/FriendWS/"+localStorageId);
+        
+                webSocket.onopen = function(event) {
+                    console.log("Connect Success!"+localStorageId);
+            
+                };
+
+
+        
+                webSocket.onmessage = function(event) {
+                    var jsonObj = JSON.parse(event.data);
+                    if ("open" == jsonObj.type) {
+                        console.log("連線成功");
+                    } 
+                    
+                    
+                    
+                    else if ("history" == jsonObj.type) {
+                        console.log(jsonObj);
+                        var html = "";
+
+
+
+                        
+                        var messages = JSON.parse(jsonObj.message);
+                        for (var i = 0; i < messages.length; i++) {
+        
+                            var historyData = JSON.parse(messages[i]);
+                            var showMsg = historyData.message;
+                                        if(historyData.sender==localStorageId){
+                                            console.log(historyData.messageTime);
+                                            
+                                  var text=historyData.messageTime;
+                                   var datePart = text.substring(5, 10);
+                                 var timePart = text.substring(11, 16);
+
+              // 格式化成指定的格式
+                              var formattedText = datePart + "<br>" + timePart;
+
+                                            html +=  '<li class="clearfix"><div class="message-data text-center">'+
+                                                '<span class="message-data-time ">'+formattedText+'</span></div><div class="message my-message me">'+historyData.message+'</div></li>'
+        
+                                        }else{
+                                            console.log(historyData.messageTime);
+                                             var text=historyData.messageTime;
+                                            var datePart = text.substring(5, 10);
+                                          var timePart = text.substring(11, 16);
+
+                                            // 格式化成指定的格式
+                                   var formattedText = datePart + "<br>" + timePart;
+
+
+                                            html += '<li class="clearfix"><div class="message-data text-center"><span class="message-data-time ">'+formattedText+'</span></div>'+
+                                                    '<div class="message other-message other"> '+historyData.message+' </div></li>';
+                                        }
+                                    }
+                                                        
+                            
+                            $("#aaa").html(html);
+        
+                        // var ul = document.createElement('ul');
+                        // ul.id = "area";
+                        // messagesArea.appendChild(ul);
+                     // 這行的jsonObj.message是從redis撈出跟好友的歷史訊息，再parse成JSON格式處理
+                        //  var messages = JSON.parse(jsonObj.message);
+                        //  for (var i = 0; i < messages.length; i++) {
+                        // 	var historyData = JSON.parse(messages[i]);
+                        // 	var showMsg = historyData.message;
+                        // 	var li = document.createElement('li');
+                        // 	// 根據發送者是自己還是對方來給予不同的class名, 以達到訊息左右區分
+                        // 	historyData.sender === self ? li.className += 'me' : li.className += 'friend';
+                        // 	li.innerHTML = showMsg;
+                        // 	ul.appendChild(li);
+                    //	}
+                        // messagesArea.scrollTop = messagesArea.scrollHeight;
+                    } 
+                    
+                    
+                    else if ("chat" ===jsonObj.type) {
+                        console.log(jsonObj);
+
+                        $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+jsonObj.sender, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+                var accountId = $('#control').data('account-id');
+             if(accountId==data.accountId){
+
+                                                let html = `
+                                                <li class="clearfix">
+                                            <div class="message-data text-center">
+                                                <span class="message-data-time">${currentTime}</span>
+                                            </div>
+                                            <div class="message my-message other">${jsonObj.message}</div>
+                                        </li> `;
+        
+                    
+                    $("#aaa").append(html);
+
+
+             }else {
+
+                
+                    //以上是內容
+                    //以下是置頂
+
+                    var chathtml="";
+                    chathtml=`<li class="clearfix change chattoken" id="`+data.accountId+`">
+                        <img src="data:image/jpeg;base64,`+data.accountPhoto+`"alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
+                    <div class="content-column"><div class="about"><div class="name">`+data.accountNickname+`</div>
+                                                    <div class="status"> <i class="fa fa-circle online"></i> 線上 </div>
+                                                </div>
+                                                </div>
+                                            </li>`;
+                                            console.log( chathtml);
+                                            $("#ulfirst").prepend(chathtml);
+
+
+             }
+
+
+
+            },
+        });
+                  
+
+                   
+
+                        // var li = document.createElement('li');
+                        // jsonObj.sender === self ? li.className += 'me' : li.className += 'friend';
+                        // li.innerHTML = jsonObj.message;
+                        // console.log(li);
+                        // document.getElementById("area").appendChild(li);
+                        // messagesArea.scrollTop = messagesArea.scrollHeight;
+                    }  else if ("leave" === jsonObj.type){
+
+                        $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+jsonObj.sender, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+
+                changeFail(data.accountNickname);
+              var leavehtml=`<div class="message-data text-center"><span class="message-data-time ">`+jsonObj.sender+`已經離開聊天室</span></div>`;
+               console.log("有人離開");
+                    }
+                });
+
+          }
+                   
+                    
+     };
+     //on message 結束
+        
+                webSocket.onclose = function(event) {
+                    console.log("Disconnected!");
+                };
+            }
+            
+
+            function changeFail(sender) {
+  // 创建弹窗元素
+
+  var popup = $('<div class="confirmation-popup">'+sender+'已經離開聊天室</div>');
+
+  // 添加到页面中
+  $("body").append(popup);
+
+  // 设置样式和动画效果
+  popup.css({
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '40px',
+    background: '#fff',
+    border: '2px solid #ccc',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+    zIndex: '9999'
+  });
+
+  // 设置弹窗自动关闭的定时器
+  setTimeout(function() {
+    popup.fadeOut(function() {
+      // 关闭弹窗后进行清理操作
+      popup.remove();
+      $('#closeButton').trigger('click');
+    });
+  }, 4000); // 3秒后自动关闭弹窗
+}
+
+            
+            // 有好友上線或離線就更新列表
+            function refreshFriendList(jsonObj) {
+                var friends = jsonObj.users;
+                var row = document.getElementById("row");
+                row.innerHTML = '';
+                for (var i = 0; i < friends.length; i++) {
+                    if (friends[i] === self) { continue; }
+                    row.innerHTML +='<div id=' + i + ' class="column" name="friendName" value=' + friends[i] + ' ><h2>' + friends[i] + '</h2></div>';
+                }
+                addListener();
+            }
+            // 註冊列表點擊事件並抓取好友名字以取得歷史訊息
+            function addListener() {
+                var container = document.getElementById("row");
+                container.addEventListener("click", function(e) {
+                    var friend = e.srcElement.textContent;
+                    updateFriendName(friend);
+                    var jsonObj = {
+                            "type" : "history",
+                            "sender" : 1,
+                            "receiver" : 1113,
+                            "message" : "",
+                            "messageTime":timestamp
+                        };
+                    webSocket.send(JSON.stringify(jsonObj));
+                });
+            }
+            
+            function disconnect() {
+                webSocket.close();
+                
+            }
+            
+            function updateFriendName(name) {
+                statusOutput.innerHTML = name;
+            }
+        });
+        </script>
+</body>
+</html>

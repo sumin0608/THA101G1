@@ -645,71 +645,86 @@
                     url: "/ixercise/course",
                     type: "GET",
                     dataType: "json",
-                    success: function (resp) {
-                        // console.log("resp>>" + resp);
+                    success: function (resp1) {
+                        // console.log("resp1>>" + resp1);
                         let tableData = '';
                         var memberName;
                         var accountPhoto;
+
+                        var today = new Date();
+                        // console.log(" today: ", today);
+                        var resp = resp1.filter(function (item) {
+                            var registrationDeadline = new Date(item.registrationDeadline);
+                            // console.log("item.registrationDeadline: ", registrationDeadline);
+                            if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                                return true;
+                            }
+                        });
+
                         for (let i = 0; i < resp.length; i++) {
-                            tableData += `<div class="col mb-5 event_card_container">`;
-                            tableData += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
-                            tableData += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
-                            tableData += `<div class="photo">`
-                            tableData += `<img class="card-img-top event_pic lazy"
+                            if (resp[i].courseStatus !== 2 || resp[i].courseStatus !== 5) {
+                                tableData += `<div class="col mb-5 event_card_container">`;
+                                tableData += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                                tableData += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
+                                tableData += `<div class="photo">`
+                                tableData += `<img class="card-img-top event_pic lazy"
                                             data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
-                            tableData += `</div>`;
-                            tableData += `<div class="card-body p-2">`;
-                            tableData += `<div class="text-left">`;
-                            tableData += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5></div>`;
-                            tableData += `   <div class="mb-2 event_location">`;
-                            tableData += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
-                            tableData += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
-                            tableData += `   </div>`;
-                            tableData += `   <div class="event_start_time">`;
-                            tableData += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
-                            tableData += `   </div>`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
-                            tableData += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
-                            tableData += `    <div class="d-flex flex-row align-items-center event_creater">`;
-                            // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
-                            $.ajax({
-                                url: "/ixercise/Account/Manage/" + resp[i].creator,
-                                type: "GET",
-                                dataType: "json",
-                                async: false,//非同步的（asynchronous），表示該請求是同步的
-                                data: { id: resp[i].creator }, // 将 creator 作为参数传递
-                                success: function (memberResp) {
-                                    // console.log("memberResp: " + memberResp);
-                                    memberNickName = memberResp.accountNickname;
-                                    // console.log("memberName: " + memberName);
-                                },
-                                error: function (xhr, status, error) {
-                                    alert("Error: " + xhr.responseText);
-                                }
-                            });
-                            tableData += `<div class="member-icon">`;
-                            tableData += `    <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
+                                tableData += `</div>`;
+                                tableData += `<div class="card-body p-2">`;
+                                tableData += `<div class="text-left">`;
+                                tableData += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5></div>`;
+                                tableData += `   <div class="mb-2 event_location">`;
+                                tableData += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
+                                tableData += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
+                                tableData += `   </div>`;
+                                tableData += `   <div class="event_start_time">`;
+                                tableData += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                                tableData += `   </div>`;
+                                tableData += `</div>`;
+                                tableData += `</div>`;
+                                tableData += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                                tableData += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                                // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                                $.ajax({
+                                    url: "/ixercise/Account/Manage/" + resp[i].creator,
+                                    type: "GET",
+                                    dataType: "json",
+                                    async: false,//非同步的（asynchronous），表示該請求是同步的
+                                    data: { id: resp[i].creator }, // 将 creator 作为参数传递
+                                    success: function (memberResp) {
+                                        // console.log("memberResp: " + memberResp);
+                                        memberNickName = memberResp.accountNickname;
+                                        // console.log("memberName: " + memberName);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        alert("Error: " + xhr.responseText);
+                                    }
+                                });
+                                tableData += `<div class="member-icon">`;
+                                tableData += `    <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
                                                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                            tableData += `</div>`;
-                            tableData += `<div class="col-8 ms-2 c-details">`;
-                            // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
-                            tableData += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
-                            // tableData += `      <span class=" text-muted">還沒想好放什麼</span>`;
-                            tableData += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
-                            tableData += `</a >`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
+                                tableData += `</div>`;
+                                tableData += `<div class="col-8 ms-2 c-details">`;
+                                // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
+                                tableData += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
+                                // tableData += `      <span class=" text-muted">還沒想好放什麼</span>`;
+                                tableData += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                                tableData += `</div>`;
+                                tableData += `</div>`;
+                                tableData += `</div>`;
+                                tableData += `</a >`;
+                                tableData += `</div>`;
+                                tableData += `</div>`;
 
-                            var memberid = resp[i].creator;
-                            var avatarid = "avatar-" + memberid;
-                            const avataroutside = document.querySelector("#avatarid");
-                            avataroutside.src = getcreateObjURL(accphoto);
+                                var memberid = resp[i].creator;
+                                var avatarid = "avatar-" + memberid;
+                                // console.log("avatarid:", avatarid);
+                                var avataroutside = $("#avatarid");
+                                // console.log("avataroutside:", avataroutside);
+                                avataroutside.src = getcreateObjURL(accphoto);
 
+                            }
                         }
                         $("#input_card").empty().append(tableData);
                         // 延遲加載圖像
@@ -725,6 +740,10 @@
                     }
                 });
 
+                // 生成課程card的迴圈function
+                // function CourseCard(resp) {
+                // }
+
                 // <<search撈篩選課程>>
                 $('#btn_selecter_search').on('click', function (e) {
                     e.preventDefault();
@@ -737,7 +756,9 @@
                             alert("Error: " + xhr.responseText);
                         }
                     });
-                }); //success:實際function
+                });
+
+                //success:實際function
                 function handleDistrictsResponse(resp) {
                     var sport_option = $('#select_sport option:selected').text();
                     var city_option = $('#select_city option:selected').text();
@@ -756,7 +777,7 @@
                         }
                     });
                     // filter篩選:時間
-                    let filteredData = filteredData0.filter(function (item) {
+                    let filteredData1 = filteredData0.filter(function (item) {
                         if (!timeValue) {
                             return true;
                         } else if (timeValue == 1) {
@@ -774,72 +795,83 @@
                         }
                     });
 
+                    var today = new Date();
+                    var filteredData = filteredData1.filter(function (item) {
+                        var registrationDeadline = new Date(item.registrationDeadline);
+                        if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                            return true;
+                        }
+                    });
+
                     if (filteredData.length > 0) {
+                        let tableData2 = '';
+                        var memberName
+                        var accountPhoto;
                         for (let i = 0; i < filteredData.length; i++) {
                             console.log("filteredData[i]: " + filteredData[i].eventName + "," + filteredData[i].categoryId);
+                            tableData2 += `<div class="col mb-5 event_card_container">`;
+                            tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                            tableData2 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
+                            tableData2 += `<div class="photo">`
+                            tableData2 += `<img class="card-img-top event_pic lazy"
+                                            src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
+                            tableData2 += `</div>`;
+                            tableData2 += `<div class="card-body p-2">`;
+                            tableData2 += `<div class="text-left">`;
+                            tableData2 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${filteredData[i].eventName}</h5></div>`;
+                            tableData2 += `   <div class="mb-2 event_location">`;
+                            tableData2 += `        <span class="card-text  text-muted event_city">${filteredData[i].city}</span>`;
+                            tableData2 += `        <span class="card-text text-muted event_place">${filteredData[i].location}</span>`;
+                            tableData2 += `   </div>`;
+                            tableData2 += `   <div class="event_start_time">`;
+                            tableData2 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                            tableData2 += `   </div>`;
+                            tableData2 += `</div>`;
+                            tableData2 += `</div>`;
+                            tableData2 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                            tableData2 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                            // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                            $.ajax({
+                                url: "/ixercise/Account/Manage/" + resp[i].creator,
+                                type: "GET",
+                                dataType: "json",
+                                async: false,//非同步的（asynchronous），表示該請求是同步的
+                                data: { id: resp[i].creator }, // 将 creator 作为参数传递
+                                success: function (memberResp) {
+                                    memberNickName = memberResp.accountNickname;
+                                    // console.log("memberName: " + memberName)
+                                },
+                                error: function (xhr, status, error) {
+                                    alert("Error: " + xhr.responseText);
+                                }
+                            });
+                            tableData2 += `<div class="member-icon">`;
+                            tableData2 += ` <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
+                                                                        class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                                                                        data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                            tableData2 += `</div>`;
+                            tableData2 += `<div class="col-8 ms-2 c-details">`
+                            tableData2 += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
+                            // tableData2 += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練編號:${resp[i].creator}</h6>`;
+                            // tableData2 += `     <span class=" text-muted">還沒想好放什麼</span>`;
+                            tableData2 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                            tableData2 += `</div>`;
+                            tableData2 += `</div>`;
+                            tableData2 += `</div>`;
+                            tableData2 += `</a >`;
+                            tableData2 += `</div>`;
+                            tableData2 += `</div>`;
+
+                            var memberid = resp[i].creator;
+                            var avatarid = "avatar-" + memberid;
+                            const avataroutside = document.querySelector("#avatarid");
+                            avataroutside.src = getcreateObjURL(accphoto);
                         }
                     } else {
                         console.log("No data found");
                         swal("Warning!", "QQ無符合資料", "warning");
                     }
-
-                    let tableData2 = '';
-                    var memberName
-                    var accountPhoto;
-                    for (let i = 0; i < filteredData.length; i++) {
-                        tableData2 += `<div class="col mb-5 event_card_container">`;
-                        tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
-                        tableData2 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
-                        tableData2 += `<div class="photo">`
-                        tableData2 += `<img class="card-img-top event_pic lazy"
-                                        src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="card-body p-2">`;
-                        tableData2 += `<div class="text-left">`;
-                        tableData2 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${filteredData[i].eventName}</h5></div>`;
-                        tableData2 += `   <div class="mb-2 event_location">`;
-                        tableData2 += `        <span class="card-text  text-muted event_city">${filteredData[i].city}</span>`;
-                        tableData2 += `        <span class="card-text text-muted event_place">${filteredData[i].location}</span>`;
-                        tableData2 += `   </div>`;
-                        tableData2 += `   <div class="event_start_time">`;
-                        tableData2 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
-                        tableData2 += `   </div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
-                        tableData2 += `    <div class="d-flex flex-row align-items-center event_creater">`;
-                        // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
-                        $.ajax({
-                            url: "/ixercise/Account/Manage/" + resp[i].creator,
-                            type: "GET",
-                            dataType: "json",
-                            async: false,//非同步的（asynchronous），表示該請求是同步的
-                            data: { id: resp[i].creator }, // 将 creator 作为参数传递
-                            success: function (memberResp) {
-                                memberNickName = memberResp.accountNickname;
-                                // console.log("memberName: " + memberName)
-                            },
-                            error: function (xhr, status, error) {
-                                alert("Error: " + xhr.responseText);
-                            }
-                        });
-                        tableData2 += `<div class="member-icon">`;
-                        tableData2 += ` <img src="https://picsum.photos/300/200/?random=10"
-                                        class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="col-8 ms-2 c-details">`
-                        tableData2 += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
-                        // tableData2 += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練編號:${resp[i].creator}</h6>`;
-                        // tableData2 += `     <span class=" text-muted">還沒想好放什麼</span>`;
-                        tableData2 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</a >`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                    }//$('#btn_selecter_search')結束
+                    //$('#btn_selecter_search')結束
                     $("#input_card").empty().append(tableData2);
                     // 延遲加載圖像
                     const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
@@ -863,11 +895,18 @@
                         url: "/ixercise/course/fuzzySearch/" + searchinput,
                         type: "GET",
                         dataType: "json",
-                        success: function (resp) {
+                        success: function (resp1) {
                             // console.log("resp>>" + resp);
                             let tableData3 = '';
                             var memberName;
                             var accountPhoto;
+                            var today = new Date();
+                            var resp = resp1.filter(function (item) {
+                                var registrationDeadline = new Date(item.registrationDeadline);
+                                if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                                    return true;
+                                }
+                            });
                             for (let i = 0; i < resp.length; i++) {
                                 tableData3 += `<div class="col mb-5 event_card_container">`;
                                 tableData3 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
@@ -907,7 +946,7 @@
                                     }
                                 });
                                 tableData3 += `<div class="member-icon">`;
-                                tableData3 += `<img src="https://picsum.photos/300/200/?random=10"
+                                tableData3 += `<img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
                                             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                                 tableData3 += `</div>`;
@@ -916,6 +955,11 @@
                                 // tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
                                 tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
                                 tableData3 += `</div></div></div></a ></div></div>`;
+
+                                var memberid = resp[i].creator;
+                                var avatarid = "avatar-" + memberid;
+                                const avataroutside = document.querySelector("#avatarid");
+                                avataroutside.src = getcreateObjURL(accphoto);
                             }
                             $("#input_card").empty().append(tableData3);
                             // 延遲加載圖像

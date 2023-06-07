@@ -524,6 +524,7 @@ text-align: center;
 
 
 <script>
+    
     let data_obj = {
 
         "reportId" : 1,
@@ -570,14 +571,19 @@ text-align: center;
                             }
                             
                             html += '<td class="reasonarea">  ' + truncatedContent+ '</td>';
-                            console.log(obj.reportTime)
-                        var backendTime = obj.reportTime;
-                        var dateObj = new Date(backendTime);
-                        var taiwanTime = new Date(dateObj.getTime() + (dateObj.getTimezoneOffset() * 60000) + (8 * 3600000));
-                        console.log(taiwanTime );
+                            console.log(obj.reportTime);
+var utcTime = new Date(obj.reportTime); // 將 UTC 字串轉換為 Date 物件
+var taiwanTime = new Date(utcTime.getTime() ); // 加上 8 小時的時差轉換為台灣時區
+console.log(taiwanTime);
 
-                        var date = taiwanTime.toISOString().split('T')[0];
-                        var date1 = taiwanTime.toISOString().split('T')[1].split('.')[0];
+var year = taiwanTime.getFullYear();
+var month = ('0' + (taiwanTime.getMonth() + 1)).slice(-2); // 補零並取兩位數的月份
+var date = ('0' + taiwanTime.getDate()).slice(-2); // 補零並取兩位數的日期
+var hours = ('0' + taiwanTime.getHours()).slice(-2); // 補零並取兩位數的小時
+var minutes = ('0' + taiwanTime.getMinutes()).slice(-2); // 補零並取兩位數的分鐘
+
+var date = year + '-' + month + '-' + date ; 
+var date1 = hours + ':' + minutes;
 
                         html +='<td><p class="text-muted">'+date+'</p> <span>'+date1+'<span>  <br></td>';
 
@@ -602,13 +608,14 @@ text-align: center;
                     
                         html +=  ' <td>'+
                            ' <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" id="deletereport"  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"  data-report-id="' + obj.reportId + '" title="刪除"><i class="fa fa-trash" title="刪除"></i> </button> '+
-                           ' <button type="button" id="changereport" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-status="' + obj.reportStatus+'"  data-report-id="' + obj.reportId+'" title="更新"><i class="bi bi-cloud-download-fill" ></i> </button> '+
+                           ' <button type="button" id="changereport" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-status="'+ obj.reportStatus+'" data-report-accountId2="' + obj.accountId2+'" data-report-id="' + obj.reportId+'" title="更新"><i class="bi bi-cloud-download-fill" ></i> </button> '+
                            '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="allarea" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-id="' + obj.reportId+'" title="更多" ><i class="bi bi-code-square"  title="更多內容"></i> </button> '+
                             '</td>';
                             html +=   "</tr>";
 
                 
            
+                            console.log(obj.accountId2);
                         });
 								$("#aaa").html(html);
 
@@ -669,17 +676,11 @@ text-align: center;
          
        
 html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >檢舉編號:</p><p class="col-sm-12 " >'+data.reportId+'</p></div>';
-html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >被檢舉會員編號:</p><p class="col-sm-12 " >'+data.memberId2+'</p></div>';
+html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >被檢舉會員編號:</p><p class="col-sm-12 " >'+data.accountId2+'</p></div>';
 html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >檢舉內文:</p><p class="col-sm-12 " >'+data.reportReason+'</p></div>';
 // html += '<div id="lightboxContainer" style="width: 800px; height: 600px;"><div class="col-sm-12"><p class="col-sm-6 image-container text-muted">圖像:</p><img src="data:image/png;base64,' + data.reportPicture + '" style="width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;" class="col-sm-12"></div></div>';
 html +='<p class="col-sm-6 text-muted" >檢舉圖片:</p>';
 html +='<div class="pic"></p><img src="data:image/png;base64,' + data.reportPicture + '" style="width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;" class="col-sm-12"></div>';
-
-                                            
-
-            
-            
-
 
                     $("#aaaa").append(html);
                 },
@@ -725,77 +726,7 @@ $(document).on("click", "#confirmDelete", function() {
             success : function(data) {
                 showConfirmationPopup();
 //再次請求ajax
-$.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求的網址
-            type : "GET",
-            dataType : "json",
-
-            success : function(data) {
-            var html = "";
-      
-  
-            
-            
-            $.each(data,function(index, obj) {
-                html += '<tr class="tbodycss">';
-                        html += '<td class="pl-4">' + obj.reportId+ '</td>';
-                        html += '<td class="font-medium mb-0">  <h5 class="font-medium mb-0">' + obj.memberId2+ '</h5></td>';
-                        html += '<td>  <span class=" text-danger">' + obj.reportType+ "</td>";
-                           
-                            var truncatedContent="";
-                            if (obj.reportReason.length> 36) {
-                                truncatedContent = obj.reportReason.substring(0,36) + "..."; 
-                       
-                            }else{
-                                truncatedContent =obj.reportReason;
-                            }
-                            
-                            html += '<td class="reasonarea">  ' + truncatedContent+ '</td>';
-                            console.log(obj.reportTime)
-                        var backendTime = obj.reportTime;
-                        var dateObj = new Date(backendTime);
-                        var taiwanTime = new Date(dateObj.getTime() + (dateObj.getTimezoneOffset() * 60000) + (8 * 3600000));
-                        console.log(taiwanTime );
-
-                        var date = taiwanTime.toISOString().split('T')[0];
-                        var date1 = taiwanTime.toISOString().split('T')[1].split('.')[0];
-
-                        html +='<td><p class="text-muted">'+date+'</p> <span>'+date1+'<span>  <br></td>';
-
-
-
-                            if(obj.reportStatus==1){
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>'+
-                                                    '<option value="1">'+'未處理'+'</option>'+
-                                                   '<option  value="2">'+'檢舉成功'+'</option>'+
-                                                    '<option  value="0">'+'檢舉失敗'+'</option>'+
-                                                    '</select></td>';
-
-                            } else if(obj.reportStatus==0){             
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>';   
-                                html +=     '<option  value="0">'+'檢舉失敗'+'</option>'+'<option value="1">'+'未處理'+'</option>'+'<option  value="2">'+'檢舉成功'+'</option>'+'</select></td>';
-                            }else{
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>'; 
-                                html +=  '<option  value="2">'+'檢舉成功'+'</option>'+ '<option value="1">'+'未處理'+'</option>'+  '<option  value="0">'+'檢舉失敗'+'</option>'+  '</select></td>';
-                            }
-                                                    
-
-                    
-                        html +=  ' <td>'+
-                           ' <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" id="deletereport"  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"  data-report-id="' + obj.reportId + '" title="刪除"><i class="fa fa-trash" title="刪除"></i> </button> '+
-                           ' <button type="button" id="changereport" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-status="' + obj.reportStatus+'"  data-report-id="' + obj.reportId+'" title="更新"><i class="bi bi-cloud-download-fill" ></i> </button> '+
-                           '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="allarea" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-id="' + obj.reportId+'" title="更多" ><i class="bi bi-code-square"  title="更多內容"></i> </button> '+
-                            '</td>';
-                            html +=   "</tr>";
-
-                
-           
-                        });
-								$("#aaa").html(html);
-							},
-							error : function(xhr, status, error) {
-								console.log("AJAX Error:", error);
-							}
-						});
+ sendAjaxRequest(0);
 
 //ajax結束
 
@@ -880,8 +811,10 @@ $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求�
 
     //修改檢舉狀態
     $(document).on("click", "#changereport", function() {
-        // console.log(this);
+        console.log(this);
         var reportId = $(this).data("report-id");
+        var reportaccountId2 = $(this).data("report-accountid2");
+        console.log(reportaccountId2);
         var reportStatus=$(this).data("report-status");
         var NewreportStatus = $("#Select" + reportId).val();
         console.log(NewreportStatus);
@@ -890,6 +823,20 @@ $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求�
         }else{
 
             changereportId(reportId,NewreportStatus);
+            console.log(NewreportStatus);
+            if(NewreportStatus==2){
+
+
+
+                $.ajax({url : 'http://localhost:8080/ixercise/back/reportaccount/'+reportaccountId2, // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+                console.log("我有檢舉會員");
+            },
+            });
+            }
         }
        
     });
@@ -900,7 +847,7 @@ $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求�
         // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
         
        
-        $.ajax({url : 'http://localhost:8080/ixercise/back/reportStatus?id=' + reportId + '&status=' + NewreportStatus, // 資料請求的網址
+        $.ajax({url :'http://localhost:8080/ixercise/back/reportStatus?id=' + reportId + '&status=' + NewreportStatus, // 資料請求的網址
             type : "GET",
             dataType : "json",
 
@@ -908,79 +855,11 @@ $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求�
                 console.log("我有跟新狀態");
                 changeSuccuss();
 //再次請求ajax
-$.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求的網址
-            type : "GET",
-            dataType : "json",
 
-            success : function(data) {
-            var html = "";
-      
-  
-            
-            
-            $.each(data,function(index, obj) {
-                html += '<tr class="tbodycss">';
-                        html += '<td class="pl-4">' + obj.reportId+ '</td>';
-                        html += '<td class="font-medium mb-0">  <h5 class="font-medium mb-0">' + obj.memberId2+ '</h5></td>';
-                        html += '<td>  <span class=" text-danger">' + obj.reportType+ "</td>";
-                           
-                            var truncatedContent="";
-                            if (obj.reportReason.length> 36) {
-                                truncatedContent = obj.reportReason.substring(0,36) + "..."; 
-                       
-                            }else{
-                                truncatedContent =obj.reportReason;
-                            }
-                            
-                            html += '<td class="reasonarea">  ' + truncatedContent+ '</td>';
-                            console.log(obj.reportTime)
-                        var backendTime = obj.reportTime;
-                        var dateObj = new Date(backendTime);
-                        var taiwanTime = new Date(dateObj.getTime() + (dateObj.getTimezoneOffset() * 60000) + (8 * 3600000));
-                        console.log(taiwanTime );
-
-                        var date = taiwanTime.toISOString().split('T')[0];
-                        var date1 = taiwanTime.toISOString().split('T')[1].split('.')[0];
-
-                        html +='<td><p class="text-muted">'+date+'</p> <span>'+date1+'<span>  <br></td>';
-
-
-
-                            if(obj.reportStatus==1){
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>'+
-                                                    '<option value="1">'+'未處理'+'</option>'+
-                                                   '<option  value="2">'+'檢舉成功'+'</option>'+
-                                                    '<option  value="0">'+'檢舉失敗'+'</option>'+
-                                                    '</select></td>';
-
-                            } else if(obj.reportStatus==0){             
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>';   
-                                html +=     '<option  value="0">'+'檢舉失敗'+'</option>'+'<option value="1">'+'未處理'+'</option>'+'<option  value="2">'+'檢舉成功'+'</option>'+'</select></td>';
-                            }else{
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>'; 
-                                html +=  '<option  value="2">'+'檢舉成功'+'</option>'+ '<option value="1">'+'未處理'+'</option>'+  '<option  value="0">'+'檢舉失敗'+'</option>'+  '</select></td>';
-                            }
-                                                    
-
-                    
-                        html +=  ' <td>'+
-                           ' <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" id="deletereport"  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"  data-report-id="' + obj.reportId + '" title="刪除"><i class="fa fa-trash" title="刪除"></i> </button> '+
-                           ' <button type="button" id="changereport" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-status="' + obj.reportStatus+'"  data-report-id="' + obj.reportId+'" title="更新"><i class="fa-solid fa-pen-nib"></i></button> '+
-                           '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="allarea" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-id="' + obj.reportId+'" title="更多" ><i class="bi bi-code-square"  title="更多內容"></i> </button> '+
-                            '</td>';
-                            html +=   "</tr>";
-
-                
-           
-                        });
-								$("#aaa").html(html);
-							},
-							error : function(xhr, status, error) {
-								console.log("AJAX Error:", error);
-							}
-						});
+sendAjaxRequest(0);
 
 //ajax結束
+
 
 
 
@@ -990,6 +869,7 @@ $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求�
                 }
             });
     }
+
 
 
     function changeSuccuss() {
