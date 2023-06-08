@@ -125,7 +125,7 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/courseId/{courseId}")
-	public List<CourseAttendee> getAttendeesByCourseId(@PathVariable("corseId") Integer courseId) {
+	public List<CourseAttendee> getAttendeesByCourseId(@PathVariable("courseId") Integer courseId) {
 		System.out.println("成功到!getAttendeesByCourseId");
 		List<CourseAttendee> ca = service.getAttendeesByCourseId(courseId);
 		ca.get(0).setSuccessful(true);
