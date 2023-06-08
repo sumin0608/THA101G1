@@ -99,7 +99,7 @@ public class CourseController {
 	}
 
 	@GetMapping("/{city}")
-	public List<Course> findCity(@RequestParam("city") String city) {
+	public List<Course> findCity(@PathVariable("city") String city) {
 		System.out.println("成功到!findCity");
 		List<Course> courses = service.findCity(city);
 		courses.get(0).setSuccessful(true);
