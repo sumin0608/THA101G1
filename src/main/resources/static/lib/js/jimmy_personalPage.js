@@ -154,6 +154,10 @@ $(document).ready(function () {
                                                                     </div>
                                                                     <!-- 下方按鈕 -->
                                                                     <div class="d-flex justify-content-between mt-3">
+                                                                        <button type="button" id="report33button" class="btn btn-primary report33button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                            檢舉按鈕
+                                                                        </button>
+
                                                                         <button type="button" class="btn btn-danger sendcomment">
                                                                             Send
                                                                             <i class="fas fa-long-arrow-alt-right ms-1"></i>
@@ -273,7 +277,7 @@ $(document).ready(function () {
 
                         tableData3 += `<div class="col-10" style="overflow:auto;">${resp[i].commentContent}</div>`
                         tableData3 += `</div>`
-                        tableData3 += `<div class="col-2"><a class="btn btn-primary editcomment" href="#" role="button">前往修改評價</a></div>`;
+                        // tableData3 += `<div class="col-2"><a class="btn btn-primary editcomment" href="#" role="button">前往修改評價</a></div>`;
                         tableData3 += `</div></div>`
                     }
                     $(".evaluatemanagerlist").empty().append(tableData3);
@@ -366,6 +370,30 @@ $(document).ready(function () {
         $('.flexCheckDefault').prop('checked', false);// 清空檢舉勾勾
         $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
     });//送出評論-結束
+
+    // report33button檢舉按鈕
+    $(document).on('click', '.report33button', function (e) {
+        console.log(".report33button: " + this);
+        // $.ajax({
+        //     url: "/ixercise/reportmember",
+        //     type: "POST",
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({
+        //         courseId: courseId,
+        //         accountIdReviewed: accountIdReviewed,
+        //         accountIdReviewer: accountIdReviewer,
+        //         commentContent: commentContent,
+        //         commentRating: commentRating
+        //     }),
+        //     success: function (resp) {
+        //         console.log("resp>>" + resp);
+        //         swal("Warning!", resp.message, "warning");
+        //     },
+        //     error: function (xhr, status, error) {
+        //         alert("Error: " + xhr.responseText);
+        //     }
+        // });
+    });
 
     //修改評論--不開放
     $(document).on('click', '.editcomment', function (e) {
