@@ -21,7 +21,7 @@ public interface ReportRepository extends JpaRepository<Report,Integer>{
 	Integer getCount( );
 	
 	//可以增刪改查  nativeQuery = true要開啟
-		@Query(value="select * from accounttest where account =1 ",nativeQuery = true)
+		@Query(value="select * from account where account =1 ",nativeQuery = true)
 		Integer setreport( );
 	
 	@Query(value="select COUNT(*) from report where accountId =?1 and accountId2=?2 ",nativeQuery = true)
