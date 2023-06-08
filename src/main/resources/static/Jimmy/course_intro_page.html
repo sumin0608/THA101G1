@@ -788,10 +788,12 @@
                         $("#applyResult img#check_cross_mark").attr("src", "image/200-tick.png");
                         $("#applyResult h2").text("報名已送出");
                         $("#applyResult p").text("請等待主揪審核....");
+                        $("#applyResult p").text(data.message);
                     } else {
                         $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
                         $("#applyResult h2").text("報名失敗");
                         $("#applyResult p").text("報名失敗");
+                        $("#applyResult p").text(data.message);
                     }
                 })
                 .catch(error => {
