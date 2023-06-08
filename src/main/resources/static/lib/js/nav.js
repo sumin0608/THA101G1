@@ -32,7 +32,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                    </input>\n' +
     '                                </div>\n' +
     '                                <div class="col-4 ps-0">\n' +
-    '                                    <button class="btn border border-1 border-dark" type="submit">Search</button>\n' +
+    '                                    <button id="searchbtn" class="btn border border-1 border-dark" type="submit">Search</button>\n' +
     '                                </div>\n' +
     '                            </div>\n' +
     '\n' +
@@ -54,7 +54,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
     '<div class="col-3">\n' +
-    '<select class="form-select form-select-sm"\n' +
+    '<select id="select_sport" class="form-select form-select-sm"\n' +
     'aria-label="Default select example">\n' +
     '<option selected disabled>運動類型</option>\n' +
     '<option value="1">足球</option>\n' +
@@ -83,10 +83,9 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '<option value="24">其他</option>\n' +
 
     '</select>\n' +
-    '                                        </div>\n' +
-    '                                        <div class="col-3">\n' +
-    '                                            <select class="form-select form-select-sm"\n' +
-    '                                                aria-label="Default select example">\n' +
+    '</div>\n' +
+    ' <div class="col-3">\n' +
+    '<select id="select_city" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>搜尋城市</option>\n' +
     '<option value="1">台北市</option>\n' +
     '<option value="2">基隆</option>\n' +
@@ -95,16 +94,15 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '<option value="7">新竹</option>\n' +
     '<option value="8">桃園</option>\n' +
     '</select>\n' +
-    '                                        </div>\n' +
-    '                                        <div class="col-3">\n' +
-    '                                            <select class="form-select form-select-sm"\n' +
-    '                                                aria-label="Default select example">\n' +
+    '</div>\n' +
+    '<div class="col-3">\n' +
+    '<select id="select_time" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>上課時段</option>\n' +
     '<option value="1">上午(06:00~12:00)</option>\n' +
     '<option value="2">下午(12:00~18:00)</option>\n' +
     '<option value="3">晚上(18:00~24:00)</option>\n' +
     '</select>\n' +
-    '                                        </div>\n' +
+    '</div>\n' +
     '                                        <div class="row">\n' +
     '                                            <!-- <div class="col-9"></div> -->\n' +
     '                                            <div class="col-12 ">\n' +
