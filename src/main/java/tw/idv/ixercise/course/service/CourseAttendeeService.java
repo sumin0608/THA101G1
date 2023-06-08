@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 
+import tw.idv.ixercise.core.*;
 import tw.idv.ixercise.course.entity.*;
 
 public interface CourseAttendeeService {
 
-	boolean save(CourseAttendee courseAttendee);
+	Core save(CourseAttendee courseAttendee);
 
 	void remove(CourseAttendee courseAttendee);
 
@@ -30,8 +31,6 @@ public interface CourseAttendeeService {
 	List<CourseAttendee> getAttendeesByCourseId(Integer courseId);
 	
 	CourseAttendee getAttendeesByAttendId(Integer attendId);
-
-	List<Course> getCalendar(Integer accountId);
 
     List<CourseAndAttendeesEntity> getCalendarList(Integer accountId);
 }

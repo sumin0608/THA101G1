@@ -38,14 +38,17 @@ public class CourseAttendeeController {
 		if (ca.getReason() == "") {
 			core.setMessage("請輸入課程描述");
 			core.setSuccessful(false);
+			return core;
 		} else {
-			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-			ca.setAttendTime(currentTimestamp);
-			core.setMessage("參加成功");
-			core.setSuccessful(service.save(ca));
+//			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+//			ca.setAttendTime(currentTimestamp);
+//			core.setMessage("參加成功");
+//			core.setSuccessful(service.save(ca));
+			Core save = service.save(ca);
+			System.out.println("參加成功!!!");
+			return save;
 		}
-		System.out.println("參加成功!!!");
-		return core;
+
 	}
 
 	@PutMapping("/updateStatusById")

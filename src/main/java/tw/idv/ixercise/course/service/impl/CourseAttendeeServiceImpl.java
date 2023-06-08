@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tw.idv.ixercise.core.*;
 import tw.idv.ixercise.course.dao.*;
 import tw.idv.ixercise.course.entity.*;
 import tw.idv.ixercise.course.service.CourseAttendeeService;
@@ -35,38 +36,141 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 	@Autowired
 	private CourseRepository courseRepository;
 	@Autowired
-	private CourseAndAttendeesRepository courseAndAttendeesRepository;
+	private CourseAndAttendeesRepository caar;
+
 
 	@Override
-	public boolean save(CourseAttendee courseAttendee) {
+	public Core save(CourseAttendee courseAttendee) {
+		System.out.println("<<<<<<<<<<save>>>>>>>>>>>");
 		CourseAttendee savedAttendee = null;
-		Timestamp attendDeadline = null;
+		Timestamp attendDeadline;
 		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+		List<CourseAndAttendeesEntity> byCourseID = caar.findByCourseID(courseAttendee.getCourseId());
+		int size = byCourseID.size();
+//		System.out.println(size);
 		Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
 
-		if (course != null) {
-			// 拿到欲報名課程的最後省和時間
-			attendDeadline = course.getRegistrationDeadline();
+//		int size = repository.findByCourseId(courseAttendee.getCourseId()).size();
 
-			System.out.println(course.getRegistrationDeadline());
-			System.out.println(courseAttendee.getAttendTime());
+//		List<CourseAttendee> size = repository.findByCourseId(24);
+		System.out.println("size");
+		System.out.println(size);
 
-			//判斷此課程報名時間是否已截止
-			if (attendDeadline.after(currentTimestamp)) {
-//				courseAttendee.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
-				savedAttendee = repository.save(courseAttendee);
-			} else {
-				System.out.println("The attend time is over");
-				//set message ->  The attend time is over
+//		if (course != null) {
+//			System.out.println(course);
+//			// 拿到欲報名課程的最後省和時間
+		attendDeadline = course.getRegistrationDeadline();
+////			courseAttendee
+		Integer maximumCapacity = course.getMaximumCapacity();
+		System.out.println(maximumCapacity);
+		boolean lessOrEqualsToMaxCapacity = (size + 1) <= maximumCapacity;
+		boolean equalsToMaxCapacity = (size + 1) == maximumCapacity;
+		boolean afterDeadLine = attendDeadline.before(currentTimestamp);
+
+//		System.out.println(b);
+		Integer courseStatus = course.getCourseStatus();
+		boolean b1 = course.getCourseStatus() == 5;
+		Integer accountId = courseAttendee.getAccountId();
+		Integer courseId = courseAttendee.getCourseId();
+		System.out.println(accountId);
+		System.out.println(courseId);
+		//判斷是否此用戶已參加過
+		List<CourseAttendee> byCourseIdAndAccountId = repository.findByCourseIdAndAccountId(courseAttendee.getCourseId(), courseAttendee.getAccountId());
+		System.out.println(byCourseIdAndAccountId);
+		Core core = new Core();
+		//5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
+		if (!byCourseIdAndAccountId.isEmpty()) {
+			System.out.println("您她媽的已參加過了");
+			core.setMessage("您已報名過了");
+			core.setSuccessful(false);
+		} else if (maximumCapacity == size) {
+//			courseStatus == 5 &&
+			core.setMessage("已滿團");
+			core.setSuccessful(false);
+
+//			5. 已滿團
+
+		} else if (afterDeadLine) {
+//			courseStatus == 6 ||
+			if (afterDeadLine) {
+				course.setCourseStatus(6);
 			}
+			core.setMessage("報名失敗: 報名時間已截止>.<");
+			core.setSuccessful(false);
+//			6.報名時間已截止>.<
+		} else if (lessOrEqualsToMaxCapacity) {
+//			courseStatus == 1 &&
+			if (equalsToMaxCapacity) {
+				course.setCourseStatus(5);
+				System.out.println("<<<<<滿團>>>>>>>>");
+			}
+			courseAttendee.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
+			System.out.println("<<<<<<<save to DB>>>>>");
+			savedAttendee = repository.save(courseAttendee);
+			if (savedAttendee != null) {
+				course.setCourseStatus(1);
+				System.out.println(savedAttendee);
+				System.out.println("成功到savedAttendee>");
+				core.setMessage("報名成功 請等待審核 後付款");
+				core.setSuccessful(true);
+			}
+//					1. 可參加
 
 		} else {
-			//set message -> no such courseId
+			core.setMessage("此課程不可參加");
+			core.setSuccessful(false);
+
+//			此課程不可參加
 		}
 
-		System.out.println("成功到savedAttendee>");
+//		courseDao.
+		//跟新狀態
+//		courseRepository.save(course);
+		System.out.println(course);
+		System.out.println(core);
+		return core;
+
+
+//		if(courseStatus == 1 && attendDeadline.after(currentTimestamp) && b){
+//			}else {
+//			}
+//			core.setMessage("此課程不可參加");
+//				if (c){
+//					course.setCourseStatus(5);
+//					System.out.println("<<<<<滿團>>>>>>>>");
+//				}
+//				courseAttendee.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
+//			System.out.println("<<<<<<<save to DB>>>>>");
+//				savedAttendee = repository.save(courseAttendee);
+//			System.out.println(savedAttendee);
+//			System.out.println("成功到savedAttendee>");
+//			} else if (attendDeadline.after(currentTimestamp)) {
+//			if (){
+//				course.setCourseStatus(2);
+//				System.out.println("<<<<< 已結束 >>>>>>>>");
+//			}
+//		} else {
+		//reject
+		//System.out.println("The attend time is over");
+//				//set message ->  The attend time is over
+//			}
+//
+//			//判斷此課程報名時間是否已截止
+//			if (attendDeadline.after(currentTimestamp)) {
+////				courseAttendee.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
+//				savedAttendee = repository.save(courseAttendee);
+//			} else {
+//				System.out.println("The attend time is over");
+//				//set message ->  The attend time is over
+//			}
+//
+//		} else {
+//			//set message -> no such courseId
+//		}
+
+
 		// return core;
-		return savedAttendee != null;
+//		return savedAttendee != null;
 	}
 
 	@Transactional
@@ -144,66 +248,32 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		return repository.findByAttendId(attendId);
 	}
 
-	@Override
-	public List<Course> getCalendar(Integer accountId) {
-
-		//purpose -> get calendar / get attended courses haven't started yet
-		//1. get a list of courseId  by accountId
-		//2. use each courseId -> to find the(each) corresponding course
-		//3. filter result -> compare course Start time with now or by status
-		//4. return filtered list
-		//reference --> Test04FindFirstLazy.java
-		List<Course> filteredCourseList;
-
-		List<CourseAttendee> byAccountId = repository.findByAccountId(accountId);
-
-		if (!byAccountId.isEmpty()) {
-			//prepare an empty list -> for ids (selected by accountId)
-			List<Integer> ids = new ArrayList<>();
-
-			//get all attended courses' ID BY his accountId
-			byAccountId.forEach(courseAttendee -> ids.add(courseAttendee.getCourseId()));
-
-			//拿當下時間
-			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-
-			//查詢並過濾已開始(結束)的課程壢
-			// List<course> ->  stream -> filter(time) -> collect.toList
-			filteredCourseList = courseRepository.findByCourseIdIn(ids).stream()
-					.peek(e -> System.out.println(e))
-					.filter(course -> course.getCourseStartTime().after(currentTimestamp))
-//					.peek(course -> {course.setSuccessful(true); course.setMessage("成功查詢參加課程");})
-					.collect(Collectors.toList());
-			if (filteredCourseList.isEmpty()) {
-				System.out.println("<<<<<isEmpty>>>>>>>>");
-				filteredCourseList.add(new Course.Builder().setMessage("未有任何活動即將開始").setSuccessful(false).build());
-			}
-		} else {
-			filteredCourseList = new ArrayList<>();
-			filteredCourseList.add(new Course.Builder().setMessage("此Id未參加任何課程").setSuccessful(false).build());
-		}
-
-		System.out.println("calendar ->sss");
-		System.out.println(filteredCourseList);
-		return filteredCourseList;
-	}
-
-
+	//purpose -> get calendar / get attended courses haven't started yet
+	//1. get a list of courseId  by accountId
+	//2. use each courseId -> to find the corresponding course
+	//3. filter result -> compare course Start time with now or by status
+	//4. return filtered list
+	//reference --> Test04FindFirstLazy.java
 	@Override
 	public List<CourseAndAttendeesEntity> getCalendarList(Integer accountId) {
 		List<CourseAndAttendeesEntity> filteredCourseList;
 		System.out.println("<<<<<getCalendarList>>>>>>>>>>>>>");
 
-		List<CourseAndAttendeesEntity> findByAccountId = courseAndAttendeesRepository.findByAccountId(accountId);
+		//查詢 get all attended courses BY his accountId
+		List<CourseAndAttendeesEntity> findByAccountId = caar.findByAccountId(accountId);
 
-		System.out.println(findByAccountId);
-
+		//empty check
 		if (!findByAccountId.isEmpty()) {
+
+			//get current Time 拿當下時間
 			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 
+			//過濾已開始(結束)的課程 並設定對應狀態
+			// List<CourseAndAttendees> ->  stream -> filter(time) -> set Status map to String (HashMap)-> collect.toList
 			filteredCourseList = findByAccountId.stream()
 					.filter(course -> course.getCourseStartTime().after(currentTimestamp))
 					.peek(attendees -> attendees.setAttendeesStatus(statusMap.getOrDefault(attendees.getStatus(), "無此狀態")))
+//					.peek(course -> {course.setSuccessful(true); course.setMessage("成功查詢參加課程");})
 					.collect(Collectors.toList());
 
 			if (filteredCourseList.isEmpty()) {
