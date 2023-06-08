@@ -826,25 +826,35 @@
 
         $(document).ready(function () {
             $('#popupbtnpay').on('click', function (e) {
+                console.log("1:" + sessionStorage.getItem('courseId'));
+                console.log("2:" + $("#categoryId").text());
+                console.log("3:" + $("#expectedPrice").text());
+                let expectedPrice22 = $("#expectedPrice").text();
                 const coursePay = {
-                    courseId: courseId,
-                    eventName: courseId + 999 + $("#eventName").text() + 0000 + $("#creator").text(),
+                    courseId: sessionStorage.getItem('courseId'),
+                    eventName: sessionStorage.getItem('courseId') + 999 + $("#eventName").text() + 0000 + $("#creator").text(),
                     ategoryId: $("#categoryId").text(),
                     expectedPrice: $("#expectedPrice").text(),
                     description: $("#description").text()
                 };
-                $.ajax({
-                    url: "/ixercise/ecpayCheckout",
-                    type: "POST",
-                    dataType: "json",
-                    data: { coursePay: coursePay },
-                    success: function (resp) {
-                        console.log("Response:", resp);
 
-                    }, error: function (xhr, status, error) {
-                        alert("Error: " + xhr.responseText);
-                    }
-                });
+                if ($("#applyResult h2").text() == "報名已送出") {
+                    $.ajax({
+                        url: "/ixercise/ecpayCheckout",
+                        type: "POST",
+                        // dataType: "application/json",
+                        dataType: "application/x-www-form-urlencoded",
+                        data: expectedPrice22,
+                        success: function (resp) {
+                            console.log("Response:", resp);
+
+                        }, error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                }
+
+
             });
         });
     </script>
