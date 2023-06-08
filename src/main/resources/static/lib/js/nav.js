@@ -131,7 +131,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
+    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -231,7 +231,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a id="personalpage" class="dropdown-item" href="" >查看個人資料</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="">聊天列表</a>\n' +
+    '                                <a id="chatlist" class="dropdown-item" href="">聊天列表</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
     '                                <a class="dropdown-item" href="">活動管理</a>\n' +
@@ -366,6 +366,8 @@ logout.addEventListener("click", function () {
 const ixicon = document.querySelector(".navbar-brand");
 const loginb = document.querySelector("#loginb");
 const signupb = document.querySelector("#signupb");
+const chatlist = document.querySelector("#chatlist");
+chatlist.href = getContextPath() + "/hao/customerservice.html";
 
 
 ixicon.href = getContextPath() + "/index.html";
