@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `CourseAttendee`;
+
 CREATE TABLE CourseAttendee (
 `attendId` int NOT NULL AUTO_INCREMENT,
 `courseId` int DEFAULT NULL,
@@ -8,22 +10,31 @@ CREATE TABLE CourseAttendee (
   PRIMARY KEY (`attendId`)
 );
 
-INSERT INTO course_attendees (courseId,accountId, attendTime, status, reason, paymentStatus, commentStatus)
+INSERT INTO CourseAttendee (courseId,accountId, attendTime, status, reason, paymentStatus, commentStatus)
 VALUES 
---   (1, 2, CURRENT_TIMESTAMP, 1, '參加原因1', 2, 0),
---   (1, 3, CURRENT_TIMESTAMP, 2, '參加原因2', 2, 0),
---   (2, 4, CURRENT_TIMESTAMP, 2, '參加原因3', 2, 0),
---   (3, 4, CURRENT_TIMESTAMP, 2, '參加原因4', 2, 0),
--- 	 (1, 5, CURRENT_TIMESTAMP, 2, '參加原因5', 2, 0),
--- (1, 5, CURRENT_TIMESTAMP, 3, '想交朋友', 2, 0),
--- (10, 5, CURRENT_TIMESTAMP, 2, '交朋友', 2, 0),
--- (10, 4, CURRENT_TIMESTAMP, 2, '沒交朋友', 2, 0),
--- (10, 3, CURRENT_TIMESTAMP, 2, '想要交朋友', 2, 0),(10, 2, CURRENT_TIMESTAMP, 2, '想要交朋友', 2, 0),
--- (29, 2, CURRENT_TIMESTAMP, 2, '我要減肥', 2, 0),(30, 2, CURRENT_TIMESTAMP, 2, 'I love play~', 2, 0),
--- (31, 2, CURRENT_TIMESTAMP, 2, 'I love play~', 2, 0),(32, 2, CURRENT_TIMESTAMP, 2, 'I love play~', 2, 0),
--- (33, 2, CURRENT_TIMESTAMP, 2, 'I love play~', 2, 0),(34, 2, CURRENT_TIMESTAMP, 2, 'I love play~', 2, 0),
-(32, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
-(33, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
-(34, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0)
+(21, 1, CURRENT_TIMESTAMP, 2, '我想打球', 2, 0),
+(21, 2, CURRENT_TIMESTAMP, 1, '我想打中鋒', 2, 0),
+(21, 3, CURRENT_TIMESTAMP, 1, '我想打後衛', 2, 0),
+(21, 7, CURRENT_TIMESTAMP, 1, '我想打人!', 2, 0),
+(21, 8, CURRENT_TIMESTAMP, 1, '我愛打球，拜託拜託，讓我加入', 2, 0),
+     
+(24, 1, CURRENT_TIMESTAMP, 4, '想交朋友', 2, 0),
+(24, 2, CURRENT_TIMESTAMP, 4, '身體健康', 2, 0),
+(25, 1, CURRENT_TIMESTAMP, 4, '學習', 2, 0),
+(25, 2, CURRENT_TIMESTAMP, 1, '想要交朋友', 2, 0),
+(1, 2, CURRENT_TIMESTAMP, 1, '想要交朋友', 2, 0),
+(2, 2, CURRENT_TIMESTAMP, 1, '我要減肥', 2, 0),
+(3, 2, CURRENT_TIMESTAMP, 1, 'I love play ball', 2, 0),
+(31, 2, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(32, 2, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(33, 2, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(29, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(29, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(34, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(35, 5, CURRENT_TIMESTAMP, 1, '我愛運動~', 2, 0),
+(36, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 1),
+(37, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 1),
+(38, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 0),
+(39, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 0)
 ;
-SELECT * FROM THA101G1.course_attendees;
+SELECT * FROM THA101G1.CourseAttendee;

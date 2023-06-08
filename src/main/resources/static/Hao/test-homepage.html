@@ -9,42 +9,40 @@
     <!-- 引入bootstarp跟共用css內容========================================= -->
     <link href="../lib/css/styles.css" rel="stylesheet" />
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
-    
+
 
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
+        .square-image {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            width: 74px;
+            height: 74px;
+            object-fit: cover;
+        }
 
-
-.modal-header-info {
-    color:#fff;
-    padding:9px 15px;
-    border-bottom:1px solid #eee;
-    background-color: #1d667b;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-     border-top-left-radius: 5px;
-     border-top-right-radius: 5px;
-}
-.readonly {
-  pointer-events: none;
-  background-color: #f8f8f8;
-  color: #999;
-}
-.main-content{
-    min-height: 450px;
-}
+        .notifyp {
+            height: 60px;
+            /* width: 350px; */
+            /* padding: 10px;
+            border: 2px solid #4d4d4d;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            box-sizing: border-box; */
+        }
     </style>
 </head>
 
 <body>
-   
-<script>
-
-</script>
+    <!-- 我是V6，修改如下 -->
+    <!-- 1.修正會員彈出選單頭像會跑版的問題 -->
+    <!-- 2.修正通知圖片會有跑板問題 -->
     <!-- 以下導覽列=================================================================================== -->
     <!-- 增加w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
@@ -136,12 +134,13 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </form>
                     </li>
 
                     <!-- <div class="collapse  d-block" id="collapseExample">
@@ -173,50 +172,27 @@
                     <!-- 還有一顆填滿的bi-bell-fill -->
                     <!-- 操控.n-dot來控制有無紅點 -->
                     <li class="nav-item dropdown my-auto">
-                        <div class="n-dot"></div>
-                        <svg width="36" height="36" fill="currentColor"
+                        <div class="" id="adddot"></div>
+                        <svg id="bellul" width="36" height="36" fill="currentColor"
                             class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" viewBox="0 0 16 16">
                             <path
                                 d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
                         </svg>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-lg-end" id="listart" aria-labelledby="navbarDropdown">
                             <!-- 一條通知====================================================== -->
-
-                            <div class="list-group">
+                            <!-- 完成版 600px -->
+                         
+                            <div class="list-group notifyunread">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
+                                    style="height: 93px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
+                                          <p >一二三四五六七八九十一二三四五六八dadadadsasdassad九十一二三四五六七八九十</p>
                                         </div>
                                     </div>
                                 </a>
@@ -235,7 +211,7 @@
 
                             <li>
                                 <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
+                                    src="https://picsum.photos/200/200/?random=10">
                             </li>
                             <li>
                                 <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -312,133 +288,12 @@
     <!-- Header====================================================================================== -->
 
     <!-- main-content -->
-    <div class="container main-content py-5 ">
+    <div class="container main-content py-5">
         <!-- 請在這裡作業 -->
         <div class="row">
             <div class="col-12">
-              <!-- 檢舉按鈕 -->
-<button type="button" id="reportbutton" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
-    檢舉按鈕
-  </button>
-  
+                <p>team1</p>
 
-
-  
-  <!-- 檢舉內文 -->
-  <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <form role="form" class="form-horizontal">
-            <div class="modal-header modal-header-info ">
-                <h2 class="modal-title  " id="exampleModalLabel">檢舉</h2>
-                <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-          <div class="modal-body">
-
-            <div class="form-group">
-                <input type="hidden" id="accountId" class="form-control-file" name="accountId" value=>
-            </div>
-
-            <div class="form-group">
-                <input type="hidden" id="accountId2" class="form-control-file" name="accountId2" value="7">
-            </div>
-                
-  <!-- 檢舉時間 -->
-                <div class="form-group">
-                  <label class="col-sm-2 text-muted" for="inputTo">檢舉日期時間</label>
-                  <input type="datetime-local" class="form-control readonly" id="inputTo" value="2023-06-04T09:30">
-                </div>
-    <!-- 檢舉原因 -->
-
-
-                <div class="row">
-                    <div class="col-sm-12">
-
-                        <div class="form-group">
-                            <label class="col-sm-2 text-muted" for="inputTo1">檢舉類別</label>
-                                <select class="custom-select col-sm-12  orm-control custom-select-lg mb-3" id="inputTo1" name="reportType" required>
-                                      <option value="">選擇檢舉類別</option>
-                                      <option value="性騷擾">性騷擾</option>
-                                      <option value="廣告不實">廣告不實</option>
-                                      <option value="詐騙">詐騙</option>
-                                    </select>
-                                
-                            <div class="invalid-feedback">
-                              請選一個選項
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for=" text-muted">檢舉內容</label>
-                            <textarea class="form-control" name="reportReason" id="description" rows="5"
-                                required></textarea>
-                            <div class="invalid-feedback">
-                               請輸入內容
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                    <div>
-                        <input type="hidden" class="form-control-file" id="reportStatus" name="reportStatus" value="1">
-                    </div>
-
-                
-                <div class="col-md-12 ms-auto">
-                    <label for="description" class="text-muted">檢舉圖片</label>
-                       <div class="card mt-1">
-                                            <div class="card-body">                                      
-
-                                                <div class="form-group">
-                                                    <label for="photo-dropzone forDhotoDrop"></label>
-                                                   
-                                                    <br>
-                                                    
-                                                </div>
-                                                <div class="form-group">
-                                                    <!-- <label for="preview-dropzone forDhotoDrop">或將圖片拖放至此處</label> -->
-                                                    <!-- ===zzzz===== -->
-                                                    <div id="previewBox">
-                                                  
-                                                        <!-- 
-                                                <img id="preview" src="#" alt="圖片預覽"
-                                                    style="max-width: 100%; max-height: 200px;"> -->
-
-                                                    </div>
-                                                    <!-- ======== -->
-                                                    <!-- <input type="file" class="form-control-file d-none" id="preview-dropzone"
-                                            accept="image/*"> -->
-                                                </div> <br>
-                                                
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <input type="file" class="form-control-file" name="reportPicture"
-                                            id="reportPicture" aria-describedby="fileHelp" accept="image/*">
-
-                                            <!-- <button type="button" class="btn btn-danger  " id="delete-btn ">刪除照片</button> -->
-                                        </div>
-                </div>
-            </div>
-             <div class="modal-footer">
-              <button type="reset" id="closeButton" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-              <button type="submit"  class="btn btn-primary" data-bs-toggle="popover" title="Popover title" data-bs-content="檢舉就會送出 確定嗎?">檢舉</button>
-            
-              <!-- <button type="submit" class="btn btn-primary">檢舉</button> -->
-            </div>
-            </form>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div>
-
-
-    
-  </div>
 
 
             </div>
@@ -478,11 +333,11 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="../lib/js/backpodcast.js"></script>
+    <script src="../lib/css/backpodcast.css"></script>
     <!-- ================================================================= -->
 
     <script>
-
-
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
         });
@@ -490,184 +345,6 @@
             $("#searchcard").addClass("d-none");
         })
     </script>
-
-    <script>
-    //預設時間   
-    var formattedDate ;
-    var currentDate;
-
-    var localStorageValue = localStorage.getItem('accountId');
-    $("#reportbutton").focus("click",function(){
-         currentDate = new Date();
-
-
-var timezoneOffset = 480; // 台灣時區為 UTC+8，即480分鐘
-
-
-currentDate.setMinutes(currentDate.getMinutes() + timezoneOffset);
-
-formattedDate = currentDate.toISOString().slice(0, 16);
-
-
-document.getElementById('inputTo').value = formattedDate;
-       })
-   
-
-  
-
-
-  // 获取表单元素
-  var form = document.querySelector('.form-horizontal');
-
-
-  // 监听表单提交事件
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // 阻止表单默认提交行为
-
-    // 创建对象以存储表单数据
-    var formData = {};
-   
-    var base64String = ""; 
-
-    var fileInput = document.getElementById('reportPicture');
-var file = fileInput.files[0];
-
-
-var reader = new FileReader();
-reader.onload = function(event) {
-  base64String = btoa(event.target.result);
-  
-  // 获取表单字段的值
-  formData.accountId= localStorageValue;
-  console.log(localStorageValue);
-  formData.reportType = document.getElementById('inputTo1').value;
-  formData.accountId2=document.getElementById('accountId2').value;
-  
-var timestamp = new Date(formattedDate).getTime();
-   formData.reportTime =timestamp ;  // 轉換為 ISO 格式的字串
-console.log(formData.reportTime);
-
-  formData.reportReason= document.getElementById('description').value;
-  formData.reportStatus = document.getElementById('reportStatus').value;
-   formData.reportPicture =base64String ;
-
-
-// 將 base64String 傳送到後端
-// ...
-
-
-  // 将表单数据转换为 JSON 字符串
-  var mydata = JSON.stringify(formData);
-  console.log(mydata);
-
-  // 进一步处理 JSON 数据，例如通过 AJAX 发送到服务器等
-
-$.ajax({
-url:  "http://localhost:8080/ixercise/back/reportmember",
-type: 'POST',
-contentType: 'application/json',
-data: mydata,
-success: function(response) {
-
-    if(response==false){
-        FailPopup();
-    }else{
-
-        ConfirmationPopup();
-    }
-
-},
-error: function(xhr, status, error) {
-  // 請求失敗，處理錯誤
-  console.log("忙線中");
-}
-});
-
-
-  // 彈窗（可选）
-
-
-  function FailPopup() {
- 
-
-  var popup = $('<div class="confirmation-popup">已經檢舉過了</div>');
-  console.log("我有處理到");
-  // 添加到页面中
-  $("body").append(popup);
-
-  // 设置样式和动画效果
-  popup.css({
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '20px',
-    background: '#fff',
-    border: '1px solid #ccc',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-    zIndex: '9999'
-  });
-
-  // 设置弹窗自动关闭的定时器
-  setTimeout(function() {
-    popup.fadeOut(function() {
-      // 关闭弹窗后进行清理操作
-      popup.remove();
-      $('#closeButton').trigger('click');
-    });
-  }, 1500); // 3秒關窗
-}
-
-
-
-function ConfirmationPopup() {
-
-
-  var popup = $('<div class="confirmation-popup">資料成功送出</div>');
-  console.log("我有處理到");
-  // 添加到页面中
-  $("body").append(popup);
-
-  // 设置样式和动画效果
-  popup.css({
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '20px',
-    background: '#fff',
-    border: '1px solid #ccc',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-    zIndex: '9999'
-  });
-
-  // 设置弹窗自动关闭的定时器
-  setTimeout(function() {
-    popup.fadeOut(function() {
-      // 关闭弹窗后进行清理操作
-      popup.remove();
-      $('#closeButton').trigger('click');
-    });
-  }, 1500); // 3秒后自动关闭弹窗
-}
-  
-
-
-  // 清除表单字段的值（可选）
-  form.reset();
-
-};
-
-console.log(base64String);
-
-
-reader.readAsBinaryString(file);
-
-  });
-</script>
-
-
-
 </body>
 
 </html>

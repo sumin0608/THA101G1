@@ -17,7 +17,7 @@
     <!-- jquery -->
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
 
-<!--    danny 修改-->
+    <!--    danny 修改-->
     <link href="../Woo/popupsuccess.css" rel="stylesheet">
     <link href="../Woo/css/css_for_course_intro.css" rel="stylesheet">
     <!-- =========================================== -->
@@ -441,7 +441,8 @@
                         <div class="d-grid gap-2 " id="">
                             <h2>報名失敗</h2>
                             <p>報名失敗</p>
-                            <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認
+                            <button id="popupbtnpay" class="btn btn-primary popupbtn" onclick="closeApplyPopup()"
+                                type="button">確認
                             </button>
                         </div>
                     </div>
@@ -822,6 +823,30 @@
             });
         });
 
+
+        $(document).ready(function () {
+            $('#popupbtnpay').on('click', function (e) {
+                const coursePay = {
+                    courseId: courseId,
+                    eventName: courseId + 999 + $("#eventName").text() + 0000 + $("#creator").text(),
+                    ategoryId: $("#categoryId").text(),
+                    expectedPrice: $("#expectedPrice").text(),
+                    description: $("#description").text()
+                };
+                $.ajax({
+                    url: "/ixercise/ecpayCheckout",
+                    type: "POST",
+                    dataType: "json",
+                    data: { coursePay: coursePay },
+                    success: function (resp) {
+                        console.log("Response:", resp);
+
+                    }, error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 

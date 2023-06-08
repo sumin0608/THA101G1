@@ -83,11 +83,16 @@ public class podcastSocketControler {
 	   		mypodcast.setType("history");
 	   		PodcastMessage.saveChatMessage(acountId,  podcast);
 	   	}
+	   	
+	   	
 	   		
 	   	
 	   }
+	   	
+	   	
 
 	   	
+	   
 	   	
 	   }
 	   	

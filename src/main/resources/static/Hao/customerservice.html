@@ -39,9 +39,7 @@
 
 
 
-        
 
-        body{margin-top:20px;}
 
 
 .chat-messages {
@@ -663,7 +661,7 @@ function sendMessage(input_text) {
               var jsonObj = {
            "type" : "chat",
            "sender" : localStorageId,
-           "receiver" : 5,
+           "receiver" : 4,
            "message" : input_text,
            "messageTime":timestamp
            };
@@ -750,7 +748,7 @@ console.log(mydata);
         var jsonObj = {
 					"type" : "history",
 					"sender" :localStorageId ,
-					"receiver" : 5,
+					"receiver" : 4,
 					"message" : "",
                     "messageTime":timestamp
 				};
@@ -764,24 +762,40 @@ console.log(mydata);
             console.log(e);
 			if ("new" === jsonObj.type) {
                 var html = `<h2>常見問題</h2>
-        <ul class="faq-list"><li>
-        <a data-toggle="collapse" href="#collapseQuestion1">問題1：如何註冊帳號？</a>
-        <div id="collapseQuestion1" class="collapse">
-        <p>在註冊頁面上點擊「註冊」按鈕，填寫所需的資訊，並按照指示完成註冊程序。</p>
-        </div></li>
-        <li>    
-        <a data-toggle="collapse" href="#collapseQuestion2">問題2：我忘記了密碼怎麼辦？</a>
-        <div id="collapseQuestion2" class="collapse">
-        <p>請點擊「忘記密碼」連結，然後輸入您的註冊電子郵件地址。我們將向您發送一封包含重置密碼連結的電子郵件。</p>
-        </div>
-        </li>
-        <li>
-        <a data-toggle="collapse" href="#collapseQuestion3">問題3：如何聯絡客服？</a>
-        <div id="collapseQuestion3" class="collapse">
-        <p>您可以撥打我們的客服熱線：123-456-7890，或者發送電子郵件至 <a href="mailto:service@example.com">service@example.com</a> 與我們聯繫。</p>
-        </div>
-        </li>
-        </ul>`;
+<ul class="faq-list">
+  <li>
+    <a data-toggle="collapse" href="#collapseQuestion1">問題1：如何註冊帳號？</a>
+    <div id="collapseQuestion1" class="collapse">
+      <p>在註冊頁面上點擊「註冊」按鈕，填寫所需的資訊，並按照指示完成註冊程序。</p>
+    </div>
+  </li>
+  <li>    
+    <a data-toggle="collapse" href="#collapseQuestion2">問題2：我忘記了密碼怎麼辦？</a>
+    <div id="collapseQuestion2" class="collapse">
+      <p>請點擊「忘記密碼」連結，然後輸入您的註冊電子郵件地址。我們將向您發送一封包含重置密碼連結的電子郵件。</p>
+    </div>
+  </li>
+  <li>
+    <a data-toggle="collapse" href="#collapseQuestion3">問題3：如何聯絡客服？</a>
+    <div id="collapseQuestion3" class="collapse">
+      <p>您可以撥打我們的客服熱線：123-456-7890，或者發送電子郵件至 <a href="mailto:service@example.com">service@example.com</a> 與我們聯繫。</p>
+    </div>
+  </li>
+  <li>
+    <a data-toggle="collapse" href="#collapseQuestion4">問題4：如何辦理商品退貨？</a>
+    <div id="collapseQuestion4" class="collapse">
+      <p>如果您希望辦理商品退貨，請按照以下步驟進行：</p>
+      <ol>
+        <li>聯繫我們的客服團隊，提供您的訂單詳細信息和退貨原因。</li>
+        <li>我們的客服人員將指導您填寫退貨申請表格並提供退貨地址。</li>
+        <li>將退貨商品妥善包裝好，寄回提供的退貨地址。</li>
+        <li>當我們收到退貨商品後，將進行檢查並處理退款程序。</li>
+        <li>退款完成後，您將收到通知並在數個工作日內收到退款金額。</li>
+      </ol>
+      <p>如需進一步協助或有任何問題，請隨時與我們的客服團隊聯繫。</p>
+    </div>
+  </li>
+</ul>`;
         $(".talkstartes").append(html);
                 
 
@@ -939,7 +953,7 @@ console.log(mydata);
         var jsonObj = {
 					"type" : "leave",
 					"sender" :localStorageId,
-					"receiver" : 5,
+					"receiver" : 4,
 					"message" : "",
                     "messageTime":timestamp
 				};
