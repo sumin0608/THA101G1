@@ -411,6 +411,9 @@
                 const {successful, message} = body;
                 if (successful) {
                     const {accountId, accountNickname, accountLevel, accountPhoto, accountPhone,accountPassword} = body;
+                    errMsg.className = "text-success";
+                    errMsg.textContent = message;
+
                     sessionStorage.setItem("accountId", accountId);
                     sessionStorage.setItem("accountNickname", accountNickname);
                     sessionStorage.setItem("accountLevel", accountLevel);
@@ -431,8 +434,9 @@
                         localStorage.removeItem("accountLevel");
                         localStorage.removeItem("accountPhoto");
                     }, expirationTime);
-                    // location = getContextPath() + "/index.html";
+                    setTimeout(`location.href='${getContextPath()}/index.html'`,2000) ;
                     loginforshop(accountPhone,accountPassword);
+
                 } else {
                     errMsg.textContent = message;
                 }

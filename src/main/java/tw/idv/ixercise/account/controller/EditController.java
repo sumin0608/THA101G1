@@ -7,6 +7,7 @@ import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @RestController
@@ -81,8 +82,9 @@ public class EditController {
         account.setAccountId(oAccount.getAccountId());
         account = service.updateById(account);
         if (account.isSuccessful()) {
+//            HttpSession session = req.getSession();
 //            model的用意??
-            model.addAttribute("account", account);
+//            session.setAttribute("account", account);
             oAccount.setAccountPassword(account.getAccountPassword());
         }
 //        System.out.println(account);
