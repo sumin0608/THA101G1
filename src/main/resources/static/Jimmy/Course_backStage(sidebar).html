@@ -366,11 +366,10 @@
                             <div id="bar3"><span class="fa fa-briefcase mr-3"></span>學員參加審核</div>
                             <ul class="sub-list2" style="list-style: none;">
                                 <li>
-                                    <button id="audit1" class="custom-button" href="">已審核 <span
-                                            class="badge bg-secondary">2</span></button>
+                                    <button id="audit1" class="custom-button" href="">已審核 </button>
                                 </li>
                                 <li>
-                                    <button id="audit2" class="custom-button" href="">未審核 <span
+                                    <button id="audit2" class="custom-button" href="">未審核 <span id="audit2bgsecondary"
                                             class="badge bg-secondary">5</span></button>
                                 </li>
                             </ul>
@@ -382,7 +381,7 @@
                                     <button id="leave1" class="custom-button" href="">已審核 </button>
                                 </li>
                                 <li>
-                                    <button id="leave2" class="custom-button" href="">未審核 <span
+                                    <button id="leave2" class="custom-button" href="">未審核 <span id="leave2bgsecondary"
                                             class="badge bg-secondary">5</span></button>
                                 </li>
                             </ul>
@@ -1116,6 +1115,34 @@
         $(document).ready(function () {
             let LSaccountId = localStorage.getItem('accountId');
             console.log("LSaccountId=" + LSaccountId);
+
+            $.ajax({
+                url: "/ixercise/courseAttendee/status/" + 1, //1:參加待審核
+                type: "GET",
+                dataType: "json",
+                success: async function (resp) {
+                    console.log("參加活動申請未審核resp>>" + resp);
+                    let appendaudit2 = '';
+                    console.log("退出活動申請未審核length: " + resp.length);
+                    $('#audit2bgsecondary').empty().append(resp.length);
+                }, errorfunction(xhr, status, error) {
+                    alert("Error: " + xhr.responseText);
+                }
+            });
+
+            $.ajax({
+                url: "/ixercise/courseAttendee/status/" + 4, //4:退出待審核
+                type: "GET",
+                dataType: "json",
+                success: async function (resp) {
+                    console.log("退出活動申請未審核resp>>" + resp);
+                    let appendaudit2 = '';
+                    console.log("退出活動申請未審核length: " + resp.length);
+                    $('#leave2bgsecondary').empty().append(resp.length);
+                }, errorfunction(xhr, status, error) {
+                    alert("Error: " + xhr.responseText);
+                }
+            });
 
             // <<課程管理>> 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1872,13 +1899,38 @@
             // <<學員退出活動申請>>>>---撈出未審核 
             function joinApplyUnchecked() {
                 $.ajax({
-                    url: "/ixercise/courseAttendee/status/" + LSaccountId, //會員accountId
+                    url: "/ixercise/courseAttendee/status/" + 1, //1:參加活動未審核
                     type: "GET",
                     dataType: "json",
-                    success: function (filteredDataAudit2) {
-                        console.log("未審核resp>>" + filteredDataAudit2);
+                    // async: false,
+                    success: function (resp1) {
+                        console.log("kkkkkkkkkkkkkresp>>" + resp1);
+                        var creatorList = []; // 創建空的列表
+
+                        $.ajax({
+                            url: "/ixercise/course/creator/" + LSaccountId, //會員accountId=3
+                            type: "GET",
+                            dataType: "json",
+                            async: false,
+                            success: function (resp) {
+                                console.log("kkkkkkkkkkkkkresp>>" + resp);
+                                // 將每個元素添加到列表中
+                                for (var i = 0; i < resp.length; i++) {
+                                    creatorList.push(resp[i].courseId);
+                                }
+                                console.log("creatorList:", creatorList);
+                            }, error: function (xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
+
+                        // 篩選該教練的課
+                        var filteredDataAudit2 = resp1.filter(function (item) {
+                            return creatorList.includes(item.courseId);
+                        });
+
                         let appendaudit2 = '';
-                        if (filteredDataAudit2[0].successful) {
+                        if (filteredDataAudit2.length > 0 && filteredDataAudit2[0].successful) {
                             for (let i in filteredDataAudit2) {
                                 let reason = filteredDataAudit2[i].reason;
                                 // console.log("reason:" + reason);
@@ -2115,10 +2167,40 @@
                     url: "/ixercise/courseAttendee/status/" + 4, //4:退出待審核
                     type: "GET",
                     dataType: "json",
-                    success: async function (resp) {
-                        console.log("退出活動申請未審核resp>>" + resp);
+                    success: async function (resp2) {
+                        console.log("退出活動申請未審核resp>>" + resp2);
                         let appendaudit2 = '';
-                        console.log("length: " + resp.length);
+                        console.log("退出活動申請未審核length: " + resp2.length);
+                        $('#leave2bgsecondary').empty().append(resp2.length);
+
+
+
+                        var creatorList = []; // 創建空的列表
+
+                        $.ajax({
+                            url: "/ixercise/course/creator/" + LSaccountId, //會員accountId=5
+                            type: "GET",
+                            dataType: "json",
+                            async: false,
+                            success: function (respxx) {
+                                console.log("kkkkkkkkkkkkkresp>>" + respxx);
+                                // 將每個元素添加到列表中
+                                for (var i = 0; i < respxx.length; i++) {
+                                    creatorList.push(respxx[i].courseId);
+                                }
+                                console.log("creatorList:", creatorList);
+                            }, error: function (xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
+
+                        // 篩選該教練的課
+                        var resp = resp2.filter(function (item) {
+                            return creatorList.includes(item.courseId);
+                        });
+
+
+
                         if (resp[0].successful) {
                             for (let i in resp) {
                                 let reason = resp[i].reason;

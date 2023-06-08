@@ -10,6 +10,16 @@ import lombok.Data;
 public class Podcast implements Serializable {
 
 	
+	public Podcast(String type, Integer acountId, String message, String photo) {
+		super();
+		this.type = type;
+		this.acountId = acountId;
+		this.message = message;
+		Photo = photo;
+	}
+
+
+
 	/**
 	 * 
 	 */
