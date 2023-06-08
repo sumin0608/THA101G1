@@ -12,7 +12,6 @@ import redis.clients.jedis.Jedis;
 @Service
 public class PodcastMessage {
 	
-  
 
 	public static void saveChatMessage(Integer accountId, String podcast) {
 		Jedis jedis = new Jedis();
