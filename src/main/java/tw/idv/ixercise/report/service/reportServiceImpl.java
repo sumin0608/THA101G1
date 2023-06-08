@@ -23,7 +23,7 @@ public class reportServiceImpl {
 		private reportDaoImpl dao;
 		
 		
-		
+				
 		
 
 		public List<Report> findAll() {
