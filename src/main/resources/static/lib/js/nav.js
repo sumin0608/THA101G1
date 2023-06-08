@@ -233,10 +233,10 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                            <li>\n' +
     '                                <a id="chatlist" class="dropdown-item" href="">聊天列表</a>\n' +
     '                            </li>\n' +
-    '                            <li>\n' +
-    '                                <a class="dropdown-item" href="">活動管理</a>\n' +
-    '                            </li>\n' +
-    '                            <li>\n' +
+    // '                            <li>\n' +
+    // '                                <a class="dropdown-item" href="">活動管理</a>\n' +
+    // '                            </li>\n' +
+    // '                            <li>\n' +
     '                                <a class="dropdown-item" href="/ixercise/jimmy/Course_backStage(sidebar).html">課程管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
