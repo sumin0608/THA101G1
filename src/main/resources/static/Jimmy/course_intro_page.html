@@ -12,12 +12,12 @@
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX.png" />
     <!--  owl.carousel -->
-    <link href="../lib/owl_carousel/owl.carousel.min.css" rel="stylesheet"/>
-    <link href="../lib/owl_carousel/owl.theme.default.min.css" rel="stylesheet"/>
+    <link href="../lib/owl_carousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../lib/owl_carousel/owl.theme.default.min.css" rel="stylesheet" />
     <!-- jquery -->
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
 
-    //danny 修改
+    <!--    danny 修改-->
     <link href="../Woo/popupsuccess.css" rel="stylesheet">
     <link href="../Woo/css/css_for_course_intro.css" rel="stylesheet">
     <!-- =========================================== -->
@@ -342,8 +342,8 @@
                     </p>
                     <div class="col-sm-6 ">
                         <div class="d-grid gap-2 " id="popUpBtn">
-                            <button class="btn btn-primary applybtn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
-                                    id="paymoney" type="button">報名課程
+                            <button class="btn btn-primary applybtn" data-bs-target="#exampleModalToggle"
+                                data-bs-toggle="modal" id="paymoney" type="button">報名課程
                             </button>
                         </div>
                     </div>
@@ -356,7 +356,7 @@
             <!-- <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button> -->
 
             <div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="modal fade" id="exampleModalToggle"
-                 tabindex="-1">
+                tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -368,8 +368,8 @@
                                 <div class="d-flex flex-row align-items-center event_creater">
                                     <div class="member-icon">
                                         <img aria-expanded="false" class="overflow-hidden rounded-circle p-0"
-                                             data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
-                                             src="https://images.wsj.net/im-236521/OR" width="36">
+                                            data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
+                                            src="https://images.wsj.net/im-236521/OR" width="36">
                                     </div>
 
                                     <div class="col-8 ms-2 c-details">
@@ -392,9 +392,8 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                    <textarea class="form-control event_participate" id="attendReason"
-                                              name="attendReason"
-                                              placeholder="聚會描述和備註" required rows="3"></textarea>
+                                            <textarea class="form-control event_participate" id="attendReason"
+                                                name="attendReason" placeholder="聚會描述和備註" required rows="3"></textarea>
                                             <div class="invalid-feedback">
                                                 Please choose a username.
                                             </div>
@@ -416,12 +415,10 @@
                                         <div class="d-grid gap-2 " id="popUpFormButtons">
                                             <!-- <button class="btn btn-primary ylbtn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" onclick="">Confirm</button> -->
                                             <button aria-label="Close" class="btn btn-primary ylbtn"
-                                                    data-bs-dismiss="modal"
-                                                    onclick="openApplyPopup()">Confirm
+                                                data-bs-dismiss="modal" onclick="openApplyPopup()">Confirm
                                             </button>
                                             <button aria-label="Close" class="btn btn-primary popupbtn"
-                                                    data-bs-dismiss="modal"
-                                                    type="button">Cancel
+                                                data-bs-dismiss="modal" type="button">Cancel
                                             </button>
 
                                         </div>
@@ -436,15 +433,16 @@
             </div>
             <!-- ================================================== -->
             <div class="applyResult container " id="applyResult">
-                <img alt="" id="check_cross_mark" src="image/200-tick.png">
+                <img alt="" id="check_cross_mark" src="image/404-wrong.png">
 
 
                 <div class="row justify-content-center">
                     <div class="col-sm-8">
                         <div class="d-grid gap-2 " id="">
-                            <h2>報名已送出</h2>
-                            <p>請等待主揪審核....</p>
-                            <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認
+                            <h2>報名失敗</h2>
+                            <p>報名失敗</p>
+                            <button id="popupbtnpay" class="btn btn-primary popupbtn" onclick="closeApplyPopup()"
+                                type="button">確認
                             </button>
                         </div>
                     </div>
@@ -493,6 +491,7 @@
                 </div>
             </aside> -->
 
+            <div id="ecpay123"></div>
 
             <!-- 下排課程推薦 -->
             <div class="row align-items-md-stretch"> <!-- style="border: solid green;" -->
@@ -746,20 +745,35 @@
 
         function openApplyPopup() {
             //ajax
-            // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
-            var urlParams = new URLSearchParams(window.location.search);
-            var courseId = urlParams.get('courseId');
-            const accountId = sessionStorage.getItem("accountId");
+            // <!-- 課程介紹區 -->
+            // 抓Course_homePage.html傳來的courseId
+            let urlParams = new URLSearchParams(window.location.search);
+            let courseId = urlParams.get('courseId');
+            let accountId = sessionStorage.getItem("accountId");
+            const reason = $("#attendReason").val();
             // Data to be sent in the request body
+            if (courseId == null) {
+                alert("為選取到課程");
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
+            if (accountId == null) {
+                alert("請先登入");
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
+            if (reason == "") {
+                alert("請輸入報名理由>.<")
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
             const course = {
                 courseId: courseId,
                 accountId: accountId,
+                reason: reason
             };
-            console.log($("#attendReason").val());
-            course.reason = $("#attendReason").val();
-            console.log(course)
 
-// Send POST request using fetch
+            // Send POST request using fetch
             fetch("../courseAttendee", {
                 method: "POST",
                 headers: {
@@ -775,14 +789,19 @@
                         $("#applyResult img#check_cross_mark").attr("src", "image/200-tick.png");
                         $("#applyResult h2").text("報名已送出");
                         $("#applyResult p").text("請等待主揪審核....");
+                        $("#applyResult p").text(data.message);
                     } else {
                         $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
                         $("#applyResult h2").text("報名失敗");
                         $("#applyResult p").text("報名失敗");
+                        $("#applyResult p").text(data.message);
                     }
                 })
                 .catch(error => {
                     console.error("Error:", error);
+                    // $("#applyResult p").text(error);
+                    applyResult.classList.add("open-applyResult");
+                    return;
                     // Handle any errors
                 });
 
@@ -806,6 +825,53 @@
                 $('#myModal').modal('hide');
             });
         });
+
+
+        $(document).ready(function () {
+            $('#popupbtnpay').on('click', function (e) {
+                // console.log("1:" + sessionStorage.getItem('courseId'));
+                // console.log("2:" + $("#categoryId").text());
+                // console.log("3:" + $("#expectedPrice").text());
+                let eventName22 = sessionStorage.getItem('courseId') + 999 + $("#eventName").text() + 0000 + $("#creator").text();
+                let eventNameStr = eventName22.toString();
+                let expectedPrice22 = $("#expectedPrice").text();
+                let expectedPriceStr = expectedPrice22.toString();
+                let description22 = $("#description").text();
+                let descriptionStr = description22.toString();
+
+                const coursePay = {
+                    courseId: sessionStorage.getItem('courseId'),
+                    eventName: sessionStorage.getItem('courseId') + 999 + $("#eventName").text() + 0000 + $("#creator").text(),
+                    ategoryId: $("#categoryId").text(),
+                    expectedPrice: $("#expectedPrice").text(),
+                    description: $("#description").text()
+                };
+
+                if ($("#applyResult h2").text() == "報名已送出") {
+                    $.ajax({
+                        url: "/ixercise/ecpayCheckout",
+                        type: "POST",
+                        // dataType: "application/json",
+                        // dataType: "application/x-www-form-urlencoded",
+                        dataType: "html",
+                        data: {
+                            expectedPrice: expectedPriceStr,
+                            eventName: eventNameStr,
+                            description: descriptionStr
+                        },
+                        success: function (resp) {
+                            $('#ecpay123').html(resp);
+
+                        }, error: function (xhr, status, error) {
+                            console.log("Error: " + xhr.responseText);
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+
+
 
     </script>
 </body>

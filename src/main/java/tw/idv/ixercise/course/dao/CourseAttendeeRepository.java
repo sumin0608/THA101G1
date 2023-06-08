@@ -33,15 +33,17 @@ public interface CourseAttendeeRepository extends JpaRepository<CourseAttendee, 
 	@Query(value = "UPDATE CourseAttendee ca SET ca.commentStatus = :commentStatus WHERE ca.attendId = :attendId", 
 			nativeQuery = true)
 	int updateCourseAttendeeCommentStatus(@Param("attendId") Integer attendId, @Param("commentStatus") Integer commentStatus);
-	
+
 
 	List<CourseAttendee> findByCommentStatus(Integer commentStatus);
 
 	List<CourseAttendee> findByStatus(Integer status);
-	
+
 	List<CourseAttendee> findByAccountId(Integer accountId);
 
 	List<CourseAttendee> findByCourseId(Integer courseId);
 
 	CourseAttendee findByAttendId(Integer attendId);
+
+	List<CourseAttendee> findByCourseIdAndAccountId(Integer courseId, Integer accountId);
 }

@@ -151,7 +151,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav justify-content-center ">
                     <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-                    <a class="nav-link " href="index.html">
+                    <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-house-fill"></i>
                         </div>
@@ -172,10 +172,8 @@
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
 
-                            <a class="nav-link" href="">檢舉會員<span class="msg-counter reportspan">7</span></a>
-                            <a class="nav-link" href="">檢舉活動<span class="msg-counter reportspan">7</span></a>
-                            <a class="nav-link" href="">檢舉文章<span class="msg-counter reportspan">7</span></a>
-                            <a class="nav-link" href="">檢舉課程<span class="msg-counter reportspan">7</span></a>
+                            <a class="nav-link" id="changecount"  href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span class="msg-counter reportspan"></span></a>
+
                         </nav>
                     </div>
 
@@ -231,15 +229,15 @@
                     <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">商品管理</a>
-                            <a class="nav-link" href="">訂單管理</a>
-                            <a class="nav-link" href="">退貨管理</a>
+                            <a class="nav-link" href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
+                            <!-- <a class="nav-link" href="">訂單管理</a>
+                            <a class="nav-link" href="">退貨管理</a> -->
 
 
                         </nav>
                     </div>
 
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                    <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                        data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-book-fill"></i>
@@ -253,10 +251,25 @@
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="">課程管理</a>
-                            <a class="nav-link" href="">審核退費</a>
+                             <a class="nav-link" href="">審核退費</a> -->
+<!-- 
+                        </nav>
+                    </div>  -->
 
+                    
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssssa" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
+                       後臺廣播
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
+                            <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
+                           
                         </nav>
                     </div>
+
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                        data-bs-target="#collapseLayoutssssss" aria-expanded="false"
@@ -406,6 +419,37 @@
 
 <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
 
+
+<script>
+
+    //算有幾個未處理
+    $(function(){
+
+        $.ajax({url : "http://localhost:8080/ixercise/back/getReportCount", // 資料請求的網址
+            type : "GET",
+            dataType : "json",
+
+            success : function(data) {
+            var html = "";
+                console.log(data);
+                if(data==0){
+                    html+='檢舉會員';
+                }else{
+                    html+=' 檢舉會員<span class=" msg-counter reportspan">'+data+'</span>';
+                }
+            
+            
+          
+								$("#changecount").html(html);
+							},
+							error : function(xhr, status, error) {
+								console.log("AJAX Error:", error);
+							}
+						});
+        
+    })
+
+</script>
 
 <!--先註解 這裡的code都沒問題-->
 <script>

@@ -32,7 +32,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                    </input>\n' +
     '                                </div>\n' +
     '                                <div class="col-4 ps-0">\n' +
-    '                                    <button class="btn border border-1 border-dark" type="submit">Search</button>\n' +
+    '                                    <button id="searchbtn" class="btn border border-1 border-dark" type="submit">Search</button>\n' +
     '                                </div>\n' +
     '                            </div>\n' +
     '\n' +
@@ -54,7 +54,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                            </select>\n' +
     '                                        </div>\n' +
     '<div class="col-3">\n' +
-    '<select class="form-select form-select-sm"\n' +
+    '<select id="select_sport" class="form-select form-select-sm"\n' +
     'aria-label="Default select example">\n' +
     '<option selected disabled>運動類型</option>\n' +
     '<option value="1">足球</option>\n' +
@@ -83,10 +83,9 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '<option value="24">其他</option>\n' +
 
     '</select>\n' +
-    '                                        </div>\n' +
-    '                                        <div class="col-3">\n' +
-    '                                            <select class="form-select form-select-sm"\n' +
-    '                                                aria-label="Default select example">\n' +
+    '</div>\n' +
+    ' <div class="col-3">\n' +
+    '<select id="select_city" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>搜尋城市</option>\n' +
     '<option value="1">台北市</option>\n' +
     '<option value="2">基隆</option>\n' +
@@ -95,16 +94,15 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '<option value="7">新竹</option>\n' +
     '<option value="8">桃園</option>\n' +
     '</select>\n' +
-    '                                        </div>\n' +
-    '                                        <div class="col-3">\n' +
-    '                                            <select class="form-select form-select-sm"\n' +
-    '                                                aria-label="Default select example">\n' +
+    '</div>\n' +
+    '<div class="col-3">\n' +
+    '<select id="select_time" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>上課時段</option>\n' +
     '<option value="1">上午(06:00~12:00)</option>\n' +
     '<option value="2">下午(12:00~18:00)</option>\n' +
     '<option value="3">晚上(18:00~24:00)</option>\n' +
     '</select>\n' +
-    '                                        </div>\n' +
+    '</div>\n' +
     '                                        <div class="row">\n' +
     '                                            <!-- <div class="col-9"></div> -->\n' +
     '                                            <div class="col-12 ">\n' +
@@ -131,7 +129,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="">辦活動\n' +
+    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -145,23 +143,23 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <hr class="dropdown-divider" />\n' +
     '                            </li>\n' +
     '                            <li><a class="dropdown-item" href="">商城</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="">課程</a></li>\n' +
+    // '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
+    // '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="/ixercise/jimmy/Course_homePage.html">課程</a></li>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '                    <!-- 鈴鐺============================================================= -->\n' +
     '                    <!-- 還有一顆填滿的bi-bell-fill -->\n' +
     '                    <!-- 操控.n-dot來控制有無紅點 -->\n' +
     '                    <li class="nav-item dropdown my-auto">\n' +
-    '                        <div class="n-dot"></div>\n' +
-    '                        <svg width="36" height="36" fill="currentColor"\n' +
+    '                        <div class=""  id="adddot"></div>\n' +
+    '                        <svg id="bellul" width="36" height="36" fill="currentColor"\n' +
     '                            class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"\n' +
     '                            data-bs-toggle="dropdown" viewBox="0 0 16 16">\n' +
     '                            <path\n' +
     '                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />\n' +
     '                        </svg>\n' +
-    '                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">\n' +
+    '                        <ul class="dropdown-menu dropdown-menu-lg-end"  id="listart" aria-labelledby="navbarDropdown">\n' +
     '                            <!-- 一條通知====================================================== -->\n' +
     '                            <!-- 完成版 600px -->\n' +
     '                            <div class="list-group notifyunread">\n' +
@@ -237,7 +235,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a class="dropdown-item" href="">活動管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="">課程管理</a>\n' +
+    '                                <a class="dropdown-item" href="/ixercise/jimmy/Course_backStage(sidebar).html">課程管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
     '                                <a id="logout" class="dropdown-item" href="">登出</a>\n' +
@@ -302,9 +300,9 @@ if (accid) {
     // const accidforpg = "/" + accid;
     // console.log(accidforpg);
     personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
-// personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
+    // personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
 
-// console.log(typeof accphoto);
+    // console.log(typeof accphoto);
     if (accphoto && accphoto.length > 0) {
 
         avataroutside.src = getcreateObjURL(accphoto);

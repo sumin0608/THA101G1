@@ -10,18 +10,39 @@
     <link href="../lib/css/styles.css" rel="stylesheet" />
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
+
     <!-- 引入頁籤icon======================================================= -->
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
-        .displaynone {
-            display: none;
+        .square-image {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            width: 74px;
+            height: 74px;
+            object-fit: cover;
+        }
+
+        .notifyp {
+            height: 60px;
+            /* width: 350px; */
+            /* padding: 10px;
+            border: 2px solid #4d4d4d;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            box-sizing: border-box; */
         }
     </style>
 </head>
 
 <body>
-
+    <!-- 我是V6，修改如下 -->
+    <!-- 1.修正會員彈出選單頭像會跑版的問題 -->
+    <!-- 2.修正通知圖片會有跑板問題 -->
     <!-- 以下導覽列=================================================================================== -->
     <!-- 增加w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
@@ -65,7 +86,7 @@
                             <!-- ================================================================== -->
                             <!-- <div class="collapse" id="collapseExample"> -->
                             <div id="searchcard" class="d-none">
-                                <div class="card card-body w-50 position-fixed">
+                                <div class="searchbarthing w-50 position-fixed">
                                     <!-- <form action="" class="row mb-0"> -->
                                     <div class="row mb-0">
                                         <div class="col-3">
@@ -113,12 +134,13 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-close-search">重置</button>
+                                                    id="btn-reset-search">重置</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </form>
                     </li>
 
                     <!-- <div class="collapse  d-block" id="collapseExample">
@@ -150,50 +172,27 @@
                     <!-- 還有一顆填滿的bi-bell-fill -->
                     <!-- 操控.n-dot來控制有無紅點 -->
                     <li class="nav-item dropdown my-auto">
-                        <div class="n-dot"></div>
-                        <svg width="36" height="36" fill="currentColor"
+                        <div class="" id="adddot"></div>
+                        <svg id="bellul" width="36" height="36" fill="currentColor"
                             class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" viewBox="0 0 16 16">
                             <path
                                 d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
                         </svg>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-lg-end" id="listart" aria-labelledby="navbarDropdown">
                             <!-- 一條通知====================================================== -->
-
-                            <div class="list-group">
+                            <!-- 完成版 600px -->
+                         
+                            <div class="list-group notifyunread">
                                 <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
+                                    style="height: 93px; width:600px;">
                                     <div class="row h-100">
                                         <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"
+                                                height="72px" alt="" style="object-fit:cover">
                                         </div>
                                         <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
+                                          <p >一二三四五六七八九十一二三四五六八dadadadsasdassad九十一二三四五六七八九十</p>
                                         </div>
                                     </div>
                                 </a>
@@ -203,7 +202,7 @@
 
                     <!-- 會員頭像========================================================= -->
                     <li class="nav-item dropdown mx-2 my-auto">
-                        <img src="../lib/img/clown.png"
+                        <img src="https://picsum.photos/300/200/?random=10"
                             class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
                             height="36">
@@ -211,8 +210,8 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
 
                             <li>
-                                <img class="dropdown-item overflow-hidden p-2 rounded-circle" src="../lib/img/clown.png"
-                                    width="150" height="150">
+                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
+                                    src="https://picsum.photos/200/200/?random=10">
                             </li>
                             <li>
                                 <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
@@ -291,144 +290,14 @@
     <!-- main-content -->
     <div class="container main-content py-5">
         <!-- 請在這裡作業 -->
-        <div class="row border justify-content-center">
-            <div class="col-9">
-                <!-- <div class="row justify-content-center">
-                    <div class="col-8"> -->
-                <!-- 原本有下style="max-width: 540px;" -->
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4 m-3 overflow-hidden rounded-circle">
-                            <img src="../lib/img/clown.png" alt="..." sytle="object-fit: cover">
-                        </div>
-                        <div class="col-md-7 my-auto">
-                            <div class="card-body ms-5">
-                                <h5 class="card-title mb-4">Username</h5>
-                                <p class="card-text mb-4">所在城市/OO歲</p>
-                                <a href="" class="d-grid gap-2 w-50 mb-3">
-                                    <button class="btn btn-primary" type="button">編輯個人資訊</button>
-                                </a>
-                                <a href="" class="d-grid gap-2 w-50">
-                                    <button class="btn btn-primary" type="button">成為教練</button>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <ul class="nav nav-tabs mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">會員簡介</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">過往評價</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">參加紀錄</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- 原本disable的設定 tabindex="-1" aria-disabled="true" -->
-                        <a class="nav-link" href="#">舉辦紀錄</a>
-                    </li>
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">我的最愛</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">論壇紀錄</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">行事曆</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">購物紀錄</a>
-                        </li>
-                    </ul>
-                </ul>
-
-                <div class="row">
-                    <div class="col-12">
-                        <ul class="p-0" aria-labelledby="">
-
-                            <!-- 一條通知====================================================== -->
-                            <div class="list-group" style="border: 1px solid red;">
-                                <div href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 118px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100 " style="">
-                                            <img src="https://picsum.photos/500/200/?random=10" class="h-100" alt=""
-                                                style="object-fit:cover; width:100px;">
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">舉辦紀錄活動標題</h5>
-                                                <span class="mb-1" style="color: red;">(教練課程)</span>
-                                            </div>
-                                            <p class="mb-1">活動時間</p>
-                                            <small>課程狀態:已完成</small>
-                                        </div>
-                                        <div class="col-2">
-                                            <a id="unflodcomment" class="btn btn-primary" href="#"
-                                                role="button">展開評價</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="commentplace">
-                                    <!-- 第一個評論留言 -->
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                            style="height: 96px;">
-                                            <div class="row h-100" style="background-color: #F0F0F0;">
-                                                <div class="col-2 h-100">
-                                                    <img src="https://picsum.photos/150/200/?random=10"
-                                                        class="h-100 w-100" alt="" style="object-fit:cover">
-                                                </div>
-                                                <div class="col-10">
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <h5 class="mb-1">學員名稱</h5>
-                                                        <small>日期 3 days ago</small>
-                                                    </div>
-                                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                                    <small>And some small print.</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- 第二個評論留言 -->
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                            style="height: 96px;">
-                                            <div class="row h-100" style="background-color: #F0F0F0;">
-                                                <div class="col-2 h-100">
-                                                    <img src="https://picsum.photos/150/200/?random=10"
-                                                        class="h-100 w-100" alt="" style="object-fit:cover">
-                                                </div>
-                                                <div class="col-10">
-                                                    <div class="d-flex w-100 justify-content-between">
-                                                        <h5 class="mb-1">第二個留言</h5>
-                                                        <small>日期 3 days ago</small>
-                                                    </div>
-                                                    <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                                    <small>And some small print.</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+        <div class="row">
+            <div class="col-12">
+                <p>team1</p>
 
 
-                            </div>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
         </div>
-
-
-
-    </div>
-    </div>
     </div>
 
 
@@ -464,6 +333,8 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="../lib/js/backpodcast.js"></script>
+    <script src="../lib/css/backpodcast.css"></script>
     <!-- ================================================================= -->
 
     <script>
@@ -473,14 +344,6 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
-
-        $(document).ready(function () {
-            // 打開評價
-            $('#unflodcomment').click(function () {
-                $('.commentplace').toggleClass('displaynone');
-            });
-        });
-
     </script>
 </body>
 

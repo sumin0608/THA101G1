@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
 import org.springframework.test.context.junit4.SpringRunner;
+import tw.idv.ixercise.course.dao.*;
 import tw.idv.ixercise.course.entity.*;
 import tw.idv.ixercise.course.service.*;
 import tw.idv.ixercise.course.service.impl.*;
@@ -16,16 +17,17 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class EventPhotoTests {
+    //    @Autowired
+//    private EventRepository eventRepository;
+//    @Autowired
+//    private EventDaoImpl eventDao;
+//
+//    @Autowired
+//    private CourseAttendeeService courseAttendeeService;
+//    @Autowired
+//    private CourseService courseService;
     @Autowired
-    private EventRepository eventRepository;
-    @Autowired
-    private EventDaoImpl eventDao;
-
-    @Autowired
-    private CourseAttendeeService courseAttendeeService;
-    @Autowired
-    private CourseService courseService;
-
+    private CourseAttendeeRepository cap;
 
     public void setUp() {
         // 刪除所有資料
@@ -48,10 +50,14 @@ class EventPhotoTests {
 //        coursesByCreator.forEach(System.out::println);
 
         //getCalendar --> passed
-        List<Course> calendar = courseAttendeeService.getCalendar(4);
-        System.out.println("<<<<<<<<< unit test result >>>>>>>>>");
-        System.out.println(calendar.get(0).getMessage());
-        calendar.forEach(System.out::println);
+//        List<CourseAndAttendeesEntity> calendar = courseAttendeeService.getCalendarList(5);
+//        System.out.println("<<<<<<<<< unit test result >>>>>>>>>");
+//        System.out.println(calendar.get(0).getMessage());
+//        calendar.forEach(System.out::println);
+
+        List<CourseAttendee> byCourseId = cap.findByCourseId(24);
+        byCourseId.forEach(System.out::println);
+
 
         // get photo test --> passed
 //        Event photo = eventDao.getPhoto(204);

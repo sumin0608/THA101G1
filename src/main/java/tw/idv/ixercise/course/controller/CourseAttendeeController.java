@@ -38,14 +38,17 @@ public class CourseAttendeeController {
 		if (ca.getReason() == "") {
 			core.setMessage("請輸入課程描述");
 			core.setSuccessful(false);
+			return core;
 		} else {
-			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-			ca.setAttendTime(currentTimestamp);
-			core.setMessage("參加成功");
-			core.setSuccessful(service.save(ca));
+//			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+//			ca.setAttendTime(currentTimestamp);
+//			core.setMessage("參加成功");
+//			core.setSuccessful(service.save(ca));
+			Core save = service.save(ca);
+			System.out.println("參加成功!!!");
+			return save;
 		}
-		System.out.println("參加成功!!!");
-		return core;
+
 	}
 
 	@PutMapping("/updateStatusById")
@@ -125,7 +128,7 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/courseId/{courseId}")
-	public List<CourseAttendee> getAttendeesByCourseId(@PathVariable("corseId") Integer courseId) {
+	public List<CourseAttendee> getAttendeesByCourseId(@PathVariable("courseId") Integer courseId) {
 		System.out.println("成功到!getAttendeesByCourseId");
 		List<CourseAttendee> ca = service.getAttendeesByCourseId(courseId);
 		ca.get(0).setSuccessful(true);
@@ -144,10 +147,11 @@ public class CourseAttendeeController {
 	
 
 	@GetMapping("calander/{accountId}")
-	public List<Course> getCalendar(@PathVariable("accountId") Integer accountId) {
-		List<Course> calendarList = service.getCalendar(accountId);
-		System.out.println("getCalendar>>>>>>");
-		System.out.println(calendarList);
-		return calendarList;
-	}
+    public List<CourseAndAttendeesEntity> getCalendar(@PathVariable("accountId") Integer accountId) {
+//		List<Course> calendarList = service.getCalendar(accountId);
+        System.out.println("getCalendar>>>>>>");
+        List<CourseAndAttendeesEntity> calendarList = service.getCalendarList(accountId);
+        System.out.println(calendarList);
+        return calendarList;
+    }
 }

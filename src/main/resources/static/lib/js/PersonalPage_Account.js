@@ -75,6 +75,7 @@ fetch('PersonalPage/' + urlaccId)
                 , accountIntro
                 , accountNickname
                 , coachSkillList
+                , accountPhoto
             } = body;
             console.log(typeof accountLevel + accountLevel);
 
@@ -83,6 +84,7 @@ fetch('PersonalPage/' + urlaccId)
                 pgcity.textContent = accountAddress.substring(0, 3);
                 accgen.textContent = accGenMap[accountGender];
                 pgaccintro.textContent = accountIntro;
+                pageavatar.src = getcreateObjURL(accountPhoto);
             } else if (accountLevel == 2) {
                 pgaccskillli.classList.remove("d-none");
                 sktable.classList.remove("d-none");
@@ -90,6 +92,7 @@ fetch('PersonalPage/' + urlaccId)
                 pgcity.textContent = accountAddress.substring(0, 3);
                 accgen.textContent = accGenMap[accountGender];
                 pgaccintro.textContent = accountIntro;
+                pageavatar.src = getcreateObjURL(accountPhoto);
                 let skilltd = ""
                 coachSkillList.forEach(skill => {
                     skilltd += `<tr>

@@ -357,20 +357,19 @@
                                 <li>
                                     <button id="c3" class="custom-button">暫存課程</button>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <button id="c4" class="custom-button">被檢舉課程</button>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li>
                             <div id="bar3"><span class="fa fa-briefcase mr-3"></span>學員參加審核</div>
                             <ul class="sub-list2" style="list-style: none;">
                                 <li>
-                                    <button id="audit1" class="custom-button" href="">已審核 <span
-                                            class="badge bg-secondary">2</span></button>
+                                    <button id="audit1" class="custom-button" href="">已審核 </button>
                                 </li>
                                 <li>
-                                    <button id="audit2" class="custom-button" href="">未審核 <span
+                                    <button id="audit2" class="custom-button" href="">未審核 <span id="audit2bgsecondary"
                                             class="badge bg-secondary">5</span></button>
                                 </li>
                             </ul>
@@ -382,7 +381,7 @@
                                     <button id="leave1" class="custom-button" href="">已審核 </button>
                                 </li>
                                 <li>
-                                    <button id="leave2" class="custom-button" href="">未審核 <span
+                                    <button id="leave2" class="custom-button" href="">未審核 <span id="leave2bgsecondary"
                                             class="badge bg-secondary">5</span></button>
                                 </li>
                             </ul>
@@ -1117,6 +1116,34 @@
             let LSaccountId = localStorage.getItem('accountId');
             console.log("LSaccountId=" + LSaccountId);
 
+            $.ajax({
+                url: "/ixercise/courseAttendee/status/" + 1, //1:參加待審核
+                type: "GET",
+                dataType: "json",
+                success: async function (resp) {
+                    console.log("參加活動申請未審核resp>>" + resp);
+                    let appendaudit2 = '';
+                    console.log("退出活動申請未審核length: " + resp.length);
+                    $('#audit2bgsecondary').empty().append(resp.length);
+                }, errorfunction(xhr, status, error) {
+                    alert("Error: " + xhr.responseText);
+                }
+            });
+
+            $.ajax({
+                url: "/ixercise/courseAttendee/status/" + 4, //4:退出待審核
+                type: "GET",
+                dataType: "json",
+                success: async function (resp) {
+                    console.log("退出活動申請未審核resp>>" + resp);
+                    let appendaudit2 = '';
+                    console.log("退出活動申請未審核length: " + resp.length);
+                    $('#leave2bgsecondary').empty().append(resp.length);
+                }, errorfunction(xhr, status, error) {
+                    alert("Error: " + xhr.responseText);
+                }
+            });
+
             // <<課程管理>> 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
             // 一、已開設課程
@@ -1125,12 +1152,12 @@
                 console.log(this);
                 // 表頭
                 $('#th1').text("courseId");
-                $('#th2').text("eventName");
-                $('#th3').text("courseStartTime");
-                $('#th4').text("city");
-                $('#th5').text("categoryId");
+                $('#th2').text("課程名稱");
+                $('#th3').text("課程時間");
+                $('#th4').text("城市");
+                $('#th5').text("課程分類");
                 $('#th6').text("courseStatus");
-                $('#th7').text("paidAdvertising");
+                $('#th7').text("付費廣告");
 
                 getAllYourCourse();
             });
@@ -1495,12 +1522,12 @@
                         console.log("resp>>" + resp);
                         // 表頭
                         $('#th1').text("courseId");
-                        $('#th2').text("eventName");
-                        $('#th3').text("courseStartTime");
-                        $('#th4').text("city");
-                        $('#th5').text("categoryId");
+                        $('#th2').text("課程名稱");
+                        $('#th3').text("課程時間");
+                        $('#th4').text("城市");
+                        $('#th5').text("課程分類");
                         $('#th6').text("courseStatus");
-                        $('#th7').text("paidAdvertising");
+                        $('#th7').text("付費廣告");
                         // filter篩選:日期
                         let currentDate = new Date();
                         var filteredData0 = [];
@@ -1537,12 +1564,11 @@
                 });
             });
 
-            // checkbtn  配合modal審核
+            // checkbtn  配合modal已結束課程
             $('#aaa').on('click', '.checkbtn', function (e) {
                 // e.preventDefault;
                 console.log("checkbtn");
                 swal("Check!", "僅供觀看，無法修改", "success");
-
                 var courseId = $(this).closest('tr').find('td:eq(1)').text();
                 console.log("deletebtn clicked. Course ID: " + courseId);
                 var creator = LSaccountId; //會員accountId
@@ -1600,12 +1626,12 @@
                         console.log("暫存課程resp>>" + resp);
                         // 表頭
                         $('#th1').text("courseId");
-                        $('#th2').text("eventName");
-                        $('#th3').text("courseStartTime");
-                        $('#th4').text("city");
-                        $('#th5').text("categoryId");
+                        $('#th2').text("課程名稱");
+                        $('#th3').text("課程時間");
+                        $('#th4').text("城市");
+                        $('#th5').text("課程分類");
                         $('#th6').text("courseStatus");
-                        $('#th7').text("paidAdvertising");
+                        $('#th7').text("付費廣告");
                         // filter篩選:日期
                         let currentDate = new Date();
                         var filteredData0 = [];
@@ -1619,7 +1645,6 @@
                         if (filteredData0.length === 0) {
                             swal("Warning!", "沒有暫存課程", "warning");
                         }
-
                         let appendFrom3 = '';
                         for (let i in filteredData0) {
                             console.log("filteredData0-creator>>" + filteredData0[i].creator);
@@ -1708,7 +1733,6 @@
                                 console.error(error);
                                 appendaudit1 += `<td>Error retrieving</td>`;
                             }
-
                             //分段接課程courseId
                             // appendaudit1 += `<td>${filteredDataAudit1[i].courseId}</td>
                             try {
@@ -1784,7 +1808,6 @@
                             for (let i in filteredDataAudit1) {
                                 let reason = filteredDataAudit1[i].reason;
                                 let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
-                                //要分段接會員了accountId
                                 appendaudit1 += `<tr>
                                 <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
                                 `;
@@ -1874,15 +1897,40 @@
             });
 
             // <<學員退出活動申請>>>>---撈出未審核 
-            function joinApplyUncheck() {
+            function joinApplyUnchecked() {
                 $.ajax({
-                    url: "/ixercise/courseAttendee/status/" + LSaccountId, //會員accountId
+                    url: "/ixercise/courseAttendee/status/" + 1, //1:參加活動未審核
                     type: "GET",
                     dataType: "json",
-                    success: function (filteredDataAudit2) {
-                        console.log("未審核resp>>" + filteredDataAudit2);
+                    // async: false,
+                    success: function (resp1) {
+                        console.log("kkkkkkkkkkkkkresp>>" + resp1);
+                        var creatorList = []; // 創建空的列表
+
+                        $.ajax({
+                            url: "/ixercise/course/creator/" + LSaccountId, //會員accountId=3
+                            type: "GET",
+                            dataType: "json",
+                            async: false,
+                            success: function (resp) {
+                                console.log("kkkkkkkkkkkkkresp>>" + resp);
+                                // 將每個元素添加到列表中
+                                for (var i = 0; i < resp.length; i++) {
+                                    creatorList.push(resp[i].courseId);
+                                }
+                                console.log("creatorList:", creatorList);
+                            }, error: function (xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
+
+                        // 篩選該教練的課
+                        var filteredDataAudit2 = resp1.filter(function (item) {
+                            return creatorList.includes(item.courseId);
+                        });
+
                         let appendaudit2 = '';
-                        if (resp[0].successful) {
+                        if (filteredDataAudit2.length > 0 && filteredDataAudit2[0].successful) {
                             for (let i in filteredDataAudit2) {
                                 let reason = filteredDataAudit2[i].reason;
                                 // console.log("reason:" + reason);
@@ -1997,18 +2045,18 @@
                 console.log("leave1>>" + this);
                 swal("Warning!", "此列表退出審核已完成，僅供查看!", "warning");
                 // 表頭
-                $('#th1').text("accountId");
-                $('#th2').text("courseId");
-                $('#th3').text("attendTime");
-                $('#th4').text("reason");
+                $('#th1').text("會員名稱");
+                $('#th2').text("課程名稱");
+                $('#th3').text("報名時間");
+                $('#th4').text("參加原因");
                 $('#th5').text("status");
-                $('#th6').text("paymentStatus");
+                $('#th6').text("付款狀態");
                 $('#th7').text("attendId");
                 let appendaudit1head1 = '';
                 let appendaudit1head2 = '';
                 appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
                 appendaudit1head2 += `<select class="form-select" aria-label="Default select example">
-                                        <option selected value="1">已審核</option>
+                                        <option selected value="5">已審核</option>
                                     </select>`;
                 $('#selecthead1').empty().append(appendaudit1head1);
                 $('#selecthead2').empty().append(appendaudit1head2);
@@ -2016,7 +2064,7 @@
                     url: "/ixercise/courseAttendee/status/" + 5, //5:退出成功
                     type: "GET",
                     dataType: "json",
-                    success: function (resp) {
+                    success: async function (resp) {
                         console.log("退出活動申請已審核resp>>" + resp);
                         console.log("resp.length>>" + resp.length);
                         let appendaudit2 = '';
@@ -2024,19 +2072,32 @@
                             for (let i in resp) {
                                 let reason = resp[i].reason;
                                 let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
-                                //要分段接會員了accountId
-                                appendaudit2 += `
-                                            <tr>
-                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
-                                                <td>${resp[i].accountId}</td>
-                                                <td>${resp[i].courseId}</td>
-                                                <td>${resp[i].attendTime}</td>
+                                appendaudit2 += `<tr><td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>`;
+                                //分段接會員accountId
+                                // appendaudit1 += `<td>${ resp1[i].accountId}</td>`;
+                                try {
+                                    let accountName = await GETaccountNameById(resp[i].accountId);
+                                    appendaudit2 += `<td>${accountName}</td>`;
+                                } catch (error) {
+                                    console.error(error);
+                                    appendaudit2 += `<td>Error retrieving</td>`;
+                                }
+                                //分段接課程courseId
+                                // appendaudit1 += `<td>${ resp[i].courseId}</td>
+                                try {
+                                    let eventName = await GETcourseNameById(resp[i].courseId);
+                                    appendaudit2 += `<td>${eventName}</td>`;
+                                } catch (error) {
+                                    console.error(error);
+                                    appendaudit2 += `<td>Error retrieving</td>`;
+                                }
+                                appendaudit2 += `<td> ${resp[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
                                                 <td>${auditTypeMap[resp[i].status]}</td>
                                                 <td>${resp[i].paymentStatus}</td>
                                                 <td>${resp[i].attendId}</td>
                                                 <td></td>
-                                            </tr>`;
+                                            </tr > `;
                             }
                         } else {
                             swal("Warning!", "沒有資料", "warning");
@@ -2054,18 +2115,18 @@
                 console.log("leave2>>" + this);
                 // swal("Warning!", "還沒寫!", "warning");
                 // 表頭
-                $('#th1').text("accountId");
-                $('#th2').text("courseId");
-                $('#th3').text("attendTime");
-                $('#th4').text("reason");
+                $('#th1').text("會員名稱");
+                $('#th2').text("課程名稱");
+                $('#th3').text("報名時間");
+                $('#th4').text("參加原因");
                 $('#th5').text("status");
-                $('#th6').text("paymentStatus");
+                $('#th6').text("付款狀態");
                 $('#th7').text("attendId");
                 let appendaudit1head1 = '';
                 let appendaudit1head2 = '';
                 appendaudit1head1 += `<label for="" class="form-label">審核狀態:</label>`;
                 appendaudit1head2 += `<select class="form-select" aria-label="Default select example">
-                                        <option selected value="1">未審核</option>
+                                        <option selected value="4">未審核</option>
                                     </select>`;
                 $('#selecthead1').empty().append(appendaudit1head1);
                 $('#selecthead2').empty().append(appendaudit1head2);
@@ -2106,27 +2167,70 @@
                     url: "/ixercise/courseAttendee/status/" + 4, //4:退出待審核
                     type: "GET",
                     dataType: "json",
-                    success: function (resp) {
-                        console.log("退出活動申請未審核resp>>" + resp);
+                    success: async function (resp2) {
+                        console.log("退出活動申請未審核resp>>" + resp2);
                         let appendaudit2 = '';
-                        console.log("length: " + resp.length);
+                        console.log("退出活動申請未審核length: " + resp2.length);
+                        $('#leave2bgsecondary').empty().append(resp2.length);
+
+
+
+                        var creatorList = []; // 創建空的列表
+
+                        $.ajax({
+                            url: "/ixercise/course/creator/" + LSaccountId, //會員accountId=5
+                            type: "GET",
+                            dataType: "json",
+                            async: false,
+                            success: function (respxx) {
+                                console.log("kkkkkkkkkkkkkresp>>" + respxx);
+                                // 將每個元素添加到列表中
+                                for (var i = 0; i < respxx.length; i++) {
+                                    creatorList.push(respxx[i].courseId);
+                                }
+                                console.log("creatorList:", creatorList);
+                            }, error: function (xhr, status, error) {
+                                alert("Error: " + xhr.responseText);
+                            }
+                        });
+
+                        // 篩選該教練的課
+                        var resp = resp2.filter(function (item) {
+                            return creatorList.includes(item.courseId);
+                        });
+
+
+
                         if (resp[0].successful) {
                             for (let i in resp) {
                                 let reason = resp[i].reason;
                                 let truncatedReason = reason.length > 10 ? reason.substring(0, 10) + "..." : reason;
-                                //要分段接會員了accountId
-                                appendaudit2 += `
-                                            <tr>
-                                                <td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>
-                                                <td>${resp[i].accountId}</td>
-                                                <td>${resp[i].courseId}</td>
-                                                <td>${resp[i].attendTime}</td>
+                                appendaudit2 += `<tr><td style="background-color:rgba(66, 184, 131, 0.5)">${Number(i) + 1}</td>`;
+                                //分段接會員accountId
+                                // appendaudit2 += `<td>${ resp1[i].accountId}</td>`;
+                                try {
+                                    let accountName = await GETaccountNameById(resp[i].accountId);
+                                    appendaudit2 += `<td>${accountName}</td>`;
+                                } catch (error) {
+                                    console.error(error);
+                                    appendaudit2 += `<td>Error retrieving</td>`;
+                                }
+                                //分段接課程courseId
+                                // appendaudit2 += `<td>${ resp[i].courseId}</td>
+                                try {
+                                    let eventName = await GETcourseNameById(resp[i].courseId);
+                                    appendaudit2 += `<td>${eventName}</td>`;
+                                } catch (error) {
+                                    console.error(error);
+                                    appendaudit2 += `<td>Error retrieving</td>`;
+                                }
+                                appendaudit2 += `<td>${resp[i].attendTime}</td>
                                                 <td>${truncatedReason}</td>
                                                 <td>${auditTypeMap[resp[i].status]}</td>
                                                 <td>${resp[i].paymentStatus}</td>
                                                 <td>${resp[i].attendId}</td>
                                                 <td><button class="btn btn-primary leaveAgreebtn">同意</button></td>
-                                            </tr>`;
+                                            </tr > `;
                             }
                         } else {
                             swal("Warning!", "沒有資料", "warning");
