@@ -420,6 +420,40 @@
         </div> -->
     </header>
     <!-- Header====================================================================================== -->
+    <!-- 篩選器+天氣 -->
+    <section>
+        <div class="form-group text-right" style="text-align: right; ">
+            <div style="text-align: right; height: 110px;">
+                <div id="weatherresult1" style="margin:0; font-weight: bold; text-align: right; display: inline-block;">
+                </div>
+                &nbsp
+                <div id="weatherresult2" style="margin: 0; text-align: right; display: inline-block; ">
+                    出門前看看天氣吧!
+                </div>
+                &nbsp
+                <div id="weatherresult3"
+                    style="font-weight: bold; font-style: italic; text-align: right; display: inline-block;"></div>
+            </div>
+            <ul style="display: inline-block;">
+                <li style="list-style: none;">
+                    <select id="citypicker" class="float-right">
+                        <option value="1668341" selected>城市天氣</option>
+                        <option value="1678228">基隆</option>
+                        <option value="1668341">台北</option>
+                        <option value="1668341">新北</option>
+                        <option value="1667905">桃園</option>
+                        <option value="1674199">宜蘭</option>
+                        <option value="1675151">新竹</option>
+                        <option value="1668399">台中</option>
+                        <option value="1668355">台南</option>
+                        <option value="1673820">高雄</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- 篩選器+天氣 ===================================================================================== -->
+
     <!-- loading 加載動畫區 -->
     <div class="lightbox">
         <div class="lightbox-overlay"></div>
@@ -1001,7 +1035,34 @@
 
 
 
-
+                // <<<<天氣api>>>>
+                // ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", 1668341);
+                $("#weatherresult3").html(`<p> ${(new Date()).toLocaleDateString()}</p > `);
+                $("#citypicker").change(function () {
+                    console.log(this.value);
+                    // if (!(this.value == null || this.value == "")) {
+                    ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", this.value);
+                    // } else {
+                    //     $("#weatherresult").html("");  // 清空
+                    // }
+                });
+                function ajaxCallJsonP(url, cityID) {
+                    // console.log(url, cityID);
+                    var data = $.getJSON(url,
+                        {
+                            id: cityID,
+                            appid: "14550c20a1f07f3a8f42b63a1acf4002",
+                            lang: "zh_TW"
+                        }).done(function (msg) {
+                            console.log("open weather api success!!!");
+                            // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
+                            $("#weatherresult1").empty().append(msg.weather[0].description);
+                            $("#weatherresult2").empty().append(`<img src = "https://openweathermap.org/img/wn/${msg.weather[0].icon}@2x.png" alt="天氣icon">`);
+                        }
+                        ).fail(function (xhr, status, error) {
+                            console.log("error!!!");
+                        });
+                };
 
 
             });//$(document).ready--結束

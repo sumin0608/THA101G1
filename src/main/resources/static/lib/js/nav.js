@@ -131,7 +131,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="">辦活動\n' +
+    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -145,9 +145,9 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <hr class="dropdown-divider" />\n' +
     '                            </li>\n' +
     '                            <li><a class="dropdown-item" href="">商城</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
-    '                            <li><a class="dropdown-item" href="">課程</a></li>\n' +
+    // '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
+    // '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="/ixercise/jimmy/Course_homePage.html">課程</a></li>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '                    <!-- 鈴鐺============================================================= -->\n' +
@@ -237,7 +237,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a class="dropdown-item" href="">活動管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="">課程管理</a>\n' +
+    '                                <a class="dropdown-item" href="/ixercise/jimmy/Course_backStage(sidebar).html">課程管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
     '                                <a id="logout" class="dropdown-item" href="">登出</a>\n' +
@@ -302,9 +302,9 @@ if (accid) {
     // const accidforpg = "/" + accid;
     // console.log(accidforpg);
     personalpage.href = getContextPath() + "/Account/PersonalPage.html" + "?accountId=" + accid;
-// personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
+    // personalpage.href = `${getContextPath()}Account/PersonalPage.html${accidforpg}`
 
-// console.log(typeof accphoto);
+    // console.log(typeof accphoto);
     if (accphoto && accphoto.length > 0) {
 
         avataroutside.src = getcreateObjURL(accphoto);

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `course_comment`;
+
 CREATE TABLE `course_comment` (
   `commentId` int NOT NULL AUTO_INCREMENT COMMENT '課程評論流水號',
   `courseId` int DEFAULT NULL COMMENT '課程編號',
@@ -16,7 +18,15 @@ INSERT INTO `THA101G1`.`course_comment`
 (`courseId`,`accountIdReviewed`,`accountIdReviewer`,`commentContent`,`commentRating`,
 `createdAt`,`updatedAt`,`photo`)
 VALUES
-(1,1001,2004,'這是一個評論內容', 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, null);
+(31,5,1,'非常好!', 4, '2023-05-30 20:00:00', '2023-05-30 20:00:00', null),
+(31,5,2,'用心教學，服務良好!', 4, '2023-05-21 20:00:00', '2023-05-30 20:00:00', null),
+(31,5,3,'學到很多!', 4, '2023-05-19 20:00:00', '2023-05-19 20:00:00', null),
+(32,5,7,'喜歡這教練', 4, '2023-05-30 20:00:00', '2023-05-30 20:00:00', null),
+(32,5,8,'真的瘦了', 5, '2023-05-28 20:00:00', '2023-05-28 20:00:00', null),
+(32,5,8,'太累', 2, '2023-05-29 20:00:00', '2023-05-29 20:00:00', null),
+(36,7,5,'喜歡這教練', 4, '2023-05-30 20:00:00', '2023-05-30 20:00:00', null),
+(37,7,5,'好課大推', 5, '2023-05-28 20:00:00', '2023-05-28 20:00:00', null)
+;
 
 
 SELECT * FROM THA101G1.course_comment;
