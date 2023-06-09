@@ -27,6 +27,7 @@ public class CourseComment extends Core{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer commentId;
 	private Integer courseId;
+	private String eventName;
 	private Integer accountIdReviewed;
 	private Integer accountIdReviewer;
 	private String commentContent;

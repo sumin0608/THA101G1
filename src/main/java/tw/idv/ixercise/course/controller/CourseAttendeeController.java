@@ -38,56 +38,58 @@ public class CourseAttendeeController {
 		if (ca.getReason() == "") {
 			core.setMessage("請輸入課程描述");
 			core.setSuccessful(false);
+			return core;
 		} else {
-			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-			ca.setAttendTime(currentTimestamp);
-			core.setMessage("參加成功");
-			core.setSuccessful(service.save(ca));
+//			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+//			ca.setAttendTime(currentTimestamp);
+//			core.setMessage("參加成功");
+//			core.setSuccessful(service.save(ca));
+			Core save = service.save(ca);
+			System.out.println("參加成功!!!");
+			return save;
 		}
-		System.out.println("參加成功!!!");
-		return core;
+
 	}
 
-	@PutMapping("/updateStatusById")
-	public Core updateStatusById(@RequestParam("attendId") Integer attendId,@RequestParam("status") Integer status) {
+	@PutMapping("/updateStatusById/{attendId}")
+	public Core updateStatusById(@PathVariable("attendId") Integer attendId, @RequestBody Integer status) {
+		System.out.println("現在是updateStatusById~");
 		final Core core = new Core();
 		core.setSuccessful(service.updateStatusById(attendId, status));
-		System.out.println("現在是updateStatusById~");
-		if(!core.isSuccessful()) {
+		if (!core.isSuccessful()) {
 			core.setMessage("修改Status失敗");
-		}else {
+		} else {
 			core.setMessage("修改Status成功");
 		}
 		return core;
 	}
-	
+
 	@PutMapping("/updateCourseAttendeeReason")
 	public Core updateCourseAttendeeReason(Integer attendId, String reason) {
+		System.out.println("現在是updateCourseAttendeeReason~");
 		final Core core = new Core();
 		core.setSuccessful(service.updateCourseAttendeeReason(attendId, reason));
-		System.out.println("現在是updateCourseAttendeeReason~");
-		if(!core.isSuccessful()) {
+		if (!core.isSuccessful()) {
 			core.setMessage("修改Reason失敗");
-		}else {
+		} else {
 			core.setMessage("修改Reason成功");
 		}
 		return core;
 	}
-	
-	@PutMapping("/updateCourseAttendeeCommentStatus")
-	public Core updateCourseAttendeeCommentStatus(Integer attendId, Integer commentStatus) {
-		final Core core = new Core();
-		core.setSuccessful(service.updateStatusById(attendId, commentStatus));
+
+	@PutMapping("/updateCourseAttendeeCommentStatus/{attendId}")
+	public Core updateCourseAttendeeCommentStatus(@PathVariable("attendId") Integer attendId, @RequestBody Integer commentStatus) {
 		System.out.println("現在是updateCourseAttendeeCommentStatus~");
-		if(!core.isSuccessful()) {
+		final Core core = new Core();
+		core.setSuccessful(service.updateCourseAttendeeCommentStatus(attendId, commentStatus));
+		if (!core.isSuccessful()) {
 			core.setMessage("修改CommentStatus失敗");
-		}else {
+		} else {
 			core.setMessage("修改CommentStatus成功");
 		}
 		return core;
 	}
-	
-	
+
 	@GetMapping
 	public List<CourseAttendee> getAllAttendeesSortedByAttendTime() {
 		System.out.println("成功查到!getAllAttendeesSortedByAttendTime");
@@ -116,7 +118,7 @@ public class CourseAttendeeController {
 	}
 
 	@GetMapping("/accountId/{accountId}")
-	public List<CourseAttendee> getAttendeesByAccountId(@PathVariable("accountId")Integer accountId) {
+	public List<CourseAttendee> getAttendeesByAccountId(@PathVariable("accountId") Integer accountId) {
 		System.out.println("成功到! getAttendeesByAccountId");
 		List<CourseAttendee> ca = service.getAttendeesByAccountId(accountId);
 		ca.get(0).setSuccessful(true);
@@ -132,7 +134,7 @@ public class CourseAttendeeController {
 		ca.get(0).setMessage("第一筆資料");
 		return ca;
 	}
-	
+
 	@GetMapping("/attendId/{attendId}")
 	public CourseAttendee getAttendeesByAttendId(@PathVariable("attendId") Integer attendId) {
 		System.out.println("成功到!getAttendeesByAttendId");
@@ -141,12 +143,12 @@ public class CourseAttendeeController {
 		ca.setMessage("第一筆資料");
 		return ca;
 	}
-	
 
 	@GetMapping("calander/{accountId}")
-	public List<Course> getCalendar(@PathVariable("accountId") Integer accountId) {
-		List<Course> calendarList = service.getCalendar(accountId);
+	public List<CourseAndAttendeesEntity> getCalendar(@PathVariable("accountId") Integer accountId) {
+//		List<Course> calendarList = service.getCalendar(accountId);
 		System.out.println("getCalendar>>>>>>");
+		List<CourseAndAttendeesEntity> calendarList = service.getCalendarList(accountId);
 		System.out.println(calendarList);
 		return calendarList;
 	}

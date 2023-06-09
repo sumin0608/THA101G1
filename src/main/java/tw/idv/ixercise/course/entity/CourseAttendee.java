@@ -6,15 +6,13 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import tw.idv.ixercise.core.Core;
 
 @Setter
 @Getter
 @AllArgsConstructor
-
+@ToString
 @Entity
 @Table(name = "CourseAttendee")
 public class CourseAttendee extends Core {

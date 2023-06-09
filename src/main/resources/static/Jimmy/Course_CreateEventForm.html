@@ -811,6 +811,8 @@
         $("#btn-close-search").on("click", function () {
             $("#searchcard").addClass("d-none");
         })
+        var accountId = localStorage.getItem('accountId');
+        $("#creator").text(accountId);
 
         // 照片預覽
         // photolistener.on("change", function (event) {
@@ -897,7 +899,7 @@
                 let lastVerifyDate = $("#lastVerifyDate").val();
                 let lastVerifyTime = $("#lastVerifyTime").val();
                 let registrationDeadline = lastVerifyDate + " " + lastVerifyTime + ":00";
-                console.log("registrationDeadline>>" + registrationDeadline);
+                // console.log("registrationDeadline>>" + registrationDeadline);
                 let maximumCapacity = $("#maxAttendees").val();
                 let description = $("#description").val();
                 let location = $("#location").val();
@@ -905,13 +907,13 @@
                 let city = $("#city option:selected").text();
 
                 let district = $("#district option:selected").text();
-                console.log("district>>" + district);
+                // console.log("district>>" + district);
                 let detailedAddress = $("#address").val();
                 let categoryId = $("#categoryId option:selected").text();
 
                 let courseStatus = $("#courseStatus").val();
                 let paidAdvertising = $("#paidAdvertising").val();
-                console.log("paidAdvertising代碼>>" + paidAdvertising);
+                // console.log("paidAdvertising代碼>>" + paidAdvertising);
                 let paidAdvertisingTime;
                 if (paidAdvertising == 0) {
                     paidAdvertisingTime = "2040-01-01 00:00:00";
@@ -920,13 +922,14 @@
                     let paidAdvertisingTime2 = $("#paidAdvertisingTime2").val();
                     paidAdvertisingTime = paidAdvertisingTime1 + " " + paidAdvertisingTime2 + ":00";
                 }
-                console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
+                // console.log("paidAdvertisingTime>>" + paidAdvertisingTime);
                 // let paymentMethod = $("#paymentMethod").val();
 
 
                 // 检查是否有有填欄位
                 let file = photodropzone[0].files[0];
                 if (!file) {
+                    swal("Warning!", "請填完整資料", "warning");
                     photodropzone.siblings('.invalid-feedback').show(); // 显示错误消息
                     return; // 中断操作
                 }
@@ -935,54 +938,67 @@
                 formData.append('file', file);
 
                 if (!eventName) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#eventName').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!expectedPrice) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#expectedPrice').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!courseStartDate) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#courseStartDate').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!$("#startTime").val()) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $("#startTime").siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!courseDuration) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#courseDuration').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!$("#lastVerifyTime").val()) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $("#lastVerifyTime").siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!maximumCapacity) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#maximumCapacity').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!location || location == "請選擇..") {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#location').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!city || city == "請選擇..") {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#city').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!district) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#district').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!detailedAddress) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#detailedAddress').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!categoryId) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#categoryId').siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!description) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#description').siblings('.invalid-feedback').show();
                     return;
                 }
