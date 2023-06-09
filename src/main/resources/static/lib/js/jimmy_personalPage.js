@@ -1,5 +1,6 @@
+
 $(document).ready(function () {
-    let LSaccountId = localStorage.getItem('accountId');
+    var LSaccountId = localStorage.getItem('accountId');
     console.log("LSaccountId=" + LSaccountId);
 
     // 1.參加待審核2.通過3.未通過4:退出待審核5:退出成功6:完成課程
@@ -167,7 +168,7 @@ $(document).ready(function () {
                                                                 </div>
                                                                 <!-- 下方按鈕 -->
                                                                 <div class="d-flex justify-content-between mt-3">
-                                                                    <button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                    <button type="button"  class="btn btn-primary reportbb" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                                         檢舉按鈕
                                                                     </button>
                                                                     <button type="button" class="btn btn-danger sendcomment">
@@ -406,34 +407,52 @@ $(document).ready(function () {
         $('.commentplace').toggleClass('displaynone');//隱藏評論填寫表格
     });//送出評論-結束
 
+    // 檢舉按鈕彈窗
+    $(document).on('click', '.reportbb', function (e) {
+        // let accountId = accountId;
+        sessionStorage.setItem('REPORTaccountId', LSaccountId)
+        // console.log("accountId>>", accountId);
+        // $('#REPORTaccountId').text(accountId);
+        // console.log("accountId>>", $('#REPORTaccountId').text());
+        // let accountId2 = $(this).closest('#listpapa').find('.creatorin').text();
+        sessionStorage.setItem('REPORTaccountId2', $(this).closest('#listpapa').find('.creatorin').text());
+        // console.log("accountId2>>", accountId2);
+        // $('#REPORTaccountId2').text(accountId2);
+        // console.log("accountId2>>", $('#REPORTaccountId2').text());
+    });
 
     // report33button檢舉按鈕
-    $(document).on('click', '.report33button', function (e) {
-        e.preventDefault();
-        console.log(".report33button: " + this);
+    $(document).on('click', '#report33button', function (e) {
+        // console.log(".report33button: " + this);
+        let accountId = sessionStorage.getItem('REPORTaccountId');
+        let accountId2 = sessionStorage.getItem('REPORTaccountId2');
         let reportType = $("#inputTo1 option:selected").val();
-        console.log("reportType>>", reportType);
-        let accountId2 = $(".accountIdReviewed").text();
+        let reportReason = $("#reportReason1").val();
+        console.log("accountId>>", accountId);
         console.log("accountId2>>", accountId2);
-        let reportReason = $("#reportReason").text();
+        console.log("reportType>>", reportType);
         console.log("reportReason>>", reportReason);
-        let reportPicture = $("#reportPicture").text();
-        console.log("reportPicture>>", reportPicture);
+
+        var now = new Date();
+        // let reportTime = now.toISOString().slice(0, 10) + " " + now.toISOString().slice(11, 16);
+        let reportTime = now;
+        console.log("reportTime>>", reportTime);
         $.ajax({
-            url: "/ixercise/reportmember",
+            url: "/ixercise/back/reportmember",
             type: "POST",
             contentType: 'application/json',
             data: JSON.stringify({
-                accountId: LSaccountId,
+                accountId: accountId,
                 reportType: reportType,
                 accountId2: accountId2,
                 reportReason: reportReason,
-                reportPicture: reportPicture,
+                reportTime: reportTime,
+                // reportPicture: "123",
                 reportStatus: 1
             }),
             success: function (resp) {
                 console.log("resp>>" + resp);
-                swal("Warning!", resp.message, "warning");
+                alert("檢舉成功!");
 
             },
             error: function (xhr, status, error) {

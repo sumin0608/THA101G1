@@ -865,57 +865,42 @@
         </div>
     </div>
 
-    <!-- 檢舉內文 Modal -->
-    <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <form role="form" class="form-horizontal">
-                    <div class="modal-header modal-header-info ">
-                        <h2 class="modal-title  " id="exampleModalLabel">檢舉</h2>
-                        <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="hidden" id="accountId" class="form-control-file" name="accountId" value=>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" id="accountId2" class="form-control-file" name="accountId2" value="7">
-                        </div>
-                        <!-- 檢舉時間 -->
-                        <div class="form-group">
-                            <label class="col-sm-2 text-muted" for="inputTo">檢舉日期時間</label>
-                            <input type="datetime-local" class="form-control readonly" id="inputTo"
-                                value="2023-06-04T09:30">
-                        </div>
-                        <!-- 檢舉原因 -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label class="col-sm-2 text-muted" for="inputTo1">檢舉類別</label>
-                                    <select class="custom-select col-sm-12  orm-control custom-select-lg mb-3"
-                                        id="inputTo1" name="reportType" required>
-                                        <option value="">選擇檢舉類別</option>
-                                        <option value="性騷擾">性騷擾</option>
-                                        <option value="廣告不實">廣告不實</option>
-                                        <option value="詐騙">詐騙</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        請選一個選項
-                                    </div>
+    <!-- Modal 檢舉內文 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">檢舉</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="REPORTaccountId"></div>
+                    <div id="REPORTaccountId2"></div>
+                    <!-- 檢舉原因 -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                <label class="col-sm-2 text-muted" for="inputTo1">檢舉類別</label>
+                                <select class="custom-select col-sm-12  orm-control custom-select-lg mb-3" id="inputTo1"
+                                    name="reportType" required>
+                                    <option value="">選擇檢舉類別</option>
+                                    <option value="性騷擾">性騷擾</option>
+                                    <option value="廣告不實">廣告不實</option>
+                                    <option value="詐騙">詐騙</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    請選一個選項
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for=" text-muted">檢舉內容</label>
-                                    <textarea class="form-control" name="reportReason" id="reportReason" rows="5"
-                                        required></textarea>
-                                    <div class="invalid-feedback">
-                                        請輸入內容
-                                    </div>
+                        <div class="col-sm-12">
+                            <div>
+                                <label for=" text-muted">檢舉內容</label>
+                                <textarea class="form-control" name="reportReason" id="reportReason1" rows="5"
+                                    required></textarea>
+                                <div class="invalid-feedback">
+                                    請輸入內容
                                 </div>
                             </div>
                         </div>
@@ -923,39 +908,16 @@
                             <input type="hidden" class="form-control-file" id="reportStatus" name="reportStatus"
                                 value="1">
                         </div>
-                        <div class="col-md-12 ms-auto">
-                            <label for="description" class="text-muted">檢舉圖片</label>
-                            <div class="card mt-1">
-                                <div class="card-body">
+                    </div> <!-- row -->
 
-                                    <div class="form-group">
-                                        <label for="photo-dropzone forDhotoDrop"></label>
-                                        <br>
-                                    </div>
-                                    <div class="form-group">
-                                        <div id="previewBox">
-                                        </div>
-                                    </div> <br>
-                                </div>
-                            </div>
-                            <div>
-                                <input type="file" class="form-control-file" name="reportPicture" id="reportPicture"
-                                    aria-describedby="fileHelp" accept="image/*">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="reset" id="closeButton" class="btn btn-secondary"
-                            data-bs-dismiss="modal">關閉</button>
-                        <div>
-                            <button id="report33button" type="submit" class="btn btn-primary" data-bs-toggle="popover"
-                                title="Popover title" data-bs-content="檢舉就會送出 確定嗎?">檢舉</button>
-                        </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="report33button" type="button" class="btn btn-primary">檢舉</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- 檢舉內文 -->
 
 
     <!-- 以下footer================================================================================= -->
