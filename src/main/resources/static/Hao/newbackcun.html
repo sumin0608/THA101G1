@@ -791,13 +791,13 @@ $(document).on('click', '.chattoken', function(event) {
                     
                     $("#aaa").append(html);
 
-                                        set.delete(data.accountId);
-
-             }else if(!set.has(data.accountId)){
-
-                
+              
+                    
+                }else if(!set.has(data.accountId)){
+                    
+                    
                     //以下是當發送者跟視窗使用者不一致 只會有列表致頂提示
-
+                    
                     var chathtml="";
                     chathtml=`<li class="clearfix change chattoken" id="`+data.accountId+`">
                         <img src="data:image/jpeg;base64,`+data.accountPhoto+`"alt="avatar" class="overflow-hidden rounded-circle object-fit-cover">
@@ -831,6 +831,7 @@ $(document).on('click', '.chattoken', function(event) {
                 changeFail(data.accountNickname);
               var leavehtml=`<div class="message-data text-center"><span class="message-data-time ">`+jsonObj.sender+`已經離開聊天室</span></div>`;
                console.log("有人離開");
+               set.delete(data.accountId);
                     }
                 });
 
