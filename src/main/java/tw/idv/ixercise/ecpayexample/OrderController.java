@@ -14,8 +14,10 @@ public class OrderController {
 	OrderService orderService;
 
 	@PostMapping("/ecpayCheckout")
-	public String ecpayCheckout(@RequestParam("expectedPrice") String expectedPrice) {
+	public String ecpayCheckout(@RequestParam("expectedPrice") String expectedPrice,  String description, String eventName) {
 		System.out.println("抵達controller>>expectedPrice1:"+expectedPrice);
+		System.out.println("抵達controller>>description1:"+description);
+		System.out.println("抵達controller>>eventName1:"+eventName);
 
 		String aioCheckOutALLForm = orderService.ecpayCheckout(expectedPrice);
 		return aioCheckOutALLForm;
