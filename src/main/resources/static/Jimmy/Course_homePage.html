@@ -688,20 +688,27 @@
                     type: "GET",
                     dataType: "json",
                     success: function (resp1) {
-                        // console.log("resp1>>" + resp1);
+                        console.log("resp1>>" + resp1);
                         let tableData = '';
                         var memberName;
                         var accphoto;
 
                         var today = new Date();
                         // console.log(" today: ", today);
-                        var resp = resp1.filter(function (item) {
+                        var resp2 = resp1.filter(function (item) {
                             var registrationDeadline = new Date(item.registrationDeadline);
                             // console.log("item.registrationDeadline: ", registrationDeadline);
-                            if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                            if (registrationDeadline > today) {
                                 return true;
                             }
                         });
+                        // console.log("resp2: ", resp2);
+                        var resp = resp1.filter(function (item) {
+                            if (item.courseStatus === 1 || item.courseStatus === 3 || item.courseStatus === 4) {
+                                return true;
+                            }
+                        });
+                        // console.log("resp: ", resp);
 
                         for (let i = 0; i < resp.length; i++) {
                             if (resp[i].courseStatus !== 2 || resp[i].courseStatus !== 5) {
@@ -757,8 +764,8 @@
                                 tableData += `<div class="col-8 ms-2 c-details">`;
                                 // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
                                 tableData += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
-                                // tableData += `      <span class=" text-muted">還沒想好放什麼</span>`;
                                 tableData += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                                tableData += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
                                 tableData += `</div>`;
                                 tableData += `</div>`;
                                 tableData += `</div>`;
@@ -790,10 +797,6 @@
                     }
                 });
 
-                // 生成課程card的迴圈function
-                // function CourseCard(resp) {
-                // }
-
                 // <<search撈篩選課程>>
                 $('#btn_selecter_search').on('click', function (e) {
                     e.preventDefault();
@@ -810,12 +813,13 @@
 
                 //success:實際function
                 function handleDistrictsResponse(resp) {
+                    console.log("handleDistricts_resp>>" + resp);
                     var sport_option = $('#select_sport option:selected').text();
                     var city_option = $('#select_city option:selected').text();
                     var time_option = $('#select_time option:selected').val();
                     var sportValue = (sport_option !== "運動類型") ? sport_option : "";
                     var cityValue = (city_option !== "搜尋城市") ? city_option : "";
-                    var timeValue = (time_option != 0) ? time_option : "";
+                    var timeValue = (time_option != "上課時段") ? time_option : "";
                     console.log("sport: " + sportValue);
                     console.log("city: " + cityValue);
                     console.log("time: " + timeValue);
@@ -826,6 +830,7 @@
                             return true;
                         }
                     });
+                    console.log("filteredData0>>" + filteredData0);
                     // filter篩選:時間
                     let filteredData1 = filteredData0.filter(function (item) {
                         if (!timeValue) {
@@ -844,14 +849,22 @@
                             return startTime >= "18:00:00" && startTime < "24:00:00";
                         }
                     });
+                    console.log("filteredData1>>" + filteredData1);
 
                     var today = new Date();
-                    var filteredData = filteredData1.filter(function (item) {
+                    var filteredData2 = filteredData1.filter(function (item) {
                         var registrationDeadline = new Date(item.registrationDeadline);
-                        if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                        if (registrationDeadline > today) {
                             return true;
                         }
                     });
+                    console.log("filteredData2>>" + filteredData2);
+                    var filteredData = filteredData2.filter(function (item) {
+                        if (item.courseStatus === 1 || item.courseStatus === 3 || item.courseStatus === 4) {
+                            return true;
+                        }
+                    });
+                    console.log("filteredData: ", filteredData);
 
                     let tableData2 = '';
                     var memberName
@@ -909,8 +922,8 @@
                             tableData2 += `<div class="col-8 ms-2 c-details">`
                             tableData2 += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
                             // tableData2 += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練編號:${resp[i].creator}</h6>`;
-                            // tableData2 += `     <span class=" text-muted">還沒想好放什麼</span>`;
                             tableData2 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                            tableData2 += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
                             tableData2 += `</div>`;
                             tableData2 += `</div>`;
                             tableData2 += `</div>`;
@@ -931,7 +944,7 @@
                     $("#input_card").empty().append(tableData2);
                     // 延遲加載圖像
                     const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
-                    console.log("lazyImages: " + lazyImages);
+                    // console.log("lazyImages: " + lazyImages);
                     lazyImages.forEach((image) => {
                         observer.observe(image);
                     });
@@ -952,7 +965,7 @@
                         type: "GET",
                         dataType: "json",
                         success: function (resp1) {
-                            // console.log("resp>>" + resp);
+                            // console.log("resp1>>" + resp1);
                             let tableData3 = '';
                             var memberName;
                             var accphoto;
@@ -963,6 +976,7 @@
                                     return true;
                                 }
                             });
+                            console.log("resp>>" + resp);
                             for (let i = 0; i < resp.length; i++) {
                                 tableData3 += `<div class="col mb-5 event_card_container">`;
                                 tableData3 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
@@ -1016,7 +1030,8 @@
                                 tableData3 += `     教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
                                 // tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
                                 tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
-                                tableData3 += `</div></div></div></a ></div></div>`;
+                                tableData3 += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
+                                tableData3 += `</div></div></div></a></div></div>`;
 
                                 // var memberid = resp[i].creator;
                                 // var avatarid = "avatar-" + memberid;
@@ -1026,7 +1041,7 @@
                             $("#input_card").empty().append(tableData3);
                             // 延遲加載圖像
                             const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
-                            console.log("lazyImages: " + lazyImages);
+                            // console.log("lazyImages: " + lazyImages);
                             lazyImages.forEach((image) => {
                                 observer.observe(image);
                             });
@@ -1049,13 +1064,16 @@
                     e.preventDefault();
                     let courseId_hide = $(this).closest('.event_card_container').find('.courseId_hide').text();
                     let thismemberName = $(this).closest('.event_card_container').find('h6').text().trim();
+                    let creator_hide = $(this).closest('.event_card_container').find('.creator_hide').text();
                     console.log("courseId_hide: " + courseId_hide);
                     console.log("thismemberName: " + thismemberName);
+                    console.log("creator_hide: " + creator_hide);
 
                     sessionStorage.setItem('courseId', courseId_hide);
                     sessionStorage.setItem('thismemberName', thismemberName);
+                    sessionStorage.setItem('creator_hide', creator_hide);
 
-                    var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + courseId_hide + '&thismemberName=' + thismemberName;
+                    var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + courseId_hide + '&thismemberName=' + thismemberName + '&creator_hide' + creator_hide;
                     window.open(url, '_blank');
                 });
 

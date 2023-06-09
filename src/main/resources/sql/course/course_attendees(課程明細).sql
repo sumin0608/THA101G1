@@ -4,7 +4,7 @@ CREATE TABLE CourseAttendee (
 `attendId` int NOT NULL AUTO_INCREMENT,
 `courseId` int DEFAULT NULL,
 `accountId` int DEFAULT NULL,
-  `attendTime` timestamp NULL DEFAULT NULL,`status` int NOT NULL DEFAULT '0' COMMENT '1.參加待審核2.通過3.未通過4:退出待審核5:退出成功',`reason` text NOT NULL,
+  `attendTime` timestamp NULL DEFAULT NULL,`status` int NOT NULL DEFAULT '0' COMMENT '1.參加待審核2.通過3.未通過4:退出待審核5:退出成功6:完成課程',`reason` text NOT NULL,
   `paymentStatus` int DEFAULT '1' COMMENT '1.未付款\n2.已付款\n3.申請退款\n4:已退款',
   `commentStatus` int DEFAULT '0' COMMENT '0.未評價1.已評價',
   PRIMARY KEY (`attendId`)
@@ -29,12 +29,12 @@ VALUES
 (32, 2, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
 (33, 2, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
 (29, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
-(29, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
+(30, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
 (34, 5, CURRENT_TIMESTAMP, 1, 'I love play~', 2, 0),
-(35, 5, CURRENT_TIMESTAMP, 1, '我愛運動~', 2, 0),
-(36, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 1),
-(37, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 1),
-(38, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 0),
-(39, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 0)
+(35, 5, CURRENT_TIMESTAMP, 2, '我愛運動~', 2, 0),
+(36, 5, CURRENT_TIMESTAMP, 6, '我愛運動~', 2, 1),
+(37, 5, CURRENT_TIMESTAMP, 6, '我愛運動~', 2, 1),
+(38, 5, CURRENT_TIMESTAMP, 6, '我愛運動~', 2, 0),
+(39, 5, CURRENT_TIMESTAMP, 6, '我愛運動~', 2, 0)
 ;
 SELECT * FROM THA101G1.CourseAttendee;

@@ -88,9 +88,9 @@ public void onMessage(Session userSession, String message) {
  	if("chat".equals(chatMessage.getType())) {
 		System.err.println("chat被執行");
 	Session receiverSession = sessionsMap.get(receiver);
-	JedisHandleMessage.saveChatMessage(sender, receiver, message);
 	
 	if (receiverSession != null && receiverSession.isOpen()) {
+		JedisHandleMessage.saveChatMessage(sender, receiver, message);
 		receiverSession.getAsyncRemote().sendText(message);
 //		userSession.getAsyncRemote().sendText(message);
 
