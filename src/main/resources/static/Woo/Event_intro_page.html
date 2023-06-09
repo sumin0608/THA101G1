@@ -14,6 +14,10 @@
     <!--  owl.carousel -->
     <link href="../lib/owl_carousel/owl.carousel.min.css" rel="stylesheet"/>
     <link href="../lib/owl_carousel/owl.theme.default.min.css" rel="stylesheet"/>
+    <!--    font-awesome-->
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
     <!-- jquery -->
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -412,21 +416,29 @@
                     <button class="wtbtn" id="categoryId" onclick="">健身
                     </button>
                     <h3 class=" fw-bold card-title " id="eventName">TRX體能訓練</h3>
-                    <div class="fw-bold card-text" id="placeInfoTitle">地點:</div>
+
+                    <div class="fw-bold card-text" id="times">時間:</div>
                     <div class="small text-dark mb-2">
-                        <span class="card-text" id="city">台北市</span>
-                        <span class="card-text" id="district">&nbsp;中山區</span>
-                        <span class="fw-bold card-text" id="location">&nbsp;板橋運動中心健身房</span>
-                        <div>
-                            <a href="#" id="detailedAddress" style="color: black;">南京東路三段219號5樓</a>
-                        </div>
-                    </div>
-                    <div class="small text-dark mb-2">
-                        <span class="fw-bold card-text" id="times">時間:</span>
                         <span id="eventStartDate">星期四,四月 6日 </span>
                         <span id="eventStartTime">&nbsp;13:30</span>
 
                         <span id="eventLastVerifyDateAndTime">&nbsp;(最後審核日期: 星期三 四月 5 日 9:30)</span>
+                    </div>
+
+                    <div class="fw-bold card-text" id="placeInfoTitle">地點:</div>
+                    <div class="small text-dark mb-4">
+                        <span class="card-text" id="city">台北市</span>
+                        <span class="card-text" id="district">&nbsp;中山區</span>
+                        <div class="fw-bold card-text" id="location">板橋運動中心健身房</div>
+
+                    </div>
+
+                    <div class="small text-dark mb-2">
+                        <i class="fa-solid fa-location-dot" style='color:#ff2727'></i>
+                        <span class=" card-text" id="detailedAddress">南京東路三段219號5樓</span>
+                        <br>
+                        <a href="#" id="addressNickname" style="text-decoration:none"
+                           target="_blank">板橋運動中心健身房</a>
                     </div>
 
                     <div class=" d-flex justify-content-end small text-dark mb-2" id="creator">
@@ -437,8 +449,10 @@
                         <span class="btngp" id="expectedExpense" onclick="">費用:$0</span>
                         <span class="btngp" id="maxAttendees" onclick="">名額: 5人</span>
                     </div>
-                    <p class="col-md-8 fs-5 description" id="description">
-                        挑戰你的身體極限，讓你感受到獨特的全身運動體驗！透過懸吊設備的力量，你能夠提升核心肌肉的穩定性、增強肌肉力量和耐力，同時鍛鍊身體平衡力和靈活性，成為更健康、更自信的自己！</p>
+                    <div class="col-md-8 fs-5 description" id="eventDescription">
+                        <!--                        <table border="1" cellpadding="1" cellspacing="1" style="width:500px"> <tbody> <tr> <td>sss</td> <td>&nbsp;</td> </tr> <tr> <td>&nbsp;</td> <td>ww</td> </tr> <tr> <td>ss</td> <td>&nbsp;</td> </tr> </tbody> </table> <p>siuuuu</p>-->
+
+                    </div>
                     <div class="col-sm-6 ">
                         <div class="d-grid gap-2 " id="popUpBtn">
                             <button class="btn btn-primary applybtn" data-bs-target="#exampleModalToggle"
@@ -681,6 +695,8 @@
                 $("#district").html('&nbsp;' + event.district);
                 $("#location").html('&nbsp;' + event.location);
                 $("#detailedAddress").text(event.address);
+                $("#addressNickname").text(event.addressNickname).attr('href', event.addressUrl);
+                // <a href="#" id="addressNickname" style="color: black;">南京東路三段219號5樓</a>
                 $("#eventStartDate").text(event.eventStartDate);
                 $("#eventStartTime").text(event.eventStartTime);
                 $("#eventLastVerifyDateAndTime").html('&nbsp;(最後審核日期:' + event.lastVerifyDateAndTime + ')');
@@ -688,7 +704,7 @@
 
                 $("#expectedExpense").html("費用: &dollar;" + event.price);
                 $("#maxAttendees").text("名額: " + event.maxAttendees + "人");
-                $("#description").text(event.description);
+                $("#eventDescription").html(event.description);
 
             });
 
@@ -719,8 +735,7 @@
             $("#lastVerifyTime").html(sessionFormData.lastVerifyTime);
             $("#maxAttendees").html(sessionFormData.maxAttendees);
             $("#paymentMethod").html(sessionFormData.paymentMethod);
-            $("#description").html(sessionFormData.description);
-
+            $("#eventDescription").html(sessionFormData.description);
             $("#photo").attr("src", eventPhoto);
 
         }

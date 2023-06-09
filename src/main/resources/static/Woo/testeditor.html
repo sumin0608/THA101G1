@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<textarea id="editorDemo" name="editorDemo">
+  <h2>CKEditor Demo</h2>
+  <hr />
+  <p>使用CKEditor，人生變得好簡單啊！</p>
+</textarea>
+<button id="alertContent">取得HTML</button>
+<!--<script async src="//jsfiddle.net/wellwind/o8j7budv/embed/"></script>-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<!--<script src="//cdn.ckeditor.com/4.21.0/basic/ckeditor.js"></script>-->
+<script>
+
+    const editor = CKEDITOR.replace('editorDemo');
+    let aa = document.querySelector("#editorDemo");
+    $("#editorDemo").onblur(function (e) {
+        console.log("wwwww");
+    });
+    aa.addEventListener("onblur", function (e) {
+        console.log("wwwww");
+    });
+    $('#alertContent').click(function () {
+        // CKEDITOR.instances.editorDemo.updateElement();
+        // console.log($('textarea[name=editorDemo]').val());
+        // console.log(CKEDITOR.instances.editorDemo.getData());
+        CKEDITOR.instances.editorDemo.updateElement();
+        // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
+        console.log($('textarea[name=editorDemo]').val());
+    });
+</script>
+</body>
+</html>

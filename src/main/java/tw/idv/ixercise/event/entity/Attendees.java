@@ -1,5 +1,6 @@
 package tw.idv.ixercise.event.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import tw.idv.ixercise.core.*;
 
@@ -18,7 +19,12 @@ public class Attendees extends Core {
     private Integer attendId;
     private Integer eventId;
     private Integer accountId;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp attendTime;
+    @Column(insertable = false)
+    private Integer status;
+    @Column(insertable = false)
     private Integer commentStatus;
+
 
 }
