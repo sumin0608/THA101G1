@@ -13,7 +13,7 @@ public class JedisHandleMessage {
 		public static List<String> getHistoryMsg(Integer sender, Integer receiver) {
 			Jedis jedis = new Jedis();
 			List<String> historyData=null;
-			if(sender==5) {
+			if(sender>receiver) {
 				String key = new StringBuilder(sender).append(":").append(receiver).toString();
 				
 				 historyData = jedis.lrange(key, 0, -1);
@@ -30,7 +30,7 @@ public class JedisHandleMessage {
 		public static void saveChatMessage(Integer sender,Integer receiver, String message) {
 			Jedis jedis = new Jedis();
 			System.out.println("jedis被創建");
-			if(sender==5){
+			if(sender>receiver){
 				
 				String senderKey = new StringBuilder(sender).append(":").append(receiver).toString();
 				jedis.rpush(senderKey, message);

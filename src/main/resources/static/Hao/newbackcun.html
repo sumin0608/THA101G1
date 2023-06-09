@@ -549,6 +549,7 @@ div{
             var  localStorageNickname=localStorage.getItem('accountNickname');
             var  localStoragePhoto=localStorage.getItem('accountPhoto');
             var idValue ;
+            var set = new Set();
         
         // 現在時間
         var currentDate = new Date();
@@ -695,44 +696,6 @@ $(document).on('click', '.chattoken', function(event) {
 });
 
 
-// $(document).ready(function() {
-//   $("ul#ulfirst").on("click", "li", function(e) {
-//     if ($(this).is("#chattoken")) {
-    
-//         $(this).removeClass("change");
-//         var jsonObj = {
-//                       "type" : "history",
-//                       "sender" :localStorageId,
-//                       "receiver" : 1113,
-//                       "message" : "",
-//                       "messageTime":timestamp
-//                   };
-//               webSocket.send(JSON.stringify(jsonObj));
-
-//     }
-//   });
-// });
-        
-        
-            
-        
-        
-        //     $(function(){
-        //         $.ajax({
-        // url:  "http://localhost:8080/ixercise/set",
-        // type: 'POST',
-        // contentType: 'application/json',
-        // data: mydata,
-        // success: function(response) {
-        // // 請求成功，進行相應的處理
-        // console.log(response);
-        
-        // },
-        
-        
-        // });
-        
-        //     });
         // 以下wesocket
             $(function(){
         
@@ -801,21 +764,7 @@ $(document).on('click', '.chattoken', function(event) {
                             
                             $("#aaa").html(html);
         
-                        // var ul = document.createElement('ul');
-                        // ul.id = "area";
-                        // messagesArea.appendChild(ul);
-                     // 這行的jsonObj.message是從redis撈出跟好友的歷史訊息，再parse成JSON格式處理
-                        //  var messages = JSON.parse(jsonObj.message);
-                        //  for (var i = 0; i < messages.length; i++) {
-                        // 	var historyData = JSON.parse(messages[i]);
-                        // 	var showMsg = historyData.message;
-                        // 	var li = document.createElement('li');
-                        // 	// 根據發送者是自己還是對方來給予不同的class名, 以達到訊息左右區分
-                        // 	historyData.sender === self ? li.className += 'me' : li.className += 'friend';
-                        // 	li.innerHTML = showMsg;
-                        // 	ul.appendChild(li);
-                    //	}
-                        // messagesArea.scrollTop = messagesArea.scrollHeight;
+                    
                     } 
                     
                     
@@ -828,6 +777,7 @@ $(document).on('click', '.chattoken', function(event) {
 
             success : function(data) {
                 var accountId = $('#control').data('account-id');
+                //以下是當選擇的視窗裡的人跟發送者一致 在訊息下方顯示內容
              if(accountId==data.accountId){
 
                                                 let html = `
@@ -841,12 +791,12 @@ $(document).on('click', '.chattoken', function(event) {
                     
                     $("#aaa").append(html);
 
+                                        set.delete(data.accountId);
 
-             }else {
+             }else if(!set.has(data.accountId)){
 
                 
-                    //以上是內容
-                    //以下是置頂
+                    //以下是當發送者跟視窗使用者不一致 只會有列表致頂提示
 
                     var chathtml="";
                     chathtml=`<li class="clearfix change chattoken" id="`+data.accountId+`">
@@ -858,7 +808,8 @@ $(document).on('click', '.chattoken', function(event) {
                                             </li>`;
                                             console.log( chathtml);
                                             $("#ulfirst").prepend(chathtml);
-
+                                            //把她加入集合中
+                                            set.add(data.accountId);
 
              }
 
@@ -868,14 +819,7 @@ $(document).on('click', '.chattoken', function(event) {
         });
                   
 
-                   
 
-                        // var li = document.createElement('li');
-                        // jsonObj.sender === self ? li.className += 'me' : li.className += 'friend';
-                        // li.innerHTML = jsonObj.message;
-                        // console.log(li);
-                        // document.getElementById("area").appendChild(li);
-                        // messagesArea.scrollTop = messagesArea.scrollHeight;
                     }  else if ("leave" === jsonObj.type){
 
                         $.ajax({url : 'http://localhost:8080/ixercise/back/getaccount/'+jsonObj.sender, // 資料請求的網址
@@ -902,7 +846,8 @@ $(document).on('click', '.chattoken', function(event) {
             }
             
 
-            function changeFail(sender) {
+
+function changeFail(sender) {
   // 创建弹窗元素
 
   var popup = $('<div class="confirmation-popup">'+sender+'已經離開聊天室</div>');
@@ -933,34 +878,34 @@ $(document).on('click', '.chattoken', function(event) {
   }, 4000); // 3秒后自动关闭弹窗
 }
 
-            
+            //小吳老師的CODE 沒用上
             // 有好友上線或離線就更新列表
-            function refreshFriendList(jsonObj) {
-                var friends = jsonObj.users;
-                var row = document.getElementById("row");
-                row.innerHTML = '';
-                for (var i = 0; i < friends.length; i++) {
-                    if (friends[i] === self) { continue; }
-                    row.innerHTML +='<div id=' + i + ' class="column" name="friendName" value=' + friends[i] + ' ><h2>' + friends[i] + '</h2></div>';
-                }
-                addListener();
-            }
-            // 註冊列表點擊事件並抓取好友名字以取得歷史訊息
-            function addListener() {
-                var container = document.getElementById("row");
-                container.addEventListener("click", function(e) {
-                    var friend = e.srcElement.textContent;
-                    updateFriendName(friend);
-                    var jsonObj = {
-                            "type" : "history",
-                            "sender" : 1,
-                            "receiver" : 1113,
-                            "message" : "",
-                            "messageTime":timestamp
-                        };
-                    webSocket.send(JSON.stringify(jsonObj));
-                });
-            }
+            // function refreshFriendList(jsonObj) {
+            //     var friends = jsonObj.users;
+            //     var row = document.getElementById("row");
+            //     row.innerHTML = '';
+            //     for (var i = 0; i < friends.length; i++) {
+            //         if (friends[i] === self) { continue; }
+            //         row.innerHTML +='<div id=' + i + ' class="column" name="friendName" value=' + friends[i] + ' ><h2>' + friends[i] + '</h2></div>';
+            //     }
+            //     addListener();
+            // }
+            // // 註冊列表點擊事件並抓取好友名字以取得歷史訊息
+            // function addListener() {
+            //     var container = document.getElementById("row");
+            //     container.addEventListener("click", function(e) {
+            //         var friend = e.srcElement.textContent;
+            //         updateFriendName(friend);
+            //         var jsonObj = {
+            //                 "type" : "history",
+            //                 "sender" : 1,
+            //                 "receiver" : 1113,
+            //                 "message" : "",
+            //                 "messageTime":timestamp
+            //             };
+            //         webSocket.send(JSON.stringify(jsonObj));
+            //     });
+            // }
             
             function disconnect() {
                 webSocket.close();
@@ -971,6 +916,6 @@ $(document).on('click', '.chattoken', function(event) {
                 statusOutput.innerHTML = name;
             }
         });
-        </script>
+</script>
 </body>
 </html>
