@@ -637,10 +637,20 @@
             // testbtn
             $('#testbtn').click(function () {
                 $.ajax({
-                    url: '/ixercise/course/courseId/' + courseId,
+                    url: '/ixercise/courseAttendee/getAttendeesCount/' + courseId,
                     type: 'GET',
                     success: function (response) {
                         console.log(response);
+
+                        let x = response.filter(function (item) {
+                            if (item.courseId === courseId)
+                                return true;
+                        });
+
+                        console.log(x);
+                        let y = x.length;
+                        console.log("y:", y);
+
                         $("#eventName").text(response.eventName);
                         $("#categoryId").text(response.categoryId);
                         $("#photo").attr("src", "/ixercise/lib/img/course/" + response.photo);
