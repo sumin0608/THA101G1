@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Dashboard - SB Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
-    <link href="./lib/css/backstyle.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="./lib/css/backstyle.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <style>
         .totalcolor1 {
             background: linear-gradient(180deg, rgb(237, 242, 240) 0%,
-            rgb(224, 231, 229) 50%, rgb(232, 233, 236) 100%) !important;
+                    rgb(224, 231, 229) 50%, rgb(232, 233, 236) 100%) !important;
         }
 
         .navtotalcolor {
             background: linear-gradient(90deg, rgba(66, 184, 131, 1) 0%,
-            rgba(39, 179, 137, 1) 50%, rgba(100, 126, 255, 1) 100%) !important;
+                    rgba(39, 179, 137, 1) 50%, rgba(100, 126, 255, 1) 100%) !important;
         }
 
         nav a {
@@ -28,7 +28,7 @@
             color: black !important;
         }
 
-        nav > a {
+        nav>a {
             font-size: 16px !important;
             color: black !important;
         }
@@ -110,170 +110,172 @@
 </head>
 
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand m-0 px-4 " href="#!"> <img src="./lib/img/IX-nobackground copy.png" alt="" width="150"
-                                                      height="70">
-    </a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!">
-        <i class="fas fa-bars"></i>
-    </button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
-            <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
-        </div>
-    </form>
-    <!-- Navbar-->
+    <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand m-0 px-4 " href="#!"> <img src="./lib/img/IX-nobackground copy.png" alt="" width="150"
+                height="70">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
+                <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
+            </div>
+        </form>
+        <!-- Navbar-->
 
 
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
-        <li class="nav-item dropdown  "><a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#"
-                                           role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                <li>
-                    <hr class="dropdown-divider"/>
-                </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
+            <li class="nav-item dropdown  "><a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav justify-content-center ">
-                    <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-                    <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-house-fill"></i>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav justify-content-center ">
+                        <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
+                        <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-house-fill"></i>
+                            </div>
+                            後臺中心
+                        </a>
+                        <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-flag-fill"></i>
+                            </div>
+                            檢舉
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+
+                                <a class="nav-link" id="changecount"
+                                    href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span
+                                        class="msg-counter reportspan"></span></a>
+
+                            </nav>
                         </div>
-                        後臺中心
-                    </a>
-                    <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-flag-fill"></i>
-                        </div>
-                        檢舉
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-
-                            <a class="nav-link" id="changecount"  href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span class="msg-counter reportspan"></span></a>
-
-                        </nav>
-                    </div>
 
 
-<!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
-<!--                       data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">-->
-<!--                        <div class="sb-nav-link-icon">-->
-<!--                            <i class="bi bi-chat-left-dots-fill"></i>-->
-<!--                        </div>-->
-<!--                        文章-->
-<!--                        <div class="sb-sidenav-collapse-arrow">-->
-<!--                            <i class="fas fa-angle-down"></i>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"-->
-<!--                         data-bs-parent="#sidenavAccordion">-->
-<!--                        <nav class="sb-sidenav-menu-nested nav">-->
-<!--                            <a class="nav-link" href="">文章管理</a>-->
+                        <!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
+                        <!--                       data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">-->
+                        <!--                        <div class="sb-nav-link-icon">-->
+                        <!--                            <i class="bi bi-chat-left-dots-fill"></i>-->
+                        <!--                        </div>-->
+                        <!--                        文章-->
+                        <!--                        <div class="sb-sidenav-collapse-arrow">-->
+                        <!--                            <i class="fas fa-angle-down"></i>-->
+                        <!--                        </div>-->
+                        <!--                    </a>-->
+                        <!--                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"-->
+                        <!--                         data-bs-parent="#sidenavAccordion">-->
+                        <!--                        <nav class="sb-sidenav-menu-nested nav">-->
+                        <!--                            <a class="nav-link" href="">文章管理</a>-->
 
-<!--                        </nav>-->
-<!--                    </div>-->
-
-
-<!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
-<!--                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">-->
-<!--                        <div class="sb-nav-link-icon">-->
-<!--                            <i class="bi bi-calendar-event-fill"></i>-->
-<!--                        </div>-->
-<!--                        活動-->
-<!--                        <div class="sb-sidenav-collapse-arrow">-->
-<!--                            <i class="fas fa-angle-down"></i>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"-->
-<!--                         data-bs-parent="#sidenavAccordion">-->
-<!--                        <nav class="sb-sidenav-menu-nested nav">-->
-<!--                            <a class="nav-link" href="">活動管理</a>-->
-
-<!--                        </nav>-->
-<!--                    </div>-->
+                        <!--                        </nav>-->
+                        <!--                    </div>-->
 
 
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-cart-fill"></i>
-                        </div>
-                        商城
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
-                            <!-- <a class="nav-link" href="">訂單管理</a>
+                        <!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
+                        <!--                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">-->
+                        <!--                        <div class="sb-nav-link-icon">-->
+                        <!--                            <i class="bi bi-calendar-event-fill"></i>-->
+                        <!--                        </div>-->
+                        <!--                        活動-->
+                        <!--                        <div class="sb-sidenav-collapse-arrow">-->
+                        <!--                            <i class="fas fa-angle-down"></i>-->
+                        <!--                        </div>-->
+                        <!--                    </a>-->
+                        <!--                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"-->
+                        <!--                         data-bs-parent="#sidenavAccordion">-->
+                        <!--                        <nav class="sb-sidenav-menu-nested nav">-->
+                        <!--                            <a class="nav-link" href="">活動管理</a>-->
+
+                        <!--                        </nav>-->
+                        <!--                    </div>-->
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-cart-fill"></i>
+                            </div>
+                            商城
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link"
+                                    href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
+                                <!-- <a class="nav-link" href="">訂單管理</a>
                             <a class="nav-link" href="">退貨管理</a> -->
 
 
-                        </nav>
-                    </div>
+                            </nav>
+                        </div>
 
-                    <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon">
-                            <i class="bi bi-book-fill"></i>
-                        </div>
-                        課程
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i class="fas fa-angle-down"></i>
-                        </div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">課程管理</a>
-                             <a class="nav-link" href="">審核退費</a> -->
-<!-- 
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-book-fill"></i>
+                            </div>
+                            課程
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a id="manageCourse" class="nav-link" href="">課程管理</a>
+                                <!-- <a class="nav-link" href="">審核退費</a> -->
+                                <!-- 
                         </nav>
-                    </div>  -->
+                    </div> 
 
                     
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssssa" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
-                       後臺廣播
+                            後臺廣播
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
                             <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
-                           
+                        
                         </nav>
                     </div>
 
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayoutssssss" aria-expanded="false"
-                       aria-controls="collapseLayouts">
+                        data-bs-target="#collapseLayoutssssss" aria-expanded="false"
+                        aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon">
                             <i class="bi bi-person-fill"></i>
                         </div>
@@ -284,183 +286,229 @@
                     </a>
 
                     <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
-                         data-bs-parent="#sidenavAccordion">
+                        data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a id="AccountManage" class="nav-link" href="Account/AccountManage.html">會員管理
-<!--                                <span class="msg-counter accountspan">7</span>-->
-                            </a>
-                            <a id="AdminManage" class="nav-link" href="">管理員管理
-<!--                                <span class="msg-counter adminspan">7</span>-->
-                            </a>
-                            <a id="CoachManage" class="nav-link" href="">審核教練資格
-<!--                                <span class="msg-counter coachapplyspan" style="right:45px;">7</span>-->
-                            </a>
-                        </nav>
-                    </div>
-
-                </div>
-            </div>
-
-        </nav>
-    </div>
-
-    <!--以上nav-->
-
-
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid px-4">
-
-
-                <div class="card mb-4">
-                    <div class="card-header">
-
-                        <h2>後臺中心</h2>
-                    </div>
-                    <!-- <div class="card-body">
-                    <table class="table" id="acctable">
-
-                        <thead>
-                        <tr>
-                            <th>會員編號</th>
-                            <th>會員名稱</th>
-                            <th>會員層級</th>
-                            <th>會員權限</th>
-                            <th>帳號建立時間</th>
-                            <th>最後修改時間</th>
-                            <th></th>
-
-                        </tr>
-                        </thead> -->
-                    <!-- <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot> -->
-                    <!-- <tbody id="aaa">
-
-
-                        </tbody>
-                    </table>
-                </div> -->
-                </div>
-            </div>
-
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content ">
-                        <div class="modal-header ">
-                            <h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                            <span class="msg-counter accountspan">7</span>-->
+                                </a>
+                                <a id="AdminManage" class="nav-link" href="">管理員管理
+                                    <!--                                <span class="msg-counter adminspan">7</span>-->
+                                </a>
+                                <a id="CoachManage" class="nav-link" href="">審核教練資格
+                                    <!--                                <span class="msg-counter coachapplyspan" style="right:45px;">7</span>-->
+                                </a>
+                            </nav>
                         </div>
 
+                    </div>
+                </div>
 
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row"></div>
+            </nav>
+        </div>
 
-
-                                <div class="col-md-12">
-
-                                    <div class="table-responsive">
-                                        <table class="table table-user-information">
-                                            <tbody id="aaaa">
+        <!--以上nav-->
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2>後臺中心</h2>
+                        </div>
+                        <div class="card-body">
+                            <table class="table" id="acctable">
+
+                                <!-- <thead>
+                                    <tr>
+                                        <th>會員編號</th>
+                                        <th>會員名稱</th>
+                                        <th>會員層級</th>
+                                        <th>會員權限</th>
+                                        <th>帳號建立時間</th>
+                                        <th>最後修改時間</th>
+                                        <th></th>
+                                    </tr>
+                                </thead> -->
+                                <!-- <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </tfoot> -->
+                                <!-- <tbody id="aaa">
+                                </tbody> -->
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content ">
+                            <div class="modal-header ">
+                                <h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
 
+
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row"></div>
+
+
+                                    <div class="col-md-12">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-user-information">
+                                                <tbody id="aaaa">
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </main>
-
-
-        <!--以下footer-->
+            </main>
 
 
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                    <div>
-                        <a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-                        &amp; Conditions</a>
+            <!--以下footer-->
+
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a> &middot; <a href="#">Terms
+                                &amp; Conditions</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
-</div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-<script src="./lib/js/backtai.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="./lib/js/backtai.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-<script src="./lib/js/datatables-demo.js"></script>
+    <script src="./lib/js/datatables-demo.js"></script>
 
-<script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
+    <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
 
 
-<script>
+    <script>
+        const courseTypeMap = {
+            1: '可參加',
+            2: '暫停報名',
+            3: '截止報名',
+            4: '滿團',
+            5: '強制下架'
+        };
 
-    //算有幾個未處理
-    $(function(){
+        //算有幾個未處理
+        $(function () {
 
-        $.ajax({url : "http://localhost:8080/ixercise/back/getReportCount", // 資料請求的網址
-            type : "GET",
-            dataType : "json",
+            $.ajax({
+                url: "http://localhost:8080/ixercise/back/getReportCount", // 資料請求的網址
+                type: "GET",
+                dataType: "json",
 
-            success : function(data) {
-            var html = "";
-                console.log(data);
-                if(data==0){
-                    html+='檢舉會員';
-                }else{
-                    html+=' 檢舉會員<span class=" msg-counter reportspan">'+data+'</span>';
+                success: function (data) {
+                    var html = "";
+                    console.log(data);
+                    if (data == 0) {
+                        html += '檢舉會員';
+                    } else {
+                        html += ' 檢舉會員<span class=" msg-counter reportspan">' + data + '</span>';
+                    }
+
+
+
+                    $("#changecount").html(html);
+                },
+                error: function (xhr, status, error) {
+                    console.log("AJAX Error:", error);
                 }
-            
-            
-          
-								$("#changecount").html(html);
-							},
-							error : function(xhr, status, error) {
-								console.log("AJAX Error:", error);
-							}
-						});
-        
-    })
+            });
 
-</script>
+        })
 
-<!--先註解 這裡的code都沒問題-->
-<script>
-    const acmag = document.querySelector("#AccountManage");
-    const admag = document.querySelector("#AdminManage");
-    const comag = document.querySelector("#CoachManage");
-    acmag.href = getContextPath() + "/Account/AccountManage.html"
-    admag.href = getContextPath() + "/Account/AdminManage.html"
+
+
+        $('#manageCourse').on('click', function () {
+            console.log(this);
+            $.ajax({
+                url: "/ixercise/course",
+                type: "GET",
+                dataType: "json",
+                success: function (resp) {
+                    console.log("全部課程resp>>" + resp);
+                    let appendFrom1 = '';
+                    appendFrom1 += `<thead>
+                                    <tr>
+                                        <th>課程編號</th>
+                                        <th>課程名稱</th>
+                                        <th>課程時間</th>
+                                        <th>城市</th>
+                                        <th>類型</th>
+                                        <th>課程狀態</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>`;
+                    appendFrom1 += `<tbody id="aaa">
+                                            <tr>
+                                                <td>${resp[i].courseId}</td>
+                                                <td>${resp[i].eventName}</td>
+                                                <td>${resp[i].courseStartTime}</td>
+                                                <td>${resp[i].city}</td>
+                                                <td>${resp[i].categoryId}</td>
+                                                <td>${courseTypeMap[resp[i].courseStatus]}</td>`;
+                    // appendFrom1 += `<td> <button type="button" class="btn btn-primary stop1btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">修改</button></td> `;
+                    ppendFrom1 += `             <td> <button class="btn btn-danger stopbtn">強制下架</button></td>
+                                            </tr>
+                                    </tbody>`;
+
+                },
+                error: function (xhr, status, error) {
+                    alert("Error: " + xhr.responseText);
+                }
+            });
+        });
+
+
+    </script>
+
+    <!--先註解 這裡的code都沒問題-->
+    <script>
+        const acmag = document.querySelector("#AccountManage");
+        const admag = document.querySelector("#AdminManage");
+        const comag = document.querySelector("#CoachManage");
+        acmag.href = getContextPath() + "/Account/AccountManage.html"
+        admag.href = getContextPath() + "/Account/AdminManage.html"
     // comag.href = getContextPath()+""
 
-</script>
+    </script>
 </body>
 
 </html>

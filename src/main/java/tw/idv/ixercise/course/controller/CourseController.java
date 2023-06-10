@@ -47,13 +47,14 @@ public class CourseController {
 		if (course.getDescription() == "") {
 			core.setMessage("請輸入課程描述");
 			core.setSuccessful(false);
+			System.out.println("新增課程失敗");
 		} else {
 			Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 			course.setCourseCreationDate(currentTimestamp);
 			core.setMessage("新增成功");
 			core.setSuccessful(service.save(course));
+			System.out.println("新增課程成功");
 		}
-		System.out.println("新增成功");
 		return core;
 	}
 
