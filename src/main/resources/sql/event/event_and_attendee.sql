@@ -7,6 +7,7 @@ ALGORITHM = UNDEFINED
 VIEW `event_and_attendees` AS
 SELECT `event`.`eventId`                  AS `eventId`,
        `event`.`creatorId`                AS `creatorId`,
+       `event_attendees`.`accountId`      AS `accountId`,
        `event`.`eventName`                AS `eventName`,
        `event`.`price`                    AS `price`,
        `event`.`eventDate`                AS `eventDate`,
@@ -27,13 +28,12 @@ SELECT `event`.`eventId`                  AS `eventId`,
        `event`.`status`                   AS `status`,
        `event`.`paymentMethod`            AS `paymentMethod`,
        `event_attendees`.`attendId`       AS `attendId`,
-       `event_attendees`.`accountId`      AS `accountId`,
        `event_attendees`.`attendTime`     AS `attendTime`,
        `event_attendees`.`attendeeStatus` AS `attendeeStatus`,
        `event_attendees`.`reason`         AS `reason`,
        `event_attendees`.`commentStatus`  AS `commentStatus`
 FROM (`event`
-    JOIN `event_attendees` ON ((`event`.`eventId` = `event_attendees`.`eventId`)));
+       JOIN `event_attendees` ON ((`event`.`eventId` = `event_attendees`.`eventId`)));
 
 SELECT *
 FROM THA101G1.event_and_attendees;
