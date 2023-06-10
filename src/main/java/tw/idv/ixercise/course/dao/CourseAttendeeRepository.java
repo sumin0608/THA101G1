@@ -46,4 +46,8 @@ public interface CourseAttendeeRepository extends JpaRepository<CourseAttendee, 
 	CourseAttendee findByAttendId(Integer attendId);
 
 	List<CourseAttendee> findByCourseIdAndAccountId(Integer courseId, Integer accountId);
+	
+
+    @Query("SELECT c.courseId, COUNT(*) AS courseId_count FROM CourseAttendee c GROUP BY c.courseId")
+    CourseAttendee countAttendeesByCourseId(Integer courseId);
 }
