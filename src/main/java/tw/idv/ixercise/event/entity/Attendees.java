@@ -22,7 +22,8 @@ public class Attendees extends Core {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp attendTime;
     @Column(insertable = false)
-    private Integer status;
+    private Integer attendeeStatus;
+    private String reason;
     @Column(insertable = false)
     private Integer commentStatus;
 

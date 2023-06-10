@@ -508,7 +508,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                    <textarea class="form-control event_participate" id="description" name="description"
+                                    <textarea class="form-control event_participate" id="attendReason"
+                                              name="description"
                                               placeholder="聚會描述和備註" required rows="3"></textarea>
                                 <div class="invalid-feedback">
                                     Please choose a username.
@@ -607,9 +608,71 @@
     let applyResulth2 = document.querySelector("#applyResult h2");
 
     function openApplyPopup() {
-        $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
-        $("#applyResult h2").text("報名失敗");
-        $("#applyResult p").text("報名失敗");
+        //ajax
+        // <!-- 課程介紹區 -->
+        // 抓Course_homePage.html傳來的courseId
+        let urlParams = new URLSearchParams(window.location.search);
+        let courseId = urlParams.get('evt');
+        let accountId = sessionStorage.getItem("accountId");
+        const reason = $("#attendReason").val();
+        // Data to be sent in the request body
+        if (courseId == null) {
+            alert("為選取到課程");
+            return;
+        }
+        if (accountId == null) {
+            alert("請先登入");
+            return;
+        }
+        if (reason == "") {
+            alert("請輸入報名理由>.<")
+            // applyResult.classList.add("open-applyResult");
+            return;
+        }
+        const course = {
+            eventId: courseId,
+            accountId: accountId,
+            reason: reason
+        };
+
+
+        var creator_hide = sessionStorage.getItem('creator_hide');
+        if (localStorage.getItem('accountId') == creator_hide) {
+            alert("這是你自己開的課程");
+            applyResult.classList.add("open-applyResult");
+            return;
+        }
+        // Send POST request using fetch
+        fetch("../eventAttendee", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(course)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response:", data);
+                // Handle the response data
+                if (data.successful === true) {
+                    $("#applyResult img#check_cross_mark").attr("src", "image/200-tick.png");
+                    $("#applyResult h2").text("報名已送出");
+                    $("#applyResult p").text("請等待主揪審核....");
+                    $("#applyResult p").text(data.message);
+                } else {
+                    $("#applyResult img#check_cross_mark").attr("src", "image/404-wrong.png");
+                    $("#applyResult h2").text("報名失敗");
+                    $("#applyResult p").text("報名失敗");
+                    $("#applyResult p").text(data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                // $("#applyResult p").text(error);
+                applyResult.classList.add("open-applyResult");
+                return;
+                // Handle any errors
+            });
 
         applyResult.classList.add("open-applyResult");
         //ajax
@@ -621,16 +684,7 @@
     }
 
 
-    $(document).ready(function () {
-        // Handle form submission
-        $('#myModal form').on('submit', function (e) {
-            e.preventDefault(); // Prevent actual form submission
-            // Perform your desired actions here
-            alert('Form submitted!');
-            // Optionally, you can close the modal
-            $('#myModal').modal('hide');
-        });
-    });
+
 </script>
 
 
@@ -701,6 +755,8 @@
                 $("#eventStartTime").text(event.eventStartTime);
                 $("#eventLastVerifyDateAndTime").html('&nbsp;(最後審核日期:' + event.lastVerifyDateAndTime + ')');
                 $("#paymentMethod").text(event.moneyDivisionMethod);
+                $("#creator").text("目前報名人數: " + event.currentAttendees);
+
 
                 $("#expectedExpense").html("費用: &dollar;" + event.price);
                 $("#maxAttendees").text("名額: " + event.maxAttendees + "人");
