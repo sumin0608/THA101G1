@@ -12,5 +12,5 @@ public interface EventAndAttendeesRepository extends JpaRepository<EventAndAtten
 
     List<EventAndAttendees> findByEventId(Integer eventId);
 
-    List<EventAndAttendees> findByEventIdAndsAndAttendeeStatus(Integer eventId, Integer attendeesStatus);
+    List<EventAndAttendees> findByEventIdAndAndAttendeeStatus(Integer eventId, Integer attendeesStatus);
 }

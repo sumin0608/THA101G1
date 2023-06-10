@@ -43,7 +43,7 @@ public class EventAttendeesServiceImpl implements EventAttendeesService {
         Attendees savedAttendee = null;
         Timestamp attendDeadline;
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-        List<EventAndAttendees> byEventIdID = aaar.findByEventIdAndsAndAttendeeStatus(attendees.getEventId(), 2);
+        List<EventAndAttendees> byEventIdID = aaar.findByEventIdAndAndAttendeeStatus(attendees.getEventId(), 2);
         int passedSize = byEventIdID.size();
 
         Event event = eventRepo.findByEventId(attendees.getEventId());
