@@ -12,4 +12,6 @@ public interface CourseAndAttendeesRepository extends JpaRepository<CourseAndAtt
 
     List<CourseAndAttendeesEntity> findByCourseID(Integer courseId);
 
+    List<CourseAndAttendeesEntity> findByCourseIDAndStatus(Integer courseId, Integer status);
+
 }

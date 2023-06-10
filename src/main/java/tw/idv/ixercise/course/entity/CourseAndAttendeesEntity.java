@@ -15,7 +15,11 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "course_and_attendees")
 public class CourseAndAttendeesEntity extends Core {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     private Integer courseID;
     private Integer creator;
     private String eventName;
