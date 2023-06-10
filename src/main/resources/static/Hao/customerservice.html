@@ -2,11 +2,13 @@
 <html lang="zh-Hant-TW">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ixercise</title>
     <!-- 引入bootstarp跟共用css內容========================================= -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css">
     <link href="../lib/css/styles.css" rel="stylesheet" />
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -15,6 +17,7 @@
     <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
+        
         .square-image {
             /* position: absolute; */
             top: 0;
@@ -607,10 +610,6 @@ form.addEventListener('submit', function(event) {
 });
 
 
-
-
-
-
 var inputField = form.querySelector('.inputvalue');
 var inputValue = ($(".inputvalue").val().trim());
 var  currentDate = new Date();
@@ -621,34 +620,9 @@ var formData = {
 
 
 var mydata = JSON.stringify(formData);
-console.log(mydata);
-
-// 进一步处理 JSON 数据，例如通过 AJAX 发送到服务器等
-
-// $.ajax({
-// url:  "http://localhost:8080/ixercise/set",
-// type: 'POST',
-// contentType: 'application/json',
-// data: mydata,
-// success: function(response) {
-// // 請求成功，進行相應的處理
-// console.log(response);
-
-// },
-// error: function(xhr, status, error) {
-// // 請求失敗，處理錯誤
-// console.error(error);
-// }
-// });
-
-
-      
-    
+console.log(mydata);   
       $("input.inputvalue").val("");
 
-
-
-      
     }
   });
   
@@ -656,7 +630,7 @@ console.log(mydata);
 
 function sendMessage(input_text) {
               
-    console.log("我輩執行到");
+    console.log("我有執行到");
               timestamp = new Date(new Date().getTime() + (480* 60000)).toISOString();
               var jsonObj = {
            "type" : "chat",
@@ -693,28 +667,6 @@ var formData = {
 
 var mydata = JSON.stringify(formData);
 console.log(mydata);
-
-// 进一步处理 JSON 数据，例如通过 AJAX 发送到服务器等
-
-// $.ajax({
-// url:  "http://localhost:8080/ixercise/set",
-// type: 'POST',
-// contentType: 'application/json',
-// data: mydata,
-// success: function(response) {
-// // 請求成功，進行相應的處理
-// console.log(response);
-// showConfirmationPopup();
-// },
-// error: function(xhr, status, error) {
-// // 請求失敗，處理錯誤
-// console.error(error);
-// }
-// });
-
-
-
-
 
 
 </script>
@@ -849,14 +801,9 @@ console.log(mydata);
     };					
                          $(".talkstartes").append(html);
 			
-				// messagesArea.scrollTop = messagesArea.scrollHeight;
+				
 			} else if ("chat" === jsonObj.type) {
-				// var li = document.createElement('li');
-				// jsonObj.sender === self ? li.className += 'me' : li.className += 'friend';
-				// li.innerHTML = jsonObj.message;
-				// console.log(li);
-				// document.getElementById("area").appendChild(li);
-				// messagesArea.scrollTop = messagesArea.scrollHeight;
+			
                 var text=jsonObj.messageTime;
                 var datePart = text.substring(5, 10);
                 var timePart = text.substring(11, 16);
@@ -881,72 +828,15 @@ console.log(mydata);
 			
 		};
 
-    //     function sendMessage(input_text) {
-              
-    //        var timestamp = new Date().toISOString();
-    //         console.log(timestamp);
-    //        var jsonObj = {
-    //     "type" : "chat",
-    //     "sender" : 1112,
-    //     "receiver" : 1,
-    //     "message" : input_text,
-    //     "messageTime":timestamp
-    //     };
-    
-    // webSocket.send(JSON.stringify(jsonObj));
-    
-    // }
-    
 
 
-
-
-        
 
 		webSocket.onclose = function(event) {
 			console.log("Disconnected!");
 		};
 	}
 	
-	// function sendMessage(input_text) {
 	
-
-	
-	// 		var jsonObj = {
-	// 			"type" : "chat",
-	// 			"sender" : 1111,
-	// 			"receiver" :1,
-	// 			"message" : input_text 
-	// 		};
-	// 		webSocket.send(JSON.stringify(jsonObj));
-	// }
-	
-	// 有好友上線或離線就更新列表
-	// function refreshFriendList(jsonObj) {
-	// 	var friends = jsonObj.users;
-	// 	var row = document.getElementById("row");
-	// 	row.innerHTML = '';
-	// 	for (var i = 0; i < friends.length; i++) {
-	// 		if (friends[i] === self) { continue; }
-	// 		row.innerHTML +='<div id=' + i + ' class="column" name="friendName" value=' + friends[i] + ' ><h2>' + friends[i] + '</h2></div>';
-	// 	}
-	// 	// addListener();
-	// }
-	// 註冊列表點擊事件並抓取好友名字以取得歷史訊息
-	// function addListener() {
-	// 	var container = document.getElementById("row");
-	// 	container.addEventListener("click", function(e) {
-	// 		var friend = e.srcElement.textContent;
-	// 		updateFriendName(friend);
-	// 		var jsonObj = {
-	// 				"type" : "history",
-	// 				"sender" : 1111,
-	// 				"receiver" : 1,
-	// 				"message" : ""
-	// 			};
-	// 		webSocket.send(JSON.stringify(jsonObj));
-	// 	});
-	// }
 	
 	function disconnect() {
 

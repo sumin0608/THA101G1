@@ -47,10 +47,8 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 		List<CourseAndAttendeesEntity> byCourseID = caar.findByCourseID(courseAttendee.getCourseId());
 		int size = byCourseID.size();
-//		System.out.println(size);
-		Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
 
-//		int size = repository.findByCourseId(courseAttendee.getCourseId()).size();
+        Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
 
 //		List<CourseAttendee> size = repository.findByCourseId(24);
 		System.out.println("size");
@@ -78,7 +76,8 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		List<CourseAttendee> byCourseIdAndAccountId = repository.findByCourseIdAndAccountId(courseAttendee.getCourseId(), courseAttendee.getAccountId());
 		System.out.println(byCourseIdAndAccountId);
 		Core core = new Core();
-		//5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
+
+        //5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
 		if (!byCourseIdAndAccountId.isEmpty()) {
 			System.out.println("您她媽的已參加過了");
 			core.setMessage("您已報名過了");

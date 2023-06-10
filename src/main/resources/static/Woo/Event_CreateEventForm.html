@@ -496,7 +496,7 @@
                                     <div class="col-sm-12"></div>
                                     <label for="event_name" class="form-label">聚會名稱</label>
                                     <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
-                                        class="form-control" value="111" required>
+                                           class="form-control" required value="111">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -506,44 +506,88 @@
                                 </div>
                                 <hr>
                                 <br>
+
+                                <!-- Forth row -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-11">
+                                        <label class="form-label">活動地址</label>
+                                        <input class="form-control" id="autocomplete-address" name="autocomplete-address"
+                                               placeholder="活動地址..."
+                                               required type="text" value="111">
+                                    </div>
+                                    <input id="autocomplete-name" type="hidden">
+                                    <input id="autocomplete-url" type="hidden">
+                                    <input id="autocomplete-formatted-address" type="hidden">
+                                    <div class="invalid-feedback">
+                                        Please choose a username.
+                                    </div>
+                                </div>
+
+                                <br>
+
                                 <!-- Second row -->
-                                <div class="row">
+                                <div class="row mb-2">
 
                                     <div class="col-sm-4">
-                                        <label for="" class="form-label">聚會類型</label>
+                                        <label class="form-label" for="categoryId">聚會類型</label>
                                         <select class="form-select" id="categoryId" name="categoryId"
-                                            aria-label="Default select example" required>
+                                                aria-label="Default select example" required>
                                             <option selected disabled value="">請選擇..</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option value="1">足球</option>
+                                            <option value="2">籃球</option>
+                                            <option value="3">網球</option>
+                                            <option value="4">排球</option>
+                                            <option value="5">橄欖球</option>
+                                            <option value="6">棒球</option>
+                                            <option value="7">曲棍球</option>
+                                            <option value="8">高爾夫球</option>
+                                            <option value="9">羽毛球</option>
+                                            <option value="10">乒乓球</option>
+                                            <option value="11">壁球</option>
+                                            <option value="12">手球</option>
+                                            <option value="13">保齡球</option>
+                                            <option value="14">有氧操課</option>
+                                            <option value="15">重訓課</option>
+                                            <option value="16">瑜伽課</option>
+                                            <option value="17">舞蹈課</option>
+                                            <option value="18">腹肌課</option>
+                                            <option value="19">動感單車課</option>
+                                            <option value="20">跳繩課</option>
+                                            <option value="21">拳擊課</option>
+                                            <option value="22">跳舞操課</option>
+                                            <option value="23">瑜伽拉伸課</option>
+                                            <option value="24">其他</option>
                                         </select>
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="" class="form-label">所在城市</label>
-                                        <select class="form-select" id="city" name="city"
-                                            aria-label="Default select example" required>
-                                            <option selected disabled value="">請選擇..</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
+                                        <label class="form-label" for="city">所在城市</label>
+                                        <input class="form-control" disabled id="city" name="city"
+                                               placeholder="所在城市.." required type="text">
+                                        <!--                                        <select class="form-select" id="city" name="city"-->
+                                        <!--                                            aria-label="Default select example" required>-->
+                                        <!--                                            <option selected disabled value="">請選擇..</option>-->
+                                        <!--                                            <option value="1">One</option>-->
+                                        <!--                                            <option value="2">Two</option>-->
+                                        <!--                                            <option value="3">Three</option>-->
+                                        <!--                                        </select>-->
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="" class="form-label">所在地區</label>
-                                        <select class="form-select" id="district" name="district"
-                                            aria-label="Default select example" required>
-                                            <option selected disabled value="">請選擇..</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
+                                        <label class="form-label" for="district">所在地區</label>
+                                        <input class="form-control" disabled id="district" name="district"
+                                               placeholder="所在地區.." required type="text">
+                                        <!--                                        <select class="form-select" id="district" name="district"-->
+                                        <!--                                            aria-label="Default select example" required>-->
+                                        <!--                                            <option selected disabled value="">請選擇..</option>-->
+                                        <!--                                            <option value="1">One</option>-->
+                                        <!--                                            <option value="2">Two</option>-->
+                                        <!--                                            <option value="3">Three</option>-->
+                                        <!--                                        </select>-->
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -557,11 +601,14 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <label class="form-label">場地名稱</label>
-                                        <input type="text" id="location" name="location" placeholder="請輸入聚會場地名稱..."
-                                            class="form-control" value="111" required>
+                                        <input class="form-control" id="location" name="location"
+                                               placeholder="請輸入聚會場地名稱..."
+                                               required type="text" value="111">
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
+                                        x
+                                        0
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="form-label">預計花費</label>
@@ -577,18 +624,7 @@
 
                                 <hr>
                                 <br>
-                                <!-- Forth row -->
-                                <div class="row">
-                                    <div class="col-sm-12"></div>
-                                    <label class="form-label">活動地址</label>
-                                    <input type="text" name="address" placeholder="活動地址..." class="form-control"
-                                           id="address" required value="111">
-                                    <div class="invalid-feedback">
-                                        Please choose a username.
-                                    </div>
-                                </div>
 
-                                <br>
 
 
                                 <br>
@@ -597,7 +633,7 @@
                                     <div class="col-sm-5">
                                         <label class="form-label">活動日期</label>
                                         <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
-                                               class="form-control" required value="2023-05-07">
+                                               class="form-control" required>
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -620,7 +656,7 @@
                                         <label class="form-label">最後審核時間</label>
                                         <input class="form-control" id="deadline" name="deadline"
                                                placeholder="活動日期..."
-                                               required type="datetime-local" value="2023-05-07 22:10">
+                                               min="" required type="datetime-local">
                                         <div class="invalid-feedback">
                                             Please enter a last verify time.
                                         </div>
@@ -629,11 +665,12 @@
 
                                 <br>
                                 <!-- row  seven ===================================== Javascript ==============================================-->
-                                <div class="row">
+                                <div class="row mb-4">
                                     <div class="col-sm-5">
                                         <label class="form-label">聚會人數</label>
-                                        <input type="number" id="maxAttendees" name="maxAttendees" placeholder="聚會人數"
-                                            min="1" max="100" class="form-control" value="100" required>
+                                        <input class="form-control" id="maxAttendees" max="100"
+                                               min="1"
+                                               name="maxAttendees" placeholder="聚會人數" required type="number" value="100">
                                         <div class="invalid-feedback">
                                             Please choose a username.
                                         </div>
@@ -769,16 +806,32 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!-- 一定要加這個 defer or async or ascy type="text/javascript"                                                                                                     // 設定語言為繁體中文 -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2-TXdbaJlPtWu96Ffe4YTXSb5qXTeEs&libraries=places&callback=initMap&language=zh-TW"
+            type="text/javascript"></script>
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!--    text editor-->
+    <!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     <!-- ================================================================= -->
 
     <script>
         $("#searchbar").on("click", function () {
             $("#searchcard").toggleClass("d-none");
         });
-
+        // text editor
+        const editor = CKEDITOR.replace('description');
         //==================================== image upload js ======================zzzz=================================================================
         $(document).ready(function () {
+
+
+            var today = new Date();
+            let date = today.toISOString().split("T")[0];
+            var dateTime = today.toISOString().slice(0, 16);
+            console.log(dateTime);
+
+            document.getElementById("eventDate").setAttribute("min", date);
+            document.getElementById("deadline").setAttribute("min", dateTime);
 
             // ============================  setting input for time and datetime only allow 5 minutes intervals ================ start ======
 
@@ -937,14 +990,24 @@
                         // $('#preview').attr('src', reader.result);
                         $("#previewBox").html('<img src="' + reader.result + '" class="preview_img">');
                         // $('#photo-dropzone').val(file.name);
-                        $('#photo-dropzone').prop('files', files);;
+                        $('#photo-dropzone').prop('files', files);
+                        ;
                     };
 
                     reader.readAsDataURL(file);
                 }
             };
             //==================================== image upload js -gpt =======================================================================================
-            //==================================== google map api =======================================================================================
+            //==================================== text-editor =======================================================================================
+
+            $('#alertContent').click(function () {
+                // CKEDITOR.instances.editorDemo.updateElement();
+                // console.log($('textarea[name=editorDemo]').val());
+                // console.log(CKEDITOR.instances.editorDemo.getData());
+                CKEDITOR.instances.editorDemo.updateElement();
+                // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
+                console.log($('textarea[name=description]').val());
+            });
 
             //==================================== form-input validate &&  session storage =======================================================================================
             // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -966,6 +1029,10 @@
                             } else {
                                 console.log("hiii");
                                 e.preventDefault();
+                                CKEDITOR.instances.description.updateElement();
+                                // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
+                                console.log($('textarea[name=description]').val());
+
 
                                 var event = {};
 
@@ -975,14 +1042,20 @@
                                 event.city = $("#city").val();
                                 event.district = $("#district").val();
                                 event.location = $("#location").val();
-                                event.address = $("#address").val();
+
+                                //把隱藏input 的值裝進 event
+                                event.address4input = $("#autocomplete-address").val();
+                                event.address = $("#autocomplete-formatted-address").val();
+                                event.addressUrl = $("#autocomplete-url").val();
+                                event.addressNickname = $("#autocomplete-name").val();
+
                                 event.price = $("#price").val();
                                 event.eventDate = $("#eventDate").val();
                                 // event.startTime = $("#startTime").val() + ':00';
                                 event.startTime = $("#startTime").val();
                                 event.maxAttendees = $("#maxAttendees").val();
                                 event.paymentMethod = $("#paymentMethod").val();
-                                event.description = $("#description").val();
+                                event.description = $('textarea[name=description]').val();
                                 event.deadline = $("#deadline").val();
 
                                 // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1101,12 +1174,18 @@
                 $("#city").val(sessionFormData.city);
                 $("#district").val(sessionFormData.district);
                 $("#location").val(sessionFormData.location);
-                $("#address").val(sessionFormData.address);
+
+
+                //把session 的值裝進 event 隱藏input
+                $("#autocomplete-address").val(sessionFormData.address4input);
+                $("#autocomplete-formatted-address").val(sessionFormData.address);
+                $("#autocomplete-url").val(sessionFormData.addressUrl);
+                $("#autocomplete-name").val(sessionFormData.addressNickname);
+
                 $("#price").val(sessionFormData.price);
                 $("#eventDate").val(sessionFormData.eventDate);
                 $("#startTime").val(sessionFormData.startTime);
-                $("#lastVerifyDate").val(sessionFormData.lastVerifyDate);
-                $("#lastVerifyTime").val(sessionFormData.lastVerifyTime);
+                $("#deadline").val(sessionFormData.deadline);
                 $("#maxAttendees").val(sessionFormData.maxAttendees);
                 $("#paymentMethod").val(sessionFormData.paymentMethod);
                 $("#description").val(sessionFormData.description);
@@ -1115,6 +1194,65 @@
 
 
         }); //Load ====
+        //==================================== google map api =======================================================================================
+        // JavaScript 程式碼在這裡
+        // 載入 Google 地圖 API 腳本
+        function initMap() {
+            // 設定地點自動完成欄位
+            const input = document.getElementById('autocomplete-address');
+
+            // 建立地點自動完成物件
+            const autocomplete = new google.maps.places.Autocomplete(input);
+
+            // 設定國家
+            autocomplete.setComponentRestrictions({'country': ['tw']});
+
+            // 監聽當地點選擇事件
+
+            autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
+                console.log("place--");
+                console.log(place);
+                console.log(place.url);         //https://maps.google.com/?cid=7060274125268772127
+                console.log(place.formatted_address); //詳細地址  e.g:106台灣台北市大安區新生南路二段1號
+                console.log(place.name);        //e.g.: 大安森林公園
+                console.log(place.website);
+
+                // 檢查是否有選擇地點
+                if (!place.geometry || !place.geometry.location) {
+                    window.alert('在Google maps 查不到: \'' + place.name + '\'');
+                    return;
+                }
+                //把值塞進隱藏的input
+                $("#autocomplete-formatted-address").val(place.formatted_address);
+                $("#autocomplete-url").val(place.url);
+                $("#autocomplete-name").val(place.name);
+                $("#location").val(place.name);
+
+
+                let addressHtmlCode = place.adr_address;
+                console.log(addressHtmlCode);
+                // Assuming you have the HTML code stored in a variable called 'htmlCode'
+                const htmlparser = new DOMParser();
+                const doc = htmlparser.parseFromString(addressHtmlCode, "text/html");
+
+                // Select the element with the class 'region',  abd Get the text content of the selected element
+                const regionText = doc.querySelector(".region").textContent;
+                const localityText = doc.querySelector(".locality").textContent;
+
+                $("#city").val(regionText);
+                $("#district").val(localityText);
+                console.log($("#district").val());
+
+            });
+        }
+
+        // let innput = document.getElementById('autocomplete-input');
+        // let btn = document.querySelector("#btn");
+        // btn.addEventListener('click', function(e){
+        //     console.log('地點縮短連結:', innput.value);  //台灣台北市大安區新生南路二段大安森林公園
+        // });
+
         // function updateEventPhoto(eventId, photoData) {
         //     $.ajax({
         //         url: '/events/' + eventId + '/photo',

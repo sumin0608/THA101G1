@@ -491,6 +491,7 @@
                 </div>
             </aside> -->
 
+            <div id="ecpay123"></div>
 
             <!-- 下排課程推薦 -->
             <div class="row align-items-md-stretch"> <!-- style="border: solid green;" -->
@@ -631,7 +632,7 @@
         })
 
         $(document).ready(function () {
-            console.log("有人嗎");
+            // console.log("有人嗎");
 
             // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
             var urlParams = new URLSearchParams(window.location.search);
@@ -695,7 +696,7 @@
                         console.log("其他課程(同個教練):", other_courseId);
                         // @@@@@@@@@btn其他課程(同個教練)@@@@@@@@@
                         $("#morecoursebtn").on("click", function (e) {
-                            console.log("123");
+                            // console.log("123");
                             e.preventDefault();
 
                             console.log("其他課程(同個教練)courseId: " + other_courseId);
@@ -710,7 +711,7 @@
                         type: 'GET',
                         async: false,//
                         success: function (m) {
-                            console.log(m);
+                            // console.log(m);
                             $(".o_creator").text(m.accountName);
                             $("#accountIntro_place").text(m.accountIntro);
                             // btn教練介紹
@@ -735,6 +736,7 @@
 
             // 2.教練介紹按鈕
             $('.btn-outline-secondary').on('click', function (e) {
+                window.location.href = '/ixercise/Account/PersonalPage.html';
             });
         }); // ==document ready ===
         //==== danni 修改 ===========================================================
@@ -772,6 +774,13 @@
                 reason: reason
             };
 
+
+            var creator_hide = sessionStorage.getItem('creator_hide');
+            if (localStorage.getItem('accountId') == creator_hide) {
+                alert("這是你自己開的課程");
+                applyResult.classList.add("open-applyResult");
+                return;
+            }
             // Send POST request using fetch
             fetch("../courseAttendee", {
                 method: "POST",
@@ -826,39 +835,52 @@
         });
 
 
-        // $(document).ready(function () {
-        //     $('#popupbtnpay').on('click', function (e) {
-        //         console.log("1:" + sessionStorage.getItem('courseId'));
-        //         console.log("2:" + $("#categoryId").text());
-        //         console.log("3:" + $("#expectedPrice").text());
-        //         let expectedPrice22 = $("#expectedPrice").text();
-        //         const coursePay = {
-        //             courseId: sessionStorage.getItem('courseId'),
-        //             eventName: sessionStorage.getItem('courseId') + 999 + $("#eventName").text() + 0000 + $("#creator").text(),
-        //             ategoryId: $("#categoryId").text(),
-        //             expectedPrice: $("#expectedPrice").text(),
-        //             description: $("#description").text()
-        //         };
+        $(document).ready(function () {
+            $('#popupbtnpay').on('click', function (e) {
+                // console.log("1:" + sessionStorage.getItem('courseId'));
+                // console.log("2:" + $("#categoryId").text());
+                // console.log("3:" + $("#expectedPrice").text());
+                let eventName22 = sessionStorage.getItem('courseId') + "/" + $("#eventName").text() + "/" + $("#creator").text();
+                let eventNameStr = eventName22.toString();
+                let expectedPrice22 = $("#expectedPrice").text();
+                let expectedPriceStr = expectedPrice22.toString();
+                let description22 = $("#description").text();
+                let descriptionStr = description22.toString();
 
-        //         if ($("#applyResult h2").text() == "報名已送出") {
-        //             $.ajax({
-        //                 url: "/ixercise/ecpayCheckout",
-        //                 type: "POST",
-        //                 // dataType: "application/json",
-        //                 dataType: "application/x-www-form-urlencoded",
-        //                 data: expectedPrice22,
-        //                 success: function (resp) {
-        //                     console.log("Response:", resp);
+                // const coursePay = {
+                //     courseId: sessionStorage.getItem('courseId'),
+                //     eventName: sessionStorage.getItem('courseId') + 999 + $("#eventName").text() + 1234 + $("#creator").text(),
+                //     ategoryId: $("#categoryId").text(),
+                //     expectedPrice: $("#expectedPrice").text(),
+                //     description: $("#description").text()
+                // };
 
-        //                 }, error: function (xhr, status, error) {
-        //                     alert("Error: " + xhr.responseText);
-        //                 }
-        //             });
-        //         }
+                if ($("#applyResult h2").text() == "報名已送出") {
+                    $.ajax({
+                        url: "/ixercise/ecpayCheckout",
+                        type: "POST",
+                        // dataType: "application/json",
+                        // dataType: "application/x-www-form-urlencoded",
+                        dataType: "html",
+                        data: {
+                            expectedPrice: expectedPriceStr,
+                            eventName: eventNameStr,
+                            description: descriptionStr
+                        },
+                        success: function (resp) {
+                            $('#ecpay123').html(resp);
+
+                        }, error: function (xhr, status, error) {
+                            console.log("Error: " + xhr.responseText);
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
 
 
-        //     });
-        // });
+
     </script>
 </body>
 

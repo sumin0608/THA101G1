@@ -6,7 +6,7 @@ CREATE TABLE `report` (
   `reportTime` timestamp(5) NOT NULL,
   `reportReason` varchar(200) NOT NULL,
   `reportStatus` int NOT NULL,
-  `reportPicture` longtext NOT NULL,
+  `reportPicture` longtext,
   PRIMARY KEY (`reportId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 INSERT INTO `THA101G1`.`report`
