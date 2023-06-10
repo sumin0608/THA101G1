@@ -333,8 +333,15 @@ public class AccountServiceImpl implements AccountService {
        }
 
        cs.setSkillState(coachSkill.getSkillState());
-       if(csrepo.save(cs) == null){
+       CoachSkill ncs = csrepo.save(cs);
+       if(ncs == null){
            return new Core(false,"修改失敗");
+       }
+       Account acc = repo.findByAccountId(ncs.getAccountId());
+
+       if(acc.getAccountLevel() == 1){
+           acc.setAccountLevel(2);
+           repo.save(acc);
        }
        return new Core(true,"修改成功");
     }

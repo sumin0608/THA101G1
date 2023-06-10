@@ -142,7 +142,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                            <li>\n' +
     '                                <hr class="dropdown-divider" />\n' +
     '                            </li>\n' +
-    '                            <li><a class="dropdown-item" href="">商城</a></li>\n' +
+    '                            <li><a id="shoplink" class="dropdown-item" href="">商城</a></li>\n' +
     // '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
     // '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
     '                            <li><a class="dropdown-item" href="/ixercise/jimmy/Course_homePage.html">課程</a></li>\n' +
@@ -280,10 +280,10 @@ btnCloseSearch.addEventListener("click", function () {
 
 const personalpage = document.querySelector("#personalpage")
 
-const accid = sessionStorage.getItem("accountId");
-const accnickname = sessionStorage.getItem("accountNickname");
-const acclevel = sessionStorage.getItem("accountLevel");
-const accphoto = sessionStorage.getItem("accountPhoto");
+const accid = localStorage.getItem("accountId");
+const accnickname = localStorage.getItem("accountNickname");
+const acclevel = localStorage.getItem("accountLevel");
+const accphoto = localStorage.getItem("accountPhoto");
 const avatarnickname = document.querySelector("#nicknameinavatar");
 const logout = document.querySelector("#logout");
 const loginbtn = document.querySelector("#loginbtn");
@@ -291,7 +291,7 @@ const avataroutside = document.querySelector("#avataroutside");
 const avatarinside = document.querySelector("#avatarinside");
 const useravatar = document.querySelector("#useravatar");
 const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
-
+const shoplink = document.querySelector("#shoplink");
 
 if (accid) {
     loginbtn.classList.add("d-none");
@@ -354,6 +354,11 @@ logout.addEventListener("click", function () {
     sessionStorage.removeItem("accountNickname");
     sessionStorage.removeItem("accountPhoto");
 
+    localStorage.removeItem("accountId");
+    localStorage.removeItem("accountLevel");
+    localStorage.removeItem("accountNickname");
+    localStorage.removeItem("accountPhoto");
+
     fetch("Account/Logout");
     location = getContextPath() + "/index.html";
 })
@@ -366,6 +371,7 @@ const loginb = document.querySelector("#loginb");
 const signupb = document.querySelector("#signupb");
 const chatlist = document.querySelector("#chatlist");
 chatlist.href = getContextPath() + "/hao/customerservice.html";
+shoplink.href = getContextPath() + "/shop.jsp";
 
 
 ixicon.href = getContextPath() + "/index.html";

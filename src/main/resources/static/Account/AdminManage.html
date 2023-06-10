@@ -112,7 +112,8 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
         <!-- Navbar Brand-->
-        <a class="navbar-brand m-0 px-4 " href="#!"> <img src="../lib/img/IX-nobackground copy.png" alt="" width="150"
+        <a class="navbar-brand m-0 px-4 " href="/ixercise/BackstageIndex.html">
+            <img src="../lib/img/IX-nobackground copy.png" alt="" width="150"
                 height="70">
         </a>
         <!-- Sidebar Toggle-->
@@ -147,10 +148,10 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
+                <div id="backsidebar" class="sb-sidenav-menu">
                     <div class="nav justify-content-center ">
                         <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-                        <a class="nav-link " href="index.html">
+                        <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
                             <div class="sb-nav-link-icon">
                                 <i class="bi bi-house-fill"></i>
                             </div>
@@ -158,7 +159,7 @@
                         </a>
                         <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                           data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon">
                                 <i class="bi bi-flag-fill"></i>
                             </div>
@@ -168,57 +169,55 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
 
-                                <a class="nav-link" href="">檢舉會員<span class="msg-counter reportspan">7</span></a>
-                                <a class="nav-link" href="">檢舉活動<span class="msg-counter reportspan">7</span></a>
-                                <a class="nav-link" href="">檢舉文章<span class="msg-counter reportspan">7</span></a>
-                                <a class="nav-link" href="">檢舉課程<span class="msg-counter reportspan">7</span></a>
-                            </nav>
-                        </div>
-
-
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon">
-                                <i class="bi bi-chat-left-dots-fill"></i>
-                            </div>
-                            文章
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="">文章管理</a>
+                                <a class="nav-link" id="changecount"  href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span class="msg-counter reportspan"></span></a>
 
                             </nav>
                         </div>
 
 
+                        <!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
+                        <!--                       data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">-->
+                        <!--                        <div class="sb-nav-link-icon">-->
+                        <!--                            <i class="bi bi-chat-left-dots-fill"></i>-->
+                        <!--                        </div>-->
+                        <!--                        文章-->
+                        <!--                        <div class="sb-sidenav-collapse-arrow">-->
+                        <!--                            <i class="fas fa-angle-down"></i>-->
+                        <!--                        </div>-->
+                        <!--                    </a>-->
+                        <!--                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne"-->
+                        <!--                         data-bs-parent="#sidenavAccordion">-->
+                        <!--                        <nav class="sb-sidenav-menu-nested nav">-->
+                        <!--                            <a class="nav-link" href="">文章管理</a>-->
+
+                        <!--                        </nav>-->
+                        <!--                    </div>-->
+
+
+                        <!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
+                        <!--                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">-->
+                        <!--                        <div class="sb-nav-link-icon">-->
+                        <!--                            <i class="bi bi-calendar-event-fill"></i>-->
+                        <!--                        </div>-->
+                        <!--                        活動-->
+                        <!--                        <div class="sb-sidenav-collapse-arrow">-->
+                        <!--                            <i class="fas fa-angle-down"></i>-->
+                        <!--                        </div>-->
+                        <!--                    </a>-->
+                        <!--                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"-->
+                        <!--                         data-bs-parent="#sidenavAccordion">-->
+                        <!--                        <nav class="sb-sidenav-menu-nested nav">-->
+                        <!--                            <a class="nav-link" href="">活動管理</a>-->
+
+                        <!--                        </nav>-->
+                        <!--                    </div>-->
+
+
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon">
-                                <i class="bi bi-calendar-event-fill"></i>
-                            </div>
-                            活動
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="">活動管理</a>
-
-                            </nav>
-                        </div>
-
-
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
+                           data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon">
                                 <i class="bi bi-cart-fill"></i>
                             </div>
@@ -228,18 +227,18 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="">商品管理</a>
-                                <a class="nav-link" href="">訂單管理</a>
-                                <a class="nav-link" href="">退貨管理</a>
+                                <a class="nav-link" href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
+                                <!-- <a class="nav-link" href="">訂單管理</a>
+                                <a class="nav-link" href="">退貨管理</a> -->
 
 
                             </nav>
                         </div>
 
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
+                        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                           data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon">
                                 <i class="bi bi-book-fill"></i>
                             </div>
@@ -249,17 +248,32 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapseLayoutsssss" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="">課程管理</a>
-                                <a class="nav-link" href="">審核退費</a>
+                                 <a class="nav-link" href="">審核退費</a> -->
+                        <!--
+                                                </nav>
+                                            </div>  -->
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssssa" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
+                            後臺廣播
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
+                                <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
 
                             </nav>
                         </div>
 
+
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayoutssssss" aria-expanded="false"
-                            aria-controls="collapseLayouts">
+                           data-bs-target="#collapseLayoutssssss" aria-expanded="false"
+                           aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon">
                                 <i class="bi bi-person-fill"></i>
                             </div>
@@ -270,15 +284,15 @@
                         </a>
 
                         <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a id="accmanage" class="nav-link" href="">會員管理
+                                <a id="AccountManage" class="nav-link" href="">會員管理
 <!--                                    <span class="msg-counter accountspan">7</span>-->
                                 </a>
-                                <a id="admanage" class="nav-link" href="">管理員管理
+                                <a id="AdminManage" class="nav-link" href="">管理員管理
 <!--                                    <span class="msg-counter adminspan">7</span>-->
                                 </a>
-                                <a id="skmanage" class="nav-link" href="">審核教練資格
+                                <a id="CoachManage" class="nav-link" href="">審核教練資格
 <!--                                    <span class="msg-counter coachapplyspan" style="right:45px;">7</span>-->
                                 </a>
                             </nav>

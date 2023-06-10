@@ -79,7 +79,7 @@ public class Account extends Core {
                 + ", accountLevel=" + accountLevel + ", accountState=" + accountState + ", accountAddress="
                 + accountAddress + ", accountName=" + accountName + ", accountBirthday=" + accountBirthday
                 + ", accountCreatetime=" + accountCreatetime + ", accountUpdatetime=" + accountUpdatetime
-                + ", accountGender=" + accountGender + ", accountPhoto=" + Arrays.toString(accountPhoto)
+                + ", accountGender=" + accountGender + ", accountPhoto=" + "accountPhoto"
                 + ", accountIdoc=" + Arrays.toString(accountIdoc) + ", accountIntro=" + accountIntro
                 + ", accountReport=" + accountReport + ", accountBank=" + accountBank + ", accountVerify="
                 + accountVerify + "]";

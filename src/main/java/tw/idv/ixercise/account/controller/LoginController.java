@@ -23,6 +23,7 @@ public class LoginController {
     public Account login(HttpServletRequest req, @RequestBody Account account) {
 
         System.out.println("controller being req");
+        System.out.println(account);
 
         if (account.getAccountPhone() == null || account.getAccountPassword() == null) {
             account.setMessage("無會員資料");

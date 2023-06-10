@@ -39,7 +39,7 @@
         <div class=" container-fluid px-4 px-lg-0 me-4 ">
 
             <!-- 商標===================================================================== -->
-            <a class="navbar-brand m-0 px-4" href="#!">
+            <a class="navbar-brand m-0 px-4" href="http://localhost:8080/ixercise/">
                 <img src="lib/img/IX-nobackground.png" alt="" width="91" height="60">
             </a>
             <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->

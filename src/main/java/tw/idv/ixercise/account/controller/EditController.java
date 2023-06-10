@@ -7,6 +7,7 @@ import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
@@ -28,11 +29,13 @@ public class EditController {
             account.setSuccessful(true);
         }
         System.out.println(account);
+//        session.getA
+
         return account;
     }
 
 
-//    這個暫時不使用
+    //    這個暫時不使用
     @PostMapping
     public Core checkOldPassword(@RequestBody Account account, @SessionAttribute("account") Account oAccount) {
         final Core core = new Core();
@@ -81,11 +84,15 @@ public class EditController {
 
         account.setAccountId(oAccount.getAccountId());
         account = service.updateById(account);
+        System.out.println("送回來的acc"+account);
         if (account.isSuccessful()) {
-//            HttpSession session = req.getSession();
 //            model的用意??
-//            session.setAttribute("account", account);
-            oAccount.setAccountPassword(account.getAccountPassword());
+
+//            oAccount = account;
+            System.out.println("存給Oacc"+account);
+            model.addAttribute("account",account);
+//            session.setAttribute("account",account);
+            System.out.println("sesssion的acc"+model.getAttribute("account"));
         }
 //        System.out.println(account);
         account.setMessage("修改成功");
