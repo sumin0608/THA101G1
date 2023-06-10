@@ -295,4 +295,27 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		return filteredCourseList;
 	}
 
+	@Override
+	public CourseAttendee countAttendeesByCourseId(Integer courseId) {
+		
+		return repository.countAttendeesByCourseId(courseId);
+	}
+
+	@Override
+	public List<CourseAndAttendeesEntity> getAttendeesCountList(Integer courseId) {
+		System.out.println("查參加人數service");
+		List<CourseAndAttendeesEntity> getView = caar.findByCourseID(courseId);
+		if (!getView.isEmpty()) {
+			getView.get(0).setSuccessful(true);
+			getView.get(0).setMessage("getView第一筆資料成功");
+		} else {
+			CourseAndAttendeesEntity getView1 = new CourseAndAttendeesEntity();
+			getView1.setSuccessful(false);
+			getView1.setMessage("getView沒有資料");
+			getView.add(getView1);
+		}
+		
+		return getView;
+	}
+
 }

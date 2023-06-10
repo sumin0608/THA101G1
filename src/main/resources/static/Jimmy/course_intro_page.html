@@ -349,7 +349,7 @@
                     </div>
                 </div>
 
-
+                <div><button id="testbtn">testbtn</button></div>
             </div>
 
             <!-- ==========================================================================-->
@@ -633,6 +633,39 @@
 
         $(document).ready(function () {
             // console.log("有人嗎");
+
+            // testbtn
+            $('#testbtn').click(function () {
+                $.ajax({
+                    url: '/ixercise/course/courseId/' + courseId,
+                    type: 'GET',
+                    success: function (response) {
+                        console.log(response);
+                        $("#eventName").text(response.eventName);
+                        $("#categoryId").text(response.categoryId);
+                        $("#photo").attr("src", "/ixercise/lib/img/course/" + response.photo);
+                        $("#location").text(response.location);
+                        $("#city").text(response.city);
+                        $("#district").text(response.district);
+                        $("#detailedAddress").text(response.detailedAddress);
+                        // $("#courseStartDate").text(response.courseStartDate);
+                        var courseStartTime = (response.courseStartTime).substring(0, 16);
+                        $("#courseStartTime").text(courseStartTime);
+                        $("#expectedPrice").text(response.expectedPrice);
+                        $("#courseDuration").text(response.courseDuration);
+                        // $("#creator").text(response.creator);
+                        $("#maximumCapacity").text(response.maximumCapacity);
+                        $("#currentEnrolment").text(response.currentEnrolment);
+                        $("#registrationDeadline").text(response.registrationDeadline);
+                        $("#description").text(response.description);
+
+                    }, error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+
 
             // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
             var urlParams = new URLSearchParams(window.location.search);

@@ -1,6 +1,5 @@
 package tw.idv.ixercise.course.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.ixercise.core.Core;
@@ -152,4 +150,13 @@ public class CourseAttendeeController {
 		System.out.println(calendarList);
 		return calendarList;
 	}
+	
+	@GetMapping("getAttendeesCount/{courseId}")
+	public List<CourseAndAttendeesEntity> getAttendeesCount (@PathVariable("courseId") Integer courseId){
+		System.out.println("到controller層 getAttendeesCount>>>");
+		List<CourseAndAttendeesEntity> getAttendeesCount =service.getAttendeesCountList(courseId);
+		return getAttendeesCount;
+	}
+	
+	
 }
