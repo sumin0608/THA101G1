@@ -144,6 +144,10 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
+    '                    <li id="addcourse" class="nav-item fs-5 ms-auto my-auto d-none">\n' +
+    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
+    '                        </a>\n' +
+    '                    </li>\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
     '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
     '                        </a>\n' +
@@ -308,6 +312,7 @@ const avatarinside = document.querySelector("#avatarinside");
 const useravatar = document.querySelector("#useravatar");
 const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
 const shoplink = document.querySelector("#shoplink");
+const addcourse = document.querySelector("#addcourse");
 
 if (accid) {
     loginbtn.classList.add("d-none");
@@ -413,5 +418,16 @@ function getcreateObjURL(base64photo) {
 function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
+
+fetch('checkfornav/' + accid)
+    .then(resp => resp.json())
+    .then(body => {
+        const {successful, message} = body;
+        if (successful) {
+            addcourse.classList.remove("d-none");
+            console.log(message);
+        }
+
+    })
 
 // });
