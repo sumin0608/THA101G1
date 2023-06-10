@@ -12,10 +12,6 @@ import tw.idv.ixercise.event.service.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 //@RestController
 //@RequestMapping("/events")

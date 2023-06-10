@@ -1,7 +1,8 @@
 package tw.idv.ixercise;
 
-import org.junit.Assert;
+import org.junit.*;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.context.*;
@@ -17,9 +18,9 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class EventPhotoTests {
+    @Autowired
+    private EventRepository eventRepository;
     //    @Autowired
-//    private EventRepository eventRepository;
-//    @Autowired
 //    private EventDaoImpl eventDao;
 //
 //    @Autowired
@@ -29,9 +30,10 @@ class EventPhotoTests {
     @Autowired
     private CourseAttendeeRepository cap;
 
+    @Before
     public void setUp() {
         // 刪除所有資料
-//		eventRepository.deleteAll();
+        eventRepository.deleteAll();
     }
 
 

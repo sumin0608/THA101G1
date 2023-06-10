@@ -12,11 +12,13 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
     //eventName 對應到 Event 的 eventName 屬性
     List<Event> findByEventName(String eventName);
 
+    Event findByEventId(Integer eventId);
+
+    List<Event> findByEventNameContainingIgnoreCaseAndStatusOrLocationContainingIgnoreCaseOrAddressContainsIgnoreCaseOrDescriptionContainsIgnoreCaseOrderByEventDateDesc(String eventName, Integer status, String location, String address, String description);
+
     List<Event> findByEventNameContaining(String eventName);
 
     List<Event> findByEventNameContainingOrLocationContaining(String eventName, String location);
-
-    List<Event> findByEventNameContainingIgnoreCaseAndStatusOrLocationContainingIgnoreCaseOrAddressContainsIgnoreCaseOrDescriptionContainsIgnoreCaseOrderByEventDateDesc(String eventName, Integer status, String location, String address, String description);
 
     List<Event> findByEventNameContainingOrLocationContainingOrAddressContainsOrDescriptionContains(String eventName, String location, String address, String description);
 //    Event findByEventNameOrLocation(String eventName);

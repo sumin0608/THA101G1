@@ -147,274 +147,14 @@
     <!-- 以下導覽列=================================================================================== -->
     <!-- 增加w-100 sticky-top -->
     <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
-        <div class=" container-fluid px-4 px-lg-0 me-4 ">
+<!--            我回被nav bar .js 套掉-->
 
-            <!-- 商標===================================================================== -->
-            <a class="navbar-brand m-0 px-4" href="#!">
-                <img src="../lib/img/IX-nobackground.png" alt="" width="91" height="60">
-            </a>
-            <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-            <!-- 商標的右邊整條============================================================ -->
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-
-                <ul class="navbar-nav mb-2 mb-lg-0 w-100">
-                    <!-- 搜尋欄=============================================================== -->
-                    <!-- <li class="nav-item my-auto">
-                        <form class="d-flex">
-                            <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
-                            <button class="btn border border-2 border-dark" type="submit">Search</button>
-                        </form>
-                    </li> -->
-
-                    <li class="nav-item my-auto">
-                        <form class="d-flex ">
-                            <input class="form-control" id="searchbar" type="search" placeholder="找活動..."
-                                aria-label="Search" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                                aria-expanded="false" aria-controls="collapseExample">
-                            </input>
-                            <button class="btn border border-1 border-dark" type="submit">Search</button>
-                        </form>
-
-
-                        <!-- ================================================================== -->
-                        <!-- <div class="collapse" id="collapseExample"> -->
-                        <div class="card card-body top-25 start-25 position-fixed d-none" id="searchcard">
-                            <div class="container-fluid w-100">
-                                <div class="row mb-3">
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option class="disable" selected>頁面 </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm" aria-label="Default select example">
-                                            <option selected>Open </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- </div> -->
-                    </li>
-
-                    <!-- <div class="collapse  d-block" id="collapseExample">
-                    </div> -->
-
-
-                    <!-- 辦活動============================================================= -->
-                    <li class="nav-item fs-5 ms-auto my-auto">
-                        <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動
-                        </a>
-                    </li>
-                    <!-- 其他主頁  ========================================================== -->
-                    <li class="nav-item fs-5 dropdown my-auto">
-                        <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">其他主頁
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">首頁</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">商城</a></li>
-                            <li><a class="dropdown-item" href="#!">論壇</a></li>
-                            <li><a class="dropdown-item" href="#!">活動</a></li>
-                        </ul>
-                    </li>
-                    <!-- 鈴鐺============================================================= -->
-                    <!-- 還有一顆填滿的bi-bell-fill -->
-                    <!-- 操控.n-dot來控制有無紅點 -->
-                    <li class="nav-item dropdown my-auto">
-                        <div class="n-dot"></div>
-                        <svg width="36" height="36" fill="currentColor"
-                            class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" viewBox="0 0 16 16">
-                            <path
-                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                        </svg>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                            <!-- 一條通知====================================================== -->
-
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                                    style="height: 96px; width:600px;">
-                                    <div class="row h-100">
-                                        <div class="col-2 h-100">
-                                            <img src="https://picsum.photos/150/200/?random=10"
-                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">List group item heading</h5>
-                                                <small>3 days ago</small>
-                                            </div>
-                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                            <small>And some small print.</small>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </ul>
-                    </li>
-
-                    <!-- 會員頭像========================================================= -->
-                    <li class="nav-item dropdown mx-2 my-auto">
-                        <img src="https://picsum.photos/300/200/?random=10"
-                            class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
-                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
-                            height="36">
-
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-
-                            <li>
-                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
-                            </li>
-                            <li>
-                                <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#!">查看個人資料</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#!">聊天列表</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <!-- 購物車的按鈕============================================================= -->
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-                        <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
-                        <i class="bi-cart-fill me-1"></i>
-                        購物車
-                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
-                    </button>
-                </form>
-            </div>
-        </div>
     </nav>
     <!-- 導覽列結束=================================================================================== -->
 
     <!-- 這裡大概是放廣告 -->
     <!-- Header====================================================================================== -->
-    <!-- <header>
-        <div class="container-fluid p-0">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active w-100 object-fit-cover">
-                        <img src="https://picsum.photos/1920/300/?random=10" class="d-block" alt="...">
-                    </div>
-                    <div class="carousel-item w-100 object-fit-cover">
-                        <img src="https://picsum.photos/1920/300/?random=11" class="d-block" alt="...">
-                    </div>
-                    <div class="carousel-item w-100 object-fit-cover">
-                        <img src="https://picsum.photos/1920/300/?random=12" class="d-block" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </header> -->
+
     <!-- Header====================================================================================== -->
 
     <!-- main-content -->
@@ -463,7 +203,7 @@
                                                         id="photo-dropzone" aria-describedby="fileHelp" accept="image/*"
                                                         required>
                                                     <div class="invalid-feedback">
-                                                        Please choose a username.
+                                                        請設定活動封面照片
                                                     </div>
                                                     <br>
                                                     <small id="fileHelp" class="form-text text-muted">支援 JPG, JPEG, PNG
@@ -473,7 +213,7 @@
                                                     <!-- ===zzzz===== -->
                                                     <div id="previewBox">
                                                         <span class="text">點我 或 將圖片丟進來</span>
-                                                        <!-- 
+                                                        <!--
                                                 <img id="preview" src="#" alt="圖片預覽"
                                                     style="max-width: 100%; max-height: 200px;"> -->
 
@@ -496,12 +236,12 @@
                                     <div class="col-sm-12"></div>
                                     <label for="event_name" class="form-label">聚會名稱</label>
                                     <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
-                                           class="form-control" required value="111">
+                                           class="form-control" required value="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
                                     <div class="invalid-feedback">
-                                        Please choose a username.
+                                        請填寫聚會名稱
                                     </div>
                                 </div>
                                 <hr>
@@ -511,16 +251,19 @@
                                 <div class="row mb-3">
                                     <div class="col-sm-11">
                                         <label class="form-label">活動地址</label>
-                                        <input class="form-control" id="autocomplete-address" name="autocomplete-address"
+                                        <input class="form-control" id="autocomplete-address"
+                                               name="autocomplete-address"
                                                placeholder="活動地址..."
-                                               required type="text" value="111">
+                                               required type="text" value="">
+                                        <div class="invalid-feedback">
+                                            請好好填寫活動地址
+                                        </div>
                                     </div>
+                                    <!-- 把值塞進隱藏的input-->
                                     <input id="autocomplete-name" type="hidden">
                                     <input id="autocomplete-url" type="hidden">
                                     <input id="autocomplete-formatted-address" type="hidden">
-                                    <div class="invalid-feedback">
-                                        Please choose a username.
-                                    </div>
+
                                 </div>
 
                                 <br>
@@ -529,7 +272,7 @@
                                 <div class="row mb-2">
 
                                     <div class="col-sm-4">
-                                        <label class="form-label" for="categoryId">聚會類型</label>
+                                        <label class="form-label" for="categoryId">活動類型</label>
                                         <select class="form-select" id="categoryId" name="categoryId"
                                                 aria-label="Default select example" required>
                                             <option selected disabled value="">請選擇..</option>
@@ -546,20 +289,20 @@
                                             <option value="11">壁球</option>
                                             <option value="12">手球</option>
                                             <option value="13">保齡球</option>
-                                            <option value="14">有氧操課</option>
-                                            <option value="15">重訓課</option>
-                                            <option value="16">瑜伽課</option>
-                                            <option value="17">舞蹈課</option>
-                                            <option value="18">腹肌課</option>
-                                            <option value="19">動感單車課</option>
-                                            <option value="20">跳繩課</option>
-                                            <option value="21">拳擊課</option>
-                                            <option value="22">跳舞操課</option>
-                                            <option value="23">瑜伽拉伸課</option>
+                                            <option value="14">有氧操</option>
+                                            <option value="15">重訓</option>
+                                            <option value="16">瑜伽</option>
+                                            <option value="17">舞蹈</option>
+                                            <option value="18">腹肌</option>
+                                            <option value="19">動感單車</option>
+                                            <option value="20">跳繩</option>
+                                            <option value="21">拳擊</option>
+                                            <option value="22">跳舞操</option>
+                                            <option value="23">瑜伽拉伸</option>
                                             <option value="24">其他</option>
                                         </select>
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請選擇活動類型
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -574,7 +317,7 @@
                                         <!--                                            <option value="3">Three</option>-->
                                         <!--                                        </select>-->
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請好好填寫活動地址
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -589,7 +332,7 @@
                                         <!--                                            <option value="3">Three</option>-->
                                         <!--                                        </select>-->
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請好好填寫活動地址
                                         </div>
                                     </div>
 
@@ -603,19 +346,18 @@
                                         <label class="form-label">場地名稱</label>
                                         <input class="form-control" id="location" name="location"
                                                placeholder="請輸入聚會場地名稱..."
-                                               required type="text" value="111">
+                                               required type="text" value="">
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請填寫活動舉辦的場地名稱
                                         </div>
-                                        x
-                                        0
+
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="form-label">預計花費</label>
                                         <input type="number" id="price" name="price" min="0" placeholder="預計花費"
-                                            class="form-control" value="111" required>
+                                               class="form-control" required value="0">
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請輸入預計花費
                                         </div>
 
                                     </div>
@@ -624,41 +366,38 @@
 
                                 <hr>
                                 <br>
-
-
-
                                 <br>
                                 <!--  row Six -->
-                                <div class="row">
+                                <div class="row mb-2">
                                     <div class="col-sm-5">
                                         <label class="form-label">活動日期</label>
                                         <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
-                                               class="form-control" required>
+                                               class="form-control" onchange="updateMinTime()" required>
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請選擇活動日期
                                         </div>
 
                                     </div>
                                     <div class="col-sm-5">
                                         <label class="form-label">活動開始時間</label>
                                         <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                               class="form-control" required step="600" value="22:10:00">
+                                               class="form-control" required step="600" value="">
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請選擇活動開始時間
                                         </div>
                                     </div>
 
                                 </div>
 
                                 <!-- Fith row -->
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-sm-7">
                                         <label class="form-label">最後審核時間</label>
                                         <input class="form-control" id="deadline" name="deadline"
                                                placeholder="活動日期..."
                                                min="" required type="datetime-local">
                                         <div class="invalid-feedback">
-                                            Please enter a last verify time.
+                                            請好好填寫最後審核時間
                                         </div>
                                     </div>
                                 </div>
@@ -670,9 +409,10 @@
                                         <label class="form-label">聚會人數</label>
                                         <input class="form-control" id="maxAttendees" max="100"
                                                min="1"
-                                               name="maxAttendees" placeholder="聚會人數" required type="number" value="100">
+                                               name="maxAttendees" placeholder="聚會人數" required type="number"
+                                               value="">
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請輸入聚會人數
                                         </div>
                                     </div>
 
@@ -688,7 +428,7 @@
                                             <option value="4">我請客,你出錢</option>
                                         </select>
                                         <div class="invalid-feedback">
-                                            Please choose a username.
+                                            請選擇分錢方式
                                         </div>
                                     </div>
                                 </div>
@@ -703,11 +443,11 @@
                                         <!-- <input type="" name="" id=""> -->
                                         <!-- </button> -->
                                         <div class="form-group">
-                                            <label for="description">聚會描述和備註</label>
+                                            <label for="description">聚會描述和備註 (必填*)</label>
                                             <textarea class="form-control" name="description" id="description" rows="3"
                                                 required></textarea>
                                             <div class="invalid-feedback">
-                                                Please choose a username.
+                                                請好好填寫聚會描述和備註
                                             </div>
                                         </div>
                                     </div>
@@ -806,8 +546,11 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!--    nav bar js-->
+    <script src="../lib/js/nav.js"></script>
     <!-- 一定要加這個 defer or async or ascy type="text/javascript"                                                                                                     // 設定語言為繁體中文 -->
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2-TXdbaJlPtWu96Ffe4YTXSb5qXTeEs&libraries=places&callback=initMap&language=zh-TW"
+    <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2-TXdbaJlPtWu96Ffe4YTXSb5qXTeEs&libraries=places&callback=initMap&language=zh-TW"
             type="text/javascript"></script>
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <!--    text editor-->
@@ -821,13 +564,47 @@
         });
         // text editor
         const editor = CKEDITOR.replace('description');
+
+        //更新最晚 最後審核時間 (max)
+        function updateMinTime() {
+            const dateInput = document.getElementById('eventDate');
+            const timeInput = document.getElementById('deadline');
+
+            // Get the selected date value from the date input
+            const selectedDate = dateInput.value;
+
+            // Set the minimum value of the time input based on the selected date
+            timeInput.max = selectedDate + 'T00:00';
+        }
+
         //==================================== image upload js ======================zzzz=================================================================
         $(document).ready(function () {
 
+            //set (min) for eventDate & deadline
+            let today = new Date();
+            let dd = today.getDate();
+            let mm = today.getMonth() + 1; // 一月是0，所以要加1
+            let yyyy = today.getFullYear();
+            let hh = today.getHours();
+            let mins = today.getMinutes();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            if (hh < 10) {
+                hh = '0' + hh;
+            }
+            if (mins < 10) {
+                mins = '0' + mins;
+            }
 
-            var today = new Date();
-            let date = today.toISOString().split("T")[0];
-            var dateTime = today.toISOString().slice(0, 16);
+            let date = yyyy + '-' + mm + '-' + dd;
+            let dateTime = yyyy + '-' + mm + '-' + dd + "T" + hh + ":" + mins;
+
+            //let date = today.toISOString().split("T")[0];
+            // var dateTime = today.toISOString().slice(0, 16);  //這個方法不好 因為沒辦法自動判斷所在時區
             console.log(dateTime);
 
             document.getElementById("eventDate").setAttribute("min", date);
@@ -1000,14 +777,14 @@
             //==================================== image upload js -gpt =======================================================================================
             //==================================== text-editor =======================================================================================
 
-            $('#alertContent').click(function () {
-                // CKEDITOR.instances.editorDemo.updateElement();
-                // console.log($('textarea[name=editorDemo]').val());
-                // console.log(CKEDITOR.instances.editorDemo.getData());
-                CKEDITOR.instances.editorDemo.updateElement();
-                // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
-                console.log($('textarea[name=description]').val());
-            });
+            // $('#alertContent').click(function () {
+            //     // CKEDITOR.instances.editorDemo.updateElement();
+            //     // console.log($('textarea[name=editorDemo]').val());
+            //     // console.log(CKEDITOR.instances.editorDemo.getData());
+            //     CKEDITOR.instances.editorDemo.updateElement();
+            //     // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
+            //     console.log($('textarea[name=description]').val());
+            // });
 
             //==================================== form-input validate &&  session storage =======================================================================================
             // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -1022,6 +799,19 @@
                     .forEach(function (form) {
                         form.addEventListener('submit', function (e) {
 
+                            //=========== 檢查輸入的地點是否在google map 上有效=====(simulating : input focus, trim, enter, blur(unfocused) )=== start =============
+                            let autoAddress = document.querySelector("#autocomplete-address");
+                            $("#autocomplete-address").focus();
+                            $("#autocomplete-address").val($("#autocomplete-address").val().trim());
+
+                            // 模擬enter 鍵
+                            const ke = new KeyboardEvent('keydown', {
+                                bubbles: true, cancelable: true, keyCode: 13
+                            });
+                            autoAddress.dispatchEvent(ke);
+                            $("#autocomplete-address").blur();
+                            //=========== 檢查輸入的地點是否在google map 上有效======= end ==============
+
                             if (!form.checkValidity()) {
                                 e.preventDefault()
                                 e.stopPropagation()
@@ -1029,10 +819,14 @@
                             } else {
                                 console.log("hiii");
                                 e.preventDefault();
+
+                                // ==========  text-editor ================= start ==========
+
                                 CKEDITOR.instances.description.updateElement();
                                 // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
-                                console.log($('textarea[name=description]').val());
+                                // console.log($('textarea[name=description]').val());
 
+                                // ==========  text-editor ================= end ==========
 
                                 var event = {};
 
@@ -1156,7 +950,7 @@
             // =========================== session storge ========================= //
 
             // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            sessionStorage.setItem("accountId", "1");
+            // sessionStorage.setItem("accountId", "1");
             // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
             const data = sessionStorage.getItem('Event');
@@ -1199,7 +993,7 @@
         // 載入 Google 地圖 API 腳本
         function initMap() {
             // 設定地點自動完成欄位
-            const input = document.getElementById('autocomplete-address');
+            let input = document.getElementById('autocomplete-address');
 
             // 建立地點自動完成物件
             const autocomplete = new google.maps.places.Autocomplete(input);
@@ -1208,7 +1002,6 @@
             autocomplete.setComponentRestrictions({'country': ['tw']});
 
             // 監聽當地點選擇事件
-
             autocomplete.addListener('place_changed', () => {
                 const place = autocomplete.getPlace();
                 console.log("place--");
@@ -1220,19 +1013,24 @@
 
                 // 檢查是否有選擇地點
                 if (!place.geometry || !place.geometry.location) {
-                    window.alert('在Google maps 查不到: \'' + place.name + '\'');
+                    window.alert('在Google maps 上查不到: \'' + place.name + '\' , 請重新輸入..');
+                    $("#autocomplete-address").val("");
                     return;
                 }
                 //把值塞進隱藏的input
                 $("#autocomplete-formatted-address").val(place.formatted_address);
                 $("#autocomplete-url").val(place.url);
                 $("#autocomplete-name").val(place.name);
-                $("#location").val(place.name);
+
+                //如果用戶沒輸入 地點 -> 幫他填
+                if ($("#location").val() == "") {
+                    $("#location").val(place.name);
+                }
 
 
                 let addressHtmlCode = place.adr_address;
                 console.log(addressHtmlCode);
-                // Assuming you have the HTML code stored in a variable called 'htmlCode'
+                //  the HTML code returned from "adr_address" is stored in a variable 'addressHtmlCode'
                 const htmlparser = new DOMParser();
                 const doc = htmlparser.parseFromString(addressHtmlCode, "text/html");
 
@@ -1247,11 +1045,6 @@
             });
         }
 
-        // let innput = document.getElementById('autocomplete-input');
-        // let btn = document.querySelector("#btn");
-        // btn.addEventListener('click', function(e){
-        //     console.log('地點縮短連結:', innput.value);  //台灣台北市大安區新生南路二段大安森林公園
-        // });
 
         // function updateEventPhoto(eventId, photoData) {
         //     $.ajax({
