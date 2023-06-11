@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 //        WebMvcConfigurer.super.addInterceptors(registry);
         registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/Account/edit");
-//        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/Account/AccountEdit.html");
+        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/Account/Manage/forChechLogin");
 
     }
 

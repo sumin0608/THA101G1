@@ -323,7 +323,7 @@
                             <legend class="h1 mb-4">登入後台</legend>
 
                             <div class="mb-3">
-                                <label for="ademail" class="form-label">手機</label>
+                                <label for="ademail" class="form-label">信箱</label>
                                 <input type="text" id="ademail" class="form-control" placeholder="">
                             </div>
                             <div class="mb-3">
@@ -403,13 +403,16 @@
                 errMsg.textContent = '';
                 const {successful, message} = body;
                 if (successful) {
-                    const {accountId, accountNickname, accountState, accountLevel, accountPhoto} = body;
-                    sessionStorage.setItem("accountId", accountId);
-                    sessionStorage.setItem("accountNickname", accountNickname);
-                    sessionStorage.setItem("accountLevel", accountLevel);
-                    sessionStorage.setItem("accountState", accountState);
-                    sessionStorage.setItem("accountPhoto", accountPhoto);
-                    location = getContextPath() + "/BackstageIndex.html";
+                    // const {accountId, accountNickname, accountState, accountLevel, accountPhoto} = body;
+                    // sessionStorage.setItem("accountId", accountId);
+                    // sessionStorage.setItem("accountNickname", accountNickname);
+                    // sessionStorage.setItem("accountLevel", accountLevel);
+                    // sessionStorage.setItem("accountState", accountState);
+                    // sessionStorage.setItem("accountPhoto", accountPhoto);
+                    localStorage.setItem("token",message);
+                    // location = getContextPath() + "/BackstageIndex.html";
+                    setTimeout(`location.href='${getContextPath()}/BackstageIndex.html'`,1000) ;
+                    errMsg.textContent = "登入成功";
                 } else {
                     errMsg.textContent = message;
                 }

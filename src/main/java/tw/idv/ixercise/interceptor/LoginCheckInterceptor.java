@@ -3,6 +3,7 @@ package tw.idv.ixercise.interceptor;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.jsonwebtoken.Claims;
 import org.apache.logging.log4j.core.util.JsonUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -22,16 +23,21 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 //      獲取請求url
         String url = req.getRequestURL().toString();
 //      判斷請求url中是否包含login
-        if (url.contains("login")) {
-            return true;
-        }
+
 //      取得header的token
 //        System.out.println(req.getHeader("token"));
         String jwt = req.getHeader("token");
 
+//      驗證登入者可否進入後台
+        if (url.contains("BackstageIndex")) {
+
+
+            return true;
+        }
+
 //      判斷是否已登入
 
-        if ("null".equals(jwt)) {
+        if ("null".equals(jwt) || jwt == null) {
             Core core = new Core(false, "請先登入");
             Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
             String json = gson.toJson(core);
@@ -43,10 +49,19 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 
 //      解析token，如果失敗就回應錯誤並請重新登入
         try {
-            JwtUtils.parseJWT(jwt);
+            Claims claims = JwtUtils.parseJWT(jwt);
+            int accountLevel = Integer.parseInt(claims.get("accountLevel").toString());
+            if (accountLevel != 3) {
+                Core core = new Core(false, "權限不足，無法進入後台");
+                Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+                String json = gson.toJson(core);
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                resp.getWriter().write(json);
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-
             Core core = new Core(false, "請重新登入後再進行操作");
             Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
             String json = gson.toJson(core);
@@ -61,13 +76,15 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView
+            modelAndView) throws Exception {
 //        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
         System.out.println("posthandle");
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception
+            ex) throws Exception {
 //        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
         System.out.println("afterhandle");
     }

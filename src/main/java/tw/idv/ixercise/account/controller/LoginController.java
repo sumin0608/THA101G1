@@ -46,6 +46,7 @@ public class LoginController {
             Map<String, Object> claims = new HashMap<>();
             claims.put("accountId", account.getAccountId());
             claims.put("accountPhone", account.getAccountPhone());
+            claims.put("accountLevel", account.getAccountLevel());
 
             String jwt = JwtUtils.generateJwt(claims);
             account.setAccountPassword("");
@@ -79,6 +80,7 @@ public class LoginController {
             Map<String, Object> claims = new HashMap<>();
             claims.put("accountId", account.getAccountId());
             claims.put("accountEmail", account.getAccountEmail());
+            claims.put("accountLevel", account.getAccountLevel());
 
             String jwt = JwtUtils.generateJwt(claims);
             core.setSuccessful(true);

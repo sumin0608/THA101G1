@@ -57,7 +57,7 @@ public class AccountTest {
     public void testparsejwt() {
         Claims claims = Jwts.parser()
                 .setSigningKey("ixercise")
-                .parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidG9tIiwiaWQiOjEsImV4cCI6MTY4NjQ1MzE4M30.K-CvrnWSXoIkQBYbvSWpN5vyzNgZZNHrvhs25yB9AG0")
+                .parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidG9tIiwiaWQiOjEsImV4cCI6MTY4NjQ2OTQ3MX0.0V_mXQ2vZUzDrNjKtlu76pDcWFiIxBhgAKi1ulHX8oA")
                 .getBody();
         System.out.println(claims);
     }
