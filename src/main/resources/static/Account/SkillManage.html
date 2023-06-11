@@ -436,9 +436,9 @@
                 html += "<td>" + obj.accountName + "</td>";
                 html += `<td><img src="${getcreateObjURL(obj.licensePhoto)}" class="liphoto" alt="Image" width="30px" height="30px"></td>`;
                 html += "<td>" + skillStateMap[obj.skillState] + "</td>";
-                html += '<td><button type="button" class="btn btn-primary aaa article-link d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#exampleModal"'
-                    + 'data-skill-id="' + obj.skillId + '">更多資訊</button>';
-                html += `<button type="button" class="btn btn-primary aaa accept-link d-inline-block me-1"
+                // html += '<td><button type="button" class="btn btn-primary aaa article-link d-inline-block me-1" data-bs-toggle="modal" data-bs-target="#exampleModal"'
+                //     + 'data-skill-id="' + obj.skillId + '">更多資訊</button>';
+                html += `<td><button type="button" class="btn btn-primary aaa accept-link d-inline-block me-1"
                             data-skill-id="${obj.skillId}">通過</button>`;
                 html += `<button type="button" class="btn btn-danger aaa reject-link d-inline-block me-1"
                             data-skill-id="${obj.skillId}">不通過</button></td>`;
