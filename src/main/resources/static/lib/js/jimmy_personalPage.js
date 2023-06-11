@@ -199,6 +199,7 @@ $(document).ready(function () {
     }
 
 
+
     //分段接會員accountId
     // try {
     //     let accountPhoto = await GETaccountPhotoById(resp[i].accountId);

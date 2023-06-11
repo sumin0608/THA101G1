@@ -509,7 +509,7 @@
                     </div>
                     <!-- 參加紀錄============================ -->
                     <div class="tab-pane fade" id="attendrecord" role="tabpanel" aria-labelledby="attendrecord-tab">
-                        <button type="button" class="btn btn-primary">活動</button>
+                        <button type="button" class="btn btn-primary" id="eventbtn_attendrecord">活動</button>
                         <button type="button" class="btn btn-primary" id="coursebtn_attendrecord">課程</button>
                         <div class="row border my-3">
                             <div class="col-12">
@@ -679,9 +679,9 @@
                     <!-- 行事曆============================ -->
                     <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="calendar-tab">
                     <!--行事曆-->
-                        <button id="canlnadarbtnE" class="btn btn-primary" type="button">活動</button>
+                        <button id="calendarbtnE" class="btn btn-primary" type="button">活動</button>
                         <!-- Danni修改 -->
-                        <button id="canlnadarbtnC" class="btn btn-primary coursebtn_holdrecord" type="button">課程</button>
+                        <button id="calendarbtnC" class="btn btn-primary coursebtn_holdrecord" type="button">課程</button>
                         <div class="row border my-3">
                             <div class="col-12">
                                 <!-- <ul class="p-0" aria-labelledby=""> -->
@@ -894,7 +894,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div>
-                                <label for=" text-muted">檢舉內容</label>
+                                <label for="reportReason1">檢舉內容</label>
                                 <textarea class="form-control" name="reportReason" id="reportReason1" rows="5"
                                     required></textarea>
                                 <div class="invalid-feedback">
