@@ -45,16 +45,14 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		CourseAttendee savedAttendee = null;
 		Timestamp attendDeadline;
 		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-		List<CourseAndAttendeesEntity> byCourseID = caar.findByCourseID(courseAttendee.getCourseId());
-		int size = byCourseID.size();
-//		System.out.println(size);
-		Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
+		List<CourseAndAttendeesEntity> byCourseID = caar.findByCourseIDAndStatus(courseAttendee.getCourseId(), 2);
+		int passedSize = byCourseID.size();
 
-//		int size = repository.findByCourseId(courseAttendee.getCourseId()).size();
+		Course course = courseDao.selectByCourseId(courseAttendee.getCourseId());
 
 //		List<CourseAttendee> size = repository.findByCourseId(24);
 		System.out.println("size");
-		System.out.println(size);
+		System.out.println(passedSize);
 
 //		if (course != null) {
 //			System.out.println(course);
@@ -63,8 +61,8 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 ////			courseAttendee
 		Integer maximumCapacity = course.getMaximumCapacity();
 		System.out.println(maximumCapacity);
-		boolean lessOrEqualsToMaxCapacity = (size + 1) <= maximumCapacity;
-		boolean equalsToMaxCapacity = (size + 1) == maximumCapacity;
+		boolean lessOrEqualsToMaxCapacity = (passedSize + 1) <= maximumCapacity;
+		boolean equalsToMaxCapacity = (passedSize + 1) == maximumCapacity;
 		boolean afterDeadLine = attendDeadline.before(currentTimestamp);
 
 //		System.out.println(b);
@@ -78,12 +76,13 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		List<CourseAttendee> byCourseIdAndAccountId = repository.findByCourseIdAndAccountId(courseAttendee.getCourseId(), courseAttendee.getAccountId());
 		System.out.println(byCourseIdAndAccountId);
 		Core core = new Core();
-		//5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
+
+        //5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
 		if (!byCourseIdAndAccountId.isEmpty()) {
 			System.out.println("您她媽的已參加過了");
 			core.setMessage("您已報名過了");
 			core.setSuccessful(false);
-		} else if (maximumCapacity == size) {
+		} else if (maximumCapacity == passedSize) {
 //			courseStatus == 5 &&
 			core.setMessage("已滿團");
 			core.setSuccessful(false);
@@ -294,6 +293,29 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		System.out.println("getCalendarList()");
 		filteredCourseList.forEach(System.out::println);
 		return filteredCourseList;
+	}
+
+	@Override
+	public CourseAttendee countAttendeesByCourseId(Integer courseId) {
+		
+		return repository.countAttendeesByCourseId(courseId);
+	}
+
+	@Override
+	public List<CourseAndAttendeesEntity> getAttendeesCountList(Integer courseId) {
+		System.out.println("查參加人數service");
+		List<CourseAndAttendeesEntity> getView = caar.findByCourseID(courseId);
+		if (!getView.isEmpty()) {
+			getView.get(0).setSuccessful(true);
+			getView.get(0).setMessage("getView第一筆資料成功");
+		} else {
+			CourseAndAttendeesEntity getView1 = new CourseAndAttendeesEntity();
+			getView1.setSuccessful(false);
+			getView1.setMessage("getView沒有資料");
+			getView.add(getView1);
+		}
+		
+		return getView;
 	}
 
 }

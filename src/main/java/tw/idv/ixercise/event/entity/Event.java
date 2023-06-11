@@ -65,6 +65,9 @@ public class Event extends Core {
 //    @JsonInclude(JsonInclude.Include.NON_NULL) // Include the property during deserialization if it's not null
     private Integer paymentMethod;
 
+    private String addressUrl;
+    private String addressNickname;
+
     //====== messages =====
 //    @Transient
 //    private String messages;

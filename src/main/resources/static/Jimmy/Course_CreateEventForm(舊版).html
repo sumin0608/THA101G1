@@ -418,7 +418,7 @@
             <!-- <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"> -->
             <!-- <div class="col -12 row "> -->
             <!-- <div class="row col-2"></div> -->
-            <div class="col-12  formpad " style="background-color: #E9E9E9; padding-top: 10px;">
+            <div class="col-12  formpad " style="background-color: #E9E9E9; padding-top: 10px; border: solid #0a58ca;">
                 <!-- ================================================form -----submit ================================================== -->
                 <form id="myform" method="post" enctype="multipart/form-data" class=" g-3 needs-validation" novalidate>
                     <br>
@@ -469,7 +469,7 @@
                         <!-- First row -->
                         <div class="col-sm-12">
                             <!-- <div class="col-sm-12"></div> -->
-                            <label for="event_name" class="form-label">課程名稱</label>
+                            <label for="event_name" class="form-label">聚會名稱</label>
                             <input type="text" id="event_name" name="event_name" placeholder="請輸入聚會名稱..."
                                 class="form-control" value="111" required>
                             <div class="valid-feedback">
@@ -481,26 +481,10 @@
                         </div>
                         <hr>
                         <br>
-                        <!-- Forth row -->
-                        <div class="row mb-3">
-                            <div class="col-sm-11">
-                                <label class="form-label">活動地址</label>
-                                <input class="form-control" id="autocomplete-address" name="autocomplete-address"
-                                    placeholder="活動地址..." required type="text" value="">
-                                <div class="invalid-feedback">
-                                    請好好填寫活動地址
-                                </div>
-                            </div>
-                            <!-- 把值塞進隱藏的input-->
-                            <input id="autocomplete-name" type="hidden">
-                            <input id="autocomplete-url" type="hidden">
-                            <input id="autocomplete-formatted-address" type="hidden">
-                        </div>
-                        <br>
                         <!-- Second row -->
                         <!-- <div class="row"> -->
                         <div class="col-sm-4">
-                            <label for="categoryId" class="form-label">課程類型</label>
+                            <label for="" class="form-label">聚會類型</label>
                             <select class="form-select" id="categoryId" name="categoryId"
                                 aria-label="Default select example" required>
                                 <option selected disabled value="">請選擇..</option>
@@ -533,68 +517,98 @@
                                 必填!
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">所在城市</label>
+                            <select class="form-select" id="city" name="city" aria-label="Default select example"
+                                required>
+                                <option selected disabled value="">請選擇..</option>
+                                <option value="1">台北市</option>
+                                <option value="2">基隆</option>
+                                <option value="4">新北市</option>
+                                <option value="5">宜蘭</option>
+                                <option value="7">新竹</option>
+                                <option value="8">桃園</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="" class="form-label">所在地區</label>
+                            <select class="form-select" id="district" name="district"
+                                aria-label="Default select example" required>
+                                <option selected disabled value="">請選擇..</option>
+                                <option value="1">Ex.松山區</option>
 
-                        <div class="col-sm-4">
-                            <label class="form-label" for="city">所在城市</label>
-                            <input class="form-control" disabled id="city" name="city" placeholder="所在城市.." required
-                                type="text">
+                            </select>
                             <div class="invalid-feedback">
-                                請好好填寫活動地址
+                                必填!
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <label class="form-label" for="district">所在地區</label>
-                            <input class="form-control" disabled id="district" name="district" placeholder="所在地區.."
-                                required type="text">
-                            <div class="invalid-feedback">
-                                請好好填寫活動地址
-                            </div>
-                        </div>
+                        <!-- </div> -->
                         <br>
                         <!-- Third row -->
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <label class="form-label">場地名稱</label>
-                                <input class="form-control" id="location" name="location" placeholder="請輸入聚會場地名稱..."
-                                    required type="text" value="">
-                                <div class="invalid-feedback">
-                                    請填寫活動舉辦的場地名稱
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="form-label">預計花費</label>
-                                <input type="number" id="price" name="price" min="0" placeholder="預計花費"
-                                    class="form-control" required value="0">
-                                <div class="invalid-feedback">
-                                    請輸入預計花費
-                                </div>
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-8" style="margin-top: 2px;">
+                            <label class="form-label">場地名稱</label>
+                            <input type="text" id="location" name="location" placeholder="請輸入聚會場地名稱..."
+                                class="form-control" value="" required>
+                            <div class="invalid-feedback">
+                                必填!
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <label class="form-label">預計花費</label>
+                            <input type="number" id="price" name="price" min="0" placeholder="預計花費" class="form-control"
+                                value="111" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- </div> -->
                         <hr>
                         <br>
-                        <br>
-                        <!-- Fith row -->
-                        <div class="row mb-2">
-                            <div class="col-sm-5">
-                                <label class="form-label">活動日期</label>
-                                <input type="date" id="eventDate" name="eventDate" placeholder="活動日期..."
-                                    class="form-control" onchange="updateMinTime()" required>
-                                <div class="invalid-feedback">
-                                    請選擇活動日期
-                                </div>
-                            </div>
-                            <div class="col-sm-5">
-                                <label class="form-label">活動開始時間</label>
-                                <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
-                                    class="form-control" required step="600" value="">
-                                <div class="invalid-feedback">
-                                    請選擇活動開始時間
-                                </div>
+                        <!-- Forth row -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-12">
+                            <label class="form-label">活動地址</label>
+                            <input type="text" name="address" placeholder="活動地址..." class="form-control" id="address"
+                                value="" required>
+                            <div class="invalid-feedback">
+                                必填!
                             </div>
                         </div>
+                        <!-- </div> -->
+                        <br>
+                        <!-- Fith row -->
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-5">
+                            <label class="form-label">活動日期</label>
+                            <div class="input-group date" id="eventDate1">
+                                <input type="text" id="eventDate" name="eventDate" placeholder="90天內活動日期..."
+                                    class="form-control" value="" required>
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="form-label">活動開始時間</label>
+                            <input type="time" id="startTime" name="startTime" placeholder="活動開始時間..."
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                必填!
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-4"></div> -->
+                        <!-- </div> -->
                         <br>
                         <!--  row Six -->
-                        <!-- <div class="col-sm-5">
+                        <!-- <div class="row"> -->
+                        <div class="col-sm-5">
                             <label class="form-label">報名截止日期</label>
                             <div class="input-group date" id="eventDate2">
                                 <input type="text" id="lastVerifyDate" name="lastVerifyDate" placeholder="報名截止日期..."
@@ -614,19 +628,11 @@
                             <div class="invalid-feedback">
                                 必填!
                             </div>
-                        </div> -->
-                        <div class="row mb-3">
-                            <div class="col-sm-7">
-                                <label class="form-label">最後審核時間</label>
-                                <input class="form-control" id="deadline" name="deadline" placeholder="活動日期..." min=""
-                                    required type="datetime-local">
-                                <div class="invalid-feedback">
-                                    請好好填寫最後審核時間
-                                </div>
-                            </div>
                         </div>
+                        <!-- </div> -->
                         <br>
                         <!-- row  seven ===================================== Javascript ==============================================-->
+                        <!-- <div class="row"> -->
                         <div class="col-sm-4">
                             <label class="form-label">人數上限</label>
                             <input type="number" id="maxAttendees" name="maxAttendees" placeholder="聚會人數上限" min="1"
@@ -656,23 +662,23 @@
                                 必填!
                             </div>
                         </div>
+                        <!-- </div> -->
                         <br>
                         <!-- row eight -->
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="description">聚會描述和備註 (必填*)</label>
+                                    <label for="description">聚會描述和備註</label>
                                     <textarea class="form-control" name="description" id="description" rows="3"
                                         required></textarea>
                                     <div class="invalid-feedback">
-                                        請好好填寫聚會描述和備註
+                                        請與教練分享參加目標與期望。
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <hr>
-                        <!-- row nine -->
                         <div class="row">
                             <div class="col-sm-3">
                                 <label for="" class="form-label">課程狀態</label>
@@ -718,24 +724,31 @@
                         </div>
                         <br>
                         <!-- row eight -->
-                        <!-- <div class="row">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                                <label class="form-check-label" for="gridCheck">
-                                    我已閱讀並同意免責聲明
-                                </label>
-                            </div>
-                        </div> -->
+                        <!-- <div class="row"> -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <label class="form-check-label" for="gridCheck">
+                                我已閱讀並同意免責聲明
+                            </label>
+                        </div>
+                        <!-- </div> -->
                         <hr>
                         <br>
                         <!-- row nine -->
                         <div class="row">
                             <div class="col-sm-12">
                                 <button type="submit" id="btn_submit" class="btn btn-primary">
-                                    創辦課程
+                                    創辦活動
                                 </button>
                             </div>
                         </div>
+                        <!-- <div class="row justify-content-center">
+                        <div class="col-sm-8 ">
+                            <div class="d-grid gap-2 ">
+                                <button class="btn btn-primary ylbtn" type="button">預覽</button>
+                            </div>
+                        </div>
+                    </div> -->
                     </div>
                 </form>
                 <div class="col-4" style="color: #B6B6B6;"> 送出前請再次確認表單資訊</div>
@@ -787,12 +800,7 @@
     <!-- ================================================================= -->
     <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <!-- 一定要加這個 defer or async or ascy type="text/javascript"     // 設定語言為繁體中文 -->
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg2-TXdbaJlPtWu96Ffe4YTXSb5qXTeEs&libraries=places&callback=initMap&language=zh-TW"
-        type="text/javascript"></script>
-    <!--    text editor-->
-    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+
     <script>
         $("#searchbar").focus("click", function () {
             $("#searchcard").removeClass("d-none");
@@ -808,98 +816,49 @@
         // img.src=URL.createObjectURL(photolistener.files[0]);
         // });
 
-        // text editor
-        const editor = CKEDITOR.replace('description');
-
-        //更新最晚 最後審核時間 (max)
-        function updateMinTime() {
-            const dateInput = document.getElementById('eventDate');
-            const timeInput = document.getElementById('deadline');
-
-            // Get the selected date value from the date input
-            const selectedDate = dateInput.value;
-
-            // Set the minimum value of the time input based on the selected date
-            timeInput.max = selectedDate + 'T00:00';
-        }
+        //==================================== image upload js ======================zzzz=================================================================
         $(document).ready(function () {
-            //set (min) for eventDate & deadline
-            let today = new Date();
-            let dd = today.getDate();
-            let mm = today.getMonth() + 1; // 一月是0，所以要加1
-            let yyyy = today.getFullYear();
-            let hh = today.getHours();
-            let mins = today.getMinutes();
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-            if (hh < 10) {
-                hh = '0' + hh;
-            }
-            if (mins < 10) {
-                mins = '0' + mins;
-            }
-
-            let date = yyyy + '-' + mm + '-' + dd;
-            let dateTime = yyyy + '-' + mm + '-' + dd + "T" + hh + ":" + mins;
-
-            //let date = today.toISOString().split("T")[0];
-            // var dateTime = today.toISOString().slice(0, 16);  //這個方法不好 因為沒辦法自動判斷所在時區
-            console.log(dateTime);
-            document.getElementById("eventDate").setAttribute("min", date);
-            document.getElementById("deadline").setAttribute("min", dateTime);
-
-            // ============================  setting input for time and datetime only allow 5 minutes intervals ================ start ======
-            // get input elements
-            const start = document.getElementById('startTime');
-            const end = document.getElementById('startTime');
-            const deadline = document.getElementById('deadline');
-
-            deadline.addEventListener('change', () => {
-                // Splitting the date and time
-                const [datePart, timePart] = deadline.value.split("T");
-                const newTime = rounder(timePart);
-                deadline.value = `${datePart}T${newTime}`;
+            // 防止選今天以前的日期
+            $('#eventDate1').datetimepicker({
+                date: null,
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-tw'),
+                minDate: moment().add(1, 'days'),
+                maxDate: moment().add(90, 'days'),
+            });
+            $('#eventDate2').datetimepicker({
+                date: null,
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-tw'),
+                minDate: moment().add(1, 'days'),
+                maxDate: moment().add(90, 'days'),
             });
 
-            start.addEventListener('change', () => {
-                const newTimes = rounder(start.value);
-                end.value = `${newTimes}`;
+
+            //撈該縣市的區
+            $("#city").change(function () {
+                // var city = $("#city").val();
+                // console.log("city: " + city);
+                var city = $("#city option:selected").text();
+                console.log("cityText: " + city);
+
+                $.ajax({
+                    url: "/ixercise/course/districts/" + city,
+                    type: "GET",
+                    contentType: 'application/json',
+                    success: function (resp) {
+                        console.log("resp>>" + resp);
+                        let tableData = '';
+                        for (let i = 0; i < resp.length; i++) {
+                            tableData += `<option selected value="">${resp[i].name}</option>`;
+                        }
+                        $("#district").empty().append(tableData);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
             });
-
-            function rounder(timeInput) {
-                // get hours and minutes as integer values
-                //  21:50 --> ["21", "50"]//
-                let hours = parseInt(timeInput.split(':')[0]);
-                let minutes = parseInt(timeInput.split(':')[1]);
-
-                // const result = Number((num / 5).toFixed(0) * 5);
-                // const num = 52.4281; --> 50
-                // const num = 52.5281; --> 55 (52.5 / 5 => 10.5 , toFixed(0) <小數點第1位 (0)> => 10 * 5 => 50)
-                // const num = 53; --> 55
-
-                // minutes = Math.round(minutes / 10) * 10;                 // 10 minutes intervals
-                minutes = Number((minutes / 5).toFixed(0) * 5);     //讓用戶只能設定時間以每五分鐘的間隔 set the input time to only allow every 5 minutes intervals
-
-                // if an hour is exceeded, add it to hours instead
-                // and account for a day passing by
-
-                if (minutes >= 60) {
-                    hours = (hours + 1) % 24;
-                    minutes -= 60;
-                }
-                // reformat values as strings with a fix length of 2
-                hours = (hours < 10 ? `0${hours}` : `${hours}`);
-                console.log(hours);
-                minutes = (minutes < 10 ? `0${minutes}` : `${minutes}`);
-                // assign new value to the end input
-                return `${hours}:${minutes}:00`;
-            }
-            // ============================  setting input for time and datetime only allow 5 minutes intervals ================ end ======
-
 
             // 监听選擇照片之後
             //let photolistener = $("#photo-dropzone");
@@ -932,34 +891,21 @@
                 // console.log("expectedPrice>>" + expectedPrice);
                 let courseStartDate = $("#eventDate").val();
                 let courseStartTime = courseStartDate + " " + $("#startTime").val() + ":00";
-                // console.log("courseStartTime>>" + courseStartTime);
                 let courseDuration = $("#courseDuration").val();
-                // console.log("courseDuration>>" + courseDuration);
 
-                // let lastVerifyDate = $("#lastVerifyDate").val();
-                // let lastVerifyTime = $("#lastVerifyTime").val();
-                // let registrationDeadline = lastVerifyDate + " " + lastVerifyTime + ":00";
-                var registrationDeadline = $('#deadline').val().split('T')[0] + " " + $('#deadline').val().split('T')[1] + ":00";
+                let lastVerifyDate = $("#lastVerifyDate").val();
+                let lastVerifyTime = $("#lastVerifyTime").val();
+                let registrationDeadline = lastVerifyDate + " " + lastVerifyTime + ":00";
                 // console.log("registrationDeadline>>" + registrationDeadline);
-
                 let maximumCapacity = $("#maxAttendees").val();
-
-                CKEDITOR.instances.description.updateElement();
-                // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
-                // console.log($('textarea[name=description]').val());
                 let description = $("#description").val();
-                // console.log("description>>" + description);
-
                 let location = $("#location").val();
-                // let city = $("#city option:selected").text();
-                let city = $("#city").val();
-                // console.log("city>>" + city);
+                // let city = $("#city").val();
+                let city = $("#city option:selected").text();
 
-                // let district = $("#district option:selected").text();
-                let district = $("#district").val();
+                let district = $("#district option:selected").text();
                 // console.log("district>>" + district);
-
-                let detailedAddress = $("#autocomplete-address").val();
+                let detailedAddress = $("#address").val();
                 let categoryId = $("#categoryId option:selected").text();
 
                 let courseStatus = $("#courseStatus").val();
@@ -989,7 +935,7 @@
                 formData.append('file', file);
 
                 if (!eventName) {
-                    swal("Warning!", "請填完整課名", "warning");
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#eventName').siblings('.invalid-feedback').show();
                     return;
                 }
@@ -998,53 +944,53 @@
                     $('#expectedPrice').siblings('.invalid-feedback').show();
                     return;
                 }
-                // if (!courseStartDate) {
-                //     swal("Warning!", "請填完整開課時間", "warning");
-                //     $('#courseStartDate').siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                if ($("#startTime").val() == "") {
-                    swal("Warning!", "請填完整開課時間", "warning");
+                if (!courseStartDate) {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $('#courseStartDate').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!$("#startTime").val()) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $("#startTime").siblings('.invalid-feedback').show();
                     return;
                 }
                 if (!courseDuration) {
-                    swal("Warning!", "請填完整課程時長", "warning");
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#courseDuration').siblings('.invalid-feedback').show();
                     return;
                 }
-                // if (!$("#lastVerifyTime").val()) {
-                //     swal("Warning!", "請填完整資料", "warning");
-                //     $("#lastVerifyTime").siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                // if (!maximumCapacity) {
-                //     swal("Warning!", "請填完整資料", "warning");
-                //     $('#maximumCapacity').siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                // if (!location) {
-                //     swal("Warning!", "請填完整資料", "warning");
-                //     $('#location').siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                // if (!city) {
-                //     swal("Warning!", "請填完整資料", "warning");
-                //     $('#city').siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                // if (!district) {
-                //     swal("Warning!", "請填完整資料", "warning");
-                //     $('#district').siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                // if (!detailedAddress) {
-                //     swal("Warning!", "請填完整資料", "warning");
-                //     $('#detailedAddress').siblings('.invalid-feedback').show();
-                //     return;
-                // }
-                if (!categoryId || category == "請選擇..") {
-                    swal("Warning!", "請選擇類型", "warning");
+                if (!$("#lastVerifyTime").val()) {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $("#lastVerifyTime").siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!maximumCapacity) {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $('#maximumCapacity').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!location || location == "請選擇..") {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $('#location').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!city || city == "請選擇..") {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $('#city').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!district) {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $('#district').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!detailedAddress) {
+                    swal("Warning!", "請填完整資料", "warning");
+                    $('#detailedAddress').siblings('.invalid-feedback').show();
+                    return;
+                }
+                if (!categoryId) {
+                    swal("Warning!", "請填完整資料", "warning");
                     $('#categoryId').siblings('.invalid-feedback').show();
                     return;
                 }
@@ -1108,7 +1054,6 @@
                         alert("Error: " + xhr.responseText);
                     }
                 });
-                // 跳轉首頁
                 setTimeout(function () {
                     window.location.href = '/ixercise/jimmy/Course_homePage.html';
                 }, 2000);
@@ -1218,6 +1163,8 @@
                 }
             };
             //==================================== image upload js -gpt =======================================================================================
+            //==================================== google map api =======================================================================================
+
             //==================================== form-input validate &&  session storage =======================================================================================
             // Example starter JavaScript for disabling form submissions if there are invalid fields
             (function () {
@@ -1229,158 +1176,50 @@
                 // Loop over them and prevent submission
                 Array.prototype.slice.call(forms)
                     .forEach(function (form) {
-                        form.addEventListener('submit', function (e) {
-
-                            //=========== 檢查輸入的地點是否在google map 上有效=====(simulating : input focus, trim, enter, blur(unfocused) )=== start =============
-                            let autoAddress = document.querySelector("#autocomplete-address");
-                            $("#autocomplete-address").focus();
-                            $("#autocomplete-address").val($("#autocomplete-address").val().trim());
-
-                            // 模擬enter 鍵
-                            const ke = new KeyboardEvent('keydown', {
-                                bubbles: true, cancelable: true, keyCode: 13
-                            });
-                            autoAddress.dispatchEvent(ke);
-                            $("#autocomplete-address").blur();
-                            //=========== 檢查輸入的地點是否在google map 上有效======= end ==============
+                        form.addEventListener('submit', function (event) {
 
                             if (!form.checkValidity()) {
-                                e.preventDefault()
-                                e.stopPropagation()
+                                event.preventDefault()
+                                event.stopPropagation()
                                 console.log("!form.checkValidity()");
                             } else {
                                 console.log("hiii");
-                                e.preventDefault();
+                                // e.preventDefault();
+                                var send_data = {};
+                                send_data.photo_dropzone = $("#photo-dropzone").val();
+                                send_data.event_name = $("#event_name").val();
+                                send_data.categoryId = $("#categoryId").val();
+                                send_data.city = $("#city").val();
+                                send_data.district = $("#district").val();
+                                send_data.location = $("#location").val();
+                                send_data.address = $("#address").val();
+                                send_data.price = $("#price").val();
+                                send_data.eventDate = $("#eventDate").val();
+                                send_data.startTime = $("#startTime").val();
+                                send_data.lastVerifyDate = $("#lastVerifyDate").val();
+                                send_data.lastVerifyTime = $("#lastVerifyTime").val();
+                                send_data.maxAttendees = $("#maxAttendees").val();
+                                send_data.paymentMethod = $("#paymentMethod").val();
+                                send_data.description = $("#description").val();
+                                console.log(send_data);
 
-                                // ==========  text-editor ================= start ==========
-
-                                CKEDITOR.instances.description.updateElement();
-                                // 因為先把編輯器更新回textarea了，這裡就可以抓到目前最新的內容
-                                console.log($('textarea[name=description]').val());
-
-                                // ==========  text-editor ================= end ==========
-
-                                // var event = {};
-
-                                // event.photo = $("#photo-dropzone").val();
-                                // event.eventName = $("#event_name").val();
-                                // event.categoryId = $("#categoryId").val();
-                                // event.city = $("#city").val();
-                                // event.district = $("#district").val();
-                                // event.location = $("#location").val();
-
-                                //把隱藏input 的值裝進 event
-                                // event.address4input = $("#autocomplete-address").val();
-                                // event.address = $("#autocomplete-formatted-address").val();
-                                // event.addressUrl = $("#autocomplete-url").val();
-                                // event.addressNickname = $("#autocomplete-name").val();
-
-                                // event.price = $("#price").val();
-                                // event.eventDate = $("#eventDate").val();
-                                // event.startTime = $("#startTime").val() + ':00';
-                                // event.startTime = $("#startTime").val();
-                                // event.maxAttendees = $("#maxAttendees").val();
-                                // event.paymentMethod = $("#paymentMethod").val();
-                                // event.description = $('textarea[name=description]').val();
-                                // event.deadline = $("#deadline").val();
-
-                                // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                                // event.creatorId = sessionStorage.getItem("accountId");
-                                // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-                                // console.log(event);
-                                //
-                                // var img_base64_el = document.querySelector(".preview_img");
-                                // if (img_base64_el) {
-                                //     event.img_base64 = img_base64_el.getAttribute("src");
-                                // }
-
-                                // var img_base64_el = document.querySelector(".preview_img");
-                                // console.log(img_base64_el);
-                                // let img_base64;
-                                // if (img_base64_el) {
-                                //     img_base64 = img_base64_el.getAttribute("src");
-                                // }
-
-                                // console.log("eventPhoto: " + img_base64);
-
-                                // const photouploas = new FileReader();
-
+                                var img_base64_el = document.querySelector(".preview_img");
+                                if (img_base64_el) {
+                                    send_data.img_base64 = img_base64_el.getAttribute("src");
+                                }
 
                                 // 把資料存到session 裡面-先不存到資料庫- 給預覽頁面座使用
-                                // let formData = JSON.stringify(event);
-                                // sessionStorage.setItem("Event", formData);
-                                // sessionStorage.setItem("eventphoto", img_base64);
-                                // console.log(formData);
-
+                                sessionStorage.setItem("form_data", JSON.stringify(send_data));
                             };
-
+                            form.classList.add('was-validated')
                         }, false)
                     })
-
-                // form.classList.add('was-validated')
             })()
             // =========================== 資料送出 ========================= //
 
 
         }); //Load ====
-        //==================================== google map api =======================================================================================
-        // JavaScript 程式碼在這裡
-        // 載入 Google 地圖 API 腳本
-        function initMap() {
-            // 設定地點自動完成欄位
-            let input = document.getElementById('autocomplete-address');
 
-            // 建立地點自動完成物件
-            const autocomplete = new google.maps.places.Autocomplete(input);
-
-            // 設定國家
-            autocomplete.setComponentRestrictions({ 'country': ['tw'] });
-
-            // 監聽當地點選擇事件
-            autocomplete.addListener('place_changed', () => {
-                const place = autocomplete.getPlace();
-                console.log("place--");
-                console.log(place);
-                console.log(place.url);         //https://maps.google.com/?cid=7060274125268772127
-                console.log(place.formatted_address); //詳細地址  e.g:106台灣台北市大安區新生南路二段1號
-                console.log(place.name);        //e.g.: 大安森林公園
-                console.log(place.website);
-
-                // 檢查是否有選擇地點
-                if (!place.geometry || !place.geometry.location) {
-                    window.alert('在Google maps 上查不到: \'' + place.name + '\' , 請重新輸入..');
-                    $("#autocomplete-address").val("");
-                    return;
-                }
-                //把值塞進隱藏的input
-                $("#autocomplete-formatted-address").val(place.formatted_address);
-                $("#autocomplete-url").val(place.url);
-                $("#autocomplete-name").val(place.name);
-
-                //如果用戶沒輸入 地點 -> 幫他填
-                if ($("#location").val() == "") {
-                    $("#location").val(place.name);
-                }
-
-
-                let addressHtmlCode = place.adr_address;
-                console.log(addressHtmlCode);
-                //  the HTML code returned from "adr_address" is stored in a variable 'addressHtmlCode'
-                const htmlparser = new DOMParser();
-                const doc = htmlparser.parseFromString(addressHtmlCode, "text/html");
-
-                // Select the element with the class 'region',  abd Get the text content of the selected element
-                const regionText = doc.querySelector(".region").textContent;
-                const localityText = doc.querySelector(".locality").textContent;
-
-                $("#city").val(regionText);
-                $("#district").val(localityText);
-                console.log($("#district").val());
-
-            });
-        }
 
     </script>
 </body>
