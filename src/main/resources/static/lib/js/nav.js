@@ -378,6 +378,7 @@ logout.addEventListener("click", function () {
     localStorage.removeItem("accountLevel");
     localStorage.removeItem("accountNickname");
     localStorage.removeItem("accountPhoto");
+    localStorage.removeItem("token");
 
     fetch("Account/Logout");
     location = getContextPath() + "/index.html";
@@ -418,19 +419,21 @@ function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
 
-fetch('/ixercise/Account/checkfornav/' + accid)
-    .then(resp => resp.json())
-    .then(body => {
-        const { successful, message } = body;
-        if (successful) {
-            addcourse.classList.remove("d-none");
-            console.log(message);
-            if(sessionStorage.getItem("accountLevel") === "1" || localStorage.getItem("accountLevel") === "1"){
-                sessionStorage.setItem("accountLevel",2);
-                localStorage.setItem("accountLevel",2);
+if (accid) {
+    fetch('/ixercise/Account/checkfornav/' + accid)
+        .then(resp => resp.json())
+        .then(body => {
+            const {successful, message} = body;
+            if (successful) {
+                addcourse.classList.remove("d-none");
+                console.log(message);
+                if (sessionStorage.getItem("accountLevel") === "1" || localStorage.getItem("accountLevel") === "1") {
+                    sessionStorage.setItem("accountLevel", 2);
+                    localStorage.setItem("accountLevel", 2);
+                }
             }
-        }
+        })
+}
 
-    })
 
 // });

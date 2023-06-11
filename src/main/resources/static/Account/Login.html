@@ -402,7 +402,7 @@
             body: JSON.stringify({
                 accountPhone: phone.value,
                 accountPassword: password.value
-            })
+            }),
             // 上面有一個逗點 不知道為啥 先不加
         })
             .then(resp => resp.json())
@@ -412,7 +412,7 @@
                 if (successful) {
                     const {accountId, accountNickname, accountLevel, accountPhoto, accountPhone,accountPassword} = body;
                     errMsg.className = "text-success";
-                    errMsg.textContent = message;
+                    errMsg.textContent = "登入成功";
 
                     sessionStorage.setItem("accountId", accountId);
                     sessionStorage.setItem("accountNickname", accountNickname);
@@ -424,6 +424,7 @@
                     localStorage.setItem("accountNickname", accountNickname);
                     localStorage.setItem("accountLevel", accountLevel);
                     localStorage.setItem("accountPhoto", accountPhoto);
+                    localStorage.setItem("token",message);
 
                     const expirationTime = 5 * 60 * 60 * 1000; // 5 小時的毫秒數
                     const currentTime = new Date().getTime(); // 當前時間的毫秒數

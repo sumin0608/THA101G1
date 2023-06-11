@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
+import tw.idv.ixercise.core.JwtUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("Account")
@@ -39,6 +42,14 @@ public class LoginController {
             final HttpSession session = req.getSession();
             session.setAttribute("loggedin", true);
             session.setAttribute("account", account);
+            //JWT
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("accountId", account.getAccountId());
+            claims.put("accountPhone", account.getAccountPhone());
+
+            String jwt = JwtUtils.generateJwt(claims);
+            account.setAccountPassword("");
+            account.setMessage(jwt);
         }
 
         return account;
@@ -47,12 +58,13 @@ public class LoginController {
 
     @PostMapping("LoginForAd")
     public Core loginForAdmin(HttpServletRequest req, @RequestBody Account account) {
+        Core core = new Core();
 
 
-        if (account.getAccountEmail() == null || account.getAccountPassword() == null) {
-            account.setMessage("無會員資料");
-            account.setSuccessful(false);
-            return account;
+        if ("null".equals(account.getAccountEmail()) || "null".equals(account.getAccountPassword())) {
+            core.setMessage("請填寫信箱及密碼");
+            core.setSuccessful(false);
+            return core;
         }
 
         account = service.loginForAd(account);
@@ -63,8 +75,19 @@ public class LoginController {
             final HttpSession session = req.getSession();
             session.setAttribute("loggedin", true);
             session.setAttribute("account", account);
-        }
+            //JWT
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("accountId", account.getAccountId());
+            claims.put("accountEmail", account.getAccountEmail());
 
-        return account;
+            String jwt = JwtUtils.generateJwt(claims);
+            core.setSuccessful(true);
+            core.setMessage(jwt);
+            return core;
+        } else {
+            core.setSuccessful(account.isSuccessful());
+            core.setMessage(account.getMessage());
+            return core;
+        }
     }
 }

@@ -32,12 +32,12 @@ public class Account extends Core {
     private Integer accountId;
     @NotNull
     private String accountPhone;
-
+    @NotNull
     private String accountPassword;
-    //	@NotNull
-	@Email
+    @NotNull
+    @Email
     private String accountEmail;
-
+    @NotNull
     private String accountNickname;
 
     private Integer accountLevel;
@@ -45,10 +45,11 @@ public class Account extends Core {
     private Integer accountState;
     @NotNull
     private String accountAddress;
-
+    @NotNull
     private String accountName;
 
     @Past
+    @NotNull
     private Date accountBirthday;
     @Column(insertable = false)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
@@ -56,13 +57,13 @@ public class Account extends Core {
     @Column(insertable = false)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp accountUpdatetime;
-
+    @NotNull
     private Integer accountGender;
 
     private byte[] accountPhoto;
 
     private byte[] accountIdoc;
-
+    @NotNull
     private String accountIntro;
 
     private Integer accountReport;
