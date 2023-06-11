@@ -43,13 +43,47 @@ $(function () {
                 var html = "";
                 for (var i = messages.length - 1; i >= 0; i--) {
                     var historyData = JSON.parse(messages[i]);
+                    // 获取当前时间
+                    var currentTime = new Date();
+
+                    // 将从数据库获取的时间转换为日期对象
+                    var dbTime = new Date("2023-06-10T08:30:00");
+
+                    // 计算时间差（以毫秒为单位）
+                    var timeDiff = currentTime - historyData.messagetime
+
+                    // 转换时间差为不同单位
+                    var minutesDiff = Math.floor(timeDiff / (1000 * 60));
+                    var hoursDiff = Math.floor(timeDiff / (1000 * 60 * 60));
+                    var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+                    // 根据时间差的单位显示不同的文本
+                    var timeAgo;
+                    if (minutesDiff < 60) {
+                        timeAgo = minutesDiff + " 分钟前";
+                    } else if (hoursDiff < 24) {
+                        timeAgo = hoursDiff + " 小时前";
+                    } else {
+                        timeAgo = daysDiff + " 天前";
+                    }
+
+                    // 输出时间差
+                    console.log(timeAgo);
+
+
+
+
+
                     html += '<div class="list-group notifyunread">' +
                         '<a href="#" class="list-group-item list-group-item-action" aria-current="true" style="height: 93px; width:600px;">' +
                         '<div class="row h-100">' +
                         '<div class="col-2 h-100"><img src="./lib/img/' + historyData.photo + '" width="72px" height="72px" alt="" style="object-fit:cover"></div>' +
-                        '<div class="col-10">' +
+                        '<div class="col-8">' +
                         '<h3>' + historyData.message + '</h3>' +
                         '</div>' +
+                        '<div class="col-2">' + timeAgo +
+                        '</div>' +
+
                         '</div>' +
                         '</a>' +
                         '</div>';
