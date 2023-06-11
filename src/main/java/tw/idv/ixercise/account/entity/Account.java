@@ -5,10 +5,7 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -30,26 +27,27 @@ public class Account extends Core {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
-    @NotNull
+
+    @NotBlank(message = "手機為必填")
     private String accountPhone;
-    @NotNull
+    @NotBlank(message = "密碼為必填")
     private String accountPassword;
-    @NotNull
+    @NotBlank(message = "信箱為必填")
     @Email
     private String accountEmail;
-    @NotNull
+    @NotBlank(message = "綽號為必填")
     private String accountNickname;
 
     private Integer accountLevel;
 
     private Integer accountState;
-    @NotNull
+    @NotBlank(message = "地址為必填")
     private String accountAddress;
-    @NotNull
+    @NotBlank(message = "姓名為必填")
     private String accountName;
 
     @Past
-    @NotNull
+//    @NotNull(message = "生日為必填")
     private Date accountBirthday;
     @Column(insertable = false)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
@@ -57,13 +55,13 @@ public class Account extends Core {
     @Column(insertable = false)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp accountUpdatetime;
-    @NotNull
+//    @NotNull(message = "性別為必填")
     private Integer accountGender;
 
     private byte[] accountPhoto;
 
     private byte[] accountIdoc;
-    @NotNull
+    @NotBlank(message = "自我介紹為必填")
     private String accountIntro;
 
     private Integer accountReport;

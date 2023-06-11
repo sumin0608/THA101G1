@@ -139,6 +139,7 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </li>
 
                 <!-- <div class="collapse  d-block" id="collapseExample">
@@ -435,8 +436,8 @@
                         localStorage.removeItem("accountLevel");
                         localStorage.removeItem("accountPhoto");
                     }, expirationTime);
-                    setTimeout(`location.href='${getContextPath()}/index.html'`,1000) ;
-                    loginforshop(accountPhone,accountPassword);
+                    setTimeout(`location.href='${getContextPath()}/index.html'`,2000) ;
+                    loginforshop(phone.value,password.value);
 
                 } else {
                     errMsg.className = "text-danger";

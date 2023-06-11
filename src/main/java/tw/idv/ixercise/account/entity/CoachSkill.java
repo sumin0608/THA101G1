@@ -7,6 +7,7 @@ import lombok.Setter;
 import tw.idv.ixercise.core.Core;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -24,17 +25,20 @@ public class CoachSkill extends Core {
     @Column
     private Integer accountId;
     @Column
+    @NotNull
     private String licenseName;
     @Column
+    @NotNull
     private Integer sportType;
     @Column
+    @NotNull
     private byte[] licensePhoto;
     @Column
     private Integer skillState;
     @Transient
     private String accountName;
 
-    public CoachSkill(boolean success,String message){
+    public CoachSkill(boolean success, String message) {
         super(success, message);
     }
 //    @Override

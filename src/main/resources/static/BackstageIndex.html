@@ -139,7 +139,7 @@
                 <li>
                     <hr class="dropdown-divider"/>
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li><a id="logoutbtnb" class="dropdown-item" href="">Logout</a></li>
             </ul>
         </li>
     </ul>
@@ -477,7 +477,23 @@
     const comag = document.querySelector("#CoachManage");
     acmag.href = getContextPath() + "/Account/AccountManage.html"
     admag.href = getContextPath() + "/Account/AdminManage.html"
-    // comag.href = getContextPath()+""
+    const logoutbtnb = document.querySelector("#logoutbtnb");
+
+    logoutbtnb.addEventListener("click", function () {
+        fetch("Account/Logout");
+        location = getContextPath() + "/Account/AdminLogins.html";
+
+        sessionStorage.removeItem("accountId");
+        sessionStorage.removeItem("accountLevel");
+        sessionStorage.removeItem("accountNickname");
+        sessionStorage.removeItem("accountPhoto");
+
+        localStorage.removeItem("accountId");
+        localStorage.removeItem("accountLevel");
+        localStorage.removeItem("accountNickname");
+        localStorage.removeItem("accountPhoto");
+        localStorage.removeItem("token");
+    })
 
 </script>
 </body>

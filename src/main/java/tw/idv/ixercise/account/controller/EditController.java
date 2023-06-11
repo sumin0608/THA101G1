@@ -9,6 +9,7 @@ import tw.idv.ixercise.core.Core;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Objects;
 
 @RestController
@@ -37,19 +38,20 @@ public class EditController {
 
     //    這個暫時不使用
     @PostMapping
-    public Core checkOldPassword(@RequestBody Account account, @SessionAttribute("account") Account oAccount) {
+    public Core checkOldPassword(@RequestBody Account nAccount, @SessionAttribute("account") Account account) {
         final Core core = new Core();
+        System.out.println(nAccount);
         System.out.println(account);
-        System.out.println(oAccount);
-        if (account == null) {
+        if (nAccount == null) {
             core.setMessage("無會員資料");
             core.setSuccessful(false);
-        } else if (oAccount == null) {
+        } else if (account == null) {
             core.setMessage("請重新登入");
             core.setSuccessful(false);
         } else {
-            final String currentPassword = oAccount.getAccountPassword();
-            final String oldPassword = account.getAccountPassword();
+            System.out.println(account);
+            final String currentPassword = account.getAccountPassword();
+            final String oldPassword = nAccount.getAccountPassword();
             System.out.println(currentPassword);
             System.out.println(oldPassword);
             System.out.println(Objects.equals(oldPassword, currentPassword));
@@ -66,7 +68,7 @@ public class EditController {
 
 
     @PutMapping("update")
-    public Account edit(Model model, @RequestBody Account account, @SessionAttribute("account") Account oAccount) {
+    public Account edit(Model model, @RequestBody @Valid Account account, @SessionAttribute("account") Account oAccount) {
 //        驗證傳進來的會員資料
         if (account == null) {
             Account acc = new Account();
@@ -84,15 +86,15 @@ public class EditController {
 
         account.setAccountId(oAccount.getAccountId());
         account = service.updateById(account);
-        System.out.println("送回來的acc"+account);
+        System.out.println("送回來的acc" + account);
         if (account.isSuccessful()) {
 //            model的用意??
 
 //            oAccount = account;
-            System.out.println("存給Oacc"+account);
-            model.addAttribute("account",account);
+            System.out.println("存給Oacc" + account);
+            model.addAttribute("account", account);
 //            session.setAttribute("account",account);
-            System.out.println("sesssion的acc"+model.getAttribute("account"));
+            System.out.println("sesssion的acc" + model.getAttribute("account"));
         }
 //        System.out.println(account);
         account.setMessage("修改成功");

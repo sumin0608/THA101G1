@@ -98,6 +98,6 @@ public class ManageController {
     }
     @GetMapping("forChechLogin")
     public Core checkLg(){
-        return null;
+        return new Core(true,"登入正常");
     }
 }

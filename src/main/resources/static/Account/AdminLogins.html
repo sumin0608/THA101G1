@@ -334,7 +334,7 @@
                             <button id="btnsend" type="button" class="btn btn-primary">送出</button>
                         </fieldset>
                         <a href="">忘記密碼?</a>
-                        <div id="msg" class="error"></div>
+                        <div id="msg" class=""></div>
                     </form>
                 </div>
             </div>
@@ -391,7 +391,8 @@
         fetch("LoginForAd", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'},
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 accountEmail: ademail.value,
                 accountPassword: adps.value
@@ -409,11 +410,13 @@
                     // sessionStorage.setItem("accountLevel", accountLevel);
                     // sessionStorage.setItem("accountState", accountState);
                     // sessionStorage.setItem("accountPhoto", accountPhoto);
-                    localStorage.setItem("token",message);
+                    localStorage.setItem("token", message);
                     // location = getContextPath() + "/BackstageIndex.html";
-                    setTimeout(`location.href='${getContextPath()}/BackstageIndex.html'`,1000) ;
+                    setTimeout(`location.href = '${getContextPath()}/BackstageIndex.html'`, 1000);
+                    errMsg.className = "text-success"
                     errMsg.textContent = "登入成功";
                 } else {
+                    errMsg.className = "text-danger";
                     errMsg.textContent = message;
                 }
             })

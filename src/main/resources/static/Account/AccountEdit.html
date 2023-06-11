@@ -467,15 +467,21 @@
 
     function init() {
         btn1.addEventListener('click', async function () {
-            const passwordcheck = await checkOldPassword();
-            // console.log(passwordcheck);
-            if (passwordcheck) {
-                edit();
-                msg.textContent = "修改成功"
-            } else {
+            if(newPassword.value ===confirmPassword.value ){
+                const passwordcheck = await checkOldPassword();
+                // console.log(passwordcheck);
+                if (passwordcheck) {
+                    edit();
+                    msg.textContent = "修改成功"
+                } else {
+                    msg.className = "text-danger";
+                    msg.textContent = "舊密碼錯誤";
+                }
+            }else{
                 msg.className = "text-danger";
-                msg.textContent = "舊密碼錯誤"
+                msg.textContent = "新密碼與確認密碼不相同";
             }
+
         });
 
         // 放會員資料上來
@@ -555,8 +561,8 @@
             fetch('edit', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
-                    // 'token': localStorage.getItem('token')
+                    'Content-Type': 'application/json',
+                    'token': localStorage.getItem('token')
                 },
                 body: JSON.stringify({
                     accountPassword: oldPassword.value,
@@ -567,9 +573,12 @@
                     const {successful, message} = body;
                     if (successful) {
                         resolve(true);
+                        // alert("修改成功");
                     } else {
                         resolve(false);
+                        // alert(message);
                     }
+
                 })
                 .catch(error => {
                     reject(error);
@@ -612,6 +621,7 @@
                 body: JSON.stringify({
                     accountPassword: newPassword.value,
                     // accountBirthday: birthday.value,
+                    accountPhone: phone.value,
                     accountEmail: accEmail.value,
                     accountName: name.value,
                     accountNickname: acceditnickname.value,
@@ -622,7 +632,6 @@
             })
                 .then(resp => resp.json())
                 .then(body => {
-                    // console.log(body);
                     const {
                         successful, message,
                         accountNickname: nicknameValue,
@@ -633,6 +642,7 @@
                     } = body;
                     if (successful) {
                         msg.className = 'text-success';
+
                         sessionStorage.setItem('accountNickname', nicknameValue);
                         sessionStorage.setItem("accountPhoto", imageValue);
 
@@ -647,7 +657,7 @@
                         updatetime.textContent = updatetimeValue;
                         btn1.disabled = true;
                         address.value = addressValue;
-                        sessionStorage.setItem('accountPhoto', imageValue);
+                        // sessionStorage.setItem('accountPhoto', imageValue);
                         intro.value = introValue;
                         // base64Str2Avatar();
                         let photosrcupdate = getcreateObjURL(imageValue);
@@ -655,9 +665,10 @@
                         avatarinside.src = photosrcupdate;
                         img.src = photosrcupdate;
                     } else {
-                        msg.className = 'error';
+                        msg.className = 'text-danger';
                     }
-                    msg.textContent = message;
+                    // msg.textContent = message;
+                    msg.innerHTML = message.replace(/\n/g, "<br/>");
                 });
         }
 

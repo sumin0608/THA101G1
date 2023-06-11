@@ -22,18 +22,12 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 //      獲取請求url
         String url = req.getRequestURL().toString();
+        System.out.println(url);
 //      判斷請求url中是否包含login
 
 //      取得header的token
 //        System.out.println(req.getHeader("token"));
         String jwt = req.getHeader("token");
-
-//      驗證登入者可否進入後台
-        if (url.contains("BackstageIndex")) {
-
-
-            return true;
-        }
 
 //      判斷是否已登入
 
@@ -51,15 +45,18 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         try {
             Claims claims = JwtUtils.parseJWT(jwt);
             int accountLevel = Integer.parseInt(claims.get("accountLevel").toString());
-            if (accountLevel != 3) {
-                Core core = new Core(false, "權限不足，無法進入後台");
-                Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-                String json = gson.toJson(core);
-                resp.setContentType("application/json");
-                resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write(json);
-                return false;
+            if (url.contains("forChechLogin")) {
+                if (accountLevel != 3) {
+                    Core core = new Core(false, "權限不足，無法進入後台");
+                    Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+                    String json = gson.toJson(core);
+                    resp.setContentType("application/json");
+                    resp.setCharacterEncoding("UTF-8");
+                    resp.getWriter().write(json);
+                    return false;
+                }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             Core core = new Core(false, "請重新登入後再進行操作");

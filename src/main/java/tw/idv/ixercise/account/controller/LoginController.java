@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tw.idv.ixercise.account.entity.Account;
+import tw.idv.ixercise.account.entity.PgAccount;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 import tw.idv.ixercise.core.JwtUtils;
@@ -23,15 +24,12 @@ public class LoginController {
     private AccountService service;
 
     @PostMapping("Login")
-    public Account login(HttpServletRequest req, @RequestBody Account account) {
+    public PgAccount login(HttpServletRequest req, @RequestBody Account account) {
 
-        System.out.println("controller being req");
-        System.out.println(account);
-
-        if (account.getAccountPhone() == null || account.getAccountPassword() == null) {
-            account.setMessage("無會員資料");
+        if ("".equals(account.getAccountPhone()) || "".equals(account.getAccountPassword())) {
+            account.setMessage("請填寫手機及密碼");
             account.setSuccessful(false);
-            return account;
+            return new PgAccount(account);
         }
 
         account = service.login(account);
@@ -49,11 +47,9 @@ public class LoginController {
             claims.put("accountLevel", account.getAccountLevel());
 
             String jwt = JwtUtils.generateJwt(claims);
-            account.setAccountPassword("");
             account.setMessage(jwt);
         }
-
-        return account;
+        return new PgAccount(account);
 
     }
 
@@ -62,7 +58,7 @@ public class LoginController {
         Core core = new Core();
 
 
-        if ("null".equals(account.getAccountEmail()) || "null".equals(account.getAccountPassword())) {
+        if ("".equals(account.getAccountEmail()) || "".equals(account.getAccountPassword())) {
             core.setMessage("請填寫信箱及密碼");
             core.setSuccessful(false);
             return core;
