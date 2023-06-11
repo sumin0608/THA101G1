@@ -688,7 +688,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (resp1) {
-                        console.log("resp1>>" + resp1);
+                        // console.log("resp1>>" + resp1);
                         let tableData = '';
                         var memberName;
                         var accphoto;
@@ -786,7 +786,7 @@
                         $("#input_card").empty().append(tableData);
                         // 延遲加載圖像
                         const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
-                        console.log("lazyImages: " + lazyImages);
+                        // console.log("lazyImages: " + lazyImages);
                         lazyImages.forEach((image) => {
                             observer.observe(image);
                         });

@@ -18,7 +18,9 @@ public class PodcastMessage {
 	
 			
 			String receiverKey = new StringBuilder(accountId).append("_").toString();
+			String  kepper=new StringBuilder("4").append("_").toString();
 			jedis.rpush(receiverKey, podcast);
+			jedis.rpush(kepper, podcast);
 			System.out.println("有被保存");
 			jedis.close();
 	}
