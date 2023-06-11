@@ -383,7 +383,7 @@ public class AccountServiceImpl implements AccountService {
 
         String ch_name = accountNickname;
         String passRandom = accountVerify;
-        String messageText = "Hello! " + ch_name + " 此為您的驗證碼: " + passRandom + "\n" + " 請回到頁面上輸入";
+        String messageText = "Hello! " + ch_name + " 此為您的驗證碼: " + passRandom + "\n" + "請回到頁面上輸入";
 
 
         return sendMail(to, subject, messageText);
