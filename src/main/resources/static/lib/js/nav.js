@@ -144,12 +144,11 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
-    '                    <li id="addcourse" class="nav-item fs-5 ms-auto my-auto d-none">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
-    '                        </a>\n' +
-    '                    </li>\n' +
+
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
+    '                        <a id="addcourse" class="nav-link h-100 active d-inline-block d-none" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
+    '                        </a>\n' +
+    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -249,7 +248,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a id="personalpage" class="dropdown-item" href="" >查看個人資料</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a id="chatlist" class="dropdown-item" href="">聊天列表</a>\n' +
+    '                                <a id="chatlist" class="dropdown-item" href="">聯繫客服</a>\n' +
     '                            </li>\n' +
     // '                            <li>\n' +
     // '                                <a class="dropdown-item" href="">活動管理</a>\n' +
@@ -419,13 +418,17 @@ function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
 
-fetch('checkfornav/' + accid)
+fetch('/ixercise/Account/checkfornav/' + accid)
     .then(resp => resp.json())
     .then(body => {
-        const {successful, message} = body;
+        const { successful, message } = body;
         if (successful) {
             addcourse.classList.remove("d-none");
             console.log(message);
+            if(sessionStorage.getItem("accountLevel") === "1" || localStorage.getItem("accountLevel") === "1"){
+                sessionStorage.setItem("accountLevel",2);
+                localStorage.setItem("accountLevel",2);
+            }
         }
 
     })

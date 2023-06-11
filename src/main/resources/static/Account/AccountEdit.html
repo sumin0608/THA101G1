@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ixercise</title>
     <!-- 引入bootstarp跟共用css內容========================================= -->
-    <link href="../lib/css/styles.css" rel="stylesheet"/>
-    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <link href="../lib/css/styles.css" rel="stylesheet" />
+    <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
-    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png"/>
+    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
 
@@ -20,236 +20,236 @@
 
 <body>
 
-<!-- 以下導覽列=================================================================================== -->
-<!-- 增加w-100 sticky-top -->
-<nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
-    <div class=" container-fluid px-4 px-lg-0 me-4 ">
+    <!-- 以下導覽列=================================================================================== -->
+    <!-- 增加w-100 sticky-top -->
+    <nav class="navbar navbar-expand-lg navbar-light w-100 sticky-top navbar-color">
+        <div class=" container-fluid px-4 px-lg-0 me-4 ">
 
-        <!-- 商標===================================================================== -->
-        <a class="navbar-brand m-0 px-4" href="#!">
-            <img src="../lib/img/IX-nobackground.png" alt="" width="91" height="60">
-        </a>
-        <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <!-- 商標===================================================================== -->
+            <a class="navbar-brand m-0 px-4" href="#!">
+                <img src="../lib/img/IX-nobackground.png" alt="" width="91" height="60">
+            </a>
+            <!-- Bootstrap 5 的 Navbar Toggler 按鈕，用於在手機和平板等較小螢幕上，點擊按鈕時切換導覽列的展開和收縮狀態。 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-        <!-- 商標的右邊整條============================================================ -->
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <!-- 商標的右邊整條============================================================ -->
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
 
-            <ul class="navbar-nav mb-2 mb-lg-0 w-100">
-                <!-- 搜尋欄=============================================================== -->
-                <!-- <li class="nav-item my-auto">
+                <ul class="navbar-nav mb-2 mb-lg-0 w-100">
+                    <!-- 搜尋欄=============================================================== -->
+                    <!-- <li class="nav-item my-auto">
             <form class="d-flex">
                 <input class="form-control" type="search" placeholder="找活動..." aria-label="Search">
                 <button class="btn border border-2 border-dark" type="submit">Search</button>
             </form>
         </li> -->
 
-                <li class="nav-item my-auto">
-                    <form class="d-flex row">
-                        <div class="row" style="width: 400px; max-width: 400px;">
-                            <div class="col-8 pe-0">
-                                <input class="form-control" id="searchbar" type="search" placeholder="搜尋..."
-                                       aria-label="Search" role="button">
-                                </input>
+                    <li class="nav-item my-auto">
+                        <form class="d-flex row">
+                            <div class="row" style="width: 400px; max-width: 400px;">
+                                <div class="col-8 pe-0">
+                                    <input class="form-control" id="searchbar" type="search" placeholder="搜尋..."
+                                        aria-label="Search" role="button">
+                                    </input>
+                                </div>
+                                <div class="col-4 ps-0">
+                                    <button class="btn border border-1 border-dark" type="submit">Search</button>
+                                </div>
                             </div>
-                            <div class="col-4 ps-0">
-                                <button class="btn border border-1 border-dark" type="submit">Search</button>
-                            </div>
-                        </div>
 
-                        <!-- </form> -->
-                        <!-- ================================================================== -->
-                        <!-- <div class="collapse" id="collapseExample"> -->
-                        <div id="searchcard" class="d-none">
-                            <div class="card card-body w-50 position-fixed">
-                                <!-- <form action="" class="row mb-0"> -->
-                                <div class="row mb-0">
-                                    <div class="col-3">
-                                        <!-- <label for=""></label> -->
-                                        <select class="form-select form-select-sm col-3 mb-3"
+                            <!-- </form> -->
+                            <!-- ================================================================== -->
+                            <!-- <div class="collapse" id="collapseExample"> -->
+                            <div id="searchcard" class="d-none">
+                                <div class="card card-body w-50 position-fixed">
+                                    <!-- <form action="" class="row mb-0"> -->
+                                    <div class="row mb-0">
+                                        <div class="col-3">
+                                            <!-- <label for=""></label> -->
+                                            <select class="form-select form-select-sm col-3 mb-3"
                                                 aria-label="Default select example">
-                                            <option selected>頁面</option>
-                                            <option value="1">商城</option>
-                                            <option value="2">論壇</option>
-                                            <option value="3">活動</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm"
+                                                <option selected>頁面</option>
+                                                <option value="1">商城</option>
+                                                <option value="2">論壇</option>
+                                                <option value="3">活動</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                            <option selected>運動類型</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm"
+                                                <option selected>運動類型</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                            <option selected>各自設定</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-3">
-                                        <select class="form-select form-select-sm"
+                                                <option selected>各自設定</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                            <option selected>各自設定</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div class="row">
-                                        <!-- <div class="col-9"></div> -->
-                                        <div class="col-12 ">
-                                            <!-- <button class="btn btn-primary" type="submit"> 查詢
+                                                <option selected>各自設定</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <!-- <div class="col-9"></div> -->
+                                            <div class="col-12 ">
+                                                <!-- <button class="btn btn-primary" type="submit"> 查詢
                                 </button> -->
-                                            <button class="btn btn-primary" type="button" id="btn-close-search">關閉
-                                            </button>
-                                            <button class="btn btn-primary" type="reset" id="btn-close-search">重置
-                                            </button>
+                                                <button class="btn btn-primary" type="button" id="btn-close-search">關閉
+                                                </button>
+                                                <button class="btn btn-primary" type="reset" id="btn-close-search">重置
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                </li>
+                    </li>
 
-                <!-- <div class="collapse  d-block" id="collapseExample">
+                    <!-- <div class="collapse  d-block" id="collapseExample">
         </div> -->
 
 
-                <!-- 辦活動============================================================= -->
-                <li class="nav-item fs-5 ms-auto my-auto">
-                    <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動
-                    </a>
-                </li>
-                <!-- 其他主頁  ========================================================== -->
-                <li class="nav-item fs-5 dropdown my-auto">
-                    <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">其他主頁
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">首頁</a></li>
-                        <li>
-                            <hr class="dropdown-divider"/>
-                        </li>
-                        <li><a class="dropdown-item" href="#!">商城</a></li>
-                        <li><a class="dropdown-item" href="#!">論壇</a></li>
-                        <li><a class="dropdown-item" href="#!">活動</a></li>
-                        <li><a class="dropdown-item" href="#!">課程</a></li>
-                    </ul>
-                </li>
-                <!-- 鈴鐺============================================================= -->
-                <!-- 還有一顆填滿的bi-bell-fill -->
-                <!-- 操控.n-dot來控制有無紅點 -->
-                <li class="nav-item dropdown my-auto">
-                    <div class="n-dot"></div>
-                    <svg width="36" height="36" fill="currentColor"
-                         class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
-                         data-bs-toggle="dropdown" viewBox="0 0 16 16">
-                        <path
-                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-                    </svg>
-                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                        <!-- 一條通知====================================================== -->
+                    <!-- 辦活動============================================================= -->
+                    <li class="nav-item fs-5 ms-auto my-auto">
+                        <a class="nav-link active h-100 " aria-current="page" href="#!">辦活動
+                        </a>
+                    </li>
+                    <!-- 其他主頁  ========================================================== -->
+                    <li class="nav-item fs-5 dropdown my-auto">
+                        <a class="nav-link dropdown-toggle navalable" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">其他主頁
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">首頁</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">商城</a></li>
+                            <li><a class="dropdown-item" href="#!">論壇</a></li>
+                            <li><a class="dropdown-item" href="#!">活動</a></li>
+                            <li><a class="dropdown-item" href="#!">課程</a></li>
+                        </ul>
+                    </li>
+                    <!-- 鈴鐺============================================================= -->
+                    <!-- 還有一顆填滿的bi-bell-fill -->
+                    <!-- 操控.n-dot來控制有無紅點 -->
+                    <li class="nav-item dropdown my-auto">
+                        <div class="n-dot"></div>
+                        <svg width="36" height="36" fill="currentColor"
+                            class="bi bi-bell dropdown-toggle dropdown-toggle" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+                        </svg>
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                            <!-- 一條通知====================================================== -->
 
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                               style="height: 96px; width:600px;">
-                                <div class="row h-100">
-                                    <div class="col-2 h-100">
-                                        <img src="https://picsum.photos/150/200/?random=10"
-                                             class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
-                                    </div>
-                                    <div class="col-10">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">List group item heading</h5>
-                                            <small>3 days ago</small>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 96px; width:600px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/150/200/?random=10"
+                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
                                         </div>
-                                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                        <small>And some small print.</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action" aria-current="true"
-                               style="height: 96px; width:600px;">
-                                <div class="row h-100">
-                                    <div class="col-2 h-100">
-                                        <img src="https://picsum.photos/150/200/?random=10"
-                                             class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
-                                    </div>
-                                    <div class="col-10">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">List group item heading</h5>
-                                            <small>3 days ago</small>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
                                         </div>
-                                        <p class="mb-1">Some placeholder content in a paragraph.</p>
-                                        <small>And some small print.</small>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    </ul>
-                </li>
+                                </a>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                                    style="height: 96px; width:600px;">
+                                    <div class="row h-100">
+                                        <div class="col-2 h-100">
+                                            <img src="https://picsum.photos/150/200/?random=10"
+                                                class="rounded-start h-100 w-100" alt="" style="object-fit:cover">
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">List group item heading</h5>
+                                                <small>3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">Some placeholder content in a paragraph.</p>
+                                            <small>And some small print.</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </ul>
+                    </li>
 
-                <!-- 會員頭像========================================================= -->
-                <li class="nav-item dropdown mx-2 my-auto">
-                    <img src="https://picsum.photos/300/200/?random=10"
-                         class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
-                         href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
-                         height="36">
+                    <!-- 會員頭像========================================================= -->
+                    <li class="nav-item dropdown mx-2 my-auto">
+                        <img src="https://picsum.photos/300/200/?random=10"
+                            class="nav-link dropdown-toggle overflow-hidden rounded-circle p-0" id="navbarDropdown"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
+                            height="36">
 
-                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
 
-                        <li>
-                            <img class="dropdown-item overflow-hidden p-2 rounded-circle"
-                                 src="https://picsum.photos/200/200/?random=10" width="150" height="150">
-                        </li>
-                        <li>
-                            <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider"/>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#!">查看個人資料</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#!">聊天列表</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#!">活動管理</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#!">課程管理</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- 購物車的按鈕============================================================= -->
-            <form class="d-flex">
-                <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
-                    <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
-                    <i class="bi-cart-fill me-1"></i>
-                    購物車
-                    <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
-                </button>
-            </form>
+                            <li>
+                                <img class="dropdown-item overflow-hidden p-2 rounded-circle"
+                                    src="https://picsum.photos/200/200/?random=10" width="150" height="150">
+                            </li>
+                            <li>
+                                <span class="dropdown-item-text justify-content-center d-flex fs-5">名字</span>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">查看個人資料</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">聊天列表</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">活動管理</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#!">課程管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 購物車的按鈕============================================================= -->
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark d-flex text-nowrap" type="submit">
+                        <!-- 這個車車改class為bi-cart的話 就會變成空車 -->
+                        <i class="bi-cart-fill me-1"></i>
+                        購物車
+                        <span class="badge bg-dark text-white ms-1 rounded-pill my-auto">0</span>
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- 導覽列結束=================================================================================== -->
+    </nav>
+    <!-- 導覽列結束=================================================================================== -->
 
-<!-- 這裡大概是放廣告 -->
-<!-- Header====================================================================================== -->
-<!-- <header>
+    <!-- 這裡大概是放廣告 -->
+    <!-- Header====================================================================================== -->
+    <!-- <header>
 <div class="container-fluid p-0">
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -284,395 +284,395 @@
 </div>
 </div>
 </header> -->
-<!-- Header====================================================================================== -->
+    <!-- Header====================================================================================== -->
 
-<!-- main-content -->
-<div class="container main-content py-5">
-    <!-- 請在這裡作業 -->
-    <div class="row justify-content-center">
-        <div class="col-5 p-3 border">
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <form>
-                        <fieldset>
-                            <legend class="h1 mb-4">編輯個人資訊</legend>
-
-
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">電話</label>
-                                <input type="text" id="phone" class="form-control" placeholder="" disabled>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="oldPassword" class="form-label">請輸入舊密碼</label>
-                                <input type="password" id="oldPassword" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="newPassword" class="form-label">新密碼</label>
-                                <input type="password" id="newPassword" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirmPassword" class="form-label">確認密碼</label>
-                                <input type="password" id="confirmPassword" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">真實姓名</label>
-                                <input type="text" id="name" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nickname" class="form-label">暱稱</label>
-                                <input type="text" id="nickname" class="form-control" placeholder="">
-                            </div>
-
-                            <!--                                <div class="mb-3">-->
-                            <!--                                    <label for="city" class="form-label">所在城市</label>-->
-                            <!--                                    <select id="city" class="form-select">-->
-                            <!--                                        <option value="臺北市">臺北市</option>-->
-                            <!--                                        <option value="基隆市">基隆市</option>-->
-                            <!--                                        <option value="連江縣">連江縣</option>-->
-                            <!--                                        <option value="新北市">新北市</option>-->
-                            <!--                                        <option value="宜蘭縣">宜蘭縣</option>-->
-                            <!--                                        <option value="新竹市">新竹市</option>-->
-                            <!--                                        <option value="新竹縣">新竹縣</option>-->
-                            <!--                                        <option value="桃園市">桃園市</option>-->
-                            <!--                                        <option value="苗栗縣">苗栗縣</option>-->
-                            <!--                                        <option value="臺中市">臺中市</option>-->
-                            <!--                                        <option value="彰化縣">彰化縣</option>-->
-                            <!--                                        <option value="南投縣">南投縣</option>-->
-                            <!--                                        <option value="嘉義市">嘉義市</option>-->
-                            <!--                                        <option value="嘉義縣">嘉義縣</option>-->
-                            <!--                                        <option value="雲林縣">雲林縣</option>-->
-                            <!--                                        <option value="臺南市">臺南市</option>-->
-                            <!--                                        <option value="高雄市">高雄市</option>-->
-                            <!--                                        <option value="澎湖縣">澎湖縣</option>-->
-                            <!--                                        <option value="金門縣">金門縣</option>-->
-                            <!--                                        <option value="屏東縣">屏東縣</option>-->
-                            <!--                                        <option value="台東縣">台東縣</option>-->
-                            <!--                                        <option value="花蓮縣">花蓮縣</option>-->
-                            <!--                                    </select>-->
-                            <!--                                </div>-->
-                            <div class="mb-3">
-                                <label for="address" class="form-label">地址</label>
-                                <input type="text" id="address" class="form-control" placeholder="">
-                            </div>
-                            <div class="mb-3">
-                                <label for="intro" class="form-label">自我介紹</label>
-                                <textarea class="form-control" id="intro" rows="3"></textarea>
-                            </div>
+    <!-- main-content -->
+    <div class="container main-content py-5">
+        <!-- 請在這裡作業 -->
+        <div class="row justify-content-center">
+            <div class="col-5 p-3 border">
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <form>
+                            <fieldset>
+                                <legend class="h1 mb-4">編輯個人資訊</legend>
 
 
-                            <div class="mb-3">
-                                <label for="photo" class="form-label">會員頭像</label>
-                                <input class="form-control" type="file" id="photo">
-                            </div>
-                            <div id="preview" style="width:150px;height:150px;">
-                                <!--                                    <span class="text">預覽圖</span>-->
-                                <img id="img" src="" alt="" class="overflow-hidden rounded-circle"
-                                     style="object-fit: cover;" width="150px" height="150px">
-                            </div>
-                            <div>
-                                <span>最後修改日期時間: </span>
-                                <span id="lastUpdatedDate"></span>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">電話</label>
+                                    <input type="text" id="phone" class="form-control" placeholder="" disabled>
+                                </div>
 
-                            <button type="button" id="btn1" class="btn btn-primary">送出</button>
-                        </fieldset>
-                    </form>
-                    <div id="msg" class="text-success"></div>
+                                <div class="mb-3">
+                                    <label for="oldPassword" class="form-label">請輸入舊密碼</label>
+                                    <input type="password" id="oldPassword" class="form-control" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">新密碼</label>
+                                    <input type="password" id="newPassword" class="form-control" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">確認密碼</label>
+                                    <input type="password" id="confirmPassword" class="form-control" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" class="form-control" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">真實姓名</label>
+                                    <input type="text" id="name" class="form-control" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nickname" class="form-label">暱稱</label>
+                                    <input type="text" id="nickname" class="form-control" placeholder="">
+                                </div>
+
+                                <!--                                <div class="mb-3">-->
+                                <!--                                    <label for="city" class="form-label">所在城市</label>-->
+                                <!--                                    <select id="city" class="form-select">-->
+                                <!--                                        <option value="臺北市">臺北市</option>-->
+                                <!--                                        <option value="基隆市">基隆市</option>-->
+                                <!--                                        <option value="連江縣">連江縣</option>-->
+                                <!--                                        <option value="新北市">新北市</option>-->
+                                <!--                                        <option value="宜蘭縣">宜蘭縣</option>-->
+                                <!--                                        <option value="新竹市">新竹市</option>-->
+                                <!--                                        <option value="新竹縣">新竹縣</option>-->
+                                <!--                                        <option value="桃園市">桃園市</option>-->
+                                <!--                                        <option value="苗栗縣">苗栗縣</option>-->
+                                <!--                                        <option value="臺中市">臺中市</option>-->
+                                <!--                                        <option value="彰化縣">彰化縣</option>-->
+                                <!--                                        <option value="南投縣">南投縣</option>-->
+                                <!--                                        <option value="嘉義市">嘉義市</option>-->
+                                <!--                                        <option value="嘉義縣">嘉義縣</option>-->
+                                <!--                                        <option value="雲林縣">雲林縣</option>-->
+                                <!--                                        <option value="臺南市">臺南市</option>-->
+                                <!--                                        <option value="高雄市">高雄市</option>-->
+                                <!--                                        <option value="澎湖縣">澎湖縣</option>-->
+                                <!--                                        <option value="金門縣">金門縣</option>-->
+                                <!--                                        <option value="屏東縣">屏東縣</option>-->
+                                <!--                                        <option value="台東縣">台東縣</option>-->
+                                <!--                                        <option value="花蓮縣">花蓮縣</option>-->
+                                <!--                                    </select>-->
+                                <!--                                </div>-->
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">地址</label>
+                                    <input type="text" id="address" class="form-control" placeholder="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="intro" class="form-label">自我介紹</label>
+                                    <textarea class="form-control" id="intro" rows="3"></textarea>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="photo" class="form-label">會員頭像</label>
+                                    <input class="form-control" type="file" id="photo">
+                                </div>
+                                <div id="preview" style="width:150px;height:150px;">
+                                    <!--                                    <span class="text">預覽圖</span>-->
+                                    <img id="img" src="" alt="" class="overflow-hidden rounded-circle"
+                                        style="object-fit: cover;" width="150px" height="150px">
+                                </div>
+                                <div>
+                                    <span>最後修改日期時間: </span>
+                                    <span id="lastUpdatedDate"></span>
+                                </div>
+
+                                <button type="button" id="btn1" class="btn btn-primary">送出</button>
+                            </fieldset>
+                        </form>
+                        <div id="msg" class="text-success"></div>
+                    </div>
                 </div>
+
+
             </div>
-
-
         </div>
     </div>
-</div>
 
 
-<!-- 以下footer================================================================================= -->
-<footer class="footer py-5 footer-color">
-    <div class="container">
-        <div class="row">
-            <div class="col-3">
-                <p class="m-0 text-white h3">客服中心</p>
-                <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
-                <p class="m-0 text-white">Tel: 02-2712-0589</p>
+    <!-- 以下footer================================================================================= -->
+    <footer class="footer py-5 footer-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <p class="m-0 text-white h3">客服中心</p>
+                    <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
+                    <p class="m-0 text-white">Tel: 02-2712-0589</p>
+                </div>
+                <div class="col-3">
+                    <p class="m-0 text-white h3">快速使用</p>
+                    <a class="d-block" href="">註冊會員</a>
+                    <a class="d-block" href="">舉辦活動</a>
+                    <a class="d-block" href="">常見問題</a>
+                </div>
+                <div class="col-3">
+                    <p class="m-0 text-white h3">主要頁面</p>
+                    <a class="d-block" href="">首頁</a>
+                    <a class="d-block" href="">活動</a>
+                    <a class="d-block" href="">論壇</a>
+                    <a class="d-block" href="">商城</a>
+                </div>
+                <div class="col-3"></div>
             </div>
-            <div class="col-3">
-                <p class="m-0 text-white h3">快速使用</p>
-                <a class="d-block" href="">註冊會員</a>
-                <a class="d-block" href="">舉辦活動</a>
-                <a class="d-block" href="">常見問題</a>
-            </div>
-            <div class="col-3">
-                <p class="m-0 text-white h3">主要頁面</p>
-                <a class="d-block" href="">首頁</a>
-                <a class="d-block" href="">活動</a>
-                <a class="d-block" href="">論壇</a>
-                <a class="d-block" href="">商城</a>
-            </div>
-            <div class="col-3"></div>
         </div>
-    </div>
-</footer>
-<!-- footer結束================================================================================= -->
-<!-- 引入所需函式庫 -->
-<script src="../lib/js/bootstrap.bundle.min.js"></script>
-<script src="../lib/js/popper.min.js"></script>
-<script src="../lib/js/nav.js"></script>
-<script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-<!-- ================================================================= -->
+    </footer>
+    <!-- footer結束================================================================================= -->
+    <!-- 引入所需函式庫 -->
+    <script src="../lib/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
+    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <!-- ================================================================= -->
 
-<script>
-    $("#searchbar").focus("click", function () {
-        $("#searchcard").removeClass("d-none");
-    });
-    $("#btn-close-search").on("click", function () {
-        $("#searchcard").addClass("d-none");
-    })
+    <script>
+        $("#searchbar").focus("click", function () {
+            $("#searchcard").removeClass("d-none");
+        });
+        $("#btn-close-search").on("click", function () {
+            $("#searchcard").addClass("d-none");
+        })
 
-    //     ==========================================================
+        //     ==========================================================
 
-    const btn1 = document.querySelector("#btn1");
-    const phone = document.querySelector("#phone")
-    const oldPassword = document.querySelector("#oldPassword");
-    const newPassword = document.querySelector("#newPassword");
-    const confirmPassword = document.querySelector("#confirmPassword");
-    // const birthday = document.querySelector("#birthday");
-    const name = document.querySelector("#name");
-    const acceditnickname = document.querySelector("#nickname");
-    const city = document.querySelector("#city");
-    const address = document.querySelector("#address");
-    const intro = document.querySelector("#intro");
-    const photo = document.querySelector("#photo");
-    const preview = document.querySelector("#img");
-    const msg = document.querySelector("#msg");
-    const currentUser = document.querySelector("#currentUser");
-    const updatetime = document.querySelector("#lastUpdatedDate");
-    const accEmail = document.querySelector("#email");
-    let ibase64;
-    window.addEventListener("load", function () {
+        const btn1 = document.querySelector("#btn1");
+        const phone = document.querySelector("#phone")
+        const oldPassword = document.querySelector("#oldPassword");
+        const newPassword = document.querySelector("#newPassword");
+        const confirmPassword = document.querySelector("#confirmPassword");
+        // const birthday = document.querySelector("#birthday");
+        const name = document.querySelector("#name");
+        const acceditnickname = document.querySelector("#nickname");
+        const city = document.querySelector("#city");
+        const address = document.querySelector("#address");
+        const intro = document.querySelector("#intro");
+        const photo = document.querySelector("#photo");
+        const preview = document.querySelector("#img");
+        const msg = document.querySelector("#msg");
+        const currentUser = document.querySelector("#currentUser");
+        const updatetime = document.querySelector("#lastUpdatedDate");
+        const accEmail = document.querySelector("#email");
+        let ibase64;
+        window.addEventListener("load", function () {
 
-        // 初始化預覽圖
-        if (accphoto !== "null") {
-            preview.src = getcreateObjURL(accphoto);
-        } else {
-            preview.src = nophoto;
-        }
-        init();
-    });
-
-    function init() {
-        btn1.addEventListener('click', async function () {
-            const passwordcheck = await checkOldPassword();
-            // console.log(passwordcheck);
-            if (passwordcheck) {
-                edit();
-                msg.textContent = "修改成功"
+            // 初始化預覽圖
+            if (accphoto !== "null") {
+                preview.src = getcreateObjURL(accphoto);
             } else {
-                msg.className = "text-danger";
-                msg.textContent = "舊密碼錯誤"
+                preview.src = nophoto;
             }
+            init();
         });
 
-        fetch("edit")
-            .then(resp => resp.json())
-            .then(body => {
-                updatetime.textContent = body["accountUpdatetime"];
-                phone.value = body["accountPhone"];
-                acceditnickname.value = body["accountNickname"];
-                name.value = body["accountName"];
-                address.value = body["accountAddress"];
-                intro.value = body["accountIntro"];
-                ibase64 = body["accountPhoto"];
-                accEmail.value = body["accountEmail"];
-                // console.log(ibase64)
-                // const imageBinaryStr = atob(body["accountPhoto"]);
-                // let len = imageBinaryStr.length;
-                // const uint8Array = new Uint8Array(len);
-                // while (len--) {
-                //     uint8Array[len] = imageBinaryStr.charCodeAt(len);
-                // }
-                // const blob = new Blob([uint8Array]);
-                // preview.src = URL.createObjectURL(blob);
-                if (!(ibase64 == "null" || ibase64 == null)) {
-                    preview.src = getcreateObjURL(ibase64);
+        function init() {
+            btn1.addEventListener('click', async function () {
+                const passwordcheck = await checkOldPassword();
+                // console.log(passwordcheck);
+                if (passwordcheck) {
+                    edit();
+                    msg.textContent = "修改成功"
                 } else {
-                    preview.src = nophoto;
+                    msg.className = "text-danger";
+                    msg.textContent = "舊密碼錯誤"
                 }
-            })
+            });
 
-        // oldPassword.addEventListener('blur', checkOldPassword);
-        photo.addEventListener('change', onImageChange)
-    }
-
-    function onImageChange() {
-        const file = photo.files[0];
-        if (file) {
-            preview.src = URL.createObjectURL(file);
-        }
-    }
-
-    function checkOldPassword() {
-        //     fetch('edit', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({
-        //             accountPassword: oldPassword.value,
-        //         }),
-        //     })
-        //         .then(resp => resp.json())
-        //         .then(body => {
-        //             const {successful, message} = body;
-        //             // btn1.disabled = !body['successful']
-        //             if(successful){
-        //                 return true;
-        //             }else{
-        //                 return false;
-        //             }
-        //         });
-        // }
-        return new Promise((resolve, reject) => {
-            fetch('edit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    accountPassword: oldPassword.value,
-                }),
-            })
+            fetch("edit")
                 .then(resp => resp.json())
                 .then(body => {
-                    const {successful, message} = body;
-                    if (successful) {
-                        resolve(true);
+                    updatetime.textContent = body["accountUpdatetime"];
+                    phone.value = body["accountPhone"];
+                    acceditnickname.value = body["accountNickname"];
+                    name.value = body["accountName"];
+                    address.value = body["accountAddress"];
+                    intro.value = body["accountIntro"];
+                    ibase64 = body["accountPhoto"];
+                    accEmail.value = body["accountEmail"];
+                    // console.log(ibase64)
+                    // const imageBinaryStr = atob(body["accountPhoto"]);
+                    // let len = imageBinaryStr.length;
+                    // const uint8Array = new Uint8Array(len);
+                    // while (len--) {
+                    //     uint8Array[len] = imageBinaryStr.charCodeAt(len);
+                    // }
+                    // const blob = new Blob([uint8Array]);
+                    // preview.src = URL.createObjectURL(blob);
+                    if (!(ibase64 == "null" || ibase64 == null)) {
+                        preview.src = getcreateObjURL(ibase64);
                     } else {
-                        resolve(false);
+                        preview.src = nophoto;
                     }
                 })
-                .catch(error => {
-                    reject(error);
-                });
-        });
-    }
 
-    function edit() {
-        // if (newPassword.value && confirmPassword.value) {
-        //     if (newPassword.value.length < 6 || newPassword.value.length > 12) {
-        //         msg.textContent = '密碼長度須介於6~12字元';
-        //         return;
-        //     }
-
-        //     if (confirmPassword.value !== newPassword.value) {
-        //         msg.textContent = '密碼與確認密碼不相符';
-        //         return;
-        //     }
-        // }
-
-        // const nicknameLength = nickname.value.length;
-        // if (nicknameLength < 1 || nicknameLength > 20) {
-        //     msg.textContent = '暱稱長度須介於1~20字元';
-        //     return;
-        // }
-
-        msg.textContent = '';
-        if (photo.files.length === 0) {
-            requestEdit();
-        } else {
-            file2Base64Str(requestEdit);
+            // oldPassword.addEventListener('blur', checkOldPassword);
+            photo.addEventListener('change', onImageChange)
         }
 
-        function requestEdit(imageBase64) {
-            fetch('edit/update', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    accountPassword: newPassword.value,
-                    // accountBirthday: birthday.value,
-                    accountEmail: accEmail.value,
-                    accountName: name.value,
-                    accountNickname: acceditnickname.value,
-                    accountAddress: address.value,
-                    accountIntro: intro.value,
-                    accountPhoto: imageBase64
-                }),
-            })
-                .then(resp => resp.json())
-                .then(body => {
-                    // console.log(body);
-                    const {
-                        successful, message,
-                        accountNickname: nicknameValue,
-                        accountPhoto: imageValue,
-                        accountAddress: addressValue,
-                        accountIntro: introValue,
-                        accountUpdatetime: updatetimeValue
-                    } = body;
-                    if (successful) {
-                        msg.className = 'text-success';
-                        sessionStorage.setItem('accountNickname', nicknameValue);
-                        sessionStorage.setItem("accountPhoto", imageValue);
-
-
-                        localStorage.setItem("accountNickname", nicknameValue);
-                        localStorage.setItem("accountPhoto", imageValue);
-                        // currentUser.textContent = nicknameValue;
-                        oldPassword.value = '';
-                        newPassword.value = '';
-                        confirmPassword.value = '';
-                        acceditnickname.value = nicknameValue;
-                        updatetime.textContent = updatetimeValue;
-                        btn1.disabled = true;
-                        address.value = addressValue;
-                        sessionStorage.setItem('accountPhoto', imageValue);
-                        intro.value = introValue;
-                        // base64Str2Avatar();
-                        let photosrcupdate = getcreateObjURL(imageValue);
-                        avataroutside.src = photosrcupdate;
-                        avatarinside.src = photosrcupdate;
-                        img.src = photosrcupdate;
-                    } else {
-                        msg.className = 'error';
-                    }
-                    msg.textContent = message;
-                });
+        function onImageChange() {
+            const file = photo.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
         }
 
-        function file2Base64Str(next) {
-            const fileReader = new FileReader();
-            fileReader.addEventListener('load', e => {
-                const imageBase64 = btoa(e.target.result);
-                next(imageBase64);
+        function checkOldPassword() {
+            //     fetch('edit', {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         },
+            //         body: JSON.stringify({
+            //             accountPassword: oldPassword.value,
+            //         }),
+            //     })
+            //         .then(resp => resp.json())
+            //         .then(body => {
+            //             const {successful, message} = body;
+            //             // btn1.disabled = !body['successful']
+            //             if(successful){
+            //                 return true;
+            //             }else{
+            //                 return false;
+            //             }
+            //         });
+            // }
+            return new Promise((resolve, reject) => {
+                fetch('edit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        accountPassword: oldPassword.value,
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful, message } = body;
+                        if (successful) {
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                        }
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
             });
-            fileReader.readAsBinaryString(photo.files[0]);
         }
 
-        // function base64Str2Avatar() {
-        //     const img = sessionStorage.getItem('accountPhoto');
-        //     if (!img) {
-        //         return;
-        //     }
-        //     const imageBinaryStr = atob(img);
-        //     let len = imageBinaryStr.length;
-        //     const uint8Array = new Uint8Array(len);
-        //     while (len--) {
-        //         uint8Array[len] = imageBinaryStr.charCodeAt(len);
-        //     }
-        //     const blob = new Blob([uint8Array]);
-        //     document.querySelector('#avatar').src = URL.createObjectURL(blob);
-        // }
-    }
+        function edit() {
+            // if (newPassword.value && confirmPassword.value) {
+            //     if (newPassword.value.length < 6 || newPassword.value.length > 12) {
+            //         msg.textContent = '密碼長度須介於6~12字元';
+            //         return;
+            //     }
+
+            //     if (confirmPassword.value !== newPassword.value) {
+            //         msg.textContent = '密碼與確認密碼不相符';
+            //         return;
+            //     }
+            // }
+
+            // const nicknameLength = nickname.value.length;
+            // if (nicknameLength < 1 || nicknameLength > 20) {
+            //     msg.textContent = '暱稱長度須介於1~20字元';
+            //     return;
+            // }
+
+            msg.textContent = '';
+            if (photo.files.length === 0) {
+                requestEdit();
+            } else {
+                file2Base64Str(requestEdit);
+            }
+
+            function requestEdit(imageBase64) {
+                fetch('edit/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        accountPassword: newPassword.value,
+                        // accountBirthday: birthday.value,
+                        accountEmail: accEmail.value,
+                        accountName: name.value,
+                        accountNickname: acceditnickname.value,
+                        accountAddress: address.value,
+                        accountIntro: intro.value,
+                        accountPhoto: imageBase64
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        // console.log(body);
+                        const {
+                            successful, message,
+                            accountNickname: nicknameValue,
+                            accountPhoto: imageValue,
+                            accountAddress: addressValue,
+                            accountIntro: introValue,
+                            accountUpdatetime: updatetimeValue
+                        } = body;
+                        if (successful) {
+                            msg.className = 'text-success';
+                            sessionStorage.setItem('accountNickname', nicknameValue);
+                            sessionStorage.setItem("accountPhoto", imageValue);
 
 
-</script>
+                            localStorage.setItem("accountNickname", nicknameValue);
+                            localStorage.setItem("accountPhoto", imageValue);
+                            // currentUser.textContent = nicknameValue;
+                            oldPassword.value = '';
+                            newPassword.value = '';
+                            confirmPassword.value = '';
+                            acceditnickname.value = nicknameValue;
+                            updatetime.textContent = updatetimeValue;
+                            btn1.disabled = true;
+                            address.value = addressValue;
+                            sessionStorage.setItem('accountPhoto', imageValue);
+                            intro.value = introValue;
+                            // base64Str2Avatar();
+                            let photosrcupdate = getcreateObjURL(imageValue);
+                            avataroutside.src = photosrcupdate;
+                            avatarinside.src = photosrcupdate;
+                            img.src = photosrcupdate;
+                        } else {
+                            msg.className = 'error';
+                        }
+                        msg.textContent = message;
+                    });
+            }
+
+            function file2Base64Str(next) {
+                const fileReader = new FileReader();
+                fileReader.addEventListener('load', e => {
+                    const imageBase64 = btoa(e.target.result);
+                    next(imageBase64);
+                });
+                fileReader.readAsBinaryString(photo.files[0]);
+            }
+
+            // function base64Str2Avatar() {
+            //     const img = sessionStorage.getItem('accountPhoto');
+            //     if (!img) {
+            //         return;
+            //     }
+            //     const imageBinaryStr = atob(img);
+            //     let len = imageBinaryStr.length;
+            //     const uint8Array = new Uint8Array(len);
+            //     while (len--) {
+            //         uint8Array[len] = imageBinaryStr.charCodeAt(len);
+            //     }
+            //     const blob = new Blob([uint8Array]);
+            //     document.querySelector('#avatar').src = URL.createObjectURL(blob);
+            // }
+        }
+
+
+    </script>
 </body>
 
 </html>

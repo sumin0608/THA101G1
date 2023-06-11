@@ -498,7 +498,7 @@
     licensePhoto.addEventListener('change', () => {
         const file = licensePhoto.files[0];
         if (file) {
-            let img_str = '<img src="' + URL.createObjectURL(file) + '" class="preview_img overflow-hidden" style="object-fit: cover;" width="150px" height="150px">';
+            let img_str = '<img src="' + URL.createObjectURL(file) + '" class="preview_img" style="object-fit: contain;" width="150px" height="150px">';
             preview.innerHTML = img_str;
             // img.src = URL.createObjectURL(file);
         } else {
