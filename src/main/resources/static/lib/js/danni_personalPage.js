@@ -5,6 +5,7 @@ addEventListener("DOMContentLoaded", () => {
         const url = "../course/creator/" + actId;
         const historyContainer = document.querySelector("#course-history-list");
         console.log(historyContainer);
+
 // 使用 Fetch 函式發送 GET 請求
         fetch(url)
             .then(function (response) {
@@ -50,6 +51,7 @@ addEventListener("DOMContentLoaded", () => {
                 console.log('發生錯誤：', error);
             });
 
+
     });
 
 
@@ -59,37 +61,41 @@ addEventListener("DOMContentLoaded", () => {
     const calendar = document.querySelector("#calendar-tab");
     calendar.addEventListener('click', () => {
         console.log("calendar has been clicked");
-        console.log(urls);
-        fetch(urls)
-            .then(resp => resp.json())
-            .then(evtList => {
-                course_calendar_list.innerHTML = "";
-                for (let course of evtList) {
-                    let statusButtons = '';
 
-                    switch (course.status) {
-                        case 1:
-                            statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
-                            break;
-                        case 2:
-                            statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">前往聊天室　</button>`;
-                            break;
-                        case 3:
-                            statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
-                            break;
-                        case 4:
-                            statusButtons = `<button class="btn btn-danger exitPending" href="#" role="button" disabled>退出待審核　</button>`;
-                            break;
-                        case 5:
-                            statusButtons = `<button class="btn btn-danger exitSuccessful" href="#" role="button" disabled>退出成功　</button>`;
-                            break;
-                        default:
-                            // Default buttons when course status doesn't match any case
-                            statusButtons = `<button class="btn btn-primary" href="#" role="button">此課程不存在</button>`;
-                            break;
-                    }
+        $(document).on('click', '#canlnadarbtnC', function (e) {
 
-                    course_calendar_list.innerHTML += `
+            console.log("canlnadarbtnC" + this)
+            console.log(urls);
+            fetch(urls)
+                .then(resp => resp.json())
+                .then(evtList => {
+                    course_calendar_list.innerHTML = "";
+                    for (let course of evtList) {
+                        let statusButtons = '';
+
+                        switch (course.status) {
+                            case 1:
+                                statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
+                                break;
+                            case 2:
+                                statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">前往聊天室　</button>`;
+                                break;
+                            case 3:
+                                statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
+                                break;
+                            case 4:
+                                statusButtons = `<button class="btn btn-danger exitPending" href="#" role="button" disabled>退出待審核　</button>`;
+                                break;
+                            case 5:
+                                statusButtons = `<button class="btn btn-danger exitSuccessful" href="#" role="button" disabled>退出成功　</button>`;
+                                break;
+                            default:
+                                // Default buttons when course status doesn't match any case
+                                statusButtons = `<button class="btn btn-primary" href="#" role="button">此課程不存在</button>`;
+                                break;
+                        }
+
+                        course_calendar_list.innerHTML += `
                                             <!-- 一條紀錄====================== -->
                                         <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="${course.attendId}" aria-current="true"
                                              style="height: 118px;">
@@ -115,10 +121,10 @@ addEventListener("DOMContentLoaded", () => {
 
                                    `;
 
-                }
-            });
+                    }
+                });
 
-
+        });
     });
 });
 
