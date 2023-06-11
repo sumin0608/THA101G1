@@ -455,42 +455,91 @@
     const licensePhoto = document.querySelector("#liphoto");
     const btn1 = document.querySelector("#btn1");
 
-    btn1.addEventListener('click', () => {
+    // btn1.addEventListener('click', () => {
+    //
+    //     msg.textContent = '';
+    //     const fileReader = new FileReader();
+    //     fileReader.addEventListener('load', e => {
+    //         const imageBase64 = btoa(e.target.result);
+    //         fetch('AddSkill', {
+    //             method: 'PUT',
+    //             headers: {'Content-Type': 'application/json'},
+    //             body: JSON.stringify({
+    //                 accountId: sessionStorage.getItem("accountId"),
+    //                 accountBank: skillbank.value,
+    //                 sportType: sportType.value,
+    //                 licenseName: certName.value,
+    //                 licensePhoto: imageBase64
+    //
+    //             }),
+    //         })
+    //             .then(resp => resp.json())
+    //             .then(body => {
+    //                 const {successful,message} = body;
+    //                 if (successful) {
+    //                     // for (let input of inputs) {
+    //                     //     input.disabled = true;
+    //                     // }
+    //                     btn1.disabled = true;
+    //                     msg.className = 'text-success';
+    //                     msg.textContent = '申請成功';
+    //                     // location = getContextPath() + "/index.html";
+    //                 } else {
+    //                     msg.className = 'text-danger';
+    //                     msg.textContent = message;
+    //                 }
+    //             });
+    //     });
+    //     fileReader.readAsBinaryString(licensePhoto.files[0]);
+    // });
 
+    btn1.addEventListener('click', () => {
         msg.textContent = '';
         const fileReader = new FileReader();
         fileReader.addEventListener('load', e => {
-            const imageBase64 = btoa(e.target.result);
+            const imageBase64 = e.target.result ? btoa(e.target.result) : '';
+
+            const requestData = {
+                accountId: sessionStorage.getItem("accountId"),
+                accountBank: skillbank.value,
+                sportType: parseInt(sportType.value),
+                licenseName: certName.value,
+                licensePhoto: imageBase64
+            };
+
             fetch('AddSkill', {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    accountId: sessionStorage.getItem("accountId"),
-                    accountBank: skillbank.value,
-                    sportType: sportType.value,
-                    licenseName: certName.value,
-                    licensePhoto: imageBase64
-
-                }),
+                body: JSON.stringify(requestData)
             })
                 .then(resp => resp.json())
                 .then(body => {
-                    const {successful} = body;
+                    const {successful, message} = body;
                     if (successful) {
-                        // for (let input of inputs) {
-                        //     input.disabled = true;
-                        // }
                         btn1.disabled = true;
                         msg.className = 'text-success';
                         msg.textContent = '申請成功';
-                        // location = getContextPath() + "/index.html";
                     } else {
+
                         msg.className = 'text-danger';
-                        msg.textContent = '申請失敗';
+                        msg.innerHTML = message.replace(/\n/g, "<br/>");
+                        console.log(skillbank.value + typeof skillbank.value);
+                        if(skillbank.value == "null" || skillbank.value == null || skillbank.value == ""){
+                            msg.innerHTML += "<br>"+"金融帳戶為必填";
+                        }
+                        if(licensePhoto.value == "null" || licensePhoto.value == null || licensePhoto.value == ""){
+                            msg.innerHTML += "<br>"+"證照照片為必填";
+                        }
+                        // msg.textContent = message;
                     }
                 });
         });
-        fileReader.readAsBinaryString(licensePhoto.files[0]);
+
+        if (licensePhoto.files[0]) {
+            fileReader.readAsBinaryString(licensePhoto.files[0]);
+        } else {
+            fileReader.readAsBinaryString(new Blob());
+        }
     });
     // 圖片變化就修改預覽圖
     const preview = document.querySelector("#preview");

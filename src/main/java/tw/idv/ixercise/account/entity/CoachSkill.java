@@ -7,6 +7,7 @@ import lombok.Setter;
 import tw.idv.ixercise.core.Core;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
@@ -25,13 +26,14 @@ public class CoachSkill extends Core {
     @Column
     private Integer accountId;
     @Column
-    @NotNull
+    @NotBlank(message = "證照名稱為必填")
     private String licenseName;
     @Column
-    @NotNull
+    @NotNull(message = "運動類型為必填")
     private Integer sportType;
     @Column
-    @NotNull
+    @NotNull(message = "證照照片為必填")
+    @Lob
     private byte[] licensePhoto;
     @Column
     private Integer skillState;

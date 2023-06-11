@@ -450,6 +450,18 @@
 
     <!--新增管理員-->
     <script>
+        const levelMap = {
+            1: '一般用戶',
+            2: '教練',
+            3: '管理員'
+        };
+
+        const stateMap = {
+            0: '停用',
+            1: '啟用'
+        };
+
+<!--        ===========================================================-->
         const addad = document.querySelector("#addadminbtn");
         // const aaaa = document.getElementById("aaaa");
 
@@ -526,7 +538,7 @@
 
                         } else {
                             msg.className = 'text-danger';
-                            msg.textContent = message;
+                            msg.innerHTML = message.replace(/\n/g, "<br/>");
                         }
                     });
             }
@@ -741,11 +753,11 @@
                         // "</tr>" +
                         "<tr>" +
                         "<td>管理員層級</td>" +
-                        "<td>" + accmap.get("accountLevel") + "</td>" +
+                        "<td>" + levelMap[accmap.get("accountLevel")] + "</td>" +
                         "</tr>" +
                         "<tr>" +
                         "<td>管理員狀態</td>" +
-                        "<td>" + accmap.get("accountState") + "</td>" +
+                        "<td>" + stateMap[accmap.get("accountState")] + "</td>" +
                         "</tr>" +
                         // "<tr>" +
                         // "<td>會員地址</td>" +

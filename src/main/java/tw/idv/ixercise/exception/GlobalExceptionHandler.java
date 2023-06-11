@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
 
         StringBuilder messageBuilder = new StringBuilder();
         for (ConstraintViolation<?> violation : e.getConstraintViolations()) {
-            messageBuilder.append(violation.getMessage());
+            messageBuilder.append(violation.getMessage()).append("\n");
         }
         String errorMessage = messageBuilder.toString().trim();
 
