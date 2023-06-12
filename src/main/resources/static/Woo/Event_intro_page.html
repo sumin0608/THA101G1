@@ -384,23 +384,25 @@
     <!-- 請在這裡作業 -->
     <div class="row justify-content-center">
         <!-- 課程介紹區 -->
-        <div class="col-md-9 p-5 mb-4 bg-light rounded-3 mt-4" style="border: solid green;">
+        <div class="col-md-9 p-5 mb-4 bg-light rounded-3 mt-4">
             <div class="container-fluid pt-1 pb-4 card ps-0 pe-0">
                 <!-- ============================================== -->
                 <div class="card-header p-2  bg-transparent justify-content-between">
                     <div class="d-flex flex-row align-items-center event_creater">
                         <div class="member-icon">
                             <img aria-expanded="false"
-                                 class="overflow-hidden rounded-circle p-0 member_profile_pic" data-bs-toggle="dropdown"
+                                 class="overflow-hidden rounded-circle p-0 member_profile_pic memberNickNameAvator"
+                                 data-bs-toggle="dropdown"
                                  height="36"
                                  href="#" role="button" src="https://picsum.photos/300/200/?random=10" width="36">
                         </div>
 
                         <div class="col-8 ms-2 c-details member_details">
-                            <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name">
+                            <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name avatarName"
+                                id="avatarName">
                                 Dawdddd0000000ddddoo
                             </h6>
-                            <span class=" text-muted member_intro">sss</span>
+                            <!--                            <span class=" text-muted member_intro">sss</span>-->
                         </div>
                         <!-- <div class="col-2"></div> -->
                     </div>
@@ -483,15 +485,16 @@
 
                     <div class="d-flex flex-row align-items-center event_creater">
                         <div class="member-icon">
-                            <img aria-expanded="false" class="overflow-hidden rounded-circle p-0"
-                                 data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
-                                 src="https://images.wsj.net/im-236521/OR" width="36">
+                            <img aria-expanded="false" class="overflow-hidden rounded-circle p-0 memberNickNameAvator"
+                                 data-bs-toggle="dropdown" height="36" href="#" id="avatarIDApply" id="avatarID"
+                                 role="button" src="https://images.wsj.net/im-236521/OR" width="36">
+
                         </div>
 
                         <div class="col-8 ms-2 c-details">
-                            <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                            <h6 class=" mb-0  fw-bolder text-muted text-truncate avatarName"> Dawdddd0000000ddddoo
                             </h6>
-                            <span class=" text-muted">sss</span>
+                            <!--                            <span class=" text-muted">sss</span>-->
                         </div>
                         <!-- <div class="col-2"></div> -->
                     </div>
@@ -551,14 +554,14 @@
 
 <!-- ================================================== -->
 <div class="applyResult container " id="applyResult">
-    <img alt="" id="check_cross_mark" src="image/200-tick.png">
+    <img alt="" id="check_cross_mark" src="image/404-wrong.png">
 
 
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <div class="d-grid gap-2 " id="">
-                <h2>報名已送出</h2>
-                <p>請等待主揪審核....</p>
+                <h2>報名失敗</h2>
+                <p>報名失敗....</p>
                 <button class="btn btn-primary popupbtn" onclick="closeApplyPopup()" type="button">確認</button>
             </div>
         </div>
@@ -600,6 +603,7 @@
 <script src="../lib/js/bootstrap.bundle.min.js"></script>
 <script src="../lib/js/popper.min.js"></script>
 <script src="../lib/owl_carousel/owl.carousel.min.js"></script>
+<script src="../lib/js/nav.js"></script>
 <!-- ================================================================= -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -762,6 +766,31 @@
                 $("#maxAttendees").text("名額: " + event.maxAttendees + "人");
                 $("#eventDescription").html(event.description);
 
+
+                var accphoto;
+                var memberNickName;
+                // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                $.ajax({
+                    url: "/ixercise/Account/Manage/" + event.creatorId,
+                    type: "GET",
+                    dataType: "json",
+                    async: false,//非同步的（asynchronous），表示該請求是同步的
+                    data: {id: event.creatorId}, // 将 creator 作为参数传递
+                    success: function (memberResp) {
+                        // console.log("memberResp: " + memberResp);
+                        memberNickName = memberResp.accountNickname;
+                        accphoto = memberResp.accountPhoto;
+                        console.log("memberName: " + memberNickName);
+                        console.log("accphoto: " + accphoto);
+                        $(".avatarName").text(memberNickName);
+                        $(".memberNickNameAvator").attr("src", getcreateObjURL(accphoto));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+
             });
 
 
@@ -793,6 +822,7 @@
             $("#paymentMethod").html(sessionFormData.paymentMethod);
             $("#eventDescription").html(sessionFormData.description);
             $("#photo").attr("src", eventPhoto);
+
 
         }
         // =========================== session storge ========================= //
