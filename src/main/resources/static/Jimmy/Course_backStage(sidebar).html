@@ -1280,10 +1280,17 @@
 
                         $("#address").val(resp.detailedAddress);
                         $("#courseStatus").val(resp.courseStatus);
+                        if(resp.paidAdvertisingTime){
                         var paidAdvertisingTime1 = resp.paidAdvertisingTime.split(' ')[0];
                         var paidAdvertisingTime2 = resp.paidAdvertisingTime.split(' ')[1];
                         $("#paidAdvertisingTime1").val(paidAdvertisingTime1);
                         $("#paidAdvertisingTime2").val(paidAdvertisingTime2);
+                        }else{
+                            $("#paidAdvertisingTime1").val("");
+                            $("#paidAdvertisingTime2").val("");
+                        }
+
+
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
