@@ -51,11 +51,12 @@ public class OrderService {
 
 		// 交易結果回傳網址，只接受 https 開頭的網站，可以使用 ngrok
 //			obj.setReturnURL("http://211.23.128.214:5000"); //綠界範例
-//			obj.setReturnURL("https://  /ixercise/index.html");
+//			obj.setReturnURL("https://localhost:8080/ixercise/index.html");
 //			obj.setOrderResultURL("http://10.2.1.213:8080/ixercise/jimmy/course_intro_page.html");
 
-		obj.setReturnURL("https://2fee-1-164-238-247.jp.ngrok.io/ixercise/course/ecpayReturnURL");
-		obj.setOrderResultURL("http://localhost:8080/ixercise/jimmy/Course_homePage.html");
+		obj.setReturnURL("https://localhost:8080/ixercise/course/ecpayReturnURL");
+//		obj.setOrderResultURL("https://localhost:8080/ixercise/jimmy/Course_homePage.html");
+		obj.setClientBackURL("https://localhost:8080/ixercise/jimmy/Course_homePage.html");
 
 		obj.setNeedExtraPaidInfo("N");
 		String form = all.aioCheckOut(obj, null);
