@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import tw.idv.ixercise.store.dao.implMember;
 import tw.idv.ixercise.store.entity.member;
+import tw.idv.ixercise.store.entity.porder;
 import tw.idv.ixercise.store.entity.product;
 
 @WebServlet("/makeListServlet")
@@ -27,11 +28,11 @@ public class makeListServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<product> pr = new ArrayList();
+		List<porder> pr = new ArrayList();
 
 		HttpSession session=request.getSession();
 		session.setAttribute("L",pr);
-
+		System.out.println(session.getAttribute("L"));
 		response.sendRedirect("shop.jsp");
 	}
 

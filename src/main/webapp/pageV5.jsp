@@ -6,6 +6,8 @@
  <% 
  //List<product> l =(List)session.getAttribute("L");
  List<porder> l =(List)session.getAttribute("L");
+	 System.out.println(session.getAttribute("L"));
+
 
  %>   
  
