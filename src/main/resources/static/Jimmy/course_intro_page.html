@@ -349,7 +349,7 @@
                     </div>
                 </div>
 
-                <div><button id="testbtn">testbtn</button></div>
+<!--                <div><button id="testbtn">testbtn</button></div>-->
             </div>
 
             <!-- ==========================================================================-->
@@ -667,7 +667,8 @@
                         $("#maximumCapacity").text(response.maximumCapacity);
                         $("#currentEnrolment").text(response.currentEnrolment);
                         $("#registrationDeadline").text(response.registrationDeadline);
-                        $("#description").text(response.description);
+                        // $("#description").text(response.description);
+                        $("#description").html(response.description);
 
                     }, error: function (xhr, status, error) {
                         console.log(error);
@@ -695,8 +696,8 @@
                     $("#categoryId").text(response.categoryId);
                     $("#photo").attr("src", "/ixercise/lib/img/course/" + response.photo);
                     $("#location").text(response.location);
-                    $("#city").text(response.city);
-                    $("#district").text(response.district);
+                    // $("#city").text(response.city);
+                    // $("#district").text(response.district);
                     $("#detailedAddress").text(response.detailedAddress);
                     // $("#courseStartDate").text(response.courseStartDate);
                     var courseStartTime = (response.courseStartTime).substring(0, 16);
@@ -707,8 +708,8 @@
                     $("#maximumCapacity").text(response.maximumCapacity);
                     $("#currentEnrolment").text(response.currentEnrolment);
                     $("#registrationDeadline").text(response.registrationDeadline);
-                    $("#description").text(response.description);
-
+                    // $("#description").text(response.description);
+                    $("#description").html(response.description);
 
 
 
