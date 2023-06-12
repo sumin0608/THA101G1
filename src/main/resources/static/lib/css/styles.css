@@ -146,6 +146,7 @@ div.main-content {
 /* 去除頁尾超連結底線 */
 footer div a {
   text-decoration: none;
+  color:var(--bs-link-color);
 }
 
 /* 導覽列其他主頁改成黑色 */

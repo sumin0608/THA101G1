@@ -358,10 +358,34 @@
                             <div class="mb-3">
                                 <label for="sptype" class="form-label">運動類別</label>
                                 <select id="sptype" class="form-select">
-                                    <option value="1">籃球</option>
-                                    <option value="2">足球</option>
-                                    <option value="3">棒球</option>
+                                    <option selected disabled>運動類型</option>
+                                    <option value="1">足球</option>
+                                    <option value="2">籃球</option>
+                                    <option value="3">網球</option>
+                                    <option value="4">排球</option>
+                                    <option value="5">橄欖球</option>
+                                    <option value="6">棒球</option>
+                                    <option value="7">曲棍球</option>
+                                    <option value="8">高爾夫球</option>
+                                    <option value="9">羽毛球</option>
+                                    <option value="10">乒乓球</option>
+                                    <option value="11">壁球</option>
+                                    <option value="12">手球</option>
+                                    <option value="13">保齡球</option>
+                                    <option value="14">有氧操課</option>
+                                    <option value="15">瑜伽課</option>
+                                    <option value="16">舞蹈課</option>
+                                    <option value="17">腹肌課</option>
+                                    <option value="18">動感單車課</option>
+                                    <option value="19">跳繩課</option>
+                                    <option value="20">重訓課</option>
+                                    <option value="21">拳擊課</option>
+                                    <option value="22">跳舞操課</option>
+                                    <option value="23">瑜伽拉伸課</option>
+                                    <option value="24">其他</option>
+
                                 </select>
+
                             </div>
                             <div class="mb-3">
                                 <label for="liname" class="form-label">證照名稱</label>
@@ -431,42 +455,91 @@
     const licensePhoto = document.querySelector("#liphoto");
     const btn1 = document.querySelector("#btn1");
 
-    btn1.addEventListener('click', () => {
+    // btn1.addEventListener('click', () => {
+    //
+    //     msg.textContent = '';
+    //     const fileReader = new FileReader();
+    //     fileReader.addEventListener('load', e => {
+    //         const imageBase64 = btoa(e.target.result);
+    //         fetch('AddSkill', {
+    //             method: 'PUT',
+    //             headers: {'Content-Type': 'application/json'},
+    //             body: JSON.stringify({
+    //                 accountId: sessionStorage.getItem("accountId"),
+    //                 accountBank: skillbank.value,
+    //                 sportType: sportType.value,
+    //                 licenseName: certName.value,
+    //                 licensePhoto: imageBase64
+    //
+    //             }),
+    //         })
+    //             .then(resp => resp.json())
+    //             .then(body => {
+    //                 const {successful,message} = body;
+    //                 if (successful) {
+    //                     // for (let input of inputs) {
+    //                     //     input.disabled = true;
+    //                     // }
+    //                     btn1.disabled = true;
+    //                     msg.className = 'text-success';
+    //                     msg.textContent = '申請成功';
+    //                     // location = getContextPath() + "/index.html";
+    //                 } else {
+    //                     msg.className = 'text-danger';
+    //                     msg.textContent = message;
+    //                 }
+    //             });
+    //     });
+    //     fileReader.readAsBinaryString(licensePhoto.files[0]);
+    // });
 
+    btn1.addEventListener('click', () => {
         msg.textContent = '';
         const fileReader = new FileReader();
         fileReader.addEventListener('load', e => {
-            const imageBase64 = btoa(e.target.result);
+            const imageBase64 = e.target.result ? btoa(e.target.result) : '';
+
+            const requestData = {
+                accountId: sessionStorage.getItem("accountId"),
+                accountBank: skillbank.value,
+                sportType: parseInt(sportType.value),
+                licenseName: certName.value,
+                licensePhoto: imageBase64
+            };
+
             fetch('AddSkill', {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    accountId: sessionStorage.getItem("accountId"),
-                    accountBank: skillbank.value,
-                    sportType: sportType.value,
-                    licenseName: certName.value,
-                    licensePhoto: imageBase64
-
-                }),
+                body: JSON.stringify(requestData)
             })
                 .then(resp => resp.json())
                 .then(body => {
-                    const {successful} = body;
+                    const {successful, message} = body;
                     if (successful) {
-                        // for (let input of inputs) {
-                        //     input.disabled = true;
-                        // }
                         btn1.disabled = true;
-                        msg.className = 'info';
+                        msg.className = 'text-success';
                         msg.textContent = '申請成功';
-                        // location = getContextPath() + "/index.html";
                     } else {
-                        msg.className = 'error';
-                        msg.textContent = '申請失敗';
+
+                        msg.className = 'text-danger';
+                        msg.innerHTML = message.replace(/\n/g, "<br/>");
+                        console.log(skillbank.value + typeof skillbank.value);
+                        if(skillbank.value == "null" || skillbank.value == null || skillbank.value == ""){
+                            msg.innerHTML += "<br>"+"金融帳戶為必填";
+                        }
+                        if(licensePhoto.value == "null" || licensePhoto.value == null || licensePhoto.value == ""){
+                            msg.innerHTML += "<br>"+"證照照片為必填";
+                        }
+                        // msg.textContent = message;
                     }
                 });
         });
-        fileReader.readAsBinaryString(licensePhoto.files[0]);
+
+        if (licensePhoto.files[0]) {
+            fileReader.readAsBinaryString(licensePhoto.files[0]);
+        } else {
+            fileReader.readAsBinaryString(new Blob());
+        }
     });
     // 圖片變化就修改預覽圖
     const preview = document.querySelector("#preview");
@@ -474,7 +547,7 @@
     licensePhoto.addEventListener('change', () => {
         const file = licensePhoto.files[0];
         if (file) {
-            let img_str = '<img src="' + URL.createObjectURL(file) + '" class="preview_img overflow-hidden" style="object-fit: cover;" width="150px" height="150px">';
+            let img_str = '<img src="' + URL.createObjectURL(file) + '" class="preview_img" style="object-fit: contain;" width="150px" height="150px">';
             preview.innerHTML = img_str;
             // img.src = URL.createObjectURL(file);
         } else {

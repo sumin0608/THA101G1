@@ -96,4 +96,8 @@ public class ManageController {
         }
         return service.modifySkillApply(coachSkill);
     }
+    @GetMapping("forChechLogin")
+    public Core checkLg(){
+        return new Core(true,"登入正常");
+    }
 }

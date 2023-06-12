@@ -87,12 +87,28 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     ' <div class="col-3">\n' +
     '<select id="select_city" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>搜尋城市</option>\n' +
-    '<option value="1">台北市</option>\n' +
-    '<option value="2">基隆</option>\n' +
-    '<option value="4">新北市</option>\n' +
-    '<option value="5">宜蘭</option>\n' +
-    '<option value="7">新竹</option>\n' +
-    '<option value="8">桃園</option>\n' +
+    `<option value="臺北市">臺北市</option>
+    <option value="基隆市">基隆市</option>
+    <option value="連江縣">連江縣</option>
+    <option value="新北市">新北市</option>
+    <option value="宜蘭縣">宜蘭縣</option>
+    <option value="新竹市">新竹市</option>
+    <option value="新竹縣">新竹縣</option>
+    <option value="桃園市">桃園市</option>
+    <option value="苗栗縣">苗栗縣</option>
+    <option value="臺中市">臺中市</option>
+    <option value="彰化縣">彰化縣</option>
+    <option value="南投縣">南投縣</option>
+    <option value="嘉義市">嘉義市</option>
+    <option value="嘉義縣">嘉義縣</option>
+    <option value="雲林縣">雲林縣</option>
+    <option value="臺南市">臺南市</option>
+    <option value="高雄市">高雄市</option>
+    <option value="澎湖縣">澎湖縣</option>
+    <option value="金門縣">金門縣</option>
+    <option value="屏東縣">屏東縣</option>
+    <option value="台東縣">台東縣</option>
+    <option value="花蓮縣">花蓮縣</option>` +
     '</select>\n' +
     '</div>\n' +
     '<div class="col-3">\n' +
@@ -128,8 +144,11 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '\n' +
     '\n' +
     '                    <!-- 辦活動============================================================= -->\n' +
+
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
-    '                        <a class="nav-link active h-100 " aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
+    '                        <a id="addcourse" class="nav-link h-100 active d-inline-block d-none" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
+    '                        </a>\n' +
+    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -142,7 +161,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                            <li>\n' +
     '                                <hr class="dropdown-divider" />\n' +
     '                            </li>\n' +
-    '                            <li><a class="dropdown-item" href="">商城</a></li>\n' +
+    '                            <li><a id="shoplink" class="dropdown-item" href="">商城</a></li>\n' +
     // '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
     // '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
     '                            <li><a class="dropdown-item" href="/ixercise/jimmy/Course_homePage.html">課程</a></li>\n' +
@@ -229,12 +248,12 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                                <a id="personalpage" class="dropdown-item" href="" >查看個人資料</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
-    '                                <a class="dropdown-item" href="">聊天列表</a>\n' +
+    '                                <a id="chatlist" class="dropdown-item" href="">聯繫客服</a>\n' +
     '                            </li>\n' +
-    '                            <li>\n' +
-    '                                <a class="dropdown-item" href="">活動管理</a>\n' +
-    '                            </li>\n' +
-    '                            <li>\n' +
+    // '                            <li>\n' +
+    // '                                <a class="dropdown-item" href="">活動管理</a>\n' +
+    // '                            </li>\n' +
+    // '                            <li>\n' +
     '                                <a class="dropdown-item" href="/ixercise/jimmy/Course_backStage(sidebar).html">課程管理</a>\n' +
     '                            </li>\n' +
     '                            <li>\n' +
@@ -280,10 +299,10 @@ btnCloseSearch.addEventListener("click", function () {
 
 const personalpage = document.querySelector("#personalpage")
 
-const accid = sessionStorage.getItem("accountId");
-const accnickname = sessionStorage.getItem("accountNickname");
-const acclevel = sessionStorage.getItem("accountLevel");
-const accphoto = sessionStorage.getItem("accountPhoto");
+const accid = localStorage.getItem("accountId");
+const accnickname = localStorage.getItem("accountNickname");
+const acclevel = localStorage.getItem("accountLevel");
+const accphoto = localStorage.getItem("accountPhoto");
 const avatarnickname = document.querySelector("#nicknameinavatar");
 const logout = document.querySelector("#logout");
 const loginbtn = document.querySelector("#loginbtn");
@@ -291,7 +310,8 @@ const avataroutside = document.querySelector("#avataroutside");
 const avatarinside = document.querySelector("#avatarinside");
 const useravatar = document.querySelector("#useravatar");
 const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
-
+const shoplink = document.querySelector("#shoplink");
+const addcourse = document.querySelector("#addcourse");
 
 if (accid) {
     loginbtn.classList.add("d-none");
@@ -354,6 +374,12 @@ logout.addEventListener("click", function () {
     sessionStorage.removeItem("accountNickname");
     sessionStorage.removeItem("accountPhoto");
 
+    localStorage.removeItem("accountId");
+    localStorage.removeItem("accountLevel");
+    localStorage.removeItem("accountNickname");
+    localStorage.removeItem("accountPhoto");
+    localStorage.removeItem("token");
+
     fetch("Account/Logout");
     location = getContextPath() + "/index.html";
 })
@@ -364,6 +390,9 @@ logout.addEventListener("click", function () {
 const ixicon = document.querySelector(".navbar-brand");
 const loginb = document.querySelector("#loginb");
 const signupb = document.querySelector("#signupb");
+const chatlist = document.querySelector("#chatlist");
+chatlist.href = getContextPath() + "/hao/customerservice.html";
+shoplink.href = getContextPath() + "/shop.jsp";
 
 
 ixicon.href = getContextPath() + "/index.html";
@@ -389,5 +418,22 @@ function getcreateObjURL(base64photo) {
 function getContextPath() {
     return window.location.pathname.substring(0, window.location.pathname.indexOf('/', 2));
 }
+
+if (accid) {
+    fetch('/ixercise/Account/checkfornav/' + accid)
+        .then(resp => resp.json())
+        .then(body => {
+            const {successful, message} = body;
+            if (successful) {
+                addcourse.classList.remove("d-none");
+                console.log(message);
+                if (sessionStorage.getItem("accountLevel") === "1" || localStorage.getItem("accountLevel") === "1") {
+                    sessionStorage.setItem("accountLevel", 2);
+                    localStorage.setItem("accountLevel", 2);
+                }
+            }
+        })
+}
+
 
 // });

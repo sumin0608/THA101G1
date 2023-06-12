@@ -49,5 +49,6 @@ public interface AccountService {
     Core forgetPassword(Account account);
 
 
-
+//=========================================
+    Account searchforshop(String accountPhone,String accountPassword);
 }

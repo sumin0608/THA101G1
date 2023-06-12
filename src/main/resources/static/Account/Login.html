@@ -11,7 +11,7 @@
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
-    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
+    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png"/>
     <!-- =========================================== -->
     <style>
         .square-image {
@@ -410,13 +410,12 @@
                     errMsg.textContent = '';
                     const { successful, message } = body;
                     if (successful) {
-                        const {accountId, accountNickname, accountLevel, accountPhoto} = body;
+                        const { accountId, accountNickname, accountLevel, accountPhoto } = body;
                         sessionStorage.setItem("accountId", accountId);
                         sessionStorage.setItem("accountNickname", accountNickname);
                         sessionStorage.setItem("accountLevel", accountLevel);
                         sessionStorage.setItem("accountPhoto", accountPhoto);
-                        history.go(-1);
-                        // location = getContextPath() + "/index.html";
+                        location = getContextPath() + "/index.html";
 
                         localStorage.setItem("accountId", accountId);
                         localStorage.setItem("accountNickname", accountNickname);
