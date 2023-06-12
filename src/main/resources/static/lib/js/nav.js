@@ -87,14 +87,14 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     ' <div class="col-3">\n' +
     '<select id="select_city" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>搜尋城市</option>\n' +
-    `<option value="臺北市">臺北市</option>
+    `<option value="台北市">台北市</option>
     <option value="基隆市">基隆市</option>
     <option value="連江縣">連江縣</option>
     <option value="新北市">新北市</option>
-    <option value="宜蘭縣">宜蘭縣</option>
+    <option value="宜蘭">宜蘭</option>
     <option value="新竹市">新竹市</option>
     <option value="新竹縣">新竹縣</option>
-    <option value="桃園市">桃園市</option>
+    <option value="桃園市">桃園</option>
     <option value="苗栗縣">苗栗縣</option>
     <option value="臺中市">臺中市</option>
     <option value="彰化縣">彰化縣</option>
