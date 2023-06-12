@@ -27,15 +27,17 @@ public interface CourseAttendeeService {
 
 	List<CourseAttendee> getAttendeesByAccountId(Integer accountId);
 
-	List<CourseAttendee> getAttendeesByCourseId(Integer courseId);
-	
-	CourseAttendee getAttendeesByAttendId(Integer attendId);
+    List<CourseAttendee> getAttendeesByCourseId(Integer courseId);
+
+    CourseAttendee getAttendeesByAttendId(Integer attendId);
 
     List<CourseAndAttendeesEntity> getCalendarList(Integer accountId);
-    
+
     List<CourseAndAttendeesEntity> getAttendeesCountList(Integer courseId);
-    
-    
+
+
     CourseAttendee countAttendeesByCourseId(Integer courseId);
-    
+
+    CourseStatusDto validatingUserForApplying(Integer courseId, Integer accountId);
+
 }

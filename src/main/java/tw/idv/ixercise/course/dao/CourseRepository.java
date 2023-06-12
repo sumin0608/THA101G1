@@ -50,6 +50,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	    @Query("UPDATE Course c SET c.eventName = :eventName, c.expectedPrice = :expectedPrice WHERE c.courseId = :courseId")
 	    void updateCourseEventName(@Param("courseId") Integer courseId, @Param("eventName") String eventName,@Param("expectedPrice") Integer expectedPrice);
 
+		Course findByCourseId(Integer courseId);
 	    
 	    
 	List<Course> findByCourseIdIn(List<Integer> ids);
