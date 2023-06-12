@@ -254,7 +254,7 @@
                 <div id="backsidebar" class="sb-sidenav-menu">
                     <div class="nav justify-content-center ">
                         <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-                        <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
+                        <a class="nav-link " href="/ixercise/BackstageIndex.html">
                             <div class="sb-nav-link-icon">
                                 <i class="bi bi-house-fill"></i>
                             </div>
@@ -275,8 +275,7 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
 
-                                <a class="nav-link" id="changecount"
-                                    href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span
+                                <a class="nav-link" id="changecount" href="/ixercise/Hao/report.html">檢舉會員<span
                                         class="msg-counter reportspan"></span></a>
 
                             </nav>
@@ -318,8 +317,7 @@
                         <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link"
-                                    href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
+                                <a class="nav-link" href="/ixercise/Kevin/ProductManage.html">商品管理</a>
                                 <!-- <a class="nav-link" href="">訂單管理</a>
                                     <a class="nav-link" href="">退貨管理</a> -->
 
@@ -357,8 +355,8 @@
                         <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
-                                <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
+                                <a class="nav-link" href="/ixercise/hao/backpodcast.html">後臺推播</a>
+                                <a class="nav-link" href="/ixercise/hao/newbackcun.html">後臺聊天室</a>
 
                             </nav>
                         </div>
@@ -626,7 +624,7 @@
         function sendAjaxRequest(currentPage) {
             console.log(currentPage);
             $.ajax({
-                url: "http://localhost:8080/ixercise/back/memberlist", // 資料請求的網址
+                url: "/ixercise/back/memberlist", // 資料請求的網址
                 type: "GET",
                 dataType: "json",
                 data: {
@@ -750,7 +748,7 @@
             $("#aaaa").empty();
 
             $.ajax({
-                url: 'http://localhost:8080/ixercise/back/reportmember/' + reportId, // 資料請求的網址
+                url: '/ixercise/back/reportmember/' + reportId, // 資料請求的網址
                 type: "GET",
                 dataType: "json",
 
@@ -805,7 +803,7 @@
 
 
             $.ajax({
-                url: 'http://localhost:8080/ixercise/back/reportmember/' + reportId + '', // 資料請求的網址
+                url: '/ixercise/back/reportmember/' + reportId + '', // 資料請求的網址
                 type: "DELETE",
                 dataType: "json",
 
