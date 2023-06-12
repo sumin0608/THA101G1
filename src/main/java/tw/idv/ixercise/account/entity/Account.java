@@ -38,7 +38,7 @@ public class Account extends Core {
     @Email
     private String accountEmail;
     @NotBlank(message = "綽號為必填")
-    @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$",message = "姓名只能是中、英、數字及_，且長度為2~10之間")
+    @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,20}$",message = "姓名只能是中、英、數字及_，且長度為2~20之間")
     private String accountNickname;
 
     private Integer accountLevel;
@@ -47,7 +47,7 @@ public class Account extends Core {
     @NotBlank(message = "地址為必填")
     private String accountAddress;
     @NotBlank(message = "姓名為必填")
-    @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$",message = "姓名只能是中、英、數字及_，且長度為2~10之間")
+    @Pattern(regexp = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,20}$",message = "姓名只能是中、英、數字及_，且長度為2~20之間")
     private String accountName;
 
     @Past

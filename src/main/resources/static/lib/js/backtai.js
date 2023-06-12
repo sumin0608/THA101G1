@@ -77,7 +77,7 @@ const sportTypeMap = {
 };
 
 // 處裡整條sidebar
-const sib = document.getElementById("backsidebar");
+// const sib = document.getElementById("backsidebar");
 
 console.log(sib);
 sib.innerHTML = `<div class="nav justify-content-center ">

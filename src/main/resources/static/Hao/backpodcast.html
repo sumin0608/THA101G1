@@ -459,7 +459,7 @@ div{
                                       <div class="card-content">
                                             <div class=>文字輸入</div>
                                             <div>
-                                                <textarea class="form-control input-lg mb-1" id="inputtextarea" placeholder="內文"></textarea>
+                                                <textarea class="form-control input-lg mb-1" id="inputtextarea" placeholder="內文" style="height: 150px"></textarea>
                                             </div>
                                             <div class="">輸入會員帳號</div>
                                             <div xla>
@@ -665,12 +665,15 @@ $(document).ready(function() {
 
 function sendMessage(inputtextValue,textareaValue,fileName) {
     console.log(fileName);
+    var currentTime = new Date();
+    var jsonTime = currentTime.toJSON();
+
     var jsonObj = {
       "type": "podcast",
         "acountId": inputtextValue,
         "message": textareaValue,
         "photo": fileName,
-        "messagetime":null ,
+        "messagetime": jsonTime,
     };
   webSocket.send(JSON.stringify(jsonObj));
   

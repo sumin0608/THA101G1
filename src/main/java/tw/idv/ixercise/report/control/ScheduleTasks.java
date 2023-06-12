@@ -12,7 +12,7 @@ public class ScheduleTasks {
 	@Autowired
 	private reportServiceImpl service;
 	
-	static Integer count=1;
+	static Integer count=15;
 
 	@Scheduled(cron = "0 2 14 * * ?")
 	public void delete() {
