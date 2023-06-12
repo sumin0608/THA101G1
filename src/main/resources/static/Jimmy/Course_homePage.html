@@ -195,7 +195,7 @@
                                         <div class="col-3">
                                             <select id="select_time" class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected value="0" disabled>上課時段</option>
+                                                <option selected value="0">上課時段</option>
                                                 <option value="1">上午(06:00~12:00)</option>
                                                 <option value="2">下午(12:00~18:00)</option>
                                                 <option value="3">晚上(18:00~24:00)</option>
@@ -688,7 +688,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (resp1) {
-                        console.log("resp1>>" + resp1);
+                        // console.log("resp1>>" + resp1);
                         let tableData = '';
                         var memberName;
                         var accphoto;
@@ -702,13 +702,13 @@
                                 return true;
                             }
                         });
-                        console.log("resp2: ", resp2);
+                        // console.log("resp2: ", resp2);
                         var resp = resp2.filter(function (item) {
-                            if (item.courseStatus === 1 || item.courseStatus === 3 || item.courseStatus === 4) {
+                            if (item.courseStatus === 1 || item.courseStatus === 4) {
                                 return true;
                             }
                         });
-                        console.log("resp: ", resp);
+                        // console.log("resp: ", resp);
 
                         for (let i = 0; i < resp.length; i++) {
                             if (resp[i].courseStatus !== 2 || resp[i].courseStatus !== 5) {
@@ -815,27 +815,40 @@
                 function handleDistrictsResponse(resp) {
                     console.log("handleDistricts_resp>>" + resp);
                     var sport_option = $('#select_sport option:selected').text();
-                    var city_option = $('#select_city option:selected').text();
+                    var city_option = $('#select_city option:selected').text().trim();
+
                     var time_option = $('#select_time option:selected').val();
                     var sportValue = (sport_option !== "運動類型") ? sport_option : "";
                     var cityValue = (city_option !== "搜尋城市") ? city_option : "";
                     var timeValue = (time_option != "上課時段") ? time_option : "";
+                    // var timeValue = time_option;
                     console.log("sport: " + sportValue);
                     console.log("city: " + cityValue);
                     console.log("time: " + timeValue);
-                    // filter篩選:運動類型、城市
+                    // filter篩選:運動類型
                     let filteredData0 = resp.filter(function (item) {
-                        if ((!sportValue || item.categoryId === sportValue) &&
-                            (!cityValue || item.city === cityValue)) {
+                        if (item.categoryId === sportValue) {
+                            return true;
+                        }else if(!sportValue){
                             return true;
                         }
                     });
                     console.log("filteredData0>>" + filteredData0);
-                    // filter篩選:時間
-                    let filteredData1 = filteredData0.filter(function (item) {
-                        if (!timeValue) {
+
+                    // filter篩選:城市
+                    let filteredData00 = filteredData0.filter(function (item) {
+                        if (item.city === cityValue) {
                             return true;
-                        } else if (timeValue == 1) {
+                        }else if(!cityValue){
+                            return true;
+                        }
+                    });
+                    console.log("filteredData00>>" + filteredData00);
+
+
+                    // filter篩選:時間
+                    let filteredData1 = filteredData00.filter(function (item) {
+                         if (timeValue == 1) {
                             // 上午时间范围：06:00 ~ 12:00
                             var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
                             return startTime > "06:00:00" && startTime < "12:00:00";
@@ -847,6 +860,8 @@
                             // 晚上时间范围：18:00 ~ 24:00
                             var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
                             return startTime >= "18:00:00" && startTime < "24:00:00";
+                        }else {
+                            return true;
                         }
                     });
                     console.log("filteredData1>>" + filteredData1);
@@ -955,7 +970,7 @@
                 $("#searchbtn").on("click", function (e) {
                     $("#searchcard").addClass("d-none");
                     e.preventDefault();
-                    console.log("成功")
+                    // console.log("成功")
 
                     const searchinput = $("#searchbar").val();
                     console.log("searchinput:" + searchinput);
@@ -966,87 +981,88 @@
                         dataType: "json",
                         success: function (resp1) {
                             // console.log("resp1>>" + resp1);
-                            let tableData3 = '';
-                            var memberName;
-                            var accphoto;
-                            var today = new Date();
-                            var resp = resp1.filter(function (item) {
-                                var registrationDeadline = new Date(item.registrationDeadline);
-                                if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
-                                    return true;
-                                }
-                            });
-                            console.log("resp>>" + resp);
-                            for (let i = 0; i < resp.length; i++) {
-                                tableData3 += `<div class="col mb-5 event_card_container">`;
-                                tableData3 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
-                                tableData3 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
-                                tableData3 += `<div class="photo">
+                            if (resp1 !== "") {
+                                let tableData3 = '';
+                                var memberName;
+                                var accphoto;
+                                var today = new Date();
+                                var resp = resp1.filter(function (item) {
+                                    var registrationDeadline = new Date(item.registrationDeadline);
+                                    if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                                        return true;
+                                    }
+                                });
+                                console.log("resp>>" + resp);
+                                for (let i = 0; i < resp.length; i++) {
+                                    tableData3 += `<div class="col mb-5 event_card_container">`;
+                                    tableData3 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                                    tableData3 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
+                                    tableData3 += `<div class="photo">
                                             <img class="card-img-top event_pic lazy"
                                             data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />
                                             </div>`;
-                                tableData3 += `<div class="card-body p-2">`;
-                                tableData3 += `<div class="text-left">`;
-                                tableData3 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5>
+                                    tableData3 += `<div class="card-body p-2">`;
+                                    tableData3 += `<div class="text-left">`;
+                                    tableData3 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5>
                                     <h9>${auditTypeMap[resp[i].courseStatus]}</h9>
                                     </div>`;
-                                tableData3 += `   <div class="mb-2 event_location">`;
-                                tableData3 += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
-                                tableData3 += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
-                                tableData3 += `   </div>`;
-                                tableData3 += `   <div class="event_start_time">`;
-                                tableData3 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
-                                tableData3 += `   </div>`;
-                                tableData3 += `</div>`;
-                                tableData3 += `</div>`;
-                                tableData3 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
-                                tableData3 += `    <div class="d-flex flex-row align-items-center event_creater">`;
-                                // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
-                                $.ajax({
-                                    url: "/ixercise/Account/Manage/" + resp[i].creator,
-                                    type: "GET",
-                                    dataType: "json",
-                                    async: false,//非同步的（asynchronous），表示該請求是同步的
-                                    data: { id: resp[i].creator }, // 将 creator 作为参数传递
-                                    success: function (memberResp) {
-                                        // console.log("memberResp: " + memberResp);
-                                        memberName = memberResp.accountNickname;
-                                        console.log("memberName: " + memberName);
-                                        accphoto = memberResp.accountPhoto;
-                                    },
-                                    error: function (xhr, status, error) {
-                                        alert("Error: " + xhr.responseText);
-                                    }
-                                });
-                                tableData3 += `<div class="member-icon">`;
-                                // tableData3 += `<img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
-                                //             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                //             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                                tableData3 += `    <img id="avatarID" src="${getcreateObjURL(accphoto)}"
+                                    tableData3 += `   <div class="mb-2 event_location">`;
+                                    tableData3 += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
+                                    tableData3 += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
+                                    tableData3 += `   </div>`;
+                                    tableData3 += `   <div class="event_start_time">`;
+                                    tableData3 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                                    tableData3 += `   </div>`;
+                                    tableData3 += `</div>`;
+                                    tableData3 += `</div>`;
+                                    tableData3 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                                    tableData3 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                                    // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                                    $.ajax({
+                                        url: "/ixercise/Account/Manage/" + resp[i].creator,
+                                        type: "GET",
+                                        dataType: "json",
+                                        async: false,//非同步的（asynchronous），表示該請求是同步的
+                                        data: {id: resp[i].creator}, // 将 creator 作为参数传递
+                                        success: function (memberResp) {
+                                            // console.log("memberResp: " + memberResp);
+                                            memberName = memberResp.accountNickname;
+                                            console.log("memberName: " + memberName);
+                                            accphoto = memberResp.accountPhoto;
+                                        },
+                                        error: function (xhr, status, error) {
+                                            alert("Error: " + xhr.responseText);
+                                        }
+                                    });
+                                    tableData3 += `<div class="member-icon">`;
+                                    // tableData3 += `<img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
+                                    //             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                                    //             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                                    tableData3 += `    <img id="avatarID" src="${getcreateObjURL(accphoto)}"
                                                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                                tableData3 += `</div>`;
-                                tableData3 += `<div class="col-8 ms-2 c-details">`;
-                                tableData3 += `     教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
-                                // tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
-                                tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
-                                tableData3 += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
-                                tableData3 += `</div></div></div></a></div></div>`;
+                                    tableData3 += `</div>`;
+                                    tableData3 += `<div class="col-8 ms-2 c-details">`;
+                                    tableData3 += `     教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
+                                    // tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
+                                    tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                                    tableData3 += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
+                                    tableData3 += `</div></div></div></a></div></div>`;
 
-                                // var memberid = resp[i].creator;
-                                // var avatarid = "avatar-" + memberid;
-                                // const avataroutside1 = document.querySelector("#avatarid");
-                                // avataroutside1.src = getcreateObjURL(accphoto);
-                            }
-                            $("#input_card").empty().append(tableData3);
-                            // 延遲加載圖像
-                            const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
-                            // console.log("lazyImages: " + lazyImages);
-                            lazyImages.forEach((image) => {
-                                observer.observe(image);
-                            });
-                            //<<lazy-loading--結束>>
-                            if (tableData3 == "") {
+                                    // var memberid = resp[i].creator;
+                                    // var avatarid = "avatar-" + memberid;
+                                    // const avataroutside1 = document.querySelector("#avatarid");
+                                    // avataroutside1.src = getcreateObjURL(accphoto);
+                                }
+                                $("#input_card").empty().append(tableData3);
+                                // 延遲加載圖像
+                                const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
+                                // console.log("lazyImages: " + lazyImages);
+                                lazyImages.forEach((image) => {
+                                    observer.observe(image);
+                                });
+                                //<<lazy-loading--結束>>
+                            } else{
                                 console.log("No data found");
                                 swal("Warning!", "QQ無符合資料", "warning");
                             }

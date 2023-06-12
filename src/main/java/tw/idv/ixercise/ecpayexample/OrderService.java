@@ -13,7 +13,7 @@ import tw.idv.ixercise.ecpay.payment.integration.domain.AioCheckOutALL;
 @Service
 public class OrderService {
 
-	public String ecpayCheckout(String expectedPrice) {
+	public String ecpayCheckout(String expectedPrice,  String description, String eventName) {
 
 		String uuId = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 20);
 		System.out.println(uuId);
@@ -43,18 +43,20 @@ public class OrderService {
 
 //		String eventName = (String) coursePay.getFirst("eventName");
 //		System.out.println("eventName:"+eventName);
-//		obj.setItemName("eventName");
-		obj.setItemName("TestItem1");
+		obj.setItemName(eventName);
+//		obj.setItemName("TestItem1");
+
 //	        // 商店轉跳網址 (Optional)
 //	        obj.setClientBackURL("http://10.2.1.213:8080/ixercise/jimmy/Course_homePage.html");
 
 		// 交易結果回傳網址，只接受 https 開頭的網站，可以使用 ngrok
 //			obj.setReturnURL("http://211.23.128.214:5000"); //綠界範例
-//			obj.setReturnURL("https://  /ixercise/index.html");
+//			obj.setReturnURL("https://localhost:8080/ixercise/index.html");
 //			obj.setOrderResultURL("http://10.2.1.213:8080/ixercise/jimmy/course_intro_page.html");
 
-		obj.setReturnURL("https://0ae0-114-24-174-184.jp.ngrok.io/ixercise/index.html");
-		obj.setOrderResultURL("http://localhost:8080/ixercise/jimmy/Course_homePage.html");
+		obj.setReturnURL("https://localhost:8080/ixercise/course/ecpayReturnURL");
+//		obj.setOrderResultURL("https://localhost:8080/ixercise/jimmy/Course_homePage.html");
+		obj.setClientBackURL("https://localhost:8080/ixercise/jimmy/Course_homePage.html");
 
 		obj.setNeedExtraPaidInfo("N");
 		String form = all.aioCheckOut(obj, null);

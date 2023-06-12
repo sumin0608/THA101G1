@@ -231,7 +231,7 @@ div{
         <div class="sb-sidenav-menu">
           <div class="nav justify-content-center ">
             <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-            <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
+            <a class="nav-link " href="/ixercise/BackstageIndex.html">
               <div class="sb-nav-link-icon">
                 <i class="bi bi-house-fill"></i>
               </div>
@@ -251,7 +251,7 @@ div{
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
 
-                <a class="nav-link" id="changecount" href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span
+                <a class="nav-link" id="changecount" href="/ixercise/Hao/report.html">檢舉會員<span
                     class="msg-counter reportspan"></span></a>
 
               </nav>
@@ -309,7 +309,7 @@ div{
             <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
               data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
+                <a class="nav-link" href="/ixercise/Kevin/ProductManage.html">商品管理</a>
                 <!-- <a class="nav-link" href="">訂單管理</a>
                                   <a class="nav-link" href="">退貨管理</a> -->
       
@@ -344,8 +344,8 @@ div{
                           </a>
                           <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                               <nav class="sb-sidenav-menu-nested nav">
-                                  <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
-                                  <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
+                                  <a class="nav-link" href="/ixercise/hao/backpodcast.html">後臺推播</a>
+                                  <a class="nav-link" href="/ixercise/hao/newbackcun.html">後臺聊天室</a>
                                  
                               </nav>
                           </div>
@@ -459,7 +459,7 @@ div{
                                       <div class="card-content">
                                             <div class=>文字輸入</div>
                                             <div>
-                                                <textarea class="form-control input-lg mb-1" id="inputtextarea" placeholder="內文"></textarea>
+                                                <textarea class="form-control input-lg mb-1" id="inputtextarea" placeholder="內文" style="height: 150px"></textarea>
                                             </div>
                                             <div class="">輸入會員帳號</div>
                                             <div xla>
@@ -665,12 +665,15 @@ $(document).ready(function() {
 
 function sendMessage(inputtextValue,textareaValue,fileName) {
     console.log(fileName);
+    var currentTime = new Date();
+    var jsonTime = currentTime.toJSON();
+
     var jsonObj = {
       "type": "podcast",
         "acountId": inputtextValue,
         "message": textareaValue,
         "photo": fileName,
-        "messagetime":null ,
+        "messagetime": jsonTime,
     };
   webSocket.send(JSON.stringify(jsonObj));
   

@@ -87,14 +87,14 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     ' <div class="col-3">\n' +
     '<select id="select_city" class="form-select form-select-sm" aria-label="Default select example">\n' +
     '<option selected disabled>搜尋城市</option>\n' +
-    `<option value="臺北市">臺北市</option>
+    `<option value="台北市">台北市</option>
     <option value="基隆市">基隆市</option>
     <option value="連江縣">連江縣</option>
     <option value="新北市">新北市</option>
-    <option value="宜蘭縣">宜蘭縣</option>
+    <option value="宜蘭">宜蘭</option>
     <option value="新竹市">新竹市</option>
     <option value="新竹縣">新竹縣</option>
-    <option value="桃園市">桃園市</option>
+    <option value="桃園市">桃園</option>
     <option value="苗栗縣">苗栗縣</option>
     <option value="臺中市">臺中市</option>
     <option value="彰化縣">彰化縣</option>
@@ -148,7 +148,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
     '                        <a id="addcourse" class="nav-link h-100 active d-inline-block d-none" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
     '                        </a>\n' +
-    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
+    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/Woo/Event_CreateEventForm.html">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -165,6 +165,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     // '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
     // '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
     '                            <li><a class="dropdown-item" href="/ixercise/jimmy/Course_homePage.html">課程</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="/ixercise/Woo/Event_homePage.html">活動</a></li>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '                    <!-- 鈴鐺============================================================= -->\n' +

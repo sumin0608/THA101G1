@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import tw.idv.ixercise.store.dao.implProduct;
+import tw.idv.ixercise.store.service.OrderCodeFactory;
 import tw.idv.ixercise.store.entity.member;
 import tw.idv.ixercise.store.entity.porder;
 import tw.idv.ixercise.store.entity.product;
@@ -35,11 +35,13 @@ public class addDefaultListServlet extends HttpServlet {
 		
 		member m=(member)session.getAttribute("Member");
 		
-		
+		String a = OrderCodeFactory.getOrderCode(1L);
+		String pr_no = "P"+a;
 		//porder p=new porder("p001",m.getMember_no(),m.getName(),pr.getProductName(),1,m.getUsername(),m.getEmail());
-		porder p=new porder("p001","P001",m.getName(),pr.getProductName(),1,m.getUsername(),m.getEmail());
+		porder p=new porder(pr_no,"P001",m.getName(),pr.getProductName(),1,m.getUsername(),m.getEmail());
 
 		l.add(p);
+		session.setAttribute("PR_NO",pr_no);
 		session.setAttribute("L",l);
 		
 		

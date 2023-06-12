@@ -80,6 +80,7 @@ const sportTypeMap = {
 const sib = document.getElementById("backsidebar");
 
 console.log(sib);
+if(sib != null){
 sib.innerHTML = `<div class="nav justify-content-center ">
                     <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
                     <a class="nav-link " href="${getContextPath()}/BackstageIndex.html">
@@ -230,3 +231,4 @@ sib.innerHTML = `<div class="nav justify-content-center ">
                     </div>
 
                 </div>`;
+}

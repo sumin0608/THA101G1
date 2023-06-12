@@ -3,6 +3,7 @@
     import="tw.idv.ixercise.store.dao.*,tw.idv.ixercise.store.entity.*"
     import="java.util.*"
     import="java.text.*"
+    import="tw.idv.ixercise.store.service.*"
     %>
 
 <%
@@ -13,6 +14,7 @@ SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //List<product> L =(List)session.getAttribute("L");
 List<porder> l = (List)session.getAttribute("L");
 member m=(member)session.getAttribute("Member");
+String pr_no = (String)session.getAttribute("PR_NO");
 %>
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -335,8 +337,9 @@ member m=(member)session.getAttribute("Member");
 						    </tr>
 						  	<tr>
 						      <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單編號</font></th>
-						      <td><input name="porderNo" class="form-control" type="search" placeholder="訂單編號..." aria-label="Search" maxlength="5" style="width:200px"></td>
-						      <td></td>
+<%--						      <td><input name="porderNo" class="form-control" type="search" placeholder="訂單編號..." aria-label="Search" maxlength="5" style="width:200px"></td>--%>
+                                <td><%=pr_no %></td>
+                                <td></td>
 						      <td></td>
 						    </tr>
 						    <tr>

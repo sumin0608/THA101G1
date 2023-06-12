@@ -1,314 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="../lib/css/backstyle.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="../lib/css/backstyle.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
     <style>
-       
+        .totalcolor1 {
+            background: linear-gradient(180deg,
+                    rgb(237, 242, 240) 0%,
+                    rgb(224, 231, 229) 50%,
+                    rgb(232, 233, 236) 100%) !important;
+        }
 
-       .totalcolor1{
-  background: linear-gradient(
-    180deg,
-    rgb(237, 242, 240) 0%,
-    rgb(224, 231, 229) 50%,
-    rgb(232, 233, 236) 100%
-  ) !important;
-}
+        .navtotalcolor {
+            background: linear-gradient(90deg,
+                    rgba(66, 184, 131, 1) 0%,
+                    rgba(39, 179, 137, 1) 50%,
+                    rgba(100, 126, 255, 1) 100%) !important;
+        }
 
-.navtotalcolor{
-    background: linear-gradient(
-    90deg,
-    rgba(66, 184, 131, 1) 0%,
-    rgba(39, 179, 137, 1) 50%,
-    rgba(100, 126, 255, 1) 100%
-  ) !important;
-}
+        nav a {
+            font-size: 20px !important;
+            color: black !important;
+        }
 
-nav a{
-    font-size:  20px  !important;
-    color:black !important;
-}
+        nav>a {
+            font-size: 16px !important;
+            color: black !important;
+        }
 
-nav>a{
-    font-size:  16px  !important;
-    color:black !important;
-}
+        .msg-counter {
+            position: absolute;
+            border-radius: 50%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            background-color: #f26464;
+            right: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-weight: 500;
+            font-size: 12px !important;
+            line-height: 1.25;
+            letter-spacing: 0.75px;
+            color: #FFFFFF;
+        }
 
-.msg-counter {
-  position: absolute;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  background-color: #f26464;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  font-weight: 500;
-  font-size: 12px !important;
-  line-height: 1.25;
-  letter-spacing: 0.75px;
-  color: #FFFFFF;
-}
+        body {
+            background-color: rgb(240, 243, 241);
+            margin-top: 20px;
 
-body{
-    background-color:rgb(240, 243, 241)
-    ;
-    margin-top:20px;
-  
-}
-.radius{
-    border-radius: 100px; 
-}
-.cardsize{
-    height: 100px   ;
-   
+        }
 
-}
-div img {
+        .radius {
+            border-radius: 100px;
+        }
 
- 
-  position: absolute;   
-  width: auto;
-  max-height: 100%;
-  
-  
-}
-div{
-    position: relative;
-  
-  
-}
-
-.aaa{
-    display: flex;
-  align-items: center; /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
-  text-align: center; /* 对齐文本 */
-}
-.color{
-    background-color: rgb(248, 247, 247);
-    text-align: center;
-    height: 50px;
-  border-bottom: 0px;  
- font-size: 20px ;
- font-weight: bold;
- text-align: center;
-
-    }
-    .reportspan{
-        right: 60px;
-    }
+        .cardsize {
+            height: 100px;
 
 
+        }
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid transparent;
-    border-radius: 0;
-}
-.btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
-    width: 50px;
-    height: 50px;
-    padding: 14px 15px;
-    font-size: 18px;
-    line-height: 23px;
-}
-.text-muted {
-    color: #8898aa!important;
-}
-
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-    cursor: pointer;
-}
-.btn-circle {
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-}
-.user-table tbody tr .category-select {
-    max-width: 150px;
-    border-radius: 20px;
-}
-
-.card-body{
-    background-color: rgb(240, 243, 241);
-    padding: 20px;
-    font-size: 40px;
-}
-
-.theadcss{
-font-size: 14px;
-text-align: center;
-
-}
-.tbodycss{
-    text-align: center;
-    }
-
-.reasonarea{
-    width: 200px;
-
-}
-.modal-dialog {
-        width: 1000px;
-
-    }
-    .pic {
-  width: 350px;
-  height: 320px;
-  margin: 0px;
-  display: flex;
-  justify-content:left;
-  align-items: center;
-
-}
-.pic img {
-    
-  max-width: 100%;
-  max-height: 100%;
-}
-
-    
+        div img {
 
 
+            position: absolute;
+            width: auto;
+            max-height: 100%;
+
+
+        }
+
+        div {
+            position: relative;
+
+
+        }
+
+        .aaa {
+            display: flex;
+            align-items: center;
+            /* 垂直居中 */
+            justify-content: center;
+            /* 水平居中 */
+            text-align: center;
+            /* 对齐文本 */
+        }
+
+        .color {
+            background-color: rgb(248, 247, 247);
+            text-align: center;
+            height: 50px;
+            border-bottom: 0px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+
+        .reportspan {
+            right: 60px;
+        }
+
+
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 0 solid transparent;
+            border-radius: 0;
+        }
+
+        .btn-circle.btn-lg,
+        .btn-group-lg>.btn-circle.btn {
+            width: 50px;
+            height: 50px;
+            padding: 14px 15px;
+            font-size: 18px;
+            line-height: 23px;
+        }
+
+        .text-muted {
+            color: #8898aa !important;
+        }
+
+        [type=button]:not(:disabled),
+        [type=reset]:not(:disabled),
+        [type=submit]:not(:disabled),
+        button:not(:disabled) {
+            cursor: pointer;
+        }
+
+        .btn-circle {
+            border-radius: 100%;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+        }
+
+        .user-table tbody tr .category-select {
+            max-width: 150px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            background-color: rgb(240, 243, 241);
+            padding: 20px;
+            font-size: 40px;
+        }
+
+        .theadcss {
+            font-size: 14px;
+            text-align: center;
+
+        }
+
+        .tbodycss {
+            text-align: center;
+        }
+
+        .reasonarea {
+            width: 200px;
+
+        }
+
+        .modal-dialog {
+            width: 1000px;
+
+        }
+
+        .pic {
+            width: 350px;
+            height: 320px;
+            margin: 0px;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+
+        }
+
+        .pic img {
+
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
-    
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand m-0 px-4 " href="#!">
-                <img src="../lib/img/IX-nobackground copy.png" alt="" width="150" height="70">
-            </a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
-                    <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
-                </div>
-            </form>
-            <!-- Navbar-->
+
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand m-0 px-4 " href="#!">
+            <img src="../lib/img/IX-nobackground copy.png" alt="" width="150" height="70">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
+                <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
+            </div>
+        </form>
+        <!-- Navbar-->
 
 
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
-                <li class="nav-item dropdown  ">
-                    <a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
+            <li class="nav-item dropdown  ">
+                <a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 
- 
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
-                    <div id="backsidebar" class="sb-sidenav-menu">
-                        <div class="nav justify-content-center ">
-                            <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
-                            <a class="nav-link " href="http://localhost:8080/ixercise/BackstageIndex.html">
-                                <div class="sb-nav-link-icon">
-                                    <i class="bi bi-house-fill"></i>
-                                </div>
-                                後臺中心
-                            </a>
-                            <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon">
-                                    <i class="bi bi-flag-fill"></i>
-                                </div>
-                                檢舉
-                                <div class="sb-sidenav-collapse-arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-        
-                                    <a class="nav-link" id="changecount"  href="http://localhost:8080/ixercise/Hao/report.html">檢舉會員<span class="msg-counter reportspan"></span></a>
-        
-                                </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion totalcolor1 changetext " id="sidenavAccordion">
+                <div id="backsidebar" class="sb-sidenav-menu">
+                    <div class="nav justify-content-center ">
+                        <!-- <div class="sb-sidenav-menu-heading ">Core</div> -->
+                        <a class="nav-link " href="/ixercise/BackstageIndex.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-house-fill"></i>
                             </div>
-        
-        
-        
-        
-        
-        <!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
-        <!--                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">-->
-        <!--                        <div class="sb-nav-link-icon">-->
-        <!--                            <i class="bi bi-calendar-event-fill"></i>-->
-        <!--                        </div>-->
-        <!--                        活動-->
-        <!--                        <div class="sb-sidenav-collapse-arrow">-->
-        <!--                            <i class="fas fa-angle-down"></i>-->
-        <!--                        </div>-->
-        <!--                    </a>-->
-        <!--                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"-->
-        <!--                         data-bs-parent="#sidenavAccordion">-->
-        <!--                        <nav class="sb-sidenav-menu-nested nav">-->
-        <!--                            <a class="nav-link" href="">活動管理</a>-->
-        
-        <!--                        </nav>-->
-        <!--                    </div>-->
-        
-        
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon">
-                                    <i class="bi bi-cart-fill"></i>
-                                </div>
-                                商城
-                                <div class="sb-sidenav-collapse-arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </div>
-                            </a>
-                            <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
-                                    <!-- <a class="nav-link" href="">訂單管理</a>
+                            後臺中心
+                        </a>
+                        <!-- <div class="sb-sidenav-menu-heading">Interface</div> -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-flag-fill"></i>
+                            </div>
+                            檢舉
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+
+                                <a class="nav-link" id="changecount" href="/ixercise/Hao/report.html">檢舉會員<span
+                                        class="msg-counter reportspan"></span></a>
+
+                            </nav>
+                        </div>
+
+
+
+
+
+                        <!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"-->
+                        <!--                       data-bs-target="#collapseLayoutsss" aria-expanded="false" aria-controls="collapseLayouts">-->
+                        <!--                        <div class="sb-nav-link-icon">-->
+                        <!--                            <i class="bi bi-calendar-event-fill"></i>-->
+                        <!--                        </div>-->
+                        <!--                        活動-->
+                        <!--                        <div class="sb-sidenav-collapse-arrow">-->
+                        <!--                            <i class="fas fa-angle-down"></i>-->
+                        <!--                        </div>-->
+                        <!--                    </a>-->
+                        <!--                    <div class="collapse" id="collapseLayoutsss" aria-labelledby="headingOne"-->
+                        <!--                         data-bs-parent="#sidenavAccordion">-->
+                        <!--                        <nav class="sb-sidenav-menu-nested nav">-->
+                        <!--                            <a class="nav-link" href="">活動管理</a>-->
+
+                        <!--                        </nav>-->
+                        <!--                    </div>-->
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutssss" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-cart-fill"></i>
+                            </div>
+                            商城
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/ixercise/Kevin/ProductManage.html">商品管理</a>
+                                <!-- <a class="nav-link" href="">訂單管理</a>
                                     <a class="nav-link" href="">退貨管理</a> -->
-        
-        
-                                </nav>
-                            </div>
-        
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+
+
+                            </nav>
+                        </div>
+
+                        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon">
                                     <i class="bi bi-book-fill"></i>
@@ -323,90 +340,93 @@ text-align: center;
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="">課程管理</a>
                                      <a class="nav-link" href="">審核退費</a> -->
-        <!-- 
+                        <!-- 
                                 </nav>
                             </div>  -->
-        
-                            
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssssa" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
-                               後臺廣播
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
-                                    <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
-                                   
-                                </nav>
-                            </div>
-        
-        
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#collapseLayoutssssss" aria-expanded="false"
-                               aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon">
-                                    <i class="bi bi-person-fill"></i>
-                                </div>
-                                帳號
-                                <div class="sb-sidenav-collapse-arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </div>
-                            </a>
-        
-                            <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a id="AccountManage" class="nav-link" href="Account/AccountManage.html">會員管理
-                                        <span class="msg-counter accountspan">7</span>
-                                    </a>
-                                    <a id="AdminManage" class="nav-link" href="">管理員管理
-                                        <span class="msg-counter adminspan">7</span>
-                                    </a>
-                                    <a id="CoachManage" class="nav-link" href="">審核教練資格
-                                        <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
-                                    </a>
-                                </nav>
-                            </div>
-        
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutssssssa" aria-expanded="false"
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
+                            後臺廣播
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/ixercise/hao/backpodcast.html">後臺推播</a>
+                                <a class="nav-link" href="/ixercise/hao/newbackcun.html">後臺聊天室</a>
+
+                            </nav>
                         </div>
+
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayoutssssss" aria-expanded="false"
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            帳號
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+
+                        <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a id="AccountManage" class="nav-link" href="Account/AccountManage.html">會員管理
+                                    <span class="msg-counter accountspan">7</span>
+                                </a>
+                                <a id="AdminManage" class="nav-link" href="">管理員管理
+                                    <span class="msg-counter adminspan">7</span>
+                                </a>
+                                <a id="CoachManage" class="nav-link" href="">審核教練資格
+                                    <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
+                                </a>
+                            </nav>
+                        </div>
+
                     </div>
-        
-                </nav>
-            </div>
+                </div>
+
+            </nav>
+        </div>
 
 
-               <!--以上nav-->
-               <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <!--以上nav-->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4 radius">
-                        <!-- 請在這裡作業-->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4 radius">
+                    <!-- 請在這裡作業-->
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card-body">
-                                    <p class="card-title text-uppercase mb-0">檢舉會員</p>
-                                </div>
-                                <div class="card">
-                                    <div class="table-responsive">
-                                        <table class="table no-wrap user-table mb-0">
-                                          <thead class="theadcss">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <p class="card-title text-uppercase mb-0">檢舉會員</p>
+                            </div>
+                            <div class="card">
+                                <div class="table-responsive">
+                                    <table class="table no-wrap user-table mb-0">
+                                        <thead class="theadcss">
                                             <tr>
-                                              <th scope="col" class="border-0 text-uppercase font-medium pl-4">編號</th>
-                                              <th scope="col" class="border-0 text-uppercase font-medium">檢舉會員編號</th>
-                                              <th scope="col" class="border-0 text-uppercase font-medium">檢舉類別</th>
-                                              <th scope="col" class="border-0 text-uppercase font-medium">檢舉內容</th>
-                                              <th scope="col" class="border-0 text-uppercase font-medium">檢舉日期</th>
-                                              <th scope="col" class="border-0 text-uppercase font-medium">檢舉狀態</th>
-                                              <th scope="col" class="border-0 text-uppercase font-medium">檢舉按鈕  </th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium pl-4">編號</th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium">檢舉會員編號</th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium">檢舉類別</th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium">檢舉內容</th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium">檢舉日期</th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium">檢舉狀態</th>
+                                                <th scope="col" class="border-0 text-uppercase font-medium">檢舉按鈕 </th>
                                             </tr>
-                                          </thead>
-                                          <tbody id="aaa">
+                                        </thead>
+                                        <tbody id="aaa">
 
-<!-- 本來的範例
+                                            <!-- 本來的範例
                                             <tr>
                                                 <td class="pl-4">1</td>
                                                 <td>
@@ -465,535 +485,550 @@ text-align: center;
                                                 <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-upload"></i> </button>
                                               </td>
                                               </tr> -->
-                                          </tbody>
-                                        </table>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                        </div>       
+                        </div>
                     </div>
+                </div>
 
 
 
-                     <!--查詢燈箱開始-->
-                     <div class="modal fade" id="exampleModal" tabindex="-1"aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content ">
-                                <div class="modal-header ">
-                                    <h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="row " id="aaaa">
-
-                                     
-
-
+                <!--查詢燈箱開始-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content ">
+                            <div class="modal-header ">
+                                <h2 class="modal-title  " id="exampleModalLabel">詳細資料</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row " id="aaaa">
 
 
-                                        </div>
+
+
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-             <!--刪除燈箱開始-->
-             <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="confirmModalLabel">確認刪除</h5>
-                      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      確定要刪除嗎？
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" id="closedelete" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                      <button type="button" id="confirmDelete" class="btn btn-danger" id="deleteconfirm">確認</button>
-                    </div>
-                  </div>
                 </div>
-              </div> 
-             <!--燈箱結束-->
 
-              <!--以下分頁-->
-             <nav aria-label="Page navigation example ">
-                <ul class="pagination justify-content-center mt-2" id="numberpage">
-                  <!-- <li class="page-item">
+
+
+
+                <!--刪除燈箱開始-->
+                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmModalLabel">確認刪除</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                確定要刪除嗎？
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="closedelete" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">取消</button>
+                                <button type="button" id="confirmDelete" class="btn btn-danger"
+                                    id="deleteconfirm">確認</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--燈箱結束-->
+
+                <!--以下分頁-->
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center mt-2" id="numberpage">
+                        <!-- <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li> -->
-                  <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
                   <li class="page-item"><a class="page-link" href="#">2</a></li>
                   <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                  <!-- <li class="page-item">
+                        <!-- <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li> -->
-                </ul>
-              </nav>
+                    </ul>
+                </nav>
 
-        </main>
+            </main>
 
-                             <!--以下footer-->
+            <!--以下footer-->
 
-                
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
                         </div>
                     </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </div>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../lib/js/backtai.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-     
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="../lib/js/datatables-demo.js"></script>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="../lib/js/backtai.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="../lib/js/datatables-demo.js"></script>
 
 
 
-       
-            <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
+
+    <script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
 
 
-<script>
-    
-    let data_obj = {
+    <script>
 
-        "reportId" : 1,
-        "accountId2" : 54354345,
-        "reportType" : 53535,
-        "reportReason":"fsdfsdfdsfdsffdsdsfdss",
-        "reportTime" : "2023-08-20 11:11:11",
-        "reportStatus" : 2,
-        
-    };
+        let data_obj = {
 
-    //查全部資料
-    $(function(){
-        sendAjaxRequest(0);
-    })
-    
-   function sendAjaxRequest(currentPage){
-    console.log(currentPage);
-    $.ajax({url : "http://localhost:8080/ixercise/back/memberlist", // 資料請求的網址
-            type : "GET",
-            dataType : "json",
-            data: { page:currentPage
-            
-            }, 
-            success : function(data) {
-            var html = "";
-            console.log(data);
-            var reportList = data.content; // 获取报告列表
-            
-            
-            $.each(reportList ,function(index, obj) {
-                html += '<tr class="tbodycss">';
-                        html += '<td class="pl-4">' + obj.reportId+ '</td>';
-                        html += '<td class="font-medium mb-0">  <h5 class="font-medium mb-0">' + obj.accountId+ '</h5></td>';
-                        html += '<td>  <span class=" text-danger">' + obj.reportType+ "</td>";
-                           
-                            console.log(obj.reportReason);
-                            var truncatedContent="";
-                            if (obj.reportReason.length> 36) {
-                                truncatedContent = obj.reportReason.substring(0,36) + "..."; 
-                       
-                            }else{
-                                truncatedContent =obj.reportReason;
-                            }
-                            
-                            html += '<td class="reasonarea">  ' + truncatedContent+ '</td>';
-                            console.log(obj.reportTime);
-var utcTime = new Date(obj.reportTime); // 將 UTC 字串轉換為 Date 物件
-var taiwanTime = new Date(utcTime.getTime() ); // 加上 8 小時的時差轉換為台灣時區
-console.log(taiwanTime);
+            "reportId": 1,
+            "accountId2": 54354345,
+            "reportType": 53535,
+            "reportReason": "fsdfsdfdsfdsffdsdsfdss",
+            "reportTime": "2023-08-20 11:11:11",
+            "reportStatus": 2,
 
-var year = taiwanTime.getFullYear();
-var month = ('0' + (taiwanTime.getMonth() + 1)).slice(-2); // 補零並取兩位數的月份
-var date = ('0' + taiwanTime.getDate()).slice(-2); // 補零並取兩位數的日期
-var hours = ('0' + taiwanTime.getHours()).slice(-2); // 補零並取兩位數的小時
-var minutes = ('0' + taiwanTime.getMinutes()).slice(-2); // 補零並取兩位數的分鐘
+        };
 
-var date = year + '-' + month + '-' + date ; 
-var date1 = hours + ':' + minutes;
+        //查全部資料
+        $(function () {
+            sendAjaxRequest(0);
+        })
 
-                        html +='<td><p class="text-muted">'+date+'</p> <span>'+date1+'<span>  <br></td>';
+        function sendAjaxRequest(currentPage) {
+            console.log(currentPage);
+            $.ajax({
+                url: "/ixercise/back/memberlist", // 資料請求的網址
+                type: "GET",
+                dataType: "json",
+                data: {
+                    page: currentPage
 
-
-
-                            if(obj.reportStatus==1){
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>'+
-                                                    '<option value="1">'+'未處理'+'</option>'+
-                                                   '<option  value="2">'+'檢舉成功'+'</option>'+
-                                                    '<option  value="0">'+'檢舉失敗'+'</option>'+
-                                                    '</select></td>';
-
-                            } else if(obj.reportStatus==0){             
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>';   
-                                html +=     '<option  value="0">'+'檢舉失敗'+'</option>'+'<option value="1">'+'未處理'+'</option>'+'<option  value="2">'+'檢舉成功'+'</option>'+'</select></td>';
-                            }else{
-                                html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus+'" id=Select'+obj.reportId +'>'; 
-                                html +=  '<option  value="2">'+'檢舉成功'+'</option>'+ '<option value="1">'+'未處理'+'</option>'+  '<option  value="0">'+'檢舉失敗'+'</option>'+  '</select></td>';
-                            }
-                                                    
-
-                    
-                        html +=  ' <td>'+
-                           ' <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" id="deletereport"  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"  data-report-id="' + obj.reportId + '" title="刪除"><i class="fa fa-trash" title="刪除"></i> </button> '+
-                           ' <button type="button" id="changereport" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-status="'+ obj.reportStatus+'" data-report-accountId2="' + obj.accountId2+'" data-report-id="' + obj.reportId+'" title="更新"><i class="bi bi-cloud-download-fill" ></i> </button> '+
-                           '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="allarea" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-id="' + obj.reportId+'" title="更多" ><i class="bi bi-code-square"  title="更多內容"></i> </button> '+
-                            '</td>';
-                            html +=   "</tr>";
-
-                
-           
-                            console.log(obj.accountId2);
-                        });
-								$("#aaa").html(html);
-
-                                //以上是頁面內容
-                                //以下是分頁
-
-                                var totalPages = data.totalPages; // 获取总页数
-                                var currentPage = 0; // 默認第一頁
-                                var paginationHtml ="";
-                                for (var i = 1; i <= totalPages; i++) {
-                                     paginationHtml+=   '<li class="page-item"><a class="page-link pageNumber" href="#">'+i+'</a></li>';
-                                }
-                                
-                                $("#numberpage").html(paginationHtml);
-
-							},
-							error : function(xhr, status, error) {
-								console.log("AJAX Error:", error);
-							}
-						});
-                    };
-
-
-                        
-                    $(document).on("click", ".pageNumber", function(event) {
-                      event.preventDefault(); 
-                     currentPage = parseInt($(this).text()) - 1;
-                     sendAjaxRequest(currentPage);
-                    console.log(currentPage);
-                    window.scrollTo(0, 0);
-});
-
-
-</script>
-
-
-<script>
-    //查詢單筆燈箱
-    $(document).on("click", "#allarea", function() {
-        console.log(this);
-        var reportId = $(this).data("report-id");
-        console.log(reportId);
-        sendreportId(reportId);
-    });
-
-    function sendreportId(reportId) {
-        // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
-         $("#aaaa").empty();
-       
-        $.ajax({url : 'http://localhost:8080/ixercise/back/reportmember/'+reportId, // 資料請求的網址
-            type : "GET",
-            dataType : "json",
-
-            success : function(data) {
-            var html = "";
-  
-
-         
-       
-html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >檢舉編號:</p><p class="col-sm-12 " >'+data.reportId+'</p></div>';
-html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >被檢舉會員編號:</p><p class="col-sm-12 " >'+data.accountId2+'</p></div>';
-html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >檢舉內文:</p><p class="col-sm-12 " >'+data.reportReason+'</p></div>';
-// html += '<div id="lightboxContainer" style="width: 800px; height: 600px;"><div class="col-sm-12"><p class="col-sm-6 image-container text-muted">圖像:</p><img src="data:image/png;base64,' + data.reportPicture + '" style="width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;" class="col-sm-12"></div></div>';
-html +='<p class="col-sm-6 text-muted" >檢舉圖片:</p>';
-html +='<div class="pic"></p><img src="data:image/png;base64,' + data.reportPicture + '" style="width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;" class="col-sm-12"></div>';
-
-                    $("#aaaa").append(html);
                 },
-                error : function(xhr, status, error) {
+                success: function (data) {
+                    var html = "";
+                    console.log(data);
+                    var reportList = data.content; // 获取报告列表
+
+
+                    $.each(reportList, function (index, obj) {
+                        html += '<tr class="tbodycss">';
+                        html += '<td class="pl-4">' + obj.reportId + '</td>';
+                        html += '<td class="font-medium mb-0">  <h5 class="font-medium mb-0">' + obj.accountId + '</h5></td>';
+                        html += '<td>  <span class=" text-danger">' + obj.reportType + "</td>";
+
+                        console.log(obj.reportReason);
+                        var truncatedContent = "";
+                        if (obj.reportReason.length > 36) {
+                            truncatedContent = obj.reportReason.substring(0, 36) + "...";
+
+                        } else {
+                            truncatedContent = obj.reportReason;
+                        }
+
+                        html += '<td class="reasonarea">  ' + truncatedContent + '</td>';
+                        console.log(obj.reportTime);
+                        var utcTime = new Date(obj.reportTime); // 將 UTC 字串轉換為 Date 物件
+                        var taiwanTime = new Date(utcTime.getTime()); // 加上 8 小時的時差轉換為台灣時區
+                        console.log(taiwanTime);
+
+                        var year = taiwanTime.getFullYear();
+                        var month = ('0' + (taiwanTime.getMonth() + 1)).slice(-2); // 補零並取兩位數的月份
+                        var date = ('0' + taiwanTime.getDate()).slice(-2); // 補零並取兩位數的日期
+                        var hours = ('0' + taiwanTime.getHours()).slice(-2); // 補零並取兩位數的小時
+                        var minutes = ('0' + taiwanTime.getMinutes()).slice(-2); // 補零並取兩位數的分鐘
+
+                        var date = year + '-' + month + '-' + date;
+                        var date1 = hours + ':' + minutes;
+
+                        html += '<td><p class="text-muted">' + date + '</p> <span>' + date1 + '<span>  <br></td>';
+
+
+
+                        if (obj.reportStatus == 1) {
+                            html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus + '" id=Select' + obj.reportId + '>' +
+                                '<option value="1">' + '未處理' + '</option>' +
+                                '<option  value="2">' + '檢舉成功' + '</option>' +
+                                '<option  value="0">' + '檢舉失敗' + '</option>' +
+                                '</select></td>';
+
+                        } else if (obj.reportStatus == 0) {
+                            html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus + '" id=Select' + obj.reportId + '>';
+                            html += '<option  value="0">' + '檢舉失敗' + '</option>' + '<option value="1">' + '未處理' + '</option>' + '<option  value="2">' + '檢舉成功' + '</option>' + '</select></td>';
+                        } else {
+                            html += '<td><select class="form-control category-select" data-report-status="' + obj.reportStatus + '" id=Select' + obj.reportId + '>';
+                            html += '<option  value="2">' + '檢舉成功' + '</option>' + '<option value="1">' + '未處理' + '</option>' + '<option  value="0">' + '檢舉失敗' + '</option>' + '</select></td>';
+                        }
+
+
+
+                        html += ' <td>' +
+                            ' <button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" id="deletereport"  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"  data-report-id="' + obj.reportId + '" title="刪除"><i class="fa fa-trash" title="刪除"></i> </button> ' +
+                            ' <button type="button" id="changereport" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-status="' + obj.reportStatus + '" data-report-accountId2="' + obj.accountId2 + '" data-report-id="' + obj.reportId + '" title="更新"><i class="bi bi-cloud-download-fill" ></i> </button> ' +
+                            '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="allarea" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" data-report-id="' + obj.reportId + '" title="更多" ><i class="bi bi-code-square"  title="更多內容"></i> </button> ' +
+                            '</td>';
+                        html += "</tr>";
+
+
+
+                        console.log(obj.accountId2);
+                    });
+                    $("#aaa").html(html);
+
+                    //以上是頁面內容
+                    //以下是分頁
+
+                    var totalPages = data.totalPages; // 获取总页数
+                    var currentPage = 0; // 默認第一頁
+                    var paginationHtml = "";
+                    for (var i = 1; i <= totalPages; i++) {
+                        paginationHtml += '<li class="page-item"><a class="page-link pageNumber" href="#">' + i + '</a></li>';
+                    }
+
+                    $("#numberpage").html(paginationHtml);
+
+                },
+                error: function (xhr, status, error) {
                     console.log("AJAX Error:", error);
                 }
             });
-    }
+        };
+
+
+
+        $(document).on("click", ".pageNumber", function (event) {
+            event.preventDefault();
+            currentPage = parseInt($(this).text()) - 1;
+            sendAjaxRequest(currentPage);
+            console.log(currentPage);
+            window.scrollTo(0, 0);
+        });
+
 
     </script>
 
 
-<script>
-     //刪除單筆
-     $(document).on("click", "#deletereport", function() {
+    <script>
+        //查詢單筆燈箱
+        $(document).on("click", "#allarea", function () {
+            console.log(this);
+            var reportId = $(this).data("report-id");
+            console.log(reportId);
+            sendreportId(reportId);
+        });
 
-        var reportId = $(this).data("report-id");
-        
-        passReportId(reportId);
-    });
+        function sendreportId(reportId) {
+            // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
+            $("#aaaa").empty();
 
-    function passReportId(reportId) {
+            $.ajax({
+                url: '/ixercise/back/reportmember/' + reportId, // 資料請求的網址
+                type: "GET",
+                dataType: "json",
 
-    $("#confirmDelete").data("report-id", reportId);
-   
-}
-
-$(document).on("click", "#confirmDelete", function() {
-    var reportId = $(this).data("report-id");
-    deletereportId(reportId);
-    $('#closedelete').trigger('click');
-});
-
-    
-    function deletereportId(reportId) {
-        // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
-        
-       
-        $.ajax({url : 'http://localhost:8080/ixercise/back/reportmember/'+reportId+'', // 資料請求的網址
-            type : "DELETE",
-            dataType : "json",
-
-            success : function(data) {
-                showConfirmationPopup();
-//再次請求ajax
- sendAjaxRequest(0);
-
-//ajax結束
+                success: function (data) {
+                    var html = "";
 
 
 
+
+                    html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >檢舉編號:</p><p class="col-sm-12 " >' + data.reportId + '</p></div>';
+                    html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >被檢舉會員編號:</p><p class="col-sm-12 " >' + data.accountId2 + '</p></div>';
+                    html += '<div class="col-sm-12"><p class="col-sm-6 text-muted" >檢舉內文:</p><p class="col-sm-12 " >' + data.reportReason + '</p></div>';
+                    // html += '<div id="lightboxContainer" style="width: 800px; height: 600px;"><div class="col-sm-12"><p class="col-sm-6 image-container text-muted">圖像:</p><img src="data:image/png;base64,' + data.reportPicture + '" style="width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;" class="col-sm-12"></div></div>';
+                    html += '<p class="col-sm-6 text-muted" >檢舉圖片:</p>';
+                    html += '<div class="pic"></p><img src="data:image/png;base64,' + data.reportPicture + '" style="width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;" class="col-sm-12"></div>';
+
+                    $("#aaaa").append(html);
                 },
-                error : function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.log("AJAX Error:", error);
                 }
             });
-    }
-
-
-    function showConfirmationPopup() {
-  // 创建弹窗元素
-
-  var popup = $('<div class="confirmation-popup">資料成功刪除</div>');
-  console.log("我有刪除");
-  // 添加到页面中
-  $("body").append(popup);
-
-  // 设置样式和动画效果
-  popup.css({
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '40px',
-    background: '#fff',
-    border: '2px solid #ccc',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-    zIndex: '9999'
-  });
-
-  // 设置弹窗自动关闭的定时器
-  setTimeout(function() {
-    popup.fadeOut(function() {
-      // 关闭弹窗后进行清理操作
-      popup.remove();
-      $('#closeButton').trigger('click');
-    });
-  }, 1500); // 3秒后自动关闭弹窗
-}
-
-</script>
-
-
-<script>
-
-    //算有幾個未處理
-    $(function(){
-
-        $.ajax({url : "http://localhost:8080/ixercise/back/getReportCount", // 資料請求的網址
-            type : "GET",
-            dataType : "json",
-
-            success : function(data) {
-            var html = "";
-                console.log(data);
-                if(data==0){
-                    html+='檢舉會員';
-                }else{
-                    html+=' 檢舉會員<span class=" msg-counter reportspan">'+data+'</span>';
-                }
-            
-            
-          
-								$("#changecount").html(html);
-							},
-							error : function(xhr, status, error) {
-								console.log("AJAX Error:", error);
-							}
-						});
-        
-    })
-
-</script>
-
-
-
-<script>
-
-    //修改檢舉狀態
-    $(document).on("click", "#changereport", function() {
-        console.log(this);
-        var reportId = $(this).data("report-id");
-        var reportaccountId2 = $(this).data("report-accountid2");
-        console.log(reportaccountId2);
-        var reportStatus=$(this).data("report-status");
-        var NewreportStatus = $("#Select" + reportId).val();
-        console.log(NewreportStatus);
-        if( reportStatus==NewreportStatus){
-            changeFail();
-        }else{
-
-            changereportId(reportId,NewreportStatus);
-            console.log(NewreportStatus);
-            if(NewreportStatus==2){
-
-
-
-                $.ajax({url : 'http://localhost:8080/ixercise/back/reportaccount/'+reportaccountId2, // 資料請求的網址
-            type : "GET",
-            dataType : "json",
-
-            success : function(data) {
-                console.log("我有檢舉會員");
-            },
-            });
-            }
         }
-       
-    });
+
+    </script>
 
 
-    
-    function  changereportId(reportId,NewreportStatus) {
-        // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
-        
-       
-        $.ajax({url :'http://localhost:8080/ixercise/back/reportStatus?id=' + reportId + '&status=' + NewreportStatus, // 資料請求的網址
-            type : "GET",
-            dataType : "json",
+    <script>
+        //刪除單筆
+        $(document).on("click", "#deletereport", function () {
 
-            success : function(data) {
-                console.log("我有跟新狀態");
-                changeSuccuss();
-//再次請求ajax
+            var reportId = $(this).data("report-id");
 
-sendAjaxRequest(0);
+            passReportId(reportId);
+        });
 
-//ajax結束
+        function passReportId(reportId) {
+
+            $("#confirmDelete").data("report-id", reportId);
+
+        }
+
+        $(document).on("click", "#confirmDelete", function () {
+            var reportId = $(this).data("report-id");
+            deletereportId(reportId);
+            $('#closedelete').trigger('click');
+        });
+
+
+        function deletereportId(reportId) {
+            // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
+
+
+            $.ajax({
+                url: '/ixercise/back/reportmember/' + reportId + '', // 資料請求的網址
+                type: "DELETE",
+                dataType: "json",
+
+                success: function (data) {
+                    showConfirmationPopup();
+                    //再次請求ajax
+                    sendAjaxRequest(0);
+
+                    //ajax結束
+
+
+
+                },
+                error: function (xhr, status, error) {
+                    console.log("AJAX Error:", error);
+                }
+            });
+        }
+
+
+        function showConfirmationPopup() {
+            // 创建弹窗元素
+
+            var popup = $('<div class="confirmation-popup">資料成功刪除</div>');
+            console.log("我有刪除");
+            // 添加到页面中
+            $("body").append(popup);
+
+            // 设置样式和动画效果
+            popup.css({
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                padding: '40px',
+                background: '#fff',
+                border: '2px solid #ccc',
+                boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+                zIndex: '9999'
+            });
+
+            // 设置弹窗自动关闭的定时器
+            setTimeout(function () {
+                popup.fadeOut(function () {
+                    // 关闭弹窗后进行清理操作
+                    popup.remove();
+                    $('#closeButton').trigger('click');
+                });
+            }, 1500); // 3秒后自动关闭弹窗
+        }
+
+    </script>
+
+
+    <script>
+
+        //算有幾個未處理
+        $(function () {
+
+            $.ajax({
+                url: "/ixercise/back/getReportCount", // 資料請求的網址
+                type: "GET",
+                dataType: "json",
+
+                success: function (data) {
+                    var html = "";
+                    console.log(data);
+                    if (data == 0) {
+                        html += '檢舉會員';
+                    } else {
+                        html += ' 檢舉會員<span class=" msg-counter reportspan">' + data + '</span>';
+                    }
+
+
+
+                    $("#changecount").html(html);
+                },
+                error: function (xhr, status, error) {
+                    console.log("AJAX Error:", error);
+                }
+            });
+
+        })
+
+    </script>
+
+
+
+    <script>
+
+        //修改檢舉狀態
+        $(document).on("click", "#changereport", function () {
+            console.log(this);
+            var reportId = $(this).data("report-id");
+            var reportaccountId2 = $(this).data("report-accountid2");
+            console.log(reportaccountId2);
+            var reportStatus = $(this).data("report-status");
+            var NewreportStatus = $("#Select" + reportId).val();
+            console.log(NewreportStatus);
+            if (reportStatus == NewreportStatus) {
+                changeFail();
+            } else {
+
+                changereportId(reportId, NewreportStatus);
+                console.log(NewreportStatus);
+                if (NewreportStatus == 2) {
+
+
+
+                    $.ajax({
+                        url: '/ixercise/back/reportaccount/' + reportaccountId2, // 資料請求的網址
+                        type: "GET",
+                        dataType: "json",
+
+                        success: function (data) {
+                            console.log("我有檢舉會員");
+                        },
+                    });
+                }
+            }
+
+        });
+
+
+
+        function changereportId(reportId, NewreportStatus) {
+            // 將articleId作為參數傳遞給後端，你可以在此處添加你的後端程式碼
+
+
+            $.ajax({
+                url: '/ixercise/back/reportStatus?id=' + reportId + '&status=' + NewreportStatus, // 資料請求的網址
+                type: "GET",
+                dataType: "json",
+
+                success: function (data) {
+                    console.log("我有跟新狀態");
+                    changeSuccuss();
+                    //再次請求ajax
+
+                    sendAjaxRequest(0);
+
+                    //ajax結束
 
 
 
 
                 },
-                error : function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.log("AJAX Error:", error);
                 }
             });
-    }
+        }
 
 
 
-    function changeSuccuss() {
-  // 创建弹窗元素
+        function changeSuccuss() {
+            // 创建弹窗元素
 
-  var popup = $('<div class="confirmation-popup">資料成功更新</div>');
-  console.log("我有處理到");
-  // 添加到页面中
-  $("body").append(popup);
+            var popup = $('<div class="confirmation-popup">資料成功更新</div>');
+            console.log("我有處理到");
+            // 添加到页面中
+            $("body").append(popup);
 
-  // 设置样式和动画效果
-  popup.css({
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '40px',
-    background: '#fff',
-    border: '2px solid #ccc',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-    zIndex: '9999'
-  });
+            // 设置样式和动画效果
+            popup.css({
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                padding: '40px',
+                background: '#fff',
+                border: '2px solid #ccc',
+                boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+                zIndex: '9999'
+            });
 
-  // 设置弹窗自动关闭的定时器
-  setTimeout(function() {
-    popup.fadeOut(function() {
-      // 关闭弹窗后进行清理操作
-      popup.remove();
-      $('#closeButton').trigger('click');
-    });
-  }, 1500); // 3秒后自动关闭弹窗
-}
-
-
-function changeFail() {
-  // 创建弹窗元素
-
-  var popup = $('<div class="confirmation-popup">資料一致 請再次確認</div>');
-
-  // 添加到页面中
-  $("body").append(popup);
-
-  // 设置样式和动画效果
-  popup.css({
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    padding: '40px',
-    background: '#fff',
-    border: '2px solid #ccc',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
-    zIndex: '9999'
-  });
-
-  // 设置弹窗自动关闭的定时器
-  setTimeout(function() {
-    popup.fadeOut(function() {
-      // 关闭弹窗后进行清理操作
-      popup.remove();
-      $('#closeButton').trigger('click');
-    });
-  }, 1500); // 3秒后自动关闭弹窗
-}
+            // 设置弹窗自动关闭的定时器
+            setTimeout(function () {
+                popup.fadeOut(function () {
+                    // 关闭弹窗后进行清理操作
+                    popup.remove();
+                    $('#closeButton').trigger('click');
+                });
+            }, 1500); // 3秒后自动关闭弹窗
+        }
 
 
-</script>
-     
+        function changeFail() {
+            // 创建弹窗元素
+
+            var popup = $('<div class="confirmation-popup">資料一致 請再次確認</div>');
+
+            // 添加到页面中
+            $("body").append(popup);
+
+            // 设置样式和动画效果
+            popup.css({
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                padding: '40px',
+                background: '#fff',
+                border: '2px solid #ccc',
+                boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+                zIndex: '9999'
+            });
+
+            // 设置弹窗自动关闭的定时器
+            setTimeout(function () {
+                popup.fadeOut(function () {
+                    // 关闭弹窗后进行清理操作
+                    popup.remove();
+                    $('#closeButton').trigger('click');
+                });
+            }, 1500); // 3秒后自动关闭弹窗
+        }
+
+
+    </script>
+
 
 
 
 
 </body>
+
 </html>

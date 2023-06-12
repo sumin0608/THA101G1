@@ -454,7 +454,7 @@ $(document).ready(function () {
             success: function (resp) {
                 console.log("resp>>" + resp);
                 alert("檢舉成功!");
-
+                $('#exampleModal').modal('hide');
             },
             error: function (xhr, status, error) {
                 alert("Error: " + xhr.responseText);

@@ -3,6 +3,7 @@
          import="tw.idv.ixercise.store.dao.*,tw.idv.ixercise.store.entity.*"
          import="java.util.*"
          import="java.text.*"
+         import="tw.idv.ixercise.store.service.*"
 
 %>
 
@@ -336,10 +337,8 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <th scope="row" style="background-color:#D9D9D9"><font size="2"
-                                                                                   color="#404040">訂單編號</font></th>
-                            <td><input name="porderNo" class="form-control" type="search" placeholder="訂單編號..."
-                                       aria-label="Search" maxlength="5" style="width:200px"></td>
+                            <th scope="row" style="background-color:#D9D9D9"><font size="2" color="#404040">訂單編號</font></th>
+                            <td><input name="porderNo" type="hidden" value="<%String a = OrderCodeFactory.getOrderCode(1L); out.println("P"+a); %>"><%out.println("P"+a); %></td>
                             <td></td>
                             <td></td>
                         </tr>

@@ -1,16 +1,11 @@
 package tw.idv.ixercise.course.controller;
 
+import java.lang.reflect.*;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import tw.idv.ixercise.core.Core;
 import tw.idv.ixercise.course.entity.*;
@@ -49,9 +44,30 @@ public class CourseAttendeeController {
 
 	}
 
-	@PutMapping("/updateStatusById/{attendId}")
-	public Core updateStatusById(@PathVariable("attendId") Integer attendId, @RequestBody Integer status) {
-		System.out.println("現在是updateStatusById~");
+	@GetMapping("courseIntro/{courseId}/{accountId}")
+	public CourseStatusDto courseIntroStatus(@PathVariable Integer courseId, @PathVariable Integer accountId) throws IllegalAccessException {
+		System.out.println("檢查參加者===");
+		CourseStatusDto courseStatusDto = service.validatingUserForApplying(courseId, accountId);
+//		if (courseStatusDto != null){
+//			return courseStatusDto;
+//		}
+		System.out.println("== 回傳courseStatusDto = controller ==");
+		Field[] fields = courseStatusDto.getClass().getDeclaredFields();
+
+		for (Field field : fields) {
+			field.setAccessible(true);
+			String name = field.getName();
+			Object value = field.get(courseStatusDto);
+			if (value != null) {
+				System.out.println(name + " = " + value);
+			}
+		}
+		return courseStatusDto;
+	}
+
+	@PutMapping("/updateStatusById/{attendId}/{status}")
+	public Core updateStatusById(@PathVariable("attendId") Integer attendId,@PathVariable("status") Integer status) {
+		System.out.println("現在是updateStatusById~status::"+status);
 		final Core core = new Core();
 		core.setSuccessful(service.updateStatusById(attendId, status));
 		if (!core.isSuccessful()) {
