@@ -523,7 +523,7 @@
     const accountPhoto = document.querySelector("#accountPhoto");
     // const accountIdoc = document.querySelector("#accountIdoc")
     const accountIntro = document.querySelector("#accountIntro");
-    const accountAdd = locationcity.value + accAddress.value;
+
     const btn1 = document.querySelector("#sendform")
 
 
@@ -584,6 +584,7 @@
     // });
 
     btn1.addEventListener('click', () => {
+        const accountAdd = locationcity.value + accAddress.value;
         msg.textContent = '';
         if (accountPasswordCheck.value != accountPassword.value) {
             msg.textContent = "密碼與確認密碼不相符";
