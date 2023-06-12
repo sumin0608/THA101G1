@@ -410,12 +410,13 @@
                     errMsg.textContent = '';
                     const { successful, message } = body;
                     if (successful) {
-                        const { accountId, accountNickname, accountLevel, accountPhoto } = body;
+                        const {accountId, accountNickname, accountLevel, accountPhoto} = body;
                         sessionStorage.setItem("accountId", accountId);
                         sessionStorage.setItem("accountNickname", accountNickname);
                         sessionStorage.setItem("accountLevel", accountLevel);
                         sessionStorage.setItem("accountPhoto", accountPhoto);
-                        location = getContextPath() + "/index.html";
+                        history.go(-1);
+                        // location = getContextPath() + "/index.html";
 
                         localStorage.setItem("accountId", accountId);
                         localStorage.setItem("accountNickname", accountNickname);

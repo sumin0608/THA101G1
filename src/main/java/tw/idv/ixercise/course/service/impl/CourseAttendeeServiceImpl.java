@@ -20,6 +20,7 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 	@Autowired
 	private CourseAttendeeRepository repository;
 	private static final Map<Integer, String> statusMap;
+	private static final Map<Integer, String> courseStatusMap;
 
 	static {
 //       1.參加待審核 2.通過 3.未通過 4:退出待審核 5.退出成功
@@ -29,6 +30,21 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		statusMap.put(3, "未通過");
 		statusMap.put(4, "退出待審核");
 		statusMap.put(5, "退出成功");
+
+		// Mapping of status values to their Chinese(Taiwanese) string representation
+
+//        1.可參加 (未开始)  2. 活動已結束(+3) 3. 截止報名 4:滿團自行下架 5:自行下架 6:強制下架 ?? 未开始 进行中 (預計結束時間
+//		1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
+		courseStatusMap = new HashMap<>();
+		courseStatusMap.put(1, "可參加");
+		courseStatusMap.put(2, "暫停報名");
+		courseStatusMap.put(3, "截止報名");
+		courseStatusMap.put(4, "滿團");
+		courseStatusMap.put(5, "強制下架");
+//		courseStatusMap.put(5, "自行下架");
+//		courseStatusMap.put(6, "活動已結束"); //!!!
+//		courseStatusMap.put(7, "即將開始");
+//		statusMap.put(7, "进行中");
 	}
 
 	@Autowired
@@ -67,7 +83,7 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 
 //		System.out.println(b);
 		Integer courseStatus = course.getCourseStatus();
-		boolean b1 = course.getCourseStatus() == 5;
+//		boolean b1 = course.getCourseStatus() == 5;
 		Integer accountId = courseAttendee.getAccountId();
 		Integer courseId = courseAttendee.getCourseId();
 		System.out.println(accountId);
@@ -77,37 +93,46 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		System.out.println(byCourseIdAndAccountId);
 		Core core = new Core();
 
-        //5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
-		if (!byCourseIdAndAccountId.isEmpty()) {
+		//5. 已滿團  6.報名時間已截止>.<   ELSE此課程不可參加   1. 可參加
+//		1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
+
+		if (afterDeadLine) {
+//			courseStatus == 6 ||
+//			if (courseStatus != 3) {
+//				course.setCourseStatus(3);  // 3. 截止報名
+//				courseRepository.save(course);
+//			}
+			core.setMessage("報名失敗: 報名時間已截止>.<");
+			core.setSuccessful(false);
+//			6.報名時間已截止>.<
+		} else if (!byCourseIdAndAccountId.isEmpty()) {
 			System.out.println("您她媽的已參加過了");
 			core.setMessage("您已報名過了");
 			core.setSuccessful(false);
 		} else if (maximumCapacity == passedSize) {
 //			courseStatus == 5 &&
+			if (courseStatus != 4) {
+				course.setCourseStatus(4);  // 4:滿團
+				courseRepository.save(course);
+			}
 			core.setMessage("已滿團");
 			core.setSuccessful(false);
 
 //			5. 已滿團
-
-		} else if (afterDeadLine) {
-//			courseStatus == 6 ||
-			if (afterDeadLine) {
-				course.setCourseStatus(6);
-			}
-			core.setMessage("報名失敗: 報名時間已截止>.<");
-			core.setSuccessful(false);
-//			6.報名時間已截止>.<
-		} else if (lessOrEqualsToMaxCapacity) {
+		} else if (lessOrEqualsToMaxCapacity && courseStatus != 2 && courseStatus != 5) {
 //			courseStatus == 1 &&
 			if (equalsToMaxCapacity) {
-				course.setCourseStatus(5);
+				course.setCourseStatus(4); // 4:滿團
+				courseRepository.save(course);
 				System.out.println("<<<<<滿團>>>>>>>>");
 			}
 			courseAttendee.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
 			System.out.println("<<<<<<<save to DB>>>>>");
 			savedAttendee = repository.save(courseAttendee);
 			if (savedAttendee != null) {
-				course.setCourseStatus(1);
+				course.setCourseStatus(1);  //1.可參加
+				courseRepository.save(course);  //<<<<< 可省略
+
 				System.out.println(savedAttendee);
 				System.out.println("成功到savedAttendee>");
 				core.setMessage("報名成功 請等待審核 後付款");
@@ -314,8 +339,60 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 			getView1.setMessage("getView沒有資料");
 			getView.add(getView1);
 		}
-		
+
 		return getView;
 	}
+
+	@Override
+	public CourseStatusDto validatingUserForApplying(Integer courseId, Integer accountId) {
+		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+		CourseStatusDto courseStatusDto = new CourseStatusDto();
+
+		Course course = courseRepository.findByCourseId(courseId);
+
+		if (course != null) {
+
+			Timestamp attendDeadline = course.getRegistrationDeadline();
+			Timestamp courseStartTime = course.getCourseStartTime();
+			boolean afterDeadLine = currentTimestamp.after(attendDeadline);
+			boolean courseStarted = currentTimestamp.after(courseStartTime);
+			boolean isCreator = course.getCreator() == accountId;
+			Integer courseStatus = course.getCourseStatus();
+
+			courseStatusDto.setCourseStatus(courseStatus); //課程狀態
+			courseStatusDto.setCreator(isCreator);  //是否為creator
+			courseStatusDto.setApplicationDeadlinePassed(afterDeadLine);  //是否為creator
+			courseStatusDto.setCourseStarted(courseStarted);  //是否為creator
+
+			if (!isCreator) {  //不是創辦者才執行 << 可省略 (嗎?
+				List<CourseAttendee> byCourseIdAndAccountId = repository.findByCourseIdAndAccountId(courseId, accountId);
+
+				if (byCourseIdAndAccountId.isEmpty()) {
+					courseStatusDto.setAlreadyApplied(false); //是否有報名該課程
+					if (afterDeadLine) {
+						courseStatusDto.setAttendeesStatusString("報名時間已截止");
+					} else if (courseStatus != 1) {
+						courseStatusDto.setAttendeesStatusString(courseStatusMap.get(courseStatus));
+					}
+				} else {
+					courseStatusDto.setAlreadyApplied(true); //是否有報名該課程
+					Integer attendeeStatus = byCourseIdAndAccountId.get(0).getStatus();
+					courseStatusDto.setCourseAttendeesStatus(attendeeStatus); //此用戶參加這個課程的狀態
+					courseStatusDto.setAttendeesStatusString(statusMap.getOrDefault(attendeeStatus, "狀態錯誤"));
+
+				}
+			}
+		}
+
+
+		System.out.println("== 回傳courseStatusDto = service ==");
+		System.out.println(courseStatusDto);
+		return courseStatusDto;
+	}
+//	private boolean applicationDeadlinePassed;
+//	private boolean courseStarted;
+//	private boolean alreadyApplied;
+//	private Integer courseStatus;
+//	private Integer courseAttendeesStatus;
 
 }
