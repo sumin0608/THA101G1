@@ -325,6 +325,12 @@
                         <button id="addpdbtn" type="button" class="btn btn-primary me-1" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">新增商品
                         </button>
+                        <div class="mb-3">
+                            <label for="searchInput" class="form-label">關鍵字搜尋</label>
+                            <input type="text" id="searchInput" class="form-control" placeholder="輸入關鍵字">
+                        </div>
+                        <button id="searchButton" type="button" class="btn btn-primary">搜尋</button>
+
                     </div>
                     <div class="card-body">
                         <table class="table" id="table">
@@ -578,7 +584,37 @@
     }
 
     //======================================
-    //修改
+    //搜尋關鍵字
+    $(document).ready(function () {
+        // 加载商品数据
+        loadProducts();
+
+        // 搜索按钮点击事件
+        $("#searchButton").click(function () {
+            // 获取搜索关键字
+            var keyword = $("#searchInput").val();
+            // 调用过滤函数，传入关键字进行过滤
+            filterProducts(keyword);
+        });
+    });
+
+    function filterProducts(keyword) {
+        // 获取所有商品行
+        var rows = $("#table tbody tr");
+
+        // 遍历每一行，检查商品名称是否包含关键字
+        rows.each(function () {
+            var productName = $(this).find(".productName-input").val();
+            if (productName.includes(keyword)) {
+                // 显示匹配的行
+                $(this).show();
+            } else {
+                // 隐藏不匹配的行
+                $(this).hide();
+            }
+        });
+    }
+
 
 
 
