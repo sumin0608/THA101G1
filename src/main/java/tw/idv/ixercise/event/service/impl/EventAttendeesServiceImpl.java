@@ -103,9 +103,13 @@ public class EventAttendeesServiceImpl implements EventAttendeesService {
             }
             attendees.setAttendTime(currentTimestamp);  //通過驗證才需做的動作
             System.out.println("<<<<<<<save to DB>>>>>");
+
+
             savedAttendee = attendeesRepo.save(attendees);
             if (savedAttendee != null) {
-                event.setStatus(1);
+//                event.setStatus(1);
+                event.setCurrentAttendees(event.getCurrentAttendees() + 1);
+                eventRepo.save(event);
                 System.out.println(savedAttendee);
                 System.out.println("成功到savedAttendee>");
                 core.setMessage("報名成功 請等待審核 後付款");
