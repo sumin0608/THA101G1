@@ -376,8 +376,8 @@
                             </div>
 
                             <div class="mb-1">
-                                <label for="accountAddress" class="form-label">地址</label>
-                                <input type="text" id="accountAddress" name="accountAddress" class="form-control"
+                                <label for="accAddress" class="form-label">地址</label>
+                                <input type="text" id="accAddress" name="accAddress" class="form-control"
                                        placeholder="">
                             </div>
 
@@ -514,7 +514,7 @@
     // const accountLevel = document.querySelector("#accountLevel")
     // const accountState = document.querySelector("#accountState")
     const locationcity = document.querySelector("#locationcity");
-    const accountAddress = document.querySelector("#accountAddress");
+    const accAddress = document.querySelector("#accAddress");
     const accountName = document.querySelector("#accountName");
     const accountBirthday = document.querySelector("#accountBirthday");
     // const accountCreatetime = document.querySelector("#accountCreatetime")
@@ -523,7 +523,7 @@
     const accountPhoto = document.querySelector("#accountPhoto");
     // const accountIdoc = document.querySelector("#accountIdoc")
     const accountIntro = document.querySelector("#accountIntro");
-    const accountAdd = locationcity.value + accountAddress.value;
+    const accountAdd = locationcity.value + accAddress.value;
     const btn1 = document.querySelector("#sendform")
 
 
@@ -629,7 +629,8 @@
                     btn1.disabled = true;
                     msg.className = 'text-success';
                     msg.textContent = '註冊成功';
-                    location = getContextPath() + "/Account/VerificationPage.html";
+                    // location = getContextPath() + "/Account/VerificationPage.html";
+                    setTimeout(`location.href = '${getContextPath()}/Account/VerificationPage.html'`, 1500);
                 } else {
                     msg.className = 'text-danger';
                     msg.innerHTML = message.replace(/\n/g, "<br/>");
