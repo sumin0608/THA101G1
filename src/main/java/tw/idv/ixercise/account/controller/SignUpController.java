@@ -6,6 +6,8 @@ import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
 import tw.idv.ixercise.core.Core;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("Account/SignUp")
 public class SignUpController {
@@ -13,7 +15,7 @@ public class SignUpController {
     private AccountService service;
 
     @PostMapping
-    public Account signup(@RequestBody Account account) {
+    public Account signup(@RequestBody @Valid Account account) {
         System.out.println("get in controller");
         if (account == null) {
             account = new Account();

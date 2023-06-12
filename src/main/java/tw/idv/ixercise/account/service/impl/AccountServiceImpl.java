@@ -333,8 +333,15 @@ public class AccountServiceImpl implements AccountService {
        }
 
        cs.setSkillState(coachSkill.getSkillState());
-       if(csrepo.save(cs) == null){
+       CoachSkill ncs = csrepo.save(cs);
+       if(ncs == null){
            return new Core(false,"修改失敗");
+       }
+       Account acc = repo.findByAccountId(ncs.getAccountId());
+
+       if(acc.getAccountLevel() == 1){
+           acc.setAccountLevel(2);
+           repo.save(acc);
        }
        return new Core(true,"修改成功");
     }
@@ -376,7 +383,7 @@ public class AccountServiceImpl implements AccountService {
 
         String ch_name = accountNickname;
         String passRandom = accountVerify;
-        String messageText = "Hello! " + ch_name + " 此為您的驗證碼: " + passRandom + "\n" + " 請回到頁面上輸入";
+        String messageText = "Hello! " + ch_name + " 此為您的驗證碼: " + passRandom + "\n" + "請回到頁面上輸入";
 
 
         return sendMail(to, subject, messageText);
@@ -468,6 +475,13 @@ public class AccountServiceImpl implements AccountService {
         }
         return new Core(true, "臨時密碼已寄出，請至信箱確認");
     }
+
+//   for shop ==============================================================
+public Account searchforshop(String accountPhone,String accountPassword){
+        return repo.findForLogin(accountPhone,accountPassword);
+}
+
+
 
 
 }

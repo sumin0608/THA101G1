@@ -1,16 +1,17 @@
 package tw.idv.ixercise.account.controller;
 
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
-import tw.idv.ixercise.account.dao.impl.*;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.service.AccountService;
+import tw.idv.ixercise.store.dao.implProduct;
+import tw.idv.ixercise.store.entity.product;
 
 import java.util.List;
 
 //@RequestMapping("/test")
 @RestController
+@RequestMapping("trytosaveshop")
 public class Test {
 
 @Autowired

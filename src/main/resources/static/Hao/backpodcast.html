@@ -1,237 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="../lib/css/backstyle.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    
+    <style>
+       
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Dashboard - SB Admin</title>
-  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-  <link href="../lib/css/backstyle.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+       .totalcolor1{
+  background: linear-gradient(
+    180deg,
+    rgb(237, 242, 240) 0%,
+    rgb(224, 231, 229) 50%,
+    rgb(232, 233, 236) 100%
+  ) !important;
+}
 
-  <style>
-    .totalcolor1 {
-      background: linear-gradient(180deg,
-          rgb(237, 242, 240) 0%,
-          rgb(224, 231, 229) 50%,
-          rgb(232, 233, 236) 100%) !important;
-    }
+.navtotalcolor{
+    background: linear-gradient(
+    90deg,
+    rgba(66, 184, 131, 1) 0%,
+    rgba(39, 179, 137, 1) 50%,
+    rgba(100, 126, 255, 1) 100%
+  ) !important;
+}
 
-    .navtotalcolor {
-      background: linear-gradient(90deg,
-          rgba(66, 184, 131, 1) 0%,
-          rgba(39, 179, 137, 1) 50%,
-          rgba(100, 126, 255, 1) 100%) !important;
-    }
+nav a{
+    font-size:  20px  !important;
+    color:black !important;
+}
 
-    nav a {
-      font-size: 20px !important;
-      color: black !important;
-    }
+nav>a{
+    font-size:  16px  !important;
+    color:black !important;
+}
 
-    nav>a {
-      font-size: 16px !important;
-      color: black !important;
-    }
+.msg-counter {
+  position: absolute;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #f26464;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-weight: 500;
+  font-size: 12px !important;
+  line-height: 1.25;
+  letter-spacing: 0.75px;
+  color: #FFFFFF;
+}
 
-    .msg-counter {
-      position: absolute;
-      border-radius: 50%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      width: 20px;
-      height: 20px;
-      background-color: #f26464;
-      right: 0;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-      font-weight: 500;
-      font-size: 12px !important;
-      line-height: 1.25;
-      letter-spacing: 0.75px;
-      color: #FFFFFF;
-    }
+body{
+    background-color:rgb(240, 243, 241)
+    ;
+  
+}
+.radius{
+    border-radius: 100px; 
+}
+.cardsize{
+    height: 100px   ;
+   
 
-    body {
-      background-color: rgb(240, 243, 241);
+}
+div img {
 
-    }
+ 
+  position: absolute;   
+  width: auto;
+  max-height: 100%;
+  
+  
+}
+div{
+    position: relative;
+  
+  
+}
 
-    .radius {
-      border-radius: 100px;
-    }
-
-    .cardsize {
-      height: 100px;
-
-
-    }
-
-    div img {
-
-
-      position: absolute;
-      width: auto;
-      max-height: 100%;
-
-
-    }
-
-    div {
-      position: relative;
-
-
-    }
-
-    .aaa {
-      display: flex;
-      align-items: center;
-      /* 垂直居中 */
-      justify-content: center;
-      /* 水平居中 */
-      text-align: center;
-      /* 对齐文本 */
-    }
-
-    .color {
-      background-color: rgb(248, 247, 247);
-      text-align: center;
-      height: 50px;
-      border-bottom: 0px;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
+.aaa{
+    display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  text-align: center; /* 对齐文本 */
+}
+.color{
+    background-color: rgb(248, 247, 247);
+    text-align: center;
+    height: 50px;
+  border-bottom: 0px;  
+ font-size: 20px ;
+ font-weight: bold;
+ text-align: center;
 
     }
-
-    .reportspan {
-      right: 60px;
+    .reportspan{
+        right: 60px;
     }
 
+    
+
+
+
+.card {
+    min-width: 0;
+    margin: 20px 10px;
+    width: 100%;    
+    background: #ffffff;
+    color: #696969;
+    -webkit-transition: .3s ease all;
+    transition: .3s ease all;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.card .card-img-container .card-img {
+  background-size: cover;
+  background-position: top center;
+  display: block;
+  height: 175px;
+}
+
+.card .card-img {
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+ 
+
+  
+}
+
+.card .card-img-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 175px;
+}
+
+
+.card .card-content {
+  padding: 20px 20px 20px;
+  text-align: center;
+}
 
 
 
 
-    .card {
-      min-width: 0;
-      margin: 20px 10px;
-      width: 100%;
-      background: #ffffff;
-      color: #696969;
-      -webkit-transition: .3s ease all;
-      transition: .3s ease all;
-      border: none;
-      border-radius: 5px;
-      padding: 0;
-      margin-bottom: 30px;
-    }
-
-    .card .card-img-container .card-img {
-      background-size: cover;
-      background-position: top center;
-      display: block;
-      height: 175px;
-    }
-
-    .card .card-img {
-      height: 150px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
 
 
 
-    }
-
-    .card .card-img-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      min-height: 175px;
-    }
-
-
-    .card .card-content {
-      padding: 20px 20px 20px;
-      text-align: center;
-    }
-
-
-
-
-
-
-
-    .card .meta-tags .tag {
-      background: #DD1B16;
-      color: #f9c7c6;
-    }
-
-    .card .meta-tags a:last-child {
-      margin-right: 0;
-      border-bottom-right-radius: 5px;
-    }
-
-    .card .meta-tags a:first-child {
-      border-top-left-radius: 5px;
-    }
-
-    .card .meta-tags a {
-      display: inline-block;
-      padding: 3px 8px;
-      color: #FFF;
-      -webkit-transition: .3s ease all;
-      transition: .3s ease all;
-    }
-  </style>
-
-</head>
-
-<body class="sb-nav-fixed">
-  <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand m-0 px-4 " href="#!">
-      <img src="../lib/img/IX-nobackground copy.png" alt="" width="150" height="70">
-    </a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!"><i
-        class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
-        <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
-      </div>
-    </form>
-    <!-- Navbar-->
+.card .meta-tags .tag {
+  background: #DD1B16;
+  color: #f9c7c6;
+}
+.card .meta-tags a:last-child {
+  margin-right: 0;
+  border-bottom-right-radius: 5px;
+}
+.card .meta-tags a:first-child {
+  border-top-left-radius: 5px;
+}
+.card .meta-tags a {
+  display: inline-block;
+  padding: 3px 8px;
+  color: #FFF;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
 
 
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
-      <li class="nav-item dropdown  ">
-        <a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#!">Settings</a></li>
-          <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+
+    </style>
+    
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand  navtotalcolor ">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand m-0 px-4 " href="#!">
+                <img src="../lib/img/IX-nobackground copy.png" alt="" width="150" height="70">
+            </a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 " id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /><i class="fas fa-search"></i> -->
+                    <!-- <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
+                </div>
+            </form>
+            <!-- Navbar-->
+
+
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4  ">
+                <li class="nav-item dropdown  ">
+                    <a class="nav-link dropdown-toggle  " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
   <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
@@ -320,12 +312,12 @@
                 <a class="nav-link" href="http://localhost:8080/ixercise/Kevin/ProductManage.html">商品管理</a>
                 <!-- <a class="nav-link" href="">訂單管理</a>
                                   <a class="nav-link" href="">退貨管理</a> -->
-
-
-              </nav>
-            </div>
-
-            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+      
+      
+                              </nav>
+                          </div>
+      
+                          <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                              data-bs-target="#collapseLayoutsssss" aria-expanded="false" aria-controls="collapseLayouts">
                               <div class="sb-nav-link-icon">
                                   <i class="bi bi-book-fill"></i>
@@ -340,103 +332,166 @@
                               <nav class="sb-sidenav-menu-nested nav">
                                   <a class="nav-link" href="">課程管理</a>
                                    <a class="nav-link" href="">審核退費</a> -->
-            <!-- 
+      <!-- 
                               </nav>
                           </div>  -->
-
-
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssssa"
-              aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
-              後臺廣播
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne"
-              data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
-                <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
-
+      
+                          
+                          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssssa" aria-expanded="false" aria-controls="collapseLayouts">
+                              <div class="sb-nav-link-icon"><i class="bi bi-broadcast-pin"></i></div>
+                             後臺廣播
+                              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                          </a>
+                          <div class="collapse" id="collapseLayoutssssssa" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                              <nav class="sb-sidenav-menu-nested nav">
+                                  <a class="nav-link" href="http://localhost:8080/ixercise/hao/backpodcast.html">後臺推播</a>
+                                  <a class="nav-link" href="http://localhost:8080/ixercise/hao/newbackcun.html">後臺聊天室</a>
+                                 
+                              </nav>
+                          </div>
+      
+      
+                          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                             data-bs-target="#collapseLayoutssssss" aria-expanded="false"
+                             aria-controls="collapseLayouts">
+                              <div class="sb-nav-link-icon">
+                                  <i class="bi bi-person-fill"></i>
+                              </div>
+                              帳號
+                              <div class="sb-sidenav-collapse-arrow">
+                                  <i class="fas fa-angle-down"></i>
+                              </div>
+                          </a>
+      
+                          <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
+                               data-bs-parent="#sidenavAccordion">
+                              <nav class="sb-sidenav-menu-nested nav">
+                                  <a id="AccountManage" class="nav-link" href="Account/AccountManage.html">會員管理
+                                      <span class="msg-counter accountspan">7</span>
+                                  </a>
+                                  <a id="AdminManage" class="nav-link" href="">管理員管理
+                                      <span class="msg-counter adminspan">7</span>
+                                  </a>
+                                  <a id="CoachManage" class="nav-link" href="">審核教練資格
+                                      <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
+                                  </a>
+                              </nav>
+                          </div>
+      
+                      </div>
+                  </div>
+      
               </nav>
-            </div>
-
-
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutssssss"
-              aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon">
-                <i class="bi bi-person-fill"></i>
-              </div>
-              帳號
-              <div class="sb-sidenav-collapse-arrow">
-                <i class="fas fa-angle-down"></i>
-              </div>
-            </a>
-
-            <div class="collapse" id="collapseLayoutssssss" aria-labelledby="headingOne"
-              data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a id="AccountManage" class="nav-link" href="Account/AccountManage.html">會員管理
-                  <span class="msg-counter accountspan">7</span>
-                </a>
-                <a id="AdminManage" class="nav-link" href="">管理員管理
-                  <span class="msg-counter adminspan">7</span>
-                </a>
-                <a id="CoachManage" class="nav-link" href="">審核教練資格
-                  <span class="msg-counter coachapplyspan" style="right:45px;">7</span>
-                </a>
-              </nav>
-            </div>
-
           </div>
-        </div>
-
-      </nav>
-    </div>
 
 
-    <div id="layoutSidenav_content">
-      <main>
-        <div class="container-fluid px-4 radius">
-          <!-- 請在這裡作業-->
-          <div class="row " id="cardstart">
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4 radius">
+                        <!-- 請在這裡作業-->
+                          <div class="row " id="cardstart">
 
 
-            <div class="col-md-4">
-              <div class="card card-favorite">
-                <div class="card-img-container">
-                  <img src="../lib/img/Test.jpeg" class="card-img">
-                </div>
-                <div class="card-content">
-                  <h3>
-                    最新學習獎勵方案，學費享優惠，學習不打折！時間地點選擇多，入門進階課程全都有。
-                  </h3>
-                  <p>2023-06-11</p>
-                </div>
-                <!-- <span class="meta-tags">
+                                <div class="col-md-4">
+                                  <div class="card card-favorite">
+                                    <div class="card-img-container">
+                                      <img src="../lib/img/Test.jpeg"   class="card-img">
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>    
+                                          最新學習獎勵方案，學費享優惠，學習不打折！時間地點選擇多，入門進階課程全都有。 
+                                        </h3>
+                                        <p>2023-06-11</p>
+                                    </div>
+                                        <!-- <span class="meta-tags">
                                             <a href="#" title="tags" class="tag">Css</a> 
                                         </span>                 -->
-              </div>
-            </div>
+                                  </div>
+                                </div>
 
 
-            <div class="col-md-4">
-              <div class="card card-favorite">
-                <div class="card-img-container">
-                  <img src="../lib/img/IX-nobackground copy.png" class="card-img">
-                </div>
-                <div class="card-content">
-
-                  <h3>
-                    在台灣成立六年的TEDxTaipei特別邀請到TED 創辦人kevin 來台灣分享他的理念。
-
-                  </h3>
-                  <p>2023-06-17</p>
-                </div>
-                <!-- <span class="meta-tags">
+                                <div class="col-md-4">
+                                    <div class="card card-favorite">
+                                      <div class="card-img-container">
+                                        <img src="../lib/img/IX-nobackground copy.png"  class="card-img">
+                                      </div>
+                                      <div class="card-content">
+                                  
+                                        <h3>
+                                          在台灣成立六年的TEDxTaipei特別邀請到TED 創辦人kevin 來台灣分享他的理念。
+                                       
+                                        </h3>
+                                        <p>2023-06-17</p>
+                                      </div>
+                                        <!-- <span class="meta-tags">
                                             <a href="#" title="tags" class="tag">Css</a> 
                                         </span>                 -->
-              </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card card-favorite">
+                                      <div class="card-img-container">
+                                        <img src="../lib/img/商品推播.png"  class="card-img">
+                                      </div>
+                                      <div class="card-content">
+                                  
+                                        <h3>
+                                              
+                                          官網提供最優惠的UA運動服裝、、跑鞋、訓練鞋及運動背包等專業運動裝備，最低79元
+                                       
+                                        </h3>
+                                        <p>2023-06-20</p>
+                                      </div>
+                                    </div>
+                                </div>
+                                
+                                <!--以下新增-->
+                                <div class="col-md-4 " id="aaa">
+                                    <div class="card card-favorite">
+                                     
+                                      <div class="card-img-container ">
+                                        
+                                        <img src="../lib/img/無照片.png"  id="addpicture" class="card-img">
+                                        
+                                      </div>
+                                      <input type="file" class="custom-file-input btn " id="customFile" accept="image/*">
+
+                                      <div class="card-content">
+                                            <div class=>文字輸入</div>
+                                            <div>
+                                                <textarea class="form-control input-lg mb-1" id="inputtextarea" placeholder="內文"></textarea>
+                                            </div>
+                                            <div class="">輸入會員帳號</div>
+                                            <div xla>
+                                             <input type="text" id="inputtext" style=" width: 100%;">
+                                            </div>
+                                          <button type="button" class="btn btn-outline-dark mb-0">傳送</button>
+                                          <button type="reset" id="resetbutton" class="btn btn-secondary d-none" ></button></button>
+
+                                     </div>
+                                  </div>
+                                </div>
+                        </div>    
+                    </div>
+                </main>
+
+                             <!--以下footer-->
+
+                
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
+<<<<<<< HEAD
             <div class="col-md-4">
               <div class="card card-favorite">
                 <div class="card-img-container">
@@ -482,88 +537,69 @@
               </div>
             </div>
           </div>
+=======
+>>>>>>> c47db92c8e4b4aa36dc2a65d346aac350d540dce
         </div>
-      </main>
-
-      <!--以下footer-->
-
-
-      <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-          <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-            <div>
-              <a href="#">Privacy Policy</a>
-              &middot;
-              <a href="#">Terms &amp; Conditions</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
-  <script src="../lib/js/backtai.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-    crossorigin="anonymous"></script>
-  <script src="../lib/js/datatables-demo.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="../lib/js/backtai.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="../lib/js/datatables-demo.js"></script>
 
 
+        
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
-  <script>
+var a;
+var base64String;
+var webSocket;
+var fileName;
 
-    var a;
-    var base64String;
-    var webSocket;
-    var fileName;
-
-    $(document).ready(function () {
-
-
-      webSocket = new WebSocket("ws://localhost:8080/ixercise/checkbell/1");
-
-      webSocket.onopen = function (e) {
-        console.log("Connect Success!");
-        console.log(e);
-
-      };
+$(document).ready(function() {
 
 
+webSocket = new WebSocket("ws://localhost:8080/ixercise/checkbell/1");
 
-      webSocket.onmessage = function (e) {
-        var jsonObj = JSON.parse(event.data);
-        console.log(e);
-        if ("open" === jsonObj.type) {
-          refreshFriendList(jsonObj);
-        } else if ("history" === jsonObj.type) {
+  webSocket.onopen = function(e) {
+    console.log("Connect Success!");
+          console.log(e);
+           
+  };
 
-          var html = "";
-          $.each(jsonObj, function (index, obj) {
-            html = `  <div class="chat-message-left mb-4">
+
+  
+  webSocket.onmessage = function(e) {
+    var jsonObj = JSON.parse(event.data);
+          console.log(e);
+    if ("open" === jsonObj.type) {
+      refreshFriendList(jsonObj);
+    } else if ("history" === jsonObj.type) {
+    
+              var html = "";
+              $.each(jsonObj,function(index, obj) {
+            html =`  <div class="chat-message-left mb-4">
      <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
      <div class="text-muted small text-nowrap mt-2">${jsonObj.receiver}</div></div>
      <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-     <div class="font-weight-bold mb-1"></div>${obj.historyMsg}</div></div>`
+     <div class="font-weight-bold mb-1"></div>${obj.historyMsg}</div></div>` 
+          
+                      });
+                       $(".talkstartes").append(html);
+    
+      // messagesArea.scrollTop = messagesArea.scrollHeight;
+    } else if ("chat" === jsonObj.type) {
+      // var li = document.createElement('li');
+      // jsonObj.sender === self ? li.className += 'me' : li.className += 'friend';
+      // li.innerHTML = jsonObj.message;
+      // console.log(li);
+      // document.getElementById("area").appendChild(li);
+      // messagesArea.scrollTop = messagesArea.scrollHeight;
 
-          });
-          $(".talkstartes").append(html);
-
-          // messagesArea.scrollTop = messagesArea.scrollHeight;
-        } else if ("chat" === jsonObj.type) {
-          // var li = document.createElement('li');
-          // jsonObj.sender === self ? li.className += 'me' : li.className += 'friend';
-          // li.innerHTML = jsonObj.message;
-          // console.log(li);
-          // document.getElementById("area").appendChild(li);
-          // messagesArea.scrollTop = messagesArea.scrollHeight;
-
-          let html = `
+              let html = `
      
      <div class="chat-message-left mb-4">
      <div><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
@@ -571,135 +607,130 @@
      <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
      <div class="font-weight-bold mb-1"></div>${jsonObj.message}</div></div>
      `;
-          $(".talkstartes").append(html);
+           $(".talkstartes").append(html);
 
 
-        } else if ("close" === jsonObj.type) {
+    } else if ("close" === jsonObj.type) {
+      
+    }
 
-        }
+    
+  };
+  
+  webSocket.onclose = function(event) {
+    console.log("Disconnected!");
+  };
 
+    
+function disconnect() {
+  webSocket.close();
+  
+}
 
-      };
+function updateFriendName(name) {
+  statusOutput.innerHTML = name;
+}
 
-      webSocket.onclose = function (event) {
-        console.log("Disconnected!");
-      };
-
-
-      function disconnect() {
-        webSocket.close();
-
-      }
-
-      function updateFriendName(name) {
-        statusOutput.innerHTML = name;
-      }
-
-
-
-
-
-
+ 
+  
 
 
 
 
-
-
-    });
-
-
-
-
-    $(document).ready(function () {
-
-
-      $('#customFile').change(function (e) {
-        const files = this.files;
-        if (files.length > 0) {
-          fileName = files[0].name;
-          console.log('上传的文件名:', fileName);
-        }
-
-        a = URL.createObjectURL(this.files[0]);
-        $('#addpicture').attr('src', URL.createObjectURL(this.files[0]));
-
-        var file = e.target.files[0];
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          base64String = e.target.result;
-          console.log(base64String);
-        };
-
-        reader.readAsDataURL(file);
-
-
-      });
-    });
-
-
-
-    $(document).ready(function () {
-      $('button[type="button"]').click(function () {
-        // 获取输入框的值
-        var textareaValue = $('#inputtextarea').val();
-        var inputtextValue = $('#inputtext').val();
-        var customFileValue = $('#customFile').val();
-        console.log(customFileValue);
-        var html = `<div class="col-md-4"><div class="card card-favorite"><div class="card-img-container">
-            <img src="`+ a + `"  class="card-img"></div>
-            <div class="card-content"><h3>`+ textareaValue + `  </h3><p>傳給會員` + inputtextValue + `</p></div></div></div>`;
-
-        $("#aaa").before(html);
-
-
-
-        // 打印输入框的值
-        console.log('Textarea value:', textareaValue);
-        console.log('Input text value:', inputtextValue);
-        console.log('Custom file value:', customFileValue);
-
-        $("#customFile").val("");
-        $('#inputtext').val("");
-        $('#addpicture').attr('src', "../lib/img/無照片.png")
-        $('#inputtextarea').val("");
-
-        sendMessage(inputtextValue, textareaValue, fileName);
+        
 
 
 
 
-
-      });
-    });
+});
 
 
 
-    function sendMessage(inputtextValue, textareaValue, fileName) {
-      console.log(fileName);
-      var currentTime = new Date();
+
+$(document).ready(function() {
+
+  
+            $('#customFile').change(function(e) {
+              const files = this.files;
+    if (files.length > 0) {
+       fileName = files[0].name;
+      console.log('上传的文件名:', fileName);}
+
+              a=URL.createObjectURL(this.files[0]);
+                $('#addpicture').attr('src', URL.createObjectURL(this.files[0]));
+
+                var file = e.target.files[0];
+                var reader = new FileReader();
+  
+                 reader.onload = function(e) {
+                 base64String = e.target.result;
+                     console.log(base64String);
+               };
+  
+             reader.readAsDataURL(file);
 
 
-      var jsonObj = {
-        "type": "podcast",
+            });
+        });
+
+
+
+        $(document).ready(function() {
+  $('button[type="button"]').click(function() {
+    // 获取输入框的值
+    var textareaValue = $('#inputtextarea').val();
+    var inputtextValue = $('#inputtext').val();
+    var customFileValue = $('#customFile').val();
+    console.log(customFileValue);
+    var html=`<div class="col-md-4"><div class="card card-favorite"><div class="card-img-container">
+            <img src="`+a+`"  class="card-img"></div>
+            <div class="card-content"><h3>`+textareaValue+`  </h3><p>傳給會員`+inputtextValue +`</p></div></div></div>`;
+
+           $("#aaa").before(html);
+
+
+    
+    // 打印输入框的值
+    console.log('Textarea value:', textareaValue);
+    console.log('Input text value:', inputtextValue);
+    console.log('Custom file value:', customFileValue);
+
+    $("#customFile").val("");
+    $('#inputtext').val("");
+    $('#addpicture').attr('src', "../lib/img/無照片.png")
+    $('#inputtextarea').val("");
+
+    sendMessage(inputtextValue,textareaValue,fileName);
+   
+    
+
+
+
+  });
+});
+
+
+
+function sendMessage(inputtextValue,textareaValue,fileName) {
+    console.log(fileName);
+    var jsonObj = {
+      "type": "podcast",
         "acountId": inputtextValue,
         "message": textareaValue,
         "photo": fileName,
-        "messagetime": currentTime,
-      };
-      webSocket.send(JSON.stringify(jsonObj));
+        "messagetime":null ,
+    };
+  webSocket.send(JSON.stringify(jsonObj));
+  
+  }
 
-    }
+  
+  
+ 
 
 
-
-
-
-
-
-  </script>
+ 
+</script>
 
 </body>
-
 </html>

@@ -52,14 +52,6 @@ addsk.href = getContextPath() + "/Account/AddSkill.html";
 const urlParams = new URLSearchParams(window.location.search);
 const urlaccId = urlParams.get('accountId');
 
-if (urlaccId == accid) {
-    accEditPage.classList.remove("d-none");
-    if (acclevel == 2) {
-        addsk.classList.remove("d-none");
-    } else {
-        applytbc.classList.remove("d-none");
-    }
-}
 
 fetch('PersonalPage/' + urlaccId)
     .then(resp => resp.json())
@@ -79,12 +71,23 @@ fetch('PersonalPage/' + urlaccId)
             } = body;
             console.log(typeof accountLevel + accountLevel);
 
+            if (urlaccId == accid) {
+                accEditPage.classList.remove("d-none");
+                if (accountLevel == 2) {
+                    addsk.classList.remove("d-none");
+                } else {
+                    applytbc.classList.remove("d-none");
+                }
+            }
+
+
             if (accountLevel === 1) {
                 pgnickname.textContent = accountNickname;
                 pgcity.textContent = accountAddress.substring(0, 3);
                 accgen.textContent = accGenMap[accountGender];
                 pgaccintro.textContent = accountIntro;
                 pageavatar.src = getcreateObjURL(accountPhoto);
+
             } else if (accountLevel == 2) {
                 pgaccskillli.classList.remove("d-none");
                 sktable.classList.remove("d-none");

@@ -688,7 +688,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (resp1) {
-                        // console.log("resp1>>" + resp1);
+                        console.log("resp1>>" + resp1);
                         let tableData = '';
                         var memberName;
                         var accphoto;
@@ -702,13 +702,13 @@
                                 return true;
                             }
                         });
-                        // console.log("resp2: ", resp2);
-                        var resp = resp1.filter(function (item) {
+                        console.log("resp2: ", resp2);
+                        var resp = resp2.filter(function (item) {
                             if (item.courseStatus === 1 || item.courseStatus === 3 || item.courseStatus === 4) {
                                 return true;
                             }
                         });
-                        // console.log("resp: ", resp);
+                        console.log("resp: ", resp);
 
                         for (let i = 0; i < resp.length; i++) {
                             if (resp[i].courseStatus !== 2 || resp[i].courseStatus !== 5) {
