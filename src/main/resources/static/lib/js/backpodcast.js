@@ -47,10 +47,11 @@ $(function () {
                     var currentTime = new Date();
 
                     // 将从数据库获取的时间转换为日期对象
-                    var dbTime = new Date("2023-06-10T08:30:00");
+                    var dbTime = new Date(historyData.messagetime);
 
                     // 计算时间差（以毫秒为单位）
-                    var timeDiff = currentTime - historyData.messagetime
+                    var timeDiff = currentTime - dbTime
+                    console.log(timeDiff);
 
                     // 转换时间差为不同单位
                     var minutesDiff = Math.floor(timeDiff / (1000 * 60));
@@ -79,7 +80,7 @@ $(function () {
                         '<div class="row h-100">' +
                         '<div class="col-2 h-100"><img src="./lib/img/' + historyData.photo + '" width="72px" height="72px" alt="" style="object-fit:cover"></div>' +
                         '<div class="col-8">' +
-                        '<h3>' + historyData.message + '</h3>' +
+                        '<h5 style=\'font-family: "Noto Sans TC"\'>' + historyData.message + '</h5>' +
                         '</div>' +
                         '<div class="col-2">' + timeAgo +
                         '</div>' +
