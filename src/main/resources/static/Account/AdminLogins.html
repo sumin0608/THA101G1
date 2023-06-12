@@ -404,12 +404,18 @@
                 errMsg.textContent = '';
                 const {successful, message} = body;
                 if (successful) {
-                    // const {accountId, accountNickname, accountState, accountLevel, accountPhoto} = body;
-                    // sessionStorage.setItem("accountId", accountId);
-                    // sessionStorage.setItem("accountNickname", accountNickname);
-                    // sessionStorage.setItem("accountLevel", accountLevel);
-                    // sessionStorage.setItem("accountState", accountState);
-                    // sessionStorage.setItem("accountPhoto", accountPhoto);
+                    const {accountId, accountNickname, accountState, accountLevel, accountPhoto} = body;
+                    sessionStorage.setItem("accountId", accountId);
+                    sessionStorage.setItem("accountNickname", accountNickname);
+                    sessionStorage.setItem("accountLevel", accountLevel);
+                    sessionStorage.setItem("accountState", accountState);
+                    sessionStorage.setItem("accountPhoto", accountPhoto);
+
+                    localStorage.setItem("accountId", accountId);
+                    localStorage.setItem("accountNickname", accountNickname);
+                    localStorage.setItem("accountLevel", accountLevel);
+                    localStorage.setItem("accountState", accountState);
+                    localStorage.setItem("accountPhoto", accountPhoto);
                     localStorage.setItem("token", message);
                     // location = getContextPath() + "/BackstageIndex.html";
                     setTimeout(`location.href = '${getContextPath()}/BackstageIndex.html'`, 1000);
