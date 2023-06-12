@@ -802,6 +802,7 @@
                         var memberName;
                         var accphoto;
                         var memberNickName;
+                        var aaa = "";
                         for (let evt of evtList) {
 
                             // tbody.innerHTML += `
@@ -821,7 +822,7 @@
                             // `;
 
 
-                            event_cards_container.innerHTML += `
+                            aaa += `
                 
             
                 
@@ -875,8 +876,8 @@
                                 }
                             });
 
-                            event_cards_container.innerHTML += `< div class = "card-footer p-2  bg-transparent justify-content-between">
-                                < div class = "d-flex flex-row align-items-center event_creater">
+                            aaa += `<div class = "card-footer p-2  bg-transparent justify-content-between">
+                                <div class = "d-flex flex-row align-items-center event_creater">
                                         <div class="member-icon">        <img id="avatarID" src="${getcreateObjURL(accphoto)}"
                                                     class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">
@@ -899,7 +900,8 @@
 
 
                         }
-
+                        // event_cards_container.innerHTML(aaa);
+                        $("#event_cards_container").empty().append(aaa);
                         // <td>${evt.photo}</td>
                     })
                     .catch(function (error) {
