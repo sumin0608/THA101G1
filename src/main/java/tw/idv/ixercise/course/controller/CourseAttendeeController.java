@@ -65,9 +65,9 @@ public class CourseAttendeeController {
 		return courseStatusDto;
 	}
 
-	@PutMapping("/updateStatusById/{attendId}")
-	public Core updateStatusById(@PathVariable("attendId") Integer attendId, @RequestBody Integer status) {
-		System.out.println("現在是updateStatusById~");
+	@PutMapping("/updateStatusById/{attendId}/{status}")
+	public Core updateStatusById(@PathVariable("attendId") Integer attendId,@PathVariable("status") Integer status) {
+		System.out.println("現在是updateStatusById~status::"+status);
 		final Core core = new Core();
 		core.setSuccessful(service.updateStatusById(attendId, status));
 		if (!core.isSuccessful()) {

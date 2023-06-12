@@ -1121,7 +1121,7 @@
                 type: "GET",
                 dataType: "json",
                 success: async function (resp) {
-                    console.log("參加活動申請未審核resp>>" + resp);
+                    // console.log("參加活動申請未審核resp>>" + resp);
                     let appendaudit2 = '';
                     console.log("退出活動申請未審核length: " + resp.length);
                     $('#audit2bgsecondary').empty().append(resp.length);
@@ -1135,7 +1135,7 @@
                 type: "GET",
                 dataType: "json",
                 success: async function (resp) {
-                    console.log("退出活動申請未審核resp>>" + resp);
+                    // console.log("退出活動申請未審核resp>>" + resp);
                     let appendaudit2 = '';
                     console.log("退出活動申請未審核length: " + resp.length);
                     $('#leave2bgsecondary').empty().append(resp.length);
@@ -1149,7 +1149,7 @@
             // 一、已開設課程
             $('#c1').on('click', function (e) {
                 e.preventDefault();
-                console.log(this);
+                // console.log(this);
                 // 表頭
                 $('#th1').text("courseId");
                 $('#th2').text("課程名稱");
@@ -1175,7 +1175,7 @@
                         var filteredData0 = [];
                         filteredData0 = resp.filter(function (item) {
                             var StartTime = new Date(item.courseStartTime);
-                            console.log("StartTime>>" + StartTime);
+                            // console.log("StartTime>>" + StartTime);
                             if (StartTime > currentDate) {
                                 return true;
                             }
@@ -1881,8 +1881,8 @@
 
 
             //二、未審核 
-            $('#audit2').on('click', function (e) {
-                console.log("audit2>>" + this);
+            $('#audit2').on('click', function () {
+                // console.log("audit2>>" + this);
                 // 表頭
                 $('#th1').text("會員名稱");
                 $('#th2').text("課程名稱");
@@ -1911,7 +1911,7 @@
                     dataType: "json",
                     // async: false,
                     success: function (resp1) {
-                        console.log("kkkkkkkkkkkkkresp>>" + resp1);
+                        // console.log("kkkresp1>>" + resp1);
                         var creatorList = []; // 創建空的列表
 
                         $.ajax({
@@ -1920,7 +1920,7 @@
                             dataType: "json",
                             async: false,
                             success: function (resp) {
-                                console.log("kkkkkkkkkkkkkresp>>" + resp);
+                                // console.log("kkkkkkkkkkkkkresp>>" + resp);
                                 // 將每個元素添加到列表中
                                 for (var i = 0; i < resp.length; i++) {
                                     creatorList.push(resp[i].courseId);
@@ -2000,18 +2000,16 @@
                 var attendId = $('#staticBackdropattendId').text();
                 console.log("attendId: " + attendId);
                 $.ajax({
-                    url: "/ixercise/courseAttendee/updateStatusById",
+                    url: "/ixercise/courseAttendee/updateStatusById/"+attendId+"/"+2,
                     type: "PUT",
-                    data: {
-                        attendId: attendId,
-                        status: 2
-                    },
+                    // contentType:"application/json",
+                    // data: JSON.stringify({status:2}),
                     dataType: "json",
                     success: function (data) {
-                        console.log("resp>>" + data);
+                        // console.log("resp>>" + data);
                         swal("Warning!", data.message, "warning");
                         $('#staticBackdropPass').modal('hide');
-                        joinApplyUncheck();
+                        joinApplyUnchecked();
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
@@ -2026,18 +2024,19 @@
                 var attendId = $('#staticBackdropattendId').text();
                 console.log("attendId: " + attendId);
                 $.ajax({
-                    url: "/ixercise/courseAttendee/updateStatusById",
+                    url: "/ixercise/courseAttendee/updateStatusById/"+attendId+"/"+3,
                     type: "PUT",
-                    data: {
-                        attendId: attendId,
-                        status: 3
-                    },
+                    // contentType:"application/json",
+                    // data: JSON.stringify({
+                    //     attendId: attendId,
+                    //     status: 3
+                    // }),
                     dataType: "json",
                     success: function (data) {
                         console.log("resp>>" + data);
                         swal("Warning!", data.message, "warning");
                         $('#staticBackdropPass').modal('hide');
-                        joinApplyUncheck();
+                        joinApplyUnchecked();
                     },
                     error: function (xhr, status, error) {
                         alert("Error: " + xhr.responseText);
@@ -2149,12 +2148,9 @@
                 var attendId = $(this).closest('tr').find('td:eq(7)').text();
                 console.log("attendId: " + attendId);
                 $.ajax({
-                    url: "/ixercise/courseAttendee/updateStatusById",
+                    url: "/ixercise/courseAttendee/updateStatusById/"+attendId+"/"+5,
                     type: "PUT",
-                    data: {
-                        attendId: attendId,
-                        status: 5
-                    },
+                    // data: {attendId: attendId, status: 5},
                     dataType: "json",
                     success: function (data) {
                         console.log("resp>>" + data);
@@ -2256,38 +2252,6 @@
 
 
 
-
-
-
-
-        // <<<<天氣api>>>>
-            // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
-        // $("#citypicker").change(function () {
-        //     console.log(this.value);
-        //     if (!(this.value == null || this.value == "")) {
-        //         ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", this.value);
-        //     } else {
-        //         $("#weatherresults").html("");  // 清空
-        //     }
-        // });
-        // function ajaxCallJsonP(url, cityID) {
-        //     // console.log(url, cityID);
-        //     var data = $.getJSON(url,
-        //         {
-        //             id: cityID,
-        //             appid: "14550c20a1f07f3a8f42b63a1acf4002",
-        //             lang: "zh_TW"
-        //         }).done(function (msg) {
-        //             console.log("success!!!");
-        //             // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
-        //             $("#weatherresult").append(msg.weather[0].description);
-        //             $("#weatherresult").append(`< img src = 'https://openweathermap.org/img/wn/${msg.weather[0].icon}.png' />`);
-        //         }
-        //         ).fail(function (xhr, status, error) {
-        //             // 处理请求失败的情况
-        //             console.log("error!!!");
-        //         });
-        // };
     </script>
 </body>
 
