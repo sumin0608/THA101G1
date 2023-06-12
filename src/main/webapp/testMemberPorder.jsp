@@ -6,6 +6,7 @@
   member m=(member)session.getAttribute("Member");
   //List<porder> l=new ImplPorder().queryMemberNo(m.getMember_no());
   List<porder> l=new ImplPorder().queryMemberNo(m.getName());
+ 
   %>
 <!DOCTYPE html>
 <html>
@@ -16,13 +17,14 @@
 <body>
 <table width=600 align=center border=1>
 	<tr>
-	<td>id<td>porder_no<td>name<td>productname<td>pamount<td>pdate
-	<td>email
+	<td>id<td>訂單編號<td>訂購人<td>商品<td>數量<td>日期
+	<td>電子信箱
 <%
 for(porder p:l)
 {
 	out.println("<tr><td>"+p.getId()+
 			"<td>"+p.getPorderNo()+
+			
 			//"<td>"+p.getMemberNo()+
 			"<td>"+p.getName()+
 			"<td>"+p.getProductName()+

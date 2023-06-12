@@ -8,7 +8,6 @@
 <% 
  //List<product> l =(List)session.getAttribute("L");
  List<porder> l =(List)session.getAttribute("L");
-    System.out.println("payway + L" + l);
 
  %>  
 <!DOCTYPE html>
@@ -129,7 +128,7 @@
                                                 <button class="btn btn-primary" type="button"
                                                     id="btn-close-search">關閉</button>
                                                 <button class="btn btn-primary" type="reset"
-                                                    id="btn-reset-search">重置</button>
+                                                    id="btn-close-search">重置</button>
                                             </div>
                                         </div>
                                     </div>
@@ -330,8 +329,8 @@
 						      <td align="center"></td>
 						      <td>
 						      		<form action="Finish.jsp" method="post">
-										<input type="radio" name="payWay" value="現金">現金<br>
-										<input type="radio" name="payWay" value="刷卡">刷卡<br>
+										<!-- <input type="radio" name="payWay" value="現金">現金<br>-->
+										<!-- <input type="radio" name="payWay" value="刷卡">刷卡<br>-->
 										<input type="radio" name="payWay" value="貨到付款">貨到付款<br>
 										<input type="submit"  value="送出"><br>
 									</form>
