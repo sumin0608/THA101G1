@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import tw.idv.ixercise.account.entity.Account;
 import tw.idv.ixercise.account.entity.PgAccount;
 import tw.idv.ixercise.account.service.AccountService;
-import tw.idv.ixercise.core.Core;
 import tw.idv.ixercise.core.JwtUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,14 +53,14 @@ public class LoginController {
     }
 
     @PostMapping("LoginForAd")
-    public Core loginForAdmin(HttpServletRequest req, @RequestBody Account account) {
-        Core core = new Core();
+    public Account loginForAdmin(HttpServletRequest req, @RequestBody Account account) {
+//        Core core = new Core();
 
 
         if ("".equals(account.getAccountEmail()) || "".equals(account.getAccountPassword())) {
-            core.setMessage("請填寫信箱及密碼");
-            core.setSuccessful(false);
-            return core;
+            account.setMessage("請填寫信箱及密碼");
+            account.setSuccessful(false);
+            return account;
         }
 
         account = service.loginForAd(account);
@@ -79,13 +78,13 @@ public class LoginController {
             claims.put("accountLevel", account.getAccountLevel());
 
             String jwt = JwtUtils.generateJwt(claims);
-            core.setSuccessful(true);
-            core.setMessage(jwt);
-            return core;
+            account.setSuccessful(true);
+            account.setMessage(jwt);
+            return account;
         } else {
-            core.setSuccessful(account.isSuccessful());
-            core.setMessage(account.getMessage());
-            return core;
+            account.setSuccessful(account.isSuccessful());
+            account.setMessage(account.getMessage());
+            return account;
         }
     }
 }
