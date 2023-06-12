@@ -2,10 +2,7 @@ package tw.idv.ixercise.ecpayexample;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,16 +22,19 @@ public class OrderController {
         return aioCheckOutALLForm;
     }
 
-    @GetMapping("/ecpayReturnURL")
-    public String ecpayReturnURL(HttpServletRequest request) {
+    @PostMapping("/ecpayReturnURL")
+    public String ecpayReturnURL(@RequestParam("MerchantTradeNo") String merchantTradeNo,
+                                 @RequestParam("PaymentDate") String paymentDate,
+                                 @RequestParam("PaymentType") String paymentType) {
+//        public String ecpayReturnURL(HttpServletRequest request) {
 
-        String merchantTradeNo = request.getParameter("MerchantTradeNo");
-        String paymentDate = request.getParameter("PaymentDate");
-        String paymentType = request.getParameter("PaymentType");
+//        String merchantTradeNo = request.getParameter("MerchantTradeNo");
+//        String paymentDate = request.getParameter("PaymentDate");
+//        String paymentType = request.getParameter("PaymentType");
         // 根據處理結果返回相應的頁面
         System.out.println("Credit card payment success");
         System.out.println("merchantTradeNo>>" + merchantTradeNo + "paymentDate>>" + paymentDate + "paymentType>>" + paymentType);
-        return "success";
+        return "1|OK";
     }
 
 }

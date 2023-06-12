@@ -54,7 +54,7 @@ public class OrderService {
 //			obj.setReturnURL("https://  /ixercise/index.html");
 //			obj.setOrderResultURL("http://10.2.1.213:8080/ixercise/jimmy/course_intro_page.html");
 
-		obj.setReturnURL("https://4a50-1-164-238-247.jp.ngrok.io/ecpayReturnURL");
+		obj.setReturnURL("https://2fee-1-164-238-247.jp.ngrok.io/ixercise/course/ecpayReturnURL");
 		obj.setOrderResultURL("http://localhost:8080/ixercise/jimmy/Course_homePage.html");
 
 		obj.setNeedExtraPaidInfo("N");

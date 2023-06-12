@@ -452,7 +452,7 @@
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">修改課程</h5>
+                                <h5 class="modal-title" >修改課程</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -494,11 +494,11 @@
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <label for="" class="form-label">creator</label>
+                                                        <label for="creator" class="form-label">creator</label>
                                                         <div id="creator">會員accountId</div>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <label for="" class="form-label">courseId</label>
+                                                        <label for="courseId" class="form-label">courseId</label>
                                                         <div id="courseId">courseId</div>
                                                     </div>
                                                     <br>
@@ -521,7 +521,7 @@
                                                     <!-- Second row -->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <label for="" class="form-label">聚會類型</label>
+                                                            <label for="categoryId" class="form-label">聚會類型</label>
                                                             <select class="form-select" id="categoryId"
                                                                 name="categoryId" aria-label="Default select example"
                                                                 required>
@@ -571,7 +571,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <label for="" class="form-label">所在地區</label>
+                                                            <label for="district" class="form-label">所在地區</label>
                                                             <select class="form-select" id="district" name="district"
                                                                 aria-label="Default select example" required>
                                                                 <option selected disabled value="">請選擇..</option>
@@ -714,7 +714,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-sm-3">
-                                                            <label for="" class="form-label">課程狀態</label>
+                                                            <label for="courseStatus" class="form-label">課程狀態</label>
                                                             <select class="form-select" id="courseStatus"
                                                                 name="courseStatus" aria-label="Default select example"
                                                                 required>
@@ -771,7 +771,7 @@
 
                             </div> <!--"modal-body" -->
                             <div class="modal-footer">
-                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                <button id="modalClose" type="button" class="btn btn-secondary modalClose"
                                     data-bs-dismiss="modal">Close</button>
                                 <button id="modalSend" type="button" class="btn btn-primary">Send</button>
                             </div>
@@ -795,7 +795,7 @@
                                     <div class="col-12 row ">
                                         <div class="col-12 formpad "
                                             style="background-color: #E9E9E9; padding-top: 10px;border: solid red;">
-                                            <form id="myform" method="post" enctype="multipart/form-data"
+                                            <form id="myform1" method="post" enctype="multipart/form-data"
                                                 class="row g-3 needs-validation" novalidate>
                                                 <br>
                                                 <h3>歷史活動表單</h3>
@@ -831,17 +831,17 @@
                                                     <!-- Second row -->
                                                     <!-- <div class="row"> -->
                                                     <div class="col-sm-4">
-                                                        <label for="" class="form-label">聚會類型</label>
+                                                        <label for="categoryId1" class="form-label">聚會類型</label>
                                                         <div id="categoryId1" name="categoryId"
                                                             style="background-color: whitesmoke;">222</div>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <label for="" class="form-label">所在城市</label>
+                                                        <label for="city1" class="form-label">所在城市</label>
                                                         <div id="city1" name="city"
                                                             style="background-color: whitesmoke;">223</div>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <label for="" class="form-label">所在地區</label>
+                                                        <label for="district1" class="form-label">所在地區</label>
                                                         <div id="district1" name="district"
                                                             style="background-color: whitesmoke;">224</div>
                                                     </div>
@@ -926,7 +926,7 @@
                                                             style="background-color: whitesmoke;">991</div>
                                                     </div>
                                                     <div class="col-sm-3">
-                                                        <label for="" class="form-label">要不要買廣告</label>
+                                                        <label for="paidAdvertising1" class="form-label">要不要買廣告</label>
                                                         <div id="paidAdvertising1" name="paidAdvertising"
                                                             style="background-color: whitesmoke;">992
                                                         </div>
@@ -952,7 +952,7 @@
 
                             </div> <!--"modal-body" -->
                             <div class="modal-footer">
-                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                <button id="modalClose1" type="button" class="btn btn-secondary modalClose"
                                     data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -965,7 +965,7 @@
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">審核參加者&nbsp;&nbsp;</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel21">審核參加者&nbsp;&nbsp;</h5>
                                 <div id="staticBackdropattendId" style="display: none;"></div>
                                 &nbsp;課程名稱: <div id="staticBackdropPassEventName"></div>
                                 &nbsp;報名時間: <div id="staticBackdropPassTime"></div>
@@ -978,7 +978,7 @@
                                     name="description"></div>
                             </div> <!--"modal-body" -->
                             <div class="modal-footer">
-                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                <button id="modalClose2" type="button" class="btn btn-secondary modalClose"
                                     data-bs-dismiss="modal">Close</button>
                                 <button id="modalPass" type="button" class="btn btn-primary">接受報名</button>
                                 <button id="modalUnPass" type="button" class="btn btn-primary">拒絕報名</button>
@@ -993,7 +993,7 @@
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"> <!-- 效果都在這 -->
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">審核參加者(已審核)&nbsp;</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel22">審核參加者(已審核)&nbsp;</h5>
                                 &nbsp;課程名稱: <div id="staticBackdropPassEventName1"></div>
                                 &nbsp;報名時間: <div id="staticBackdropPassTime1"></div>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -1005,7 +1005,7 @@
                                     name="description"></div>
                             </div> <!--"modal-body" -->
                             <div class="modal-footer">
-                                <button id="modalClose" type="button" class="btn btn-secondary"
+                                <button id="modalClose3" type="button" class="btn btn-secondary modalClose"
                                     data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -1355,7 +1355,7 @@
                 let paidAdvertising = $("#paidAdvertising").val();
                 console.log("paidAdvertising代碼>>" + paidAdvertising);
                 let paidAdvertisingTime;
-                if (paidAdvertising == 0) {
+                if (paidAdvertising == "") {
                     paidAdvertisingTime = "2040-01-01 00:00:00";
                 } else {
                     let paidAdvertisingTime1 = $("#paidAdvertisingTime1").val();
