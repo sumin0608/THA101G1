@@ -748,6 +748,7 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+    <script src="../lib/js/nav.js"></script>
     <!-- ================================================================= -->
 
     <script>
@@ -799,6 +800,8 @@
                     .then(resp => resp.json())
                     .then(evtList => {
                         event_cards_container.innerHTML = "";
+                        var memberName;
+                        var accphoto;
                         for (let evt of evtList) {
 
                             // tbody.innerHTML += `
@@ -825,7 +828,7 @@
                 <div class="col mb-5 event_card">
                         <div class="card h-100 p-0 mb-0 event_card_content">
                             <!-- EVENT link-->
-                            <a href="http://localhost:8080/ixercise/Woo/Event_intro_page.html?evt=${evt.eventId}" class="event_link">
+                            <a href="/ixercise/Woo/Event_intro_page.html?evt=${evt.eventId}" class="event_link">
                                 <!-- EVENT image-->
                                 <div class="photo">
                                     <img class="card-img-top event_pic"
@@ -853,23 +856,45 @@
                                 </div>
                                 <!-- Product actions-->
                                 <div class="card-footer p-2  bg-transparent justify-content-between">
+                                    <div class="d-flex flex-row align-items-center event_creater">`;
+                            // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                            $.ajax({
+                                url: "/ixercise/Account/Manage/" + resp[i].creatorId,
+                                type: "GET",
+                                dataType: "json",
+                                async: false,//非同步的（asynchronous），表示該請求是同步的
+                                data: { id: resp[i].creator }, // 将 creator 作为参数传递
+                                success: function (memberResp) {
+                                    // console.log("memberResp: " + memberResp);
+                                    memberNickName = memberResp.accountNickname;
+                                    accphoto = memberResp.accountPhoto;
+                                    // console.log("memberName: " + memberName);
+                                    // console.log("accphoto: " + accphoto);
+                                },
+                                error: function (xhr, status, error) {
+                                    alert("Error: " + xhr.responseText);
+                                }
+                            });
 
-                                    <div class="d-flex flex-row align-items-center event_creater">
+ event_cards_container.innerHTML +=`
                                         <div class="member-icon">
-                                            <img src="https://picsum.photos/300/200/?random=10"
-                                                class="overflow-hidden rounded-circle p-0 member_profile_pic" href="#"
-                                                role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"
-                                                height="36">
+<!--                                            <img src="https://picsum.photos/300/200/?random=10"-->
+<!--                                                class="overflow-hidden rounded-circle p-0 member_profile_pic" href="#"-->
+<!--                                                role="button" data-bs-toggle="dropdown" aria-expanded="false" width="36"-->
+<!--                                                height="36">-->
+                                                <img id="avatarID" src="${getcreateObjURL(accphoto)}"
+                                                    class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">\`;
                                         </div>
-
                                         <div class="col-8 ms-2 c-details member_details">
                                             <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name">
-                                                Dawdddd0000000ddddoo
+                                                ${memberNickName}
                                             </h6>
-                                            <span class=" text-muted member_intro">sss</span>
+<!--                                            <span class=" text-muted member_intro">sss</span>-->
                                         </div>
-                                        <!-- <div class="col-2"></div> -->
                                     </div>
+
+
                                 </div>
                             </a>
                         </div>

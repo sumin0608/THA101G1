@@ -148,7 +148,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
     '                        <a id="addcourse" class="nav-link h-100 active d-inline-block d-none" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
     '                        </a>\n' +
-    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">辦活動\n' +
+    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/Woo/Event_CreateEventForm.html">辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -165,6 +165,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     // '                            <li><a class="dropdown-item" href="">論壇</a></li>\n' +
     // '                            <li><a class="dropdown-item" href="">活動</a></li>\n' +
     '                            <li><a class="dropdown-item" href="/ixercise/jimmy/Course_homePage.html">課程</a></li>\n' +
+    '                            <li><a class="dropdown-item" href="/ixercise/Woo/Event_homePage.html">活動</a></li>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '                    <!-- 鈴鐺============================================================= -->\n' +
