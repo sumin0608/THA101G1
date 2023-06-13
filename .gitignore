@@ -40,3 +40,4 @@ compiler.xml
 spring.log.2023-06-08.0.gz
 spring.log.2023-06-09.0.gz
 spring.log.2023-06-10.0.gz
+/src/main/resources/localhost.p12

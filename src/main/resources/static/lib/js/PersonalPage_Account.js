@@ -52,6 +52,14 @@ addsk.href = getContextPath() + "/Account/AddSkill.html";
 const urlParams = new URLSearchParams(window.location.search);
 const urlaccId = urlParams.get('accountId');
 
+if (urlaccId !== accid) {
+    var personalinfElements = document.querySelectorAll(".personalinf");
+
+    personalinfElements.forEach(function (element) {
+        element.classList.add("d-none");
+    });
+}
+
 
 fetch('PersonalPage/' + urlaccId)
     .then(resp => resp.json())
