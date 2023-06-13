@@ -105,7 +105,7 @@ public class AccountServiceImpl implements AccountService {
                 break;
             }
         }
-        return x;
+        return x+"1";
     }
 
     // 查詢登入=============================================================

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `account`;
+
 create table account
 (
     accountId         int auto_increment
