@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `course`;
+
 create table course
 (
     courseID             int auto_increment

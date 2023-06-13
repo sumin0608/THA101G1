@@ -446,10 +446,11 @@
                 if (successful) {
                     msg.className = 'text-success';
                 } else {
-                    msg.className = 'error';
+                    msg.className = 'text-danger';
                 }
                 msg.textContent = message;
-                location = getContextPath() + "/Account/Login.html";
+                // location = getContextPath() + "/Account/Login.html";
+                setTimeout(`location.href = '${getContextPath()}/Account/Login.html'`, 1500);
             });
     }
 

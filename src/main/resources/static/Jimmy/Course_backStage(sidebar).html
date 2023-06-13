@@ -1682,7 +1682,7 @@
             // 四、被檢舉課程
             $('#c4').on('click', function (e) {
                 console.log(this);
-                swal("Warning!", "還沒寫!", "warning");
+                // swal("Warning!", "還沒寫!", "warning");
             });
 
 
@@ -2007,7 +2007,7 @@
                     dataType: "json",
                     success: function (data) {
                         // console.log("resp>>" + data);
-                        swal("Warning!", data.message, "warning");
+                        swal("Success!", data.message, "warning");
                         $('#staticBackdropPass').modal('hide');
                         joinApplyUnchecked();
                     },
@@ -2034,7 +2034,7 @@
                     dataType: "json",
                     success: function (data) {
                         console.log("resp>>" + data);
-                        swal("Warning!", data.message, "warning");
+                        swal("Success!", data.message, "warning");
                         $('#staticBackdropPass').modal('hide');
                         joinApplyUnchecked();
                     },

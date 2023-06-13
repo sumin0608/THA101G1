@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS `COACHSKILL`;
+
+
 create table COACHSKILL
 (
     SKILLID      int auto_increment

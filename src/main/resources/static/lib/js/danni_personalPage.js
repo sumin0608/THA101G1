@@ -198,7 +198,7 @@ addEventListener("DOMContentLoaded", () => {
             console.log(attendId);
             // let update
             // fetch()
-            let urls = `../courseAttendee/updateStatusById?attendId=${attendId}&status=4`;
+            let urls = `../courseAttendee/updateStatusById/${attendId}/4`;
             fetch(urls, {
                 method: 'PUT'
             })

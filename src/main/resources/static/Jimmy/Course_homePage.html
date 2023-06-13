@@ -195,7 +195,7 @@
                                         <div class="col-3">
                                             <select id="select_time" class="form-select form-select-sm"
                                                 aria-label="Default select example">
-                                                <option selected value="0" disabled>上課時段</option>
+                                                <option selected value="0">上課時段</option>
                                                 <option value="1">上午(06:00~12:00)</option>
                                                 <option value="2">下午(12:00~18:00)</option>
                                                 <option value="3">晚上(18:00~24:00)</option>
@@ -815,27 +815,40 @@
                 function handleDistrictsResponse(resp) {
                     console.log("handleDistricts_resp>>" + resp);
                     var sport_option = $('#select_sport option:selected').text();
-                    var city_option = $('#select_city option:selected').text();
+                    var city_option = $('#select_city option:selected').text().trim();
+
                     var time_option = $('#select_time option:selected').val();
                     var sportValue = (sport_option !== "運動類型") ? sport_option : "";
                     var cityValue = (city_option !== "搜尋城市") ? city_option : "";
                     var timeValue = (time_option != "上課時段") ? time_option : "";
+                    // var timeValue = time_option;
                     console.log("sport: " + sportValue);
                     console.log("city: " + cityValue);
                     console.log("time: " + timeValue);
-                    // filter篩選:運動類型、城市
+                    // filter篩選:運動類型
                     let filteredData0 = resp.filter(function (item) {
-                        if ((!sportValue || item.categoryId === sportValue) &&
-                            (!cityValue || item.city === cityValue)) {
+                        if (item.categoryId === sportValue) {
+                            return true;
+                        }else if(!sportValue){
                             return true;
                         }
                     });
                     console.log("filteredData0>>" + filteredData0);
-                    // filter篩選:時間
-                    let filteredData1 = filteredData0.filter(function (item) {
-                        if (!timeValue) {
+
+                    // filter篩選:城市
+                    let filteredData00 = filteredData0.filter(function (item) {
+                        if (item.city === cityValue) {
                             return true;
-                        } else if (timeValue == 1) {
+                        }else if(!cityValue){
+                            return true;
+                        }
+                    });
+                    console.log("filteredData00>>" + filteredData00);
+
+
+                    // filter篩選:時間
+                    let filteredData1 = filteredData00.filter(function (item) {
+                         if (timeValue == 1) {
                             // 上午时间范围：06:00 ~ 12:00
                             var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
                             return startTime > "06:00:00" && startTime < "12:00:00";
@@ -847,6 +860,8 @@
                             // 晚上时间范围：18:00 ~ 24:00
                             var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', { hour12: false });
                             return startTime >= "18:00:00" && startTime < "24:00:00";
+                        }else {
+                            return true;
                         }
                     });
                     console.log("filteredData1>>" + filteredData1);

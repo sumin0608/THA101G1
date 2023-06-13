@@ -333,7 +333,7 @@
 
                             <button id="btnsend" type="button" class="btn btn-primary">送出</button>
                         </fieldset>
-                        <a href="">忘記密碼?</a>
+                        <a id="forgetps" href="">忘記密碼?</a>
                         <div id="msg" class=""></div>
                     </form>
                 </div>
@@ -384,6 +384,9 @@
     const adps = document.getElementById("adps");
     const btnsend = document.getElementById("btnsend");
     const errMsg = document.getElementById("msg");
+    const forgetps = document.querySelector("#forgetps")
+
+    forgetps.href = getContextPath() + '/Account/ForgetPassword.html';
 
     btnsend.addEventListener("click", loginforad);
 
