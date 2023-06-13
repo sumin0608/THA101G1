@@ -18,15 +18,17 @@ addEventListener("DOMContentLoaded", () => {
                 console.log(courseList);
                 historyContainer.innerHTML = "";
                 for (let courseKey of courseList) {
+                    console.log("courseKey.eventName");
                     console.log(courseKey.eventName);
-
+                    // <img class="card-img-top event_pic lazy"
+                    //      src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
                     historyContainer.innerHTML += `
                                                   <!-- 一條紀錄====================== -->
                                     <div href="#" class="list-group-item list-group-item-action" aria-current="true"
                                         style="height: 118px;">
                                         <div class="row h-100">
                                             <div class="col-2 h-100">
-                                                <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                <img src="/ixercise/lib/img/course/${courseKey.photo}" alt="" width="100px"
                                                     height="100px" class="overflow-hidden" style="object-fit:cover;">
                                             </div>
                                             <div class="col-8">
@@ -71,6 +73,7 @@ addEventListener("DOMContentLoaded", () => {
                 .then(evtList => {
                     course_calendar_list.innerHTML = "";
                     for (let course of evtList) {
+                        console.log(course);
                         let statusButtons = '';
 
                         switch (course.status) {
@@ -97,11 +100,11 @@ addEventListener("DOMContentLoaded", () => {
 
                         course_calendar_list.innerHTML += `
                                             <!-- 一條紀錄====================== -->
-                                        <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="${course.attendId}" aria-current="true"
+                                        <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="${course.attendId}" data-courseid="${course.courseID}" aria-current="true"
                                              style="height: 118px;">
                                             <div class="row h-100">
                                                 <div class="col-2 h-100">
-                                                    <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+                                                    <img src="/ixercise/lib/img/course/${course.photo}" alt="" width="100px"
                                                          class="overflow-hidden" height="100px" style="object-fit:cover;">
                                                 </div>
                                                 <div class="col-8 courseInfoContainer">
@@ -226,7 +229,7 @@ addEventListener("DOMContentLoaded", () => {
     $("#course-calendar-list").on('click', '.payMoney4Course', function (e) {
         let cancelCheck = confirm("是否前往課程付款");
         // if (cancelCheck) {
-        let attendId = $(this).closest(".courseList").attr("data-attendid");
+        let attendId = $(this).closest(".courseList").attr("data-courseid");
         // let url = `/ixercise/jimmy/course_intro_page.html?courseId=${attendId}&thismemberName=${thismemberName}&creator_hide' + creator_hide}`;
         let url = `/ixercise/jimmy/course_intro_page.html?courseId=${attendId}`;
         location = url;
