@@ -64,7 +64,7 @@ addEventListener("DOMContentLoaded", () => {
 
         $(document).on('click', '#calendarbtnC', function (e) {
 
-            console.log("calendarbtnC>>" + this)
+            console.log("calendarbtnC>>" + this);
             console.log(urls);
             fetch(urls)
                 .then(resp => resp.json())
@@ -78,7 +78,7 @@ addEventListener("DOMContentLoaded", () => {
                                 statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
                                 break;
                             case 2:
-                                statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">前往聊天室　</button>`;
+                                statusButtons = `<button class="btn btn-primary hopIntoChatRoom payMoney4Course" href="#" role="button" onclick="payMoney4Course()">已通過:    前往付款💵</button>`;
                                 break;
                             case 3:
                                 statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
@@ -198,7 +198,7 @@ addEventListener("DOMContentLoaded", () => {
             console.log(attendId);
             // let update
             // fetch()
-            let urls = `../courseAttendee/updateStatusById?attendId=${attendId}&status=4`;
+            let urls = `../courseAttendee/updateStatusById/${attendId}/4`;
             fetch(urls, {
                 method: 'PUT'
             })
@@ -223,5 +223,47 @@ addEventListener("DOMContentLoaded", () => {
     });
 
 
+    $("#course-calendar-list").on('click', '.payMoney4Course', function (e) {
+        let cancelCheck = confirm("是否前往課程付款");
+        // if (cancelCheck) {
+        let attendId = $(this).closest(".courseList").attr("data-attendid");
+        // let url = `/ixercise/jimmy/course_intro_page.html?courseId=${attendId}&thismemberName=${thismemberName}&creator_hide' + creator_hide}`;
+        let url = `/ixercise/jimmy/course_intro_page.html?courseId=${attendId}`;
+        location = url;
+        // }
+        // if (cancelCheck) {
+        //     console.log(cancelCheck);
+        //     let attendId = $(this).closest(".courseList").attr("data-attendid");
+        //     console.log(attendId);
+        //     // let update
+        //     // fetch()
+        //     let urls = `../courseAttendee/updateStatusById?attendId=${attendId}&status=4`;
+        //     fetch(urls, {
+        //         method: 'PUT'
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log('現在是updateStatusById~');
+        //             console.log(data);
+        //             if (!data.successful) {
+        //                 alert('退出申請失敗');
+        //             } else {
+        //                 location.reload();
+        //                 // $("#calendar").click();
+        //                 alert("已提出退出申請");
+        //             }
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //         });
+        //
+        // }
 
+    });
 });  //loaded
+
+// function payMoney4Course(){
+//     let attendId = $(this).closest(".courseList").attr("data-attendid");
+//     let url = `/ixercise/jimmy/course_intro_page.html?courseId=${courseId_hide}&thismemberName=${thismemberName}&creator_hide' + creator_hide}`;
+//
+// }
