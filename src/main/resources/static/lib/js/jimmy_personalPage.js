@@ -1,7 +1,10 @@
-
 $(document).ready(function () {
     var LSaccountId = localStorage.getItem('accountId');
-    console.log("LSaccountId=" + LSaccountId);
+    // console.log("LSaccountId=" + LSaccountId);
+
+    // 刷新會員資訊==========================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlaccId = urlParams.get('accountId');
 
     // 1.參加待審核2.通過3.未通過4:退出待審核5:退出成功6:完成課程
     const CourseAttendeeStatusMap = {
@@ -17,7 +20,7 @@ $(document).ready(function () {
     $(".coursebtn_evaluate").click(function () {
         console.log(this);
         $.ajax({
-            url: "/ixercise/coursecomment/" + LSaccountId, //假設2號會員{accountId}
+            url: "/ixercise/coursecomment/" + urlaccId, //假設2號會員{accountId}
             type: "GET",
             contexttype: "application/json",
             // data: JSON.stringify({}),
@@ -46,7 +49,7 @@ $(document).ready(function () {
                             url: "/ixercise/course/courseId/" + resp[i].courseId,
                             type: "GET",
                             dataType: "json",
-                            data: { id: resp[i].courseId }, //
+                            data: {id: resp[i].courseId}, //
                             async: false, // 设置为同步请求，确保获取到eventName后再进行下一步 
                             success: function (c) {
                                 eventName = c.eventName;
@@ -98,19 +101,19 @@ $(document).ready(function () {
 
     function getAttendRecordtoComment() {
         $.ajax({
-            url: "/ixercise/courseAttendee/accountId/" + LSaccountId, //假設2號會員{accountId}
+            url: "/ixercise/courseAttendee/accountId/" + urlaccId, //假設2號會員{accountId}
             type: "GET",
             contexttype: "application/json",
             success: function (resp0) {
-                console.log("resp0" + resp0);
+                // console.log("resp0" + resp0);
                 var today = new Date();
                 let resp1 = resp0.filter(function (item) {
                     if (item.status == 6 && item.commentStatus == 0) {
                         return true;
                     }
                 });
-                console.log("resp1" + resp1);
-                console.log("resp1.length" + resp1.length);
+                // console.log("resp1" + resp1);
+                // console.log("resp1.length" + resp1.length);
 
                 let tableData2 = '';
                 if (resp1.length > 0) {
@@ -199,7 +202,6 @@ $(document).ready(function () {
     }
 
 
-
     //分段接會員accountId
     // try {
     //     let accountPhoto = await GETaccountPhotoById(resp[i].accountId);
@@ -231,14 +233,14 @@ $(document).ready(function () {
     $("#coursebtn_evaluatemanager").click(function () {
         // console.log(this);
         $.ajax({
-            url: "/ixercise/coursecomment/attendrecord/" + LSaccountId, //假設2號會員{accountId}
+            url: "/ixercise/coursecomment/attendrecord/" + urlaccId, //假設2號會員{accountId}
             type: "GET",
             contexttype: "application/json",
             // data: JSON.stringify({}),
             success: function (resp) {
-                console.log("resp>>" + resp[0].commentContent);
+                // console.log("resp>>" + resp[0].commentContent);
                 const successful3 = resp[0].successful;
-                console.log("success2>>" + successful3);
+                // console.log("success2>>" + successful3);
                 if (successful3 === true) {
                     let tableData3 = '';
                     for (let i = 0; i < resp.length; i++) {
@@ -264,8 +266,8 @@ $(document).ready(function () {
                             // data: { id: resp[i].courseId },
                             async: false, // 设置同步请求，确保eventName后再进行下一步 
                             success: function (c) {
-                                console.log("c: " + c);
-                                console.log("c.eventNamec: " + c.eventName);
+                                // console.log("c: " + c);
+                                // console.log("c.eventNamec: " + c.eventName);
                                 eventName3 = c.eventName;
                                 courseStartDate3 = c.courseStartDate;
                             },
@@ -305,7 +307,6 @@ $(document).ready(function () {
     });
 
 
-
     // 檢舉勾勾
     $('.report').click(function () {
         var isChecked = $('.flexCheckDefault').prop('checked');
@@ -324,9 +325,13 @@ $(document).ready(function () {
 
     // 前往評價 按鈕打開(最近的)隱藏評論區
     $(document).on('click', '.givecomment', function (e) {
-        var commentPlace = $(this).closest('#listpapa').find('.commentplace');
-        commentPlace.toggleClass('displaynone');
-        // $('.commentplace').toggleClass('displaynone');
+        if (urlaccId == LSaccountId) {
+            var commentPlace = $(this).closest('#listpapa').find('.commentplace');
+            commentPlace.toggleClass('displaynone');
+            // $('.commentplace').toggleClass('displaynone');
+        } else {
+            alert("只有該會員才能評論")
+        }
     });
 
     //送出評論
@@ -337,8 +342,8 @@ $(document).ready(function () {
         // 沒寫評論先擋
         let commentContent = $(".textareac").val();
         let commentRating = $('.star.-on:last').data('star');
-        console.log("commentContent: " + commentContent);
-        console.log("commentRating: " + commentRating);
+        // console.log("commentContent: " + commentContent);
+        // console.log("commentRating: " + commentRating);
 
         if (commentContent == "") {
             console.log("沒寫評論");
@@ -346,8 +351,7 @@ $(document).ready(function () {
         } else if (commentRating == null) {
             console.log("沒給星星");
             swal("請給星星，最低一顆!!!", "say something", "warning");
-        }
-        else {
+        } else {
             //     let formData = new FormData();
             //     formData.append('file', file);
 
@@ -387,19 +391,21 @@ $(document).ready(function () {
             });
             // 步驟二、改參加明細的評論狀態為1(已評論)
             var attendIdin = $(this).closest('#listpapa').find('.attendIdin').text();
-            console.log("attendIdin:", attendIdin);
+            // console.log("attendIdin:", attendIdin);
             $.ajax({
                 url: "/ixercise/courseAttendee/updateCourseAttendeeCommentStatus/" + attendIdin,
                 type: "PUT",
                 contentType: 'application/json',
                 async: false,
                 data: JSON.stringify(1),
-                success: function (resp) { },
+                success: function (resp) {
+                },
                 error: function (xhr, status, error) {
                     alert("Error: " + xhr.responseText);
                 }
             });
-        };
+        }
+        ;
         getAttendRecordtoComment();
 
         $('.textareac').val('');// 清空textarea的值
@@ -429,15 +435,15 @@ $(document).ready(function () {
         let accountId2 = sessionStorage.getItem('REPORTaccountId2');
         let reportType = $("#inputTo1 option:selected").val();
         let reportReason = $("#reportReason1").val();
-        console.log("accountId>>", accountId);
-        console.log("accountId2>>", accountId2);
-        console.log("reportType>>", reportType);
-        console.log("reportReason>>", reportReason);
+        // console.log("accountId>>", accountId);
+        // console.log("accountId2>>", accountId2);
+        // console.log("reportType>>", reportType);
+        // console.log("reportReason>>", reportReason);
 
         var now = new Date();
         // let reportTime = now.toISOString().slice(0, 10) + " " + now.toISOString().slice(11, 16);
         let reportTime = now;
-        console.log("reportTime>>", reportTime);
+        // console.log("reportTime>>", reportTime);
         $.ajax({
             url: "/ixercise/back/reportmember",
             type: "POST",
@@ -452,7 +458,7 @@ $(document).ready(function () {
                 reportStatus: 1
             }),
             success: function (resp) {
-                console.log("resp>>" + resp);
+                // console.log("resp>>" + resp);
                 alert("檢舉成功!");
                 $('#exampleModal').modal('hide');
             },

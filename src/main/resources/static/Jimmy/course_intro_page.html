@@ -508,7 +508,7 @@
                 <div class="col-md-6">
                     <div class="h-100 p-5 bg-light border rounded-3">
                         <h2>教練介紹</h2>
-                        <h4 class="o_creator">教練介紹</h4>
+                        <h4 class="o_creator">教練介紹</h4><h4 class="o_creatorNickname">nickname</h4>
                         <p id="accountIntro_place">Or, keep it light and add a border for some added definition to the
                             boundaries of your
                             content. Be sure to look under the hood at the source HTML here as we've adjusted the
@@ -633,50 +633,8 @@
 
 
         $(document).ready(function () {
-            // console.log("有人嗎");
-
-            // testbtn
-            $('#testbtn').click(function () {
-                $.ajax({
-                    url: '/ixercise/courseAttendee/getAttendeesCount/' + courseId,
-                    type: 'GET',
-                    success: function (response) {
-                        console.log(response);
-
-                        let x = response.filter(function (item) {
-                            if (item.courseId === courseId)
-                                return true;
-                        });
-
-                        console.log(x);
-                        let y = x.length;
-                        console.log("y:", y);
-
-                        $("#eventName").text(response.eventName);
-                        $("#categoryId").text(response.categoryId);
-                        $("#photo").attr("src", "/ixercise/lib/img/course/" + response.photo);
-                        $("#location").text(response.location);
-                        $("#city").text(response.city);
-                        $("#district").text(response.district);
-                        $("#detailedAddress").text(response.detailedAddress);
-                        // $("#courseStartDate").text(response.courseStartDate);
-                        var courseStartTime = (response.courseStartTime).substring(0, 16);
-                        $("#courseStartTime").text(courseStartTime);
-                        $("#expectedPrice").text(response.expectedPrice);
-                        $("#courseDuration").text(response.courseDuration);
-                        // $("#creator").text(response.creator);
-                        $("#maximumCapacity").text(response.maximumCapacity);
-                        $("#currentEnrolment").text(response.currentEnrolment);
-                        $("#registrationDeadline").text(response.registrationDeadline);
-                        // $("#description").text(response.description);
-                        $("#description").html(response.description);
-
-                    }, error: function (xhr, status, error) {
-                        console.log(error);
-                    }
-                });
-            });
-
+            let LSaccountId = localStorage.getItem('accountId');
+            // console.log("LSaccountId=" + LSaccountId);
 
 
             // <!-- 課程介紹區 --> 抓Course_homePage.html傳來的courseId
@@ -714,9 +672,10 @@
 
 
 
-                    // <!-- 下排課程推薦 -->
                     let creator = response.creator;
                     console.log("$(#creator).text(response.creator): " + creator);
+                    // <!-- 下排課程推薦 -->
+                    let creator_hide1=sessionStorage.getItem("creator_hide");
 
                     // 1.其他課程(同個教練)
                     $.ajax({
@@ -749,26 +708,26 @@
                             e.preventDefault();
 
                             console.log("其他課程(同個教練)courseId: " + other_courseId);
-                            var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + other_courseId;
+                            var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + other_courseId+ '&thismemberName=' + thismemberName + '&creator_hide' + creator_hide1;
                             window.open(url, '_blank');
                         });
                     }; //1.其他課程(同個教練)--結束
 
                     // 2.教練介紹
                     $.ajax({
-                        url: '/ixercise/Account/Manage/' + creator,
+                        url: '/ixercise/Account/Manage/' + creator_hide1,
                         type: 'GET',
                         async: false,//
                         success: function (m) {
                             // console.log(m);
                             $(".o_creator").text(m.accountName);
+                            $(".o_creatorNickname").text(m.accountNickname);
                             $("#accountIntro_place").text(m.accountIntro);
                             // btn教練介紹
                             $("#trainerbtn").on("click", function (e) {
-                                console.log("456");
                                 e.preventDefault();
                                 // @@@@@@@@@去看教練個人頁面@@@@@@@@@@@@
-                                var url = '/ixercise/Account/PersonalPage.html?accountId=' + creator;
+                                var url = '/ixercise/Account/PersonalPage.html?accountId=' + creator_hide1;
                                 window.open(url, '_blank');
                             });
                         },
@@ -784,9 +743,9 @@
             });
 
             // 2.教練介紹按鈕
-            $('.btn-outline-secondary').on('click', function (e) {
-                window.location.href = '/ixercise/Account/PersonalPage.html';
-            });
+            // $('.btn-outline-secondary').on('click', function (e) {
+            //     window.location.href = '/ixercise/Account/PersonalPage.html';
+            // });
 
             //danni edited -- 11/06/2023
             let accountId4Status = localStorage.getItem("accountId");  //local storage
