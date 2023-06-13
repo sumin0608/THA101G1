@@ -13,8 +13,9 @@ We also have an online store on our website! Here, you can explore a wide range 
 
 ***
 Wireframes    
-The wireframes for the website were developed using [Figma](https://www.figma.com/files/recent?fuid=1222425242959965241)      
-###Tech stack
+The wireframes for the website were developed using [Figma](https://www.figma.com/files/recent?fuid=1222425242959965241)         
+
+Tech stack
 ---
 Front End   
 - HTML
