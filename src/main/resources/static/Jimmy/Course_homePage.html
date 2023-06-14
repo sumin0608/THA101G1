@@ -222,6 +222,7 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </li>
 
                 <!-- <div class="collapse  d-block" id="collapseExample">
@@ -595,374 +596,200 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 以下footer================================================================================= -->
-    <footer class="footer py-5 footer-color">
-        <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <p class="m-0 text-white h3">客服中心</p>
-                    <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
-                    <p class="m-0 text-white">Tel: 02-2712-0589</p>
-                </div>
-                <div class="col-3">
-                    <p class="m-0 text-white h3">快速使用</p>
-                    <a class="d-block" href="">註冊會員</a>
-                    <a class="d-block" href="">舉辦活動</a>
-                    <a class="d-block" href="">常見問題</a>
-                </div>
-                <div class="col-3">
-                    <p class="m-0 text-white h3">主要頁面</p>
-                    <a class="d-block" href="">首頁</a>
-                    <a class="d-block" href="">活動</a>
-                    <a class="d-block" href="">論壇</a>
-                    <a class="d-block" href="">商城</a>
-                </div>
-                <div class="col-3"></div>
+<!-- 以下footer================================================================================= -->
+<footer class="footer py-5 footer-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <p class="m-0 text-white h3">客服中心</p>
+                <p class="m-0 text-white">Email: Ixercise@gmail.com</p>
+                <p class="m-0 text-white">Tel: 02-2712-0589</p>
             </div>
+            <div class="col-3">
+                <p class="m-0 text-white h3">快速使用</p>
+                <a class="d-block" href="">註冊會員</a>
+                <a class="d-block" href="">舉辦活動</a>
+                <a class="d-block" href="">常見問題</a>
+            </div>
+            <div class="col-3">
+                <p class="m-0 text-white h3">主要頁面</p>
+                <a class="d-block" href="">首頁</a>
+                <a class="d-block" href="">活動</a>
+                <a class="d-block" href="">論壇</a>
+                <a class="d-block" href="">商城</a>
+            </div>
+            <div class="col-3"></div>
         </div>
-    </footer>
-    <!-- footer結束================================================================================= -->
-    <!-- 引入所需函式庫 -->
-    <script src="../lib/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/js/popper.min.js"></script>
-    <script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
-    <script src="../lib/js/nav.js"></script>
-    <!-- <script src="../lib/js/nav.js"></script> -->
-    <!-- 漂亮alert! -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- 載入 Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <!-- ================================================================= -->
-    <script>
-        $("#searchbar").focus("click", function () {
-            // $("#searchbar").focus(function () {
-            $("#searchcard").removeClass("d-none");
+    </div>
+</footer>
+<!-- footer結束================================================================================= -->
+<!-- 引入所需函式庫 -->
+<script src="../lib/js/bootstrap.bundle.min.js"></script>
+<script src="../lib/js/popper.min.js"></script>
+<script src="../lib/vendors/jquery/jquery-3.6.4.min.js"></script>
+<script src="../lib/js/nav.js"></script>
+<!-- <script src="../lib/js/nav.js"></script> -->
+<!-- 漂亮alert! -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- 載入 Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<!-- ================================================================= -->
+<script>
+    $("#searchbar").focus("click", function () {
+        // $("#searchbar").focus(function () {
+        $("#searchcard").removeClass("d-none");
+    });
+    $("#btn-close-search").on("click", function () {
+        $("#searchcard").addClass("d-none");
+    })
+
+    // 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
+    const auditTypeMap = {
+        1: '可參加',
+        2: '暫停報名',
+        3: '截止報名',
+        4: '滿團',
+        5: '強制下架'
+    };
+
+    $(document).ready(function () {
+        // <<loading 加載動畫區>>
+        // 燈箱效果開關
+        function showLoadingAnimation() {
+            $('.lightbox').addClass('show');
+        }
+
+        function hideLoadingAnimation() {
+            $('.lightbox').removeClass('show');
+        }
+
+        // 在發送请求之前加载燈箱效果
+        $(document).on('ajaxStart', function () {
+            showLoadingAnimation();
         });
-        $("#btn-close-search").on("click", function () {
-            $("#searchcard").addClass("d-none");
-        })
+        // 在请求完成后隐藏加载燈箱效果
+        $(document).on('ajaxStop', function () {
+            setTimeout(function () {
+                hideLoadingAnimation();
+            }, 500);
+        });// <<loading 加載動畫區--結束>>
 
-        // 1.可參加 2. 暫停報名 3. 截止報名 4:滿團 5:強制下架
-        const auditTypeMap = {
-            1: '可參加',
-            2: '暫停報名',
-            3: '截止報名',
-            4: '滿團',
-            5: '強制下架'
-        };
-
-        $(document).ready(function () {
-            // <<loading 加載動畫區>>
-            // 燈箱效果開關
-            function showLoadingAnimation() {
-                $('.lightbox').addClass('show');
-            }
-
-            function hideLoadingAnimation() {
-                $('.lightbox').removeClass('show');
-            }
-
-            // 在發送请求之前加载燈箱效果
-            $(document).on('ajaxStart', function () {
-                showLoadingAnimation();
-            });
-            // 在请求完成后隐藏加载燈箱效果
-            $(document).on('ajaxStop', function () {
-                setTimeout(function () {
-                    hideLoadingAnimation();
-                }, 500);
-            });// <<loading 加載動畫區--結束>>
-
-            // <<lazy-loading創建一個 Intersection Observer 實例>>
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = $(entry.target);
-                        const src = img.data('src');
-                        img.attr('src', src);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-
-
-            // // <<自動加載撈全部課程>>
-            $.ajax({
-                url: "/ixercise/course",
-                type: "GET",
-                dataType: "json",
-                success: function (resp1) {
-                    // console.log("resp1>>" + resp1);
-                    let tableData = '';
-                    var memberName;
-                    var accphoto;
-
-                    var today = new Date();
-                    // console.log(" today: ", today);
-                    var resp2 = resp1.filter(function (item) {
-                        var registrationDeadline = new Date(item.registrationDeadline);
-                        // console.log("item.registrationDeadline: ", registrationDeadline);
-                        if (registrationDeadline > today) {
-                            return true;
-                        }
-                    });
-                    // console.log("resp2: ", resp2);
-                    var resp = resp2.filter(function (item) {
-                        if (item.courseStatus === 1 || item.courseStatus === 4) {
-                            return true;
-                        }
-                    });
-                    // console.log("resp: ", resp);
-
-                    for (let i = 0; i < resp.length; i++) {
-                        if (resp[i].courseStatus !== 2 || resp[i].courseStatus !== 5) {
-                            tableData += `<div class="col mb-5 event_card_container">`;
-                            tableData += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
-                            tableData += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
-                            tableData += `<div class="photo">`
-                            tableData += `<img class="card-img-top event_pic lazy"
-                                            data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
-                            tableData += `</div>`;
-                            tableData += `<div class="card-body p-2">`;
-                            tableData += `<div class="text-left">`;
-                            tableData += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5>
-                                    <h9>${auditTypeMap[resp[i].courseStatus]}</h9>
-                                    </div>`;
-                                tableData += `   <div class="mb-2 event_location">`;
-                                tableData += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
-                                tableData += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
-                                tableData += `   </div>`;
-                                tableData += `   <div class="event_start_time">`;
-                                tableData += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
-                                tableData += `   </div>`;
-                                tableData += `</div>`;
-                                tableData += `</div>`;
-                                tableData += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
-                                tableData += `    <div class="d-flex flex-row align-items-center event_creater">`;
-                                // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
-                                $.ajax({
-                                    url: "/ixercise/Account/Manage/" + resp[i].creator,
-                                    type: "GET",
-                                    dataType: "json",
-                                    async: false,//非同步的（asynchronous），表示該請求是同步的
-                                    data: { id: resp[i].creator }, // 将 creator 作为参数传递
-                                    success: function (memberResp) {
-                                        // console.log("memberResp: " + memberResp);
-                                        memberNickName = memberResp.accountNickname;
-                                        accphoto = memberResp.accountPhoto;
-                                        // console.log("memberName: " + memberName);
-                                        // console.log("accphoto: " + accphoto);
-                                    },
-                                    error: function (xhr, status, error) {
-                                        alert("Error: " + xhr.responseText);
-                                    }
-                                });
-                                tableData += `<div class="member-icon">`;
-                                // tableData += `    <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
-                                //                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                //                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                                tableData += `    <img class="avatarID" src="${getcreateObjURL(accphoto)}"
-                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                            tableData += `</div>`;
-                            tableData += `<div class="col-8 ms-2 c-details">`;
-                            // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
-                            tableData += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
-                            tableData += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
-                            tableData += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
-                            tableData += `</a >`;
-                            tableData += `</div>`;
-                            tableData += `</div>`;
-
-                            // var memberid = resp[i].creator;
-                            // var avatarid = "avatar-" + memberid;
-                            // console.log("avatarid:", avatarid);
-                            // var avataroutside1 = $("#avatarID");
-                            // avataroutside1.src = getcreateObjURL(accphoto);
-                            // console.log("avataroutside1:", avataroutside1);
-
-                        }
-                    }
-                    $("#input_card").empty().append(tableData);
-                    // 延遲加載圖像
-                    const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
-                    // console.log("lazyImages: " + lazyImages);
-                    lazyImages.forEach((image) => {
-                        observer.observe(image);
-                    });
-                    //<<lazy-loading--結束>>
-                },
-                error: function (xhr, status, error) {
-                    alert("Error: " + xhr.responseText);
+        // <<lazy-loading創建一個 Intersection Observer 實例>>
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = $(entry.target);
+                    const src = img.data('src');
+                    img.attr('src', src);
+                    observer.unobserve(entry.target);
                 }
             });
-
-            // <<search撈篩選課程>>
-            $('#btn_selecter_search').on('click', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "/ixercise/course",
-                    type: "GET",
-                    dataType: "json",
-                    success: handleDistrictsResponse,//
-                    error: function (xhr, status, error) {
-                        alert("Error: " + xhr.responseText);
-                    }
-                });
-            });
-
-            //success:實際function
-            function handleDistrictsResponse(resp) {
-                console.log("handleDistricts_resp>>" + resp);
-                var sport_option = $('#select_sport option:selected').text();
-                var city_option = $('#select_city option:selected').text().trim();
-
-                var time_option = $('#select_time option:selected').val();
-                var sportValue = (sport_option !== "運動類型") ? sport_option : "";
-                var cityValue = (city_option !== "搜尋城市") ? city_option : "";
-                var timeValue = (time_option != "上課時段") ? time_option : "";
-                // var timeValue = time_option;
-                console.log("sport: " + sportValue);
-                console.log("city: " + cityValue);
-                console.log("time: " + timeValue);
-                // filter篩選:運動類型
-                let filteredData0 = resp.filter(function (item) {
-                    if (item.categoryId === sportValue) {
-                        return true;
-                    } else if (!sportValue) {
-                        return true;
-                    }
-                });
-                console.log("filteredData0>>" + filteredData0);
-
-                // filter篩選:城市
-                let filteredData00 = filteredData0.filter(function (item) {
-                    if (item.city === cityValue) {
-                        return true;
-                    } else if (!cityValue) {
-                        return true;
-                    }
-                });
-                console.log("filteredData00>>" + filteredData00);
+        });
 
 
-                // filter篩選:時間
-                let filteredData1 = filteredData00.filter(function (item) {
-                    if (timeValue == 1) {
-                        // 上午时间范围：06:00 ~ 12:00
-                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', {hour12: false});
-                        return startTime > "06:00:00" && startTime < "12:00:00";
-                    } else if (timeValue == 2) {
-                        // 下午时间范围：12:00 ~ 18:00
-                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', {hour12: false});
-                        return startTime >= "12:00:00" && startTime < "18:00:00";
-                    } else if (timeValue == 3) {
-                        // 晚上时间范围：18:00 ~ 24:00
-                        var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', {hour12: false});
-                        return startTime >= "18:00:00" && startTime < "24:00:00";
-                    } else {
-                        return true;
-                    }
-                });
-                console.log("filteredData1>>" + filteredData1);
+        // // <<自動加載撈全部課程>>
+        $.ajax({
+            url: "/ixercise/course",
+            type: "GET",
+            dataType: "json",
+            success: function (resp1) {
+                // console.log("resp1>>" + resp1);
+                let tableData = '';
+                var memberName;
+                var accphoto;
 
                 var today = new Date();
-                var filteredData2 = filteredData1.filter(function (item) {
+                // console.log(" today: ", today);
+                var resp2 = resp1.filter(function (item) {
                     var registrationDeadline = new Date(item.registrationDeadline);
+                    // console.log("item.registrationDeadline: ", registrationDeadline);
                     if (registrationDeadline > today) {
                         return true;
                     }
                 });
-                console.log("filteredData2>>" + filteredData2);
-                var filteredData = filteredData2.filter(function (item) {
-                    if (item.courseStatus === 1 || item.courseStatus === 3 || item.courseStatus === 4) {
+                // console.log("resp2: ", resp2);
+                var resp = resp2.filter(function (item) {
+                    if (item.courseStatus === 1 || item.courseStatus === 4) {
                         return true;
                     }
                 });
-                console.log("filteredData: ", filteredData);
+                // console.log("resp: ", resp);
 
-                let tableData2 = '';
-                var memberName
-                var accphoto;
-                if (filteredData.length > 0) {
-                    for (let i = 0; i < filteredData.length; i++) {
-                        console.log("filteredData[i]: " + filteredData[i].eventName + "," + filteredData[i].categoryId);
-                        tableData2 += `<div class="col mb-5 event_card_container">`;
-                        tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
-                        tableData2 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
-                        tableData2 += `<div class="photo">`
-                        tableData2 += `<img class="card-img-top event_pic lazy"
-                                            src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="card-body p-2">`;
-                        tableData2 += `<div class="text-left">`;
-                        tableData2 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${filteredData[i].eventName}</h5>
-                                <h9>${auditTypeMap[filteredData[i].courseStatus]}</h9>
-                                </div>`;
-                        tableData2 += `   <div class="mb-2 event_location">`;
-                        tableData2 += `        <span class="card-text  text-muted event_city">${filteredData[i].city}</span>`;
-                        tableData2 += `        <span class="card-text text-muted event_place">${filteredData[i].location}</span>`;
-                        tableData2 += `   </div>`;
-                        tableData2 += `   <div class="event_start_time">`;
-                        tableData2 += `        <p class="card-text text-muted">${filteredData[i].courseStartTime.substring(0, 16)}</p>`;
-                        tableData2 += `   </div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
-                        tableData2 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                for (let i = 0; i < resp.length; i++) {
+                    if (resp[i].courseStatus !== 2 || resp[i].courseStatus !== 5) {
+                        tableData += `<div class="col mb-5 event_card_container">`;
+                        tableData += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                        tableData += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
+                        tableData += `<div class="photo">`
+                        tableData += `<img class="card-img-top event_pic lazy"
+                                            data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
+                        tableData += `</div>`;
+                        tableData += `<div class="card-body p-2">`;
+                        tableData += `<div class="text-left">`;
+                        tableData += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5>
+                                    <h9>${auditTypeMap[resp[i].courseStatus]}</h9>
+                                    </div>`;
+                        tableData += `   <div class="mb-2 event_location">`;
+                        tableData += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
+                        tableData += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
+                        tableData += `   </div>`;
+                        tableData += `   <div class="event_start_time">`;
+                        tableData += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                        tableData += `   </div>`;
+                        tableData += `</div>`;
+                        tableData += `</div>`;
+                        tableData += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                        tableData += `    <div class="d-flex flex-row align-items-center event_creater">`;
                         // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
                         $.ajax({
-                            url: "/ixercise/Account/Manage/" + filteredData[i].creator,
+                            url: "/ixercise/Account/Manage/" + resp[i].creator,
                             type: "GET",
                             dataType: "json",
                             async: false,//非同步的（asynchronous），表示該請求是同步的
-                            data: {id: filteredData[i].creator}, // 将 creator 作为参数传递
+                            data: {id: resp[i].creator}, // 将 creator 作为参数传递
                             success: function (memberResp) {
+                                // console.log("memberResp: " + memberResp);
                                 memberNickName = memberResp.accountNickname;
                                 accphoto = memberResp.accountPhoto;
-                                // console.log("memberName: " + memberName)
+                                // console.log("memberName: " + memberName);
+                                // console.log("accphoto: " + accphoto);
                             },
                             error: function (xhr, status, error) {
                                 alert("Error: " + xhr.responseText);
                             }
                         });
-                        tableData2 += `<div class="member-icon">`;
-                        // tableData2 += ` <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
-                        //                                             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                        //                                             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                        tableData2 += `    <img id="avatarID" src="${getcreateObjURL(accphoto)}"
+                        tableData += `<div class="member-icon">`;
+                        // tableData += `    <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
+                        //                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                        //                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                        tableData += `    <img class="avatarID" src="${getcreateObjURL(accphoto)}"
                                                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                        tableData2 += `</div>`;
-                        tableData2 += `<div class="col-8 ms-2 c-details">`
-                        tableData2 += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
-                        // tableData2 += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練編號:${filteredData[i].creator}</h6>`;
-                        tableData2 += `<div class=" text-muted courseId_hide" style="display:none">${filteredData[i].courseId}</div>`;
-                        tableData2 += `<div class=" text-muted creator_hide" style="display:none">${filteredData[i].creator}</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</a>`;
-                        tableData2 += `</div>`;
-                        tableData2 += `</div>`;
+                        tableData += `</div>`;
+                        tableData += `<div class="col-8 ms-2 c-details">`;
+                        // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
+                        tableData += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
+                        tableData += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                        tableData += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
+                        tableData += `</div>`;
+                        tableData += `</div>`;
+                        tableData += `</div>`;
+                        tableData += `</a >`;
+                        tableData += `</div>`;
+                        tableData += `</div>`;
 
-                        console.log("resp[i].courseId>>",filteredData[i].courseId);
-                        console.log("resp[i].creator>>",filteredData[i].creator);
                         // var memberid = resp[i].creator;
                         // var avatarid = "avatar-" + memberid;
-                        // const avataroutside1 = document.querySelector("#avatarid");
+                        // console.log("avatarid:", avatarid);
+                        // var avataroutside1 = $("#avatarID");
                         // avataroutside1.src = getcreateObjURL(accphoto);
+                        // console.log("avataroutside1:", avataroutside1);
+
                     }
-                } else {
-                    console.log("No data found");
-                    swal("Warning!", "QQ無符合資料", "warning");
                 }
-                //$('#btn_selecter_search')結束
-                $("#input_card").empty().append(tableData2);
+                $("#input_card").empty().append(tableData);
                 // 延遲加載圖像
                 const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
                 // console.log("lazyImages: " + lazyImages);
@@ -970,175 +797,347 @@
                     observer.observe(image);
                 });
                 //<<lazy-loading--結束>>
-            };
+            },
+            error: function (xhr, status, error) {
+                alert("Error: " + xhr.responseText);
+            }
+        });
 
-            // <<search模糊查詢課程>>
-            $("#searchbtn").on("click", function (e) {
-                $("#searchcard").addClass("d-none");
-                e.preventDefault();
-                // console.log("成功")
+        // <<search撈篩選課程>>
+        $('#btn_selecter_search').on('click', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/ixercise/course",
+                type: "GET",
+                dataType: "json",
+                success: handleDistrictsResponse,//
+                error: function (xhr, status, error) {
+                    alert("Error: " + xhr.responseText);
+                }
+            });
+        });
 
-                const searchinput = $("#searchbar").val();
-                console.log("searchinput:" + searchinput);
+        //success:實際function
+        function handleDistrictsResponse(resp) {
+            console.log("handleDistricts_resp>>" + resp);
+            var sport_option = $('#select_sport option:selected').text();
+            var city_option = $('#select_city option:selected').text().trim();
 
-                if (searchinput != "") {
+            var time_option = $('#select_time option:selected').val();
+            var sportValue = (sport_option !== "運動類型") ? sport_option : "";
+            var cityValue = (city_option !== "搜尋城市") ? city_option : "";
+            var timeValue = (time_option != "上課時段") ? time_option : "";
+            // var timeValue = time_option;
+            console.log("sport: " + sportValue);
+            console.log("city: " + cityValue);
+            console.log("time: " + timeValue);
+            // filter篩選:運動類型
+            let filteredData0 = resp.filter(function (item) {
+                if (item.categoryId === sportValue) {
+                    return true;
+                } else if (!sportValue) {
+                    return true;
+                }
+            });
+            console.log("filteredData0>>" + filteredData0);
 
+            // filter篩選:城市
+            let filteredData00 = filteredData0.filter(function (item) {
+                if (item.city === cityValue) {
+                    return true;
+                } else if (!cityValue) {
+                    return true;
+                }
+            });
+            console.log("filteredData00>>" + filteredData00);
+
+
+            // filter篩選:時間
+            let filteredData1 = filteredData00.filter(function (item) {
+                if (timeValue == 1) {
+                    // 上午时间范围：06:00 ~ 12:00
+                    var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', {hour12: false});
+                    return startTime > "06:00:00" && startTime < "12:00:00";
+                } else if (timeValue == 2) {
+                    // 下午时间范围：12:00 ~ 18:00
+                    var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', {hour12: false});
+                    return startTime >= "12:00:00" && startTime < "18:00:00";
+                } else if (timeValue == 3) {
+                    // 晚上时间范围：18:00 ~ 24:00
+                    var startTime = new Date(item.courseStartTime).toLocaleTimeString('zh-TW', {hour12: false});
+                    return startTime >= "18:00:00" && startTime < "24:00:00";
+                } else {
+                    return true;
+                }
+            });
+            console.log("filteredData1>>" + filteredData1);
+
+            var today = new Date();
+            var filteredData2 = filteredData1.filter(function (item) {
+                var registrationDeadline = new Date(item.registrationDeadline);
+                if (registrationDeadline > today) {
+                    return true;
+                }
+            });
+            console.log("filteredData2>>" + filteredData2);
+            var filteredData = filteredData2.filter(function (item) {
+                if (item.courseStatus === 1 || item.courseStatus === 3 || item.courseStatus === 4) {
+                    return true;
+                }
+            });
+            console.log("filteredData: ", filteredData);
+
+            let tableData2 = '';
+            var memberName
+            var accphoto;
+            if (filteredData.length > 0) {
+                for (let i = 0; i < filteredData.length; i++) {
+                    console.log("filteredData[i]: " + filteredData[i].eventName + "," + filteredData[i].categoryId);
+                    tableData2 += `<div class="col mb-5 event_card_container">`;
+                    tableData2 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                    tableData2 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
+                    tableData2 += `<div class="photo">`
+                    tableData2 += `<img class="card-img-top event_pic lazy"
+                                            src="/ixercise/lib/img/course/${filteredData[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="card-body p-2">`;
+                    tableData2 += `<div class="text-left">`;
+                    tableData2 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${filteredData[i].eventName}</h5>
+                                <h9>${auditTypeMap[filteredData[i].courseStatus]}</h9>
+                                </div>`;
+                    tableData2 += `   <div class="mb-2 event_location">`;
+                    tableData2 += `        <span class="card-text  text-muted event_city">${filteredData[i].city}</span>`;
+                    tableData2 += `        <span class="card-text text-muted event_place">${filteredData[i].location}</span>`;
+                    tableData2 += `   </div>`;
+                    tableData2 += `   <div class="event_start_time">`;
+                    tableData2 += `        <p class="card-text text-muted">${filteredData[i].courseStartTime.substring(0, 16)}</p>`;
+                    tableData2 += `   </div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                    tableData2 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                    // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
                     $.ajax({
-                        url: "/ixercise/course/fuzzySearch/" + searchinput,
+                        url: "/ixercise/Account/Manage/" + filteredData[i].creator,
                         type: "GET",
                         dataType: "json",
-                        success: function (resp1) {
-                            // console.log("resp1>>" + resp1);
-                            if (resp1 !== "") {
-                                let tableData3 = '';
-                                var memberName;
-                                var accphoto;
-                                var today = new Date();
-                                var resp = resp1.filter(function (item) {
-                                    var registrationDeadline = new Date(item.registrationDeadline);
-                                    if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
-                                        return true;
-                                    }
-                                });
-                                console.log("resp>>" + resp);
-                                for (let i = 0; i < resp.length; i++) {
-                                    tableData3 += `<div class="col mb-5 event_card_container">`;
-                                    tableData3 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
-                                    tableData3 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
-                                    tableData3 += `<div class="photo">
-                                            <img class="card-img-top event_pic lazy"
-                                            data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />
-                                            </div>`;
-                                    tableData3 += `<div class="card-body p-2">`;
-                                    tableData3 += `<div class="text-left">`;
-                                    tableData3 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5>
-                                    <h9>${auditTypeMap[resp[i].courseStatus]}</h9>
-                                    </div>`;
-                                    tableData3 += `   <div class="mb-2 event_location">`;
-                                    tableData3 += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
-                                    tableData3 += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
-                                    tableData3 += `   </div>`;
-                                    tableData3 += `   <div class="event_start_time">`;
-                                    tableData3 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
-                                    tableData3 += `   </div>`;
-                                    tableData3 += `</div>`;
-                                    tableData3 += `</div>`;
-                                    tableData3 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
-                                    tableData3 += `    <div class="d-flex flex-row align-items-center event_creater">`;
-                                    // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
-                                    $.ajax({
-                                        url: "/ixercise/Account/Manage/" + resp[i].creator,
-                                        type: "GET",
-                                        dataType: "json",
-                                        async: false,//非同步的（asynchronous），表示該請求是同步的
-                                        data: {id: resp[i].creator}, // 将 creator 作为参数传递
-                                        success: function (memberResp) {
-                                            // console.log("memberResp: " + memberResp);
-                                            memberName = memberResp.accountNickname;
-                                            console.log("memberName: " + memberName);
-                                            accphoto = memberResp.accountPhoto;
-                                        },
-                                        error: function (xhr, status, error) {
-                                            alert("Error: " + xhr.responseText);
-                                        }
-                                    });
-                                    tableData3 += `<div class="member-icon">`;
-                                    // tableData3 += `<img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
-                                    //             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                    //             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                                    tableData3 += `    <img id="avatarID" src="${getcreateObjURL(accphoto)}"
-                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
-                                    tableData3 += `</div>`;
-                                    tableData3 += `<div class="col-8 ms-2 c-details">`;
-                                    tableData3 += `     教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
-                                    // tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
-                                    tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
-                                    tableData3 += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
-                                    tableData3 += `</div></div></div></a></div></div>`;
-
-                                    // var memberid = resp[i].creator;
-                                    // var avatarid = "avatar-" + memberid;
-                                    // const avataroutside1 = document.querySelector("#avatarid");
-                                    // avataroutside1.src = getcreateObjURL(accphoto);
-                                }
-                                $("#input_card").empty().append(tableData3);
-                                // 延遲加載圖像
-                                const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
-                                // console.log("lazyImages: " + lazyImages);
-                                lazyImages.forEach((image) => {
-                                    observer.observe(image);
-                                });
-                                //<<lazy-loading--結束>>
-                            } else {
-                                console.log("No data found");
-                                swal("Warning!", "QQ無符合資料", "warning");
-                            }
+                        async: false,//非同步的（asynchronous），表示該請求是同步的
+                        data: {id: filteredData[i].creator}, // 将 creator 作为参数传递
+                        success: function (memberResp) {
+                            memberNickName = memberResp.accountNickname;
+                            accphoto = memberResp.accountPhoto;
+                            // console.log("memberName: " + memberName)
                         },
                         error: function (xhr, status, error) {
                             alert("Error: " + xhr.responseText);
                         }
                     });
+                    tableData2 += `<div class="member-icon">`;
+                    // tableData2 += ` <img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
+                    //                                             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                    //                                             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                    tableData2 += `    <img id="avatarID" src="${getcreateObjURL(accphoto)}"
+                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                    tableData2 += `</div>`;
+                    tableData2 += `<div class="col-8 ms-2 c-details">`
+                    tableData2 += `      教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberNickName}</h6>`;
+                    // tableData2 += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練編號:${filteredData[i].creator}</h6>`;
+                    tableData2 += `<div class=" text-muted courseId_hide" style="display:none">${filteredData[i].courseId}</div>`;
+                    tableData2 += `<div class=" text-muted creator_hide" style="display:none">${filteredData[i].creator}</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</a>`;
+                    tableData2 += `</div>`;
+                    tableData2 += `</div>`;
 
+                    console.log("resp[i].courseId>>", filteredData[i].courseId);
+                    console.log("resp[i].creator>>", filteredData[i].creator);
+                    // var memberid = resp[i].creator;
+                    // var avatarid = "avatar-" + memberid;
+                    // const avataroutside1 = document.querySelector("#avatarid");
+                    // avataroutside1.src = getcreateObjURL(accphoto);
                 }
+            } else {
+                console.log("No data found");
+                swal("Warning!", "QQ無符合資料", "warning");
+            }
+            //$('#btn_selecter_search')結束
+            $("#input_card").empty().append(tableData2);
+            // 延遲加載圖像
+            const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
+            // console.log("lazyImages: " + lazyImages);
+            lazyImages.forEach((image) => {
+                observer.observe(image);
+            });
+            //<<lazy-loading--結束>>
+        };
+
+        // <<search模糊查詢課程>>
+        $("#searchbtn").on("click", function (e) {
+            $("#searchcard").addClass("d-none");
+            e.preventDefault();
+            // console.log("成功")
+
+            const searchinput = $("#searchbar").val();
+            console.log("searchinput:" + searchinput);
+
+            if (searchinput != "") {
+
+                $.ajax({
+                    url: "/ixercise/course/fuzzySearch/" + searchinput,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (resp1) {
+                        // console.log("resp1>>" + resp1);
+                        if (resp1 !== "") {
+                            let tableData3 = '';
+                            var memberName;
+                            var accphoto;
+                            var today = new Date();
+                            var resp = resp1.filter(function (item) {
+                                var registrationDeadline = new Date(item.registrationDeadline);
+                                if ((registrationDeadline > today) && (item.courseStatus !== 2 || item.courseStatus !== 5)) {
+                                    return true;
+                                }
+                            });
+                            console.log("resp>>" + resp);
+                            for (let i = 0; i < resp.length; i++) {
+                                tableData3 += `<div class="col mb-5 event_card_container">`;
+                                tableData3 += `<div class="card h-100 p-0 mb-0 event_card event_card">`;
+                                tableData3 += `<a href="/ixercise/jimmy/course_intro_page.html" class="eventLink">`;
+                                tableData3 += `<div class="photo">
+                                            <img class="card-img-top event_pic lazy"
+                                            data-src="/ixercise/lib/img/course/${resp[i].photo}" alt="紙上得來終覺淺，絕知此事要躬行" />
+                                            </div>`;
+                                tableData3 += `<div class="card-body p-2">`;
+                                tableData3 += `<div class="text-left">`;
+                                tableData3 += `   <div class="event_title"><h5 class="card-title fw-bolder text-truncate">${resp[i].eventName}</h5>
+                                    <h9>${auditTypeMap[resp[i].courseStatus]}</h9>
+                                    </div>`;
+                                tableData3 += `   <div class="mb-2 event_location">`;
+                                tableData3 += `        <span class="card-text  text-muted event_city">${resp[i].city}</span>`;
+                                tableData3 += `        <span class="card-text text-muted event_place">${resp[i].location}</span>`;
+                                tableData3 += `   </div>`;
+                                tableData3 += `   <div class="event_start_time">`;
+                                tableData3 += `        <p class="card-text text-muted">${resp[i].courseStartTime.substring(0, 16)}</p>`;
+                                tableData3 += `   </div>`;
+                                tableData3 += `</div>`;
+                                tableData3 += `</div>`;
+                                tableData3 += `<div class="card-footer p-2  bg-transparent justify-content-between">`;
+                                tableData3 += `    <div class="d-flex flex-row align-items-center event_creater">`;
+                                // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                                $.ajax({
+                                    url: "/ixercise/Account/Manage/" + resp[i].creator,
+                                    type: "GET",
+                                    dataType: "json",
+                                    async: false,//非同步的（asynchronous），表示該請求是同步的
+                                    data: {id: resp[i].creator}, // 将 creator 作为参数传递
+                                    success: function (memberResp) {
+                                        // console.log("memberResp: " + memberResp);
+                                        memberName = memberResp.accountNickname;
+                                        console.log("memberName: " + memberName);
+                                        accphoto = memberResp.accountPhoto;
+                                    },
+                                    error: function (xhr, status, error) {
+                                        alert("Error: " + xhr.responseText);
+                                    }
+                                });
+                                tableData3 += `<div class="member-icon">`;
+                                // tableData3 += `<img id="avatar-${resp[i].creator}" src="https://picsum.photos/300/200/?random=10"
+                                //             class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                                //             data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                                tableData3 += `    <img id="avatarID" src="${getcreateObjURL(accphoto)}"
+                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                                tableData3 += `</div>`;
+                                tableData3 += `<div class="col-8 ms-2 c-details">`;
+                                tableData3 += `     教練:<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">${memberName}</h6>`;
+                                // tableData3 += `     <span class=" text-muted">還沒想好放什麼</span>`;
+                                tableData3 += `<div class=" text-muted courseId_hide" style="display:none">${resp[i].courseId}</div>`;
+                                tableData3 += `<div class=" text-muted creator_hide" style="display:none">${resp[i].creator}</div>`;
+                                tableData3 += `</div></div></div></a></div></div>`;
+
+                                // var memberid = resp[i].creator;
+                                // var avatarid = "avatar-" + memberid;
+                                // const avataroutside1 = document.querySelector("#avatarid");
+                                // avataroutside1.src = getcreateObjURL(accphoto);
+                            }
+                            $("#input_card").empty().append(tableData3);
+                            // 延遲加載圖像
+                            const lazyImages = $('.card-img-top.event_pic.lazy').toArray();
+                            // console.log("lazyImages: " + lazyImages);
+                            lazyImages.forEach((image) => {
+                                observer.observe(image);
+                            });
+                            //<<lazy-loading--結束>>
+                        } else {
+                            console.log("No data found");
+                            swal("Warning!", "QQ無符合資料", "warning");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+
+            }
         });
 
 
+        // <<跳轉詳細課程介紹>>
+        $('#input_card').on('click', '.eventLink', function (e) {
+            e.preventDefault();
+            let courseId_hide = $(this).closest('.event_card_container').find('.courseId_hide').text();
+            let thismemberName = $(this).closest('.event_card_container').find('h6').text().trim();
+            let creator_hide = $(this).closest('.event_card_container').find('.creator_hide').text();
+            console.log("courseId_hide: " + courseId_hide);
+            console.log("thismemberName: " + thismemberName);
+            console.log("creator_hide: " + creator_hide);
+
+            sessionStorage.setItem('courseId', courseId_hide);
+            sessionStorage.setItem('thismemberName', thismemberName);
+            sessionStorage.setItem('creator_hide', creator_hide);
+
+            var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + courseId_hide + '&thismemberName=' + thismemberName + '&creator_hide' + creator_hide;
+            window.open(url, '_blank');
+        });
 
 
+        // <<<<天氣api>>>>
+        // ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", 1668341);
+        $("#weatherresult3").html(`<p> ${(new Date()).toLocaleDateString()}</p > `);
+        $("#citypicker").change(function () {
+            console.log(this.value);
+            // if (!(this.value == null || this.value == "")) {
+            ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", this.value);
+            // } else {
+            //     $("#weatherresult").html("");  // 清空
+            // }
+        });
 
-            // <<跳轉詳細課程介紹>>
-            $('#input_card').on('click', '.eventLink', function (e) {
-                e.preventDefault();
-                let courseId_hide = $(this).closest('.event_card_container').find('.courseId_hide').text();
-                let thismemberName = $(this).closest('.event_card_container').find('h6').text().trim();
-                let creator_hide = $(this).closest('.event_card_container').find('.creator_hide').text();
-                console.log("courseId_hide: " + courseId_hide);
-                console.log("thismemberName: " + thismemberName);
-                console.log("creator_hide: " + creator_hide);
-
-                sessionStorage.setItem('courseId', courseId_hide);
-                sessionStorage.setItem('thismemberName', thismemberName);
-                sessionStorage.setItem('creator_hide', creator_hide);
-
-                var url = '/ixercise/jimmy/course_intro_page.html?courseId=' + courseId_hide + '&thismemberName=' + thismemberName + '&creator_hide' + creator_hide;
-                window.open(url, '_blank');
+        function ajaxCallJsonP(url, cityID) {
+            // console.log(url, cityID);
+            var data = $.getJSON(url,
+                {
+                    id: cityID,
+                    appid: "14550c20a1f07f3a8f42b63a1acf4002",
+                    lang: "zh_TW"
+                }).done(function (msg) {
+                    console.log("open weather api success!!!");
+                    // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
+                    $("#weatherresult1").empty().append(msg.weather[0].description);
+                    $("#weatherresult2").empty().append(`<img src = "https://openweathermap.org/img/wn/${msg.weather[0].icon}@2x.png" alt="天氣icon">`);
+                }
+            ).fail(function (xhr, status, error) {
+                console.log("error!!!");
             });
+        };
 
 
-            // <<<<天氣api>>>>
-            // ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", 1668341);
-            $("#weatherresult3").html(`<p> ${(new Date()).toLocaleDateString()}</p > `);
-            $("#citypicker").change(function () {
-                console.log(this.value);
-                // if (!(this.value == null || this.value == "")) {
-                ajaxCallJsonP("https://api.openweathermap.org/data/2.5/weather?", this.value);
-                // } else {
-                //     $("#weatherresult").html("");  // 清空
-                // }
-            });
-
-            function ajaxCallJsonP(url, cityID) {
-                // console.log(url, cityID);
-                var data = $.getJSON(url,
-                    {
-                        id: cityID,
-                        appid: "14550c20a1f07f3a8f42b63a1acf4002",
-                        lang: "zh_TW"
-                    }).done(function (msg) {
-                        console.log("open weather api success!!!");
-                        // $("#weatherresult").html(`< p > ${ (new Date()).toLocaleDateString() }</ > `);
-                        $("#weatherresult1").empty().append(msg.weather[0].description);
-                        $("#weatherresult2").empty().append(`<img src = "https://openweathermap.org/img/wn/${msg.weather[0].icon}@2x.png" alt="天氣icon">`);
-                    }
-                ).fail(function (xhr, status, error) {
-                    console.log("error!!!");
-                });
-            };
-
-
-        });//$(document).ready--結束
-    </script>
+    });//$(document).ready--結束
+</script>
 </body>
 
 </html>
