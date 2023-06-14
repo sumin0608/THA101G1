@@ -25,7 +25,7 @@ The wireframes for the website were developed using [Figma](https://www.figma.co
 ***
 Features
 ---
-1. **Organizing group sports activities is made simple.**
+1. **Organizing group sports activities is simple.**
 2. **Find partners instantly.**
 3. **Get the sport you want, when you want it.**
 
