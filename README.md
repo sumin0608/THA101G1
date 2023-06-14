@@ -12,7 +12,8 @@ Design
 ---
 **Design Overview**  
 The main inspiration for designing this website stems from the experiences of one of our classmates, a 17-year-old high school graduate who has just returned to Taiwan from New Zealand and wants to engage in sports activities during the summer break. However, after being away from Taiwan for many years, you find it challenging to find people to exercise with. Whether it's basketball with six players, football with six players, or baseball with eighteen players, this dilemma has led you to the idea of creating a website to solve this problem.     
-We have decided to provide a platform where individuals who are interested in sports can freely organize and participate in group activities. Additionally, we will also offer options for taking coaching classes and purchasing sports products on the same platform.         
+We have decided to provide a platform where individuals who are interested in sports can freely organize and participate in group activities. Additionally, we will also offer options for taking coaching classes and purchasing sports products on the same platform.           
+
 **Colour Scheme**     
 The colour scheme is quite simple, essentially consisting of only two colours. The primary colour is #41B883. This is a very strong and eye-catching colour when we learn the [Vue.js](https://vuejs.org/) framework. That conveys the sense of energy that we wanted to associate with the website. we believe using an energetic colour would attrack to attend activities with new friends. 
 ![primary color](https://github.com/sumin0608/THA101G1/assets/80056521/32479dc4-3b67-4d63-b490-e3d240497b5f)   
@@ -62,7 +63,7 @@ Skills Used
 - Restful
 
 API   
-- [Google Maps API](https://developers.google.com/maps/documentation/javascript/overview?hl=zh-tw)
+- [Google Maps API](https://developers.google.com/maps/documentation/javascript/overview?hl=zh-tw)     
 The Google Maps API is used to support and display the map in the form when you create courses or activities.
 - [綠界科技ECPay API](https://developers.ecpay.com.tw/)   
 The ECPay API is used to support attendees to pay the fees when they apply for courses.
