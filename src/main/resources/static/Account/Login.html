@@ -11,7 +11,7 @@
     <link href="../lib/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <!-- 引入頁籤icon======================================================= -->
-    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png"/>
+    <link rel="icon" type="image/x-icon" href="../lib/img/IX-nobackground.png" />
     <!-- =========================================== -->
     <style>
         .square-image {
@@ -38,7 +38,7 @@
     </style>
 </head>
 
-<body>
+<body class="">
     <!-- 我是V6，修改如下 -->
     <!-- 1.修正會員彈出選單頭像會跑版的問題 -->
     <!-- 2.修正通知圖片會有跑板問題 -->
@@ -398,7 +398,7 @@
         document.getElementById("btn1").addEventListener("click", function () {
             fetch("Login", {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     accountPhone: phone.value,
                     accountPassword: password.value
@@ -408,9 +408,9 @@
                 .then(resp => resp.json())
                 .then(body => {
                     errMsg.textContent = '';
-                    const {successful, message} = body;
+                    const { successful, message } = body;
                     if (successful) {
-                        const {accountId, accountNickname, accountLevel, accountPhoto, accountPhone,accountPassword} = body;
+                        const { accountId, accountNickname, accountLevel, accountPhoto, accountPhone, accountPassword } = body;
                         errMsg.className = "text-success";
                         errMsg.textContent = "登入成功";
 
@@ -424,7 +424,7 @@
                         localStorage.setItem("accountNickname", accountNickname);
                         localStorage.setItem("accountLevel", accountLevel);
                         localStorage.setItem("accountPhoto", accountPhoto);
-                        localStorage.setItem("token",message);
+                        localStorage.setItem("token", message);
 
                         const expirationTime = 5 * 60 * 60 * 1000; // 5 小時的毫秒數
                         const currentTime = new Date().getTime(); // 當前時間的毫秒數
@@ -435,8 +435,8 @@
                             localStorage.removeItem("accountLevel");
                             localStorage.removeItem("accountPhoto");
                         }, expirationTime);
-                        setTimeout(`location.href='${getContextPath()}/index.html'`,2000) ;
-                        loginforshop(phone.value,password.value);
+                        setTimeout(`location.href='${getContextPath()}/index.html'`, 2000);
+                        loginforshop(phone.value, password.value);
 
                     } else {
                         errMsg.className = "text-danger";
@@ -447,7 +447,7 @@
                 })
         })
 
-        function loginforshop(usna,ps){
+        function loginforshop(usna, ps) {
             const username = usna;
             const password = ps;
 

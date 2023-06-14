@@ -181,45 +181,52 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                        </svg>\n' +
     '                        <ul class="dropdown-menu dropdown-menu-lg-end"  id="listart" aria-labelledby="navbarDropdown">\n' +
     '                            <!-- 一條通知====================================================== -->\n' +
+
+    `<div class="list-group notifyunread"><a href="#" class="list-group-item list-group-item-action" aria-current="true" style="height: 93px; width:600px;"><div class="row h-100">
+                        <div class="col-12 h-100">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h1 class="text-muted">目前無任何提示......</h1>
+                            </div></div></div></a></div>` +
+    
     '                            <!-- 完成版 600px -->\n' +
-    '                            <div class="list-group notifyunread">\n' +
-    '                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"\n' +
-    '                                    style="height: 93px; width:600px;">\n' +
-    '                                    <div class="row h-100">\n' +
-    '                                        <div class="col-2 h-100">\n' +
-    '                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"\n' +
-    '                                                height="72px" alt="" style="object-fit:cover">\n' +
-    '                                        </div>\n' +
-    '                                        <div class="col-10">\n' +
-    '                                            <div class="d-flex w-100 justify-content-between">\n' +
-    '                                                <p class="mb-1" style=" overflow: hidden;">\n' +
-    '                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十\n' +
-    '                                                </p>\n' +
-    '                                                <small style="white-space: nowrap;">3 days ago</small>\n' +
-    '                                            </div>\n' +
-    '                                        </div>\n' +
-    '                                    </div>\n' +
-    '                                </a>\n' +
-    '                            </div>\n' +
-    '                            <div class="list-group notifyunread">\n' +
-    '                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"\n' +
-    '                                    style="height: 93px; width:600px;">\n' +
-    '                                    <div class="row h-100">\n' +
-    '                                        <div class="col-2 h-100">\n' +
-    '                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"\n' +
-    '                                                height="72px" alt="" style="object-fit:cover">\n' +
-    '                                        </div>\n' +
-    '                                        <div class="col-10">\n' +
-    '                                            <div class="d-flex w-100 justify-content-between">\n' +
-    '                                                <p class="mb-1" style=" overflow: hidden;">\n' +
-    '                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十\n' +
-    '                                                </p>\n' +
-    '                                                <small style="white-space: nowrap;">3 days ago</small>\n' +
-    '                                            </div>\n' +
-    '                                        </div>\n' +
-    '                                    </div>\n' +
-    '                                </a>\n' +
-    '                            </div>\n' +
+    // '                            <div class="list-group notifyunread">\n' +
+    // '                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"\n' +
+    // '                                    style="height: 93px; width:600px;">\n' +
+    // '                                    <div class="row h-100">\n' +
+    // '                                        <div class="col-2 h-100">\n' +
+    // '                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"\n' +
+    // '                                                height="72px" alt="" style="object-fit:cover">\n' +
+    // '                                        </div>\n' +
+    // '                                        <div class="col-10">\n' +
+    // '                                            <div class="d-flex w-100 justify-content-between">\n' +
+    // '                                                <p class="mb-1" style=" overflow: hidden;">\n' +
+    // '                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十\n' +
+    // '                                                </p>\n' +
+    // '                                                <small style="white-space: nowrap;">3 days ago</small>\n' +
+    // '                                            </div>\n' +
+    // '                                        </div>\n' +
+    // '                                    </div>\n' +
+    // '                                </a>\n' +
+    // '                            </div>\n' +
+    // '                            <div class="list-group notifyunread">\n' +
+    // '                                <a href="#" class="list-group-item list-group-item-action" aria-current="true"\n' +
+    // '                                    style="height: 93px; width:600px;">\n' +
+    // '                                    <div class="row h-100">\n' +
+    // '                                        <div class="col-2 h-100">\n' +
+    // '                                            <img src="https://picsum.photos/150/200/?random=10" width="72px"\n' +
+    // '                                                height="72px" alt="" style="object-fit:cover">\n' +
+    // '                                        </div>\n' +
+    // '                                        <div class="col-10">\n' +
+    // '                                            <div class="d-flex w-100 justify-content-between">\n' +
+    // '                                                <p class="mb-1" style=" overflow: hidden;">\n' +
+    // '                                                    一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十\n' +
+    // '                                                </p>\n' +
+    // '                                                <small style="white-space: nowrap;">3 days ago</small>\n' +
+    // '                                            </div>\n' +
+    // '                                        </div>\n' +
+    // '                                    </div>\n' +
+    // '                                </a>\n' +
+    // '                            </div>\n' +
     '                        </ul>\n' +
     '                    </li>\n' +
     '\n' +
