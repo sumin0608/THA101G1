@@ -112,7 +112,7 @@ public class EventAttendeesServiceImpl implements EventAttendeesService {
                 eventRepo.save(event);
                 System.out.println(savedAttendee);
                 System.out.println("成功到savedAttendee>");
-                core.setMessage("報名成功 請等待審核 後付款");
+                core.setMessage("報名成功 請等待主糾審核");
                 core.setSuccessful(true);
             }
 //					1. 可參加

@@ -56,7 +56,7 @@ public class Event extends Core {
     private String district;
     //    @JsonIgnore
 //    @JsonInclude(JsonInclude.Include.NON_NULL) // Include the property during deserialization if it's not null
-    private Integer categoryId;
+    private String categoryId;
     @Column(insertable = false)
     private Integer currentAttendees;
     @Column(insertable = false)
