@@ -156,62 +156,75 @@ addEventListener("DOMContentLoaded", () => {
         });
 
         $(document).on('click', '#calendarbtnE', function (e) {
-            console.log("canlnadarbtnE>>" + this);
-            fetch(urls)
-                .then(resp => resp.json())
-                .then(evtList => {
-                    course_calendar_list.innerHTML = "";
-                    for (let eve of evtList) {
-                        let statusButtons = '';
-//
-                        switch (eve.attendeeStatus) {
-                            case 1:
-                                statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
-                                break;
-                            case 2:
-                                statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">已通過　</button>`;
-                                break;
-                            case 3:
-                                statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
-                                break;
-                            case 4:
-                                statusButtons = `<button class="btn btn-danger exitPending" href="#" role="button" disabled>退出待審核　</button>`;
-                                break;
-                            case 5:
-                                statusButtons = `<button class="btn btn-danger exitSuccessful" href="#" role="button" disabled>退出成功　</button>`;
-                                break;
-                            default:
-                                // Default buttons when course status doesn't match any case
-                                statusButtons = `<button class="btn btn-primary" href="#" role="button">此課程不存在</button>`;
-                                break;
-                        }
-//
-                        course_calendar_list.innerHTML += `
-                                        <!-- 一條紀錄====================== -->
-                                         <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="${eve.attendId}" aria-current="true"
-                                              style="height: 118px;">
-                                             <div class="row h-100">
-                                                 <div class="col-2 h-100">
-                                                     <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
-                                                          class="overflow-hidden" height="100px" style="object-fit:cover;">
-                                                 </div>
-                                                 <div class="col-8 courseInfoContainer">
-                                                     <div class="d-flex w-100 justify-content-between courseNameContainer">
-                                                         <h5 class="mb-1">${eve.eventName}</h5>
-                                                     </div>
-                                                     <p class="mb-1">${eve.courseStartDate}</p>
-                                                        <small>${eve.attendeeStatus}</small>
-                                                 </div>
-                                                 <div class="col-2 status-btn">
- <!--                                                    <a class="ms-5 btn justify-content-end small btn-danger mb-1" href="#" role="button">退出</a>-->
- <!--                                                    <a class="btn btn-primary" href="#" role="button">前往聊天室　</a>-->
-                                                          ${statusButtons}
-                                                 </div>
-                                             </div>
-                                         </div>
-                                    `;
-                    }
-                });
+
+            // if (courseList[0].successful == false) {
+            //     console.log("aaa");
+
+            course_calendar_list.innerHTML = `
+                           <div class="row h-100">
+                                                <div class="col-8 h-100">
+                                                    <h5>您未參加任何活動</h5>
+                                                </div>
+                                                </div>
+                        `;
+            // return;
+            // }
+//             console.log("canlnadarbtnE>>" + this);
+//             fetch(urls)
+//                 .then(resp => resp.json())
+//                 .then(evtList => {
+//                     course_calendar_list.innerHTML = "";
+//                     for (let eve of evtList) {
+//                         let statusButtons = '';
+// //
+//                         switch (eve.attendeeStatus) {
+//                             case 1:
+//                                 statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
+//                                 break;
+//                             case 2:
+//                                 statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">已通過　</button>`;
+//                                 break;
+//                             case 3:
+//                                 statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
+//                                 break;
+//                             case 4:
+//                                 statusButtons = `<button class="btn btn-danger exitPending" href="#" role="button" disabled>退出待審核　</button>`;
+//                                 break;
+//                             case 5:
+//                                 statusButtons = `<button class="btn btn-danger exitSuccessful" href="#" role="button" disabled>退出成功　</button>`;
+//                                 break;
+//                             default:
+//                                 // Default buttons when course status doesn't match any case
+//                                 statusButtons = `<button class="btn btn-primary" href="#" role="button">此課程不存在</button>`;
+//                                 break;
+//                         }
+// //
+//                         course_calendar_list.innerHTML += `
+//                                         <!-- 一條紀錄====================== -->
+//                                          <div href="#" class="list-group-item list-group-item-action courseList" data-attendid="${eve.attendId}" aria-current="true"
+//                                               style="height: 118px;">
+//                                              <div class="row h-100">
+//                                                  <div class="col-2 h-100">
+//                                                      <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
+//                                                           class="overflow-hidden" height="100px" style="object-fit:cover;">
+//                                                  </div>
+//                                                  <div class="col-8 courseInfoContainer">
+//                                                      <div class="d-flex w-100 justify-content-between courseNameContainer">
+//                                                          <h5 class="mb-1">${eve.eventName}</h5>
+//                                                      </div>
+//                                                      <p class="mb-1">${eve.courseStartDate}</p>
+//                                                         <small>${eve.attendeeStatus}</small>
+//                                                  </div>
+//                                                  <div class="col-2 status-btn">
+//  <!--                                                    <a class="ms-5 btn justify-content-end small btn-danger mb-1" href="#" role="button">退出</a>-->
+//  <!--                                                    <a class="btn btn-primary" href="#" role="button">前往聊天室　</a>-->
+//                                                           ${statusButtons}
+//                                                  </div>
+//                                              </div>
+//                                          </div>
+//                                     `;
+//                     }
+//                 });
         });
 
     });
@@ -299,7 +312,8 @@ addEventListener("DOMContentLoaded", () => {
             let attendId = $(this).closest(".creatCourseList").attr("data-courseid4creator");
             // let url = `/ixercise/jimmy/course_intro_page.html?courseId=${attendId}&thismemberName=${thismemberName}&creator_hide' + creator_hide}`;
             let url = `/ixercise/jimmy/course_intro_page.html?courseId=${attendId}`;
-            location = url;
+            // location = url;
+            window.open(url, '_blank');
         }
     });
 });  //loaded

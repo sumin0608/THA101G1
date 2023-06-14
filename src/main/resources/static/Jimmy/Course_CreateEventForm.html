@@ -1043,7 +1043,7 @@
                 //     $('#detailedAddress').siblings('.invalid-feedback').show();
                 //     return;
                 // }
-                if (!categoryId || category == "請選擇..") {
+                if (!categoryId) {
                     swal("Warning!", "請選擇類型", "warning");
                     $('#categoryId').siblings('.invalid-feedback').show();
                     return;
@@ -1090,8 +1090,8 @@
                                 detailedAddress: detailedAddress,
                                 categoryId: categoryId,
                                 courseStatus: courseStatus,
-                                paidAdvertising: paidAdvertising,
-                                paidAdvertisingTime: paidAdvertisingTime
+                                paidAdvertising: paidAdvertising
+                                // paidAdvertisingTime: paidAdvertisingTime
                             }),
                             success: function (resp) {
                                 // console.log("resp>>" + resp);
