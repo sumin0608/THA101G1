@@ -69,7 +69,7 @@ public class EventController {
     }
 
     @PutMapping(value = "/create/image/{eventId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String uploadEvent(@RequestParam("photo") MultipartFile photo, @PathVariable Integer eventId) throws IOException {
+    public boolean uploadEvent(@RequestParam("photo") MultipartFile photo, @PathVariable Integer eventId) throws IOException {
         try {
             InputStream is = photo.getInputStream();
             byte[] bytes = is.readAllBytes();
@@ -80,11 +80,15 @@ public class EventController {
                 System.out.println("<====not null=====>>>>");
                 event.setPhoto(bytes);
                 Event save = eventRepository.save(event);
+                return true;
+            } else {
+                return false;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return "Hi``";
+
     }
 
     //read image by id - get (eventId) : return byte[] of binary of the specific photo

@@ -832,7 +832,8 @@
 
                                 // event.photo = $("#photo-dropzone").val();
                                 event.eventName = $("#event_name").val();
-                                event.categoryId = $("#categoryId").val();
+                                // event.categoryId = $("#categoryId").val();
+                                event.categoryId = $("#categoryId option:selected").text();
                                 event.city = $("#city").val();
                                 event.district = $("#district").val();
                                 event.location = $("#location").val();
@@ -853,7 +854,7 @@
                                 event.deadline = $("#deadline").val();
 
                                 // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                                event.creatorId = sessionStorage.getItem("accountId");
+                                event.creatorId = localStorage.getItem("accountId");
                                 // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -934,6 +935,12 @@
                             console.log(response);
                             // /create/images/{eventId}
                             // upLoadPhoto(response);
+                            if (response == true) {
+                                alert("活動創辦成功");
+                                location = '/ixercise/Woo/Event_homePage.html';
+                            } else {
+                                alert("活動創辦失敗");
+                            }
                         },
                         error: function (xhr, status, error) {
                             // Handle error here

@@ -385,7 +385,7 @@
     <div class="row justify-content-center">
         <!-- 課程介紹區 -->
         <div class="col-md-9 p-5 mb-4 bg-light rounded-3 mt-4">
-            <div class="container-fluid pt-1 pb-4 card ps-0 pe-0">
+            <div class="container-fluid pt-1 pb-4 card ps-0 pe-0" data-creatorid="" id="eventCard">
                 <!-- ============================================== -->
                 <div class="card-header p-2  bg-transparent justify-content-between">
                     <div class="d-flex flex-row align-items-center event_creater">
@@ -394,13 +394,13 @@
                                  class="overflow-hidden rounded-circle p-0 member_profile_pic memberNickNameAvator"
                                  data-bs-toggle="dropdown"
                                  height="36"
-                                 href="#" role="button" src="https://picsum.photos/300/200/?random=10" width="36">
+                                 href="#" role="button" src="" width="36">
                         </div>
 
                         <div class="col-8 ms-2 c-details member_details">
                             <h6 class=" mb-0  fw-bolder text-muted text-truncate member_name avatarName"
                                 id="avatarName">
-                                Dawdddd0000000ddddoo
+                                <!--                                Dawdddd0000000ddddoo-->
                             </h6>
                             <!--                            <span class=" text-muted member_intro">sss</span>-->
                         </div>
@@ -412,7 +412,7 @@
 
                 <div class="photo_container " id="photo_container">
                     <img alt="..." class="card-img-top event_pic " id="photo"
-                         src="https://media.istockphoto.com/id/1228962068/photo/colorful-autumn-season-and-mountain-fuji-with-morning-fog-and-red-leaves-at-lake-kawaguchiko.jpg?s=612x612&w=0&k=20&c=fsAoWZPMPv0iqwmGLVWginjP_jk3-tVsBCg4ym-e_Js="/>
+                         src=""/>
                 </div>
                 <div class="card-body">
                     <button class="wtbtn" id="categoryId" onclick="">健身
@@ -617,7 +617,7 @@
         // 抓Course_homePage.html傳來的courseId
         let urlParams = new URLSearchParams(window.location.search);
         let courseId = urlParams.get('evt');
-        let accountId = sessionStorage.getItem("accountId");
+        let accountId = localStorage.getItem("accountId");
         const reason = $("#attendReason").val();
         // Data to be sent in the request body
         if (courseId == null) {
@@ -639,9 +639,9 @@
             reason: reason
         };
 
-
+        let creatorandaccountid = $("#eventCard").attr('data-attendid');
         var creator_hide = sessionStorage.getItem('creator_hide');
-        if (localStorage.getItem('accountId') == creator_hide) {
+        if (localStorage.getItem('accountId') == creatorandaccountid) {
             alert("這是你自己開的課程");
             applyResult.classList.add("open-applyResult");
             return;
@@ -728,7 +728,7 @@
     // =========================== session storge ========================= //
     addEventListener("DOMContentLoaded", (load) => {
         // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        sessionStorage.setItem("accountId", 1);
+        // sessionStorage.setItem("accountId", 1);
         // =========================== >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         const event_cards_container = document.querySelector('#event_cards_container');
@@ -746,7 +746,8 @@
                 // 	<td>${evt.maxAttendees}</td>
                 // 	<td>${evt.categoryId}</td>
                 // 	<td>${evt.description}</td>
-
+                // data-creatorideventCard
+                $("#eventCard").attr('data-attendid', event.creatorId);
                 $("#eventName").text(event.eventName);
                 $("img#photo").attr('src', '../event/image/' + event.eventId);
                 $("#city").text(event.city);
@@ -760,7 +761,7 @@
                 $("#eventLastVerifyDateAndTime").html('&nbsp;(最後審核日期:' + event.lastVerifyDateAndTime + ')');
                 $("#paymentMethod").text(event.moneyDivisionMethod);
                 $("#creator").text("目前報名人數: " + event.currentAttendees);
-
+                $("#categoryId").html(event.categoryId);
 
                 $("#expectedExpense").html("費用: &dollar;" + event.price);
                 $("#maxAttendees").text("名額: " + event.maxAttendees + "人");
@@ -793,38 +794,38 @@
 
             });
 
-
-        const data = sessionStorage.getItem('Event');
-        const eventPhoto = sessionStorage.getItem('eventphoto');
-
-        console.log("data: " + data);
-        console.log("eventPhoto: " + eventPhoto);
-
-        if (data != null && eventPhoto != null) {
-            const sessionFormData = JSON.parse(data);   //sessionFormData
-            // ============ photo -> are not processing due to troublesome
-            // $("#previewBox").html('<img src="' + sessionFormData.img_base64 + '" class="preview_img">');     // imgElement.src = 'data:image/png;base64,' + base64Data;
-            // $("#photo-dropzone").val(sessionFormData.photo_dropzone);
-            // $('#photo-dropzone').prop('files', sessionFormData.photo_dropzone);;
-
-            $("#eventName").html(sessionFormData.eventName);
-            $("#categoryId").html(sessionFormData.categoryId);
-            $("#city").html(sessionFormData.city);
-            $("#district").html(sessionFormData.district);
-            $("#location").html(sessionFormData.location);
-            $("#detailedAddress").html(sessionFormData.address);
-            $("#expectedExpense").html(sessionFormData.price);
-            $("#eventStartDate").html(sessionFormData.eventDate);
-            $("#eventStartTime").html(sessionFormData.startTime);
-            $("#lastVerifyDate").html(sessionFormData.lastVerifyDate);
-            $("#lastVerifyTime").html(sessionFormData.lastVerifyTime);
-            $("#maxAttendees").html(sessionFormData.maxAttendees);
-            $("#paymentMethod").html(sessionFormData.paymentMethod);
-            $("#eventDescription").html(sessionFormData.description);
-            $("#photo").attr("src", eventPhoto);
-
-
-        }
+        //
+        // const data = sessionStorage.getItem('Event');
+        // const eventPhoto = sessionStorage.getItem('eventphoto');
+        //
+        // console.log("data: " + data);
+        // console.log("eventPhoto: " + eventPhoto);
+        //
+        // if (data != null && eventPhoto != null) {
+        //     const sessionFormData = JSON.parse(data);   //sessionFormData
+        //     // ============ photo -> are not processing due to troublesome
+        //     // $("#previewBox").html('<img src="' + sessionFormData.img_base64 + '" class="preview_img">');     // imgElement.src = 'data:image/png;base64,' + base64Data;
+        //     // $("#photo-dropzone").val(sessionFormData.photo_dropzone);
+        //     // $('#photo-dropzone').prop('files', sessionFormData.photo_dropzone);;
+        //
+        //     $("#eventName").html(sessionFormData.eventName);
+        //     $("#categoryId").html(sessionFormData.categoryId);
+        //     $("#city").html(sessionFormData.city);
+        //     $("#district").html(sessionFormData.district);
+        //     $("#location").html(sessionFormData.location);
+        //     $("#detailedAddress").html(sessionFormData.address);
+        //     $("#expectedExpense").html(sessionFormData.price);
+        //     $("#eventStartDate").html(sessionFormData.eventDate);
+        //     $("#eventStartTime").html(sessionFormData.startTime);
+        //     $("#lastVerifyDate").html(sessionFormData.lastVerifyDate);
+        //     $("#lastVerifyTime").html(sessionFormData.lastVerifyTime);
+        //     $("#maxAttendees").html(sessionFormData.maxAttendees);
+        //     $("#paymentMethod").html(sessionFormData.paymentMethod);
+        //     $("#eventDescription").html(sessionFormData.description);
+        //     $("#photo").attr("src", eventPhoto);
+        //
+        //
+        // }
         // =========================== session storge ========================= //
     }); //Load ====
 </script>

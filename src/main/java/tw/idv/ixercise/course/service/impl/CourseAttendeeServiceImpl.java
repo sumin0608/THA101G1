@@ -297,7 +297,10 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 			filteredCourseList = findByAccountId.stream()
 					.filter(course -> course.getCourseStartTime().after(currentTimestamp))
 					.peek(attendees -> attendees.setAttendeesStatus(statusMap.getOrDefault(attendees.getStatus(), "無此狀態")))
-//					.peek(course -> {course.setSuccessful(true); course.setMessage("成功查詢參加課程");})
+					.peek(course -> {
+						course.setSuccessful(true);
+						course.setMessage("成功查詢參加課程");
+					})
 					.collect(Collectors.toList());
 
 			if (filteredCourseList.isEmpty()) {
@@ -310,7 +313,7 @@ public class CourseAttendeeServiceImpl implements CourseAttendeeService {
 		} else {
 			filteredCourseList = new ArrayList<>();
 			CourseAndAttendeesEntity caae = new CourseAndAttendeesEntity();
-			caae.setMessage("此Id未參加任何課程");
+			caae.setMessage("您未參加任何課程");
 			caae.setSuccessful(false);
 			filteredCourseList.add(caae);
 			filteredCourseList.add(caae);

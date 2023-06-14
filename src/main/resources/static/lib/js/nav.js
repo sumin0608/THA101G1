@@ -148,7 +148,7 @@ nav.innerHTML = '<div class=" container-fluid px-4 px-lg-0 me-4 ">\n' +
     '                    <li class="nav-item fs-5 ms-auto my-auto">\n' +
     '                        <a id="addcourse" class="nav-link h-100 active d-inline-block d-none" aria-current="page" href="/ixercise/jimmy/Course_CreateEventForm.html">開課程\n' +
     '                        </a>\n' +
-    '                        <a class="nav-link h-100 active d-inline-block" aria-current="page" href="/ixercise/Woo/Event_CreateEventForm.html">辦活動\n' +
+    '                        <a id="addevent" class="nav-link h-100 active d-inline-block" aria-current="page" >辦活動\n' +
     '                        </a>\n' +
     '                    </li>\n' +
     '                    <!-- 其他主頁  ========================================================== -->\n' +
@@ -313,6 +313,7 @@ const useravatar = document.querySelector("#useravatar");
 const nophoto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVBVtQ9oUbZtIaiZxiJTBVNkk2c4YbAu1cyZ-dYTsqgQ&s"
 const shoplink = document.querySelector("#shoplink");
 const addcourse = document.querySelector("#addcourse");
+const addevent = document.querySelector("#addevent");
 
 if (accid) {
     loginbtn.classList.add("d-none");
@@ -435,6 +436,17 @@ if (accid) {
             }
         })
 }
+
+addevent.addEventListener('click', () => {
+    let addeventlogin = localStorage.getItem("accountId");
+    if (addeventlogin == null || addeventlogin == "") {
+        alert("請先登入以辦活動");
+        return;
+    } else {
+        // href="/ixercise/Woo/Event_CreateEventForm.html"
+        location = "/ixercise/Woo/Event_CreateEventForm.html";
+    }
+})
 
 
 // });
