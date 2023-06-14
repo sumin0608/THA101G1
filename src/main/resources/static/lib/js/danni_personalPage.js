@@ -78,7 +78,7 @@ addEventListener("DOMContentLoaded", () => {
                                 statusButtons = `<button class="ms-5 btn justify-content-end small btn-danger mb-1 cancelParticipation" href="#" role="button" >退出</button>`;
                                 break;
                             case 2:
-                                statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">前往聊天室　</button>`;
+                                statusButtons = `<button class="btn btn-primary hopIntoChatRoom" href="#" role="button">已通過:前往付款　</button>`;
                                 break;
                             case 3:
                                 statusButtons = `<button class="btn btn-danger attendDenied" href="#" role="button" disabled>未通過　</button>`;
@@ -101,8 +101,8 @@ addEventListener("DOMContentLoaded", () => {
                                              style="height: 118px;">
                                             <div class="row h-100">
                                                 <div class="col-2 h-100">
-                                                    <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"
-                                                         class="overflow-hidden" height="100px" style="object-fit:cover;">
+<!--                                                    <img src="https://picsum.photos/500/200/?random=10" alt="" width="100px"-->
+<!--                                                         class="overflow-hidden" height="100px" style="object-fit:cover;">-->
                                                 </div>
                                                 <div class="col-8 courseInfoContainer">
                                                     <div class="d-flex w-100 justify-content-between courseNameContainer">
