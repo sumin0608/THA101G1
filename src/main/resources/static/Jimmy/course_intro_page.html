@@ -49,6 +49,15 @@
             font-size: 1.4375rem;
             margin-top: 0rem;
         }
+
+        .member-icon img {
+            /*width: 100%;*/
+            /*height: 100%;*/
+            object-fit: cover;
+            /*position: absolute;*/
+            /*overflow: hidden;*/
+        }
+
     </style>
 </head>
 
@@ -366,16 +375,19 @@
                             <div class=" p-2  bg-transparent justify-content-between" id="exampleModalToggleLabel">
 
                                 <div class="d-flex flex-row align-items-center event_creater">
-                                    <div class="member-icon">
-                                        <img aria-expanded="false" class="overflow-hidden rounded-circle p-0"
-                                            data-bs-toggle="dropdown" height="36" href="#" id="" role="button"
-                                            src="https://images.wsj.net/im-236521/OR" width="36">
+                                    <div class="member-icon col-1">
+                                        <img aria-expanded="false"
+                                             class="overflow-hidden rounded-circle w-100 h-100 mx-1 p-0 memberNickNameAvator"
+                                             data-bs-toggle="dropdown" height="36" href="#" id="avatarIDApply"
+                                             role="button"
+                                             src="https://images.wsj.net/im-236521/OR" width="36">
                                     </div>
 
                                     <div class="col-8 ms-2 c-details">
-                                        <h6 class=" mb-0  fw-bolder text-muted text-truncate"> Dawdddd0000000ddddoo
+                                        <h6 class=" mb-0  fw-bolder text-muted text-truncate avatarName"
+                                            id="avatarName"> Dawdddd0000000ddddoo
                                         </h6>
-                                        <span class=" text-muted">sss</span>
+                                        <!--                                        <span class=" text-muted">sss</span>-->
                                     </div>
                                     <!-- <div class="col-2"></div> -->
                                 </div>
@@ -670,7 +682,31 @@
                     // $("#description").text(response.description);
                     $("#description").html(response.description);
 
+                    var accphotoaa;
+                    var memberNickNameaa;
+                    // 這裡之後串接會員資料，用會員id去找對應的會員中文名字
+                    console.log("wwwwwww");
+                    console.log(response.creator);
+                    $.ajax({
+                        url: "/ixercise/Account/Manage/" + response.creator,
+                        type: "GET",
+                        dataType: "json",
+                        async: false,//非同步的（asynchronous），表示該請求是同步的
+                        data: {id: response.creatorId}, // 将 creator 作为参数传递
+                        success: function (memberResp) {
+                            // console.log("memberResp: " + memberResp);
+                            memberNickNameaa = memberResp.accountNickname;
+                            accphotoaa = memberResp.accountPhoto;
+                            console.log("memberName: " + memberNickNameaa);
+                            console.log("accphoto: " + accphotoaa);
+                            $(".avatarName").text(memberNickNameaa);
+                            $(".memberNickNameAvator").attr("src", getcreateObjURL(accphotoaa));
 
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + xhr.responseText);
+                        }
+                    });
 
                     let creator = response.creator;
                     console.log("$(#creator).text(response.creator): " + creator);
@@ -770,7 +806,7 @@
                                 //審核參加者
                                 console.log("審核參加者");
                                 // location = `${getContextPath()}/jimmy/Course_backStage(sidebar).html`;
-                                btnHtml = `<button class="btn btn-primary applybtn" id="reviewParticipants" type="button" onclick="reviewParticipants()">報名課程 </button>`;
+                                btnHtml = `<button class="btn btn-primary applybtn" id="reviewParticipants" type="button" onclick="reviewParticipants()">審核參加者 </button>`;
                                 $("#popUpBtn").html(btnHtml);
                             } else if (statusDto.courseStarted) {
                                 console.log("去評論");
@@ -794,7 +830,7 @@
                                 $("#popUpBtn").html(btnHtml);
 
                                 if (statusDto.attendeesStatusString == "通過") {
-                                    btnHtml = `<button class="btn btn-primary applybtn" id="didntLogin" type="button" onclick="pay124()">${statusDto.attendeesStatusString} </button>`;
+                                    btnHtml = `<button class="btn btn-primary applybtn" id="didntLogin" type="button" onclick="pay124()">前往付款</button>`;
                                     $("#popUpBtn").html(btnHtml);
                                 }
                             }

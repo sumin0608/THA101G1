@@ -46,7 +46,7 @@
         } */
         /* ================================================ */
 
-        .event_card img.event_pic {
+        .event_card .event_pic {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -59,6 +59,13 @@
 
         }
 
+        .member-icon img {
+            /*width: 70%;*/
+            /*height: 70%;*/
+            object-fit: cover;
+            /*position: absolute;*/
+            /*overflow: hidden;*/
+        }
 
         .photo::after {
             content: "";
@@ -86,6 +93,14 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
             /* overflow: hidden; */
         }
+
+        /*.event_card .event_card_content .event_link .photo img.event_pic {*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    object-fit: cover;*/
+        /*    position: absolute;*/
+        /*}*/
+
 
         /* .photo img {
             height: 100%;
@@ -765,8 +780,8 @@
                         //                 class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
                         //                 data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
                         tableData += `    <img class="avatarID" src="${getcreateObjURL(accphoto)}"
-                                                class="overflow-hidden rounded-circle p-0" id="" href="#" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36">`;
+                                                class="overflow-hidden rounded-circle p-0 mx-1" id="" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false" width="36" height="36" style="object-fit: cover;">`;
                         tableData += `</div>`;
                         tableData += `<div class="col-8 ms-2 c-details">`;
                         // tableData += `<h6 class=" mb-0  fw-bolder text-muted text-truncate h6_creator">教練:${resp[i].creator}</h6>`;
