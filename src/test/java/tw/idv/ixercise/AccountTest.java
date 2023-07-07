@@ -6,12 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import tw.idv.ixercise.account.dao.AccountRepository;
-import tw.idv.ixercise.account.dao.CoachSkillRepository;
-import tw.idv.ixercise.account.entity.CoachSkill;
 
 import java.util.Date;
 import java.util.HashMap;
